@@ -22,6 +22,30 @@
       "revId": "e6911431643e2f3ba43f862cd826d4e82ac55599",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_1f907e4d",
+        "filename": "version.properties",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3237
+      },
+      "writtenOn": "2018-05-23T10:00:11Z",
+      "side": 1,
+      "message": "agreed with Liam to change pom to 2.0.0",
+      "parentUuid": "5a93c517_6629ff36",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "e6911431643e2f3ba43f862cd826d4e82ac55599",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
