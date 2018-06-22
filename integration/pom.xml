@@ -101,7 +101,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>23.0</version>
+                <version>25.1-jre</version>
             </dependency>
 
             <!-- JSON marshalling and unmarshalling -->
