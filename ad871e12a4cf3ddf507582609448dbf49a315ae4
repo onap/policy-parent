@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a6a9dd7_5a31310a",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2018-07-30T13:44:13Z",
+      "side": 1,
+      "message": "I think it may be better to add it under \u003cdependencyManagement\u003e as a \u003cdependency\u003e. In that case the child pom\u0027s only need to mention the dependency name and not refer the version attribute at all.\n\nExample (in child pom) -\n\n\u003cdependency\u003e\n    \u003cgroupId\u003ecommons-cli\u003c/groupId\u003e\n    \u003cartifactId\u003ecommons-cli\u003c/artifactId\u003e\n\u003c/dependency\u003e",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 54
+      },
+      "revId": "ad871e12a4cf3ddf507582609448dbf49a315ae4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
