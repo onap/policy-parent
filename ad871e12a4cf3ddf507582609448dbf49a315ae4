@@ -46,6 +46,30 @@
       "revId": "ad871e12a4cf3ddf507582609448dbf49a315ae4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a6a9dd7_9db8232c",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2018-07-30T14:31:02Z",
+      "side": 1,
+      "message": "Nice! Thanks Ram, that\u0027s much neater.",
+      "parentUuid": "9a6a9dd7_5d74cb9b",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 54
+      },
+      "revId": "ad871e12a4cf3ddf507582609448dbf49a315ae4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
