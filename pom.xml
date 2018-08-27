@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.onap.oparent</groupId>
         <artifactId>oparent</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.0</version>
     </parent>
     <groupId>org.onap.policy.parent</groupId>
     <artifactId>policy-parent</artifactId>
@@ -31,7 +31,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <oparent.version>1.1.0</oparent.version>
+        <oparent.version>1.2.0</oparent.version>
     </properties>
 
     <modules>
