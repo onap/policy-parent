@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Ram Krishna Verma <ram.krishna.verma@ericsson.com>
+Code-Review+1: Michael Morris <michael.morris@ericsson.com>
+Code-Review+2: Liam Fallon <liam.fallon@ericsson.com>
+Submitted-by: Liam Fallon <liam.fallon@ericsson.com>
+Submitted-at: Tue, 28 Aug 2018 11:21:03 +0000
+Reviewed-on: https://gerrit.onap.org/r/63109
+Project: policy/parent
+Branch: refs/heads/master
