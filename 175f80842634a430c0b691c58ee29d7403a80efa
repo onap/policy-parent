@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_4fbfb0aa",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2018-08-30T15:34:43Z",
+      "side": 1,
+      "message": "We are already getting this from oparent - this is the work I am doing with integration team. INT-619\n\nIs there a problem somewhere?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "175f80842634a430c0b691c58ee29d7403a80efa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
