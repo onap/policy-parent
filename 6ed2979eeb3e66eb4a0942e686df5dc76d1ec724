@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_458eb1d1",
+        "filename": "pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2018-08-30T21:46:07Z",
+      "side": 1,
+      "message": "Including this element gets rid of the warning about relativePath (unrelated to Guava problem)",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "6ed2979eeb3e66eb4a0942e686df5dc76d1ec724",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
