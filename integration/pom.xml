@@ -144,6 +144,13 @@
                 <version>1.4</version>
             </dependency>
 
+            <!-- Miscellaneous utility libraries-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>26.0-jre</version>
+            </dependency>
+
             <!-- Test dependencies -->
 
             <!-- In memory Database Engine -->
