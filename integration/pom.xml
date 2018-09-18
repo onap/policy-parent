@@ -139,6 +139,13 @@
                 <version>${version.dmaap}</version>
             </dependency>
 
+            <!-- AAF Client -->
+            <dependency>
+                <groupId>org.onap.aaf.authz</groupId>
+                <artifactId>aaf-cadi-aaf</artifactId>
+                <version>2.1.2-SNAPSHOT</version>
+            </dependency>
+
             <!-- Client library for Cambria event routing API -->
             <dependency>
                 <groupId>com.att.nsa</groupId>
