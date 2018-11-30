@@ -38,6 +38,7 @@
         <version.logback>1.2.3</version.logback>
         <version.dmaap>1.1.9</version.dmaap>
         <version.powermock>1.7.4</version.powermock>
+        <version.eclipselink>2.7.0</version.eclipselink>
     </properties>
 
     <distributionManagement>
@@ -81,6 +82,27 @@
                 <groupId>javax.persistence</groupId>
                 <artifactId>persistence-api</artifactId>
                 <version>1.0.2</version>
+            </dependency>
+
+            <!-- Eclipse Persistence API -->
+            <dependency>
+                <groupId>org.eclipse.persistence</groupId>
+                <artifactId>javax.persistence</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+
+            <!-- Eclipse JPA API -->
+            <dependency>
+                <groupId>org.eclipse.persistence</groupId>
+                <artifactId>org.eclipse.persistence.jpa</artifactId>
+                <version>${version.eclipselink}</version>
+            </dependency>
+
+            <!-- EclipseLink API -->
+            <dependency>
+                <groupId>org.eclipse.persistence</groupId>
+                <artifactId>eclipselink</artifactId>
+                <version>${version.eclipselink}</version>
             </dependency>
 
             <!-- Java Servlet API -->
