@@ -22,6 +22,30 @@
       "revId": "c90028e8669e4ed7c82f4e81e882e435c672999e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_4036d304",
+        "filename": "integration/pom.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2018-11-30T15:12:43Z",
+      "side": 1,
+      "message": "2.7.0 is the latest that was referenced in any of the policy repos.  However, I can certainly bump the number if desired.",
+      "parentUuid": "9adffdf1_2065cf1d",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "c90028e8669e4ed7c82f4e81e882e435c672999e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
