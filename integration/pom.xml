@@ -77,14 +77,8 @@
                 <version>1.4.10</version>
             </dependency>
 
-            <!-- Persistence API -->
-            <dependency>
-                <groupId>javax.persistence</groupId>
-                <artifactId>persistence-api</artifactId>
-                <version>1.0.2</version>
-            </dependency>
-
             <!-- Eclipse Persistence API -->
+			<!-- NOTE: use this instead of persistence-api -->
             <dependency>
                 <groupId>org.eclipse.persistence</groupId>
                 <artifactId>javax.persistence</artifactId>
