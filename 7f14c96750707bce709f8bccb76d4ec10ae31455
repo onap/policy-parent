@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17a3cf4f_8b9857af",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-05-16T16:08:39Z",
+      "side": 1,
+      "message": "Nope this Jorge\u0027s!",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 14
+      },
+      "revId": "7f14c96750707bce709f8bccb76d4ec10ae31455",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf2909a0_c413ca0f",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-05-16T16:08:39Z",
+      "side": 1,
+      "message": "Florida",
+      "range": {
+        "startLine": 63,
+        "startChar": 17,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "7f14c96750707bce709f8bccb76d4ec10ae31455",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae3d3835_3f6ab63a",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-05-16T16:08:39Z",
+      "side": 1,
+      "message": "est.tech by end of May",
+      "range": {
+        "startLine": 65,
+        "startChar": 14,
+        "endLine": 65,
+        "endChar": 44
+      },
+      "revId": "7f14c96750707bce709f8bccb76d4ec10ae31455",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
