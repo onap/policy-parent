@@ -1,0 +1,412 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90eeb561_09b9b493",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "\"can\" \u003d\u003e \"to\"",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21855a3f_231d2c71",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "remove space before \")\"?",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55b1ad2d_b3a5fa08",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "asterisks around PolicyDistribution?",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79a86a20_2dddb880",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "\"to a\" \u003d\u003e \"to\"",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b4f7aea_cba1f5ad",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "grammar issue - may need to reword this slightly",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f21449_c9c4658c",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "\"that allows\"",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db608595_0e020e3b",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "move asterisk after \"A\"?",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3c9b43_ff0c2368",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "spacing \u0026 escaping looks odd",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "341c0290_8a89152d",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "move asterisk after \"A\"?",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5fca341_35272d99",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "replace semicolon with colon",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65419af7_6b7677e6",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "add \"an\" before \"interface\"",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17759a6_277d8af6",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "cache the policy sets?  What does this mean?  Is it still able to be stateless then?",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c086cc0_921db42f",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "this makes sense - now we just have to determine how a PDP identifies its kubernetes deployment to PAP.  Currently, all PDPs of a given type return the same list of supported policy types, regardless of which kubernetes deployment they belong to.  However, if the list could be changed (or the pdp \"type\" changed) based on which kubernetes deployment it was in, then that would make the group/subgroup stuff work",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833d928e_4184b858",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "change \"if\" to \"with\"?",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fabd34bf_068b0c80",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "I think the state is at the PDP_GROUP level rather than the PDP_SUBGROUP level",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855be93d_6a756c42",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "this is future functionality, right?",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f4d762c_225a2088",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "\"deploy\" \u003d\u003e \"deployed\"",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59718731_ec7bd984",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "currently, PAP does not change PDP to PASSIVE - PDPs must be able to update their policies while in ACTIVE mode",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a757f48e_4a42d700",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "\"beings\" \u003d\u003e \"begins\"",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb5a8d6c_f232f882",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "\"An\" \u003d\u003e \"A\"",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7306db0_6cf2e702",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "\"in service\" \u003d\u003e \"in-service\"",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84bc991a_dfa4b35c",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "is this implemented?  Do PDPs actually track invocation times?",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62540692_4902c5c5",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "maybe change \"set of policies\" to \"Policy Set\", which is defined below; not sure how to capture the concept that the PDPs in a group may have different, but related policies.  Thus all PDPs in a subgroup execute the same policies, but different subgroups within a group may have the same or different policies.",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "162d9e34_071e1412",
+        "filename": "docs/architecture/objectmodel1.png",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-21T20:41:37Z",
+      "side": 1,
+      "message": "somewhere, there should be a \"1-to-n\" mapping between PDPSubGroup and PolicyImpl, because a subgroup can have more than one policy associated with it",
+      "revId": "38c82fd5eb9660785f177d90006b9d6475649816",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
