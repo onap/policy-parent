@@ -6,12 +6,12 @@
   } ],
   "schemes" : [ "http", "https" ],
   "paths" : {
-    "/policy/api/v1/policytypes/onap.policies.controlloop.Guard/versions/1.0.0/policies/{policyId}" : {
+    "/policy/api/v1/policytypes/onap.policies.controlloop.Guard/versions/1.0.0/policies/{policyId}/versions/latest" : {
       "get" : {
         "tags" : [ "Legacy Guard Policy" ],
-        "summary" : "Retrieve all versions of a particular guard policy",
-        "description" : "Returns a list of all versions of the specified guard policy",
-        "operationId" : "getAllVersionsOfGuardPolicy",
+        "summary" : "Retrieve the latest version of a particular guard policy",
+        "description" : "Returns the latest version of the specified guard policy",
+        "operationId" : "getLatestVersionOfGuardPolicy",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "policyId",
@@ -29,7 +29,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation; All versions of specified guard policy will be returned.",
+            "description" : "successful operation; Latest version of specified guard policy will be returned.",
             "headers" : {
               "X-MinorVersion" : {
                 "type" : "string",

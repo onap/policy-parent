@@ -6,12 +6,12 @@
   } ],
   "schemes" : [ "http", "https" ],
   "paths" : {
-    "/policy/api/v1/policytypes/onap.policies.controlloop.Operational/versions/1.0.0/policies/{policyId}" : {
+    "/policy/api/v1/policytypes/onap.policies.controlloop.Operational/versions/1.0.0/policies/{policyId}/versions/latest" : {
       "get" : {
         "tags" : [ "Legacy Operational Policy" ],
-        "summary" : "Retrieve all versions of a particular operational policy",
-        "description" : "Returns a list of all versions of the specified operational policy",
-        "operationId" : "getAllVersionsOfOperationalPolicy",
+        "summary" : "Retrieve the latest version of a particular operational policy",
+        "description" : "Returns the latest version of the specified operational policy",
+        "operationId" : "getLatestVersionOfOperationalPolicy",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "policyId",
@@ -29,7 +29,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "successful operation; All versions of specified operational policy will be returned.",
+            "description" : "successful operation; Latest version of specified operational policy will be returned.",
             "headers" : {
               "X-MinorVersion" : {
                 "type" : "string",
