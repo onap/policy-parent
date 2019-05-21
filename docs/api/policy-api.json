@@ -1,0 +1,824 @@
+{
+  "swagger" : "2.0",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "Policy"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/policy/api/v1/policytypes/{policyTypeId}/versions/{policyTypeVersion}/policies" : {
+      "get" : {
+        "tags" : [ "Policy" ],
+        "summary" : "Retrieve all versions of a policy created for a particular policy type version",
+        "description" : "Returns a list of all versions of specified policy created for the specified policy type version",
+        "operationId" : "getAllPolicies",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "policyTypeId",
+          "in" : "path",
+          "description" : "ID of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyTypeVersion",
+          "in" : "path",
+          "description" : "Version of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation; All policies matching specified policy type will be returned.",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ToscaServiceTemplate"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "404" : {
+            "description" : "Resource Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "api-version" : "1.0.0",
+          "last-mod-release" : "Dublin"
+        }
+      },
+      "post" : {
+        "tags" : [ "Policy" ],
+        "summary" : "Create a new policy for a policy type version",
+        "description" : "Create a new policy for a policy type. Client should provide TOSCA body of the new policy",
+        "operationId" : "createPolicy",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "policyTypeId",
+          "in" : "path",
+          "description" : "ID of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyTypeVersion",
+          "in" : "path",
+          "description" : "Version of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Entity body of policy",
+          "required" : true,
+          "type" : "ToscaServiceTemplate",
+          "schema" : {
+            "$ref" : "#/definitions/ToscaServiceTemplate"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation; Newly created policy matching specified policy type will be returned.",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ToscaServiceTemplate"
+            }
+          },
+          "400" : {
+            "description" : "Invalid Body"
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "404" : {
+            "description" : "Resource Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "api-version" : "1.0.0",
+          "last-mod-release" : "Dublin"
+        }
+      }
+    },
+    "/policy/api/v1/policytypes/{policyTypeId}/versions/{policyTypeVersion}/policies/{policyId}" : {
+      "get" : {
+        "tags" : [ "Policy" ],
+        "summary" : "Retrieve all version details of a policy created for a particular policy type version",
+        "description" : "Returns a list of all version details of the specified policy",
+        "operationId" : "getAllVersionsOfPolicy",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "policyTypeId",
+          "in" : "path",
+          "description" : "ID of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyTypeVersion",
+          "in" : "path",
+          "description" : "Version of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyId",
+          "in" : "path",
+          "description" : "ID of policy",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation; All versions of specified policy matching specified policy type will be returned.",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ToscaServiceTemplate"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "404" : {
+            "description" : "Resource Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "api-version" : "1.0.0",
+          "last-mod-release" : "Dublin"
+        }
+      }
+    },
+    "/policy/api/v1/policytypes/{policyTypeId}/versions/{policyTypeVersion}/policies/{policyId}/versions/{policyVersion}" : {
+      "get" : {
+        "tags" : [ "Policy" ],
+        "summary" : "Retrieve one version of a policy created for a particular policy type version",
+        "description" : "Returns a particular version of specified policy created for the specified policy type version",
+        "operationId" : "getSpecificVersionOfPolicy",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "policyTypeId",
+          "in" : "path",
+          "description" : "ID of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyTypeVersion",
+          "in" : "path",
+          "description" : "Version of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyId",
+          "in" : "path",
+          "description" : "ID of policy",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyVersion",
+          "in" : "path",
+          "description" : "Version of policy",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation; The specified policy matching specified policy type will be returned.",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ToscaServiceTemplate"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "404" : {
+            "description" : "Resource Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "api-version" : "1.0.0",
+          "last-mod-release" : "Dublin"
+        }
+      },
+      "delete" : {
+        "tags" : [ "Policy" ],
+        "summary" : "Delete a particular version of a policy",
+        "description" : "Delete a particular version of a policy. It must follow one rule. Rule: the version that has been deployed in PDP group(s) cannot be deleted",
+        "operationId" : "deleteSpecificVersionOfPolicy",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "policyTypeId",
+          "in" : "path",
+          "description" : "PolicyType ID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyTypeVersion",
+          "in" : "path",
+          "description" : "Version of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyId",
+          "in" : "path",
+          "description" : "ID of policy",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyVersion",
+          "in" : "path",
+          "description" : "Version of policy",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation; Newly deleted policy matching specified policy type will be returned.",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ToscaServiceTemplate"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "404" : {
+            "description" : "Resource Not Found"
+          },
+          "409" : {
+            "description" : "Delete Conflict, Rule Violation"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "api-version" : "1.0.0",
+          "last-mod-release" : "Dublin"
+        }
+      }
+    },
+    "/policy/api/v1/policytypes/{policyTypeId}/versions/{policyTypeVersion}/policies/{policyId}/versions/latest" : {
+      "get" : {
+        "tags" : [ "Policy" ],
+        "summary" : "Retrieve the latest version of a particular policy",
+        "description" : "Returns the latest version of specified policy",
+        "operationId" : "getLatestVersionOfPolicy",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "policyTypeId",
+          "in" : "path",
+          "description" : "ID of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyTypeVersion",
+          "in" : "path",
+          "description" : "Version of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyId",
+          "in" : "path",
+          "description" : "ID of policy",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation; Latest version of specified policy matching specified policy type will be returned.",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/ToscaServiceTemplate"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "404" : {
+            "description" : "Resource Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "api-version" : "1.0.0",
+          "last-mod-release" : "Dublin"
+        }
+      }
+    },
+    "/policy/api/v1/policytypes/{policyTypeId}/versions/{policyTypeVersion}/policies/{policyId}/versions/deployed" : {
+      "get" : {
+        "tags" : [ "Policy" ],
+        "summary" : "Retrieve deployed versions of a particular policy in pdp groups",
+        "description" : "Returns deployed versions of specified policy in pdp groups",
+        "operationId" : "getDeployedVersionsOfPolicy",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "policyTypeId",
+          "in" : "path",
+          "description" : "ID of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyTypeVersion",
+          "in" : "path",
+          "description" : "Version of policy type",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "policyId",
+          "in" : "path",
+          "description" : "ID of policy",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation; Deployed versions of specified policy matching specified policy type will be returned.",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ToscaPolicy"
+              }
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "404" : {
+            "description" : "Resource Not Found"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "api-version" : "1.0.0",
+          "last-mod-release" : "Dublin"
+        }
+      }
+    }
+  }, 
+  "securityDefinitions" : {
+    "basicAuth" : {
+      "description" : "",
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "ToscaConstraint" : {
+      "type" : "object",
+      "properties" : {
+        "valid_values" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "equal" : {
+          "type" : "string"
+        },
+        "greater_than" : {
+          "type" : "string"
+        },
+        "greater_or_equal" : {
+          "type" : "string"
+        },
+        "less_than" : {
+          "type" : "string"
+        },
+        "less_or_equal" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ToscaDataType" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "version" : {
+          "type" : "string"
+        },
+        "derived_from" : {
+          "type" : "string"
+        },
+        "metadata" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "constraints" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ToscaConstraint"
+          }
+        },
+        "properties" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "$ref" : "#/definitions/ToscaProperty"
+          }
+        }
+      }
+    },
+    "ToscaEntrySchema" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "typeVersion" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "constraints" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ToscaConstraint"
+          }
+        }
+      }
+    },
+    "ToscaPolicyType" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "version" : {
+          "type" : "string"
+        },
+        "derived_from" : {
+          "type" : "string"
+        },
+        "metadata" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "properties" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "$ref" : "#/definitions/ToscaProperty"
+          }
+        }
+      }
+    },
+    "ToscaPolicyTypeIdentifier" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "version" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ToscaProperty" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "typeVersion" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "default" : {
+          "type" : "string"
+        },
+        "required" : {
+          "type" : "boolean"
+        },
+        "status" : {
+          "type" : "string",
+          "enum" : [ "SUPPORTED", "UNSUPPORTED", "EXPERIMENTAL", "DEPRECATED" ]
+        },
+        "constraints" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ToscaConstraint"
+          }
+        },
+        "entry_schema" : {
+          "$ref" : "#/definitions/ToscaEntrySchema"
+        }
+      }
+    },
+    "ToscaServiceTemplate" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "version" : {
+          "type" : "string"
+        },
+        "derived_from" : {
+          "type" : "string"
+        },
+        "metadata" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "tosca_definitions_version" : {
+          "type" : "string"
+        },
+        "topology_template" : {
+          "$ref" : "#/definitions/ToscaTopologyTemplate"
+        },
+        "policy_types" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "$ref" : "#/definitions/ToscaPolicyType"
+            }
+          }
+        },
+        "data_types" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "$ref" : "#/definitions/ToscaDataType"
+            }
+          }
+        }
+      }
+    },
+    "ToscaTopologyTemplate" : {
+      "type" : "object",
+      "properties" : {
+        "description" : {
+          "type" : "string"
+        },
+        "policies" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "$ref" : "#/definitions/ToscaPolicy"
+            }
+          }
+        }
+      }
+    }
+  }
+}
