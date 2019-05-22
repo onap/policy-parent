@@ -1,0 +1,378 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "510d52a8_8ee66629",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"executable\" \u003d\u003e \"executed\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2559912_f0ce97f3",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"service\" \u003d\u003e \"services\"?\n\n\"for\" \u003d\u003e \"for the\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5779ed8_a52ecc77",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"in\" \u003d\u003e \"in a\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c069daf1_0fc78eed",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"in\" \u003d\u003e \"in the\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e080c11_ed97e8c3",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"in\" \u003d\u003e \"in the\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc33926_60d4b9ca",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"preloaded\" \u003d\u003e \"the preloaded\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfb00089_7f7b284b",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"We\" \u003d\u003e \"we\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19110c48_bbe35fb1",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"in\" \u003d\u003e \"in the\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2450a708_56a9f051",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"client\" \u003d\u003e \"the client\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5dc121d_203c6711",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"Mostly\" \u003d\u003e \"Most\"\n\n\"If\" \u003d\u003e \"If the\"\n\n\"provider\" \u003d\u003e \"provide\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c54e6c_0f8cf80d",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"version back from\" \u003d\u003e \"version from\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a06436_3860d05f",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"used only to\" \u003d\u003e \"used to\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a8d4427_57e788d5",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"client\" \u003d\u003e \"the client\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "effdb7b0_c8db1e68",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"payload,\" \u003d\u003e \"payload, the\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a538325f_813d8a24",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"complain\" \u003d\u003e \"complain that\"\n\n\"above\" \u003d\u003e \"the above\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ba8cae_ccfc39f2",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"guard\" \u003d\u003e \"the guard\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e814a1cd_d6a1ac90",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"client\" \u003d\u003e \"the client\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9aebd8_11692ce5",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"delete\" \u003d\u003e \"delete them\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd5b6c6_5f202fd2",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"curl\" \u003d\u003e \"the curl\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a58e763_5f2e8cb0",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"vFirewall\" \u003d\u003e \"the vFirewall\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60288bd_1b2addf7",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "\"JSON\" \u003d\u003e \"The JSON\"\n\n\"from\" \u003d\u003e \"from the\"",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d1fdfb_43c3d72d",
+        "filename": "docs/api/policies/vCPE.policy.monitoring.input.tosca.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-22T13:06:14Z",
+      "side": 1,
+      "message": "I assume it\u0027s OK that the policy-version does not appear\n\nsame comment applies to remaining json files",
+      "revId": "af35b6a245e1587a3f149746c043fc4520daecaa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
