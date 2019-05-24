@@ -4,7 +4,7 @@
 
 
 Architecture
-------------
+############
 
 Abstract
 
@@ -17,15 +17,15 @@ provide examples that illustrate how to write, deploy, and run policies
 of various types using the framework.
 
 .. contents::
-    :depth: 4
+    :depth: 6
 
-1. Overview
+1. Overview
 ===========
 
 The ONAP Policy Framework is a comprehensive policy design, deployment,
 and execution environment. The Policy Framework is the decision
 making component in `an ONAP
-system <https://www.onap.org/wp-content/uploads/sites/20/2017/12/ONAP_CaseSolution_Architecture_120817_FNL.pdf>`__.
+system <https://www.onap.org/wp-content/uploads/sites/20/2018/11/ONAP_CaseSolution_Architecture_112918FNL.pdf>`__.
 It allows you to specify, deploy, and execute the governance of the
 features and functions in your ONAP system, be they closed loop,
 orchestration, or more traditional open loop use case implementations.
@@ -123,7 +123,7 @@ all policies running in an ONAP installation.
 The diagram below shows the architecture of the ONAP Policy Framework at
 its highest level.
 
-.. image:: highest.png
+.. image:: images/highest.png
 
 The *PolicyDevelopment* component implements the functionality for
 development of policy types and policies. *PolicyAdministration* is
@@ -136,10 +136,10 @@ correctly, and that the state and status of policies is monitored.
 *PolicyExecution* is the set of PDPs running in the ONAP system and is
 responsible for making policy decisions and for managing the
 administrative state of the PDPs as directed
-by \ *PolicyAdministration.* 
+by \ *PolicyAdministration.* 
 
 *PolicyDevelopment* creates policy artifacts and supporting information
-in the policy database. \ *PolicyAdministration* reads those artifacts
+in the policy database. \ *PolicyAdministration* reads those artifacts
 and the supporting information from the policy database whilst deploying
 policy artifacts. Once the policy artifacts are deployed,
 *PolicyAdministration* handles the run-time management of the PDPs on
@@ -152,7 +152,7 @@ The diagram below shows a more detailed view of the architecture, as
 inspired by `RFC-2753 <https://tools.ietf.org/html/rfc2753>`__ and
 `RFC-3198 <https://tools.ietf.org/html/rfc3198>`__.
 
-.. image:: detailed.png
+.. image:: images/detailed.png
 
 *PolicyDevelopment* provides a
 `CRUD <https://en.wikipedia.org/wiki/Create,_read,_update_and_delete>`__
@@ -192,7 +192,7 @@ asynchronous messaging over DMaaP.
 *PolicyExecution* is the set of running PDPs that are executing
 policies, logically partitioned into PDP groups and subgroups.
 
-.. image:: execution.png
+.. image:: images/execution.png
 
 The figure above shows how *PolicyExecution* looks at run time with PDPs
 running in Kubernetes. A *PDPGroup* is a purely logical construct that
@@ -202,7 +202,7 @@ running the same policies. *A PDPSubGroup* is deployed as a Kubernetes
 `Deployment <https://kubernetes.io/docs/concepts/workloads/controllers/deployment/>`__.
 PDPs are defined as Kubernetes
 `Pods <https://kubernetes.io/docs/concepts/workloads/pods/pod/>`__. At
-run time,  the actual number of PDPs in each *PDPSubGroup* is specified
+run time,  the actual number of PDPs in each *PDPSubGroup* is specified
 in the configuration of the *Deployment* of that *PDPSubGroup* in
 Kubernetes. This structuring of PDPs is required because, in order to
 simplify deployment and scaling of PDPs in Kubernetes, we gather all the
@@ -236,12 +236,12 @@ concepts in the Policy Framework. This model is implemented as a common
 model and is used by *PolicyDevelopment*, *PolicyDeployment,* and
 *PolicyExecution.*
 
-.. image:: objectmodel1.png
+.. image:: images/objectmodel1.png
 
 The UML class diagram above shows the portion of the Policy Framework
 Object Model that applies to *PolicyDeployment* and *PolicyExecution.*
 
-.. image:: objectmodel2.png
+.. image:: images/objectmodel2.png
 
 The UML class diagram above shows the portion of the Policy Framework
 Object Model that applies to *PolicyDevelopment* and *PolicyDeployment.*
@@ -262,7 +262,7 @@ OOF placement Models, DCAE microservice models. Policy type
 implementation development is done by an experienced developer.
 
 2.2.1 Policy Type Design
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Policy Type Design is the task of creating policy types that capture the
 generic and vendor independent aspects of a policy for a particular
@@ -271,7 +271,7 @@ information, rules, and tasks that a policy type requires to generate
 concrete policies.
 
 All policy types must implement the ONAP Policy Framework *PolicyType*
-interface. This interface allows \ *PolicyDevelopment* to manage policy
+interface. This interface allows \ *PolicyDevelopment* to manage policy
 types and to generate policies from these policy types in a uniform way
 regardless of the domain that the policy type is addressing or the PDP
 technology that will execute the policy. The interface is used by
@@ -279,12 +279,12 @@ technology that will execute the policy. The interface is used by
 the structure, type, and definition of the model information that must
 be supplied to the policy type to generate a concrete policy.
 
-A \ *PolicyTypeImpl* is developed for a certain type of PDP (for example
+A \ *PolicyTypeImpl* is developed for a certain type of PDP (for example
 XACML oriented for decision policies or Drools rules oriented for ECA
 policies). The design environment and tool chain for a policy type is
 specific for the type of policy being designed.
 
-The \ *PolicyTypeImpl*  implementation (or raw policy) is the
+The \ *PolicyTypeImpl*  implementation (or raw policy) is the
 specification of the specific rules or tasks, the flow of the policy,
 its internal states and data structures and other relevant information.
 A *PolicyTyp*\ e\ *Impl* is specific to a PDP technology, that is XACML,
@@ -299,19 +299,19 @@ which allows other components to query policy types and policy type
 implementations, to determine the model information, rules, or tasks
 that they require, to specialize policy flow, and to generate policies
 from policy types. This API is used by the ONAP Policy Framework and
-other components such as \ *PolicyDistribution* to create policies from
+other components such as \ *PolicyDistribution* to create policies from
 policy types.
 
 Consider a policy type created for managing faults on vCPE equipment in
 a vendor independent way. The policy type captures the generic logic
 required to manage the faults and specifies the vendor specific
 information that must be supplied to the type for specific vendor vCPE
-VFs. The actual  vCPE policy that is used for managing particular vCPE
+VFs. The actual  vCPE policy that is used for managing particular vCPE
 equipment is created by setting the parameters specified in the policy
 type together with the specific modeled information, rules and tasks in
 the policy type implementation for that vendor model of vCPE.
 
-2.2.1 Generating Policy Types
+2.2.2 Generating Policy Types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is possible to generate policy types using MDD (Model Driven
@@ -333,8 +333,8 @@ via the DCAE-DS (DCAE Design Studio).
 The GUI implementation in another ONAP component such as SDC DCAE-DS
 uses the *API_User* API to create and edit ONAP policy types.
 
-2.2.1.2 Programming Policy Type Implementations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2.2.1.1 Programming Policy Type Implementations
+"""""""""""""""""""""""""""""""""""""""""""""""
 
 For skilled developers, the most straightforward way to create a policy
 type is to program it. Programming a policy type might simply mean
@@ -347,31 +347,31 @@ of implementation, a Policy Type Implementation SDK. The project is
 under source control in git. This Eclipse project is structured
 correctly for creating implementations for a specific type of PDP. It
 includes the correct POM files for generating the policy type
-implementation and has editors and perspectives that aid  programmers in
+implementation and has editors and perspectives that aid  programmers in
 their work
 
 2.2.2 Policy Design
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 The *PolicyCreation* function of *PolicyDevelopment* creates policies
-from a policy type.  The information expressed during policy type design
+from a policy type.  The information expressed during policy type design
 is used to parameterize a policy type to create an executable policy. A
 service designer and/or operations team can use tooling that reads the
 TOSCA Policy Type specifications to express and capture a policy at its
 highest abstraction level. Alternatively, the parameter for the policy
 can be expressed in a raw JSON or YAML file and posted over the policy
-design API described on the `Model driven Control Loop
+design API described on the `Model driven Control Loop
 Design <file://localhost/display/DW/Model+driven+Control+Loop+Design>`__
 page.
 
-A number of mechanisms for  policy creation are supported in ONAP. The
+A number of mechanisms for  policy creation are supported in ONAP. The
 process in *PolicyDevelopment* for creating a policy is the same for all
 mechanisms. The most general mechanism for creating a policy is using
 the RESTful *Policy Design API*, which provides a full interface to the
 policy creation support of *PolicyDevelopment*. This API may be
-exercised directly using utilities such as *curl*. \ *PolicyDevelopment*
+exercised directly using utilities such as *curl*. \ *PolicyDevelopment*
 provides a command line tool that is a loose wrapper around the API. It
-also provides a general purpose Policy GUI in the ONAP Portal for policy
+also provides a general purpose Policy GUI in the ONAP Portal for policy
 creation, which again is a general purpose wrapper around the policy
 creation API. The Policy GUI can interpret any TOSCA Model ingested and
 flexibly presents a GUI for a user to create policies from. The
@@ -388,7 +388,7 @@ The following subsections outline the mechanisms for policy creation and
 modification supported by the ONAP Policy Framework.
 
 2.2.2.1 Policy Design in the ONAP Policy Framework
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Policy creation in *PolicyDevelopment* follows the general sequence
 shown in the sequence diagram below. An *API_USER* is any component that
@@ -398,26 +398,26 @@ command line tool and general purpose client that wraps the API.
 
 A *PolicyDevAPIUser* first gets a reference to and the metadata for the
 Policy type for the policy they want to work on from
-*PolicyDevelopment*. \ *PolicyDevelopment* reads the metadata and
+*PolicyDevelopment*. \ *PolicyDevelopment* reads the metadata and
 artifact for the policy type from the database. The *API_User* then asks
-for a reference and the metadata for the policy. \ *PolicyDevelopment*
+for a reference and the metadata for the policy. \ *PolicyDevelopment*
 looks up the policy in the database. If the policy already
-exists, \ *PolicyDevelopment* reads the artifact and returns the
-reference of the existing policy to the \ *PolicyDevAPIUser* with the
+exists, \ *PolicyDevelopment* reads the artifact and returns the
+reference of the existing policy to the \ *PolicyDevAPIUser* with the
 metadata for the existing policy. If the policy does not
-exist, \ *PolicyDevelopment* creates and new reference and metadata and
-returns that to the \ *API_User*.
+exist, \ *PolicyDevelopment* creates and new reference and metadata and
+returns that to the \ *API_User*.
 
-The \ *PolicyDevAPIUser* may now proceed with a policy specification
+The \ *PolicyDevAPIUser* may now proceed with a policy specification
 session, where the parameters are set for the policy using the policy
-type specification. Once the \ *PolicyDevAPIUser* is happy that the
+type specification. Once the \ *PolicyDevAPIUser* is happy that the
 policy is completely and correctly specified, it
-requests \ *PolicyDevelopment* to create the
-policy. \ *PolicyDevelopment* creates the policy, stores the created
+requests \ *PolicyDevelopment* to create the
+policy. \ *PolicyDevelopment* creates the policy, stores the created
 policy artifact and its metadata in the database.
 
 2.2.2.2 Model Driven VF (Virtual Function) Policy Design via VNF SDK Packaging
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 VF vendors express policies such as SLA, Licenses, hardware placement,
 run-time metric suggestions, etc. These details are captured within the
@@ -434,7 +434,7 @@ parameters to create a policy are read from a TOSCA Policy specification
 read from a CSAR received from SDC.
 
 *PolicyDesign* uses the *PolicyDistribution* component for managing
-SDC-triggered  policy creation and update requests. *PolicyDistribution*
+SDC-triggered  policy creation and update requests. *PolicyDistribution*
 is an *API_User*, it uses the Policy Design API for policy creation and
 update. It reads the information it needs to populate the policy type
 from a TOSCA specification in a CSAR received from SDC and then uses
@@ -445,16 +445,16 @@ also provides a TOSCA parser. See `Policy Platform - SDC Service
 Distribution Software
 Architecture <file://localhost/display/DW/Policy+Platform+-+SDC+Service+Distribution+Software+Architecture>`__
 
-In Step 4 above, the \ *PolicyDesign* must download the CSAR file. If
+In Step 4 above, the \ *PolicyDesign* must download the CSAR file. If
 the policy is to be composed from the TOSCA definition, it must also
 parse the TOSCA definition.
 
-In Step 9 above, the \ *PolicyDesign* must send back/publish status
+In Step 9 above, the \ *PolicyDesign* must send back/publish status
 events to SDC such as DOWNLOAD_OK, DOWNLOAD_ERROR, DEPLOY_OK,
 DEPLOY_ERROR, NOTIFIED.
 
-2.2.2.4 Scripted Model Driven Policy Design
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2.2.2.3 Scripted Model Driven Policy Design
+"""""""""""""""""""""""""""""""""""""""""""
 
 Service policies such as optimization and placement policies can be
 specified as a TOSCA Policy at design time. These policies use a TOSCA
@@ -469,7 +469,7 @@ the parameters of the directive to create a TOSCA Policy. It then uses
 the Policy API to create the policy.
 
 2.2.3 Policy Design Process
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All policy types must be certified as being fit for deployment prior to
 run time deployment. In the case of design-time via the SDC application,
@@ -520,7 +520,7 @@ page, where the mechanisms for PDP Deployment and Registration with PAP
 are explained.
 
 2.3.1 Policy Framework Services
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ONAP Policy Framework follows the architectural approach for micro
 services recommended by the `ONAP Architecture
@@ -529,7 +529,7 @@ Subcommittee <https://wiki.onap.org/display/DW/Architecture+Subcommittee>`__.
 The ONAP Policy Framework defines `Kubernetes
 Services <https://kubernetes.io/docs/concepts/services-networking/service/>`__
 to manage the life cycle of Policy Framework executable components at
-runtime. A Kubernetes service allows, among other parameters,  the
+runtime. A Kubernetes service allows, among other parameters,  the
 number of instances (pods in Kubernetes terminology) that should be
 deployed for a particular service to be specified and a common endpoint
 for that service to be defined. Once the service is started in
@@ -572,7 +572,7 @@ groups in the system. There are multiple PDP services, one PDP service
 for each domain for which there are policies.
 
 2.3.2 The Policy Framework Information Structure
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following diagram captures the relationship between Policy Framework
 concepts at run time.
@@ -591,31 +591,31 @@ Framework database and is administered by the PAP service.
 
 The diagram above gives an indicative structure of the run time topology
 information in the Policy Framework database. Note that
-the \ *PDP_SUBGROUP_STATE* and \ *PDP_STATE* fields hold state
+the \ *PDP_SUBGROUP_STATE* and \ *PDP_STATE* fields hold state
 information for life cycle management of PDP groups and PDPs.
 
 2.3.3 Startup, Shutdown and Restart
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section describes the interactions between Policy Framework
 components themselves and with other ONAP components at startup,
 shutdown and restart.
 
 2.3.3.1 PAP Startup and Shutdown
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 
 The sequence diagram below shows the actions of the PAP at startup.
 
 The PAP is the run time point of coordination for the ONAP Policy
 Framework. When it is started, it initializes itself using data from the
-database.  It then waits for periodic PDP status updates and for
+database.  It then waits for periodic PDP status updates and for
 administration requests.
 
 PAP shutdown is trivial. On receipt or a shutdown request, the PAP
 completes or aborts any ongoing operations and shuts down gracefully.
 
 2.3.3.2 PDP Startup and Shutdown
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 
 The sequence diagram below shows the actions of the PDP at startup. See
 also Section 4 of the `Policy Design and API Flow for Model Driven
@@ -623,7 +623,7 @@ Control
 Loop <file://localhost/display/DW/Policy+Design+and+API+Flow+for+Model+Driven+Control+Loop>`__
 page for the API used to implement this sequence.
 
-At startup, the PDP initializes itself.  At this point it is in PASSIVE
+At startup, the PDP initializes itself.  At this point it is in PASSIVE
 mode. The PDP begins sending periodic Status messages to the PAP.
 
 The first Status message initializes the process of loading the correct
@@ -633,7 +633,7 @@ On receipt or a shutdown request, the PDP completes or aborts any
 ongoing policy executions and shuts down gracefully.
 
 2.3.4 Policy Execution
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 Policy execution is the execution of a policy in a PDP. Policy
 enforcement occurs in the component that receives a policy decision.
@@ -661,7 +661,7 @@ TEST MODE          Policy execution proceeds and changes to domain and state are
 ================== ===========================================================================================================================================================================================================================================================================================================================
 
 2.3.5 Policy Lifecycle Management
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Policy lifecycle management manages the deployment and life cycle of
 policies in PDP groups at run time. Policy sets can be deploy at run
@@ -669,7 +669,7 @@ time without restarting PDPs or stopping policy execution. PDPs preserve
 state for minor/patch version upgrades and rollbacks.
 
 2.3.5.1 Load/Update Policies on PDP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 
 The sequence diagram below shows how policies are loaded or updated on a
 PDP.
@@ -696,7 +696,7 @@ cycle mode that has been specified for it (ACTIVE/SAFE/TEST). The PDP
 beings to execute policies in the specified mode (see section 2.3.4).
 
 2.3.5.2 Policy Rollout
-^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""
 
 A policy set steps through a number of life cycle modes when it is
 rolled out.
@@ -723,7 +723,7 @@ of target operation are reported. The PDP group can be reverted to SAFE,
 TEST, or even PASSIVE mode at any time if problems arise.
 
 2.3.5.3 Policy Upgrade and Rollback
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 
 There are a number of approaches for managing policy upgrade and
 rollback.
@@ -736,7 +736,7 @@ policy set version. For rollback, one follows the process in section
 set into ACTIVE mode immediately. The advantage of this approach is that
 the approach is straightforward. The obvious disadvantage is that the
 PDP group is not executing on the target environment while the new
-policy set is in PASSIVE, TEST, and SAFE mode. 
+policy set is in PASSIVE, TEST, and SAFE mode. 
 
 A second manner to tackle upgrade and rollback is to use a spare-wheel
 approach. An special upgrade PDP group service is set up as a K8S
@@ -756,7 +756,7 @@ active set and a standby set. However such an approach would increase
 the complexity of implementation in PDPs significantly.
 
 2.3.6 Policy Monitoring
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 PDPs provide a periodic report of their status to the PAP. All PDPs
 report using a standard reporting format that is extended to provide
@@ -777,7 +777,7 @@ RealTimeInfo          Real time information on running policies.
 ===================== ===============================================================================
 
 2.3.7 PEP Registration and Enforcement Guidelines
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In ONAP there are several applications outside the Policy Framework that
 enforce policy decisions based on models provided to the Policy
@@ -809,7 +809,7 @@ PDP_<>                            A specific type of PDP
 PDP Group                         A group of PDPs that execute the same set of policies
 Policy Development                The development environment for policies
 Policy Type                       A generic prototype definition of a type of policy in TOSCA, see the `TOSCA Policy Primer <file://localhost/display/DW/TOSCA+Policy+Primer>`__
-Policy                            An executable policy defined in TOSCA and created using a Policy Type, see  the `TOSCA Policy Primer <file://localhost/display/DW/TOSCA+Policy+Primer>`__
+Policy                            An executable policy defined in TOSCA and created using a Policy Type, see  the `TOSCA Policy Primer <file://localhost/display/DW/TOSCA+Policy+Primer>`__
 Policy Set                        A set of policies that are deployed on a PDP group. One and only one Policy Set is deployed on a PDP group
 ================================= =========================================================================================================================================================
 
