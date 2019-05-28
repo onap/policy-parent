@@ -1,0 +1,45 @@
+@startuml
+
+title Download Policies to PDP
+
+actor User
+database PolicyDB
+participant PAP
+participant DMaaP
+participant PDP
+
+autonumber
+
+alt PDP Startup
+  PDP --> PAP: Send Status (initial status) to PAP
+else Update Request from User
+  User --> PAP : Update Policies on PDP
+end
+
+PAP --> PolicyDB: Read PDP metadata and Policy Set
+PAP -> PAP: Prepare for PDP update
+activate PAP
+deactivate PAP
+
+PAP --> PDP: Set PDP mode as PASSIVE
+
+PAP --> PDP: Transfer Policy Set Policies to PDP
+
+activate PDP
+PDP --> PDP: Load Policies
+deactivate PDP
+
+alt PDP Mode should be ACTIVE
+  PAP --> PDP : Set PDP mode as ACTIVE
+  ref over PDP: Execute Policies in\nACTIVE Mode
+else PDP Mode should be SAFE
+  PAP --> PDP : Set PDP mode as SAFE r
+  ref over PDP: Execute Policies in\nSAFE Mode
+else PDP Mode should be TEST
+  PAP --> PDP : Set PDP mode as TEST
+  ref over PDP: Execute Policies in\nTEST Mode
+end
+
+PAP --> PolicyDB: Update PDP metadata
+
+@enduml

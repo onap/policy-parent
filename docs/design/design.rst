@@ -10,6 +10,9 @@ Policy Design and Development
 .. contents::
     :depth: 3
 
+This document provides examples that illustrate how to write, deploy, and run policies
+of various types using the framework.
+
 The figure below shows the Artifacts (Blue) in the ONAP Policy
 Framework, the Activities (Yellow) that manipulate them, and important
 components (Pink) that interact with them.

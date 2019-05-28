@@ -1,0 +1,39 @@
+@startuml
+
+title Policy Design
+
+participant API_User
+box "PolicyDesign" #LightBlue
+  participant PolicyDesign
+  database PolicyDB
+end box
+
+autonumber
+
+API_User --> PolicyDesign : Get Policy Type Reference
+PolicyDesign --> PolicyDB : Get Policy Type Artifact and Metadata
+PolicyDesign --> API_User : Return Policy Type Reference and Metadata
+API_User --> PolicyDesign : Get Policy Reference and Metadata
+PolicyDesign --> PolicyDB : Get Policy Metadata
+
+alt Policy Artifact exists
+  PolicyDesign --> API_User : Return Policy Reference and Metadata
+else Policy Artifact does not exist
+  PolicyDesign --> API_User : Return New Policy Reference and Empty Metadata
+end
+
+API_User --> API_User : Policy Editing and Generation Session\nto get Policy Parameters from user
+
+activate API_User
+deactivate API_User
+
+loop
+  API_User --> PolicyDesign : Use Policy Type specification
+  API_User --> PolicyDesign : Create Policy PolicyDesign --> PolicyDesign : Create Policy
+  activate PolicyDesign
+  deactivate PolicyDesign
+  PolicyDesign --> PolicyDB : Save Policy Artifact and Metadata
+  PolicyDesign --> API_User : Policy Creation Result
+end
+
+@enduml

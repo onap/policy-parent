@@ -1,0 +1,24 @@
+@startuml
+
+title PAP Startup and Shutdown
+
+participant K8S
+participant PAP
+database PolicyDB
+
+autonumber
+
+K8S --> PAP : Start PAP
+
+PAP --> PolicyDB : Read Initial Data
+PAP --> PAP : Initialize Policy Administration
+
+activate PAP
+deactivate PAP
+
+loop forever
+  ref over PAP: Wait for and\nHandle PDP\nStatus Updates
+  ref over PAP: Wait for and\nHandle\nAdmin Requests
+end
+
+@enduml
