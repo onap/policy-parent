@@ -1,0 +1,43 @@
+@startuml
+
+title Policy Rollout
+
+actor User
+participant PAP
+participant PDP
+
+autonumber
+User --> PAP: Create Policy Set for PDP Group
+
+loop over PDP Group
+  ref over PAP, PDP: PAP downloads Policy Set to PDP
+end
+
+User --> PAP: Set PDP Group in Test Mode
+
+loop over PDP Group
+  PAP --> PDP: Set PDP in TEST mode
+end
+
+PDP --> PAP: Report test results
+PAP --> User: Report consolidated test results
+
+User --> PAP: Set PDP Group in Safe Mode
+loop over PDP Group
+  PAP --> PDP: Set PDP in SAFE mode
+end
+
+PDP --> PAP: Report safe mode operation results
+PAP --> User: Report consolidated safe mode operation results
+
+User --> PAP: Set PDP Group in Active Mode
+loop over PDP Group
+  PAP --> PDP: Set PDP in Active mode
+end
+
+loop forever
+  PDP --> PAP: Report active mode operation results
+  PAP --> User: Report consolidated active mode operation results
+end
+
+@enduml

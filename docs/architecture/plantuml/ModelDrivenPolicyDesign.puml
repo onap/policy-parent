@@ -1,0 +1,36 @@
+@startuml
+
+title Model Driven Policy Design
+
+participant SDC
+participant DMaaP
+
+box "PolicyDesign" #LightBlue
+  participant PolicyDistribution << API_User >>
+  participant PolicyDesign
+end box
+
+autonumber
+
+PolicyDistribution --> DMaaP : Subscribe for SDC Notifications\non Entries of Interest
+SDC --> DMaaP : New Entry of Interest: EntityA
+DMaaP --> PolicyDistribution : New Entry of Interest: EntityA
+
+PolicyDistribution --> SDC : Download CSAR for EntityA that holds TOSCA Policy Specification
+
+PolicyDistribution --> PolicyDesign : Get Policy Reference
+PolicyDesign --> PolicyDistribution : Return Policy Reference and Metadata
+PolicyDistribution --> PolicyDistribution : Create Policy Editing and Generation Session
+
+activate PolicyDistribution
+loop
+  PolicyDistribution --> PolicyDesign : Use Policy Type specification to\nread Policy Parameters\nfrom TOSCA specification in CSAR
+end
+
+PolicyDistribution --> PolicyDesign : Create Policy
+PolicyDesign --> PolicyDistribution : Policy Creation Result
+deactivate PolicyDistribution
+
+PolicyDistribution --> SDC : Notify SDC of operation result
+
+@enduml

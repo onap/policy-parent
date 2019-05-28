@@ -1,0 +1,22 @@
+@startuml
+
+title PDP Startup and Shutdown
+
+participant K8S
+participant PDP
+participant DMaaP
+participant PAP
+
+autonumber
+
+K8S --> PDP : Start PDP
+
+PDP --> PAP: Send Status (initial status) to PAP
+
+PAP --> PDP: Download Policy Set to PDP
+
+loop forever
+  PDP --> PAP: Send Status to PAP
+end
+
+@enduml

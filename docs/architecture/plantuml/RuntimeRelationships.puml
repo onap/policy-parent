@@ -1,0 +1,17 @@
+@startuml
+
+title Runtime Relationships between Concepts
+
+object PDPSubGroup
+object PDPService
+object PolicySet
+object PDP
+object PolicyImpl
+
+PDPSubGroup "1" -- "1" PDPService : > Lifecycle\nManaged\nBy
+PDPService "1" -- "*" PDP : > Manages\nLifecycle\nOf
+PDPService "1" -- "1" PolicySet : > Executes
+PolicySet "1" -- "*" PDP : > Executes\nOn
+PolicySet "1" -- "*" PolicyImpl : > Contains
+
+@enduml

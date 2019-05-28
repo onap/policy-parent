@@ -1,0 +1,24 @@
+@startuml
+
+title Policy Execution
+
+participant REQUESTOR
+participant RESPONDEE
+participant PDP
+
+autonumber
+
+alt Synchronous Invocation
+  REQUESTOR --> PDP: Execute Policy
+  activate PDP
+  hnote over REQUESTOR : wait
+  PDP --> REQUESTOR: Policy Execution Result
+  deactivate PDP
+else Asynchronous Invocation
+  REQUESTOR --> PDP: Execute Policy
+  activate PDP
+  PDP --> RESPONDEE: Policy Execution Result
+  deactivate PDP
+end
+
+@enduml
