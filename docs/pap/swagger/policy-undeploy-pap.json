@@ -1,0 +1,166 @@
+{
+  "swagger" : "2.0",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "PdpPolicyUndeploy"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/policy/pap/v1/pdps/policies/{name}" : {
+      "delete" : {
+        "tags" : [ "PdpPolicyUndeploy" ],
+        "summary" : "Undeploy a PDP Policy from PDPs",
+        "description" : "Undeploys the latest version of a policy from the PDPs, returning optional error details",
+        "operationId" : "deletePolicy",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        }, {
+          "name" : "name",
+          "in" : "path",
+          "description" : "PDP Policy Name",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/PdpGroupDeleteResponse"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "api-version" : "1.0.0",
+          "last-mod-release" : "Dublin"
+        }
+      }
+    },
+    "/policy/pap/v1/pdps/policies/{name}/versions/{version}" : {
+      "delete" : {
+        "tags" : [ "PdpPolicyUndeploy" ],
+        "summary" : "Undeploy version of a PDP Policy from PDPs",
+        "description" : "Undeploys a specific version of a policy from the PDPs, returning optional error details",
+        "operationId" : "deletePolicyVersion",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        }, {
+          "name" : "name",
+          "in" : "path",
+          "description" : "PDP Policy Name",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "PDP Policy Version",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/PdpGroupDeleteResponse"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "api-version" : "1.0.0",
+          "last-mod-release" : "Dublin"
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "basicAuth" : {
+      "description" : "",
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "PdpGroupDeleteResponse" : {
+      "type" : "object",
+      "properties" : {
+        "errorDetails" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
