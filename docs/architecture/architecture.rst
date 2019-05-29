@@ -94,7 +94,7 @@ of conflicts across all policies running in an ONAP installation.
 
 The diagram below shows the architecture of the ONAP Policy Framework at its highest level.
 
-.. image:: images/highest.png
+.. image:: images/PFHighestLevel.svg
 
 The *PolicyDevelopment* component implements the functionality for development of policy types and policies.
 *PolicyAdministration* is responsible for the deployment life cycle of policies as well as interworking with the
@@ -113,7 +113,7 @@ with *PolicyAdministration*, *PolicyExecution* or any other run-time ONAP compon
 The diagram below shows a more detailed view of the architecture, as inspired by
 `RFC-2753 <https://tools.ietf.org/html/rfc2753>`__ and `RFC-3198 <https://tools.ietf.org/html/rfc3198>`__.
 
-.. image:: images/detailed.png
+.. image:: images/PFDesignAndAdmin.svg
 
 *PolicyDevelopment* provides a `CRUD <https://en.wikipedia.org/wiki/Create,_read,_update_and_delete>`__ API for policy
 types and policies. The policy types and policy artifacts and their metadata (Information about policies, policy types,
@@ -142,7 +142,7 @@ three APIs:
 *PolicyExecution* is the set of running PDPs that are executing policies, logically partitioned into PDP groups and
 subgroups.
 
-.. image:: images/execution.png
+.. image:: images/PolicyExecution.svg
 
 The figure above shows how *PolicyExecution* looks at run time with PDPs running in Kubernetes. A *PDPGroup* is a purely
 logical construct that collects all the PDPs that are running policies for a particular domain together. A *PDPSubGroup*
@@ -179,12 +179,12 @@ for :ref:`Policy Administration Point (PAP) Architecture <pap-label>`.
 This section describes the structure of and relations between the main concepts in the Policy Framework. This model is
 implemented as a common model and is used by *PolicyDevelopment*, *PolicyDeployment,* and *PolicyExecution.*
 
-.. image:: images/objectmodel1.png
+.. image:: images/ClassStructure.svg
 
 The UML class diagram above shows the portion of the Policy Framework Object Model that applies to *PolicyDeployment*
 and *PolicyExecution.*
 
-.. image:: images/objectmodel2.png
+.. image:: images/DesignTimeComponents.svg
 
 The UML class diagram above shows the portion of the Policy Framework Object Model that applies to *PolicyDevelopment*
 and *PolicyDeployment.*
@@ -498,7 +498,7 @@ On receipt or a shutdown request, the PDP completes or aborts any ongoing policy
 Policy execution is the execution of a policy in a PDP. Policy enforcement occurs in the component that receives a
 policy decision.
 
-.. image:: images/PolicyExecution.svg
+.. image:: images/PolicyExecutionFlow.svg
 
 Policy execution can be *synchronous* or *asynchronous*. In *synchronous* policy execution, the component requesting a
 policy decision requests a policy decision and waits for the result. The PDP-X and PDP-A implement synchronous policy
