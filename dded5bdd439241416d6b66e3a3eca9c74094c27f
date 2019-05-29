@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd0248ba_854d499d",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T20:21:08Z",
+      "side": 1,
+      "message": "tabs \u003d\u003e spaces (et., al.)?",
+      "revId": "dded5bdd439241416d6b66e3a3eca9c74094c27f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
