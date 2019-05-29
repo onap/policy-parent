@@ -1,0 +1,293 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3140e8bc_2c159f35",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "fix link?",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf0a9450_aa9c5868",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "heakth \u003d\u003e health",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e5ebb8d_f53761e8",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "delete these lines?",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2801f3_d7de1272",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "currently, this is not implemented.  However, once it is, the\nPAP will issue a request (healthcheck? state-change?) to the PDP and, if it still does not receive a response, then it will assume the PDP has failed",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8961f4c1_7e614ef5",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "shouldn\u0027t the trailing \"*\" appear AFTER \"STATE_CHANGE\" on the next line?",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8a588ac_012a5052",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "\"listens\" \u003d\u003e \"listen\"",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "769e0c82_4898de8e",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "italicize STATE_CHANGE?",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "619b99f4_81734004",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "this is no longer true; policies may be changed even if a PDP is the ACTIVE state",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cdbffc3_d35385eb",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "remove trailing \"s\"",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9dcc7b54_8cfdb761",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "predefined items CAN be modified and deleted",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1419dfd_d843198b",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "\"desired\" instance counts can be modified",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8301655_96f6b123",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "remove references to PDP group versions",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34a8fa2e_ada90dae",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "fix link",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d17d406_82572abc",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "remove leading space?",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b65f8df8_c46c76f8",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "predefined groups CAN be modified and deleted",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "233f183d_666e5f9e",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "remove references to PDP group version",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ae9708c_501623d6",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-29T21:23:05Z",
+      "side": 1,
+      "message": "fix link",
+      "revId": "2a022d670281d308e69230e6879bdcbc4e942d8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
