@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01f45e67_f99ef789",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-30T13:27:17Z",
+      "side": 1,
+      "message": "\"stat_change\" \u003d\u003e \"state_change\"",
+      "revId": "5618432b092c83cde045e448cf302ae8d8294da5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba86c679_94fb43ba",
+        "filename": "docs/design/InternalPapPdp.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-30T13:27:17Z",
+      "side": 1,
+      "message": "this is no longer true - UPDATEs may be sent when a PDP is still in the ACTIVE state",
+      "revId": "5618432b092c83cde045e448cf302ae8d8294da5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33d88107_7c91941f",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-30T13:27:17Z",
+      "side": 1,
+      "message": "\"can not\" \u003d\u003e \"can\"",
+      "revId": "5618432b092c83cde045e448cf302ae8d8294da5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c970589_dc94ba07",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-05-30T13:27:17Z",
+      "side": 1,
+      "message": "Remove the second sentence, or change \"However\" to \"In addition\".",
+      "revId": "5618432b092c83cde045e448cf302ae8d8294da5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
