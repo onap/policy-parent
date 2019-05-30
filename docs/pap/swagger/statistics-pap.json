@@ -1,0 +1,91 @@
+{
+  "swagger" : "2.0",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "Statistics"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/policy/pap/v1/statistics" : {
+      "get" : {
+        "tags" : [ "Statistics" ],
+        "summary" : "Fetch current statistics",
+        "description" : "Returns current statistics of the Policy Administration component",
+        "operationId" : "statistics",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/StatisticsReport"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "basicAuth" : {
+      "description" : "",
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "StatisticsReport" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "totalPdpCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "totalPdpGroupCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "totalPolicyDeployCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "policyDeploySuccessCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "policyDeployFailureCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "totalPolicyDownloadCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "policyDownloadSuccessCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "policyDownloadFailureCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    }
+  }
+}
