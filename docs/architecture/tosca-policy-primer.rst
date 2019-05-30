@@ -15,7 +15,7 @@ This page gives a short overview of how Policy is modelled in the
 
 TOSCA defines three concepts for Policy: Policy Type, Policy, and Trigger.
 
-.. image:: images/ToscaPolicyStructure.png
+.. image:: images/TOSCAPolicyConcepts.svg
    :width: 800
 
 Policy Type
@@ -64,12 +64,12 @@ More formally, TOSCA  defines a Trigger as an artifact that "defines the event, 
 * its event_type, which defines the name of the event that fires the policy
 * its schedule, which defines the time interval in which the trigger is active
 * its target_filter, which defines specific filters for firing such as specific characteristics of the nodes or
-relations for which the trigger should or should not fire
+  relations for which the trigger should or should not fire
 * its condition, which defines extra conditions on the incoming event for firing the trigger
 * its constraint, which defines extra conditions on the incoming event for not firing the trigger
 * its period, which defines the period to use for evaluating conditions and constraints
 * its evaluations, which defines the number of evaluations that must be performed over the period to assert the
-condition or constraint exists
+  condition or constraint exists
 * its method, the method to use for evaluation of conditions and constraints
 * its action, the workflow or operation to invoke when the trigger fires
 
