@@ -27,104 +27,107 @@ Version: 4.0.0
 The Dublin release for POLICY delivered the following Epics. For a full list of stories and tasks delivered in the Dublin release, refer to `JiraPolicyDublin`_.
 
     * [POLICY-1068] - This epic covers the work to cleanup, enhance, fix, etc. any Control Loop based code base.
-        - POLICY-1459	PDP-D [Control Loop] : Create a Control Loop flavored PDP-D image
-        - POLICY-1397	PDP-D: NOOP Endpoints Support to test Operational Policies.
         - POLICY-1195	Separate model code from drools-applications into other repositories
         - POLICY-1367	Spike - Experimentation for management of Drools templates and Operational Policies
+        - POLICY-1397	PDP-D: NOOP Endpoints Support to test Operational Policies.
+        - POLICY-1459	PDP-D [Control Loop] : Create a Control Loop flavored PDP-D image
 
     * [POLICY-1069] - This epic covers the work to harden the codebase for the Policy Framework project.
-        - POLICY-1250	Fix issues reported by sonar in policy modules
-        - POLICY-1202	policy-engine & apex-pdp are using different version of eclipselink
-        - POLICY-1368	Remove hibernate from policy repos
         - POLICY-1007	Remove Jackson from policy framework components
+        - POLICY-1202	policy-engine & apex-pdp are using different version of eclipselink
+        - POLICY-1250	Fix issues reported by sonar in policy modules
+        - POLICY-1368	Remove hibernate from policy repos
         - POLICY-1457	Use Alpine in base docker images
 
     * [POLICY-1072] - This epic covers the work to support S3P Performance criteria.
+        - S3P Performance related items
 
     * [POLICY-1171] - Enhance CLC Facility
         - POLICY-1173	High-level specification of coordination directives
 
     * [POLICY-1220] - This epic covers the work to support S3P Security criteria
-        - Task	POLICY-1538	Upgrade Elasticsearch to 6.4.x to clear security issue
+        - POLICY-1538	Upgrade Elasticsearch to 6.4.x to clear security issue
 
     * [POLICY-1269] - R4 Dublin - ReBuild Policy Infrastructure
-        - POLICY-1453	Apex PDP Dmaap Deploy/UnDeploy Functionality
-        - POLICY-1452	Apex PDP Dmaap Register/UnRegister Functionality
-        - POLICY-1460	Create S3P JMeter Tests for PAP
-        - POLICY-1458	Create S3P JMeter Tests for Policy API
-        - POLICY-1462	Create S3P JMeter Tests for Policy SDC Distribution
-        - POLICY-1461	Create S3P JMeter Tests for Policy XACML Engine (2nd Generation)
+        - POLICY-1270	Policy Lifecycle API RESTful HealthCheck/Statistics Main Entry Point
+        - POLICY-1271	PAP RESTful HealthCheck/Statistics Main Entry Point
         - POLICY-1272	Create the S3P JMeter tests for API, PAP, XACML (2nd Gen)
-        - POLICY-1455	Drools PDP Dmaap Deploy/UnDeploy Functionality
-        - POLICY-1454	Drools PDP Dmaap Register/UnRegister Functionality
-        - POLICY-1474	Modifications of Control Loop Operational Policy to support new Policy Lifecycle API
+        - POLICY-1273	Policy Type Application Design Requirements
+        - POLICY-1436	XACML PDP RESTful HealthCheck/Statistics Main Entry Point
+        - POLICY-1440	XACML PDP RESTful Decision API Main Entry Point
+        - POLICY-1441	Policy Lifecycle API RESTful Create/Read Main Entry Point for Policy Types
+        - POLICY-1442	Policy Lifecycle API RESTful Create/Read Main Entry Point for Concrete Policies
         - POLICY-1443	PAP Dmaap PDP Register/UnRegister Main Entry Point
         - POLICY-1444	PAP Dmaap Policy Deploy/Undeploy Policies Main Entry Point
-        - POLICY-1542	PAP REST API for PDPGroup Deployment, State Management & Health Check
-        - POLICY-1541	PAP REST API for PDPGroup Query, Statistics & Delete
-        - POLICY-1271	PAP RESTful HealthCheck/Statistics Main Entry Point
-        - POLICY-1471	Policy Application Designer - Develop Guard and Control Loop Coordination Policy Type application
-        - POLICY-1456	Policy Architecture and Roadmap Documentation
-        - POLICY-1442	Policy Lifecycle API RESTful Create/Read Main Entry Point for Concrete Policies
-        - POLICY-1441	Policy Lifecycle API RESTful Create/Read Main Entry Point for Policy Types
-        - POLICY-1447	Policy Lifecycle API RESTful Delete Main Entry Point for Concrete Policies
+        - POLICY-1445	XACML PDP upgrade to xacml 2.0.0
         - POLICY-1446	Policy Lifecycle API RESTful Delete Main Entry Point for Policy Types
-        - POLICY-1270	Policy Lifecycle API RESTful HealthCheck/Statistics Main Entry Point
-        - POLICY-1273	Policy Type Application Design Requirements
+        - POLICY-1447	Policy Lifecycle API RESTful Delete Main Entry Point for Concrete Policies
+        - POLICY-1449	XACML PDP Dmaap Register/UnRegister Functionality
+        - POLICY-1451	XACML PDP Dmaap Deploy/UnDeploy Functionality
+        - POLICY-1452	Apex PDP Dmaap Register/UnRegister Functionality
+        - POLICY-1453	Apex PDP Dmaap Deploy/UnDeploy Functionality
+        - POLICY-1454	Drools PDP Dmaap Register/UnRegister Functionality
+        - POLICY-1455	Drools PDP Dmaap Deploy/UnDeploy Functionality
+        - POLICY-1456	Policy Architecture and Roadmap Documentation
+        - POLICY-1458	Create S3P JMeter Tests for Policy API
+        - POLICY-1460	Create S3P JMeter Tests for PAP
+        - POLICY-1461	Create S3P JMeter Tests for Policy XACML Engine (2nd Generation)
+        - POLICY-1462	Create S3P JMeter Tests for Policy SDC Distribution
+        - POLICY-1471	Policy Application Designer - Develop Guard and Control Loop Coordination Policy Type application
+        - POLICY-1474	Modifications of Control Loop Operational Policy to support new Policy Lifecycle API
         - POLICY-1515	Prototype Policy Lifecycle API Swagger Entry Points
         - POLICY-1516	Prototype the Policy Decision API
-        - POLICY-1451	XACML PDP Dmaap Deploy/UnDeploy Functionality
-        - POLICY-1449	XACML PDP Dmaap Register/UnRegister Functionality
-        - POLICY-1440	XACML PDP RESTful Decision API Main Entry Point
-        - POLICY-1436	XACML PDP RESTful HealthCheck/Statistics Main Entry Point
-        - POLICY-1445	XACML PDP upgrade to xacml 2.0.0
+        - POLICY-1541	PAP REST API for PDPGroup Query, Statistics & Delete
+        - POLICY-1542	PAP REST API for PDPGroup Deployment, State Management & Health Check
 
     * [POLICY-1399] - This epic covers the work to support model drive control loop design as defined by the Control Loop Subcommittee
+        - Model drive control loop related items
 
     * [POLICY-1404] - This epic covers the work to support the CCVPN Use Case for Dublin
         - POLICY-1405	Develop SDNC API for trigger bandwidth
 
     * [POLICY-1408] - This epic covers the work done with the Casablanca release
-        - POLICY-1419	Better multi-role support
-        - POLICY-1427	Controller Logging Feature
-        - POLICY-1413	Dashboard enhancements
-        - POLICY-1422	Enhanced encryption
-        - POLICY-1420	Model enhancement to support embedded JSON
-        - POLICY-1416	Model enhancements to support CLAMP
-        - POLICY-1421	New audit data for push/delete
-        - POLICY-1418	PDP APIs - make ClientAuth optional
-        - POLICY-1414	Push Policy and DeletePolicy API enhancement
-        - POLICY-1417	Resiliency improvements
-        - POLICY-1423	Save original model file
         - POLICY-1410	List Policy API
-        - POLICY-1499	Mdc Filter Feature
+        - POLICY-1413	Dashboard enhancements
+        - POLICY-1414	Push Policy and DeletePolicy API enhancement
+        - POLICY-1416	Model enhancements to support CLAMP
+        - POLICY-1417	Resiliency improvements
+        - POLICY-1418	PDP APIs - make ClientAuth optional
+        - POLICY-1419	Better multi-role support
+        - POLICY-1420	Model enhancement to support embedded JSON
+        - POLICY-1421	New audit data for push/delete
+        - POLICY-1422	Enhanced encryption
+        - POLICY-1423	Save original model file
+        - POLICY-1427	Controller Logging Feature
         - POLICY-1489	PDP-D: Nested JSON Event Filtering support with JsonPath
+        - POLICY-1499	Mdc Filter Feature
 
     * [POLICY-1438] - This epic covers the work to support 5G OOF PCI Use Case
-        - POLICY-1464	Config related aspects for OOF SON use case
         - POLICY-1463	Functional code changes in Policy for OOF SON use case
+        - POLICY-1464	Config related aspects for OOF SON use case
 
     * [POLICY-1450] - This epic covers the work to support the Scale Out Use Case.
         - POLICY-1278	AAI named-queries are being deprecated and should be replaced with custom-queries
         - POLICY-1545	E2E Automation - Parse the newly added model ids from operation policy
 
     * Additional items delivered with the release.
+        - POLICY-1159	Move expectException to policy-common/utils-test
+        - POLICY-1176	Work on technical debt introduced by CLC POC
         - POLICY-1266	A&AI Modularity
         - POLICY-1274	further improvement in PSSD S3P test
-        - POLICY-1159	Move expectException to policy-common/utils-test
+        - POLICY-1401	Build onap.policies.Monitoring TOSCA Policy Template
         - POLICY-1465	Support configurable Heap Memory Settings for JVM processes
-        - POLICY-1176	Work on technical debt introduced by CLC POC
 
 
 **Bug Fixes**
 
 The following bug fixes have been deployed with this release:
 
-    * `[POLICY-1627] <https://jira.onap.org/browse/POLICY-1627>`_ - APEX does not support specification of a partitioner class for Kafka
+    * `[POLICY-1241] <https://jira.onap.org/browse/POLICY-1241>`_ - Test failure in drools-pdp if JAVA_HOME is not set
     * `[POLICY-1289] <https://jira.onap.org/browse/POLICY-1289>`_ - Apex only considers 200 response codes as successful result codes
     * `[POLICY-1437] <https://jira.onap.org/browse/POLICY-1437>`_ - Fix issues in FileSystemReceptionHandler of policy-distribution component
     * `[POLICY-1501] <https://jira.onap.org/browse/POLICY-1501>`_ - policy-engine JUnit tests are not independent
-    * `[POLICY-1241] <https://jira.onap.org/browse/POLICY-1241>`_ - Test failure in drools-pdp if JAVA_HOME is not set
+    * `[POLICY-1627] <https://jira.onap.org/browse/POLICY-1627>`_ - APEX does not support specification of a partitioner class for Kafka
 
 **Security Notes**
 
@@ -151,10 +154,21 @@ Quick Links:
 
 The following known issues will be addressed in a future release:
 
-    * `[POLICY-1291] - <https://jira.onap.org/browse/POLICY-1291>`_ Maven Error when building Apex documentation in Windows
+    * `[POLICY-1795] - <https://jira.onap.org/browse/POLICY-1795>`_ PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs. 
+    * `[POLICY-1810] - <https://jira.onap.org/browse/POLICY-1810>`_ API: ensure that the REST APISs (URLs) are supported and consistent regardless the type of policy: operational, guard, tosca-compliant.
+    * `[POLICY-1277] - <https://jira.onap.org/browse/POLICY-1277>`_ policy config takes too long time to become retrievable in PDP
+    * `[POLICY-1378] - <https://jira.onap.org/browse/POLICY-1378>`_ add support to append value into policyScope while one policy could be used by several services
     * `[POLICY-1650] - <https://jira.onap.org/browse/POLICY-1650>`_ Policy UI doesn't show left menu or any content
+    * `[POLICY-1671] - <https://jira.onap.org/browse/POLICY-1671>`_ policy/engine JUnit tests now take over 30 minutes to run
     * `[POLICY-1725] - <https://jira.onap.org/browse/POLICY-1725>`_ XACML PDP returns 500 vs 400 for bad syntax JSON
-    * `[POLICY-1795] - <https://jira.onap.org/browse/POLICY-1795>`_ PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs.
+    * `[POLICY-1793] - <https://jira.onap.org/browse/POLICY-1793>`_ API|MODELS: Retrieving Legacy Operational Policy as a Tosca Policy with wrong version
+    * `[POLICY-1800] - <https://jira.onap.org/browse/POLICY-1800>`_ API|PAP components use different version formats
+    * `[POLICY-1802] - <https://jira.onap.org/browse/POLICY-1802>`_ Apex-pdp: context album is mandatory for policy model to compile
+    * `[POLICY-1808] - <https://jira.onap.org/browse/POLICY-1808>`_ API|PAP|PDP-X [new] should publish docker images with the following tag X.Y-SNAPSHOT-latest 
+    * `[POLICY-1818] - <https://jira.onap.org/browse/POLICY-1818>`_ APEX does not allow arbitrary Kafka parameters to be specified
+    * `[POLICY-1276] - <https://jira.onap.org/browse/POLICY-1276>`_ JRuby interpreter shutdown fails on second and subsequent runs
+    * `[POLICY-1803] - <https://jira.onap.org/browse/POLICY-1803>`_ PAP should undeploy policies when subgroup is deleted
+    * `[POLICY-1291] - <https://jira.onap.org/browse/POLICY-1291>`_ Maven Error when building Apex documentation in Windows
 
 
 
