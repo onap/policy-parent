@@ -4,14 +4,13 @@
 
 Policy Framework Architecture
 -----------------------------
+
 .. toctree::
    :maxdepth: 1
 
-architecture/architecture.rst
-design/design.rst
-installation/installation.rst
-development/development.rst
-release-notes.rst
+   architecture/architecture
+   design/design
+   installation/installation
+   development/development
+..    release-notes.rst
 
-
-End of Document
