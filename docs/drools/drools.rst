@@ -5,8 +5,10 @@
 Policy Drools PDP Engine
 ------------------------
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
+   droolsFeaturesIndex.rst
+   droolsTutorialsIndex.rst
 
 
 End of Document
