@@ -10,8 +10,12 @@ PDP-D Features
 
    feature_activestdbymgmt.rst
    feature_controllerlogging.rst
+   feature_clmgt.rst
+   feature_clamsterdam.rst
+   feature_clusecases.rst
    feature_eelf.rst
    feature_healthcheck.rst
+   feature_lifecycle.rst
    feature_locking.rst
    feature_mdcfilters.rst
    feature_pooling.rst
