@@ -4,8 +4,8 @@
 
 .. _architecture-label:
 
-Architecture
-############
+Policy Framework Architecture
+#############################
 
 Abstract
 
