@@ -1,0 +1,360 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Policy Xacml PDP Service",
+    "version" : "Swagger Server",
+    "title" : "",
+    "x-component" : "Policy Framework",
+    "x-planned-retirement-date" : "tbd"
+  },
+  "host" : "Pamelas-MBP-2.client.research.att.com:6969",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "Decision"
+  }, {
+    "name" : "Statistics"
+  }, {
+    "name" : "HealthCheck"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/policy/pdpx/v1/decision" : {
+      "post" : {
+        "tags" : [ "Decision" ],
+        "summary" : "Fetch the decision using specified decision parameters",
+        "description" : "Returns the policy decision from Policy Xacml PDP",
+        "operationId" : "decision",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/DecisionRequest"
+          }
+        }, {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/DecisionResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "last-mod-release" : "Dublin",
+          "pdpx-version" : "1.0.0"
+        }
+      }
+    },
+    "/policy/pdpx/v1/statistics" : {
+      "get" : {
+        "tags" : [ "Statistics" ],
+        "summary" : "Fetch current statistics",
+        "description" : "Provides current statistics of the Policy Xacml PDP component",
+        "operationId" : "statistics",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/StatisticsReport"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "last-mod-release" : "Dublin",
+          "pdpx-version" : "1.0.0"
+        }
+      }
+    },
+    "/policy/pdpx/v1/healthcheck" : {
+      "get" : {
+        "tags" : [ "HealthCheck" ],
+        "summary" : "Perform a system healthcheck",
+        "description" : "Provides healthy status of the Policy Xacml PDP component",
+        "operationId" : "healthcheck",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/HealthCheckReport"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "last-mod-release" : "Dublin",
+          "pdpx-version" : "1.0.0"
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "basicAuth" : {
+      "description" : "",
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "DecisionResponse" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "advice" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
+        "obligations" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
+        "policies" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        }
+      }
+    },
+    "ErrorResponse" : {
+      "type" : "object",
+      "properties" : {
+        "responseCode" : {
+          "type" : "string",
+          "enum" : [ "OK", "CREATED", "ACCEPTED", "NO_CONTENT", "RESET_CONTENT", "PARTIAL_CONTENT", "MOVED_PERMANENTLY", "FOUND", "SEE_OTHER", "NOT_MODIFIED", "USE_PROXY", "TEMPORARY_REDIRECT", "BAD_REQUEST", "UNAUTHORIZED", "PAYMENT_REQUIRED", "FORBIDDEN", "NOT_FOUND", "METHOD_NOT_ALLOWED", "NOT_ACCEPTABLE", "PROXY_AUTHENTICATION_REQUIRED", "REQUEST_TIMEOUT", "CONFLICT", "GONE", "LENGTH_REQUIRED", "PRECONDITION_FAILED", "REQUEST_ENTITY_TOO_LARGE", "REQUEST_URI_TOO_LONG", "UNSUPPORTED_MEDIA_TYPE", "REQUESTED_RANGE_NOT_SATISFIABLE", "EXPECTATION_FAILED", "INTERNAL_SERVER_ERROR", "NOT_IMPLEMENTED", "BAD_GATEWAY", "SERVICE_UNAVAILABLE", "GATEWAY_TIMEOUT", "HTTP_VERSION_NOT_SUPPORTED" ]
+        },
+        "errorMessage" : {
+          "type" : "string"
+        },
+        "errorDetails" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "warningDetails" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "DecisionRequest" : {
+      "type" : "object",
+      "properties" : {
+        "onapName" : {
+          "type" : "string"
+        },
+        "onapComponent" : {
+          "type" : "string"
+        },
+        "onapInstance" : {
+          "type" : "string"
+        },
+        "requestId" : {
+          "type" : "string"
+        },
+        "action" : {
+          "type" : "string"
+        },
+        "resource" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        }
+      }
+    },
+    "StatisticsReport" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "totalPolicyTypesCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "totalPoliciesCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "totalErrorCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "permitDecisionsCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "denyDecisionsCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "indeterminantDecisionsCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "notApplicableDecisionsCount" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "HealthCheckReport" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "url" : {
+          "type" : "string"
+        },
+        "healthy" : {
+          "type" : "boolean"
+        },
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
