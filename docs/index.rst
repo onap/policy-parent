@@ -13,7 +13,8 @@ Policy Framework Architecture
    api/api
    installation/installation
    development/development
-   drools/drools
    pap/pap
+   drools/drools
+   xacml/xacml
 ..    release-notes.rst
 
