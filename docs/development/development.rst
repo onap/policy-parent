@@ -35,13 +35,13 @@ ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the 
    :linenos:
 
     #!/usr/bin/env bash
-     
+
     ## script name for output
     MOD_SCRIPT_NAME=`basename $0`
-     
+
     ## the ONAP clone directory, defaults to "onap"
     clone_dir="onap"
-     
+
     ## the ONAP repos to clone
     onap_repos="\
     policy/parent \
@@ -56,7 +56,7 @@ ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the 
     policy/xacml-pdp \
     policy/engine \
     policy/distribution"
-     
+
     ##
     ## Help screen and exit condition (i.e. too few arguments)
     ##
@@ -73,7 +73,7 @@ ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the 
         echo ""
         exit 255;
     }
-     
+
     ##
     ## read command line
     ##
@@ -90,15 +90,15 @@ ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the 
                 clone_dir=$1
                 shift
             ;;
-     
+
             #-h prints help and exists
             -h)
                 Help;exit 0;;
-     
+
             *)    echo "$MOD_SCRIPT_NAME: undefined CLI option - $1"; exit 255;;
         esac
     done
-     
+
     if [ -f "$clone_dir" ]; then
         echo "$MOD_SCRIPT_NAME: requested clone directory '$clone_dir' exists as file"
         exit 2
@@ -107,19 +107,19 @@ ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the 
         echo "$MOD_SCRIPT_NAME: requested clone directory '$clone_dir' exists as directory"
         exit 2
     fi
-     
+
     mkdir $clone_dir
     if [ $? != 0 ]
     then
         echo cannot clone ONAP repositories, could not create directory '"'$clone_dir'"'
         exit 3
     fi
-     
+
     for repo in $onap_repos
     do
         repoDir=`dirname "$repo"`
         repoName=`basename "$repo"`
-     
+
         if [ ! -z $dirName ]
         then
             mkdir "$clone_dir/$repoDir"
@@ -129,10 +129,10 @@ ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the 
                 exit 4
             fi
         fi
-     
+
         git clone https://gerrit.onap.org/r/${repo} $clone_dir/$repo
     done
-     
+
     echo ONAP has been cloned into '"'$clone_dir'"'
 
 
@@ -159,16 +159,14 @@ Building ONAP Policy Framework Components
 
 **Step 1:** Optionally, for a completely clean build, remove the ONAP built modules from your local repository.
 
-    .. code-block:: bash 
-    
+    .. code-block:: bash
+
         rm -fr ~/.m2/repository/org/onap
-        rm -fr ~/.m2/repository/org/openecomp
-        rm -fr ~/.m2/repisotory/com/att
 
 
 **Step 2:**  A pom such as the one below can be used to build the ONAP Policy Framework modules. Create the *pom.xml* file in the directory *~/git/onap/policy*.
 
-.. code-block:: xml 
+.. code-block:: xml
    :caption: Typical pom.xml to build the ONAP Policy Framework
    :linenos:
 
@@ -183,7 +181,7 @@ Building ONAP Policy Framework Components
         <organization>
             <name>ONAP</name>
         </organization>
-     
+
         <modules>
             <module>parent</module>
             <module>common</module>
@@ -212,110 +210,103 @@ If the developer is only interested in working with the new architecture compone
 
 **Step 3:** You can now build the Policy framework
 
-    .. code-block:: bash 
+    .. code-block:: bash
 
        cd ~/git/onap
-       mvn clean install 
+       mvn clean install
 
- 
+
 
 Building the ONAP Policy Framework Docker Images
 ------------------------------------------------
 The instructions here are based on the instructions in the file *~/git/onap/policy/docker/README.md*.
 
-TODO - Add the policy/docker step??
-
 **Step 1:** Build the Policy API Docker image
 
-TODO
+    .. code-block:: bash
+
+         cd ~/git/onap/policy/api/packages
+         mvn clean install -P docker
 
 **Step 2:** Build the Policy PAP Docker image
 
-TODO
+    .. code-block:: bash
 
-**Step 3:** Build the Drools PDP docker image. 
+         cd ~/git/onap/policy/pap/packages
+         mvn clean install -P docker
+
+**Step 3:** Build the Drools PDP docker image.
 
 This image is a standalone vanilla Drools engine, which does not contain any pre-built drools rules or applications.
 
-    .. code-block:: bash 
+    .. code-block:: bash
 
-        cd ~/git/onap/policy/drools-pdp/packages/docker/target
-        docker build -t onap/policy-drools policy-drools
-        
-**Step 4:** Build the Drools Application Control Loop image. 
+        cd ~/git/onap/policy/drools-pdp/
+        ./docker_verify.sh
+
+**Step 4:** Build the Drools Application Control Loop image.
 
 This image has the drools use case application and the supporting software built together with the Drools PDP engine. It is recommended to use this image if you are first working with ONAP Policy and wish to test or learn how the use cases work.
 
+    .. code-block:: bash
 
-TODO
-
+        cd ~/git/onap/policy/drools-applications
+        chmod 755 controlloop/build/docker-cl
+        controlloop/build/docker-cl --verify
 
 **Step 5:** Build the Apex PDP docker image:
 
-   .. code-block:: bash 
+   .. code-block:: bash
 
             cd ~/git/onap/policy/apex-pdp/packages/apex-pdp-docker/target
             docker build -t onap/policy-apex-pdp policy-apex-pdp
 
 **Step 5:** Build the XACML PDP docker image:
 
-   .. code-block:: bash 
+   .. code-block:: bash
 
-            cd ~/git/onap/policy/xacml-pdp/packages/xacml-pdp-docker/target
-            docker build -t onap/policy-xacml-pdp policy-xacml-pdp
+            cd ~/git/onap/policy/xacml-pdp/packages
+            mvn clean install -P docker
 
 **Step 7:** Build the policy engine docker image (If working with the legacy Policy Architecture/API):
 
-    .. code-block:: bash 
+    .. code-block:: bash
 
-        cd ~/git/onap/policy/engine/packages/docker/target
-        docker build -t onap/policy-pe policy-pe
-
+        cd ~/git/onap/policy/engine/
+        ./docker_verify.sh
 
 **Step 8:** Build the Policy SDC Distribution docker image:
 
-   .. code-block:: bash 
+   .. code-block:: bash
 
             cd ~/git/onap/policy/distribution/packages
             mvn clean install -Pdocker
-       
+
 
 Starting the ONAP Policy Framework Docker Images
 ------------------------------------------------
 
-TODO - update this section
-
 In order to run the containers, you can use *docker-compose*. This uses the *docker-compose.yml* yaml file to bring up the ONAP Policy Framework. This file is located in the policy/docker repository.
 
-**Step 1:** Make the file config/drools/drools-tweaks.sh executable.
+**Step 1:** Set the environment variable *MTU* to be a suitable MTU size for the application.
 
-    .. code-block:: bash 
-
-        chmod +x config/drools/drools-tweaks.sh
-
-
-**Step 2:** Set the IP address to use to be an IP address of a suitable interface on your machine. Save the IP address into the file *config/pe/ip_addr.txt*.
-
-
-**Step 3:** Set the environment variable *MTU* to be a suitable MTU size for the application.
-
-    .. code-block:: bash 
+    .. code-block:: bash
 
         export MTU=9126
 
 
-**Step 4:** Determine if you want policies pre-loaded or not. By default, all the configuration and operational policies will be pre-loaded by the docker compose script. If you do not wish for that to happen, then export this variable:
+**Step 2:** Determine if you want policies pre-loaded or not. By default, all the configuration and operational policies will be pre-loaded by the docker compose script. If you do not wish for that to happen, then export this variable:
 
-    .. code-block:: bash 
+    .. code-block:: bash
 
         export PRELOAD_POLICIES=false
 
 
-**Step 5:** Run the system using *docker-compose*. Note that on some systems you may have to run the *docker-compose* command as root or using *sudo*. Note that this command takes a number of minutes to execute on a laptop or desktop computer.
+**Step 3:** Run the system using *docker-compose*. Note that on some systems you may have to run the *docker-compose* command as root or using *sudo*. Note that this command takes a number of minutes to execute on a laptop or desktop computer.
 
-    .. code-block:: bash 
+    .. code-block:: bash
 
-        docker-compose up
+        docker-compose up -d
 
 
 **You now have a full standalone ONAP Policy framework up and running!**
