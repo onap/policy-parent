@@ -3,7 +3,7 @@
 .. http://creativecommons.org/licenses/by/4.0
 
 **********************************************************
-Control Loop Simulation and Injection of Messages Overview 
+Control Loop Simulation and Injection of Messages Overview
 **********************************************************
 
 .. contents::
@@ -11,7 +11,7 @@ Control Loop Simulation and Injection of Messages Overview
 
 Telemetry
 ^^^^^^^^^
-The username and password for the Telemetry commands are in *${POLCIY_HOME}/config/policy-engine.properties*.
+The username and password for the Telemetry commands are in *${POLICY_HOME}/config/engine.properties*.
 
 Injecting messages:
 -------------------
@@ -22,13 +22,15 @@ Use the command:
 
     .. code-block:: bash
 
-        http --verify=no --default-scheme=https -a <userName>:<password> PUT :9696/policy/pdp/engine/topics/sources/ueb/<topic>/events @<onsetFile> Content-Type:"text/plain"
+        http --verify=no --default-scheme=https -a <userName>:<password> PUT :9696/policy/pdp/engine/topics/sources/<comm>/<topic>/events @<onsetFile> Content-Type:"text/plain"
 
-Alternatively, this command could be used:
+where <comm> is either "dmaap", "ueb", or "noop", depending on how the topic has been defined in the
+configuration.   "dmaap" is the default deployed messaging communication infrastructure in an ONAP installation.
+The following is the equivalent "curl" version:
 
     .. code-block:: bash
 
-        curl --insecure --silent --user <userName>:<password> -X PUT --header "Content-Type: text/plain" --data @<onsetFile> https://localhost:9696/policy/pdp/engine/topics/sources/ueb/<topic>/events
+        curl --insecure --silent --user <userName>:<password> -X PUT --header "Content-Type: text/plain" --data @<onsetFile> https://localhost:9696/policy/pdp/engine/topics/sources/<comm>/<topic>/events
 
 The topic being used is *unauthenticated.DCAE_CL_OUTPUT*, which is subject to change.  The onset file is a file that contains the data to inject as the onset.  The data contained depends on the use case. This is an example for VoLTE:
 
@@ -54,7 +56,7 @@ The topic being used is *unauthenticated.DCAE_CL_OUTPUT*, which is subject to ch
             "version": "1.0.2"
         }
 
-Getting Information 
+Getting Information
 -------------------
 
 To get the name of the active controller(s), use:
@@ -79,7 +81,7 @@ To get additional information about the controller, use:
 Simulators
 ^^^^^^^^^^
 
-Currently, there are 4 supported simulators: A&AI, SO, vFC, and guard.  When they are up, they are accessed via localhost on the following ports: A&AI – 6666, SO – 6667, vFC – 6668, and guard – 6669.  They all respond with hard-coded values representing their various success messages except for with certain inputs.  For the A&AI simulator, if the value being queried with a “GET” query is “getFail” the simulator returns an exception message, if the value being queried in a “GET” query is “disableClosedLoop” the simulator returns a response with the value of “is-closed-loop-disabled” set to true, and if the value being queried in a named query is “error” the response from the simulator is A&AI’s failure message.  The other simulator that can return multiple response is the guard simulator, and that returns a deny response if the closed loop control name passed in is “denyGuard” 
+Currently, there are 4 supported simulators: A&AI, SO, vFC, and guard.  When they are up, they are accessed via localhost on the following ports: A&AI – 6666, SO – 6667, vFC – 6668, and guard – 6669.  They all respond with hard-coded values representing their various success messages except for with certain inputs.  For the A&AI simulator, if the value being queried with a “GET” query is “getFail” the simulator returns an exception message, if the value being queried in a “GET” query is “disableClosedLoop” the simulator returns a response with the value of “is-closed-loop-disabled” set to true, and if the value being queried in a named query is “error” the response from the simulator is A&AI’s failure message.  The other simulator that can return multiple response is the guard simulator, and that returns a deny response if the closed loop control name passed in is “denyGuard”
 
 Using the Simulators
 --------------------
@@ -88,14 +90,14 @@ To check the status of the simulators, run the command: "*features status*".  If
 
 **Turning on the simulators**
 
-    - First, make sure the controller is off by running the command “*policy stop*”. 
-    - Then turn the feature on with the command “*features enable controlloop-utils*”.  
-    - Finally restart the controller by running “*policy start*”.  
+    - First, make sure the controller is off by running the command “*policy stop*”.
+    - Then turn the feature on with the command “*features enable controlloop-utils*”.
+    - Finally restart the controller by running “*policy start*”.
     - Run “*features status*” again and the *feature controlloop-utils* will be **enabled**.
 
 **Turning the simulators off**
 
-    - First, make sure the controller is off by running the command “*policy stop*”. 
+    - First, make sure the controller is off by running the command “*policy stop*”.
     - Then turn the feature off with the command “*features disable controlloop-utils*”.
     - Finally restart the controller by running “*policy start*”.  
     - Run “*features status*” again and the *feature controlloop-utils* will be **disabled**.
@@ -223,7 +225,7 @@ Responses
           }
          }]
         }
-        
+
 
     .. code-block:: bash
        :caption: vserver-GET-error
@@ -592,7 +594,7 @@ Responses
             }
           ]
         }
-        
+
 
     .. code-block:: bash
        :caption: NamedQuery-error
@@ -691,6 +693,3 @@ Responses
 
 
 End of Document
-
-.. SSNote: Wiki page ref.  https://wiki.onap.org/display/DW/Control+Loop+Simulation+and+Injection+of+Messages+Overview
-

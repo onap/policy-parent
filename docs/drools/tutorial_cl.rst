@@ -3,35 +3,87 @@
 .. http://creativecommons.org/licenses/by/4.0
 
 ***********************************************************************************************
-Tutorial: Generating and Testing your own Control Loop Operational Policy in a standalone PDP-D
+Using the Control Loop PDP-D docker image for standalone testing
 ***********************************************************************************************
 
 .. contents::
     :depth: 3
 
-To generate your own control loop operational policy, use the *create-cl-amsterdam* tool.  The *create-cl-amsterdam* script is located in *${POLICY_HOME}/bin (/opt/app/policy/bin)*.  When the script is run, it will ask for values for a variety of fields.  The fields will have pre-filled out defaults, and for the most part, the defaults are fine to leave in.  The two main fields that should be changed are the Template Control Loop Name and the Control Loop Yaml.
+In this tutorial will start a Control Loop PDP-D container to use to test Operational Policies
+without companion components.
 
-    .. image:: Tut_cl_valuesHighlight.png
+**Step 1:** Copy a template *base.conf* with configuration to instantiate the container.
 
-Make sure the Yaml’s controlLoopName matches the Template Control Loop Name you pass in. Finally, confirm that the parameters are correct, confirm the directory it will add the policy files in (default is /tmp) and tell the script to create the maven artifact.
+    .. code-block:: bash
 
-    *Confirm the parameters and enter the directory to install in as shown below:*
+        mkdir config
+        cd config
+        wget https://git.onap.org/policy/docker/plain/config/drools/base.conf?h=dublin -O base.conf
 
-    .. image:: Tut_cl_confirmAndDirectory.PNG
 
-    *Choose whether to immediately deploy (in this case the directory is /tmp/amsterdam)*
+**Step 2:** Simplify *base.conf* for a standalone configuration (by disabling db and nexus access):
 
-    .. image:: Tut_cl_preDeploy.PNG
+    .. code-block:: bash
 
-When the processing is done, you get the choice of immediately deploying the policy to the local repository, or first examining the rules in the directory it tells you.  If you don’t immediately deploy, you need to use the “*mvn install*” command in the newly created directory to continue.  When all that is done, go to the directory where the rule was placed (the /tmp/amsterdam directory in this case) and copy the *<name>-controller.properties* file to *${POLICY_HOME}/config*.  Turn the engine off and then back on with “*policy stop*” and then “*policy start*”.
+        cd config
+        sed -i "s/^SQL_HOST=.*$/SQL_HOST=/g" base.conf
+        sed -i "s/^SNAPSHOT_REPOSITORY_ID=.*$/SNAPSHOT_REPOSITORY_ID=/g" base.conf
+        sed -i "s/^SNAPSHOT_REPOSITORY_URL=.*$/SNAPSHOT_REPOSITORY_URL=/g" base.conf
+        sed -i "s/^RELEASE_REPOSITORY_ID=.*$/RELEASE_REPOSITORY_ID=/g" base.conf
+        sed -i "s/^RELEASE_REPOSITORY_URL=.*$/RELEASE_REPOSITORY_URL=/g" base.conf
 
-    *Location of the properties file*
+**Step 3:** Open a *bash* shell into the PDP-D Control Loop container.
 
-    .. image:: Tut_cl_propFile.PNG
+    .. code-block:: bash
 
-    *Moving the properties file to ${POLICY_HOME}/config*
+        docker run --rm --env-file config/base.conf -p 9696:9696 -it --name pdp nexus3.onap.org:10001/onap/policy-pdpd-cl:1.4.1 bash
 
-    .. image:: Tut_cl_finalStep.PNG
+**Step 4:** Disable the distributed-locking feature, since this is a single CL PDP-D instance.
+
+    .. code-block:: bash
+
+        features disable distributed-locking
+
+**Step 4:** [OPTIONAL] If using simulators (see tutorials), enable the *controlloop-utils* feature.
+
+    .. code-block:: bash
+
+        features enable controlloop-utils
+
+**Step 5:** [OPTIONAL] To reduce error logs due to being unable to communicate with DMaaP, change the official configuration to use *noop* topics instead (no network IO involved).
+
+    .. code-block:: bash
+
+        cd $POLICY_HOME/config
+        sed -i "s/^dmaap/noop/g" *.properties
+
+**Step 5:** Start the CL PDP-D.
+
+    .. code-block:: bash
+
+        policy start
+
+**Step 6:** Place the CL PDP-D in *ACTIVE* mode.
+
+    .. code-block:: bash
+
+        cat pdp-state-change.json
+        {
+          "state": "ACTIVE",
+          "messageName": "PDP_STATE_CHANGE",
+          "requestId": "385146af-adeb-4157-b97d-6ae85c1ddcb3",
+          "timestampMs": 1555791893587,
+          "name": "8a9e0c256c59",
+          "pdpGroup": "controlloop",
+          "pdpSubgroup": "drools"
+        }
+
+        http --verify=no -a "${TELEMETRY_USER}:${TELEMETRY_PASSWORD}" PUT https://localhost:9696/policy/pdp/engine/topics/sources/noop/POLICY-PDP-PAP/events @pdp-state-change.json Content-Type:'text/plain'
+
+        telemetry     # to verify
+        > get lifecycle/fsm/state   # verify that state is ACTIVE
+
+Note that *name* in *pdp-state-change.json* can be obtained from running *hostname* in the container.
 
 Proceed with testing your new policy as described in the specific tutorials:
 
@@ -45,7 +97,3 @@ Proceed with testing your new policy as described in the specific tutorials:
 
 
 End of Document
-
-
-.. SSNote: Wiki page ref. https://wiki.onap.org/display/DW/Tutorial%3A+Generating+and+Testing+your+own+Control+Loop+Operational+Policy+in+a+standalone+PDP-D
-
