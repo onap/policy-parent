@@ -6,13 +6,9 @@
 Policy Component Installation
 -----------------------------
 
-.. contents::
-    :depth: 2
+.. toctree::
+   :maxdepth: 1
 
-
-oom.rst
-docker.rst
-
-
-End of Document
+   oom.rst
+   docker.rst
 
