@@ -92,11 +92,13 @@ This is an example Decision API payload made to retrieve a decision for an Optim
 
 Supporting Custom Policy Types
 ******************************
-In order to support your own custom Policy Type that the XACML PDP Engine can support, one needs to build a Java service application that extends the **XacmlApplicationServiceProvider** interface and expose it in the classpath used to load the XACML PDP Engine. First, ensure you define and create the TOSCA Policy Type according to these :ref:`Policy Design and Development <design-label>`. You should be able to load your custom Policy Type using the :ref:`Policy Lifecycle API <api-label>`. Once successful, you should be able to start creating policies from your custom Policy Type.
+In order to support your own custom Policy Type that the XACML PDP Engine can support, one needs to build a Java service application that extends the **XacmlApplicationServiceProvider** interface and implement a **ToscaTranslator** application. Your application should register itself as a Java service application and expose it in the classpath used to be loaded into the ONAP XACML PDP Engine. Ensure you define and create the TOSCA Policy Type according to these :ref:`Policy Design and Development <design-label>`. You should be able to load your custom Policy Type using the :ref:`Policy Lifecycle API <api-label>`. Once successful, you should be able to start creating policies from your custom Policy Type.
 
-See each of the ONAP Policy Type application implementations for examples on how to implement the methods for the **XacmlApplicationServiceProvider**. Consider re-using the standard implementations.
+See each of the ONAP Policy Type application implementations for for ONAP re-use the **StdXacmlApplicationServiceProvider** class. They give simple examples on how to use various implementations of **ToscaTranslator** applications.
 
-Once your application is developed and the XACML PDP Engine can find your application via setting the classpath appropriately, then use the :ref:`PAP REST API <pap-label>` to ensure the XACML PDP is loaded and registering your custom Policy Type. Once successful, then you should be able to start deploying the created policies to the XACML PDP Engine.
+The following tutorial can be helpful to get started: :ref:`xacmltutorial-label`
+
+Once your application is developed and the ONAP XACML PDP Engine can find your application via setting the classpath appropriately, then use the :ref:`PAP REST API <pap-label>` to ensure the ONAP XACML PDP is registering your custom Policy Type with the PAP. Once successful, then you should be able to start deploying the created policies to the XACML PDP Engine.
 
 Decision API
 ************
