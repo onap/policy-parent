@@ -98,6 +98,8 @@ See each of the ONAP Policy Type application implementations for examples on how
 
 Once your application is developed and the XACML PDP Engine can find your application via setting the classpath appropriately, then use the :ref:`PAP REST API <pap-label>` to ensure the XACML PDP is loaded and registering your custom Policy Type. Once successful, then you should be able to start deploying the created policies to the XACML PDP Engine.
 
+The following tutorial can be helpful to get started: :ref:`xacmltutorial-label`
+
 Decision API
 ************
 The Decision API is used by ONAP components that enforce policies and need a decision on which policy to enforce for a specific situation. The Decision API mimics closely the XACML request standard in that it supports a subject, action and resource.
