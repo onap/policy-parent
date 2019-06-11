@@ -1,0 +1,32 @@
+tosca_definitions_version: tosca_simple_yaml_1_0_0
+topology_template:
+    policies:
+        -
+            onap.policy.tutorial.demo:
+                type: onap.policies.Authorization
+                version: 1.0.0
+                metadata:
+                    policy-id: onap.policy.tutorial.demo
+                    policy-version: 1
+                properties:
+                    user: demo
+                    permissions:
+                        -
+                            entity: foo
+                            permission: read
+                        -
+                            entity: foo
+                            permission: write
+        -
+            onap.policy.tutorial.audit:
+                type: onap.policies.Authorization
+                version: 1.0.0
+                metadata:
+                    policy-id: onap.policy.tutorial.bar
+                    policy-version: 1
+                properties:
+                    user: audit
+                    permissions:
+                        -
+                            entity: foo
+                            permission: read
