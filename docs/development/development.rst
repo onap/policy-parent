@@ -4,7 +4,7 @@
 
 
 Policy Platform Development
----------------------------
+###########################
 
 .. contents::
     :depth: 2
@@ -23,7 +23,7 @@ This article assumes that:
 The procedure documented in this article has been verified to work on a MacBook laptop running macOS Yosemite Version 10.10,5, Sierra Version 10.12.6, a HP Z600 desktop running Ubuntu 16.04.3 LTS, and an Unbuntu 16.04 VM.
 
 Cloning All The Policy Repositories
------------------------------------
+***********************************
 
 Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/#/admin/projects/?filter=policy>`_. This script clones all the ONAP Policy Framework repositories.
 
@@ -155,7 +155,7 @@ Execution of the script above results in the following directory hierarchy in yo
 
 
 Building ONAP Policy Framework Components
------------------------------------------
+*****************************************
 
 **Step 1:** Optionally, for a completely clean build, remove the ONAP built modules from your local repository.
 
@@ -218,7 +218,7 @@ If the developer is only interested in working with the new architecture compone
 
 
 Building the ONAP Policy Framework Docker Images
-------------------------------------------------
+************************************************
 The instructions here are based on the instructions in the file *~/git/onap/policy/docker/README.md*.
 
 **Step 1:** Build the Policy API Docker image
@@ -284,7 +284,7 @@ This image has the drools use case application and the supporting software built
 
 
 Starting the ONAP Policy Framework Docker Images
-------------------------------------------------
+************************************************
 
 In order to run the containers, you can use *docker-compose*. This uses the *docker-compose.yml* yaml file to bring up the ONAP Policy Framework. This file is located in the policy/docker repository.
 
