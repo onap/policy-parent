@@ -5,7 +5,7 @@
 .. _api-label:
 
 Policy Life Cycle API
-----------------------
+#####################
 .. toctree::
    :maxdepth: 2 
 
