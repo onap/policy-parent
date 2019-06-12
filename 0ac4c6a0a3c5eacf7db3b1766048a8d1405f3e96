@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83f7945f_a37e1e3f",
+        "filename": "docs/xacml/tutorial/app/pom.xml",
+        "patchSetId": 15
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-06-12T18:25:03Z",
+      "side": 1,
+      "message": "indent 4 spaces instead of 2",
+      "revId": "0ac4c6a0a3c5eacf7db3b1766048a8d1405f3e96",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8a55baa_9fa41741",
+        "filename": "docs/xacml/tutorial/app/src/main/java/org/onap/policy/tutorial/tutorial/TutorialApplication.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-06-12T18:25:03Z",
+      "side": 1,
+      "message": "need a license?\n\nsame comment for other files",
+      "revId": "0ac4c6a0a3c5eacf7db3b1766048a8d1405f3e96",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9865570_05225b58",
+        "filename": "docs/xacml/tutorial/app/src/main/java/org/onap/policy/tutorial/tutorial/TutorialApplication.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-06-12T18:25:03Z",
+      "side": 1,
+      "message": "tabs \u003d\u003e spaces\n\nsame comment below and in other java files",
+      "revId": "0ac4c6a0a3c5eacf7db3b1766048a8d1405f3e96",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8217e03f_1f3de7dc",
+        "filename": "docs/xacml/tutorial/app/src/main/java/org/onap/policy/tutorial/tutorial/TutorialTranslator.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-06-12T18:25:03Z",
+      "side": 1,
+      "message": "once tabs are converted to 4 spaces, I think the indentation will look correct",
+      "revId": "0ac4c6a0a3c5eacf7db3b1766048a8d1405f3e96",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102999e8_34d4558d",
+        "filename": "docs/xacml/tutorial/app/src/test/resources/tutorial-decision-request.json",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-06-12T18:25:03Z",
+      "side": 1,
+      "message": "indent 4 spaces instead of 2\n\nsame comment for other json files",
+      "revId": "0ac4c6a0a3c5eacf7db3b1766048a8d1405f3e96",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07a32791_7e0c3c29",
+        "filename": "docs/xacml/xacml-tutorial.rst",
+        "patchSetId": 15
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-06-12T18:25:03Z",
+      "side": 1,
+      "message": "\"a entity\" \u003d\u003e \"an entity\"\n\n\"foo. No\" \u003d\u003e \"foo, no\"",
+      "revId": "0ac4c6a0a3c5eacf7db3b1766048a8d1405f3e96",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "117606b9_15ef4fb2",
+        "filename": "docs/xacml/xacml-tutorial.rst",
+        "patchSetId": 15
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-06-12T18:25:03Z",
+      "side": 1,
+      "message": "tabs \u003d\u003e spaces\n\nsame comment below",
+      "revId": "0ac4c6a0a3c5eacf7db3b1766048a8d1405f3e96",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "864cde99_d5f6deac",
+        "filename": "docs/xacml/xacml-tutorial.rst",
+        "patchSetId": 15
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-06-12T18:25:03Z",
+      "side": 1,
+      "message": "\"from\" \u003d\u003e \"from the\"",
+      "revId": "0ac4c6a0a3c5eacf7db3b1766048a8d1405f3e96",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc091dd4_252c6e60",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 15
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-06-12T18:25:03Z",
+      "side": 1,
+      "message": "\"for for\" \u003d\u003e \"for\"\n\n\"re-use\"?  \"re-using\"?  Something wrong with the phraseology.",
+      "revId": "0ac4c6a0a3c5eacf7db3b1766048a8d1405f3e96",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
