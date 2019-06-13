@@ -43,7 +43,7 @@ Running the Flow
           "messageName": "PDP_UPDATE",
           "requestId": "a7a32d3b-37b4-4fb7-9322-b90c6a6fe365",
           "timestampMs": 1556125347251,
-          "name": "8a9e0c256c59",                               # note this is the hostname
+          "name": "pdpd",
           "pdpGroup": "controlloop",
           "pdpSubgroup": "drools"
        }
