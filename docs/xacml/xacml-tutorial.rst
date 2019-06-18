@@ -24,7 +24,7 @@ for a *user* to execute a *permission* on an *entity*.
   :linenos:
 
 We would expect then to be able to create the following policies to allow the demo user to Read/Write
-a entity called foo. While the audit user can only read the entity called foo. No user has Delete
+an entity called foo. While the audit user can only read the entity called foo. Neither user has Delete
 permission.
 
 .. literalinclude:: tutorial/tutorial-policies.yaml
@@ -107,11 +107,11 @@ that needs to be implemented is providing a custom translator.
 
   public class TutorialApplication extends StdXacmlApplicationServiceProvider {
 
-	@Override
-	protected ToscaPolicyTranslator getTranslator(String type) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        @Override
+        protected ToscaPolicyTranslator getTranslator(String type) {
+                // TODO Auto-generated method stub
+                return null;
+        }
 
   }
 
@@ -134,7 +134,7 @@ Engine can determine how to route policy types and policies to the application.
 
   public class TutorialApplication extends StdXacmlApplicationServiceProvider {
 	
-	private final ToscaPolicyTypeIdentifier supportedPolicyType = new ToscaPolicyTypeIdentifier();
+    private final ToscaPolicyTypeIdentifier supportedPolicyType = new ToscaPolicyTypeIdentifier();
 
     @Override
     public String applicationName() {
@@ -157,10 +157,10 @@ Engine can determine how to route policy types and policies to the application.
     }
 
     @Override
-	protected ToscaPolicyTranslator getTranslator(String type) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        protected ToscaPolicyTranslator getTranslator(String type) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
   }
 
