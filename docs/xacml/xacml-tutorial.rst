@@ -24,7 +24,7 @@ for a *user* to execute a *permission* on an *entity*.
   :linenos:
 
 We would expect then to be able to create the following policies to allow the demo user to Read/Write
-a entity called foo. While the audit user can only read the entity called foo. No user has Delete
+an entity called foo. While the audit user can only read the entity called foo. Neither user has Delete
 permission.
 
 .. literalinclude:: tutorial/tutorial-policies.yaml
@@ -107,11 +107,11 @@ that needs to be implemented is providing a custom translator.
 
   public class TutorialApplication extends StdXacmlApplicationServiceProvider {
 
-	@Override
-	protected ToscaPolicyTranslator getTranslator(String type) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        @Override
+        protected ToscaPolicyTranslator getTranslator(String type) {
+                // TODO Auto-generated method stub
+                return null;
+        }
 
   }
 
@@ -134,7 +134,7 @@ Engine can determine how to route policy types and policies to the application.
 
   public class TutorialApplication extends StdXacmlApplicationServiceProvider {
 	
-	private final ToscaPolicyTypeIdentifier supportedPolicyType = new ToscaPolicyTypeIdentifier();
+    private final ToscaPolicyTypeIdentifier supportedPolicyType = new ToscaPolicyTypeIdentifier();
 
     @Override
     public String applicationName() {
@@ -157,10 +157,10 @@ Engine can determine how to route policy types and policies to the application.
     }
 
     @Override
-	protected ToscaPolicyTranslator getTranslator(String type) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        protected ToscaPolicyTranslator getTranslator(String type) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
   }
 
@@ -191,20 +191,20 @@ requests/response objects the XACML engine understands.
 
   public class TutorialTranslator implements ToscaPolicyTranslator {
 
-	public PolicyType convertPolicy(ToscaPolicy toscaPolicy) throws ToscaPolicyConversionException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public PolicyType convertPolicy(ToscaPolicy toscaPolicy) throws ToscaPolicyConversionException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public Request convertRequest(DecisionRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Request convertRequest(DecisionRequest request) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public DecisionResponse convertResponse(Response xacmlResponse) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public DecisionResponse convertResponse(Response xacmlResponse) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
   }
 
@@ -250,8 +250,8 @@ a policy when a new policy is deployed to the ONAP XACML PDP Engine.
 
   public class TutorialApplication extends StdXacmlApplicationServiceProvider {
 	
-	private final ToscaPolicyTypeIdentifier supportedPolicyType = new ToscaPolicyTypeIdentifier();
-	private final TutorialTranslator translator = new TutorialTranslator();
+    private final ToscaPolicyTypeIdentifier supportedPolicyType = new ToscaPolicyTypeIdentifier();
+    private final TutorialTranslator translator = new TutorialTranslator();
 
     @Override
     public String applicationName() {
@@ -274,9 +274,9 @@ a policy when a new policy is deployed to the ONAP XACML PDP Engine.
     }
 
     @Override
-	protected ToscaPolicyTranslator getTranslator(String type) {
-		return translator;
-	}
+    protected ToscaPolicyTranslator getTranslator(String type) {
+        return translator;
+     }
 
   }
 
