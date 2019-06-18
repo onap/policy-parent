@@ -2,15 +2,14 @@ package org.onap.policy.tutorial.tutorial;
 
 import java.util.Arrays;
 import java.util.List;
-
 import org.onap.policy.models.tosca.authorative.concepts.ToscaPolicyTypeIdentifier;
 import org.onap.policy.pdp.xacml.application.common.ToscaPolicyTranslator;
 import org.onap.policy.pdp.xacml.application.common.std.StdXacmlApplicationServiceProvider;
 
 public class TutorialApplication extends StdXacmlApplicationServiceProvider {
-	
-	private final ToscaPolicyTypeIdentifier supportedPolicyType = new ToscaPolicyTypeIdentifier();
-	private final TutorialTranslator translator = new TutorialTranslator();
+
+    private final ToscaPolicyTypeIdentifier supportedPolicyType = new ToscaPolicyTypeIdentifier();
+    private final TutorialTranslator translator = new TutorialTranslator();
 
     @Override
     public String applicationName() {
@@ -29,12 +28,12 @@ public class TutorialApplication extends StdXacmlApplicationServiceProvider {
 
     @Override
     public boolean canSupportPolicyType(ToscaPolicyTypeIdentifier policyTypeId) {
-    	return supportedPolicyType.equals(policyTypeId);
+        return supportedPolicyType.equals(policyTypeId);
     }
 
     @Override
-	protected ToscaPolicyTranslator getTranslator(String type) {
-		return translator;
-	}
+    protected ToscaPolicyTranslator getTranslator(String type) {
+        return translator;
+    }
 
 }
