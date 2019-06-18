@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "301392cb_1fab7f40",
+        "filename": "docs/xacml/xacml-tutorial.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-06-18T18:37:53Z",
+      "side": 1,
+      "message": "\"foo.\" \u003d\u003e \"foo, \"",
+      "revId": "dfa8f379b4b91f5df3ff3e6ba772194652d94b6d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
