@@ -20,9 +20,28 @@ Policy Release Notes
 Version: 4.0.0
 --------------
 
-:Release Date: 2019-06-06 (Dublin Release)
+:Release Date: 2019-06-26 (Dublin Release)
 
 **New Features**
+
+Artifacts released:
+
+.. csv-table::
+   :header: "Repository", "Java Artifact", "Docker Image (if applicable)"
+   :widths: 15,10,10
+
+   "policy/parent", "2.1.0", ""
+   "policy/common", "1.4.0", ""
+   "policy/models", "2.0.2", ""
+   "policy/api", "2.0.1", "onap/policy-api:2.0.1"
+   "policy/pap", "2.0.1", "onap/policy-pap:2.0.1"
+   "policy/drools-pdp", "1.4.0", "onap/policy-drools:1.4.0"
+   "policy/apex-pdp", "2.1.0", "onap/policy-apex-pdp:2.1.0"
+   "policy/xacml-pdp", "2.1.0", "onap/policy-xacml-pdp:2.1.0"
+   "policy/drools-applications", "1.4.2", "onap/policy-pdpd-cl:1.4.2"
+   "policy/engine", "1.4.1", "onap/policy-pe:1.4.1"
+   "policy/distribution", "2.1.0", "onap/policy-distribution:2.1.0"
+   "policy/docker", "1.4.0", "onap/policy-common-alpine:1.4.0 onap/policy/base-alpine:1.4.0"
 
 The Dublin release for POLICY delivered the following Epics. For a full list of stories and tasks delivered in the Dublin release, refer to `JiraPolicyDublin`_.
 
