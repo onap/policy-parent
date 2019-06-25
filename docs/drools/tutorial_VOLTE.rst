@@ -3,62 +3,60 @@
 .. http://creativecommons.org/licenses/by/4.0
 
 **********************************************************
-Tutorial: Testing the VOLTE Use Case in a standalone PDP-D 
+Tutorial: Testing the VOLTE Use Case in a standalone PDP-D
 **********************************************************
 
 .. contents::
     :depth: 3
 
-In this tutorial we will go over how to access and start up the PDP-D, setup the prerequisites for the VOLTE flow, enable/disable the VFC Simulator that will be used in the VOLTE flow, and inject messages to trigger the VOLTE flow.
+In this tutorial we will test the vDNS flow in a standalone PDP-D docker container.
 
-Accessing and starting the PDP-D
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+Initial Setup
+^^^^^^^^^^^^^
 
-The first step is to access the docker container of name *drools*.
+It is assumed that the set up steps from section
+*Using the Control Loop PDP-D docker image for standalone testing* has been followed for
+this tutorial.
+
+Running the Flow
+^^^^^^^^^^^^^^^^
+
+**Step 1:** Deploy the vDNS Operational Policy.
+
+    .. code-block:: bash
+
+        cat pdp-update-volte.json
+        {
+          "policies": [
+             {
+             "type": "onap.policies.controlloop.Operational",
+             "type_version": "1.0.0",
+             "properties": {
+             "content": "controlLoop%3A%0A%20%20version%3A%202.0.0%0A%20%20controlLoopName%3A%20ControlLoop-VOLTE-2179b738-fd36-4843-a71a-a8c24c70c55b%0A%20%20trigger_policy%3A%20unique-policy-id-1-restart%0A%20%20timeout%3A%203600%0A%20%20abatement%3A%20false%0A%0Apolicies%3A%0A%20%20-%20id%3A%20unique-policy-id-1-restart%0A%20%20%20%20name%3A%20Restart%20the%20VM%0A%20%20%20%20description%3A%0A%20%20%20%20actor%3A%20VFC%0A%20%20%20%20recipe%3A%20Restart%0A%20%20%20%20target%3A%0A%20%20%20%20%20%20type%3A%20VM%0A%20%20%20%20retry%3A%203%0A%20%20%20%20timeout%3A%201200%0A%20%20%20%20success%3A%20final_success%0A%20%20%20%20failure%3A%20final_failure%0A%20%20%20%20failure_timeout%3A%20final_failure_timeout%0A%20%20%20%20failure_retries%3A%20final_failure_retries%0A%20%20%20%20failure_exception%3A%20final_failure_exception%0A%20%20%20%20failure_guard%3A%20final_failure_guard%0A"
+             },
+             "name": "operational.volte",
+             "version": "1.0.0"
+             }
+           ],
+           "messageName": "PDP_UPDATE",
+           "requestId": "a7a32d3b-37b4-4fb7-9322-b90c6a6fe365",
+           "timestampMs": 1556125347251,
+           "name": "PDPDcl",
+           "pdpGroup": "controlloop",
+           "pdpSubgroup": "drools"
+        }
+
+        http --verify=no -a "${TELEMETRY_USER}:${TELEMETRY_PASSWORD}" PUT https://localhost:9696/policy/pdp/engine/topics/sources/noop/POLICY-PDP-PAP/events @pdp-update-volte.json Content-Type:'text/plain'
+
+        telemetry
+        > get controllers/usecases/drools/facts/usecases/controlloops
+        > get controllers/usecases/drools/facts/usecases/controlloops/ControlLoop-VOLTE-2179b738-fd36-4843-a71a-a8c24c70c55b
+
+**Step 2:** Inject a simulated *ONSET* message.
 
     .. code-block:: bash
 
-        docker exec -it -u 0 drools su - policy
-
-The PDP-D software is installed under the *policy* account, the policy root directory is under *${POLICY_HOME}* environment variable and it may be changed on a per installation basis.   It is typically set up under the */opt/app/policy* directory but can be changed during installation.   All PDP-D software runs with non-root privileges as *policy* is a regular user account.
-
-Once within the drools container, the running status can be observed by using the *policy* command:
-
-    .. code-block:: bash
-    
-        policy [--debug] status|start|stop
-    
-The running status of the PDP-D can be observed with *policy status*
-
-    .. code-block:: bash
-    
-        policy@drools:~$ policy status [drools-pdp-controllers]  L []: Policy Management (pid 1500) is running  1 cron jobs installed.
-    
-
-Prerequisites for the VOLTE flow
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
-
-In order to trigger the VOLTE flow we will need to inject an ONSET message via curl command. We're going to create a temporary *util* directory to store a file that contains the VOLTE ONSET message.
-
-Navigate to */tmp* and create directory *util*.  *util* is just a temporary folder we've created to use as our 'workspace'.
-
-    .. code-block:: bash
-    
-        cd /tmp
-        mkdir util
-
-
-Next, we're going to create a file named *dcae.volte.onset.json* and edit it to paste the VOLTE ONSET message contents.
-
-    .. code-block:: bash
-    
-        touch dcae.volte.onset.json
-        vi dcae.volte.onset.json
-
-Here are the contents of the VOLTE ONSET message. Copy/paste this into dcae.volte.onset.json:
-
-    .. code-block:: json
-
+        cat dcae.volte.onset.json
         {
             "closedLoopControlName": "ControlLoop-VOLTE-2179b738-fd36-4843-a71a-a8c24c70c55b",
             "closedLoopAlarmStart": 1484677482204798,
@@ -78,44 +76,12 @@ Here are the contents of the VOLTE ONSET message. Copy/paste this into dcae.volt
             "from": "DCAE",
             "version": "1.0.2"
         }
-        
 
-Enabling the VFC Simulator
-^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+        http --verify=no -a "${TELEMETRY_USER}:${TELEMETRY_PASSWORD}" PUT https://localhost:9696/policy/pdp/engine/topics/sources/noop/POLICY-PDP-PAP/events @dcae.volte.onset.json Content-Type:'text/plain'
 
-Enabling the *controlloop-utils* feature will enable the simulators. To do this, simply stop the drools pdp, enable the feature, and restart the drools pdp like so: 
-
-    .. code-block:: bash
-    
-        policy stop
-        features enable controlloop-utils
-        policy start
-
-Now, in */opt/app/policy/config/* directory, you should see a new properties file named *simulators.properties.environment*. In here you will find the credentials for the VFC simulator.
-
-Injecting an ONSET to trigger the VOLTE Flow
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
-
-We are now ready to inject an ONSET message to trigger the VOLTE flow. Simply navigate back to the directory *dcae.volte.onset.json* file is saved (i.e. cd /tmp/util) and run this curl command:
-
-    .. code-block:: bash
-    
-        http --verify=no --default-scheme=https -a @1b3rt:31nst31n PUT :9696/policy/pdp/engine/topics/sources/ueb/unauthenticated.DCAE_CL_OUTPUT/events @dcae.volte.onset.json Content-Type:"text/plain"
-
-You should see some output similar to this:
-
-.. image:: tutorial_VOLTE_1.png
-
-You can view the logs to see the network activity or find any errors that may have occurred. Logs are located in */opt/app/policy/logs*.
-
-Reading the logs
-^^^^^^^^^^^^^^^^
-
-Once you've injected the onset message, this should appear in the network.log:
-
-.. image:: tutorial_VOLTE_2.png
-
+The network log can be used to monitor the PDP-D network input/output operations.
+This log is located at *$POLICY_LOGS/network.log*.
+The log file will show interactions with the AAI and SO simulator to fulfill the flow.
+Once the transaction has completed, a final success notification will be recorded in this file.
 
 End of Document
-
-.. SSNote: Wiki page ref. https://wiki.onap.org/display/DW/Tutorial%3A+Testing+the+VOLTE+Use+Case+in+a+standalone+PDP-D
