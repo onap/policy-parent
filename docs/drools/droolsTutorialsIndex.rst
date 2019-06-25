@@ -17,7 +17,6 @@ PDP-D Tutorials
    tutorial_vCPE.rst
    tutorial_vDNS.rst
    tutorial_vFW.rst
-   tutorial_VOLTE.rst
 
 
 End of Document

@@ -98,7 +98,6 @@ Proceed with testing your new policy as described in the specific tutorials:
 • vCPE - `Tutorial: Testing the vCPE use case in a standalone PDP-D <tutorial_vCPE.html>`_
 • vDNS - `Tutorial: Testing the vDNS Use Case in a standalone PDP-D <tutorial_vDNS.html>`_
 • vFW - `Tutorial: Testing the vFW flow in a standalone PDP-D <tutorial_vFW.html>`_
-• VoLTE - `Tutorial: Testing the VOLTE Use Case in a standalone PDP-D <tutorial_VOLTE.html>`_
 
 .. seealso:: To deploy a control loop in Eclipse from the control loop archetype template, refer to `Modifying the Release Template  <modAmsterTemplate.html>`_.
 
