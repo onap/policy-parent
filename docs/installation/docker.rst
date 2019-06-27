@@ -43,37 +43,37 @@ This image has the drools use case application and the supporting software built
 
 .. code-block:: bash
 
-cd ~/git/onap/policy/drools-applications
-chmod 755 controlloop/build/docker-cl
-controlloop/build/docker-cl --verify
+  cd ~/git/onap/policy/drools-applications
+  chmod 755 controlloop/build/docker-cl
+  controlloop/build/docker-cl --verify
 
 **Step 5:** Build the Apex PDP docker image:
 
 .. code-block:: bash
 
-cd ~/git/onap/policy/apex-pdp/packages/apex-pdp-docker/target
-docker build -t onap/policy-apex-pdp policy-apex-pdp
+  cd ~/git/onap/policy/apex-pdp/packages/apex-pdp-docker/target
+  docker build -t onap/policy-apex-pdp policy-apex-pdp
 
 **Step 5:** Build the XACML PDP docker image:
 
 .. code-block:: bash
 
-cd ~/git/onap/policy/xacml-pdp/packages
-mvn clean install -P docker
+  cd ~/git/onap/policy/xacml-pdp/packages
+  mvn clean install -P docker
 
 **Step 7:** Build the policy engine docker image (If working with the legacy Policy Architecture/API):
 
 .. code-block:: bash
 
-cd ~/git/onap/policy/engine/
-./docker_verify.sh
+  cd ~/git/onap/policy/engine/
+  ./docker_verify.sh
 
 **Step 8:** Build the Policy SDC Distribution docker image:
 
 .. code-block:: bash
 
-cd ~/git/onap/policy/distribution/packages
-mvn clean install -Pdocker
+  cd ~/git/onap/policy/distribution/packages
+  mvn clean install -Pdocker
 
 
 Starting the ONAP Policy Framework Docker Images
@@ -92,19 +92,17 @@ export MTU=9126
 
 .. code-block:: bash
 
-export PRELOAD_POLICIES=false
+  export PRELOAD_POLICIES=false
 
 
 **Step 3:** Run the system using *docker-compose*. Note that on some systems you may have to run the *docker-compose* command as root or using *sudo*. Note that this command takes a number of minutes to execute on a laptop or desktop computer.
 
 .. code-block:: bash
 
-docker-compose up -d
+  docker-compose up -d
 
 
 **You now have a full standalone ONAP Policy framework up and running!**
-
-
 
 
 End of Document
