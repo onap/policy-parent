@@ -35,7 +35,7 @@ This image is a standalone vanilla Drools engine, which does not contain any pre
 .. code-block:: bash
 
 cd ~/git/onap/policy/drools-pdp/
-./docker_verify.sh
+mvn clean install -P docker
 
 **Step 4:** Build the Drools Application Control Loop image.
 
@@ -44,17 +44,16 @@ This image has the drools use case application and the supporting software built
 .. code-block:: bash
 
 cd ~/git/onap/policy/drools-applications
-chmod 755 controlloop/build/docker-cl
-controlloop/build/docker-cl --verify
+mvn clean install -P docker
 
 **Step 5:** Build the Apex PDP docker image:
 
 .. code-block:: bash
 
-cd ~/git/onap/policy/apex-pdp/packages/apex-pdp-docker/target
-docker build -t onap/policy-apex-pdp policy-apex-pdp
+cd ~/git/onap/policy/apex-pdp
+mvn clean install -P docker
 
-**Step 5:** Build the XACML PDP docker image:
+**Step 6:** Build the XACML PDP docker image:
 
 .. code-block:: bash
 
@@ -66,14 +65,14 @@ mvn clean install -P docker
 .. code-block:: bash
 
 cd ~/git/onap/policy/engine/
-./docker_verify.sh
+mvn clean install -P docker
 
 **Step 8:** Build the Policy SDC Distribution docker image:
 
 .. code-block:: bash
 
 cd ~/git/onap/policy/distribution/packages
-mvn clean install -Pdocker
+mvn clean install -P docker
 
 
 Starting the ONAP Policy Framework Docker Images
@@ -88,7 +87,9 @@ In order to run the containers, you can use *docker-compose*. This uses the *doc
 export MTU=9126
 
 
-**Step 2:** Determine if you want policies pre-loaded or not. By default, all the configuration and operational policies will be pre-loaded by the docker compose script. If you do not wish for that to happen, then export this variable:
+**Step 2:** Determine if you want the legacy Policy Engine to have policies pre-loaded or not. By default, all the configuration and operational policies will be pre-loaded by the docker compose script. If you do not wish for that to happen, then export this variable:
+
+.. note:: This applies ONLY to the legacy Engine and not the Policy Lifecycle polices
 
 .. code-block:: bash
 
