@@ -7,8 +7,8 @@ Policy Component Installation
 -----------------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   oom.rst
    docker.rst
+   oom.rst
 
