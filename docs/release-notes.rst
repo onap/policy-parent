@@ -188,7 +188,7 @@ The following known issues will be addressed in a future release:
     * `[POLICY-1276] - <https://jira.onap.org/browse/POLICY-1276>`_ JRuby interpreter shutdown fails on second and subsequent runs
     * `[POLICY-1803] - <https://jira.onap.org/browse/POLICY-1803>`_ PAP should undeploy policies when subgroup is deleted
     * `[POLICY-1291] - <https://jira.onap.org/browse/POLICY-1291>`_ Maven Error when building Apex documentation in Windows
-
+    * `[POLICY-1872] - <https://jira.onap.org/browse/POLICY-1872>`_ brmsgw fails building a jar - trafficgenerator dependency does not exist
 
 
 ..      ==========================
