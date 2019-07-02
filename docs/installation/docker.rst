@@ -105,8 +105,3 @@ In order to run the containers, you can use *docker-compose*. This uses the *doc
 
 **You now have a full standalone ONAP Policy framework up and running!**
 
-
-
-
-End of Document
-
