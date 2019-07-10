@@ -16,5 +16,7 @@ Policy Framework Architecture
    pap/pap
    drools/drools
    xacml/xacml
+   apex/apex
+   distribution/distribution
 ..    release-notes.rst
 
