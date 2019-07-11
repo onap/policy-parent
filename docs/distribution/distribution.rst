@@ -2,7 +2,7 @@
 
 .. _policy-ssd-doc:
 
-POLICY DISTRIBUTION
+Policy Distribution Component
 ------------------------------------------------
 .. toctree::
    :maxdepth: 1

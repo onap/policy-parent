@@ -2,7 +2,7 @@
 
 .. _apex-doc:
 
-APEX PDP
+Policy APEX PDP Engine
 ------------------------------------------------
 .. toctree::
    :maxdepth: 1

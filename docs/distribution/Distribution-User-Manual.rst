@@ -2,7 +2,7 @@
 .. http://creativecommons.org/licenses/by/4.0
 
 
-Distribution User Manual
+Policy Distribution User Manual
 ************************
 
 .. contents::

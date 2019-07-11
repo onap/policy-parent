@@ -2,7 +2,7 @@
 .. http://creativecommons.org/licenses/by/4.0
 
 
-Introduction to Policy-Distribution
+Introduction to Policy Distribution
 ***********************************
 
          .. container:: paragraph
