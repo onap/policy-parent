@@ -400,10 +400,10 @@ Format of the configuration file (OnapPfConfig.json) explained
             |                                   | For e.g. dmaap, noop, ueb         |
             +-----------------------------------+-----------------------------------+
             | **10**                            | List of topics' details to which  |
-            |                                   | messages are sent to.             |
+            |                                   | messages are sent.                |
             +-----------------------------------+-----------------------------------+
             | **11**                            | Topic name of the sink to which   |
-            |                                   | PDP-A sends messages to.          |
+            |                                   | PDP-A sends messages.             |
             +-----------------------------------+-----------------------------------+
             | **12**                            | List of servers for the sink      |
             |                                   | topic.                            |

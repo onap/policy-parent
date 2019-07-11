@@ -158,28 +158,28 @@ Build APEX
          -  Cygwin: ``/cygdrive/c/dev/apex-pdp``
 
       .. important::
-	     A Build requires ONAP Nexus
-		 APEX has a dependency to ONAP parent projects. You might need to adjust your Maven M2 settings. The most current
-		 settings can be found in the ONAP oparent repo: `Settings <https://git.onap.org/oparent/plain/settings.xml>`__.
+         A Build requires ONAP Nexus
+         APEX has a dependency to ONAP parent projects. You might need to adjust your Maven M2 settings. The most current
+         settings can be found in the ONAP oparent repo: `Settings <https://git.onap.org/oparent/plain/settings.xml>`__.
 
       .. important::
-	     A Build needs Space
-		 Building APEX requires approximately 2-3 GB of hard disc space, 1 GB for the actual build with full distribution and 1-2 GB for
-		 the downloaded dependencies
+         A Build needs Space
+         Building APEX requires approximately 2-3 GB of hard disc space, 1 GB for the actual build with full distribution and 1-2 GB for
+         the downloaded dependencies
 
       .. important::
-	     A Build requires Internet (for first build)
-		 During the build, several (a lot) of Maven dependencies will be downloaded and stored in the configured local Maven
-		 repository. The first standard build (and any first specific build) requires Internet access to download those dependencies.
+         A Build requires Internet (for first build)
+         During the build, several (a lot) of Maven dependencies will be downloaded and stored in the configured local Maven
+         repository. The first standard build (and any first specific build) requires Internet access to download those dependencies.
 
       .. important::
-	     Building RPM distributions
-		 RPM images are only build if the ``rpm`` package is installed (Unix). To install ``rpm`` run ``sudo apt-get install rpm``, 
-		 then build APEX.
+         Building RPM distributions
+         RPM images are only built if the ``rpm`` package is installed (Unix). To install ``rpm`` run ``sudo apt-get install rpm``, 
+         then build APEX.
 
       .. container:: paragraph
 
-         Use Maven to for a standard build without any tests.
+         Use Maven for a standard build without any tests.
 
       +-------------------------------------------------------+--------------------------------------------------------+
       | Unix, Cygwin                                          | Windows                                                |
@@ -232,7 +232,7 @@ Build APEX
 
    The build will have created all artifacts required for an APEX
    installation. The following example show how to change to the target
-   directory and how it should look like.
+   directory and how it should look.
 
 +----------------------------------------------------------------------------------------------------------------------------+
 | Unix, Cygwin                                                                                                               |
@@ -365,9 +365,9 @@ Install with RPM and DPKG
 |       .. container:: content                                                         |
 |                                                                                      |
 |          .. code:: bash                                                              |
-|             :number-lines:                                                           | 
+|             :number-lines:                                                           |
 |                                                                                      |
-|             # sudo dpkg -i apex-pdp-package-full-2.0.0-SNAPSHOT.deb                  |            
+|             # sudo dpkg -i apex-pdp-package-full-2.0.0-SNAPSHOT.deb                  |    
 |             Selecting previously unselected package apex-uservice.                   |
 |             (Reading database ... 288458 files and directories currently installed.) |
 |             Preparing to unpack apex-pdp-package-full-2.0.0-SNAPSHOT.deb ...         |
@@ -427,7 +427,7 @@ Install Manually from Archive (Windows, 7Zip, GUI)
       .. container:: content
 
          |Extract the TAR archive|
-	  
+
    .. container:: paragraph
 
       The right-click on the new created TAR file and extract the actual
@@ -490,18 +490,18 @@ Build and Install Manually (Unix, Windows, Cygwin)
             directory. Use Maven to build APEX (all details on building
             APEX from source can be found in *APEX HowTo: Build*).
             Install from the created artifacts (``rpm``, ``deb``,
-            ``tar.gz``, or copying manually).
+            ``tar.gz``, or copy manually).
 
-         .. important:: 
-		    Building RPM distributions
-			RPM images are only build if the ``rpm`` package is installed (Unix). To install ``rpm`` run ``sudo apt-get install rpm``, 
-			then build APEX.
+         .. important::
+            Building RPM distributions
+            RPM images are only build if the ``rpm`` package is installed (Unix). To install ``rpm`` run ``sudo apt-get install rpm``, 
+            then build APEX.
 
          .. container:: paragraph
 
             The following example shows how to build the APEX system,
-            without tests (``-DskipTests``) to safe some time. It
-            assumes that the APX GIT repositories are cloned to:
+            without tests (``-DskipTests``) to save some time. It
+            assumes that the APEX GIT repositories are cloned to:
 
          .. container:: ulist
 
@@ -509,7 +509,7 @@ Build and Install Manually (Unix, Windows, Cygwin)
 
             -  Windows: ``C:\dev\apex``
 
-    	 +-------------------------------------------------------+--------------------------------------------------------+
+         +-------------------------------------------------------+--------------------------------------------------------+
          | Unix, Cygwin                                          | Windows                                                |
          +=======================================================+========================================================+
          | .. container::                                        | .. container::                                         |
@@ -529,9 +529,9 @@ Build and Install Manually (Unix, Windows, Cygwin)
    The build takes about 2 minutes without test and about 4-5 minutes
    with tests on a standard development laptop. It should run through
    without errors, but with a lot of messages from the build process. If
-   build with tests (i.e. without ``-DskipTests``), there will be error
+   built with tests (i.e. without ``-DskipTests``), there will be error
    messages and stack trace prints from some tests. This is normal, as
-   long as the build finishes successful.
+   long as the build finishes successfully.
 
 .. container:: paragraph
 
@@ -782,7 +782,7 @@ Environment Settings: APEX_HOME and APEX_USER
 
    .. container:: ulist
 
-      -  ``APEX_USER`` with the user under whos name and permission APEX
+      -  ``APEX_USER`` with the user under whose name and permission APEX
          should be started (Unix only)
 
       -  ``APEX_HOME`` with the directory where APEX is installed (Unix,
@@ -791,7 +791,7 @@ Environment Settings: APEX_HOME and APEX_USER
    .. container:: paragraph
 
       The first row in the following table shows how to set these
-      environment variables temporary (assuming the user is
+      environment variables temporarily (assuming the user is
       ``apexuser``). The second row shows how to verify the settings.
       The last row explains how to set those variables permanently.
 
@@ -807,7 +807,7 @@ Environment Settings: APEX_HOME and APEX_USER
    |                                                |                                                         |
    |          # export APEX_USER=apexuser           |         >set APEX_HOME=C:\apex\apex-full-2.0.0-SNAPSHOT |
    |          # cd /opt/app/policy/apex-pdp         |                                                         |
-   |          # export APEX_HOME=`pwd`              |                                                         | 
+   |          # export APEX_HOME=`pwd`              |                                                         |
    |                                                |                                                         |
    +------------------------------------------------+                                                         |
    | .. container::                                 |                                                         |
@@ -819,7 +819,7 @@ Environment Settings: APEX_HOME and APEX_USER
    |                                                |                                                         |
    |          # setenv APEX_USER apexuser           |                                                         |
    |          # cd /opt/app/policy/apex-pdp         |                                                         |
-   |          # setenv APEX_HOME `pwd`              |                                                         | 
+   |          # setenv APEX_HOME `pwd`              |                                                         |
    |                                                |                                                         |
    +------------------------------------------------+---------------------------------------------------------+
    | .. container::                                 | .. container::                                          |
@@ -831,7 +831,7 @@ Environment Settings: APEX_HOME and APEX_USER
    |                                                |                                                         |
    |          # env | grep APEX                     |          >set APEX_HOME                                 |
    |          # APEX_USER=apexuser                  |          APEX_HOME=\apex\apex-full-2.0.0-SNAPSHOT       |
-   |          # APEX_HOME=/opt/app/policy/apex-pdp  |                                                         | 
+   |          # APEX_HOME=/opt/app/policy/apex-pdp  |                                                         |
    |                                                |                                                         |
    +------------------------------------------------+---------------------------------------------------------+
 
@@ -841,7 +841,7 @@ Making Environment Settings Permanent (Unix, Cygwin)
 
    .. container:: paragraph
 
-      For a per-user setting, edit the a user’s ``bash`` or ``tcsh``
+      For a per-user setting, edit the user’s ``bash`` or ``tcsh``
       settings in ``~/.bashrc`` or ``~/.tcshrc``. For system-wide
       settings, edit ``/etc/profiles`` (requires permissions).
 
@@ -941,9 +941,9 @@ Create Directories for Logging
    .. container:: paragraph
 
       Make sure that the log directory exists. This is important when
-      APEX was installed manually or when the log directory was changed
+      APEX is installed manually or when the log directory is changed
       in the settings (see above).
-	  
+
    +------------------------------------------------------------------+-------------------------------------------------------+
    | Unix, Cygwin                                                     | Windows                                               |
    +==================================================================+=======================================================+
@@ -1029,9 +1029,9 @@ Verify Installation - run an Example
          .. code:: bash
                 :number-lines:
 
- 	        # $APEX_HOME/bin/apexEngine.sh -c $APEX_HOME/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (1)
- 	        # $APEX_HOME/bin/apexEngine.sh -c C:/apex/apex-full-2.0.0-SNAPSHOT/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (2)
- 	        >%APEX_HOME%\bin\apexEngine.bat -c %APEX_HOME%\examples\config\SampleDomain\Stdin2StdoutJsonEventJava.json :: (3)
+             # $APEX_HOME/bin/apexEngine.sh -c $APEX_HOME/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (1)
+             # $APEX_HOME/bin/apexEngine.sh -c C:/apex/apex-full-2.0.0-SNAPSHOT/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (2)
+             >%APEX_HOME%\bin\apexEngine.bat -c %APEX_HOME%\examples\config\SampleDomain\Stdin2StdoutJsonEventJava.json :: (3)
 
 .. container:: colist arabic
 
@@ -1046,7 +1046,7 @@ Verify Installation - run an Example
 .. container:: paragraph
 
    The engine should start successfully. Assuming the logging levels are
-   not change (default level is ``info``), the output should look
+   not changed (default level is ``info``), the output should look
    similar to this (last few lines)
 
 .. container:: listingblock
@@ -1073,7 +1073,7 @@ Verify Installation - run an Example
 
 .. container:: paragraph
 
-   Important are the last two line, stating that APEX has added the
+   Important are the last two lines, stating that APEX has added the
    final action listener to the engine and that the engine is started.
 
 .. container:: paragraph
@@ -1085,7 +1085,7 @@ Verify Installation - run an Example
 .. container:: paragraph
 
    The following table shows an input event in the left column and an
-   output event in the right column. Past the input event into the
+   output event in the right column. Paste the input event into the
    console where APEX is running, and the output event should appear in
    the console. Pasting the input event multiple times will produce
    output events with different values.
@@ -1233,7 +1233,7 @@ Installing WAR Applications
       .. container:: paragraph
 
          Installing and using the WAR applications requires a web server
-         that can execute ``war`` web archives. We recommend to use
+         that can execute ``war`` web archives. We recommend using
          `Apache Tomcat <https://tomcat.apache.org/>`__, however other
          web servers can be used as well.
 
@@ -1264,7 +1264,7 @@ Installing WAR Applications
          Documentation <https://tomcat.apache.org/tomcat-9.0-doc/index.html>`__
          or the `Manager App
          HOW-TO <https://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html>`__.
-         Once you installed an APEX WAR application (and wait for
+         Once you have installed an APEX WAR application (and wait for
          sufficient time for Tomcat to finalize the installation), open
          the ``Manager App`` in Tomcat. You should see the APEX WAR
          application being installed and running.

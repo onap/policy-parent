@@ -18,8 +18,8 @@ APEX Policy Matrix
 
                APEX offers a lot of flexibility for defining, deploying,
                and executing policies. Based on a theoretic model, it
-               supports virtually any policy model and allows to
-               translate legacy policies into the APEX execution format.
+               supports virtually any policy model and supports
+               translation of legacy policies into the APEX execution format.
                However, the most important aspect for using APEX is to
                decide what policy is needed, what underlying policy
                concepts should be used, and how the decision logic
@@ -868,19 +868,19 @@ Writing APEX Task Logic
                attempt to teach you about the scripting languages
                themselves …​ that is up to you!
 
-            .. tip::  
-			   JVM-based scripting languages
-			   For more more information on scripting for the Java platform see: https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/prog_guide/index.html
+            .. tip::
+               JVM-based scripting languages
+               For more more information on scripting for the Java platform see: https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/prog_guide/index.html
 
-            .. note:: 
-			   What do Tasks do?
-			   The function of an Apex Task is to provide the logic that can be executed for an Apex State as one of the steps in
-			   an Apex Policy. Each task receives some *incoming fields*, executes some logic (e.g: make a decision based on
-			   *shared state* or *context*, *incoming fields*, *external context*, etc.), perhaps set some *shared state* or 
-			   *context* and then emits *outgoing fields*. The state that uses the task is responsible for extracting the
-			   *incoming fields* from the state input event. The state also has an *output mapper* associated with the task, and
-			   this *output mapper* is responsible for mapping the *outgoing fields* from the task into an appropriate
-			   output event for the state.
+            .. note::
+               What do Tasks do?
+               The function of an Apex Task is to provide the logic that can be executed for an Apex State as one of the steps in
+               an Apex Policy. Each task receives some *incoming fields*, executes some logic (e.g: make a decision based on
+               *shared state* or *context*, *incoming fields*, *external context*, etc.), perhaps set some *shared state* or
+               *context* and then emits *outgoing fields*. The state that uses the task is responsible for extracting the
+               *incoming fields* from the state input event. The state also has an *output mapper* associated with the task, and
+               this *output mapper* is responsible for mapping the *outgoing fields* from the task into an appropriate
+               output event for the state.
 
             .. container:: paragraph
 
@@ -988,7 +988,7 @@ Writing APEX Task Logic
 
                .. container:: content
 
-                  .. code:: javascript 
+                  .. code:: javascript
                      :number-lines:
 
                      /*
@@ -1094,14 +1094,14 @@ Writing APEX Task Logic
                and exit.
 
             .. note::
-			   How to return a value from task logic 
-			   Some languages explicitly support returning values from the script (e.g. MVEL and JRuby) using an explicit 
-			   return statement (e.g. ``return true``), other languages do not (e.g. JavaScript and Jython). For
-			   languages that do not support the ``return`` statement, a special field called ``returnValue`` must be
-			   created to hold the result of the task logic operation (i.e. assign a ``java.lang.Boolean``
-			   value to the ``returnValue`` field before completing the task).
-			   Also, in MVEL if there is no explicit return statement then the return value of the last executed statement will return
-			   (e.g. the statement a=(1+2) will return the value 3).
+               How to return a value from task logic
+               Some languages explicitly support returning values from the script (e.g. MVEL and JRuby) using an explicit
+               return statement (e.g. ``return true``), other languages do not (e.g. JavaScript and Jython). For
+               languages that do not support the ``return`` statement, a special field called ``returnValue`` must be
+               created to hold the result of the task logic operation (i.e. assign a ``java.lang.Boolean``
+               value to the ``returnValue`` field before completing the task).
+               Also, in MVEL if there is no explicit return statement then the return value of the last executed statement will return
+               (e.g. the statement a=(1+2) will return the value 3).
 
             .. container:: paragraph
 
@@ -1116,7 +1116,7 @@ Writing APEX Task Logic
                ``executor`` keyword in MVEL):
 
             Table 1. The ``executor`` Fields / Methods
-	  
+
 +------------+-------------+--------------------------------+-------------------------------------------------------------------------------------+
 | Name       | Type        | Java type                      | Description                                                                         |
 +============+=============+================================+=====================================================================================+
@@ -1308,21 +1308,21 @@ Writing APEX Task Selection Logic
       the scripting languages themselves …​ that is up to you!
 
    .. tip::
-      JVM-based scripting languages 
-	  For more more information on Scripting for the Java platform see:
-	  https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/prog_guide/index.html
+      JVM-based scripting languages
+      For more more information on Scripting for the Java platform see:
+      https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/prog_guide/index.html
 
-   .. note::  
-      What does Task Selection Logic do? 
-	  When an Apex state references multiple tasks, there must be a way to dynamically decide
-	  which task should be chosen and executed. This can depend on the many factors, e.g. the
-	  *incoming event for the state*, *shared state* or *context*, *external context*,
-	  etc.. This is the function of a state’s Task Selection Logic. Obviously, if there is 
-	  only one task then Task only one task then Task Selection Logic is not needed. 
-	  Each state must also select one of the tasks a the *default state*. If the Task 
-	  Selection Logic is unable to select an appropriate task, then it should select the 
-	  *default task*. Once the task has been selected the Apex Engine will then execute that
-	  task.
+   .. note::
+      What does Task Selection Logic do?
+      When an Apex state references multiple tasks, there must be a way to dynamically decide
+      which task should be chosen and executed. This can depend on the many factors, e.g. the
+      *incoming event for the state*, *shared state* or *context*, *external context*,
+      etc.. This is the function of a state’s Task Selection Logic. Obviously, if there is
+      only one task then Task only one task then Task Selection Logic is not needed.
+      Each state must also select one of the tasks a the *default state*. If the Task
+      Selection Logic is unable to select an appropriate task, then it should select the
+      *default task*. Once the task has been selected the Apex Engine will then execute that
+      task.
 
    .. container:: paragraph
 
@@ -1406,15 +1406,15 @@ Writing APEX Task Selection Logic
       be returned, but this will cause the policy invoking this task
       will fail and exit.
 
-   .. note:: 
+   .. note::
       How to return a value from Task Selection Logic
-	  Some languages explicitly support returning values from the script (e.g. MVEL and 
-	  JRuby) using an explicit return statement (e.g. ``return true``), other languages do not (e.g.
-	  JavaScript and Jython). For languages that do not support the ``return`` statement, a special field called 
-	  ``returnValue`` must be created to hold the result of the task logic operation (i.e. assign a ``java.lang.Boolean``
-	  value to the ``returnValue`` field before completing the task). 
-	  Also, in MVEL if there is not explicit return statement then the return value of the last executed statement will
-	  return (e.g. the statement a=(1+2) will return the value 3).   
+      Some languages explicitly support returning values from the script (e.g. MVEL and
+      JRuby) using an explicit return statement (e.g. ``return true``), other languages do not (e.g.
+      JavaScript and Jython). For languages that do not support the ``return`` statement, a special field called
+      ``returnValue`` must be created to hold the result of the task logic operation (i.e. assign a ``java.lang.Boolean``
+      value to the ``returnValue`` field before completing the task).
+      Also, in MVEL if there is not explicit return statement then the return value of the last executed statement will
+      return (e.g. the statement a=(1+2) will return the value 3).
 
    .. container:: paragraph
 
@@ -1922,7 +1922,7 @@ Create a instance of an Context Album entry using Schemas
 
          .. container:: content
 
-            .. code:: javascript 
+            .. code:: javascript
 
                var albumProblemMap = executor.getContextAlbum("albumProblemMap");
                var linkProblem = albumProblemMap.getSchemaHelper().createNewInstance();
@@ -1940,7 +1940,7 @@ Create a instance of an Context Album entry using Schemas
 
          .. container:: content
 
-            .. code:: javascript 
+            .. code:: javascript
 
                var linkProblem = executor.getContextAlbum("albumProblemMap").getSchemaHelper().createNewInstance();
 
