@@ -85,7 +85,7 @@ Introduction to APEX
             information that is provided by other systems. APEX keeps
             context coordinated across all the the instances running a
             particular policy. If a policy running in an APEX engine
-            changes the value of a piece of context, that value is is
+            changes the value of a piece of context, that value is
             available to all other APEX engines that use that piece of
             context. APEX takes care of distribution, locking, writing
             of context to persistent storage, and monitoring of context.
@@ -125,11 +125,11 @@ APEX Configuration
             An APEX engine can be configured to use various combinations
             of event input handlers, event output handlers, event
             protocols, context handlers, and logic executors. The system
-            is build using a plugin architecture. Each configuration
+            is built using a plugin architecture. Each configuration
             option is realized by a plugin, which can be loaded and
             configured when the engine is started. New plugins can be
             added to the system at any time, though to benefit from a
-            new plugin an engine will need to be restarted.
+            new plugin, an engine will need to be restarted.
 
          .. container:: imageblock
 
@@ -157,7 +157,7 @@ APEX Policy Matrix
 
             APEX offers a lot of flexibility for defining, deploying,
             and executing policies. Based on a theoretic model, it
-            supports virtually any policy model and allows to translate
+            supports virtually any policy model and supports translation of
             legacy policies into the APEX execution format. However, the
             most important aspect for using APEX is to decide what
             policy is needed, what underlying policy concepts should be
@@ -222,7 +222,7 @@ APEX Policy Matrix
 
             -  Feedback, i.e. why did something happen or not happen.
                Similar to analysis, but here the feedback will be in the
-               input event and the policy needs to something with that
+               input event and the policy needs to do something with that
                information. Feedback can be related to history or
                experience, for instance a previous policy execution. The
                policy needs to be context-aware or be a meta-policy.
@@ -255,7 +255,7 @@ APEX Policy Matrix
                additional information of any kind but cannot
                change/alter them
 
-            -  Global context (read and write), the policy the policy
+            -  Global context (read and write), the policy
                has access to additional information of any kind and can
                alter this information (for instance to record historic
                information)

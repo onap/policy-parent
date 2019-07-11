@@ -52,10 +52,10 @@ Introduction to building APEX
 
             .. container:: paragraph
 
-               One all requirements are in place, APEX can be build.
+               Once all requirements are in place, APEX can be build.
                There are several different artifacts one can create
                building APEX, most of them defined in their own
-               *profile*. APEX can also be build in a standard way with
+               *profile*. APEX can also be built in a standard way with
                standard tests (``mvn clean install``) or without
                standard tests (``mvn clean install -DskipTests``).
 
@@ -73,26 +73,26 @@ Introduction to building APEX
                -  Cygwin: ``/cygdrive/c/dev/apex``
 
             .. important::
-			   A Build requires ONAP Nexus
-			   APEX has a dependency to ONAP parent projects. You might need to adjust your Maven M2 settings. The most current
-			   settings can be found in the ONAP oparent repo: `Settings <https://git.onap.org/oparent/plain/settings.xml>`__.
+               A Build requires ONAP Nexus
+               APEX has a dependency to ONAP parent projects. You might need to adjust your Maven M2 settings. The most current
+               settings can be found in the ONAP oparent repo: `Settings <https://git.onap.org/oparent/plain/settings.xml>`__.
 
-            .. important:: 
-			
-			   A Build needs Space
-			   Building APEX requires approximately 2-3 GB of hard disc space, 1 GB for the actual build with full
-			   distribution and 1-2 GB for the downloaded dependencies
+            .. important::
 
-            .. important:: 
-			   A Build requires Internet (for first build to download all dependencies and plugins)
-			   During the build, several (a lot) of Maven dependencies will be downloaded and stored in the configured local Maven 
-			   repository. The first standard build (and any first specific build) requires Internet access to download those
-			   dependencies.
+               A Build needs Space
+               Building APEX requires approximately 2-3 GB of hard disc space, 1 GB for the actual build with full
+               distribution and 1-2 GB for the downloaded dependencies
 
-            .. important:: 
+            .. important::
+               A Build requires Internet (for first build to download all dependencies and plugins)
+               During the build, several (a lot) of Maven dependencies will be downloaded and stored in the configured local Maven 
+               repository. The first standard build (and any first specific build) requires Internet access to download those
+               dependencies.
+
+            .. important::
                Building RPM distributions
-               RPM images are only build if the ``rpm`` package is installed (Unix). To install ``rpm`` 
-               run ``sudo apt-get install rpm``, then build APEX. 
+               RPM images are only built if the ``rpm`` package is installed (Unix). To install ``rpm``
+               run ``sudo apt-get install rpm``, then build APEX.
 
 Standard Build
 --------------
@@ -146,7 +146,7 @@ Standard Build
 
    The build will have created all artifacts required for an APEX
    installation. The following example show how to change to the target
-   directory and how it should look like.
+   directory and how it should look.
 
 +-----------------------------------------------------------------------------------------------------------------------------+
 | Unix, Cygwin                                                                                                                |
@@ -242,7 +242,7 @@ Checkstyle with Maven
 
       .. container:: content
 
-         .. code:: bash 
+         .. code:: bash
 
             mvn checkstyle:checkstyle -DapexAll
 
@@ -251,13 +251,13 @@ Build with standard Tests
 
    .. container:: paragraph
 
-      Use Maven to for a standard build with standard tests.
+      Use Maven for a standard build with standard tests.
 
-   .. important::  
+   .. important::
       Some tests have specific timing Requirements
-	  Some of the tests have very specific timing requirements. If run on a low-powered build machine, or if the build
-	  machine is on high load, those tests might fail and the whole build might fail as well. If this happens, reduce the load
-	  on your build machine and restart the build.
+      Some of the tests have very specific timing requirements. If run on a low-powered build machine, or if the build
+      machine is on high load, those tests might fail and the whole build might fail as well. If this happens, reduce the load
+      on your build machine and restart the build.
 
    +-----------------------------------+-----------------------------------+
    | Unix, Cygwin                      | Windows                           |
@@ -279,10 +279,10 @@ Build with standard Tests
 
    The build takes about 10 minutes with tests on a standard development
    laptop. It should run through without errors, but with a lot of
-   messages from the build process. If build with tests (i.e. without
+   messages from the build process. If built with tests (i.e. without
    ``-DskipTests``), there will be error messages and stack trace prints
    from some tests. This is normal, as long as the build finishes
-   successful.
+   successfully.
 
 Build with all Tests
 --------------------
@@ -291,17 +291,17 @@ Build with all Tests
 
       Use Maven to for a standard build with *all* tests.
 
-   .. important::  
+   .. important::
       Some tests have specific timing Requirements.
-	  Some of the tests have very specific timing requirements. If run on a low-powered build machine, or if the build
-	  machine is on high load, those tests might fail and the whole build might fail as well. If this happens, reduce the load
-	  on your build machine and restart the build.
+      Some of the tests have very specific timing requirements. If run on a low-powered build machine, or if the build
+      machine is on high load, those tests might fail and the whole build might fail as well. If this happens, reduce the load
+      on your build machine and restart the build.
 
-   .. important::  
+   .. important::
       Might require specific software.
-	  When running all tests, some modules require specific software installed on the build machine. For instance,
-	  testing the full capabilities of context (with distribution and persistence) will require Hazelcast and Infinispan
-	  installed on the build machine.
+      When running all tests, some modules require specific software installed on the build machine. For instance,
+      testing the full capabilities of context (with distribution and persistence) will require Hazelcast and Infinispan
+      installed on the build machine.
 
    +----------------------------------------------+----------------------------------------------+
    | Unix, Cygwin                                 | Windows                                      |
@@ -324,12 +324,12 @@ Build with all Components
    .. container:: paragraph
 
       A standard APEX build will not build all components. Some parts
-      are for specific deployments, only. Use Maven to for a standard
+      are for specific deployments, only. Use Maven for a standard
       build with *all* components.
 
-   .. important:: 
+   .. important::
       Might require specific software.
-	  When building all components, some modules require specific software installed on the build machine.
+      When building all components, some modules require specific software to be installed on the build machine.
 
    +----------------------------------------------+----------------------------------------------+
    | Unix, Cygwin                                 | Windows                                      |
@@ -352,15 +352,15 @@ Build the APEX Documentation
 
    .. container:: paragraph
 
-      The APEX Maven build also includes stand-alone documentations,
+      The APEX Maven build also includes stand-alone documentation,
       such as the HowTo documents, the Installation Guide, and the User
       Manual. Use Maven to build the APEX Documentation. The Maven
-      options ``-N`` prevents Maven to go through all APEX modules,
+      option ``-N`` prevents Maven from going through all APEX modules,
       which is not necessary for the documentation. The final documents
       will be in ``target/generated-docs`` (Windows:
       ``target\generated-docs``). The *HTML* documents are in the
       ``html/`` folder, the *PDF* documents are in the ``pdf/`` folder.
-      Once the documentation is build, copy the *HTML* and *PDF*
+      Once the documentation is built, copy the *HTML* and *PDF*
       documents to a folder of choice
 
    +-------------------------------------------------------+--------------------------------------------------------+
@@ -400,11 +400,11 @@ Build APEX Site
       Once the web site is staged, copy the full site to a folder of
       choice or into a web server.
 
-   .. important::  
+   .. important::
       Building a Site takes Time.
-	  Building and staging the APEX web site can take very long. The stand-alone documentation will take about 2 minutes. The
-	  sites for all modules and projects and the main APEX site can take between 10-30 minutes depending on your build machine (~10 minutes
-	  without generating source and test-source reports, closer to 30 minutes with all reports).
+      Building and staging the APEX web site can take very long. The stand-alone documentation will take about 2 minutes. The
+      sites for all modules and projects and the main APEX site can take between 10-30 minutes depending on your build machine (~10 minutes
+      without generating source and test-source reports, closer to 30 minutes with all reports).
 
    .. container:: paragraph
 
@@ -450,7 +450,7 @@ Build APEX Site
 
       #. Next run a simple install without tests
 
-      #. Now generate the APEX stand -alone documentation, they are in
+      #. Now generate the APEX stand-alone documentation, they are in
          the local package only so we can use the *-N* switch
 
       #. Last build the actual sites and stage (copy to the staging
@@ -577,7 +577,7 @@ Java coding Rules
 
                   -  Javadoc for *all* methods
 
-            -  All project must build with all tests on Unix, Windows,
+            -  All projects must build with all tests on Unix, Windows,
                *and* Cygwin
 
                .. container:: ulist
@@ -651,7 +651,7 @@ Configure Eclipse
 
                .. container:: olist arabic
 
-                  #. Eclipse  Window  Preferences  Java  Code Style 
+                  #. Eclipse  Window  Preferences  Java  Code Style
                      Clean Up → Import…​
 
                   #. Select your template file
@@ -661,7 +661,7 @@ Configure Eclipse
 
                .. container:: olist arabic
 
-                  #. Eclipse  Window  Preferences  Java  Code Style 
+                  #. Eclipse  Window  Preferences  Java  Code Style
                      Code Templates → Import…​
 
                   #. Select your templates file
@@ -680,7 +680,7 @@ Configure Eclipse
 
                .. container:: olist arabic
 
-                  #. Eclipse  Window  Preferences  Java  Code Style 
+                  #. Eclipse  Window  Preferences  Java  Code Style
                      Formatter → Import…​
 
                   #. Select your formatter profile file
@@ -1012,8 +1012,8 @@ Using JAutodoc
                package to do all files) and right click JAutodoc  Add
                Header
 
-            #. To add JAutodoc stubs to a files, select on a file (or on
-               the package to do all files) and right click JAutodoc 
+            #. To add JAutodoc stubs to files, select on a file (or on
+               the package to do all files) and right click JAutodoc
                Add Javadoc
 
 Using Checkstyle
@@ -1091,7 +1091,7 @@ Disable Eclipse Formatting (partially)
 
             #. Ensure that Off/On Tags are enabled in Eclipse
 
-            #. In Eclipse  Window  Preferences  Java  Code Style 
+            #. In Eclipse  Window  Preferences  Java  Code Style
                Formatter window press Edit…​
 
             #. Click on the *Off/On Tags* tab
@@ -1180,7 +1180,7 @@ CLI Example
 
          .. container:: paragraph
 
-            No use the provided ``CliOptions`` and ``CliParser``.
+            Now use the provided ``CliOptions`` and ``CliParser``.
             Manually importing means to add the following lines to the
             start of your application (in Eclipse this import will be
             done automatically):
@@ -1383,12 +1383,12 @@ Autoversioning an Application
 
    .. container:: paragraph
 
-      The APEX utilities project provides means to versioning an
-      application automatically towards the APEX version it is written
-      for. This is realized by generating a file called
+      The APEX utilities project provides a means to version an
+      application automatically towards the APEX version for which it is
+      written. This is realized by generating a file called
       ``app-version.txt`` that includes the Maven project version. This
       file is then automatically deployed in the folder ``etc`` of a
-      full APEX distribution. The CLI Parser here provides a mthod to
+      full APEX distribution. The CLI Parser here provides a method to
       access this version for an application.
 
    .. container:: paragraph

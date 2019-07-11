@@ -135,7 +135,7 @@ Get the APEX Source Code
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
                      :number-lines:
 
                      git clone https://gerrit.onap.org/r/policy/apex-pdp
@@ -156,26 +156,26 @@ Build APEX
 
       -  Cygwin: ``/cygdrive/c/dev/apex-pdp``
 
-   .. important:: 
+   .. important::
       A Build requires ONAP Nexus
-	  APEX has a dependency to ONAP parent projects. You might need to adjust your Maven M2 settings. The most current 
-	  settings can be found in the ONAP oparent repo: `Settings <https://git.onap.org/oparent/plain/settings.xml>`__.
+      APEX has a dependency to ONAP parent projects. You might need to adjust your Maven M2 settings. The most current
+      settings can be found in the ONAP oparent repo: `Settings <https://git.onap.org/oparent/plain/settings.xml>`__.
 
-   .. important:: 
-      A Build needs Space 
-	  Building APEX requires approximately 2-3 GB of hard disc space, 1 GB for the actual build with full   
-      distribution and 1-2 GB for the downloaded dependencies 
+   .. important::
+      A Build needs Space
+      Building APEX requires approximately 2-3 GB of hard disc space, 1 GB for the actual build with full
+      distribution and 1-2 GB for the downloaded dependencies
 
-   .. important:: 
+   .. important::
       A Build requires Internet (for first build)
-	  During the build, several (a lot) of Maven dependencies will be downloaded and stored in the configured local Maven
-	  repository. The first standard build (and any first specific build) requires Internet access to download those
-	  dependencies. 
+      During the build, several (a lot) of Maven dependencies will be downloaded and stored in the configured local Maven
+      repository. The first standard build (and any first specific build) requires Internet access to download those
+      dependencies.
 
-   .. important::  
+   .. important::
       Building RPM distributions
-	  RPM images are only build if the ``rpm`` package is installed (Unix). To install  ``rpm`` run ``sudo apt-get install rpm``,
-	  then build APEX. 
+      RPM images are only build if the ``rpm`` package is installed (Unix). To install  ``rpm`` run ``sudo apt-get install rpm``,
+      then build APEX.
 
    .. container:: paragraph
 
@@ -188,7 +188,7 @@ Build APEX
       |                                                       |                                                        |
       |    .. container:: content                             |    .. container:: content                              |
       |                                                       |                                                        |
-      |       .. code::                                       |       .. code::                                        |
+      |       .. code::                                      |       .. code::                                       |
       |         :number-lines:                                |         :number-lines:                                 |
       |                                                       |                                                        |
       |         # cd /usr/local/src/apex-pdp                  |          >c:                                           |
@@ -211,7 +211,7 @@ Build APEX
 
    .. container:: content
 
-      .. code:: 
+      .. code::
         :number-lines:
 
         [INFO] tools .............................................. SUCCESS [  0.248 s]
@@ -243,7 +243,7 @@ Build APEX
 |                                                                                                                            |
 |       .. container:: content                                                                                               |
 |                                                                                                                            |
-|          .. code::                                                                                                         |
+|          .. code::                                                                                                        |
 |             :number-lines:                                                                                                 |
 |                                                                                                                            |
 |             -rwxrwx---+ 1 esvevan Domain Users       772 Sep  3 11:55 apex-pdp-package-full_2.0.0~SNAPSHOT_all.changes*    |
@@ -272,7 +272,7 @@ Build APEX
 |                                                                                                        |
 |       .. container:: content                                                                           |
 |                                                                                                        |
-|          .. code::                                                                                     |
+|          .. code::                                                                                    |
 |             :number-lines:                                                                             |
 |                                                                                                        |
 |                03/09/2018  11:55    <DIR>          .                                                   |
@@ -341,7 +341,7 @@ Install with RPM and DPKG
          |                                                                       |
          |       .. container:: content                                          |
          |                                                                       |
-         |          .. code::                                                    |
+         |          .. code::                                                   |
          |             :number-lines:                                            |
          |                                                                       |
          |             # sudo rpm -i apex-pdp-package-full-2.0.0-SNAPSHOT.rpm    |
@@ -364,10 +364,10 @@ Install with RPM and DPKG
 |                                                                                      |
 |       .. container:: content                                                         |
 |                                                                                      |
-|          .. code::                                                                   |
-|             :number-lines:                                                           | 
+|          .. code::                                                                  |
+|             :number-lines:                                                           |
 |                                                                                      |
-|             # sudo dpkg -i apex-pdp-package-full-2.0.0-SNAPSHOT.deb                  |            
+|             # sudo dpkg -i apex-pdp-package-full-2.0.0-SNAPSHOT.deb                  |       
 |             Selecting previously unselected package apex-uservice.                   |
 |             (Reading database ... 288458 files and directories currently installed.) |
 |             Preparing to unpack apex-pdp-package-full-2.0.0-SNAPSHOT.deb ...         |
@@ -402,7 +402,7 @@ Install Manually from Archive (Unix, Cygwin)
 
       .. container:: content
 
-         .. code:: 
+         .. code::
             :number-lines:
 
             # cd /opt
@@ -466,7 +466,7 @@ Install Manually from Archive (Windows, 7Zip, CMD)
 
       .. container:: content
 
-         .. code:: 
+         .. code::
            :number-lines:
 
             >c:
@@ -492,10 +492,10 @@ Build and Install Manually (Unix, Windows, Cygwin)
          from the created artifacts (``rpm``, ``deb``, ``tar.gz``, or
          copying manually).
 
-      .. important::  
-	     Building RPM distributions 
-		 RPM images are only build if the ``rpm`` package is installed (Unix). To install ``rpm`` run
-		 ``sudo apt-get install rpm``, then build APEX.  
+      .. important::
+         Building RPM distributions
+         RPM images are only build if the ``rpm`` package is installed (Unix). To install ``rpm`` run
+         ``sudo apt-get install rpm``, then build APEX.
 
       .. container:: paragraph
 
@@ -509,14 +509,14 @@ Build and Install Manually (Unix, Windows, Cygwin)
 
          -  Windows: ``C:\dev\apex``
 
-    	 +-------------------------------------------------------+--------------------------------------------------------+
+         +-------------------------------------------------------+--------------------------------------------------------+
          | Unix, Cygwin                                          | Windows                                                |
          +=======================================================+========================================================+
          | .. container::                                        | .. container::                                         |
          |                                                       |                                                        |
          |    .. container:: content                             |    .. container:: content                              |
          |                                                       |                                                        |
-         |       .. code::                                       |       .. code::                                        |
+         |       .. code::                                      |       .. code::                                       |
          |         :number-lines:                                |         :number-lines:                                 |
          |                                                       |                                                        |
          |         # cd /usr/local/src/apex                      |         >c:                                            |
@@ -542,7 +542,7 @@ Build and Install Manually (Unix, Windows, Cygwin)
 
    .. container:: content
 
-      .. code:: 
+      .. code::
          :number-lines:
 
          [INFO] tools .............................................. SUCCESS [  0.248 s]
@@ -572,7 +572,7 @@ Build and Install Manually (Unix, Windows, Cygwin)
 |                                                                                                                             |
 |    .. container:: listingblock                                                                                              |
 |                                                                                                                             |
-|          .. code::                                                                                                          |
+|          .. code::                                                                                                         |
 |            :number-lines:                                                                                                   |
 |                                                                                                                             |
 |            # cd packages/apex-pdp-package-full/target                                                                       |
@@ -601,7 +601,7 @@ Build and Install Manually (Unix, Windows, Cygwin)
 |                                                                                                                             |
 |    .. container:: listingblock                                                                                              |
 |                                                                                                                             |
-|          .. code::                                                                                                          |
+|          .. code::                                                                                                         |
 |            :number-lines:                                                                                                   |
 |                                                                                                                             |
 |            >cd packages\apex-pdp-package-full\target                                                                        |
@@ -760,7 +760,7 @@ APEX User and Group
 
             .. container:: content
 
-               .. code:: 
+               .. code::
                   :number-lines:
 
                   # sudo groupadd apexuser
@@ -802,36 +802,36 @@ Environment Settings: APEX_HOME and APEX_USER
    |                                                |                                                         |
    |    .. container:: content                      |    .. container:: content                               |
    |                                                |                                                         |
-   |       .. code::                                |       .. code::                                         |
+   |       .. code::                               |       .. code::                                        |
    |          :number-lines:                        |         :number-lines:                                  |
    |                                                |                                                         |
    |          # export APEX_USER=apexuser           |         >set APEX_HOME=C:\apex\apex-full-2.0.0-SNAPSHOT |
    |          # cd /opt/app/policy/apex-pdp         |                                                         |
-   |          # export APEX_HOME=`pwd`              |                                                         | 
+   |          # export APEX_HOME=`pwd`              |                                                         |
    |                                                |                                                         |
    +------------------------------------------------+                                                         |
    | .. container::                                 |                                                         |
    |                                                |                                                         |
    |    .. container:: content                      |                                                         |
    |                                                |                                                         |
-   |       .. code:: tcsh                           |                                                         |
+   |       .. code::tcsh                           |                                                         |
    |          :number-lines:                        |                                                         |
    |                                                |                                                         |
    |          # setenv APEX_USER apexuser           |                                                         |
    |          # cd /opt/app/policy/apex-pdp         |                                                         |
-   |          # setenv APEX_HOME `pwd`              |                                                         | 
+   |          # setenv APEX_HOME `pwd`              |                                                         |
    |                                                |                                                         |
    +------------------------------------------------+---------------------------------------------------------+
    | .. container::                                 | .. container::                                          |
    |                                                |                                                         |
    |    .. container:: content                      |    .. container:: content                               |
    |                                                |                                                         |
-   |       .. code::                                |       .. code::                                         |
+   |       .. code::                               |       .. code::                                        |
    |          :number-lines:                        |          :number-lines:                                 |
    |                                                |                                                         |
    |          # env | grep APEX                     |          >set APEX_HOME                                 |
    |          # APEX_USER=apexuser                  |          APEX_HOME=\apex\apex-full-2.0.0-SNAPSHOT       |
-   |          # APEX_HOME=/opt/app/policy/apex-pdp  |                                                         | 
+   |          # APEX_HOME=/opt/app/policy/apex-pdp  |                                                         |
    |                                                |                                                         |
    +------------------------------------------------+---------------------------------------------------------+
 
@@ -949,7 +949,7 @@ Create Directories for Logging
    |                                                                  |                                                       |
    |    .. container:: content                                        |    .. container:: content                             |
    |                                                                  |                                                       |
-   |       .. code::                                                  |       .. code::                                       |
+   |       .. code::                                                 |       .. code::                                      |
    |         :number-lines:                                           |         :number-lines:                                |
    |                                                                  |                                                       |
    |         mkdir -p /var/log/onap/policy/apex-pdp                   |         >mkdir C:\apex\apex-full-2.0.0-SNAPSHOT\logs  |
@@ -981,7 +981,7 @@ Verify Installation - run Engine
 
          .. container:: content
 
-            .. code:: 
+            .. code::
                :number-lines:
 
                Starting Apex service with parameters [] . . .
@@ -1021,12 +1021,12 @@ Verify Installation - run an Example
 
       .. container:: content
 
-         .. code:: 
+         .. code::
                 :number-lines:
 
- 	        # $APEX_HOME/bin/apexEngine.sh -c $APEX_HOME/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (1)
- 	        # $APEX_HOME/bin/apexEngine.sh -c C:/apex/apex-full-2.0.0-SNAPSHOT/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (2)
- 	        >%APEX_HOME%\bin\apexEngine.bat -c %APEX_HOME%\examples\config\SampleDomain\Stdin2StdoutJsonEventJava.json :: (3)
+             # $APEX_HOME/bin/apexEngine.sh -c $APEX_HOME/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (1)
+             # $APEX_HOME/bin/apexEngine.sh -c C:/apex/apex-full-2.0.0-SNAPSHOT/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (2)
+             >%APEX_HOME%\bin\apexEngine.bat -c %APEX_HOME%\examples\config\SampleDomain\Stdin2StdoutJsonEventJava.json :: (3)
 
 .. container:: colist arabic
 
@@ -1048,7 +1048,7 @@ Verify Installation - run an Example
 
    .. container:: content
 
-      .. code:: 
+      .. code::
          :number-lines:
 
          Starting Apex service with parameters [-c, v:/dev/ericsson/apex/onap/apex-pdp/packages/apex-pdp-package-full/target/install_hierarchy/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json] . . .
@@ -1092,7 +1092,7 @@ Verify Installation - run an Example
 |                                                             |                                                             |
 |    .. container:: content                                   |    .. container:: content                                   |
 |                                                             |                                                             |
-|       .. code::                                             |       .. code::                                             |
+|       .. code::                                            |       .. code::                                            |
 |         :number-lines:                                      |         :number-lines:                                      |
 |                                                             |                                                             |
 |         {                                                   |         {                                                   |
@@ -1134,7 +1134,7 @@ Verify a Full Installation - REST Editor
 
       .. container:: content
 
-         .. code:: 
+         .. code::
             :number-lines:
 
             # $APEX_HOME/bin/apexApps.sh rest-editor
@@ -1143,7 +1143,7 @@ Verify a Full Installation - REST Editor
 
    .. container:: content
 
-      .. code:: 
+      .. code::
             :number-lines:
 
             >%APEX_HOME%\bin\apexApps.bat rest-editor
@@ -1160,7 +1160,7 @@ Verify a Full Installation - REST Editor
 
    .. container:: content
 
-      .. code:: 
+      .. code::
          :number-lines:
 
          Apex Editor REST endpoint (ApexEditorMain: Config=[ApexEditorParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=READY) starting at http://localhost:18989/apexservices/ . . .
@@ -1343,7 +1343,7 @@ Build a Docker Image
 
          .. container:: content
 
-            .. code:: 
+            .. code::
                :number-lines:
 
                #
@@ -1437,7 +1437,7 @@ General Configuration Format
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   {
                     "engineServiceParameters":{
@@ -1528,7 +1528,7 @@ Engine Service Parameters
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   "engineServiceParameters" : {
                     "name"          : "AADMApexEngine", (1)
@@ -1684,7 +1684,7 @@ Input and Output Interfaces
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   "eventInputParameters": { (1)
                     "FirstConsumer": { (2)
@@ -1796,7 +1796,7 @@ Event Filters
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "eventInputParameters": {
                        "Input1": {
@@ -1866,7 +1866,7 @@ Configure the Javascript Executor
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "engineServiceParameters":{
                        "engineParameters":{
@@ -1891,7 +1891,7 @@ Configure the Jython Executor
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "engineServiceParameters":{
                        "engineParameters":{
@@ -1916,7 +1916,7 @@ Configure the JRuby Executor
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "engineServiceParameters":{
                        "engineParameters":{
@@ -1941,7 +1941,7 @@ Configure the Java Executor
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "engineServiceParameters":{
                        "engineParameters":{
@@ -1966,7 +1966,7 @@ Configure the MVEL Executor
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "engineServiceParameters":{
                        "engineParameters":{
@@ -2016,7 +2016,7 @@ Configure AVRO Schema Handler
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "engineServiceParameters":{
                        "engineParameters":{
@@ -2193,7 +2193,7 @@ Standard Output
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "FILE", (1)
@@ -2231,7 +2231,7 @@ File Input
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "FILE", (1)
@@ -2260,7 +2260,7 @@ File Output
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "FILE", (1)
@@ -2297,7 +2297,7 @@ Event Requestor Input
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology": "EVENT_REQUESTOR" (1)
@@ -2320,7 +2320,7 @@ Event Requestor Output
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology": "EVENT_REQUESTOR" (1)
@@ -2342,7 +2342,7 @@ Peering Event Requestors
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "eventInputParameters": {
                           "EventRequestorConsumer": {
@@ -2442,7 +2442,7 @@ Kafka Input
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "KAFKA", (1)
@@ -2500,7 +2500,7 @@ Kafka Output
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "KAFKA", (1)
@@ -2570,7 +2570,7 @@ JMS Input
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "JMS", (1)
@@ -2629,7 +2629,7 @@ JMS Output with Text
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "JMS", (1)
@@ -2730,7 +2730,7 @@ Websocket Client
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "WEBSOCKET", (1)
@@ -2768,7 +2768,7 @@ Websocket Server
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "WEBSOCKET", (1)
@@ -2817,7 +2817,7 @@ REST Client Input
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "RESTCLIENT", (1)
@@ -2851,7 +2851,7 @@ REST Client Output
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "RESTCLIENT", (1)
@@ -2961,7 +2961,7 @@ REST Server Stand-alone
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "eventInputParameters": {
                           "MyConsumer": {
@@ -3016,7 +3016,7 @@ REST Server Stand-alone
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "eventOutputParameters": {
                           "MyProducer": {
@@ -3066,7 +3066,7 @@ REST Server Stand-alone in Servlet
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         <servlet>
                           ...
@@ -3098,7 +3098,7 @@ REST Requestor Input
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters": {
                           "carrierTechnology": "RESTREQUESTOR", (1)
@@ -3131,7 +3131,7 @@ REST Requestor Input
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "eventName": "GuardResponseEvent", (1)
                         "eventNameFilter": "GuardResponseEvent", (2)
@@ -3165,7 +3165,7 @@ REST Requestor Output
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "carrierTechnologyParameters": {
                           "carrierTechnology": "RESTREQUESTOR", (1)
@@ -3187,7 +3187,7 @@ REST Requestor Output
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "eventNameFilter": "GuardRequestEvent", (1)
                         "requestorMode": true, (2)
@@ -3287,7 +3287,7 @@ JSON Event
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "eventProtocolParameters":{
                        "eventProtocol" : "JSON"
@@ -3310,7 +3310,7 @@ JSON Event
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "eventProtocolParameters":{
                        "eventProtocol" : "JSON",
@@ -3366,7 +3366,7 @@ APEX Event
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "eventProtocolParameters":{
                        "eventProtocol" : "APEX"
@@ -3400,7 +3400,7 @@ JMS Text
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "eventProtocolParameters":{
                           "eventProtocol" : "JMSTEXT",
@@ -3427,7 +3427,7 @@ JMS Object
 
                   .. container:: content
 
-                     .. code:: 
+                     .. code::
 
                         "eventProtocolParameters":{
                           "eventProtocol" : "JMSOBJECT",
@@ -3462,7 +3462,7 @@ YAML Event
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "eventProtocolParameters":{
                        "eventProtocol" : "XML",
@@ -3496,7 +3496,7 @@ XML Event
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      "eventProtocolParameters":{
                        "eventProtocol" : "XML",
@@ -3524,7 +3524,7 @@ A configuration example
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   {
                     "engineServiceParameters" : {
@@ -3744,7 +3744,7 @@ The APEX Engine
          |                                                        |                                                          |
          |       .. container:: content                           |       .. container:: content                             |
          |                                                        |                                                          |
-         |          .. code::                                     |          .. code::                                       |
+         |          .. code::                                    |          .. code::                                      |
          |                                                        |                                                          |
          |             # $APEX_HOME/bin/apexEngine.sh [args]      |             > %APEX_HOME%\bin\apexEngine.bat [args]      |
          |             # $APEX_HOME/bin/apexApps.sh engine [args] |             > %APEX_HOME%\bin\apexApps.bat engine [args] |
@@ -3763,7 +3763,7 @@ The APEX Engine
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   usage: org.onap.policy.apex.service.engine.main.ApexMain [options...]
                   options
@@ -3837,7 +3837,7 @@ The APEX CLI Editor
          |                                                            |                                                              |
          |       .. container:: content                               |       .. container:: content                                 |
          |                                                            |                                                              |
-         |          .. code::                                         |          .. code::                                           |
+         |          .. code::                                        |          .. code::                                          |
          |                                                            |                                                              |
          |             # $APEX_HOME/bin/apexCLIEditor.sh.sh [args]    |             > %APEX_HOME%\bin\apexCLIEditor.bat [args]       |
          |             # $APEX_HOME/bin/apexApps.sh cli-editor [args] |             > %APEX_HOME%\bin\apexApps.bat cli-editor [args] |
@@ -3852,7 +3852,7 @@ The APEX CLI Editor
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   usage: org.onap.policy.apex.auth.clieditor.ApexCLIEditorMain [options...]
                   options
@@ -3924,7 +3924,7 @@ The APEX REST Editor
          |                                                             |                                                               |
          |       .. container:: content                                |       .. container:: content                                  |
          |                                                             |                                                               |
-         |          .. code::                                          |          .. code::                                            |
+         |          .. code::                                         |          .. code::                                           |
          |                                                             |                                                               |
          |             # $APEX_HOME/bin/apexRESTEditor.sh.sh [args]    |             > %APEX_HOME%\bin\apexRESTEditor.bat [args]       |
          |             # $APEX_HOME/bin/apexApps.sh rest-editor [args] |             > %APEX_HOME%\bin\apexApps.bat rest-editor [args] |
@@ -3939,7 +3939,7 @@ The APEX REST Editor
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   usage: org.onap.policy.apex.client.editor.rest.ApexEditorMain [options...]
                   -h,--help                        outputs the usage of this command
@@ -3958,7 +3958,7 @@ The APEX REST Editor
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   Apex Editor REST endpoint (ApexEditorMain: Config=[ApexEditorParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=READY) starting at http://localhost:18989/apexservices/ . . .
                   Sep 05, 2018 11:24:30 PM org.glassfish.grizzly.http.server.NetworkListener start
@@ -4012,7 +4012,7 @@ The APEX Monitoring Client
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   usage: org.onap.policy.apex.client.monitoring.rest.ApexMonitoringRestMain [options...]
                   -h,--help                        outputs the usage of this command
@@ -4028,7 +4028,7 @@ The APEX Monitoring Client
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   Apex Services REST endpoint (ApexMonitoringRestMain: Config=[ApexMonitoringRestParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=READY) starting at http://localhost:18989/apexservices/ . . .
                   Sep 05, 2018 11:26:20 PM org.glassfish.grizzly.http.server.NetworkListener start
@@ -4082,7 +4082,7 @@ The APEX Deployment Client
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   usage: org.onap.policy.apex.client.deployment.rest.ApexDeploymentRestMain [options...]
                   -h,--help                        outputs the usage of this command
@@ -4098,7 +4098,7 @@ The APEX Deployment Client
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   Apex Services REST endpoint (ApexDeploymentRestMain: Config=[ApexDeploymentRestParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=READY) starting at http://localhost:18989/apexservices/ . . .
                   Sep 05, 2018 11:27:09 PM org.glassfish.grizzly.http.server.NetworkListener start
@@ -4155,7 +4155,7 @@ The APEX Full Client
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   usage: org.onap.policy.apex.client.full.rest.ApexServicesRestMain [options...]
                   -h,--help                        outputs the usage of this command
@@ -4171,7 +4171,7 @@ The APEX Full Client
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   Apex Editor REST endpoint (ApexServicesRestMain: Config=[ApexServicesRestParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=READY) starting at http://localhost:18989/apexservices/ . . .
                   Sep 05, 2018 11:28:28 PM org.glassfish.grizzly.http.server.NetworkListener start
@@ -4226,7 +4226,7 @@ The APEX Full Client
          |                                                 |                                                   |
          |       .. container:: content                    |       .. container:: content                      |
          |                                                 |                                                   |
-         |          .. code::                              |          .. code::                                |
+         |          .. code::                             |          .. code::                               |
          |                                                 |                                                   |
          |             # $APEX_HOME/bin/apexApps.sh [args] |             > %APEX_HOME%\bin\apexApps.bat [args] |
          +-------------------------------------------------+---------------------------------------------------+
@@ -4240,7 +4240,7 @@ The APEX Full Client
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   apexApps.sh - runs APEX applications
 
@@ -4260,7 +4260,7 @@ The APEX Full Client
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   apexApps.sh: supported applications:
                    --> ws-echo engine eng-monitoring full-client eng-deployment tpl-event-json model-2-cli rest-editor cli-editor ws-console
@@ -4274,7 +4274,7 @@ The APEX Full Client
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   apexApps.sh: application 'ws-console'
                    --> a simple console sending events to APEX, connect to APEX consumer port
@@ -4290,7 +4290,7 @@ The APEX Full Client
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   apexApps.sh ws-echo -p 8888
 
@@ -4320,7 +4320,7 @@ Application: Create Event Templates
          |                                                                |                                                                  |
          |       .. container:: content                                   |       .. container:: content                                     |
          |                                                                |                                                                  |
-         |          .. code::                                             |          .. code::                                               |
+         |          .. code::                                            |          .. code::                                              |
          |                                                                |                                                                  |
          |             # $APEX_HOME/bin/apexApps.sh tpl-event-json [args] |             > %APEX_HOME%\bin\apexApps.bat tpl-event-json [args] |
          +----------------------------------------------------------------+------------------------------------------------------------------+
@@ -4333,7 +4333,7 @@ Application: Create Event Templates
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   gen-model2event v{release-version} - generates JSON templates for events generated from a policy model
                   usage: gen-model2event
@@ -4355,7 +4355,7 @@ Application: Create Event Templates
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   apexApps.sh tpl-event-json -m $APEX_HOME/examples/models/SampleDomain/SamplePolicyModelJAVA.json -t stimuli
 
@@ -4367,7 +4367,7 @@ Application: Create Event Templates
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   gen-model2event: starting Event generator
                    --> model file: examples/models/SampleDomain/SamplePolicyModelJAVA.json
@@ -4407,7 +4407,7 @@ Application: Create Event Templates
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   {
                           "name" : "Event0000",
@@ -4444,7 +4444,7 @@ Application: Convert a Policy Model to CLI Editor Commands
          |                                                             |                                                               |
          |       .. container:: content                                |       .. container:: content                                  |
          |                                                             |                                                               |
-         |          .. code::                                          |          .. code::                                            |
+         |          .. code::                                         |          .. code::                                           |
          |                                                             |                                                               |
          |             # $APEX_HOME/bin/apexApps.sh model-2-cli [args] |             > %APEX_HOME%\bin\apexApps.bat model-2-cli [args] |
          +-------------------------------------------------------------+---------------------------------------------------------------+
@@ -4457,7 +4457,7 @@ Application: Convert a Policy Model to CLI Editor Commands
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   usage: gen-model2cli
                    -h,--help                 prints this help and usage screen
@@ -4474,7 +4474,7 @@ Application: Convert a Policy Model to CLI Editor Commands
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   apexApps.sh model-2-cli -m $APEX_HOME/examples/models/SampleDomain/SamplePolicyModelJAVA.json
 
@@ -4486,7 +4486,7 @@ Application: Convert a Policy Model to CLI Editor Commands
 
             .. container:: content
 
-               .. code:: 
+               .. code::
 
                   gen-model2cli: starting CLI generator
                    --> model file: examples/models/SampleDomain/SamplePolicyModelJAVA.json
@@ -4520,7 +4520,7 @@ Application: Websocket Clients (Echo and Console)
          |                                                            |                                                              |
          |       .. container:: content                               |       .. container:: content                                 |
          |                                                            |                                                              |
-         |          .. code::                                         |          .. code::                                           |
+         |          .. code::                                        |          .. code::                                          |
          |                                                            |                                                              |
          |             # $APEX_HOME/bin/apexApps.sh ws-echo [args]    |             > %APEX_HOME%\bin\apexApps.bat ws-echo [args]    |
          |             # $APEX_HOME/bin/apexApps.sh ws-console [args] |             > %APEX_HOME%\bin\apexApps.bat ws-console [args] |
@@ -4942,32 +4942,32 @@ Create the input event ``SALE_INPUT`` and the output event ``SALE_AUTH``
                parameter fields.
 
             .. tip
-			
-			   .. container:: title
-			   
-			      Field Schema types                                        
-               
-			   .. container:: paragraph
-			   
-			      APEX natively supports schema definitions in ``Java`` and ``Avro``.                                                 
-			                                                                
-			   .. container:: paragraph                                     
-			                                                                
-			      ``Java`` schema definitions are simply the name of a Java Class. There are some restrictions:                                             
-			                                                                
-			   .. container:: ulist                                         
-			                                                                
-			      -  the class must be instantiatable, i.e. not an Java interface or abstract class                                                  
-			                                                                
-			      -  primitive types are not supported, i.e. use ``java.lang.Integer`` instead of ``int``, etc.                               
-			                                                                
-			      -  it must be possible to find the class, i.e. the class must be contained in the Java classpath.                                        
-			                                                                
-			   .. container:: paragraph                                     
-			                                                                
-			      ``Avro`` schema definitions can be any valid `Avro <https://avro.apache.org/docs/current/spec.html>`__ 
-			      schema. For events using fields defined with ``Avro`` schemas, any incoming event containing that field must                                
-			      contain a value that conforms to the Avro schema.                                       
+
+               .. container:: title
+
+                  Field Schema types       
+
+               .. container:: paragraph
+
+                  APEX natively supports schema definitions in ``Java`` and ``Avro``.
+                                                                            
+               .. container:: paragraph
+
+                  ``Java`` schema definitions are simply the name of a Java Class. There are some restrictions:
+
+               .. container:: ulist
+
+                  -  the class must be instantiatable, i.e. not an Java interface or abstract class
+
+                  -  primitive types are not supported, i.e. use ``java.lang.Integer`` instead of ``int``, etc.
+
+                  -  it must be possible to find the class, i.e. the class must be contained in the Java classpath.
+
+               .. container:: paragraph
+
+                  ``Avro`` schema definitions can be any valid `Avro <https://avro.apache.org/docs/current/spec.html>`__
+                  schema. For events using fields defined with ``Avro`` schemas, any incoming event containing that field must
+                  contain a value that conforms to the Avro schema.
 
             .. container:: paragraph
 
@@ -5004,10 +5004,10 @@ Create the input event ``SALE_INPUT`` and the output event ``SALE_AUTH``
                the event definition pane.
 
             .. tip::
-			   Optional Fields in APEX Events
-			   Parameter fields can be *optional* in events. If a parameter is not marked as *optional* then by default it
-			   is *mandatory*, so it must appear in any input event passed to APEX. If an *optional* field is not set
-			   for an output event then value will be set to ``null``.
+               Optional Fields in APEX Events
+               Parameter fields can be *optional* in events. If a parameter is not marked as *optional* then by default it
+               is *mandatory*, so it must appear in any input event passed to APEX. If an *optional* field is not set
+               for an output event then value will be set to ``null``.
 
             .. container:: imageblock
 
@@ -5217,7 +5217,7 @@ Create a new Policy and add the *"No Booze before 11:30"* check
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      /*
                       * ============LICENSE_START=======================================================
@@ -5325,7 +5325,7 @@ Create a new Policy and add the *"No Booze before 11:30"* check
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      /*
                       * ============LICENSE_START=======================================================
@@ -5494,60 +5494,60 @@ Create a new Policy and add the *"No Booze before 11:30"* check
                default task is automatically selected and no 'Task
                Selection Logic' is required.
 
-            .. note:: 
-			   .. container:: title 
-			   
-			      State Output Mappings 
+            .. note::
+               .. container:: title
 
-               .. container:: paragraph                                             
+                  State Output Mappings
 
-			      In a 'Policy' 'State' a 'State Output Mapping' has 3 roles:      
-			      1) Select which 'State' should be executed next, 2) Select       
-			      the type of the state’s 'Outgoing Event', and 3)                 
-			      Populate the state’s 'Outgoing Event'. This is how states are    
-			      chained together to form a (`Directed Acyclic Graph              
-			      (DAG) <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__ )
-			      of states. The final state(s) of a policy are those that do      
-			      not select any 'next' state. Since a 'State' can only            
-			      accept a single type of event, the type of the event emitted     
-			      by a previous 'State' must be match the incoming event type      
-			      of the next 'State'. This is also how the last state(s) in       
-			      a policy can emit events of different types. The 'State          
-			      Output Mapping' is also responsible for taking the               
-			      fields that are output by the task executed in the state and     
-			      populating the state’s output event before it is emitted.        
-			                                                                     
-               .. container:: paragraph                                           
-			                                                                     
-			      Each 'Task' referenced in 'State' must have a defined            
-			      'Output Mapping' to take the output of the task, select an       
-			      'Outgoing Event' type for the state, populate the state’s        
-			      outgoing event, and then select the next state to be             
-			      executed (if any).                                               
-			                                                                     
-               .. container:: paragraph                                             
-			                                                                     
-			   There are 2 basic types of output mappings:                       
-			                                                                     
-               .. container:: olist arabic                                          
-			                                                                     
-			   #. **Direct Output Mappings** have a single value for             
-			      'Next State' and a single value for 'State Output              
-			      Event'. The outgoing event for the state is                    
-			      automatically created, any outgoing event parameters           
-			      that were present in the incoming event are copied             
-			      into the outgoing event, then any task output fields           
-			      that have the same name and type as parameters in the          
-			      outgoing event are automatically copied into                   
-			      the outgoing event.                                            
-			                                                                     
-			   #. **Logic-based State Output Mappings / Finalizers**             
-			      have some logic defined that dynamically selects               
-			      and creates the 'State Outgoing Event', manages                
-			      the population of the outgoing event parameters                
-			      (perhaps changing or adding to the outputs from the            
-			      task), and then dynamically selects the next state to          
-			      be executed (if any).                                          
+               .. container:: paragraph
+
+                  In a 'Policy' 'State' a 'State Output Mapping' has 3 roles:
+                  1) Select which 'State' should be executed next, 2) Select
+                  the type of the state’s 'Outgoing Event', and 3)
+                  Populate the state’s 'Outgoing Event'. This is how states are
+                  chained together to form a (`Directed Acyclic Graph
+                  (DAG) <https://en.wikipedia.org/wiki/Directed_acyclic_graph>`__ )
+                  of states. The final state(s) of a policy are those that do
+                  not select any 'next' state. Since a 'State' can only
+                  accept a single type of event, the type of the event emitted
+                  by a previous 'State' must be match the incoming event type
+                  of the next 'State'. This is also how the last state(s) in
+                  a policy can emit events of different types. The 'State
+                  Output Mapping' is also responsible for taking the
+                  fields that are output by the task executed in the state and
+                  populating the state’s output event before it is emitted.
+
+               .. container:: paragraph
+
+                  Each 'Task' referenced in 'State' must have a defined
+                  'Output Mapping' to take the output of the task, select an
+                  'Outgoing Event' type for the state, populate the state’s
+                  outgoing event, and then select the next state to be
+                  executed (if any).
+
+               .. container:: paragraph
+
+               There are 2 basic types of output mappings:
+
+               .. container:: olist arabic
+
+               #. **Direct Output Mappings** have a single value for
+                  'Next State' and a single value for 'State Output
+                  Event'. The outgoing event for the state is
+                  automatically created, any outgoing event parameters
+                  that were present in the incoming event are copied
+                  into the outgoing event, then any task output fields
+                  that have the same name and type as parameters in the
+                  outgoing event are automatically copied into
+                  the outgoing event.
+
+               #. **Logic-based State Output Mappings / Finalizers**
+                  have some logic defined that dynamically selects
+                  and creates the 'State Outgoing Event', manages
+                  the population of the outgoing event parameters
+                  (perhaps changing or adding to the outputs from the
+                  task), and then dynamically selects the next state to
+                  be executed (if any).
 
             .. container:: paragraph
 
@@ -5736,9 +5736,9 @@ Test Policy Step 1
                |                                          |                                           | olic      |
                |                                          |       .. container:: content              | item      |
                |       .. container:: content             |                                           | (``item_I |
-               |                                          |          .. code::                        | D=5123``) |
+               |                                          |          .. code::                       | D=5123``) |
                |                                          |                                           | at        |
-               |          .. code::                       |             {                             | *10:13:09 |
+               |          .. code::                      |             {                             | *10:13:09 |
                |                                          |               "name": "SALE_AUTH",        | *         |
                |                                          |                                           | on        |
                |             {                            |               "version": "0.0.1",         | *Tuesday, |
@@ -5769,7 +5769,7 @@ Test Policy Step 1
                |                                          |                                           | item      |
                |       .. container:: content             |       .. container:: content              | (``item_I |
                |                                          |                                           | D=1249``) |
-               |          .. code::                       |          .. code::                        | at        |
+               |          .. code::                      |          .. code::                       | at        |
                |                                          |                                           | *08:41:06 |
                |             {                            |             {                             | *         |
                |               "nameSpace": "com.hyperm", |               "nameSpace": "com.hyperm",  | on        |
@@ -5800,9 +5800,9 @@ Test Policy Step 1
                |                                          |                                           | (``item_I |
                |                                          |       .. container:: content              | D=1943``) |
                |       .. container:: content             |                                           | at        |
-               |                                          |          .. code::                        | *20:17:13 |
+               |                                          |          .. code::                       | *20:17:13 |
                |                                          |                                           | *         |
-               |          .. code::                       |             {                             | on        |
+               |          .. code::                      |             {                             | on        |
                |                                          |               "name": "SALE_AUTH",        | *Tuesday, |
                |             {                            |               "version": "0.0.1",         | 20        |
                |               "nameSpace": "com.hyperm", |               "nameSpace": "com.hyperm",  | December  |
@@ -5841,7 +5841,7 @@ Test Policy Step 1
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      #-------------------------------------------------------------------------------
                      # ============LICENSE_START=======================================================
@@ -6143,7 +6143,7 @@ Extend the Policy with the new Scenario
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      /*
                       * ============LICENSE_START=======================================================
@@ -6320,7 +6320,7 @@ Extend the Policy with the new Scenario
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      /*
                       * ============LICENSE_START=======================================================
@@ -6429,7 +6429,7 @@ Test Policy Step 2
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      {
                          "engineServiceParameters" : {
@@ -6500,10 +6500,10 @@ Test Policy Step 2
                |                                              |                                                            | at *08:41:06              |
                |                                              |       .. container:: content                               | GMT* on *Monday,          |
                |       .. container:: content                 |                                                            | 02 January                |        
-               |                                              |          .. code::                                         | 2017*.                    |
+               |                                              |          .. code::                                        | 2017*.                    |
                |                                              |                                                            |                           |
                |                                              |             {                                              | Sale is not               |    
-               |          .. code::                           |               "nameSpace": "com.hyperm",                   | authorized. Uses          |
+               |          .. code::                          |               "nameSpace": "com.hyperm",                   | authorized. Uses          |
                |                                              |               "name": "SALE_AUTH",                         | the                       |
                |                                              |               "version": "0.0.1",                          | ``MorningBoozeCheck``     |
                |             {                                |               "source": "",                                |                           |
@@ -6530,10 +6530,10 @@ Test Policy Step 2
                |                                              |                                                            | at *10:14:33* on          |
                |                                              |       .. container:: content                               | *Thursday, 22             |
                |       .. container:: content                 |                                                            | December 2016*.           |
-               |                                              |          .. code::                                         |                           |
+               |                                              |          .. code::                                        |                           |
                |                                              |                                                            | Sale is not               |
                |                                              |             {                                              | authorized. Uses          |
-               |          .. code::                           |               "nameSpace" : "com.hyperm",                  | the                       |
+               |          .. code::                          |               "nameSpace" : "com.hyperm",                  | the                       |
                |                                              |               "name" : "SALE_AUTH",                        | ``MorningBoozeCheckAlt1`` |
                |                                              |               "version" : "0.0.1",                         | task.                     |
                |             {                                |               "source" : "",                               |                           |
@@ -6561,10 +6561,10 @@ Test Policy Step 2
                |                                              |                                                            | at *17:19:37* on          |
                |                                              |       .. container:: content                               | *Sunday, 18               |
                |       .. container:: content                 |                                                            | December 2016*.           |
-               |                                              |          .. code::                                         |                           |
+               |                                              |          .. code::                                        |                           |
                |                                              |                                                            | Sale is not               |
                |                                              |             {                                              | authorized. Uses          |
-               |          .. code::                           |               "nameSpace" : "com.hyperm",                  | the                       |
+               |          .. code::                          |               "nameSpace" : "com.hyperm",                  | the                       |
                |                                              |                                                            | ``MorningBoozeCheckAlt1`` |
                |                                              |               "name" : "SALE_AUTH",                        | task.                     |
                |             {                                |                                                            |                           |
@@ -6594,10 +6594,10 @@ Test Policy Step 2
                |                                              |                                                            |                           |
                |                                              |       .. container:: content                               | at *11:13:09* on          |
                |       .. container:: content                 |                                                            | *Monday, 2                |
-               |                                              |          .. code::                                         | January 2017*.            |
+               |                                              |          .. code::                                        | January 2017*.            |
                |                                              |                                                            |                           |
                |                                              |             {                                              | Sale is                   |
-               |          .. code::                           |               "nameSpace" : "com.hyperm",                  | authorized. Uses          |
+               |          .. code::                          |               "nameSpace" : "com.hyperm",                  | authorized. Uses          |
                |                                              |               "name" : "SALE_AUTH",                        | the                       |
                |             {                                |               "version" : "0.0.1",                         | ``MorningBoozeCheckAlt1`` |
                |                "nameSpace": "com.hyperm",    |               "source" : "",                               | task.                     |
@@ -6633,7 +6633,7 @@ Policy 2 in CLI Editor
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
 
                      #-------------------------------------------------------------------------------
                      # ============LICENSE_START=======================================================
@@ -7053,7 +7053,7 @@ Standard Logging Configuration
 
             .. container:: content
 
-               .. code:: 
+               .. code::
                  :number-lines:
 
                  <configuration debug="false">
@@ -7075,7 +7075,7 @@ Standard Logging Configuration
 
    .. container:: content
 
-      .. code:: 
+      .. code::
         :number-lines:
 
         <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -7093,7 +7093,7 @@ Standard Logging Configuration
 
    .. container:: content
 
-      .. code:: 
+      .. code::
         :number-lines:
 
         <root level="info">
@@ -7109,7 +7109,7 @@ Standard Logging Configuration
 
    .. container:: content
 
-      .. code:: 
+      .. code::
         :number-lines:
 
         <appender name="FILE" class="ch.qos.logback.core.FileAppender">
@@ -7128,7 +7128,7 @@ Standard Logging Configuration
 
    .. container:: content
 
-      .. code:: 
+      .. code::
         :number-lines:
 
         <appender name="CTXT_FILE" class="ch.qos.logback.core.FileAppender">
@@ -7151,7 +7151,7 @@ Standard Logging Configuration
 
    .. container:: content
 
-      .. code:: 
+      .. code::
         :number-lines:
 
 
@@ -7176,7 +7176,7 @@ Adding Logback Status and Debug
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />
 
@@ -7190,7 +7190,7 @@ Adding Logback Status and Debug
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             <configuration debug="true">
             ...
@@ -7216,7 +7216,7 @@ Logging External Components
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             <logger name="org.infinispan" level="INFO" additivity="false">
               <appender-ref ref="STDOUT" />
@@ -7231,7 +7231,7 @@ Logging External Components
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             <logger name="org.apache.zookeeper.ClientCnxn" level="INFO" additivity="false">
               <appender-ref ref="STDOUT" />
@@ -7260,7 +7260,7 @@ Configuring loggers for Policy Logic
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             <appender name="POLICY_APPENDER_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
               <encoder>
@@ -7282,7 +7282,7 @@ Configuring loggers for Policy Logic
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             <logger name="org.onap.policy.apex.executionlogging.TaskExecutionLogging" level="TRACE" additivity="false">
               <appender-ref ref="POLICY_APPENDER_STDOUT" />
@@ -7309,7 +7309,7 @@ Rolling File Appenders
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
               <file>${VAR_LOG}/apex.log</file>
@@ -7340,7 +7340,7 @@ Rolling File Appenders
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             <appender name="CTXT-FILE"
                   class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -7378,7 +7378,7 @@ Example Configuration for Logging Logic
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             <configuration debug="false">
                 <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
@@ -7437,7 +7437,7 @@ Example Configuration for a Production Server
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             <configuration debug="false">
                 <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
@@ -7611,7 +7611,7 @@ A Websocket Configuration for the VPN Domain
 
                .. container:: content
 
-                  .. code:: 
+                  .. code::
                     :number-lines:
 
                     {
@@ -7674,7 +7674,7 @@ Start APEX Engine
 
       .. container:: content
 
-         .. code:: 
+         .. code::
             :number-lines:
 
             #: $APEX_HOME/bin/apexEngine.sh -c $APEX_HOME/examples/config/VPN/Ws2WsServerAvroContextJsonEvent.json
@@ -7683,7 +7683,7 @@ Start APEX Engine
 
    .. container:: content
 
-      .. code:: 
+      .. code::
         :number-lines:
 
         #: %APEX_HOME%\bin\apexEngine.bat -c %APEX_HOME%\examples\config\VPN\Ws2WsServerAvroContextJsonEvent.json
@@ -7700,7 +7700,7 @@ Start APEX Engine
 
    .. container:: content
 
-      .. code:: 
+      .. code::
         :number-lines:
 
          2017-07-28 13:17:20,834 Apex [main] INFO c.e.a.s.engine.runtime.EngineService - engine model VPNPolicyModelAvro:0.0.1 added to the engine-AxArtifactKey:(name=VPNApexEngine-0,version=0.0.1)
@@ -7725,7 +7725,7 @@ Run the Websocket Echo Client
 
    .. important::  
       APEX engine needs to run first
-	  The example assumes that an APEX engine configured for *produce* carrier technology Websocket and *JSON* event protocol is executed first.
+      The example assumes that an APEX engine configured for *produce* carrier technology Websocket and *JSON* event protocol is executed first.
 
    +---------------------------------------------------------+-----------------------------------------------------------+
    | Unix, Cygwin                                            | Windows                                                   |
@@ -7736,7 +7736,7 @@ Run the Websocket Echo Client
    |                                                         |                                                           |
    |       .. container:: content                            |       .. container:: content                              |
    |                                                         |                                                           |
-   |          .. code::                                      |          .. code::                                        |
+   |          .. code::                                     |          .. code::                                       |
    |                                                         |                                                           |
    |             # $APEX_HOME/bin/apexApps.sh ws-echo [args] |             > %APEX_HOME%\bin\apexApps.bat ws-echo [args] |
    +---------------------------------------------------------+-----------------------------------------------------------+
@@ -7768,7 +7768,7 @@ Run the Websocket Echo Client
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             # $APEX_HOME/bin/apexApps.sh ws-echo -p 42452 (1)
             > %APEX_HOME%\bin\apexApps.bat ws-echo -p 42452 (2)
@@ -7791,7 +7791,7 @@ Run the Websocket Echo Client
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             ws-simple-echo: starting simple event echo
              --> server: localhost
@@ -7815,8 +7815,8 @@ Run the Websocket Console Client
 
    .. important::  
       APEX engine needs to run first
-	  The example assumes that an APEX engine configured for *consume* carrier technology Websocket and *JSON* event
-	  protocol is executed first.
+      The example assumes that an APEX engine configured for *consume* carrier technology Websocket and *JSON* event
+      protocol is executed first.
 
    +------------------------------------------------------------+--------------------------------------------------------------+
    | Unix, Cygwin                                               | Windows                                                      |
@@ -7827,7 +7827,7 @@ Run the Websocket Console Client
    |                                                            |                                                              |
    |       .. container:: content                               |       .. container:: content                                 |
    |                                                            |                                                              |
-   |          .. code::                                         |          .. code::                                           |
+   |          .. code::                                        |          .. code::                                          |
    |                                                            |                                                              |
    |             # $APEX_HOME/bin/apexApps.sh ws-console [args] |             > %APEX_HOME%\bin\apexApps.bat ws-console [args] |
    +------------------------------------------------------------+--------------------------------------------------------------+
@@ -7859,7 +7859,7 @@ Run the Websocket Console Client
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             # $APEX_HOME/bin/apexApps.sh ws-console -p 42450 (1)
             > %APEX_HOME%\bin\apexApps.sh ws-console -p 42450 (2)
@@ -7882,7 +7882,7 @@ Run the Websocket Console Client
 
       .. container:: content
 
-         .. code:: 
+         .. code::
 
             ws-simple-console: starting simple event console
              --> server: localhost
@@ -7921,7 +7921,7 @@ Send Events
 
       .. container:: content
 
-         .. code:: 
+         .. code::
            :number-lines:
 
            #: $APEX_HOME/examples/events/VPN
@@ -7940,7 +7940,7 @@ Send Events
 
    .. container:: content
 
-      .. code:: 
+      .. code::
         :number-lines:
 
         {Link=L09, LinkUp=true}
@@ -7982,7 +7982,7 @@ Send Events
 
    .. container:: content
 
-      .. code:: 
+      .. code::
         :number-lines:
 
         ws-simple-echo: received

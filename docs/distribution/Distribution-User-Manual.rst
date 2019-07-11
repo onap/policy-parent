@@ -105,7 +105,7 @@ Build Distribution
 
    .. important::
       A Build needs Space
-      Building distribution requires approximately 1-2 GB of hard disc space, 100 MB for the actual build with full 
+      Building distribution requires approximately 1-2 GB of hard disc space, 100 MB for the actual build with full
       distribution and around 1 GB for the downloaded dependencies.
 
    .. important::
@@ -175,7 +175,7 @@ Build Distribution
 
    The build will have created all artifacts required for distribution
    installation. The following example show how to change to the target
-   directory and how it should look like.
+   directory and how it should look.
 
 +----------------------------------------------------------------------------------------------------------------------------+
 | Unix, Cygwin                                                                                                               |
@@ -256,7 +256,7 @@ Install Manually from Archive (Windows, 7Zip, GUI)
 
    .. container:: paragraph
 
-      The right-click on the new created TAR file and extract the actual
+      Then right-click on the new created TAR file and extract the actual
       distribution.
 
 |
@@ -362,11 +362,11 @@ Introduction to Distribution Configuration
 
             A distribution engine can be configured to use various combinations
             of policy reception handlers, policy decoders and policy forwarders.
-            The system is build using a plugin architecture. Each configuration
+            The system is built using a plugin architecture. Each configuration
             option is realized by a plugin, which can be loaded and
             configured when the engine is started. New plugins can be
             added to the system at any time, though to benefit from a
-            new plugin an engine will need to be restarted.
+            new plugin, an engine will need to be restarted.
 
     |
 
