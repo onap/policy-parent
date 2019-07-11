@@ -16,6 +16,24 @@
       "revId": "236574529b402f4a1879527db6a957947d0d9198",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86701ff5_4c5e8973",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2019-07-11T12:59:06Z",
+      "side": 1,
+      "message": "Done\nThanks Jim!",
+      "parentUuid": "a89299ef_800e0fa5",
+      "revId": "236574529b402f4a1879527db6a957947d0d9198",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
