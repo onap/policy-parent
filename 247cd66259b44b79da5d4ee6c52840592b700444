@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04654492_e6f259f1",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2019-07-15T11:34:38Z",
+      "side": 1,
+      "message": "The tags needs to be set in the properties object available to the tasks. And the keys should exactly match with the tags defined in url.\nThe scope of properties object is per http call. Hence, key/value pairs set in the properties object by task is only available for that specific http call.\n\nAlso, better to provide a full url as example for both static \u0026 tagged url.",
+      "range": {
+        "startLine": 2852,
+        "startChar": 18,
+        "endLine": 2852,
+        "endChar": 45
+      },
+      "revId": "247cd66259b44b79da5d4ee6c52840592b700444",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
