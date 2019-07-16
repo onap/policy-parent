@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4abab2eb_c2f2b925",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 2849,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-07-16T12:58:04Z",
+      "side": 1,
+      "message": "\"status\" \u003d\u003e \"the status\"",
+      "revId": "f206aa0ba375aea6d1f3706f47c4f7e04a45cacf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd69eaf3_1d1c6386",
         "filename": "docs/apex/APEX-User-Manual.rst",
         "patchSetId": 2
@@ -25,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ba3a2659_4efa8f83",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 2850,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-07-16T12:58:04Z",
+      "side": 1,
+      "message": "\"as failure\" \u003d\u003e \"as a failure\"\n\n\"as regular\" \u003d\u003e \"as a regular\"",
+      "parentUuid": "bd69eaf3_1d1c6386",
+      "range": {
+        "startLine": 2849,
+        "startChar": 18,
+        "endLine": 2850,
+        "endChar": 72
+      },
+      "revId": "f206aa0ba375aea6d1f3706f47c4f7e04a45cacf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b5b11ff_31acfd46",
         "filename": "docs/apex/APEX-User-Manual.rst",
         "patchSetId": 2
@@ -36,6 +77,30 @@
       "writtenOn": "2019-07-16T09:14:18Z",
       "side": 1,
       "message": "Same comment",
+      "range": {
+        "startLine": 3102,
+        "startChar": 18,
+        "endLine": 3103,
+        "endChar": 72
+      },
+      "revId": "f206aa0ba375aea6d1f3706f47c4f7e04a45cacf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c682ac_9d57a836",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 3103,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-07-16T12:58:04Z",
+      "side": 1,
+      "message": "Same comment",
+      "parentUuid": "0b5b11ff_31acfd46",
       "range": {
         "startLine": 3102,
         "startChar": 18,
