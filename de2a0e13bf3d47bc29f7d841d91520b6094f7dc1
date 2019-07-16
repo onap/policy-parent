@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f16b1f6_1df7e665",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-07-16T12:55:10Z",
+      "side": 1,
+      "message": "\"And\" \u003d\u003e \"In addition,\"",
+      "revId": "de2a0e13bf3d47bc29f7d841d91520b6094f7dc1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bad641c4_7434d467",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 2880,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-07-16T12:55:10Z",
+      "side": 1,
+      "message": "\"statical\" \u003d\u003e \"static\"",
+      "revId": "de2a0e13bf3d47bc29f7d841d91520b6094f7dc1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
