@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4cc2666a_fc1e5161",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 2851,
+      "author": {
+        "id": 5259
+      },
+      "writtenOn": "2019-07-16T07:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcf8653d_322a34fb",
+      "revId": "247cd66259b44b79da5d4ee6c52840592b700444",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04654492_e6f259f1",
         "filename": "docs/apex/APEX-User-Manual.rst",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "9af68866_b6d09d21",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 5259
+      },
+      "writtenOn": "2019-07-16T07:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04654492_e6f259f1",
+      "range": {
+        "startLine": 2852,
+        "startChar": 18,
+        "endLine": 2852,
+        "endChar": 45
+      },
+      "revId": "247cd66259b44b79da5d4ee6c52840592b700444",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3771c91b_26428378",
         "filename": "docs/apex/APEX-User-Manual.rst",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2019-07-15T12:36:46Z",
       "side": 1,
       "message": "\"as\" \u003d\u003e \"such as\"?",
+      "revId": "247cd66259b44b79da5d4ee6c52840592b700444",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bb6386d_6fc90b42",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 3102,
+      "author": {
+        "id": 5259
+      },
+      "writtenOn": "2019-07-16T07:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3771c91b_26428378",
       "revId": "247cd66259b44b79da5d4ee6c52840592b700444",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
