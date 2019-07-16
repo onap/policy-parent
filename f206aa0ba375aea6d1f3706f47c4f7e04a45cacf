@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd69eaf3_1d1c6386",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 2850,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2019-07-16T09:14:18Z",
+      "side": 1,
+      "message": "Also add the filtering criteria.\n\nThe response with HTTP status code that matches the given regular expression is forwarded to the task otherwise it is logged as failure.",
+      "range": {
+        "startLine": 2849,
+        "startChar": 18,
+        "endLine": 2850,
+        "endChar": 72
+      },
+      "revId": "f206aa0ba375aea6d1f3706f47c4f7e04a45cacf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b5b11ff_31acfd46",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 3103,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2019-07-16T09:14:18Z",
+      "side": 1,
+      "message": "Same comment",
+      "range": {
+        "startLine": 3102,
+        "startChar": 18,
+        "endLine": 3103,
+        "endChar": 72
+      },
+      "revId": "f206aa0ba375aea6d1f3706f47c4f7e04a45cacf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
