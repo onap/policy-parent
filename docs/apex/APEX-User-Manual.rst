@@ -2846,6 +2846,9 @@ REST Client Output
                   POST (no configuration required). To change it to PUT
                   simply add the configuration parameter (as shown in
                   the example below).
+				  The httpCodeFilter is used for filtering status code,
+				  and it can be configured as regular expression string.
+                  The default httpCodeFilter is "[2][0-9][0-9]".
 
                .. container:: listingblock
 
@@ -2859,8 +2862,9 @@ REST Client Output
                             "org.onap.policy.apex.plugins.event.carrier.restclient.RESTClientCarrierTechnologyParameters",
                           "parameters" : {
                             "url" : "http://example.com:8888/actions/events", (2)
-                            "httpMethod" : "PUT" (3)
-                          }
+                            "httpMethod" : "PUT", (3)
+                            "httpCodeFilter" : "[2][0-9][0-9]" (4)
+                          },
                         }
 
                .. container:: colist arabic
@@ -2872,6 +2876,8 @@ REST Client Output
                   +-------+--------------------------------------------------+
                   | **3** | use HTTP PUT (remove this line to use HTTP POST) |
                   +-------+--------------------------------------------------+
+				  | **4** | use HTTP CODE FILTER for status code             |
+				  +-------+--------------------------------------------------+
 
 REST Server IO
 ##############
@@ -3093,6 +3099,9 @@ REST Requestor Input
                .. container:: paragraph
 
                   APEX will connect to a given URL to request an input.
+				  The httpCodeFilter is used for filtering status code,
+				  and it can be configured as regular expression string.
+				  The default httpCodeFilter is "[2][0-9][0-9]".
 
                .. container:: listingblock
 
@@ -3106,8 +3115,9 @@ REST Requestor Input
                           "parameters": {
                             "url": "http://localhost:54321/some/path/to/rest/resource", (2)
                             "httpMethod": "POST", (3)
-                            "restRequestTimeout": 2000 (4)
-                          }
+                            "restRequestTimeout": 2000, (4)
+                            "httpCodeFIlter" : "[2][0-9][0-9]" (5)
+                          },
                         },
 
                .. container:: colist arabic
@@ -3121,6 +3131,8 @@ REST Requestor Input
                   +-------+--------------------------------------------------+
                   | **4** | request timeout in milliseconds                  |
                   +-------+--------------------------------------------------+
+				  | **5** | use HTTP CODE FILTER for status code             |
+				  +-------+--------------------------------------------------+
 
                .. container:: paragraph
 
