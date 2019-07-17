@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5db3dccd_069ba66b",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 2849,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2019-07-17T01:23:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4abab2eb_c2f2b925",
+      "revId": "f206aa0ba375aea6d1f3706f47c4f7e04a45cacf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd69eaf3_1d1c6386",
         "filename": "docs/apex/APEX-User-Manual.rst",
         "patchSetId": 2
@@ -54,6 +72,30 @@
       "side": 1,
       "message": "\"as failure\" \u003d\u003e \"as a failure\"\n\n\"as regular\" \u003d\u003e \"as a regular\"",
       "parentUuid": "bd69eaf3_1d1c6386",
+      "range": {
+        "startLine": 2849,
+        "startChar": 18,
+        "endLine": 2850,
+        "endChar": 72
+      },
+      "revId": "f206aa0ba375aea6d1f3706f47c4f7e04a45cacf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6799658_18d5607f",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 2850,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2019-07-17T01:23:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba3a2659_4efa8f83",
       "range": {
         "startLine": 2849,
         "startChar": 18,
