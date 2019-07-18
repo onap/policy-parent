@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c08d3311_f9dd3f2d",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 2855,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2019-07-18T13:56:42Z",
+      "side": 1,
+      "message": "Apologies for late comment, but this change must be done in REST Client Input section which corresponds to ApexRestClientConsumer in the code.",
+      "range": {
+        "startLine": 2849,
+        "startChar": 18,
+        "endLine": 2855,
+        "endChar": 54
+      },
+      "revId": "670358205a6ff1fa2e6430c866bdf5ae376aa4ee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
