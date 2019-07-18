@@ -2846,6 +2846,14 @@ REST Client Output
                   POST (no configuration required). To change it to PUT
                   simply add the configuration parameter (as shown in
                   the example below).
+                  The URL can be configured statically or tagged
+                  as ``?example.{site}.org:8080/{trig}/events``,
+                  all tags such as ``site`` and ``trig`` in the URL
+                  need to be set  in the properties object available to the tasks.
+                  In addition, the keys should exactly match with the tags defined in url.
+                  The scope of the properties object is per HTTP call.
+                  Hence, key/value pairs set in the properties object by task
+                  is only available for that specific HTTP call.
 
                .. container:: listingblock
 
@@ -2859,6 +2867,7 @@ REST Client Output
                             "org.onap.policy.apex.plugins.event.carrier.restclient.RESTClientCarrierTechnologyParameters",
                           "parameters" : {
                             "url" : "http://example.com:8888/actions/events", (2)
+                            "url" : "http://example.{site}.com:8888/{trig}/events", (2')
                             "httpMethod" : "PUT" (3)
                           }
                         }
@@ -2868,7 +2877,9 @@ REST Client Output
                   +-------+--------------------------------------------------+
                   | **1** | set REST client as carrier technology            |
                   +-------+--------------------------------------------------+
-                  | **2** | the URL of the HTTP server for events            |
+                  | **2** | the static URL of the HTTP server for events     |
+                  +-------+--------------------------------------------------+
+                  | **2'**| the tagged URL of the HTTP server for events     |
                   +-------+--------------------------------------------------+
                   | **3** | use HTTP PUT (remove this line to use HTTP POST) |
                   +-------+--------------------------------------------------+
@@ -3093,6 +3104,14 @@ REST Requestor Input
                .. container:: paragraph
 
                   APEX will connect to a given URL to request an input.
+                  The URL can be configured statically or tagged
+                  as ``?example.{site}.org:8080/{trig}/events``,
+                  all tags such as ``site`` and ``trig`` in the URL
+                  need to be set  in the properties object available to the tasks.
+                  In addition, the keys should exactly match with the tags defined in url.
+                  The scope of the properties object is per HTTP call.
+                  Hence, key/value pairs set in the properties object by task
+                  is only available for that specific HTTP call.
 
                .. container:: listingblock
 
@@ -3105,6 +3124,7 @@ REST Requestor Input
                           "parameterClassName": "org.onap.policy.apex.plugins.event.carrier.restrequestor.RESTRequestorCarrierTechnologyParameters",
                           "parameters": {
                             "url": "http://localhost:54321/some/path/to/rest/resource", (2)
+                            "url": "http://localhost:54321/{site}/path/to/rest/{resValue}", (2')
                             "httpMethod": "POST", (3)
                             "restRequestTimeout": 2000 (4)
                           }
@@ -3115,7 +3135,9 @@ REST Requestor Input
                   +-------+--------------------------------------------------+
                   | **1** | set REST requestor as carrier technology         |
                   +-------+--------------------------------------------------+
-                  | **2** | the URL of the HTTP server for events            |
+                  | **2** | the static URL of the HTTP server for events     |
+                  +-------+--------------------------------------------------+
+                  | **2'**| the tagged URL of the HTTP server for events     |
                   +-------+--------------------------------------------------+
                   | **3** | use HTTP PUT (remove this line to use HTTP POST) |
                   +-------+--------------------------------------------------+
