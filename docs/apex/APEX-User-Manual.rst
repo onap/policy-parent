@@ -2812,6 +2812,13 @@ REST Client Input
                   by the server configured via the URL. For instance,
                   the server could support a wait timeout via the URL as
                   ``?timeout=100ms``.
+                  The httpCodeFilter is used for filtering the status
+                  code, and it can be configured as a regular expression
+                  string. The default httpCodeFilter is "[2][0-9][0-9]"
+                  - for successful response codes.
+                  The response with HTTP status code that matches the
+                  given regular expression is forwarded to the task,
+                  otherwise it is logged as a failure.
 
                .. container:: listingblock
 
@@ -2825,16 +2832,19 @@ REST Client Input
                             "org.onap.policy.apex.plugins.event.carrier.restclient.RESTClientCarrierTechnologyParameters",
                           "parameters" : {
                             "url" : "http://example.org:8080/triggers/events", (2)
+                            "httpCodeFilter" : "[2][0-9][0-9]" (3)
                           }
                         }
 
                .. container:: colist arabic
 
-                  +-------+---------------------------------------+
-                  | **1** | set REST client as carrier technology |
-                  +-------+---------------------------------------+
-                  | **2** | the URL of the HTTP server for events |
-                  +-------+---------------------------------------+
+                  +-------+--------------------------------------------------+
+                  | **1** | set REST client as carrier technology            |
+                  +-------+--------------------------------------------------+
+                  | **2** | the URL of the HTTP server for events            |
+                  +-------+--------------------------------------------------+
+                  | **3** | use HTTP CODE FILTER for filtering status code   |
+                  +-------+--------------------------------------------------+
 
 REST Client Output
 ==================
@@ -3112,6 +3122,13 @@ REST Requestor Input
                   The scope of the properties object is per HTTP call.
                   Hence, key/value pairs set in the properties object by task
                   is only available for that specific HTTP call.
+                  The httpCodeFilter is used for filtering the status
+                  code, and it can be configured as a regular expression
+                  string. The default httpCodeFilter is "[2][0-9][0-9]"
+                  - for successful response codes.
+                  The response with HTTP status code that matches the
+                  given regular expression is forwarded to the task,
+                  otherwise it is logged as a failure.
 
                .. container:: listingblock
 
@@ -3126,7 +3143,8 @@ REST Requestor Input
                             "url": "http://localhost:54321/some/path/to/rest/resource", (2)
                             "url": "http://localhost:54321/{site}/path/to/rest/{resValue}", (2')
                             "httpMethod": "POST", (3)
-                            "restRequestTimeout": 2000 (4)
+                            "restRequestTimeout": 2000, (4)
+                            "httpCodeFilter" : "[2][0-9][0-9]" (5)
                           }
                         },
 
@@ -3142,6 +3160,8 @@ REST Requestor Input
                   | **3** | use HTTP PUT (remove this line to use HTTP POST) |
                   +-------+--------------------------------------------------+
                   | **4** | request timeout in milliseconds                  |
+                  +-------+--------------------------------------------------+
+                  | **5** | use HTTP CODE FILTER for filtering status code   |
                   +-------+--------------------------------------------------+
 
                .. container:: paragraph
