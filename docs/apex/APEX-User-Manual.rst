@@ -3920,6 +3920,103 @@ The APEX CLI Editor
                    -wd,--working-directory <WORKING_DIRECTORY>    the working directory that is the root for the CLI editor and is the
                                                                   root from which to look for included macro files
 
+The APEX CLI Tosca Editor
+-------------------------
+
+         .. container:: paragraph
+
+            As per the new Policy LifeCycle API, the policies are expected to be defined as ToscaServiceTemplate. The CLI Tosca Editor is an extended version of the APEX CLI Editor which can generate the policies in ToscaServiceTemplate way.
+
+         .. container:: paragraph
+
+            The APEX config file(.json), command file(.apex) and the tosca template skeleton(.json) file paths need to be passed as input arguments to the CLI Tosca Editor. Policy in ToscaServiceTemplate format is generated as the output. This can be used as the input to Policy API for creating policies.
+
+         .. container:: paragraph
+
+            On UNIX and Cygwin systems use:
+
+         .. container:: ulist
+
+            -  ``apexCLIToscaEditor.sh`` - starts the CLI Tosca editor,
+               all the arguments supported by the basic CLI Editor are supported in addition to the mandatory arguments needed to generate ToscaServiceTemplate.
+
+            -  ``apexApps.sh cli-tosca-editor`` - starts the CLI Tosca editor,
+               all the arguments supported by the basic CLI Editor are supported in addition to the mandatory arguments needed to generate ToscaServiceTemplate.
+
+         .. container:: paragraph
+
+            On Windows systems use:
+
+         .. container:: ulist
+
+            -  ``apexCLIToscaEditor.bat`` - starts the CLI Tosca editor,
+               all the arguments supported by the basic CLI Editor are supported in addition to the mandatory arguments needed to generate ToscaServiceTemplate.
+
+            -  ``apexApps.bat cli-tosca-editor`` - starts the CLI Tosca
+               editor, all the arguments supported by the basic CLI Editor are supported in addition to the mandatory arguments needed to generate ToscaServiceTemplate.
+
+         .. container:: paragraph
+
+            Summary of alternatives to start the APEX CLI Tosca Editor:
+
+     +-----------------------------------------------------------------+--------------------------------------------------------------------+
+     | Unix, Cygwin                                                    | Windows                                                            |
+     +=================================================================+====================================================================+
+     | .. container::                                                  | .. container::                                                     |
+     |                                                                 |                                                                    |
+     |    .. container:: listingblock                                  |    .. container:: listingblock                                     |
+     |                                                                 |                                                                    |
+     |       .. container:: content                                    |       .. container:: content                                       |
+     |                                                                 |                                                                    |
+     |          .. code::                                              |          .. code::                                                 |
+     |                                                                 |                                                                    |
+     |             # $APEX_HOME/bin/apexCLIToscaEditor.sh.sh [args]    |             > %APEX_HOME%\bin\apexCLIToscaEditor.bat [args]        |
+     |             # $APEX_HOME/bin/apexApps.sh cli-tosca-editor [args]|             > %APEX_HOME%\bin\apexApps.bat cli-tosca-editor [args] |
+     +-----------------------------------------------------------------+--------------------------------------------------------------------+
+
+         .. container:: paragraph
+
+            The option ``-h`` provides a help screen with all command
+            line arguments.
+
+         .. container:: listingblock
+
+            .. container:: content
+
+               .. code::
+
+                  usage: org.onap.policy.apex.auth.clieditor.tosca.ApexCliToscaEditorMain [options...]
+                  options
+                   -a,--model-props-file <MODEL_PROPS_FILE>         name of the apex model properties file to use
+                   -ac,--apex-config-file <APEX_CONFIG_FILE>        name of the file containing apex configuration details
+                   -c,--command-file <COMMAND_FILE>                 name of a file containing editor commands to run into the editor
+                   -h,--help                                        outputs the usage of this command
+                   -i,--input-model-file <INPUT_MODEL_FILE>         name of a file that contains an input model for the editor
+                   -if,--ignore-failures <IGNORE_FAILURES_FLAG>     true or false, ignore failures of commands in command files and
+                                                                    continue executing the command file
+                   -l,--log-file <LOG_FILE>                         name of a file that will contain command logs from the editor, will
+                                                                    log to standard output if not specified or suppressed with "-nl" flag
+                   -m,--metadata-file <CMD_METADATA_FILE>           name of the command metadata file to use
+                   -nl,--no-log                                     if specified, no logging or output of commands to standard output or
+                                                                    log file is carried out
+                   -ot,--output-tosca-file <OUTPUT_TOSCA_FILE>      name of a file that will contain the output ToscaServiceTemplate
+                   -t,--tosca-template-file <TOSCA_TEMPLATE_FILE>   name of the input file containing tosca template which needs to be
+                                                                    updated with policy
+                   -wd,--working-directory <WORKING_DIRECTORY>      the working directory that is the root for the CLI editor and is the
+                                                                    root from which to look for included macro files
+
+         .. container:: paragraph
+
+            An example command to run the APEX CLI Tosca editor on windows machine is given below.
+
+         .. container:: listingblock
+
+            .. container:: content
+
+               .. code::
+
+                  %APEX_HOME%/\bin/\apexCLIToscaEditor.bat -c %APEX_HOME%\examples\PolicyModel.apex -ot %APEX_HOME%\examples\test.json  -l %APEX_HOME%\examples\test.log -ac %APEX_HOME%\examples\RESTServerStandaloneJsonEvent.json -t %APEX_HOME%\examples\ToscaTemplate.json
+
 The APEX REST Editor
 --------------------
 
