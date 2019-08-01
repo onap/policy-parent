@@ -111,6 +111,11 @@ are added in the response to each call:
 
 This operation performs a health check on the PAP.
 
+Here is a sample response:
+
+.. literalinclude:: response/health-check-pap-resp.json
+    :language: json
+
 .. swaggerv2doc:: swagger/statistics-pap.json
 
 This operation allows statistics for PDP groups, PDP subgroups, and individual PDPs to be retrieved.
@@ -118,6 +123,11 @@ This operation allows statistics for PDP groups, PDP subgroups, and individual P
 .. note::
   While this API is supported, most of the statistics are not currently updated; that work has been deferred to a later
   release.
+
+Here is a sample response:
+
+.. literalinclude:: response/statistics-pap-resp.json
+    :language: json
 
 .. swaggerv2doc:: swagger/state-change-pap.json
 
@@ -133,6 +143,11 @@ in a single POST operation by specifying more than one PDP group in the POST ope
   Due to current limitations, if a subgroup is to be deleted from a PDP Group, then the policies must be removed from
   the subgroup in one request, and then the subgroup deleted in a subsequent request.
 
+Here is a sample request:
+
+.. literalinclude:: request/group-pap-req.json
+    :language: json
+
 .. swaggerv2doc:: swagger/group-delete-pap.json
 
 The API also allows PDP groups to be deleted. DELETE operations are only permitted on PDP groups in PASSIVE state.
@@ -142,6 +157,11 @@ The API also allows PDP groups to be deleted. DELETE operations are only permitt
 This operation allows the PDP groups and subgroups to be listed as well as the policies that are deployed on each PDP
 group and subgroup.
 
+Here is a sample response:
+
+.. literalinclude:: response/group-query-pap-resp.json
+    :language: json
+
 .. swaggerv2doc:: swagger/policy-deploy-pap.json
 
 This operation allows policies to be deployed on PDP groups.
@@ -149,6 +169,11 @@ This operation allows policies to be deployed on PDP groups.
 .. note::
   The policy version is optional.  If left unspecified, then the latest version of the policy is deployed. On the other
   hand, if it is specified, it may be an integer, or it may be a fully qualified version (e.g., "3.0.2").
+
+Here is a sample request:
+
+.. literalinclude:: request/policy-deploy-pap-req.json
+    :language: json
 
 .. swaggerv2doc:: swagger/policy-undeploy-pap.json
 

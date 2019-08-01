@@ -1,0 +1,190 @@
+{
+    "groups": [
+        {
+            "description": "This group should be used for managing all control loop related policies and pdps",
+            "name": "controlloop",
+            "pdpGroupState": "ACTIVE",
+            "pdpSubgroups": [
+                {
+                    "currentInstanceCount": 0,
+                    "desiredInstanceCount": 1,
+                    "pdpInstances": [],
+                    "pdpType": "apex",
+                    "policies": [],
+                    "properties": {},
+                    "supportedPolicyTypes": [
+                        {
+                            "name": "onap.policies.controlloop.Operational",
+                            "version": "1.0.0"
+                        }
+                    ]
+                },
+                {
+                    "currentInstanceCount": 0,
+                    "desiredInstanceCount": 1,
+                    "pdpInstances": [],
+                    "pdpType": "drools",
+                    "policies": [],
+                    "properties": {},
+                    "supportedPolicyTypes": [
+                        {
+                            "name": "onap.policies.controlloop.Operational",
+                            "version": "1.0.0"
+                        }
+                    ]
+                },
+                {
+                    "currentInstanceCount": 0,
+                    "desiredInstanceCount": 1,
+                    "pdpInstances": [],
+                    "pdpType": "xacml",
+                    "policies": [],
+                    "properties": {},
+                    "supportedPolicyTypes": [
+                        {
+                            "name": "onap.policies.controlloop.Guard",
+                            "version": "1.0.0"
+                        }
+                    ]
+                }
+            ],
+            "properties": {}
+        },
+        {
+            "description": "This group should be used for managing all monitoring related policies and pdps",
+            "name": "monitoring",
+            "pdpGroupState": "ACTIVE",
+            "pdpSubgroups": [
+                {
+                    "currentInstanceCount": 0,
+                    "desiredInstanceCount": 1,
+                    "pdpInstances": [],
+                    "pdpType": "xacml",
+                    "policies": [],
+                    "properties": {},
+                    "supportedPolicyTypes": [
+                        {
+                            "name": "onap.policies.Monitoring",
+                            "version": "1.0.0"
+                        }
+                    ]
+                }
+            ],
+            "properties": {}
+        },
+        {
+            "description": "The default group that registers all supported policy types and pdps.",
+            "name": "defaultGroup",
+            "pdpGroupState": "ACTIVE",
+            "pdpSubgroups": [
+                {
+                    "currentInstanceCount": 0,
+                    "desiredInstanceCount": 1,
+                    "pdpInstances": [],
+                    "pdpType": "apex",
+                    "policies": [],
+                    "properties": {},
+                    "supportedPolicyTypes": [
+                        {
+                            "name": "onap.policies.controlloop.operational.Apex",
+                            "version": "1.0.0"
+                        }
+                    ]
+                },
+                {
+                    "currentInstanceCount": 0,
+                    "desiredInstanceCount": 1,
+                    "pdpInstances": [],
+                    "pdpType": "drools",
+                    "policies": [],
+                    "properties": {},
+                    "supportedPolicyTypes": [
+                        {
+                            "name": "onap.policies.controlloop.Operational",
+                            "version": "1.0.0"
+                        }
+                    ]
+                },
+                {
+                    "currentInstanceCount": 0,
+                    "desiredInstanceCount": 1,
+                    "pdpInstances": [],
+                    "pdpType": "xacml",
+                    "policies": [],
+                    "properties": {},
+                    "supportedPolicyTypes": [
+                        {
+                            "name": "onap.policies.controlloop.guard.FrequencyLimiter",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.controlloop.guard.MinMax",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.controlloop.guard.Blacklist",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.controlloop.guard.coordination.FirstBlocksSecond",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.Monitoring",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.monitoring.cdap.tca.hi.lo.app",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.monitoring.docker.sonhandler.app",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.optimization.AffinityPolicy",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.optimization.DistancePolicy",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.optimization.HpaPolicy",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.optimization.OptimizationPolicy",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.optimization.PciPolicy",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.optimization.QueryPolicy",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.optimization.SubscriberPolicy",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.optimization.Vim_fit",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.optimization.VnfPolicy",
+                            "version": "1.0.0"
+                        }
+                    ]
+                }
+            ],
+            "properties": {}
+        }
+    ]
+}

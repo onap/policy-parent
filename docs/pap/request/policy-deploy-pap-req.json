@@ -1,0 +1,17 @@
+{
+  "policies": [
+    {
+      "policy-id": "onap.scaleout.tca",
+      "policy-version": 1
+    },
+    {
+      "policy-id": "ControlLoop-vDNS-6f37f56d-a87d-4b85-b6a9-cc953cf779b3"
+    },
+    {
+      "policy-id": "guard.frequency.ControlLoop-vDNS-6f37f56d-a87d-4b85-b6a9-cc953cf779b3"
+    },
+    {
+      "policy-id": "guard.minmax.ControlLoop-vDNS-6f37f56d-a87d-4b85-b6a9-cc953cf779b3"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+    "code": 200,
+    "healthy": true,
+    "message": "alive",
+    "name": "Policy PAP",
+    "url": "self"
+}
