@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67e186a6_374252ab",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-08-06T13:24:36Z",
+      "side": 1,
+      "message": "just a question of whether or not we want to effectively make this a dependency for all policy repos?  If so, then this looks good to me (assuming this version works with all repos, of course)",
+      "revId": "3a3086180abb951a2e0a919d4a38895b53ff332e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
