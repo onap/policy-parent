@@ -12,6 +12,111 @@ Policy Release Notes
 ..      * one section describing the purpose of this new release.
 ..      * This note must be removed after content has been added.
 
+..      ==========================
+..      * * *     EL ALTO    * * *
+..      ==========================
+
+Version: 5.0.0
+--------------
+
+:Release Date: 2019-08-12 (El Alto Release)
+
+**New Features**
+
+Artifacts released:
+
+.. csv-table::
+   :header: "Repository", "Java Artifact", "Docker Image (if applicable)"
+   :widths: 15,10,10
+
+   "policy/parent", "3.0.0", ""
+   "policy/common", "1.5.0", ""
+   "policy/models", "2.1.2", ""
+   "policy/api", "2.1.1", "onap/policy-api:2.1.1"
+   "policy/pap", "2.1.1", "onap/policy-pap:2.1.1"
+   "policy/drools-pdp", "1.5.1", "onap/policy-drools:1.5.1"
+   "policy/apex-pdp", "2.2.1", "onap/policy-apex-pdp:2.2.1"
+   "policy/xacml-pdp", "2.1.1", "onap/policy-xacml-pdp:2.1.1"
+   "policy/drools-applications", "1.5.1", "onap/policy-pdpd-cl:1.5.1"
+   "policy/engine", "1.5.1", "onap/policy-pe:1.5.1"
+   "policy/distribution", "2.2.0", "onap/policy-distribution:2.2.0"
+   "policy/docker", "1.4.0", "onap/policy-common-alpine:1.4.0 onap/policy/base-alpine:1.4.0"
+
+The El Alto release for POLICY delivered the following Epics. For a full list of stories and tasks delivered in the El Alto release, refer to `JiraPolicyElAlto`_.
+
+    * [POLICY-1727] - This epic covers technical debt left over from Dublin
+	- POLICY-969	Docker improvement in policy framwork modules
+	- POLICY-1121	RPM build for Apex
+	- POLICY-1223	CII Silver Badging Requirements
+	- POLICY-1465	Support configurable Heap Memory Settings for JVM processes
+	- POLICY-1646	Replace uses of getCanonicalName() with getName()
+	- POLICY-1653	Remove isNullVersion() method
+	- POLICY-1732	Enable maven-checkstyle-plugin in apex-pdp
+	- POLICY-1737	Upgrade oParent 2.0.0 - change daily jobs to staging jobs
+	- POLICY-1742	Make HTTP return code handling configurable in APEX
+	- POLICY-1744	Remove topic.properties and incorporate into overall properties
+	- POLICY-1770	PAP REST API for PDPGroup Healthcheck
+	- POLICY-1771	Boost policy/api JUnit code coverage
+	- POLICY-1773	Enhance the policy/xacml-pdp S3P Stability and Performance tests
+	- POLICY-1784	Better Handling of "version" field value with clients
+	- POLICY-1785	Deploy same policy with a new version simply adds to the list
+	- POLICY-1791	Address Sonar issues in new policy repos
+	- POLICY-1795	PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs. 
+	- POLICY-1800	API|PAP components use different version formats
+	- POLICY-1805	Build up stability test for api component to follow S3P requirements
+	- POLICY-1806	Build up S3P performance test for api component
+	- POLICY-1826	Move the dmaap and pdp simulator to policy/common
+	- POLICY-1885	Apex-pdp: Extend CLIEditor to generate policy in ToscaServiceTemplate format
+
+    * [POLICY-1823] - This epic covers the work to develop features that will be deployed dark in El Alto.
+	- POLICY-1762	Create CDS API model implementation
+
+**Bug Fixes**
+
+The following bug fixes have been deployed with this release:
+
+	- POLICY-1793	API|MODELS: Retrieving Legacy Operational Policy as a Tosca Policy with wrong version
+	- POLICY-1801	Deploy/undeploy via integer version fails
+	- POLICY-1802	Apex-pdp: context album is mandatory for policy model to compile
+	- POLICY-1803	PAP should undeploy policies when subgroup is deleted
+	- POLICY-1808	API|PAP|PDP-X [new] should publish docker images with the following tag X.Y-SNAPSHOT-latest 
+	- POLICY-1809	In the return of GET call to retrieve the >1 version of guard policy, "version" field is always "1.0.0" 
+	- POLICY-1818	APEX does not allow arbitrary Kafka parameters to be specified
+	- POLICY-1830	Policy throws error parsing its Publish on APPC-CL topic
+	- POLICY-1838	Drools-pdp error log is missing data in ErrorDescription field
+	- POLICY-1839	Policy Model  currently needs to be escaped
+	- POLICY-1842	Fix documentation links
+	- POLICY-1843	Decision API not returning monitoring policies when calling api with policy-type
+	- POLICY-1844	XACML PDP does not update policy statistics
+	- POLICY-1859	Drools rules should not timeout when given timeout=0 - should be treated as infinite
+	- POLICY-1872	brmsgw fails building a jar - trafficgenerator dependency does not exist
+	- POLICY-1876	ONAP-PAP-REST JUnit fail on Centos
+	- POLICY-1879	ApexPDP - Build/Test fails in Nordix - InetAddress.getLocalHost() fails
+
+**Security Notes**
+
+*Fixed Security Issues*
+
+*Known Security Issues*
+
+*Known Vulnerabilities in Used Modules*
+
+POLICY code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and determined to be false positive. The POLICY open Critical security vulnerabilities and their risk assessment have been documented as part of the `project (El Alto Release) <https://wiki.onap.org/pages/viewpage.action?pageId=68541992>`_.
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+    - `Project Vulnerability Review Table for POLICY (El Alto Release) <https://wiki.onap.org/pages/viewpage.action?pageId=68541992>`_
+
+**Known Issues**
+
+The following known issues will be addressed in a future release:
+
+POLICY-1276	JRuby interpreter shutdown fails on second and subsequent runs
+POLICY-1291	Maven Error when building Apex documentation in Windows
+POLICY-1725	XACML PDP returns 500 vs 400 for bad syntax JSON
+POLICY-1832	API|PAP: data race condition seem to appear sometimes when creating and deploying policy
+
 
 ..      ==========================
 ..      * * *      DUBLIN    * * *
@@ -538,6 +643,7 @@ The Amsterdam release continued evolving the design driven architecture of and f
 
 .. Links to jira release notes
 
+.. _JiraPolicyElAlto:https://jira.onap.org/secure/ReleaseNote.jspa?projectId=10106&version=10728
 .. _JiraPolicyDublin: https://jira.onap.org/secure/ReleaseNote.jspa?projectId=10106&version=10464
 .. _JiraPolicyCasablanca: https://jira.onap.org/secure/ReleaseNote.jspa?projectId=10106&version=10446
 .. _JiraPolicyBeijing: https://jira.onap.org/secure/ReleaseNote.jspa?projectId=10106&version=10349
