@@ -6,8 +6,9 @@
 
 Policy Life Cycle API
 #####################
-.. toctree::
-   :maxdepth: 2 
+
+.. contents::
+    :depth: 2 
 
 
 Policy life cycle API comprises of policy design API and policy deployment API. This documentation focuses on policy 
