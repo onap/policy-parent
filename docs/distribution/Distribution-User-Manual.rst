@@ -3,7 +3,7 @@
 
 
 Policy Distribution User Manual
-************************
+*******************************
 
 .. contents::
     :depth: 3
