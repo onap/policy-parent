@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "825dcd04_a08d1262",
+        "filename": "docs/offeredapis.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-08-30T21:36:19Z",
+      "side": 1,
+      "message": "I would make this a separate line. So its clear there are 3 public apis\n\n-    :ref:`Policy Life Cycle API \u003capi-label\u003e`\n-    :ref:`Policy Administration Point (PAP) API \u003cpap-label\u003e`\n-    :ref:`Policy Decision API \u003cdecision-api-label\u003e`\n-    :ref:`Legacy APIs \u003clegacyapis-label\u003e` (To be DEPRECATED)",
+      "range": {
+        "startLine": 11,
+        "startChar": 60,
+        "endLine": 11,
+        "endChar": 128
+      },
+      "revId": "841b45b636777566cbe7d6a45ffc9026da89c9d8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
