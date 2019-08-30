@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "352ed3aa_a7d81911",
+        "filename": "docs/offeredapis.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-08-30T10:54:48Z",
+      "side": 1,
+      "message": "Insert after this a reference to the Decision API - which is located in xacml/xacml.rst (near the end). We will need a label for it so you can reference it.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "d82775e1c6b1f75782bd92c9efdf3bc724d4c870",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281af679_e1d3762e",
+        "filename": "docs/offeredapis.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-08-30T10:54:48Z",
+      "side": 1,
+      "message": "are scheduled to be deprecated after",
+      "range": {
+        "startLine": 14,
+        "startChar": 56,
+        "endLine": 14,
+        "endChar": 79
+      },
+      "revId": "d82775e1c6b1f75782bd92c9efdf3bc724d4c870",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
