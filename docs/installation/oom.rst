@@ -96,7 +96,7 @@ After deploying policy, loop on monitoring the policy pods until they come up.
 
 .. code-block:: bash
 
-  helm deploy dev-policy local/onap --namespace onap 
+  helm deploy dev-policy local/onap --namespace onap
   kubectl get pods -n onap
 
 Exposing ports
@@ -107,3 +107,48 @@ For security reasons, the ports for the policy containers are configured as Clus
 
   kubectl -n onap expose service policy-api --port=7171 --target-port=6969 --name=api-public --type=NodePort
 
+Customizing PDP-D Installations
+*******************************
+
+Credentials and other configuration parameters can be set as values
+when deploying the policy (drools) subchart.  Please refer to
+`PDP-D Default Values <https://git.onap.org/oom/tree/kubernetes/policy/charts/drools/values.yaml>`_
+for the current default values.  It is strongly recommended that sensitive
+information is secured appropriately before using in production.
+
+Additional customization can be applied to the PDP-D.  Custom configuration goes under the
+"resources" directory of the drools subchart (oom/kubernetes/policy/charts/drools/resources).
+This requires rebuilding the policy subchart
+(see section :ref:`Rebuilding and/or modifying the Policy Charts`).
+
+Configuration is done by adding or modifying configmaps and/or secrets.
+Configmaps are placed under "drools/resources/configmaps", and
+secrets under "drools/resources/secrets".
+
+Custom configuration supportes these types of files:
+
+* **\*.conf** files to support additional environment configuration.
+* **features\*.zip** to add additional custom features.
+* **\*.pre.sh** scripts to be executed before starting the PDP-D process.
+* **\*.post.sh** scripts to be executed after starting the PDP-D process.
+* **policy-keystore** to override the PDP-D policy-keystore.
+* **policy-truststore** to override the PDP-D policy-truststore.
+* **aaf-cadi.keyfile** to override the PDP-D AAF key.
+* **\*.properties** to override or add properties files.
+
+Examples
+^^^^^^^^
+
+To *disable AAF*, simply override the "aaf.enabled" value when deploying the helm chart
+(see the OOM installation instructions mentioned above).
+
+To *override the PDP-D keystore or trustore*, add a suitable replacement(s) under
+"drools/resources/secrets".  Modify the drools chart values.yaml with
+new credentials, and follow the procedures described at
+:ref:`Rebuilding and/or modifying the Policy Charts` to redeploy the chart.
+
+To *disable https* for the DMaaP configuration topic, add a copy of
+`engine.properties <https://git.onap.org/policy/drools-pdp/tree/policy-management/src/main/server/config/engine.properties>`_
+with "dmaap.source.topics.PDPD-CONFIGURATION.https" set to "false", or alternatively
+create a ".pre.sh" script (see above) that edits this file before the PDP-D is
+started.
