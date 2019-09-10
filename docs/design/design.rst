@@ -449,7 +449,12 @@ action        R       String   The action that the ONAP component is performing 
 
 These sub metadata structures are used to scope the resource the ONAP component is performing an action upon. At least
 one must be specified in order for Policy to return a decision. Multiple structures may be utilized to help define a
-precise scope for a decision.
+precise scope for a decision. 
+
+4.4.1 Policy Decision API - DCAE configuration examples
+-------------------------------------------------------
+
+These resource fields are examples on how DCAE implements its "configure" application to make Decision API calls.
 
 ================= ======= ======== ==================================================================
 **Field**         **R/O** **Type** **Description**
@@ -458,7 +463,7 @@ policy-type-name  O       String   The policy type name. This may be a regular e
 policy-id         O       String   The policy id. This may be a regular expression or an exact value.
 ================= ======= ======== ==================================================================
 
-This example below shows the JSON body of a query with a single policy ID.
+These example below shows the JSON body of a query with a single policy ID.
 
 .. code-block:: yaml
   :caption: Decision API Call - Single Policy ID query
@@ -795,5 +800,96 @@ This example below shows the JSON body of a query to return all the deployed pol
     }
   }
 
-End of Document
+4.4.2 Policy Decision API - Guard Decision API examples
+-------------------------------------------------------
 
+These resource fields are examples on how Drools-PDP implements its "guard" application to make Decision API calls. This
+structure is a transition from the legacy guard API calls. So each of these resources are contained under a "guard" object
+in the "resource" object of the JSON structure.
+
+================= ======= ======== ==================================================================
+**Field**         **R/O** **Type** **Description**
+================= ======= ======== ==================================================================
+actor             O       String   The actor (eg APPC, SO) that is performing a recipe 
+recipe            O       String   The recipe (eg Restart, Reboot) that the actor going to execute
+clname            O       String   The unique ID for the Control Loop
+target            O       String   The target VNF the actor is executing the recipe on
+vfCount           O       String   Specific to SO "VF Module Create" - the current count of VNFs
+
+================= ======= ======== ==================================================================
+
+This example below shows the JSON body of a guard Decision API call.
+
+.. code-block:: json
+  :caption: Decision API Call - Guard
+  :linenos:
+
+  {
+    "ONAPName": "Policy",
+    "ONAPComponent": "drools-pdp",
+    "ONAPInstance": "usecase-template",
+    "requestId": "unique-request-id-1",
+    "action": "guard",
+    "resource": {
+        "guard": {
+            "actor": "SO",
+            "recipe": "VF Module Create",
+            "clname": "ControlLoop-vDNS-6f37f56d-a87d-4b85-b6a9-cc953cf779b3",
+            "target": "vLoadBalancer-00",
+            "vfCount": "1"
+        }
+    }
+  }
+
+.. code-block:: json
+  :caption: Decision Response - Guard
+  :linenos:
+
+  {"status":"Permit"}
+
+4.4.3 Policy Decision API - Optimize Decision API examples
+----------------------------------------------------------
+
+These resource fields are examples on how OOF project will make Decision API calls. NOTE: The OOF project
+has not yet upgraded to the API. This work is scheduled for Frankfurt.
+
+================= ======= ============== ==================================================================
+**Field**         **R/O** **Type**       **Description**
+================= ======= ============== ==================================================================
+scope             O       List of String   Optional scope for the policy.
+services          O       List of String   One or more services the policy applies to.
+resources         O       List of String   The unique ID for the Control Loop
+geography         O       List of String   The target VNF the actor is executing the recipe on
+
+================= ======= ======== ==================================================================
+
+This example below shows the JSON body of an Optimize Decision API call.
+
+.. code-block:: json
+  :caption: Decision API Call - Optimize vCPE service in US
+  :linenos:
+
+  {
+    "ONAPName": "OOF",
+    "ONAPComponent": "OOF-component",
+    "ONAPInstance": "OOF-component-instance",
+    "action": "optimize",
+    "resource": {
+        "scope": [],
+        "services": ["vCPE"],
+        "resources": [],
+        "geography": ["US"]
+    }
+  }
+
+.. code-block:: json
+  :caption: Decision Response - 
+  :linenos:
+
+  {
+    "policies:"  {
+        ### Omitted for brevity
+    }
+  }
+
+End of Document

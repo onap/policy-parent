@@ -13,7 +13,7 @@ The ONAP XACML Policy PDP Engine uses an `open source implementation <https://gi
 ONAP Supported Policy Types
 ***************************
 
-In ONAP the following Policy Types are supported. Each Policy Type is implemented as an application that extends the **XacmlApplicationServiceProvider**. For details on each implementation, please refer to the `applications submodule of the onap/xacml-pdp project <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=tree;f=applications;h=047878fe14851d8a51998e065b8aca583ed8c994;hb=refs/heads/dublin>`__.
+In ONAP the following Policy Types are supported. Each Policy Type is implemented as an application that extends the **XacmlApplicationServiceProvider**. For details on each implementation, please refer to the `applications submodule of the onap/xacml-pdp project <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=tree;f=applications;h=047878fe14851d8a51998e065b8aca583ed8c994;hb=refs/heads/elalto>`__.
 
 By cloning the policy/xacml-pdp repository, one can run the JUnit tests to get a better understanding on how applications are built using translators and the XACML Policies that are generated for each Policy Type. Each application supports one or more Policy Types and an associated "action" used by the Decision API when making these calls.
 
@@ -27,7 +27,7 @@ These Policy Types are used by Control Loop DCAE microservice components to supp
    "onap.policies.monitoring.cdap.tca.hi.lo.app", "configure", "TCA DCAE microservice component"
    "onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server", "configure", "REST Collector"
 
-The translator used to translate these TOSCA Policy Types is the `StdCombinedPolicyResultsTranslator <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=blob;f=applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdCombinedPolicyResultsTranslator.java;h=2d7386d99f97ccee828b665a46b46531495cdfcd;hb=refs/heads/dublin>`__.
+The translator used to translate these TOSCA Policy Types is the `StdCombinedPolicyResultsTranslator <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=blob;f=applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdCombinedPolicyResultsTranslator.java;h=2d7386d99f97ccee828b665a46b46531495cdfcd;hb=refs/heads/elalto>`__.
 
 This is an example Decision API payload made to retrieve a decision for a Monitoring Policy Type.
 
@@ -36,7 +36,7 @@ This is an example Decision API payload made to retrieve a decision for a Monito
 
 Guard Policy Types
 ==================
-These Policy Types are used by Control Loop Drools Engine to support guarding of Control Loops during runtime control loop execution. NOTE: For Dublin, these policy types are not TOSCA compliant but rather a simple variation of the Casablanca legacy guard policy.
+These Policy Types are used by Control Loop Drools Engine to support guarding of Control Loops during runtime control loop execution. NOTE: For El Alto, these policy types are not TOSCA compliant but rather a simple variation of the Casablanca legacy guard policy.
 
 .. csv-table::
    :header: "Policy Type", "Action", "Description"
@@ -45,7 +45,7 @@ These Policy Types are used by Control Loop Drools Engine to support guarding of
    "onap.policies.controlloop.guard.Blacklist", "guard", "Blacklists a regexp of VNF IDs"
    "onap.policies.controlloop.guard.MinMax", "guard", "For scaling, enforces a min/max number of VNFS"
 
-The translator used to translate these legacy Policy Types is the `LegacyGuardTranslator <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=blob;f=applications/guard/src/main/java/org/onap/policy/xacml/pdp/application/guard/LegacyGuardTranslator.java;h=2917aab26dfbcf805dd00fead66ef68439561a11;hb=refs/heads/dublin>`__ which implements a more fine grained approach to translating the properties into a XACML policy.
+The translator used to translate these legacy Policy Types is the `LegacyGuardTranslator <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=blob;f=applications/guard/src/main/java/org/onap/policy/xacml/pdp/application/guard/LegacyGuardTranslator.java;h=2917aab26dfbcf805dd00fead66ef68439561a11;hb=refs/heads/elalto>`__ which implements a more fine grained approach to translating the properties into a XACML policy.
 
 This is an example Decision API payload made to retrieve a decision for a Guard Policy Type.
 
@@ -62,17 +62,18 @@ These Policy Types are similar to the guard Policy Types and are called by the C
 
    "onap.policies.controlloop.guard.coordination.FirstBlocksSecond", "guard", "Gives priority to one control loop vs another"
 
-The translator used to translate the coordination Policy Types is the `CoordinationGuardTranslator <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=blob;f=applications/guard/src/main/java/org/onap/policy/xacml/pdp/application/guard/CoordinationGuardTranslator.java;h=41c1428e3da4cc5b6c1bb091d0c16a6618a036ae;hb=refs/heads/dublin>`__ which uses a XACML Policy Template in its implementation. For example, when a new policy is loaded the translator copies the template to a new policy and replaces the CONTROL_LOOP_ONE and CONTROL_LOOP_TWO values with the specified control loops. See the `XAMCL Coordination Template for more details <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=blob;f=applications/guard/src/main/resources/coordination/function/onap.policies.controlloop.guard.coordination.FirstBlocksSecond.xml;h=bea05f264be5e422eb2da448d40057f736b7555c;hb=refs/heads/dublin>`__.
+The translator used to translate the coordination Policy Types is the `CoordinationGuardTranslator <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=blob;f=applications/guard/src/main/java/org/onap/policy/xacml/pdp/application/guard/CoordinationGuardTranslator.java;h=41c1428e3da4cc5b6c1bb091d0c16a6618a036ae;hb=refs/heads/elalto>`__ which uses a XACML Policy Template in its implementation. For example, when a new policy is loaded the translator copies the template to a new policy and replaces the CONTROL_LOOP_ONE and CONTROL_LOOP_TWO values with the specified control loops. See the `XAMCL Coordination Template for more details <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=blob;f=applications/guard/src/main/resources/coordination/function/onap.policies.controlloop.guard.coordination.FirstBlocksSecond.xml;h=bea05f264be5e422eb2da448d40057f736b7555c;hb=refs/heads/elalto>`__.
 
 The same Decision API payload example for guard applies to this Policy Type.
 
 Optimization Policy Types
 =========================
-These Policy Types are used by the OOF Project support placement in ONAP. The OOF Platform makes a call to the Decision API to request these Policies based on the values specified in the **policyScope** and **policyType** properties. Please refer to the OOF Project for more details on how these Policy Types are using in their platform.
+These Policy Types are designed to be used by the OOF Project support placement in ONAP. The OOF Platform makes a call to the Decision API to request these Policies based on the values specified in the onap.policies.Optimization properties that have a metadata property called "matchable" and its value is set to "true". NOTE: For El Alto, this is dark code and OOF has not yet upgraded to the new Decision API to support this. Please refer to the OOF Project for more details on how it currently uses the Legacy API and policy models in their platform.
 
 .. csv-table::
    :header: "Policy Type", "Action"
 
+   "onap.policies.Optimization", "optimize"
    "onap.policies.optimization.AffinityPolicy", "optimize"
    "onap.policies.optimization.DistancePolicy", "optimize"
    "onap.policies.optimization.HpaPolicy", "optimize"
@@ -83,7 +84,7 @@ These Policy Types are used by the OOF Project support placement in ONAP. The OO
    "onap.policies.optimization.Vim_fit", "optimize"
    "onap.policies.optimization.VnfPolicy", "optimize"
 
-The translator used to translate the optimization Policy Types is the `StdMatchableTranslator <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=blob;f=applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdMatchableTranslator.java;h=dd44af7aa4ab2ef70b216f8a3a6a02c6f1fddf56;hb=refs/heads/dublin>`__.
+The translator used to translate the optimization Policy Types is the `StdMatchableTranslator <https://gerrit.onap.org/r/gitweb?p=policy/xacml-pdp.git;a=blob;f=applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdMatchableTranslator.java;h=dd44af7aa4ab2ef70b216f8a3a6a02c6f1fddf56;hb=refs/heads/elalto>`__.
 
 This is an example Decision API payload made to retrieve a decision for an Optimization Policy Type.
 
