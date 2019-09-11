@@ -13,3 +13,4 @@ docs/conf.py
 docs/conf.pyc
 docs/html/
 docs/_static/
+docs/__pycache__/
