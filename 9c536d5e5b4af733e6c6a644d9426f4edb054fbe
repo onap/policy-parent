@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d56cd649_bda3a07b",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-09-11T13:12:27Z",
+      "side": 1,
+      "message": "\"These\" \u003d\u003e \"This\"",
+      "revId": "9c536d5e5b4af733e6c6a644d9426f4edb054fbe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a318ec7a_84a146b7",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-09-11T13:12:27Z",
+      "side": 1,
+      "message": "add FirstBeforeSecond?",
+      "revId": "9c536d5e5b4af733e6c6a644d9426f4edb054fbe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
