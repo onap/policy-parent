@@ -30,46 +30,47 @@ atop. In other words, different policies can match the same or different policy 
 of creating such type of policies. In the payload body of each policy to create, policy type name and version should be indicated and
 the specified policy type should be valid and existing in policy database. 
 
-In Dublin release, to ease policy creation, we preload several widely used policy types in policy database. Below is a table summarizing 
+In El Alto release, to ease policy creation, we preload several widely used policy types in policy database. Below is a table summarizing 
 preloaded policy types.
 
 .. csv-table::
-   :header: "Policy Type Name", "Preloaded JSON"
+   :header: "Policy Type Name", "Payload"
    :widths: 15,10
 
-   "Controlloop.Guard.Blacklist", ":download:`link <policytypes/onap.policies.controlloop.guard.Blacklist.json>`"
-   "Controlloop.Guard.FrequencyLimiter", ":download:`link <policytypes/onap.policies.controlloop.guard.FrequencyLimiter.json>`"
-   "Controlloop.Guard.MinMax", ":download:`link <policytypes/onap.policies.controlloop.guard.MinMax.json>`"
-   "Controlloop.Operational", ":download:`link <policytypes/onap.policies.controlloop.Operational.json>`"
-   "Monitoring.TCA", ":download:`link <policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app.json>`"
-   "Monitoring.Collectors", ":download:`link <policytypes/onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.json>`"
-   "Optimization.AffinityPolicy", ":download:`link <policytypes/onap.policies.optimization.AffinityPolicy.json>`"
-   "Optimization.DistancePolicy", ":download:`link <policytypes/onap.policies.optimization.DistancePolicy.json>`"
-   "Optimization.HpaPolicy", ":download:`link <policytypes/onap.policies.optimization.HpaPolicy.json>`"
-   "Optimization.OptimizationPolicy", ":download:`link <policytypes/onap.policies.optimization.OptimizationPolicy.json>`"
-   "Optimization.PciPolicy", ":download:`link <policytypes/onap.policies.optimization.PciPolicy.json>`"
-   "Optimization.QueryPolicy", ":download:`link <policytypes/onap.policies.optimization.QueryPolicy.json>`"
-   "Optimization.SubscriberPolicy", ":download:`link <policytypes/onap.policies.optimization.SubscriberPolicy.json>`"
-   "Optimization.Vim_fit", ":download:`link <policytypes/onap.policies.optimization.Vim_fit.json>`"
-   "Optimization.VnfPolicy", ":download:`link <policytypes/onap.policies.optimization.VnfPolicy.json>`"
+   "Controlloop.Guard.Blacklist", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Blacklist.yaml>`_
+   "Controlloop.Guard.FrequencyLimiter", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.FrequencyLimiter.yaml>`_
+   "Controlloop.Guard.MinMax", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.MinMax.yaml>`_
+   "Controlloop.Guard.Coordination.FirstBlocksSecond", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.coordination.FirstBlocksSecond.yaml>`_
+   "Controlloop.Operational", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.Operational.yaml>`_
+   "Monitoring.TCA", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app.yaml>`_
+   "Monitoring.Collectors", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.yaml>`_
+   "Optimization", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.Optimization.yaml>`_
+   "Optimization.AffinityPolicy", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.AffinityPolicy.yaml>`_
+   "Optimization.DistancePolicy", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.DistancePolicy.yaml>`_
+   "Optimization.HpaPolicy", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.HpaPolicy.yaml>`_
+   "Optimization.OptimizationPolicy", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.OptimizationPolicy.yaml>`_
+   "Optimization.PciPolicy", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.PciPolicy.yaml>`_
+   "Optimization.QueryPolicy", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.QueryPolicy.yaml>`_
+   "Optimization.SubscriberPolicy", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.SubscriberPolicy.yaml>`_
+   "Optimization.Vim_fit", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.Vim_fit.yaml>`_
+   "Optimization.VnfPolicy", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.VnfPolicy.yaml>`_
 
-
-Also, in Dublin release, We provide backward compatibility support for controlloop operational and guard 
+Also, in El Alto release, We provide backward compatibility support for controlloop operational and guard 
 policies encoded in legacy format. Below is a table containing sample legacy guard/operational policies and 
 well-formed TOSCA monitoring policies.
 
 .. csv-table::
-   :header: "Policy Name", "Policy JSON"
+   :header: "Policy Name", "Payload"
    :widths: 15,10
 
-   "vCPE.Monitoring.Tosca", ":download:`link <policies/vCPE.policy.monitoring.input.tosca.json>`"
-   "vCPE.Operational.Legacy", ":download:`link <policies/vCPE.policy.operational.input.json>`"
-   "vDNS.Guard.FrequencyLimiting.Legacy", ":download:`link <policies/vDNS.policy.guard.frequency.input.json>`"
-   "vDNS.Guard.MinMax.Legacy", ":download:`link <policies/vDNS.policy.guard.minmax.input.json>`"
-   "vDNS.Monitoring.Tosca", ":download:`link <policies/vDNS.policy.monitoring.input.tosca.json>`"
-   "vDNS.Operational.Legacy", ":download:`link <policies/vDNS.policy.operational.input.json>`"
-   "vFirewall.Monitoring.Tosca", ":download:`link <policies/vFirewall.policy.monitoring.input.tosca.json>`"
-   "vFirewall.Operational.Legacy", ":download:`link <policies/vFirewall.policy.operational.input.json>`"
+   "vCPE.Monitoring.Tosca", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.monitoring.input.tosca.yaml>`_ | `json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.monitoring.input.tosca.json>`_
+   "vCPE.Operational.Legacy", `json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.operational.input.json>`_
+   "vDNS.Guard.FrequencyLimiting.Legacy", `json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.guard.frequency.input.json>`_
+   "vDNS.Guard.MinMax.Legacy", `json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.guard.minmax.input.json>`_
+   "vDNS.Monitoring.Tosca", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.monitoring.input.tosca.yaml>`_ | `json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.monitoring.input.tosca.json>`_
+   "vDNS.Operational.Legacy", `json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.operational.input.json>`_
+   "vFirewall.Monitoring.Tosca", `yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewall.policy.monitoring.input.tosca.yaml>`_ | `json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewall.policy.monitoring.input.tosca.json>`_
+   "vFirewall.Operational.Legacy", `json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewall.policy.operational.input.json>`_
 
 
 Below is a global API table from where swagger JSON for different types of policy design API can be downloaded.  
