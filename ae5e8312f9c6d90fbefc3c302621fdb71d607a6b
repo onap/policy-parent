@@ -49,6 +49,23 @@
     },
     {
       "key": {
+        "uuid": "10d72850_ba2ac371",
+        "filename": "docs/api/policies/vDNS.policy.monitoring.input.tosca.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-09-11T13:01:47Z",
+      "side": 1,
+      "message": "looks like this file hasn\u0027t changed - maybe just remove it from the review.  Or did we just copy this from models-examples?  If that\u0027s the case, then it\u0027s fine as it is.\n\nsame comment for several of these files",
+      "revId": "ae5e8312f9c6d90fbefc3c302621fdb71d607a6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d425d0dd_71482dea",
         "filename": "docs/api/policies/vDNS.policy.monitoring.input.tosca.json",
         "patchSetId": 1
