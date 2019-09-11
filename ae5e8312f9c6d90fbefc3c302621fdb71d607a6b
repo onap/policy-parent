@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7620ff5a_3dddfde5",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2019-09-11T08:02:37Z",
+      "side": 1,
+      "message": "I wonder would it be a good idea to put in links to the policy types and policy examples in github rather than duplicating the policy types and policies in the documentation. You could put in links like:\nhttps://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Blacklist.yaml\n\nand\nhttps://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.monitoring.output.tosca.yaml\n\nThis would reduce the likelihood of the examples and the code base going out of sync in the future.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 103
+      },
+      "revId": "ae5e8312f9c6d90fbefc3c302621fdb71d607a6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d425d0dd_71482dea",
+        "filename": "docs/api/policies/vDNS.policy.monitoring.input.tosca.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2019-09-11T08:02:37Z",
+      "side": 1,
+      "message": "Seems to be some new white space at the end of lines here that show up in the Gerrit review.",
+      "range": {
+        "startLine": 3,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "ae5e8312f9c6d90fbefc3c302621fdb71d607a6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b57c65d_d6837dfb",
+        "filename": "docs/api/policies/vFirewall.policy.monitoring.input.tosca.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2019-09-11T08:02:37Z",
+      "side": 1,
+      "message": "Same in this one",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "ae5e8312f9c6d90fbefc3c302621fdb71d607a6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
