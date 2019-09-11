@@ -4,7 +4,10 @@
   "ONAPInstance": "OOF-component-instance",
   "action": "optimize",
   "resource": {
-      "policyScope": ["vCPE", "US", "INTERNATIONAL", "ip", "vGMuxInfra", "vG"],
+      "scope": [],
+      "services": ["vCPE"],
+      "resources": ["vGMuxInfra", "vG"],
+      "geography": ["US", "INTERNATIONAL"],
       "policyType": "zone"
   }
 }
