@@ -30,7 +30,7 @@ atop. In other words, different policies can match the same or different policy 
 of creating such type of policies. In the payload body of each policy to create, policy type name and version should be indicated and
 the specified policy type should be valid and existing in policy database. 
 
-In Dublin release, to ease policy creation, we preload several widely used policy types in policy database. Below is a table summarizing 
+In El Alto release, to ease policy creation, we preload several widely used policy types in policy database. Below is a table summarizing 
 preloaded policy types.
 
 .. csv-table::
@@ -40,9 +40,11 @@ preloaded policy types.
    "Controlloop.Guard.Blacklist", ":download:`link <policytypes/onap.policies.controlloop.guard.Blacklist.json>`"
    "Controlloop.Guard.FrequencyLimiter", ":download:`link <policytypes/onap.policies.controlloop.guard.FrequencyLimiter.json>`"
    "Controlloop.Guard.MinMax", ":download:`link <policytypes/onap.policies.controlloop.guard.MinMax.json>`"
+   "Controlloop.Guard.Coordination.FirstBlocksSecond", ":download:`link <policytypes/onap.policies.controlloop.guard.coordination.FirstBlocksSecond.json>`"
    "Controlloop.Operational", ":download:`link <policytypes/onap.policies.controlloop.Operational.json>`"
    "Monitoring.TCA", ":download:`link <policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app.json>`"
    "Monitoring.Collectors", ":download:`link <policytypes/onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.json>`"
+   "Optimization", ":download:`link <policytypes/onap.policies.Optimization.json>`"
    "Optimization.AffinityPolicy", ":download:`link <policytypes/onap.policies.optimization.AffinityPolicy.json>`"
    "Optimization.DistancePolicy", ":download:`link <policytypes/onap.policies.optimization.DistancePolicy.json>`"
    "Optimization.HpaPolicy", ":download:`link <policytypes/onap.policies.optimization.HpaPolicy.json>`"
@@ -54,7 +56,7 @@ preloaded policy types.
    "Optimization.VnfPolicy", ":download:`link <policytypes/onap.policies.optimization.VnfPolicy.json>`"
 
 
-Also, in Dublin release, We provide backward compatibility support for controlloop operational and guard 
+Also, in El Alto release, We provide backward compatibility support for controlloop operational and guard 
 policies encoded in legacy format. Below is a table containing sample legacy guard/operational policies and 
 well-formed TOSCA monitoring policies.
 
