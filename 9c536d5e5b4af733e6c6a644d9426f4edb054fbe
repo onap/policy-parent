@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6eb140ee_ea6f9040",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-09-11T15:56:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d56cd649_bda3a07b",
+      "revId": "9c536d5e5b4af733e6c6a644d9426f4edb054fbe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a318ec7a_84a146b7",
         "filename": "docs/xacml/xacml.rst",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-11T13:12:27Z",
       "side": 1,
       "message": "add FirstBeforeSecond?",
+      "revId": "9c536d5e5b4af733e6c6a644d9426f4edb054fbe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c892607_9bbccbbc",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-09-11T15:56:53Z",
+      "side": 1,
+      "message": "No that a CLC Policy - not optimization. But that can be added into the guard documentation when I take a crack at that.",
+      "parentUuid": "a318ec7a_84a146b7",
       "revId": "9c536d5e5b4af733e6c6a644d9426f4edb054fbe",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
