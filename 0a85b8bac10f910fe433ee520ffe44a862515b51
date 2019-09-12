@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b768af9_6599c6a9",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-09-12T13:05:24Z",
+      "side": 1,
+      "message": "These should point to the right branch - which will be elalto or master. eg. you will have to cherry-pick this for each.",
+      "revId": "0a85b8bac10f910fe433ee520ffe44a862515b51",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
