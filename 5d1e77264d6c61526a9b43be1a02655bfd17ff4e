@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65cac717_42dfd9b8",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-09-12T19:36:02Z",
+      "side": 1,
+      "message": "\"supportes\" \u003d\u003e \"supports\"",
+      "revId": "5d1e77264d6c61526a9b43be1a02655bfd17ff4e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
