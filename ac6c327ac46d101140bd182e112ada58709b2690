@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed91410c_d5a279e8",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-09-12T13:38:51Z",
+      "side": 1,
+      "message": "change \"master\" to \"elalto\"\n\nsame comment through-out",
+      "revId": "ac6c327ac46d101140bd182e112ada58709b2690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
