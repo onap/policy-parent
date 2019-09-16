@@ -16,10 +16,10 @@ Policy Release Notes
 ..      * * *     EL ALTO    * * *
 ..      ==========================
 
-Version: 5.0.0
+Version: 5.0.1
 --------------
 
-:Release Date: 2019-08-12 (El Alto Release)
+:Release Date: 2019-09-30 (El Alto Release)
 
 **New Features**
 
