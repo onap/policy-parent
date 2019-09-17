@@ -124,7 +124,7 @@ x-onap-requestid is used to track REST transactions for logging purpose, as desc
 .. swaggerv2doc:: swagger/policy-api.json
 
 It is worth noting that in POST policy API, client needs to provide a policy payload encoded in well-formed TOSCA Service Template, and 
-in the JSON payload, "type" field value should strictly match the policy type name embedded in the API path (case sensitive). 
+in the JSON/YAML payload, "type" field value should strictly match the policy type name embedded in the API path (case sensitive). 
 Otherwise, it will complain the policy type does not exist. Please check out the sample policies in above policy table.
 
 .. swaggerv2doc:: swagger/guard-policy-api.json
