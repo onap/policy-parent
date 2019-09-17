@@ -12,7 +12,7 @@
         "summary" : "Retrieve all versions of a policy created for a particular policy type version",
         "description" : "Returns a list of all versions of specified policy created for the specified policy type version",
         "operationId" : "getAllPolicies",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",
@@ -85,8 +85,8 @@
         "summary" : "Create a new policy for a policy type version",
         "description" : "Create a new policy for a policy type. Client should provide TOSCA body of the new policy",
         "operationId" : "createPolicy",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
+        "consumes" : [ "application/json", "application/yaml" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",
@@ -173,7 +173,7 @@
         "summary" : "Retrieve all version details of a policy created for a particular policy type version",
         "description" : "Returns a list of all version details of the specified policy",
         "operationId" : "getAllVersionsOfPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",
@@ -254,7 +254,7 @@
         "summary" : "Retrieve one version of a policy created for a particular policy type version",
         "description" : "Returns a particular version of specified policy created for the specified policy type version",
         "operationId" : "getSpecificVersionOfPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",
@@ -339,7 +339,7 @@
         "summary" : "Delete a particular version of a policy",
         "description" : "Delete a particular version of a policy. It must follow one rule. Rule: the version that has been deployed in PDP group(s) cannot be deleted",
         "operationId" : "deleteSpecificVersionOfPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",
@@ -429,7 +429,7 @@
         "summary" : "Retrieve the latest version of a particular policy",
         "description" : "Returns the latest version of specified policy",
         "operationId" : "getLatestVersionOfPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",
@@ -510,7 +510,7 @@
         "summary" : "Retrieve deployed versions of a particular policy in pdp groups",
         "description" : "Returns deployed versions of specified policy in pdp groups",
         "operationId" : "getDeployedVersionsOfPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",

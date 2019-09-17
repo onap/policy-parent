@@ -12,7 +12,7 @@
         "summary" : "Retrieve current statistics",
         "description" : "Returns current statistics including the counters of API invocation",
         "operationId" : "getStatistics",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "X-ONAP-RequestID",
           "in" : "header",
