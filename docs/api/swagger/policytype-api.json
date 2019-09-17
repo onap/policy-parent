@@ -12,7 +12,7 @@
         "summary" : "Retrieve existing policy types",
         "description" : "Returns a list of existing policy types stored in Policy Framework",
         "operationId" : "getAllPolicyTypes",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "X-ONAP-RequestID",
           "in" : "header",
@@ -70,8 +70,8 @@
         "summary" : "Create a new policy type",
         "description" : "Create a new policy type. Client should provide TOSCA body of the new policy type",
         "operationId" : "createPolicyType",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
+        "consumes" : [ "application/json", "application/yaml" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "in" : "body",
           "name" : "body",
@@ -143,7 +143,7 @@
         "summary" : "Retrieve all available versions of a policy type",
         "description" : "Returns a list of all available versions for the specified policy type",
         "operationId" : "getAllVersionsOfPolicyType",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",
@@ -212,7 +212,7 @@
         "summary" : "Retrieve one particular version of a policy type",
         "description" : "Returns a particular version for the specified policy type",
         "operationId" : "getSpecificVersionOfPolicyType",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",
@@ -285,7 +285,7 @@
         "summary" : "Delete one version of a policy type",
         "description" : "Delete one version of a policy type. It must follow two rules. Rule 1: pre-defined policy types cannot be deleted; Rule 2: policy types that are in use (parameterized by a TOSCA policy) cannot be deleted. The parameterizing TOSCA policies must be deleted first.",
         "operationId" : "deleteSpecificVersionOfPolicyType",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",
@@ -363,7 +363,7 @@
         "summary" : "Retrieve latest version of a policy type",
         "description" : "Returns latest version for the specified policy type",
         "operationId" : "getLatestVersionOfPolicyType",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyTypeId",
           "in" : "path",

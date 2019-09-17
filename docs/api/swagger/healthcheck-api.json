@@ -12,7 +12,7 @@
         "summary" : "Perform a system healthcheck",
         "description" : "Returns healthy status of the Policy API component",
         "operationId" : "getHealthCheck",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [{
           "name" : "X-ONAP-RequestID",
           "in" : "header",

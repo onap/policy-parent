@@ -12,7 +12,7 @@
         "summary" : "Retrieve the latest version of a particular guard policy",
         "description" : "Returns the latest version of the specified guard policy",
         "operationId" : "getLatestVersionOfGuardPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyId",
           "in" : "path",
@@ -84,7 +84,7 @@
         "summary" : "Retrieve deployed versions of a particular guard policy in pdp groups",
         "description" : "Returns deployed versions of a specified guard policy in pdp groups",
         "operationId" : "getDeployedVersionsOfGuardPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyId",
           "in" : "path",
@@ -156,7 +156,7 @@
         "summary" : "Retrieve one version of a particular guard policy",
         "description" : "Returns a particular version of a specified guard policy",
         "operationId" : "getSpecificVersionOfGuardPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyId",
           "in" : "path",
@@ -232,8 +232,8 @@
         "summary" : "Delete a particular version of a guard policy",
         "description" : "Delete a particular version of a guard policy. It must follow one rule. Rule: the version that has been deployed in PDP group(s) cannot be deleted",
         "operationId" : "deleteSpecificVersionOfGuardPolicy",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
+        "consumes" : [ "application/json", "application/yaml" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyId",
           "in" : "path",
@@ -314,8 +314,8 @@
         "summary" : "Create a new guard policy",
         "description" : "Create a new guard policy. Client should provide entity body of the new guard policy",
         "operationId" : "createGuardPolicy",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
+        "consumes" : [ "application/json", "application/yaml" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "X-ONAP-RequestID",
           "in" : "header",

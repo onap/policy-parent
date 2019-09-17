@@ -12,7 +12,7 @@
         "summary" : "Retrieve the latest version of a particular operational policy",
         "description" : "Returns the latest version of the specified operational policy",
         "operationId" : "getLatestVersionOfOperationalPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyId",
           "in" : "path",
@@ -81,7 +81,7 @@
         "summary" : "Retrieve deployed versions of a particular operational policy in pdp groups",
         "description" : "Returns deployed versions of a specified operational policy in pdp groups",
         "operationId" : "getDeployedVersionsOfOperationalPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyId",
           "in" : "path",
@@ -153,7 +153,7 @@
         "summary" : "Retrieve one version of a particular operational policy",
         "description" : "Returns a particular version of a specified operational policy",
         "operationId" : "getSpecificVersionOfOperationalPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyId",
           "in" : "path",
@@ -226,7 +226,7 @@
         "summary" : "Delete a particular version of a specified operational policy",
         "description" : "Delete a particular version of an operational policy. It must follow one rule. Rule: the version that has been deployed in PDP group(s) cannot be deleted",
         "operationId" : "deleteSpecificVersionOfOperationalPolicy",
-        "produces" : [ "application/json" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "policyId",
           "in" : "path",
@@ -304,8 +304,8 @@
         "summary" : "Create a new operational policy",
         "description" : "Create a new operational policy. Client should provide entity body of the new operational policy",
         "operationId" : "createOperationalPolicy",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
+        "consumes" : [ "application/json", "application/yaml" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "X-ONAP-RequestID",
           "in" : "header",
