@@ -46,52 +46,77 @@ The El Alto release for POLICY delivered the following Epics. For a full list of
 
     * [POLICY-1727] - This epic covers technical debt left over from Dublin
 	- POLICY-969	Docker improvement in policy framwork modules
+	- POLICY-1074	Fix checkstyle warnings in every repository
 	- POLICY-1121	RPM build for Apex
 	- POLICY-1223	CII Silver Badging Requirements
-	- POLICY-1465	Support configurable Heap Memory Settings for JVM processes
+	- POLICY-1600	Clean up hash code equality checks, cloning and copying in policy-models
 	- POLICY-1646	Replace uses of getCanonicalName() with getName()
-	- POLICY-1653	Remove isNullVersion() method
+	- POLICY-1652	Move PapRestServer to policy/common
 	- POLICY-1732	Enable maven-checkstyle-plugin in apex-pdp
 	- POLICY-1737	Upgrade oParent 2.0.0 - change daily jobs to staging jobs
 	- POLICY-1742	Make HTTP return code handling configurable in APEX
+	- POLICY-1743	Make URL configurable in REST Requestor and REST Client
 	- POLICY-1744	Remove topic.properties and incorporate into overall properties
 	- POLICY-1770	PAP REST API for PDPGroup Healthcheck
 	- POLICY-1771	Boost policy/api JUnit code coverage
+	- POLICY-1772	Boost policy/xacml-pdp JUnit code coverage
 	- POLICY-1773	Enhance the policy/xacml-pdp S3P Stability and Performance tests
 	- POLICY-1784	Better Handling of "version" field value with clients
 	- POLICY-1785	Deploy same policy with a new version simply adds to the list
+	- POLICY-1786	Create a simple way to populate the guard database for testing
 	- POLICY-1791	Address Sonar issues in new policy repos
 	- POLICY-1795	PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs. 
 	- POLICY-1800	API|PAP components use different version formats
 	- POLICY-1805	Build up stability test for api component to follow S3P requirements
 	- POLICY-1806	Build up S3P performance test for api component
-	- POLICY-1826	Move the dmaap and pdp simulator to policy/common
+	- POLICY-1825	Enhance the policy/drools-pdp S3P Stability and Performance tests
+	- POLICY-1847	Add control loop coordination as a preloaded policy type
+	- POLICY-1871	Change policy/distribution to support ToscaPolicyType & ToscaPolicy
+	- POLICY-1881	Upgrade policy/distribution to latest SDC artifacts
 	- POLICY-1885	Apex-pdp: Extend CLIEditor to generate policy in ToscaServiceTemplate format
+	- POLICY-1898	Move apex-pdp & distribution documents to policy/parent
+	- POLICY-1942	Boost policy/apex-pdp JUnit code coverage
+	- POLICY-1953	Create addTopic taking BusTopicParams instead of Properties in policy/endpoints
+
+    * Additional items delivered with the release.
+	- POLICY-1637	Remove "version" from PdpGroup
+	- POLICY-1653	Remove isNullVersion() method
+	- POLICY-1966	Fix more sonar issues in policy drools
+	- POLICY-1988	Generate El Alto AAF Certificates
 
     * [POLICY-1823] - This epic covers the work to develop features that will be deployed dark in El Alto.
 	- POLICY-1762	Create CDS API model implementation
+	- POLICY-1763	Create CDS Actor
+	- POLICY-1899	Update optimization xacml application to support more flexible Decision API
+	- POLICY-1911	XACML PDP must be able to retrieve Policy Type from API
+
 
 **Bug Fixes**
 
 The following bug fixes have been deployed with this release:
 
-	- POLICY-1793	API|MODELS: Retrieving Legacy Operational Policy as a Tosca Policy with wrong version
-	- POLICY-1801	Deploy/undeploy via integer version fails
-	- POLICY-1802	Apex-pdp: context album is mandatory for policy model to compile
-	- POLICY-1803	PAP should undeploy policies when subgroup is deleted
-	- POLICY-1808	API|PAP|PDP-X [new] should publish docker images with the following tag X.Y-SNAPSHOT-latest 
-	- POLICY-1809	In the return of GET call to retrieve the >1 version of guard policy, "version" field is always "1.0.0" 
-	- POLICY-1818	APEX does not allow arbitrary Kafka parameters to be specified
-	- POLICY-1830	Policy throws error parsing its Publish on APPC-CL topic
-	- POLICY-1838	Drools-pdp error log is missing data in ErrorDescription field
-	- POLICY-1839	Policy Model  currently needs to be escaped
-	- POLICY-1842	Fix documentation links
-	- POLICY-1843	Decision API not returning monitoring policies when calling api with policy-type
-	- POLICY-1844	XACML PDP does not update policy statistics
-	- POLICY-1859	Drools rules should not timeout when given timeout=0 - should be treated as infinite
-	- POLICY-1872	brmsgw fails building a jar - trafficgenerator dependency does not exist
-	- POLICY-1876	ONAP-PAP-REST JUnit fail on Centos
-	- POLICY-1879	ApexPDP - Build/Test fails in Nordix - InetAddress.getLocalHost() fails
+    * `[POLICY-1671] <https://jira.onap.org/browse/POLICY-1671>`_ - policy/engine JUnit tests now take over 30 minutes to run
+    * `[POLICY-1725] <https://jira.onap.org/browse/POLICY-1725>`_ - XACML PDP returns 500 vs 400 for bad syntax JSON
+    * `[POLICY-1793] <https://jira.onap.org/browse/POLICY-1793>`_ - API|MODELS: Retrieving Legacy Operational Policy as a Tosca Policy with wrong version
+    * `[POLICY-1795] <https://jira.onap.org/browse/POLICY-1795>`_ - PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs. 
+    * `[POLICY-1800] <https://jira.onap.org/browse/POLICY-1800>`_ - API|PAP components use different version formats
+    * `[POLICY-1802] <https://jira.onap.org/browse/POLICY-1802>`_ - Apex-pdp: context album is mandatory for policy model to compile
+    * `[POLICY-1803] <https://jira.onap.org/browse/POLICY-1803>`_ - PAP should undeploy policies when subgroup is deleted
+    * `[POLICY-1807] <https://jira.onap.org/browse/POLICY-1807>`_ - Latest version is always returned when using the endpoint to retrieve all versions of a particular policy 
+    * `[POLICY-1808] <https://jira.onap.org/browse/POLICY-1808>`_ - API|PAP|PDP-X [new] should publish docker images with the following tag X.Y-SNAPSHOT-latest 
+    * `[POLICY-1810] <https://jira.onap.org/browse/POLICY-1810>`_ - API: support "../deployed" REST API (URLs) for legacy policies
+    * `[POLICY-1811] <https://jira.onap.org/browse/POLICY-1811>`_ - The endpoint of retrieving the latest version of TOSCA policy does not return the latest one, especially when there are double-digit versions
+    * `[POLICY-1818] <https://jira.onap.org/browse/POLICY-1818>`_ - APEX does not allow arbitrary Kafka parameters to be specified
+    * `[POLICY-1838] <https://jira.onap.org/browse/POLICY-1838>`_ - Drools-pdp error log is missing data in ErrorDescription field
+    * `[POLICY-1839] <https://jira.onap.org/browse/POLICY-1839>`_ - Policy Model  currently needs to be escaped
+    * `[POLICY-1843] <https://jira.onap.org/browse/POLICY-1843>`_ - Decision API not returning monitoring policies when calling api with policy-type
+    * `[POLICY-1844] <https://jira.onap.org/browse/POLICY-1844>`_ - XACML PDP does not update policy statistics
+    * `[POLICY-1858] <https://jira.onap.org/browse/POLICY-1858>`_ - Usecase DRL - named query should not be invoked
+    * `[POLICY-1859] <https://jira.onap.org/browse/POLICY-1859>`_ - Drools rules should not timeout when given timeout=0 - should be treated as infinite
+    * `[POLICY-1872] <https://jira.onap.org/browse/POLICY-1872>`_ - brmsgw fails building a jar - trafficgenerator dependency does not exist
+    * `[POLICY-2047] <https://jira.onap.org/browse/POLICY-2047>`_ - TOSCA Policy Types should be map not a list
+    * `[POLICY-2060] <https://jira.onap.org/browse/POLICY-2060>`_ - ToscaProperties object is missing metadata field
+
 
 **Security Notes**
 
@@ -112,10 +137,13 @@ Quick Links:
 
 The following known issues will be addressed in a future release:
 
-POLICY-1276	JRuby interpreter shutdown fails on second and subsequent runs
-POLICY-1291	Maven Error when building Apex documentation in Windows
-POLICY-1725	XACML PDP returns 500 vs 400 for bad syntax JSON
-POLICY-1832	API|PAP: data race condition seem to appear sometimes when creating and deploying policy
+    * `[POLICY-1276] <https://jira.onap.org/browse/POLICY-1276>`_ - JRuby interpreter shutdown fails on second and subsequent runs
+    * `[POLICY-1291] <https://jira.onap.org/browse/POLICY-1291>`_ - Maven Error when building Apex documentation in Windows
+    * `[POLICY-1578] <https://jira.onap.org/browse/POLICY-1578>`_ - PAP pushPolicies.sh in startup fails due to race condition in some environments
+    * `[POLICY-1832] <https://jira.onap.org/browse/POLICY-1832>`_ - API|PAP: data race condition seem to appear sometimes when creating and deploying policy
+    * `[POLICY-2103] <https://jira.onap.org/browse/POLICY-2103>`_ - policy/distribution may need to re-synch if SDC gets reinstalled
+    * `[POLICY-2062] <https://jira.onap.org/browse/POLICY-2062>`_ - APEX PDP logs > 4G filled local storage
+    * `[POLICY-2080] <https://jira.onap.org/browse/POLICY-2080>`_ - drools-pdp JUnit fails intermittently in feature-active-standby-management
 
 
 ..      ==========================
@@ -657,12 +685,12 @@ The Amsterdam release continued evolving the design driven architecture of and f
 
 .. note
 ..      CHANGE  HISTORY
+..	09/19/2019 - Updated for El Alto Release.
 ..	05/16/2019 - Updated for Dublin Release.
 ..      01/17/2019 - Updated for Casablanca Maintenance Release.
 ..      11/19/2018 - Updated for Casablanca.  Also, fixed bugs is a list of bugs where the "Affected Version" is Beijing.
 ..		Changed version number to use ONAP versions.
 ..      10/08/2018 - Initial document for Casablanca release.
-..		Per Jorge, POLICY-785 did not get done in Casablanca (removed).
 ..	05/29/2018 - Information for Beijing release.
 ..      03/22/2018 - Initial document for Beijing release.
 ..      01/15/2018 - Added change for version 1.1.3 to the Amsterdam branch.  Also corrected prior version (1.2.0) to (1.1.1)
