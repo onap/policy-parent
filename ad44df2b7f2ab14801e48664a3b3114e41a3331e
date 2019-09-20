@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7cced49_f9a70785",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-09-20T12:11:56Z",
+      "side": 1,
+      "message": "FYI - I will update this section later.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "ad44df2b7f2ab14801e48664a3b3114e41a3331e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
