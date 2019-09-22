@@ -69,7 +69,6 @@ The El Alto release for POLICY delivered the following Epics. For a full list of
 	- POLICY-1800	API|PAP components use different version formats
 	- POLICY-1805	Build up stability test for api component to follow S3P requirements
 	- POLICY-1806	Build up S3P performance test for api component
-	- POLICY-1825	Enhance the policy/drools-pdp S3P Stability and Performance tests
 	- POLICY-1847	Add control loop coordination as a preloaded policy type
 	- POLICY-1871	Change policy/distribution to support ToscaPolicyType & ToscaPolicy
 	- POLICY-1881	Upgrade policy/distribution to latest SDC artifacts
