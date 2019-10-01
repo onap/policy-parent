@@ -37,23 +37,23 @@ preloaded policy types.
    :header: "Policy Type Name", "Payload"
    :widths: 15,10
 
-   "Controlloop.Guard.Blacklist", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Blacklist.yaml>`_
-   "Controlloop.Guard.FrequencyLimiter", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.FrequencyLimiter.yaml>`_
-   "Controlloop.Guard.MinMax", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.MinMax.yaml>`_
-   "Controlloop.Guard.Coordination.FirstBlocksSecond", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.coordination.FirstBlocksSecond.yaml>`_
-   "Controlloop.Operational", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.controlloop.Operational.yaml>`_
-   "Monitoring.TCA", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app.yaml>`_
-   "Monitoring.Collectors", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.yaml>`_
-   "Optimization", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.Optimization.yaml>`_
-   "Optimization.AffinityPolicy", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.AffinityPolicy.yaml>`_
-   "Optimization.DistancePolicy", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.DistancePolicy.yaml>`_
-   "Optimization.HpaPolicy", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.HpaPolicy.yaml>`_
-   "Optimization.OptimizationPolicy", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.OptimizationPolicy.yaml>`_
-   "Optimization.PciPolicy", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.PciPolicy.yaml>`_
-   "Optimization.QueryPolicy", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.QueryPolicy.yaml>`_
-   "Optimization.SubscriberPolicy", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.SubscriberPolicy.yaml>`_
-   "Optimization.Vim_fit", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.Vim_fit.yaml>`_
-   "Optimization.VnfPolicy", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.VnfPolicy.yaml>`_
+   "Controlloop.Guard.Blacklist", `onap.policies.controlloop.guard.Blacklist.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Blacklist.yaml>`_
+   "Controlloop.Guard.FrequencyLimiter", `onap.policies.controlloop.guard.FrequencyLimiter.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.FrequencyLimiter.yaml>`_
+   "Controlloop.Guard.MinMax", `onap.policies.controlloop.guard.MinMax.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.MinMax.yaml>`_
+   "Controlloop.Guard.Coordination.FirstBlocksSecond", `onap.policies.controlloop.guard.coordination.FirstBlocksSecond.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.coordination.FirstBlocksSecond.yaml>`_
+   "Controlloop.Operational", `onap.policies.controlloop.Operational.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.controlloop.Operational.yaml>`_
+   "Monitoring.TCA", `onap.policies.monitoring.cdap.tca.hi.lo.app.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app.yaml>`_
+   "Monitoring.Collectors", `onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.yaml>`_
+   "Optimization", `onap.policies.Optimization.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.Optimization.yaml>`_
+   "Optimization.AffinityPolicy", `onap.policies.optimization.AffinityPolicy.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.AffinityPolicy.yaml>`_
+   "Optimization.DistancePolicy", `onap.policies.optimization.DistancePolicy.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.DistancePolicy.yaml>`_
+   "Optimization.HpaPolicy", `onap.policies.optimization.HpaPolicy.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.HpaPolicy.yaml>`_
+   "Optimization.OptimizationPolicy", `onap.policies.optimization.OptimizationPolicy.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.OptimizationPolicy.yaml>`_
+   "Optimization.PciPolicy", `onap.policies.optimization.PciPolicy.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.PciPolicy.yaml>`_
+   "Optimization.QueryPolicy", `onap.policies.optimization.QueryPolicy.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.QueryPolicy.yaml>`_
+   "Optimization.SubscriberPolicy", `onap.policies.optimization.SubscriberPolicy.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.SubscriberPolicy.yaml>`_
+   "Optimization.Vim_fit", `onap.policies.optimization.Vim_fit.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.Vim_fit.yaml>`_
+   "Optimization.VnfPolicy", `onap.policies.optimization.VnfPolicy.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policytypes/onap.policies.optimization.VnfPolicy.yaml>`_
 
 Also, in El Alto release, We provide backward compatibility support for controlloop operational and guard 
 policies encoded in legacy format. Below is a table containing sample legacy guard/operational policies and 
@@ -63,15 +63,14 @@ well-formed TOSCA monitoring policies.
    :header: "Policy Name", "Payload"
    :widths: 15,10
 
-   "vCPE.Monitoring.Tosca", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vCPE.policy.monitoring.input.tosca.yaml>`_ | `json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vCPE.policy.monitoring.input.tosca.json>`_
-   "vCPE.Operational.Legacy", `json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vCPE.policy.operational.input.json>`_
-   "vDNS.Guard.FrequencyLimiting.Legacy", `json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vDNS.policy.guard.frequency.input.json>`_
-   "vDNS.Guard.MinMax.Legacy", `json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vDNS.policy.guard.minmax.input.json>`_
-   "vDNS.Monitoring.Tosca", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vDNS.policy.monitoring.input.tosca.yaml>`_ | `json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vDNS.policy.monitoring.input.tosca.json>`_
-   "vDNS.Operational.Legacy", `json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vDNS.policy.operational.input.json>`_
-   "vFirewall.Monitoring.Tosca", `yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vFirewall.policy.monitoring.input.tosca.yaml>`_ | `json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vFirewall.policy.monitoring.input.tosca.json>`_
-   "vFirewall.Operational.Legacy", `json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vFirewall.policy.operational.input.json>`_
-
+   "vCPE.Monitoring.Tosca", `vCPE.policy.monitoring.input.tosca.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vCPE.policy.monitoring.input.tosca.yaml>`_  `vCPE.policy.monitoring.input.tosca.json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vCPE.policy.monitoring.input.tosca.json>`_
+   "vCPE.Operational.Legacy", `vCPE.policy.operational.input.json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vCPE.policy.operational.input.json>`_
+   "vDNS.Guard.FrequencyLimiting.Legacy", `vDNS.policy.guard.frequency.input.json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vDNS.policy.guard.frequency.input.json>`_
+   "vDNS.Guard.MinMax.Legacy", `vDNS.policy.guard.minmax.input.json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vDNS.policy.guard.minmax.input.json>`_
+   "vDNS.Monitoring.Tosca", `vDNS.policy.monitoring.input.tosca.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vDNS.policy.monitoring.input.tosca.yaml>`_  `vDNS.policy.monitoring.input.tosca.json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vDNS.policy.monitoring.input.tosca.json>`_
+   "vDNS.Operational.Legacy", `vDNS.policy.operational.input.json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vDNS.policy.operational.input.json>`_
+   "vFirewall.Monitoring.Tosca", `vFirewall.policy.monitoring.input.tosca.yaml <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vFirewall.policy.monitoring.input.tosca.yaml>`_  `vFirewall.policy.monitoring.input.tosca.json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vFirewall.policy.monitoring.input.tosca.json>`_
+   "vFirewall.Operational.Legacy", `vFirewall.policy.operational.input.json <https://github.com/onap/policy-models/blob/elalto/models-examples/src/main/resources/policies/vFirewall.policy.operational.input.json>`_
 
 Below is a global API table from where swagger JSON for different types of policy design API can be downloaded.  
 
