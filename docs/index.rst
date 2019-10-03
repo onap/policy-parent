@@ -10,7 +10,7 @@ Policy Framework Architecture
 
    architecture/architecture
    design/design
-   api/api
+   offeredapis.rst
    installation/installation
    development/development
    pap/pap
