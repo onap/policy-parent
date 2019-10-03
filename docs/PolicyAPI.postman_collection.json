@@ -1,0 +1,1025 @@
+{
+	"info": {
+		"_postman_id": "502c0589-2c47-49c9-a067-dc99eff663de",
+		"name": "Policy API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Api Healthcheck",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-API-URL}}/policy/api/v1/healthcheck",
+					"host": [
+						"{{POLICY-API-URL}}"
+					],
+					"path": [
+						"policy",
+						"api",
+						"v1",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PAP Healthcheck",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-PAP-URL}}/policy/pap/v1/healthcheck",
+					"host": [
+						"{{POLICY-PAP-URL}}"
+					],
+					"path": [
+						"policy",
+						"pap",
+						"v1",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apex Healthcheck",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-APEX-URL}}/policy/apex-pdp/v1/healthcheck",
+					"host": [
+						"{{POLICY-APEX-URL}}"
+					],
+					"path": [
+						"policy",
+						"apex-pdp",
+						"v1",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Drools Healthcheck",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-DROOLS-URL}}/policy/pdpd/v1/healthcheck",
+					"host": [
+						"{{POLICY-DROOLS-URL}}"
+					],
+					"path": [
+						"policy",
+						"pdpd",
+						"v1",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Xacml Healthcheck",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-XACML-URL}}/policy/pdpx/v1/healthcheck",
+					"host": [
+						"{{POLICY-XACML-URL}}"
+					],
+					"path": [
+						"policy",
+						"pdpx",
+						"v1",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PAP Statistics",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-PAP-URL}}/policy/pap/v1/statistics",
+					"host": [
+						"{{POLICY-PAP-URL}}"
+					],
+					"path": [
+						"policy",
+						"pap",
+						"v1",
+						"statistics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PDPGroup Query",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps",
+					"host": [
+						"{{POLICY-PAP-URL}}"
+					],
+					"path": [
+						"policy",
+						"pap",
+						"v1",
+						"pdps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy Type",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tosca_definitions_version\": \"tosca_simple_yaml_1_0_0\",\n  \"policy_types\": {\n    \"onap.policies.controlloop.operational.Apex\": {\n      \"version\": \"1.0.0\",\n      \"description\": \"Operational Policy for Control Loops using the APEX PDP\",\n      \"properties\": {\n        \"engine_service\": {\n          \"type\": \"onap.datatypes.policies.controlloop.operational.apex.EngineService\",\n          \"description\": \"APEX Engine Service Parameters\"\n        },\n        \"inputs\": {\n          \"type\": \"map\",\n          \"description\": \"Inputs for handling events coming into the APEX engine\",\n          \"entry_schema\": {\n            \"type\": \"onap.datatypes.policies.controlloop.operational.apex.EventHandler\"\n          }\n        },\n        \"outputs\": {\n          \"type\": \"map\",\n          \"description\": \"Outputs for handling events going out of the APEX engine\",\n          \"entry_schema\": {\n            \"type\": \"onap.datatypes.policies.controlloop.operational.apex.EventHandler\"\n          }\n        },\n        \"environment\": {\n          \"type\": \"list\",\n          \"description\": \"Envioronmental parameters for the APEX engine\",\n          \"entry_schema\": {\n            \"type\": \"onap.datatypes.policies.controlloop.operational.apex.Environment\"\n          }\n        }\n      }\n    }\n  },\n  \"data_types\": {\n    \"onap.datatypes.policies.controlloop.operational.apex.EngineService\": {\n      \"derived_from\": \"tosca.datatypes.Root\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\",\n          \"description\": \"Specifies the engine name\",\n          \"required\": false,\n          \"default\": \"ApexEngineService\"\n        },\n        \"version\": {\n          \"type\": \"string\",\n          \"description\": \"Specifies the engine version in double dotted format\",\n          \"required\": false,\n          \"default\": \"1.0.0\"\n        },\n        \"id\": {\n          \"type\": \"int\",\n          \"description\": \"Specifies the engine id\",\n          \"required\": true\n        },\n        \"instance_count\": {\n          \"type\": \"int\",\n          \"description\": \"Specifies the number of engine threads that should be run\",\n          \"required\": true\n        },\n        \"deployment_port\": {\n          \"type\": \"int\",\n          \"description\": \"Specifies the port to connect to for engine administration\",\n          \"required\": false,\n          \"default\": 1\n        },\n        \"policy_model_file_name\": {\n          \"type\": \"string\",\n          \"description\": \"The name of the file from which to read the APEX policy model\",\n          \"required\": false,\n          \"default\": \"\"\n        },\n        \"policy_type_impl\": {\n          \"type\": \"string\",\n          \"description\": \"The policy type implementation from which to read the APEX policy model\",\n          \"required\": false,\n          \"default\": \"\"\n        },\n        \"periodic_event_period\": {\n          \"type\": \"string\",\n          \"description\": \"The time interval in milliseconds for the periodic scanning event, 0 means \\\"don't scan\\\"\",\n          \"required\": false,\n          \"default\": 0\n        },\n        \"engine\": {\n          \"type\": \"onap.datatypes.policies.controlloop.operational.apex.engineservice.Engine\",\n          \"description\": \"The parameters for all engines in the APEX engine service\",\n          \"required\": true\n        }\n      }\n    },\n    \"onap.datatypes.policies.controlloop.operational.apex.EventHandler\": {\n      \"derived_from\": \"tosca.datatypes.Root\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\",\n          \"description\": \"Specifies the event handler name, if not specified this is set to the key name\",\n          \"required\": false\n        },\n        \"carrier_technology\": {\n          \"type\": \"onap.datatypes.policies.controlloop.operational.apex.CarrierTechnology\",\n          \"description\": \"Specifies the carrier technology of the event handler (such as REST/Web Socket/Kafka)\",\n          \"required\": true\n        },\n        \"event_protocol\": {\n          \"type\": \"onap.datatypes.policies.controlloop.operational.apex.EventProtocol\",\n          \"description\": \"Specifies the event protocol of events for the event handler (such as Yaml/JSON/XML/POJO)\",\n          \"required\": true\n        },\n        \"event_name\": {\n          \"type\": \"string\",\n          \"description\": \"Specifies the event name for events on this event handler, if not specified, the event name is read from or written to the event being received or sent\",\n          \"required\": false\n        },\n        \"event_name_filter\": {\n          \"type\": \"string\",\n          \"description\": \"Specifies a filter as a regular expression, events that do not match the filter are dropped, the default is to let all events through\",\n          \"required\": false\n        },\n        \"synchronous_mode\": {\n          \"type\": \"bool\",\n          \"description\": \"Specifies the event handler is syncronous (receive event and send response)\",\n          \"required\": false,\n          \"default\": false\n        },\n        \"synchronous_peer\": {\n          \"type\": \"string\",\n          \"description\": \"The peer event handler (output for input or input for output) of this event handler in synchronous mode, this parameter is mandatory if the event handler is in synchronous mode\",\n          \"required\": false,\n          \"default\": \"\"\n        },\n        \"synchronous_timeout\": {\n          \"type\": \"int\",\n          \"description\": \"The timeout in milliseconds for responses to be issued by APEX torequests, this parameter is mandatory if the event handler is in synchronous mode\",\n          \"required\": false,\n          \"default\": \"\"\n        },\n        \"requestor_mode\": {\n          \"type\": \"bool\",\n          \"description\": \"Specifies the event handler is in requestor mode (send event and wait for response mode)\",\n          \"required\": false,\n          \"default\": false\n        },\n        \"requestor_peer\": {\n          \"type\": \"string\",\n          \"description\": \"The peer event handler (output for input or input for output) of this event handler in requestor mode, this parameter is mandatory if the event handler is in requestor mode\",\n          \"required\": false,\n          \"default\": \"\"\n        },\n        \"requestor_timeout\": {\n          \"type\": \"int\",\n          \"description\": \"The timeout in milliseconds for wait for responses to requests, this parameter is mandatory if the event handler is in requestor mode\",\n          \"required\": false,\n          \"default\": \"\"\n        }\n      }\n    },\n    \"onap.datatypes.policies.controlloop.operational.apex.CarrierTechnology\": {\n      \"derived_from\": \"tosca.datatypes.Root\",\n      \"properties\": {\n        \"label\": {\n          \"type\": \"string\",\n          \"description\": \"The label (name) of the carrier technology (such as REST, Kafka, WebSocket)\",\n          \"required\": true\n        },\n        \"plugin_parameter_class_name\": {\n          \"type\": \"string\",\n          \"description\": \"The class name of the class that overrides default handling of event input or output for this carrier technology, defaults to the supplied input or output class\",\n          \"required\": false\n        }\n      }\n    },\n    \"onap.datatypes.policies.controlloop.operational.apex.EventProtocol\": {\n      \"derived_from\": \"tosca.datatypes.Root\",\n      \"properties\": {\n        \"label\": {\n          \"type\": \"string\",\n          \"description\": \"The label (name) of the event protocol (such as Yaml, JSON, XML, or POJO)\",\n          \"required\": true\n        },\n        \"event_protocol_plugin_class\": {\n          \"type\": \"string\",\n          \"description\": \"The class name of the class that overrides default handling of the event protocol for this carrier technology, defaults to the supplied event protocol class\",\n          \"required\": false\n        }\n      }\n    },\n    \"onap.datatypes.policies.controlloop.operational.apex.Environmental\": {\n      \"derived_from\": \"tosca.datatypes.Root\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\",\n          \"description\": \"The name of the environment variable\",\n          \"required\": true\n        },\n        \"value\": {\n          \"type\": \"string\",\n          \"description\": \"The value of the environment variable\",\n          \"required\": true\n        }\n      }\n    },\n    \"onap.datatypes.policies.controlloop.operational.apex.engineservice.Engine\": {\n      \"derived_from\": \"tosca.datatypes.Root\",\n      \"properties\": {\n        \"context\": {\n          \"type\": \"onap.datatypes.policies.controlloop.operational.apex.engineservice.engine.Context\",\n          \"description\": \"The properties for handling context in APEX engines, defaults to using Java maps for context\",\n          \"required\": false\n        },\n        \"executors\": {\n          \"type\": \"map\",\n          \"description\": \"The plugins for policy executors used in engines such as javascript, MVEL, Jython\",\n          \"required\": true,\n          \"entry_schema\": {\n            \"description\": \"The plugin class path for this policy executor\",\n            \"type\": \"string\"\n          }\n        }\n      }\n    },\n    \"onap.datatypes.policies.controlloop.operational.apex.engineservice.engine.Context\": {\n      \"derived_from\": \"tosca.datatypes.Root\",\n      \"properties\": {\n        \"distributor\": {\n          \"type\": \"onap.datatypes.policies.controlloop.operational.apex.Plugin\",\n          \"description\": \"The plugin to be used for distributing context between APEX PDPs at runtime\",\n          \"required\": false\n        },\n        \"schemas\": {\n          \"type\": \"map\",\n          \"description\": \"The plugins for context schemas available in APEX PDPs such as Java and Avro\",\n          \"required\": false,\n          \"entry_schema\": {\n            \"type\": \"onap.datatypes.policies.controlloop.operational.apex.Plugin\"\n          }\n        },\n        \"locking\": {\n          \"type\": \"onap.datatypes.policies.controlloop.operational.apex.plugin\",\n          \"description\": \"The plugin to be used for locking context in and between APEX PDPs at runtime\",\n          \"required\": false\n        },\n        \"persistence\": {\n          \"type\": \"onap.datatypes.policies.controlloop.operational.apex.Plugin\",\n          \"description\": \"The plugin to be used for persisting context for APEX PDPs at runtime\",\n          \"required\": false\n        }\n      }\n    },\n    \"onap.datatypes.policies.controlloop.operational.apex.Plugin\": {\n      \"derived_from\": \"tosca.datatypes.Root\",\n      \"properties\": {\n        \"name\": {\n          \"type\": \"string\",\n          \"description\": \"The name of the executor such as Javascript, Jython or MVEL\",\n          \"required\": true\n        },\n        \"plugin_class_name\": {\n          \"type\": \"string\",\n          \"description\": \"The class path of the plugin class for this executor\"\n        }\n      }\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "{{POLICY-API-URL}}/policy/api/v1/policytypes",
+					"host": [
+						"{{POLICY-API-URL}}"
+					],
+					"path": [
+						"policy",
+						"api",
+						"v1",
+						"policytypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Policy Type",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-API-URL}}/policy/api/v1/policytypes/onap.policies.controlloop.operational.Apex/versions/1.0.0",
+					"host": [
+						"{{POLICY-API-URL}}"
+					],
+					"path": [
+						"policy",
+						"api",
+						"v1",
+						"policytypes",
+						"onap.policies.controlloop.operational.Apex",
+						"versions",
+						"1.0.0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Policy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"tosca_definitions_version\": \"tosca_simple_yaml_1_0_0\",\r\n  \"topology_template\": {\r\n    \"policies\": [\r\n      {\r\n        \"operational.sampledomain\": {\r\n          \"type\": \"onap.policies.controlloop.operational.Apex\",\r\n          \"typeVersion\": \"1.0.0\",\r\n          \"name\": \"onap.policies.controlloop.operational.apex.Sampledomain\",\r\n          \"version\": \"1.0.0\",\r\n          \"properties\": {\r\n            \"content\": {\r\n              \"engineServiceParameters\": {\r\n                \"name\": \"MyApexEngine\",\r\n                \"version\": \"0.0.1\",\r\n                \"id\": 45,\r\n                \"instanceCount\": 4,\r\n                \"deploymentPort\": 12561,\r\n                \"policy_type_impl\": {\r\n                  \"apexPolicyModel\": {\r\n                    \"key\": {\r\n                      \"name\": \"DDFPolicyModel\",\r\n                      \"version\": \"0.0.1\"\r\n                    },\r\n                    \"keyInformation\": {\r\n                      \"key\": {\r\n                        \"name\": \"DDFPolicyModel_KeyInfo\",\r\n                        \"version\": \"0.0.1\"\r\n                      },\r\n                      \"keyInfoMap\": {\r\n                        \"entry\": [\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"APPCConfigModifyRequestEvent\",\r\n                              \"version\": \"2.0.0\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"APPCConfigModifyRequestEvent\",\r\n                                \"version\": \"2.0.0\"\r\n                              },\r\n                              \"UUID\": \"d29e440f-b773-3911-8e75-79d60b70a27f\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"APPCConfigModifyRequestEvent:2.0.0\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"APPCConfigModifyRequestTask\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"APPCConfigModifyRequestTask\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"7c9152da-b4f9-3bf5-ab98-477c04e550d7\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"APPCConfigModifyRequestTask:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"APPCConfigModifyTriggerEvent\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"APPCConfigModifyTriggerEvent\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"29ce3aae-9d20-3fd4-87b6-6813966e0b67\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"APPCConfigModifyTriggerEvent:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"APPCLCMRequestType\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"APPCLCMRequestType\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"ab26e475-d09d-36cd-a65c-8a8b556f0fa2\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"APPCLCMRequestType:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"ConfigModifyAPPCRequestPolicy\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"ConfigModifyAPPCRequestPolicy\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"0870505e-cfa7-3e71-8b3d-8696d6ae0f4c\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"ConfigModifyAPPCRequestPolicy:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"DDFPolicyModel\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"DDFPolicyModel\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"d0956b23-fcac-320c-9b08-b83498b05cae\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"DDFPolicyModel:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"DDFPolicyModel_Albums\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"DDFPolicyModel_Albums\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"afad76e5-846f-380d-af9a-8419b317d2a8\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"DDFPolicyModel_Albums:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"DDFPolicyModel_Events\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"DDFPolicyModel_Events\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"a17d1994-b819-3902-9721-3a67290b655c\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"DDFPolicyModel_Events:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"DDFPolicyModel_KeyInfo\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"DDFPolicyModel_KeyInfo\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"3f22032a-30a0-3efd-a43c-196248a7d66c\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"DDFPolicyModel_KeyInfo:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"DDFPolicyModel_Policies\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"DDFPolicyModel_Policies\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"6f291c42-d4a4-347e-9126-dfdc658c4b8e\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"DDFPolicyModel_Policies:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"DDFPolicyModel_Schemas\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"DDFPolicyModel_Schemas\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"933128bb-c59b-3bb2-9fbc-6052132bc304\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"DDFPolicyModel_Schemas:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"DDFPolicyModel_Tasks\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"DDFPolicyModel_Tasks\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"8e356083-c34e-3d0b-bd90-6690f9c7dcc9\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"DDFPolicyModel_Tasks:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"SimpleBooleanType\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"SimpleBooleanType\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"7218fb2f-59e3-321d-9ae1-bc97b19eb4ae\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"SimpleBooleanType:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"SimpleLongType\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"SimpleLongType\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"2dfcd9ec-a6f9-3f9f-958f-9b36cf4ac574\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"SimpleLongType:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"SimpleStringType\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"SimpleStringType\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"8a4957cf-9493-3a76-8c22-a208e23259af\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"SimpleStringType:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"UUIDType\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"UUIDType\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"6a8cc68e-dfc8-3403-9c6d-071c886b319c\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"UUIDType:0.0.1\\\"\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"dummy\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"dummy\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"UUID\": \"ebb11312-f9ef-37de-8d0b-fcb7b432d82b\",\r\n                              \"description\": \"Generated description for concept referred to by key \\\"dummy:0.0.1\\\"\"\r\n                            }\r\n                          }\r\n                        ]\r\n                      }\r\n                    },\r\n                    \"policies\": {\r\n                      \"key\": {\r\n                        \"name\": \"DDFPolicyModel_Policies\",\r\n                        \"version\": \"0.0.1\"\r\n                      },\r\n                      \"policyMap\": {\r\n                        \"entry\": [\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"ConfigModifyAPPCRequestPolicy\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"policyKey\": {\r\n                                \"name\": \"ConfigModifyAPPCRequestPolicy\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"template\": \"freestyle\",\r\n                              \"state\": {\r\n                                \"entry\": [\r\n                                  {\r\n                                    \"key\": \"APPCCMRequestState\",\r\n                                    \"value\": {\r\n                                      \"stateKey\": {\r\n                                        \"parentKeyName\": \"ConfigModifyAPPCRequestPolicy\",\r\n                                        \"parentKeyVersion\": \"0.0.1\",\r\n                                        \"parentLocalName\": \"NULL\",\r\n                                        \"localName\": \"APPCCMRequestState\"\r\n                                      },\r\n                                      \"trigger\": {\r\n                                        \"name\": \"APPCConfigModifyTriggerEvent\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"stateOutputs\": {\r\n                                        \"entry\": [\r\n                                          {\r\n                                            \"key\": \"APPCCMRequestOutput\",\r\n                                            \"value\": {\r\n                                              \"key\": {\r\n                                                \"parentKeyName\": \"ConfigModifyAPPCRequestPolicy\",\r\n                                                \"parentKeyVersion\": \"0.0.1\",\r\n                                                \"parentLocalName\": \"APPCCMRequestState\",\r\n                                                \"localName\": \"APPCCMRequestOutput\"\r\n                                              },\r\n                                              \"outgoingEvent\": {\r\n                                                \"name\": \"APPCConfigModifyRequestEvent\",\r\n                                                \"version\": \"2.0.0\"\r\n                                              },\r\n                                              \"nextState\": {\r\n                                                \"parentKeyName\": \"NULL\",\r\n                                                \"parentKeyVersion\": \"0.0.0\",\r\n                                                \"parentLocalName\": \"NULL\",\r\n                                                \"localName\": \"NULL\"\r\n                                              }\r\n                                            }\r\n                                          }\r\n                                        ]\r\n                                      },\r\n                                      \"contextAlbumReference\": [],\r\n                                      \"taskSelectionLogic\": {\r\n                                        \"key\": \"NULL\",\r\n                                        \"logicFlavour\": \"UNDEFINED\",\r\n                                        \"logic\": \"\"\r\n                                      },\r\n                                      \"stateFinalizerLogicMap\": {\r\n                                        \"entry\": []\r\n                                      },\r\n                                      \"defaultTask\": {\r\n                                        \"name\": \"APPCConfigModifyRequestTask\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"taskReferences\": {\r\n                                        \"entry\": [\r\n                                          {\r\n                                            \"key\": {\r\n                                              \"name\": \"APPCConfigModifyRequestTask\",\r\n                                              \"version\": \"0.0.1\"\r\n                                            },\r\n                                            \"value\": {\r\n                                              \"key\": {\r\n                                                \"parentKeyName\": \"ConfigModifyAPPCRequestPolicy\",\r\n                                                \"parentKeyVersion\": \"0.0.1\",\r\n                                                \"parentLocalName\": \"APPCCMRequestState\",\r\n                                                \"localName\": \"ConfigModifyAPPCRequestPolicy\"\r\n                                              },\r\n                                              \"outputType\": \"DIRECT\",\r\n                                              \"output\": {\r\n                                                \"parentKeyName\": \"ConfigModifyAPPCRequestPolicy\",\r\n                                                \"parentKeyVersion\": \"0.0.1\",\r\n                                                \"parentLocalName\": \"APPCCMRequestState\",\r\n                                                \"localName\": \"APPCCMRequestOutput\"\r\n                                              }\r\n                                            }\r\n                                          }\r\n                                        ]\r\n                                      }\r\n                                    }\r\n                                  }\r\n                                ]\r\n                              },\r\n                              \"firstState\": \"APPCCMRequestState\"\r\n                            }\r\n                          }\r\n                        ]\r\n                      }\r\n                    },\r\n                    \"tasks\": {\r\n                      \"key\": {\r\n                        \"name\": \"DDFPolicyModel_Tasks\",\r\n                        \"version\": \"0.0.1\"\r\n                      },\r\n                      \"taskMap\": {\r\n                        \"entry\": [\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"APPCConfigModifyRequestTask\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"APPCConfigModifyRequestTask\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"inputFields\": {\r\n                                \"entry\": [\r\n                                  {\r\n                                    \"key\": \"changeParam\",\r\n                                    \"value\": {\r\n                                      \"key\": \"changeParam\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"SimpleStringType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  },\r\n                                  {\r\n                                    \"key\": \"hostIp\",\r\n                                    \"value\": {\r\n                                      \"key\": \"hostIp\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"SimpleStringType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  },\r\n                                  {\r\n                                    \"key\": \"requestID\",\r\n                                    \"value\": {\r\n                                      \"key\": \"requestID\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"UUIDType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  },\r\n                                  {\r\n                                    \"key\": \"vnfID\",\r\n                                    \"value\": {\r\n                                      \"key\": \"vnfID\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"UUIDType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  }\r\n                                ]\r\n                              },\r\n                              \"outputFields\": {\r\n                                \"entry\": [\r\n                                  {\r\n                                    \"key\": \"APPCLCMRequestEvent\",\r\n                                    \"value\": {\r\n                                      \"key\": \"APPCLCMRequestEvent\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"APPCLCMRequestType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  }\r\n                                ]\r\n                              },\r\n                              \"taskParameters\": {\r\n                                \"entry\": []\r\n                              },\r\n                              \"contextAlbumReference\": [],\r\n                              \"taskLogic\": {\r\n                                \"key\": \"TaskLogic\",\r\n                                \"logicFlavour\": \"JAVASCRIPT\",\r\n                                \"logic\": \"/*\\n * ============LICENSE_START=======================================================\\n *  Copyright (C) 2016-2018 Ericsson. All rights reserved.\\n * ================================================================================\\n * Licensed under the Apache License, Version 2.0 (the \\\"License\\\");\\n * you may not use this file except in compliance with the License.\\n * You may obtain a copy of the License at\\n * \\n *      http://www.apache.org/licenses/LICENSE-2.0\\n * \\n * Unless required by applicable law or agreed to in writing, software\\n * distributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\n * See the License for the specific language governing permissions and\\n * limitations under the License.\\n * \\n * SPDX-License-Identifier: Apache-2.0\\n * ============LICENSE_END=========================================================\\n */\\n\\nexecutor.logger.info(executor.subject.id);\\nexecutor.logger.info(executor.inFields);\\n\\nvar appcRequest = new org.onap.policy.appclcm.LcmRequestWrapper;\\nappcRequest.setBody(new org.onap.policy.appclcm.LcmRequest);\\nappcRequest.getBody().setCommonHeader(new org.onap.policy.appclcm.LcmCommonHeader);\\n\\nappcRequest.setVersion(\\\"2.0.0\\\");\\nappcRequest.setRpcName(\\\"config-modify\\\");\\nappcRequest.setCorrelationId(java.util.UUID.randomUUID());\\nappcRequest.setType(\\\"request\\\");\\n\\nappcRequest.getBody().getCommonHeader().setTimeStamp(java.time.Instant.now());\\nappcRequest.getBody().getCommonHeader().setApiVer(\\\"2.00\\\");\\nappcRequest.getBody().getCommonHeader().setOriginatorId(java.util.UUID.randomUUID());\\nappcRequest.getBody().getCommonHeader().setRequestId(executor.inFields.get(\\\"requestID\\\"));\\nappcRequest.getBody().getCommonHeader().setSubRequestId(\\\"ddf\\\");\\nappcRequest.getBody().getCommonHeader().getFlags().put(\\\"ttl\\\", \\\"10000\\\");\\nappcRequest.getBody().getCommonHeader().getFlags().put(\\\"force\\\", \\\"TRUE\\\");\\nappcRequest.getBody().getCommonHeader().getFlags().put(\\\"mode\\\", \\\"EXCLUSIVE\\\");\\n\\nappcRequest.getBody().setAction(\\\"ConfigModify\\\");\\nappcRequest.getBody().setActionIdentifiers(new java.util.HashMap());\\nappcRequest.getBody().getActionIdentifiers().put(\\\"vnf-id\\\", executor.inFields.get(\\\"vnfID\\\").toString());\\nappcRequest.getBody().setPayload(executor.inFields.get(\\\"changeParam\\\"));\\n\\nexecutor.outFields.put(\\\"APPCLCMRequestEvent\\\", appcRequest);\\n\\nexecutor.logger.info(executor.outFields);\\n\\nvar returnValue = executor.isTrue;\"\r\n                              }\r\n                            }\r\n                          }\r\n                        ]\r\n                      }\r\n                    },\r\n                    \"events\": {\r\n                      \"key\": {\r\n                        \"name\": \"DDFPolicyModel_Events\",\r\n                        \"version\": \"0.0.1\"\r\n                      },\r\n                      \"eventMap\": {\r\n                        \"entry\": [\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"APPCConfigModifyRequestEvent\",\r\n                              \"version\": \"2.0.0\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"APPCConfigModifyRequestEvent\",\r\n                                \"version\": \"2.0.0\"\r\n                              },\r\n                              \"nameSpace\": \"org.onap.policy.apex.onap.ddf\",\r\n                              \"source\": \"APEX\",\r\n                              \"target\": \"APPC\",\r\n                              \"parameter\": {\r\n                                \"entry\": [\r\n                                  {\r\n                                    \"key\": \"APPCLCMRequestEvent\",\r\n                                    \"value\": {\r\n                                      \"key\": \"APPCLCMRequestEvent\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"APPCLCMRequestType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  }\r\n                                ]\r\n                              }\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"APPCConfigModifyTriggerEvent\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"APPCConfigModifyTriggerEvent\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"nameSpace\": \"org.onap.policy.apex.onap.ddf\",\r\n                              \"source\": \"DDF\",\r\n                              \"target\": \"APEX\",\r\n                              \"parameter\": {\r\n                                \"entry\": [\r\n                                  {\r\n                                    \"key\": \"changeParam\",\r\n                                    \"value\": {\r\n                                      \"key\": \"changeParam\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"SimpleStringType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  },\r\n                                  {\r\n                                    \"key\": \"hostIp\",\r\n                                    \"value\": {\r\n                                      \"key\": \"hostIp\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"SimpleStringType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  },\r\n                                  {\r\n                                    \"key\": \"name\",\r\n                                    \"value\": {\r\n                                      \"key\": \"name\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"SimpleStringType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  },\r\n                                  {\r\n                                    \"key\": \"requestID\",\r\n                                    \"value\": {\r\n                                      \"key\": \"requestID\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"UUIDType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  },\r\n                                  {\r\n                                    \"key\": \"vnfID\",\r\n                                    \"value\": {\r\n                                      \"key\": \"vnfID\",\r\n                                      \"fieldSchemaKey\": {\r\n                                        \"name\": \"UUIDType\",\r\n                                        \"version\": \"0.0.1\"\r\n                                      },\r\n                                      \"optional\": false\r\n                                    }\r\n                                  }\r\n                                ]\r\n                              }\r\n                            }\r\n                          }\r\n                        ]\r\n                      }\r\n                    },\r\n                    \"albums\": {\r\n                      \"key\": {\r\n                        \"name\": \"DDFPolicyModel_Albums\",\r\n                        \"version\": \"0.0.1\"\r\n                      },\r\n                      \"albums\": {\r\n                        \"entry\": [\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"dummy\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"dummy\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"scope\": \"policy\",\r\n                              \"isWritable\": true,\r\n                              \"itemSchema\": {\r\n                                \"name\": \"UUIDType\",\r\n                                \"version\": \"0.0.1\"\r\n                              }\r\n                            }\r\n                          }\r\n                        ]\r\n                      }\r\n                    },\r\n                    \"schemas\": {\r\n                      \"key\": {\r\n                        \"name\": \"DDFPolicyModel_Schemas\",\r\n                        \"version\": \"0.0.1\"\r\n                      },\r\n                      \"schemas\": {\r\n                        \"entry\": [\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"APPCLCMRequestType\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"APPCLCMRequestType\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"schemaFlavour\": \"Java\",\r\n                              \"schemaDefinition\": \"org.onap.policy.appclcm.LcmRequestWrapper\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"SimpleBooleanType\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"SimpleBooleanType\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"schemaFlavour\": \"Java\",\r\n                              \"schemaDefinition\": \"java.lang.Boolean\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"SimpleLongType\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"SimpleLongType\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"schemaFlavour\": \"Java\",\r\n                              \"schemaDefinition\": \"java.lang.Long\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"SimpleStringType\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"SimpleStringType\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"schemaFlavour\": \"Java\",\r\n                              \"schemaDefinition\": \"java.lang.String\"\r\n                            }\r\n                          },\r\n                          {\r\n                            \"key\": {\r\n                              \"name\": \"UUIDType\",\r\n                              \"version\": \"0.0.1\"\r\n                            },\r\n                            \"value\": {\r\n                              \"key\": {\r\n                                \"name\": \"UUIDType\",\r\n                                \"version\": \"0.0.1\"\r\n                              },\r\n                              \"schemaFlavour\": \"Java\",\r\n                              \"schemaDefinition\": \"java.util.UUID\"\r\n                            }\r\n                          }\r\n                        ]\r\n                      }\r\n                    }\r\n                  }\r\n                },\r\n                \"engineParameters\": {\r\n                  \"executorParameters\": {\r\n                    \"JAVASCRIPT\": {\r\n                      \"parameterClassName\": \"org.onap.policy.apex.plugins.executor.javascript.JavascriptExecutorParameters\"\r\n                    }\r\n                  },\r\n                  \"contextParameters\": {\r\n                    \"parameterClassName\": \"org.onap.policy.apex.context.parameters.ContextParameters\",\r\n                    \"schemaParameters\": {\r\n                      \"Avro\": {\r\n                        \"parameterClassName\": \"org.onap.policy.apex.plugins.context.schema.avro.AvroSchemaHelperParameters\"\r\n                      },\r\n                      \"Java\": {\r\n                        \"parameterClassName\": \"org.onap.policy.apex.context.impl.schema.java.JavaSchemaHelperParameters\",\r\n                        \"jsonAdapters\": {\r\n                          \"Instant\": {\r\n                            \"adaptedClass\": \"java.time.Instant\",\r\n                            \"adaptorClass\": \"org.onap.policy.controlloop.util.Serialization$GsonInstantAdapter\"\r\n                          },\r\n                          \"APPC_LCM_REQUEST\": {\r\n                            \"adaptedClass\": \"org.onap.policy.appclcm.LcmRequest\",\r\n                            \"adaptorClass\": \"org.onap.policy.appclcm.util.Serialization$RequestAdapter\"\r\n                          }\r\n                        }\r\n                      }\r\n                    }\r\n                  }\r\n                }\r\n              },\r\n              \"eventInputParameters\": {\r\n                \"DCAEConsumer\": {\r\n                  \"carrierTechnologyParameters\": {\r\n                    \"carrierTechnology\": \"RESTCLIENT\",\r\n                    \"parameterClassName\": \"org.onap.policy.apex.plugins.event.carrier.restclient.RestClientCarrierTechnologyParameters\",\r\n                    \"parameters\": {\r\n                      \"url\": \"http://10.2.0.13:30227/events/DCAE_CL_OUTPUT/11/12?timeout=30000\"\r\n                    }\r\n                  },\r\n                  \"eventProtocolParameters\": {\r\n                    \"eventProtocol\": \"JSON\"\r\n                  }\r\n                }\r\n              },\r\n              \"eventOutputParameters\": {\r\n                \"APPCProducer\": {\r\n                  \"carrierTechnologyParameters\": {\r\n                    \"carrierTechnology\": \"RESTCLIENT\",\r\n                    \"parameterClassName\": \"org.onap.policy.apex.plugins.event.carrier.restclient.RestClientCarrierTechnologyParameters\",\r\n                    \"parameters\": {\r\n                      \"url\": \"http://10.2.0.13:30227/events/APPC-LCM-READ\"\r\n                    }\r\n                  },\r\n                  \"eventProtocolParameters\": {\r\n                    \"eventProtocol\": \"JSON\",\r\n                    \"parameters\": {\r\n                      \"pojoField\": \"APPCLCMRequestEvent\"\r\n                    }\r\n                  },\r\n                  \"eventNameFilter\": \"APPCConfigModifyRequestEvent\"\r\n                },\r\n                \"logProducer\": {\r\n                  \"carrierTechnologyParameters\": {\r\n                    \"carrierTechnology\": \"FILE\",\r\n                    \"parameters\": {\r\n                      \"fileName\": \"/tmp/outputevents.log\"\r\n                    }\r\n                  },\r\n                  \"eventProtocolParameters\": {\r\n                    \"eventProtocol\": \"JSON\"\r\n                  }\r\n                }\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "{{POLICY-API-URL}}/policy/api/v1/policytypes/onap.policies.controlloop.operational.Apex/versions/1.0.0/policies",
+					"host": [
+						"{{POLICY-API-URL}}"
+					],
+					"path": [
+						"policy",
+						"api",
+						"v1",
+						"policytypes",
+						"onap.policies.controlloop.operational.Apex",
+						"versions",
+						"1.0.0",
+						"policies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Policy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-API-URL}}/policy/api/v1/policytypes/onap.policies.controlloop.operational.Apex/versions/1.0.0/policies/onap.policies.controlloop.operational.apex.Sampledomain/versions/1.0.0",
+					"host": [
+						"{{POLICY-API-URL}}"
+					],
+					"path": [
+						"policy",
+						"api",
+						"v1",
+						"policytypes",
+						"onap.policies.controlloop.operational.Apex",
+						"versions",
+						"1.0.0",
+						"policies",
+						"onap.policies.controlloop.operational.apex.Sampledomain",
+						"versions",
+						"1.0.0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PDPGroup Deploy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"groups\": [\n        {\n            \"name\": \"defaultGroup\",\n            \"description\": \"The default group that registers all supported policy types and pdps.\",\n            \"pdpGroupState\": \"ACTIVE\",\n            \"properties\": {},\n            \"pdpSubgroups\": [\n                {\n                    \"pdpType\": \"apex\",\n                    \"supportedPolicyTypes\": [\n                        {\n                            \"name\": \"onap.policies.controlloop.operational.Apex\",\n                            \"version\": \"1.0.0\"\n                        }\n                    ],\n                    \"policies\": [],\n                    \"currentInstanceCount\": 1,\n                    \"desiredInstanceCount\": 1,\n                    \"properties\": {},\n                    \"pdpInstances\": [\n                        {\n                            \"instanceId\": \"apex_35\",\n                            \"pdpState\": \"ACTIVE\",\n                            \"healthy\": \"HEALTHY\",\n                            \"message\": \"Pdp Heartbeat\"\n                        }\n                    ]\n                },\n                {\n                    \"pdpType\": \"drools\",\n                    \"supportedPolicyTypes\": [\n                        {\n                            \"name\": \"onap.policies.controlloop.Operational\",\n                            \"version\": \"1.0.0\"\n                        }\n                    ],\n                    \"policies\": [],\n                    \"currentInstanceCount\": 1,\n                    \"desiredInstanceCount\": 1,\n                    \"properties\": {},\n                    \"pdpInstances\": [\n                        {\n                            \"instanceId\": \"dev-policy-drools-0\",\n                            \"pdpState\": \"ACTIVE\",\n                            \"healthy\": \"HEALTHY\"\n                        }\n                    ]\n                },\n                {\n                    \"pdpType\": \"xacml\",\n                    \"supportedPolicyTypes\": [\n                        {\n                            \"name\": \"onap.policies.controlloop.guard.FrequencyLimiter\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.controlloop.guard.MinMax\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.controlloop.guard.Blacklist\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.controlloop.guard.coordination.FirstBlocksSecond\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.Monitoring\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.monitoring.cdap.tca.hi.lo.app\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.monitoring.docker.sonhandler.app\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.AffinityPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.DistancePolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.HpaPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.OptimizationPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.PciPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.QueryPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.SubscriberPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.Vim_fit\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.VnfPolicy\",\n                            \"version\": \"1.0.0\"\n                        }\n                    ],\n                    \"policies\": [],\n                    \"currentInstanceCount\": 1,\n                    \"desiredInstanceCount\": 1,\n                    \"properties\": {},\n                    \"pdpInstances\": [\n                        {\n                            \"instanceId\": \"dev-policy-policy-xacml-pdp-558c478477-g85jl\",\n                            \"pdpState\": \"ACTIVE\",\n                            \"healthy\": \"HEALTHY\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps",
+					"host": [
+						"{{POLICY-PAP-URL}}"
+					],
+					"path": [
+						"policy",
+						"pap",
+						"v1",
+						"pdps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PDPGroup Undeploy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"groups\": [\n        {\n            \"name\": \"defaultGroup\",\n            \"description\": \"The default group that registers all supported policy types and pdps.\",\n            \"pdpGroupState\": \"ACTIVE\",\n            \"properties\": {},\n            \"pdpSubgroups\": [\n                {\n                    \"pdpType\": \"apex\",\n                    \"supportedPolicyTypes\": [\n                        {\n                            \"name\": \"onap.policies.controlloop.operational.Apex\",\n                            \"version\": \"1.0.0\"\n                        }\n                    ],\n                    \"policies\": [\n                    ],\n                    \"currentInstanceCount\": 1,\n                    \"desiredInstanceCount\": 1,\n                    \"properties\": {},\n                    \"pdpInstances\": [\n                        {\n                            \"instanceId\": \"apex_35\",\n                            \"pdpState\": \"ACTIVE\",\n                            \"healthy\": \"HEALTHY\",\n                            \"message\": \"Pdp Heartbeat\"\n                        }\n                    ]\n                },\n                {\n                    \"pdpType\": \"drools\",\n                    \"supportedPolicyTypes\": [\n                        {\n                            \"name\": \"onap.policies.controlloop.Operational\",\n                            \"version\": \"1.0.0\"\n                        }\n                    ],\n                    \"policies\": [],\n                    \"currentInstanceCount\": 1,\n                    \"desiredInstanceCount\": 1,\n                    \"properties\": {},\n                    \"pdpInstances\": [\n                        {\n                            \"instanceId\": \"dev-policy-drools-0\",\n                            \"pdpState\": \"ACTIVE\",\n                            \"healthy\": \"HEALTHY\"\n                        }\n                    ]\n                },\n                {\n                    \"pdpType\": \"xacml\",\n                    \"supportedPolicyTypes\": [\n                        {\n                            \"name\": \"onap.policies.controlloop.guard.FrequencyLimiter\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.controlloop.guard.MinMax\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.controlloop.guard.Blacklist\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.controlloop.guard.coordination.FirstBlocksSecond\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.Monitoring\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.monitoring.cdap.tca.hi.lo.app\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.monitoring.docker.sonhandler.app\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.AffinityPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.DistancePolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.HpaPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.OptimizationPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.PciPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.QueryPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.SubscriberPolicy\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.Vim_fit\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.optimization.VnfPolicy\",\n                            \"version\": \"1.0.0\"\n                        }\n                    ],\n                    \"policies\": [],\n                    \"currentInstanceCount\": 1,\n                    \"desiredInstanceCount\": 1,\n                    \"properties\": {},\n                    \"pdpInstances\": [\n                        {\n                            \"instanceId\": \"dev-policy-policy-xacml-pdp-558c478477-g85jl\",\n                            \"pdpState\": \"ACTIVE\",\n                            \"healthy\": \"HEALTHY\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps",
+					"host": [
+						"{{POLICY-PAP-URL}}"
+					],
+					"path": [
+						"policy",
+						"pap",
+						"v1",
+						"pdps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Simple Deploy Policy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"policies\" : [\r\n    {\r\n      \"policy-id\": \"onap.policies.controlloop.operational.apex.Sampledomain\",\r\n      \"policy-version\": 1\r\n    }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/policies",
+					"host": [
+						"{{POLICY-PAP-URL}}"
+					],
+					"path": [
+						"policy",
+						"pap",
+						"v1",
+						"pdps",
+						"policies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Simple Undeploy Policy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/policies/onap.policies.controlloop.operational.apex.Sampledomain",
+					"host": [
+						"{{POLICY-PAP-URL}}"
+					],
+					"path": [
+						"policy",
+						"pap",
+						"v1",
+						"pdps",
+						"policies",
+						"onap.policies.controlloop.operational.apex.Sampledomain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PDP State Change to ACTIVE",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/groups/defaultGroup?state=ACTIVE",
+					"host": [
+						"{{POLICY-PAP-URL}}"
+					],
+					"path": [
+						"policy",
+						"pap",
+						"v1",
+						"pdps",
+						"groups",
+						"defaultGroup"
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "ACTIVE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PDP State Change to PASSIVE",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/groups/defaultGroup?state=PASSIVE",
+					"host": [
+						"{{POLICY-PAP-URL}}"
+					],
+					"path": [
+						"policy",
+						"pap",
+						"v1",
+						"pdps",
+						"groups",
+						"defaultGroup"
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "PASSIVE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Policy",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-API-URL}}/policy/api/v1/policytypes/onap.policies.controlloop.operational.Apex/versions/1.0.0/policies/onap.policies.controlloop.operational.apex.Sampledomain/versions/1.0.0",
+					"host": [
+						"{{POLICY-API-URL}}"
+					],
+					"path": [
+						"policy",
+						"api",
+						"v1",
+						"policytypes",
+						"onap.policies.controlloop.operational.Apex",
+						"versions",
+						"1.0.0",
+						"policies",
+						"onap.policies.controlloop.operational.apex.Sampledomain",
+						"versions",
+						"1.0.0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Policy Type",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "zb!XztG34",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "healthcheck",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{POLICY-API-URL}}/policy/api/v1/policytypes/onap.policies.controlloop.operational.Apex/versions/1.0.0",
+					"host": [
+						"{{POLICY-API-URL}}"
+					],
+					"path": [
+						"policy",
+						"api",
+						"v1",
+						"policytypes",
+						"onap.policies.controlloop.operational.Apex",
+						"versions",
+						"1.0.0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send event to dmaap",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"requestID\":\"67a5e3e-24ec-4942-a042-68be1ca1ef5b\",\r\n\"vnfID\":\"77e070c4-4f3d-43bf-ab43-cb173ab4dc18\",\r\n\"hostIp\":\"0.0.0.0\",\r\n\"changeParam\":\"{\\\"request-parameters\\\":{\\\"vnf-host-ip-address\\\":\\\"10.2.0.29\\\"},\\\"configuration-parameters\\\":{\\\"id\\\":\\\"27\\\"}}\",\r\n\"name\":\"APPCConfigModifyTriggerEvent\"\r\n}"
+				},
+				"url": {
+					"raw": "http://10.2.0.13:30227/events/DCAE_CL_OUTPUT",
+					"protocol": "http",
+					"host": [
+						"10",
+						"2",
+						"0",
+						"13"
+					],
+					"port": "30227",
+					"path": [
+						"events",
+						"DCAE_CL_OUTPUT"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send event to apex-pdp",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nameSpace\": \"org.onap.policy.apex.sample.events\",\r\n  \"name\": \"Event0000\",\r\n  \"version\": \"0.0.1\",\r\n  \"source\": \"test\",\r\n  \"target\": \"apex\",\r\n  \"TestSlogan\": \"Test slogan for External Event0\",\r\n  \"TestMatchCase\": 0,\r\n  \"TestTimestamp\": 1469781869269,\r\n  \"TestTemperature\": 9080.866\r\n}"
+				},
+				"url": {
+					"raw": "http://159.107.166.87:23324/apex/FirstConsumer/EventIn",
+					"protocol": "http",
+					"host": [
+						"159",
+						"107",
+						"166",
+						"87"
+					],
+					"port": "23324",
+					"path": [
+						"apex",
+						"FirstConsumer",
+						"EventIn"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
