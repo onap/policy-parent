@@ -40,7 +40,6 @@
         <version.powermock>1.7.4</version.powermock>
         <version.eclipselink>2.7.0</version.eclipselink>
         <version.jackson>2.10.0.pr3</version.jackson>
-        <version.ccsdk>0.6.3</version.ccsdk>
     </properties>
 
     <distributionManagement>
@@ -235,13 +234,6 @@
                 <groupId>org.yaml</groupId>
                 <artifactId>snakeyaml</artifactId>
                 <version>1.24</version>
-            </dependency>
-
-            <!-- Common Controller SDK -->
-            <dependency>
-                <groupId>org.onap.ccsdk.cds.components</groupId>
-                <artifactId>proto-definition</artifactId>
-                <version>${version.ccsdk}</version>
             </dependency>
 
             <!-- Test dependencies -->
