@@ -192,7 +192,7 @@ Build APEX
       |         :number-lines:                                |         :number-lines:                                 |
       |                                                       |                                                        |
       |         # cd /usr/local/src/apex-pdp                  |          >c:                                           |
-      |         # mvn clean install -DskipTest                |          >cd \dev\apex                                 |
+      |         # mvn clean install -Pdocker -DskipTest       |          >cd \dev\apex                                 |
       |                                                       |          >mvn clean install -DskipTests                |
       +-------------------------------------------------------+--------------------------------------------------------+
 
@@ -367,7 +367,7 @@ Install with RPM and DPKG
 |          .. code::                                                                   |
 |             :number-lines:                                                           |
 |                                                                                      |
-|             # sudo dpkg -i apex-pdp-package-full-2.0.0-SNAPSHOT.deb                  |       
+|             # sudo dpkg -i apex-pdp-package-full-2.0.0-SNAPSHOT.deb                  |
 |             Selecting previously unselected package apex-uservice.                   |
 |             (Reading database ... 288458 files and directories currently installed.) |
 |             Preparing to unpack apex-pdp-package-full-2.0.0-SNAPSHOT.deb ...         |
@@ -942,19 +942,19 @@ Create Directories for Logging
       APEX was installed manually or when the log directory was changed
       in the settings (see above).
 
-   +------------------------------------------------------------------+-------------------------------------------------------+
-   | Unix, Cygwin                                                     | Windows                                               |
-   +==================================================================+=======================================================+
-   | .. container::                                                   | .. container::                                        |
-   |                                                                  |                                                       |
-   |    .. container:: content                                        |    .. container:: content                             |
-   |                                                                  |                                                       |
-   |       .. code::                                                  |       .. code::                                       |
-   |         :number-lines:                                           |         :number-lines:                                |
-   |                                                                  |                                                       |
-   |         mkdir -p /var/log/onap/policy/apex-pdp                   |         >mkdir C:\apex\apex-full-2.0.0-SNAPSHOT\logs  |
-   |         chown -R apexuser:apexuser /var/log/onap/policy/apex-pdp |                                                       |
-   +------------------------------------------------------------------+-------------------------------------------------------+
+   +-----------------------------------------------------------------------+-------------------------------------------------------+
+   | Unix, Cygwin                                                          | Windows                                               |
+   +=======================================================================+=======================================================+
+   | .. container::                                                        | .. container::                                        |
+   |                                                                       |                                                       |
+   |    .. container:: content                                             |    .. container:: content                             |
+   |                                                                       |                                                       |
+   |       .. code::                                                       |       .. code::                                       |
+   |         :number-lines:                                                |         :number-lines:                                |
+   |                                                                       |                                                       |
+   |         sudo mkdir -p /var/log/onap/policy/apex-pdp                   |         >mkdir C:\apex\apex-full-2.0.0-SNAPSHOT\logs  |
+   |         sudo chown -R apexuser:apexuser /var/log/onap/policy/apex-pdp |                                                       |
+   +-----------------------------------------------------------------------+-------------------------------------------------------+
 
 Verify the APEX Installation
 ----------------------------
@@ -1017,16 +1017,35 @@ Verify Installation - run an Example
       Unix scripts but runs Java as a Windows application, thus the
       configuration file must be given as a Windows path.
 
+   .. container:: paragraph
+
+      On Unix/Linux flavoured platforms, give the commands below:
+
    .. container:: listingblock
 
       .. container:: content
 
-         .. code::
-                :number-lines:
+      .. code::
+         :number-lines:
 
-             # $APEX_HOME/bin/apexEngine.sh -c $APEX_HOME/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (1)
-             # $APEX_HOME/bin/apexEngine.sh -c C:/apex/apex-full-2.0.0-SNAPSHOT/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (2)
-             >%APEX_HOME%\bin\apexEngine.bat -c %APEX_HOME%\examples\config\SampleDomain\Stdin2StdoutJsonEventJava.json :: (3)
+         sudo su - apexuser
+         export APEX_HOME <path to apex installation>
+         export APEX_USER apexuser
+
+   .. container:: paragraph
+
+         You can now try to run apex.
+
+   .. container:: listingblock
+
+      .. container:: content
+
+      .. code::
+         :number-lines:
+
+          # $APEX_HOME/bin/apexEngine.sh -c $APEX_HOME/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (1)
+          # $APEX_HOME/bin/apexEngine.sh -c C:/apex/apex-full-2.0.0-SNAPSHOT/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (2)
+          >%APEX_HOME%\bin\apexEngine.bat -c %APEX_HOME%\examples\config\SampleDomain\Stdin2StdoutJsonEventJava.json :: (3)
 
 .. container:: colist arabic
 
@@ -1040,9 +1059,8 @@ Verify Installation - run an Example
 
 .. container:: paragraph
 
-   The engine should start successfully. Assuming the logging levels are
-   not change (default level is ``info``), the output should look
-   similar to this (last few lines)
+   The engine should start successfully. Assuming the logging levels are set to ``info`` in the built system, the output
+   should look similar to this (last few lines)
 
 .. container:: listingblock
 
@@ -5086,12 +5104,12 @@ Create the input event ``SALE_INPUT`` and the output event ``SALE_AUTH``
 
                .. container:: title
 
-                  Field Schema types       
+                  Field Schema types
 
                .. container:: paragraph
 
                   APEX natively supports schema definitions in ``Java`` and ``Avro``.
-                                                                            
+
                .. container:: paragraph
 
                   ``Java`` schema definitions are simply the name of a Java Class. There are some restrictions:
@@ -6640,26 +6658,26 @@ Test Policy Step 2
                |                                              |                                                            |                           |
                |                                              |                                                            | at *08:41:06              |
                |                                              |       .. container:: content                               | GMT* on *Monday,          |
-               |       .. container:: content                 |                                                            | 02 January                |        
+               |       .. container:: content                 |                                                            | 02 January                |
                |                                              |          .. code::                                         | 2017*.                    |
                |                                              |                                                            |                           |
-               |                                              |             {                                              | Sale is not               |    
+               |                                              |             {                                              | Sale is not               |
                |          .. code::                           |               "nameSpace": "com.hyperm",                   | authorized. Uses          |
                |                                              |               "name": "SALE_AUTH",                         | the                       |
                |                                              |               "version": "0.0.1",                          | ``MorningBoozeCheck``     |
                |             {                                |               "source": "",                                |                           |
-               |               "nameSpace": "com.hyperm",     |               "target": "",                                | task.                     |     
+               |               "nameSpace": "com.hyperm",     |               "target": "",                                | task.                     |
                |               "name": "SALE_INPUT",          |               "amount": 1249,                              |                           |
                |                "version": "0.0.1",           |               "assistant_ID":12,                           | Note this test            |
                |               "time": 1483346466000,         |               "authorised": false,                         | is copied from            |
                |               "sale_ID": 99999992,           |               "branch_ID": 2,                              | Step 1 above,             |
-               |               "amount": 1249,                |               "item_ID": 1012,                             | and demonstrates          |    
+               |               "amount": 1249,                |               "item_ID": 1012,                             | and demonstrates          |
                |               "item_ID": 1012,               |               "message": "Sale not authorised by policy ta | that the                  |
                |               "quantity": 1,                 |                sk MorningBoozeCheck for time 08:41:06  GMT.| original                  |
                |               "assistant_ID": 12,            |                Alcohol can not be sold between 00:00:00    | ``MorningBoozeCheck``     |
                |               "branch_ID": 2                 |                GMT and 11:30:00 GMT",                      |                           |
                |              }                               |               "notes": null,                               | task is                   |
-               |                                              |               "quantity": 1,                               | executed.                 |    
+               |                                              |               "quantity": 1,                               | executed.                 |
                |                                              |               "sale_ID": 99999992,                         |                           |
                |                                              |               "time": 1483346466000                        |                           |
                |                                              |             }                                              |                           |
@@ -7864,7 +7882,7 @@ Run the Websocket Echo Client
       (``cmd`` on Windows). Then use the APEX application launcher to
       start the client.
 
-   .. important::  
+   .. important::
       APEX engine needs to run first
       The example assumes that an APEX engine configured for *produce* carrier technology Websocket and *JSON* event protocol is executed first.
 
@@ -7954,7 +7972,7 @@ Run the Websocket Console Client
       (``cmd`` on Windows). Then use the APEX application launcher to
       start the client.
 
-   .. important::  
+   .. important::
       APEX engine needs to run first
       The example assumes that an APEX engine configured for *consume* carrier technology Websocket and *JSON* event
       protocol is executed first.
