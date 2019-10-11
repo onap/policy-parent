@@ -19,7 +19,7 @@ Policy Release Notes
 Version: 5.0.1
 --------------
 
-:Release Date: 2019-09-30 (El Alto Release)
+:Release Date: 2019-10-24 (El Alto Release)
 
 **New Features**
 
@@ -29,17 +29,17 @@ Artifacts released:
    :header: "Repository", "Java Artifact", "Docker Image (if applicable)"
    :widths: 15,10,10
 
-   "policy/parent", "3.0.0", ""
-   "policy/common", "1.5.0", ""
-   "policy/models", "2.1.2", ""
-   "policy/api", "2.1.1", "onap/policy-api:2.1.1"
-   "policy/pap", "2.1.1", "onap/policy-pap:2.1.1"
-   "policy/drools-pdp", "1.5.1", "onap/policy-drools:1.5.1"
-   "policy/apex-pdp", "2.2.1", "onap/policy-apex-pdp:2.2.1"
-   "policy/xacml-pdp", "2.1.1", "onap/policy-xacml-pdp:2.1.1"
-   "policy/drools-applications", "1.5.1", "onap/policy-pdpd-cl:1.5.1"
-   "policy/engine", "1.5.1", "onap/policy-pe:1.5.1"
-   "policy/distribution", "2.2.0", "onap/policy-distribution:2.2.0"
+   "policy/parent", "3.0.1", ""
+   "policy/common", "1.5.2", ""
+   "policy/models", "2.1.4", ""
+   "policy/api", "2.1.2", "onap/policy-api:2.1.2"
+   "policy/pap", "2.1.2", "onap/policy-pap:2.1.2"
+   "policy/drools-pdp", "1.5.2", "onap/policy-drools:1.5.2"
+   "policy/apex-pdp", "2.1.1", "onap/policy-apex-pdp:2.1.1"
+   "policy/xacml-pdp", "2.1.2", "onap/policy-xacml-pdp:2.1.2"
+   "policy/drools-applications", "1.5.3", "onap/policy-pdpd-cl:1.5.3"
+   "policy/engine", "1.5.2", "onap/policy-pe:1.5.2"
+   "policy/distribution", "2.2.1", "onap/policy-distribution:2.2.1"
    "policy/docker", "1.4.0", "onap/policy-common-alpine:1.4.0 onap/policy/base-alpine:1.4.0"
 
 The El Alto release for POLICY delivered the following Epics. For a full list of stories and tasks delivered in the El Alto release, refer to `JiraPolicyElAlto`_.
@@ -115,6 +115,7 @@ The following bug fixes have been deployed with this release:
     * `[POLICY-1872] <https://jira.onap.org/browse/POLICY-1872>`_ - brmsgw fails building a jar - trafficgenerator dependency does not exist
     * `[POLICY-2047] <https://jira.onap.org/browse/POLICY-2047>`_ - TOSCA Policy Types should be map not a list
     * `[POLICY-2060] <https://jira.onap.org/browse/POLICY-2060>`_ - ToscaProperties object is missing metadata field
+    * `[POLICY-2156] <https://jira.onap.org/browse/POLICY-2156>`_ - missing field in create VF module request to SO
 
 
 **Security Notes**
@@ -143,6 +144,9 @@ The following known issues will be addressed in a future release:
     * `[POLICY-2103] <https://jira.onap.org/browse/POLICY-2103>`_ - policy/distribution may need to re-synch if SDC gets reinstalled
     * `[POLICY-2062] <https://jira.onap.org/browse/POLICY-2062>`_ - APEX PDP logs > 4G filled local storage
     * `[POLICY-2080] <https://jira.onap.org/browse/POLICY-2080>`_ - drools-pdp JUnit fails intermittently in feature-active-standby-management
+    * `[POLICY-2111] <https://jira.onap.org/browse/POLICY-2111>`_ - PDP-D APPS: AAF Cadi conflicts with Aether libraries
+    * `[POLICY-2158] <https://jira.onap.org/browse/POLICY-2158>`_ - PAP loses synchronization with PDPs
+    * `[POLICY-2159] <https://jira.onap.org/browse/POLICY-2159>`_ - PAP console (legacy): cannot edit policies with GUI
 
 
 ..      ==========================
