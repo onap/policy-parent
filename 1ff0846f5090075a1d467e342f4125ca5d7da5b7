@@ -34,6 +34,24 @@
       "revId": "1ff0846f5090075a1d467e342f4125ca5d7da5b7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06bfba45_e52d3f07",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-10-14T13:31:40Z",
+      "side": 1,
+      "message": "Oops the wiki was out-of-date - I just checked the charts. I will fix it.",
+      "parentUuid": "4395a32c_8b7563f0",
+      "revId": "1ff0846f5090075a1d467e342f4125ca5d7da5b7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
