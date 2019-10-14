@@ -122,6 +122,17 @@ The following bug fixes have been deployed with this release:
 
 *Fixed Security Issues*
 
+
+    * `[POLICY-2115] <https://jira.onap.org/browse/POLICY-2115>`_ - Upgrade org.jgroups : jgroups : 4.0.12.Final 
+    * `[POLICY-2084] <https://jira.onap.org/browse/POLICY-2084>`_ - Investigate pip (py2.py3-none-any) 9.0.1 (.whl) in apex-pdp
+    * `[POLICY-2072] <https://jira.onap.org/browse/POLICY-2072>`_ - Upgrade io.netty : netty-codec-http2 and netty-common to 4.1.39.Final
+    * `[POLICY-2005] <https://jira.onap.org/browse/POLICY-2005>`_ - Upgrade elastic search to 6.8.2
+    * `[POLICY-2001] <https://jira.onap.org/browse/POLICY-2001>`_ - Upgrade com.thoughtworks.xstream to 1.4.11.1
+    * `[POLICY-2000] <https://jira.onap.org/browse/POLICY-2000>`_ - Upgrade oparent 2.1.0-SNAPSHOT - to pull in jetty server to 9.4.20.v20190813
+    * `[POLICY-1999] <https://jira.onap.org/browse/POLICY-1999>`_ - Upgrade to httpcomponents httpclient 4.5.9
+    * `[POLICY-1598] <https://jira.onap.org/browse/POLICY-1598>`_ - mariadb container is outdated
+    * `[POLICY-1597] <https://jira.onap.org/browse/POLICY-1597>`_ - nexus container is outdated
+
 *Known Security Issues*
 
 *Known Vulnerabilities in Used Modules*
