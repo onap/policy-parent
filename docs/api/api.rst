@@ -64,6 +64,7 @@ well-formed TOSCA monitoring policies.
    :widths: 15,10
 
    "vCPE.Monitoring.Tosca", `vCPE.policy.monitoring.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.monitoring.input.tosca.yaml>`_  `vCPE.policy.monitoring.input.tosca.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.monitoring.input.tosca.json>`_
+   "vCPE.Optimization.Tosca", `vCPE.policies.optimization.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policies.optimization.input.tosca.yaml>`_
    "vCPE.Operational.Legacy", `vCPE.policy.operational.input.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.operational.input.json>`_
    "vDNS.Guard.FrequencyLimiting.Legacy", `vDNS.policy.guard.frequency.input.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.guard.frequency.input.json>`_
    "vDNS.Guard.MinMax.Legacy", `vDNS.policy.guard.minmax.input.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.guard.minmax.input.json>`_
