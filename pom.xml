@@ -46,7 +46,9 @@
                 Using https://github.com/diffplug/spotless/tree/master/plugin-maven for import order
                 Use in combination to rewrite code and imports, then checkstyle
 
-                mvn formatter:format spotless:apply process-sources
+                Be sure to override ${project.parent.basedir} in order to find the XML file
+
+                mvn formatter:format spotless:apply process-sources -Dproject.parent.basedir=TODO
                 -->
                 <plugin>
                     <groupId>net.revelc.code.formatter</groupId>
