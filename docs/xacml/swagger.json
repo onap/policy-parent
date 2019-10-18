@@ -40,6 +40,12 @@
           "required" : false,
           "type" : "string",
           "format" : "uuid"
+        }, {
+          "name" : "abbrev",
+          "in" : "query",
+          "description" : "Specifies whether the DCAE Monitoring decision results should be abbreviated",
+          "required" : false,
+          "type" : "boolean"
         } ],
         "responses" : {
           "200" : {
