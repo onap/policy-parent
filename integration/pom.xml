@@ -296,6 +296,24 @@
                 <version>${version.drools}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-verifier-drl</artifactId>
+                <version>${version.drools}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-verifier-api</artifactId>
+                <version>${version.drools}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-verifier-core</artifactId>
+                <version>${version.drools}</version>
+            </dependency>
+
             <!-- Test dependencies -->
 
             <!-- In memory Database Engine -->
