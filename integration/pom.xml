@@ -40,6 +40,7 @@
         <version.powermock>1.7.4</version.powermock>
         <version.eclipselink>2.7.0</version.eclipselink>
         <version.jackson>2.10.0.pr3</version.jackson>
+        <version.drools>7.28.0.Final</version.drools>
     </properties>
 
     <distributionManagement>
@@ -236,6 +237,65 @@
                 <version>1.24</version>
             </dependency>
 
+            <!-- Drools -->
+
+            <!--
+            Security Issues: 1 of 2
+            This dependency is trying to upgrade security fixes
+            identified. If it is removed or manipulated then please
+            fix the 2nd change as noted below.
+            -->
+
+            <dependency>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-utils</artifactId>
+                <version>3.0.24</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.kie</groupId>
+                <artifactId>kie-api</artifactId>
+                <version>${version.drools}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.kie</groupId>
+                <artifactId>kie-ci</artifactId>
+                <version>${version.drools}</version>
+
+                <!--
+                Issue: 2 of 2
+                Excluding these 2 dependencies in order to force upgrade security fixes
+                identified. As declared above. Any changes here should be reflected above
+                and vice versa.
+                -->
+
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.codehaus.plexus</groupId>
+                        <artifactId>plexus-utils</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-core</artifactId>
+                <version>${version.drools}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-persistence-jpa</artifactId>
+                <version>${version.drools}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-compiler</artifactId>
+                <version>${version.drools}</version>
+            </dependency>
+
             <!-- Test dependencies -->
 
             <!-- In memory Database Engine -->
@@ -416,6 +476,12 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>2.6</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.kie</groupId>
+                    <artifactId>kie-maven-plugin</artifactId>
+                    <version>${version.drools}</version>
+                    <extensions>true</extensions>
                 </plugin>
             </plugins>
         </pluginManagement>
