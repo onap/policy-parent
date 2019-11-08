@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6caa2c9_732bf045",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 159
+      },
+      "writtenOn": "2019-11-08T20:13:50Z",
+      "side": 1,
+      "message": "nitpick: whitespace",
+      "range": {
+        "startLine": 592,
+        "startChar": 45,
+        "endLine": 592,
+        "endChar": 46
+      },
+      "revId": "b31739e8a459e6b180ca5d988c5ecc26f305b5eb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
