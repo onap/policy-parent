@@ -61,8 +61,8 @@ Accessing the policy docker containers is the same as for any kubernetes contain
 
   kubectl -n onap exec -it dev-policy-policy-xacml-pdp-584844b8cf-9zptx bash
 
-Rebuilding and/or modifying the Policy Charts
-*********************************************
+Installing or Upgrading Policy
+******************************
 The assumption is you have cloned the charts from the OOM repository into a local directory.
 
 **Step 1** Go into local copy of OOM charts
@@ -99,6 +99,13 @@ After deploying policy, loop on monitoring the policy pods until they come up.
   helm deploy dev-policy local/onap --namespace onap
   kubectl get pods -n onap
 
+Restarting a faulty component
+*****************************
+Each policy component can be restarted independently when abnormal behavior is
+observed by issuing the following command.
+
+kubectl delete pod <policy-pod> -n onap
+
 Exposing ports
 **************
 For security reasons, the ports for the policy containers are configured as ClusterIP and thus not exposed. If you find you need those ports in a development environment, then the following will expose them.
@@ -107,7 +114,36 @@ For security reasons, the ports for the policy containers are configured as Clus
 
   kubectl -n onap expose service policy-api --port=7171 --target-port=6969 --name=api-public --type=NodePort
 
-Customizing PDP-D Installations
+Overriding certificate stores
+*******************************
+Each policy component keystore and or truststore can be overriden.   This will make sense
+for an installation that decides to use its own certificates other than the AAF derived ones
+that come preinstalled with the official ONAP distribution.
+
+A custom policy-keystore should be placed at the following helm charts locations to override the default
+one at component instantiation:
+
+* **oom/kubernetes/policy/charts/drools/resources/secrets/policy-keystore** drools pdp keystore override.
+* **oom/kubernetes/policy/charts/policy-apex-pdp/resources/config/policy-keystore** apex pdp keystore override.
+* **oom/kubernetes/policy/charts/policy-api/resources/config/policy-keystore** api keystore override.
+* **oom/kubernetes/policy/charts/policy-distribution/resources/config/policy-keystore** distribution keystore override.
+* **oom/kubernetes/policy/charts/policy-pap/resources/config/policy-keystore** pap keystore override.
+* **oom/kubernetes/policy/charts/policy-xacml-pdp/resources/config/policy-keystore** xacml pdp keystore override.
+
+In the event that the policy-truststore needs to be overriden, place it at the appropriate location below:
+one at component instantiation:
+
+* **oom/kubernetes/policy/charts/drools/resources/configmaps/policy-truststore** drools pdp truststore override.
+* **oom/kubernetes/policy/charts/policy-apex-pdp/resources/config/policy-truststore** apex pdp truststore override.
+* **oom/kubernetes/policy/charts/policy-api/resources/config/policy-truststore** api truststore override.
+* **oom/kubernetes/policy/charts/policy-distribution/resources/config/policy-truststore** distribution truststore override.
+* **oom/kubernetes/policy/charts/policy-pap/resources/config/policy-truststore** pap truststore override.
+* **oom/kubernetes/policy/charts/policy-xacml-pdp/resources/config/policy-truststore** xacml pdp truststore override.
+
+After such changes follow the procedures in the :ref:`Installing or Upgrading Policy` section to make the changes
+effective.
+
+Additional PDP-D Customizations
 *******************************
 
 Credentials and other configuration parameters can be set as values
