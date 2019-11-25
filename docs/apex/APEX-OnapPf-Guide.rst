@@ -369,45 +369,49 @@ Format of the configuration file (OnapPfConfig.json) explained
 
          .. container:: colist arabic
 
-            +-----------------------------------+-----------------------------------+
-            | **1**                             | parameters for setting up the     |
-            |                                   | rest server such as host, port    |
-            |                                   | userName and password.            |
-            +-----------------------------------+-----------------------------------+
-            | **2**                             | https flag if enabled will enable |
-            |                                   | https support by the rest server. |
-            +-----------------------------------+-----------------------------------+
-            | **3**                             | time interval in which PDP-A      |
-            |                                   | has to send heartbeats to PAP.    |
-            |                                   | Specified in milliseconds.        |
-            +-----------------------------------+-----------------------------------+
-            | **4**                             | Type of the pdp.                  |
-            +-----------------------------------+-----------------------------------+
-            | **5**                             | List of policy types supported by |
-            |                                   | the PDP.                          |
-            +-----------------------------------+-----------------------------------+
-            | **6**                             | List of topics' details from      |
-            |                                   | which messages are received.      |
-            +-----------------------------------+-----------------------------------+
-            | **7**                             | Topic name of the source to which |
-            |                                   | PDP-A listens to for messages     |
-            |                                   | from PAP.                         |
-            +-----------------------------------+-----------------------------------+
-            | **8**                             | List of servers for the source    |
-            |                                   | topic.                            |
-            +-----------------------------------+-----------------------------------+
-            | **9**                             | The source topic infrastructure.  |
-            |                                   | For e.g. dmaap, noop, ueb         |
-            +-----------------------------------+-----------------------------------+
-            | **10**                            | List of topics' details to which  |
-            |                                   | messages are sent.                |
-            +-----------------------------------+-----------------------------------+
-            | **11**                            | Topic name of the sink to which   |
-            |                                   | PDP-A sends messages.             |
-            +-----------------------------------+-----------------------------------+
-            | **12**                            | List of servers for the sink      |
-            |                                   | topic.                            |
-            +-----------------------------------+-----------------------------------+
-            | **13**                            | The sink topic infrastructure.    |
-            |                                   | For e.g. dmaap, noop, ueb         |
-            +-----------------------------------+-----------------------------------+
+            +-----------------------------------+-------------------------------------------------+
+            | **1**                             | parameters for setting up the                   |
+            |                                   | rest server such as host, port                  |
+            |                                   | userName and password.                          |
+            +-----------------------------------+-------------------------------------------------+
+            | **2**                             | https flag if enabled will enable               |
+            |                                   | https support by the rest server.               |
+            +-----------------------------------+-------------------------------------------------+
+            | **3**                             | time interval in which PDP-A                    |
+            |                                   | has to send heartbeats to PAP.                  |
+            |                                   | Specified in milliseconds.                      |
+            +-----------------------------------+-------------------------------------------------+
+            | **4**                             | Type of the pdp.                                |
+            +-----------------------------------+-------------------------------------------------+
+            | **5**                             | List of policy types supported by               |
+            |                                   | the PDP. A trailing “.*” can be used to         |
+            |                                   | specify multiple policy types; for example,     |
+            |                                   | “onap.policies.controlloop.operational.apex.*”  |
+            |                                   | would match any policy type beginning with      |
+            |                                   | “onap.policies.controlloop.operational.apex.”   |
+            +-----------------------------------+-------------------------------------------------+
+            | **6**                             | List of topics' details from                    |
+            |                                   | which messages are received.                    |
+            +-----------------------------------+-------------------------------------------------+
+            | **7**                             | Topic name of the source to which               |
+            |                                   | PDP-A listens to for messages                   |
+            |                                   | from PAP.                                       |
+            +-----------------------------------+-------------------------------------------------+
+            | **8**                             | List of servers for the source                  |
+            |                                   | topic.                                          |
+            +-----------------------------------+-------------------------------------------------+
+            | **9**                             | The source topic infrastructure.                |
+            |                                   | For e.g. dmaap, noop, ueb                       |
+            +-----------------------------------+-------------------------------------------------+
+            | **10**                            | List of topics' details to which                |
+            |                                   | messages are sent.                              |
+            +-----------------------------------+-------------------------------------------------+
+            | **11**                            | Topic name of the sink to which                 |
+            |                                   | PDP-A sends messages.                           |
+            +-----------------------------------+-------------------------------------------------+
+            | **12**                            | List of servers for the sink                    |
+            |                                   | topic.                                          |
+            +-----------------------------------+-------------------------------------------------+
+            | **13**                            | The sink topic infrastructure.                  |
+            |                                   | For e.g. dmaap, noop, ueb                       |
+            +-----------------------------------+-------------------------------------------------+

@@ -396,7 +396,10 @@ pdp_subgroups                R       M        N/A        A list of PDP subgroups
 ->pdp_type                   R       M        N/A        The PDP type of this PDP subgroup, currently xacml, drools, or
                                                          apex
 ->supported_policy_types     R       N/A      N/A        A list of the policy types supported by the PDPs in this PDP
-                                                         subgroup
+                                                         subgroup.  A trailing “.*” can be used to specify multiple 
+                                                         policy types; for example, “onap.policies.monitoring.*” 
+                                                         would match any policy type beginning with 
+                                                         “onap.policies.monitoring.”
 ->policies                   R       M        N/A        The list of policies running on the PDPs in this PDP subgroup
 ->->(name)                   R       M        N/A        The name of a TOSCA policy running in this PDP subgroup
 ->->policy_type              R       N/A      N/A        The TOSCA policy type of the policy
@@ -861,7 +864,7 @@ services          O       List of String   One or more services the policy appli
 resources         O       List of String   The unique ID for the Control Loop
 geography         O       List of String   The target VNF the actor is executing the recipe on
 
-================= ======= ======== ==================================================================
+================= ======= ============== ==================================================================
 
 This example below shows the JSON body of an Optimize Decision API call.
 
