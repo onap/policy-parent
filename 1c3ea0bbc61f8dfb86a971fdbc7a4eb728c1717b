@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f30fada_d9e05a5f",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-11-26T14:44:51Z",
+      "side": 1,
+      "message": "remove trailing spaces",
+      "revId": "1c3ea0bbc61f8dfb86a971fdbc7a4eb728c1717b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
