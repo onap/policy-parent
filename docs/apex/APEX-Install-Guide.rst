@@ -192,8 +192,8 @@ Build APEX
       |         :number-lines:                                |         :number-lines:                                 |
       |                                                       |                                                        |
       |         >c:                                           |         # cd /usr/local/src/apex-pdp                   |
-      |         >cd \dev\apex                                 |         # mvn clean install -DskipTest                 |
-      |         >mvn clean install -DskipTests                |                                                        |
+      |         >cd \dev\apex                                 |         # mvn clean install -Pdocker -DskipTests       |
+      |         >mvn clean install -Pdocker -DskipTests       |                                                        |
       +-------------------------------------------------------+--------------------------------------------------------+
 
 .. container:: paragraph
@@ -520,8 +520,8 @@ Build and Install Manually (Unix, Windows, Cygwin)
          |         :number-lines:                                |         :number-lines:                                 |
          |                                                       |                                                        |
          |         >c:                                           |         # cd /usr/local/src/apex                       |
-         |         >cd \dev\apex                                 |         # mvn clean install -DskipTests                |
-         |         >mvn clean install -DskipTests                |                                                        |
+         |         >cd \dev\apex                                 |         # mvn clean install -Pdocker -DskipTests       |
+         |         >mvn clean install -Pdocker -DskipTests       |                                                        |
          +-------------------------------------------------------+--------------------------------------------------------+
 
 .. container:: paragraph
