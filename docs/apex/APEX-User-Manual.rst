@@ -192,8 +192,8 @@ Build APEX
       |         :number-lines:                                |         :number-lines:                                 |
       |                                                       |                                                        |
       |         # cd /usr/local/src/apex-pdp                  |          >c:                                           |
-      |         # mvn clean install -Pdocker -DskipTest       |          >cd \dev\apex                                 |
-      |                                                       |          >mvn clean install -DskipTests                |
+      |         # mvn clean install -Pdocker -DskipTests      |          >cd \dev\apex                                 |
+      |                                                       |          >mvn clean install -Pdocker -DskipTests       |
       +-------------------------------------------------------+--------------------------------------------------------+
 
 .. container:: paragraph
@@ -520,8 +520,8 @@ Build and Install Manually (Unix, Windows, Cygwin)
          |         :number-lines:                                |         :number-lines:                                 |
          |                                                       |                                                        |
          |         # cd /usr/local/src/apex                      |         >c:                                            |
-         |         # mvn clean install -DskipTests               |         >cd \dev\apex                                  |
-         |                                                       |         >mvn clean install -DskipTests                 |
+         |         # mvn clean install -Pdocker -DskipTests      |         >cd \dev\apex                                  |
+         |                                                       |         >mvn clean install -Pdocker -DskipTests        |
          +-------------------------------------------------------+--------------------------------------------------------+
 
 .. container:: paragraph
@@ -910,7 +910,7 @@ Edit the APEX Logging Settings
 
    .. container:: paragraph
 
-      ``<property name="VAR_LOG" value="/var/log/onap/policy/apex-pdp/" />``
+      ``<property name="logDir" value="/var/log/onap/policy/apex-pdp/" />``
 
    .. container:: paragraph
 
@@ -918,7 +918,7 @@ Edit the APEX Logging Settings
 
    .. container:: paragraph
 
-      ``<property name="VAR_LOG" value="/PATH/TO/LOG/DIRECTORY/" />``
+      ``<property name="logDir" value="/PATH/TO/LOG/DIRECTORY/" />``
 
    .. container:: paragraph
 
@@ -926,7 +926,7 @@ Edit the APEX Logging Settings
 
    .. container:: paragraph
 
-      ``<property name="VAR_LOG" value="C:/apex/apex-full-2.0.0-SNAPSHOT/logs" />``
+      ``<property name="logDir" value="C:/apex/apex-full-2.0.0-SNAPSHOT/logs" />``
 
    .. container:: paragraph
 
@@ -7203,7 +7203,7 @@ Standard Logging Configuration
 
             The standard logging configuration defines a context *APEX*,
             which is used in the standard output pattern. The location
-            for log files is defined in the property ``VAR_LOG`` and set
+            for log files is defined in the property ``logDir`` and set
             to ``/var/log/onap/policy/apex-pdp``. The standard status
             listener is set to *NOP* and the overall logback
             configuration is set to no debug.
@@ -7219,7 +7219,7 @@ Standard Logging Configuration
                    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
 
                     <contextName>Apex</contextName>
-                    <property name="VAR_LOG" value="/var/log/onap/policy/apex-pdp/" />
+                    <property name="logDir" value="/var/log/onap/policy/apex-pdp/" />
 
                    ...appenders
                    ...loggers
@@ -7272,7 +7272,7 @@ Standard Logging Configuration
         :number-lines:
 
         <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-          <file>${VAR_LOG}/apex.log</file>
+          <file>${logDir}/apex.log</file>
           <encoder>
             <pattern>%d %-5relative [procId=${processId}] [%thread] %-5level %logger{26} - %msg %n %ex{full}</pattern>
           </encoder>
@@ -7291,7 +7291,7 @@ Standard Logging Configuration
         :number-lines:
 
         <appender name="CTXT_FILE" class="ch.qos.logback.core.FileAppender">
-          <file>${VAR_LOG}/apex_ctxt.log</file>
+          <file>${logDir}/apex_ctxt.log</file>
           <encoder>
             <pattern>%d %-5relative [procId=${processId}] [%thread] %-5level %logger{26} - %msg %n %ex{full}</pattern>
           </encoder>
@@ -7471,11 +7471,11 @@ Rolling File Appenders
          .. code::
 
             <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-              <file>${VAR_LOG}/apex.log</file>
+              <file>${logDir}/apex.log</file>
               <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
                 <!-- rollover daily -->
                 <!-- <fileNamePattern>xstream-%d{yyyy-MM-dd}.%i.txt</fileNamePattern> -->
-                <fileNamePattern>${VAR_LOG}/apex_%d{yyyy-MM-dd}.%i.log.gz
+                <fileNamePattern>${logDir}/apex_%d{yyyy-MM-dd}.%i.log.gz
                 </fileNamePattern>
                 <maxHistory>4</maxHistory>
                 <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -7503,9 +7503,9 @@ Rolling File Appenders
 
             <appender name="CTXT-FILE"
                   class="ch.qos.logback.core.rolling.RollingFileAppender">
-              <file>${VAR_LOG}/apex_ctxt.log</file>
+              <file>${logDir}/apex_ctxt.log</file>
               <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                <fileNamePattern>${VAR_LOG}/apex_ctxt_%d{yyyy-MM-dd}.%i.log.gz
+                <fileNamePattern>${logDir}/apex_ctxt_%d{yyyy-MM-dd}.%i.log.gz
                 </fileNamePattern>
                 <maxHistory>4</maxHistory>
                 <timeBasedFileNamingAndTriggeringPolicy
@@ -7543,7 +7543,7 @@ Example Configuration for Logging Logic
                 <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
 
                 <contextName>Apex</contextName>
-                <property name="VAR_LOG" value="/var/log/onap/policy/apex-pdp/" />
+                <property name="logDir" value="/var/log/onap/policy/apex-pdp/" />
 
                 <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
                     <encoder>
@@ -7552,7 +7552,7 @@ Example Configuration for Logging Logic
                 </appender>
 
                 <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-                    <file>${VAR_LOG}/apex.log</file>
+                    <file>${logDir}/apex.log</file>
                     <encoder>
                         <pattern>
                             %d %-5relative [procId=${processId}] [%thread] %-5level%logger{26} - %msg %n %ex{full}
@@ -7602,10 +7602,10 @@ Example Configuration for a Production Server
                 <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
 
                 <contextName>Apex</contextName>
-                <property name="VAR_LOG" value="/var/log/onap/policy/apex-pdp/" />
+                <property name="logDir" value="/var/log/onap/policy/apex-pdp/" />
 
                 <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-                    <file>${VAR_LOG}/apex.log</file>
+                    <file>${logDir}/apex.log</file>
                     <encoder>
                         <pattern>
                             %d %-5relative [procId=${processId}] [%thread] %-5level%logger{26} - %msg %n %ex{full}

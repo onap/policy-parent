@@ -1440,7 +1440,7 @@ Writing APEX Task Selection Logic
       |         :number-lines:                                |         :number-lines:                                 |
       |                                                       |                                                        |
       |         >c:                                           |         # cd /usr/local/src/apex-pdp                   |
-      |         >cd \dev\apex                                 |         # mvn clean install -DskipTest                 |
+      |         >cd \dev\apex                                 |         # mvn clean install -DskipTests                |
       |         >mvn clean install -DskipTests                |                                                        |
       +-------------------------------------------------------+--------------------------------------------------------+
 
