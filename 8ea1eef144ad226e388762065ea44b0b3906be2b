@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f3d6b8c_b6ff6a99",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T18:13:18Z",
+      "side": 1,
+      "message": "\"Control Loop\"?",
+      "revId": "8ea1eef144ad226e388762065ea44b0b3906be2b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3f8f3b6_d8df1b6d",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T18:13:18Z",
+      "side": 1,
+      "message": "\"object\" \u003d\u003e \"object,\"",
+      "revId": "8ea1eef144ad226e388762065ea44b0b3906be2b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
