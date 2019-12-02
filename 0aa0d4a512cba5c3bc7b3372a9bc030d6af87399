@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5dbf0556_07778491",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "perhaps wrap lines at 90 characters",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f2a356e_52b131ba",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "do we commonly use \"closeloop\" through-out the documentation?  If so, this is fine.  Otherwise, it should probably be \"closed loop\".  This appears in other places within this document.",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c81411da_fb00df7a",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "\"For sake\" \u003d\u003e \"For the sake\"\n\"JSON\" \u003d\u003e \"a JSON\"\n\"are documented\" \u003d\u003e \"is documented\"",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cc1aa9_87e8a80f",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "\"identify\" \u003d\u003e \"identifies\"",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c4ff098_d08fe8d1",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "\"holds\" \u003d\u003e \"holds the\"\n\nsame comment applies to the other descriptions in this table",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42627bdf_64d67cfb",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "\"into\" \u003d\u003e \"into the\"",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5255ee1_70a5ce04",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "change \"hashmap\" to \"map\" through-out",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7075408f_51f17b19",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "\"Controlloop\" \u003d\u003e \"Control Loop\"",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cb0d652_94407483",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "\"confirms\" \u003d\u003e \"conforms\"",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab469f4b_bf71ec47",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "\"object\" \u003d\u003e \"object,\"",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c32daa73_4358edd4",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-02T14:21:07Z",
+      "side": 1,
+      "message": "\"ControlloopEvent\" \u003d\u003e either change to \"Control Loop Event\" or use the actual java class name",
+      "revId": "0aa0d4a512cba5c3bc7b3372a9bc030d6af87399",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
