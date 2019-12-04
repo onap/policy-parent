@@ -22,6 +22,30 @@
       "revId": "222f3b295294938252198c0993a6d0b5234930b2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add0ef5e_ea11dfa0",
+        "filename": "version.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1757
+      },
+      "writtenOn": "2019-12-04T19:17:00Z",
+      "side": 1,
+      "message": "Wouldn\u0027t that make the release version 3.1.1 as well then?",
+      "parentUuid": "e5a083d1_1f278a96",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "222f3b295294938252198c0993a6d0b5234930b2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
