@@ -81,6 +81,14 @@ in the following table are transmitted via DMaaP:
    "PDP update", "Outgoing", "Assigns a PDP to a PDP Group and Subgroup; also deploys or undeploys policies from the PDP"
    "PDP state change", "Outgoing", "Changes the state of a PDP or all PDPs within a PDP Group or Subgroup"
 
+In addition, PAP generates notifications via the DMaaP Message Router when policies are successfully or unsuccessfully 
+deployed (or undeployed) from all relevant PDPs.  
+
+Here is a sample notification:
+
+.. literalinclude:: notification/dmaap-pap-notif.json
+    :language: json
+
 
 2 PAP REST API Swagger
 ======================
