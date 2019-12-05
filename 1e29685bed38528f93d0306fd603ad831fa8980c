@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbbc1a99_b48ff8fb",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-05T16:48:55Z",
+      "side": 1,
+      "message": "remove trailing spaces",
+      "revId": "1e29685bed38528f93d0306fd603ad831fa8980c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2959c90a_4176b935",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-05T16:48:55Z",
+      "side": 1,
+      "message": "remove trailing spaces",
+      "revId": "1e29685bed38528f93d0306fd603ad831fa8980c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
