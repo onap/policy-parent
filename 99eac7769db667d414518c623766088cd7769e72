@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f5cbef9_736fbea3",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-10T22:22:41Z",
+      "side": 1,
+      "message": "\"defines\" \u003d\u003e \"defined\"",
+      "revId": "99eac7769db667d414518c623766088cd7769e72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da5b3b74_7a3d9023",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-10T22:22:41Z",
+      "side": 1,
+      "message": "leave off the trailing \".\" to match the other descriptions",
+      "revId": "99eac7769db667d414518c623766088cd7769e72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77164fd2_bf38de51",
+        "filename": "docs/actors/cds.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-10T22:22:41Z",
+      "side": 1,
+      "message": "\"substituted to\" \u003d\u003e \"substituted into\"",
+      "revId": "99eac7769db667d414518c623766088cd7769e72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
