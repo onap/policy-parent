@@ -34,9 +34,7 @@
     <description>Policy Integration POM</description>
 
     <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>11</java.version>
         <version.logback>1.2.3</version.logback>
         <version.dmaap>1.1.9</version.dmaap>
         <version.powermock>1.7.4</version.powermock>
@@ -580,8 +578,7 @@
                     <version>3.8.1</version>
                     <configuration>
                         <encoding>${project.build.sourceEncoding}</encoding>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
+                        <release>11</release>
                     </configuration>
                 </plugin>
                 <plugin>
