@@ -18,5 +18,6 @@ Policy Framework Architecture
    xacml/xacml
    apex/apex
    distribution/distribution
+   actors/cds
 ..    release-notes.rst
 
