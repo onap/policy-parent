@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7561fb7_1fdc9a3b",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2019-12-10T21:44:26Z",
+      "side": 1,
+      "message": "use ${java.version}",
+      "revId": "cad4d9e5071574ea559fc341ecf457c09bfa1fe9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
