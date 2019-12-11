@@ -1,0 +1,150 @@
+{
+  "swagger" : "2.0",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "DeploymentsUpdate"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "consumes" : [ "application/json", "application/yaml" ],
+  "produces" : [ "application/json", "application/yaml" ],
+  "paths" : {
+    "/policy/pap/v1/pdps/deployments/batch" : {
+      "post" : {
+        "tags" : [ "DeploymentsUpdate" ],
+        "summary" : "Updates policy deployments within specific PDP groups",
+        "description" : "Updates policy deployments within specific PDP groups, returning optional error details",
+        "operationId" : "updateGroupPolicies",
+        "produces" : [ "application/json", "application/yaml" ],
+        "parameters" : [ {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "List of PDP Group Deployments",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/DeploymentGroups"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/PdpGroupDeployResponse"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "api-version" : "1.0.0",
+          "last-mod-release" : "Dublin"
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "basicAuth" : {
+      "description" : "",
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "ToscaPolicyIdentifier" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "version" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PdpGroupDeployResponse" : {
+      "type" : "object",
+      "properties" : {
+        "errorDetails" : {
+          "type" : "string"
+        }
+      }
+    },
+    "DeploymentGroup" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "deploymentSubgroups" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/DeploymentSubGroup"
+          }
+        }
+      }
+    },
+    "DeploymentGroups" : {
+      "type" : "object",
+      "properties" : {
+        "groups" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/DeploymentGroup"
+          }
+        }
+      }
+    },
+    "DeploymentSubGroup" : {
+      "type" : "object",
+      "properties" : {
+        "pdpType" : {
+          "type" : "string"
+        },
+        "action" : {
+          "type" : "string",
+          "enum" : [ "POST", "DELETE", "PATCH" ]
+        },
+        "policies" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ToscaPolicyIdentifier"
+          }
+        }
+      }
+    }
+  }
+}
