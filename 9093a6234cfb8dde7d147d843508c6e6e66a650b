@@ -16,6 +16,24 @@
       "revId": "9093a6234cfb8dde7d147d843508c6e6e66a650b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b4473ea_3b14d87e",
+        "filename": "integration/pom.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1757
+      },
+      "writtenOn": "2019-12-11T16:35:50Z",
+      "side": 1,
+      "message": "Right, sorry!",
+      "parentUuid": "783929d9_3294e4ed",
+      "revId": "9093a6234cfb8dde7d147d843508c6e6e66a650b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
