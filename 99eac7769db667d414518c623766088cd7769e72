@@ -50,6 +50,29 @@
       "revId": "99eac7769db667d414518c623766088cd7769e72",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5267925_aa9d2add",
+        "filename": "docs/index.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2019-12-11T13:40:08Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this should be on this level. Probably under another page - development?. But can you create an overarching actors page? And then have cds as a sub-page of that page? We should have a page for each actor we support. As well as documentation on how to create your own actor.",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "99eac7769db667d414518c623766088cd7769e72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
