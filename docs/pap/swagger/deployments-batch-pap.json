@@ -2,19 +2,19 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpGroupDeploy"
+    "name" : "DeploymentsUpdate"
   } ],
   "schemes" : [ "http", "https" ],
-  "consumes" : [ "application/json" ],
-  "produces" : [ "application/json" ],
+  "consumes" : [ "application/json", "application/yaml" ],
+  "produces" : [ "application/json", "application/yaml" ],
   "paths" : {
-    "/policy/pap/v1/pdps" : {
+    "/policy/pap/v1/pdps/deployments/batch" : {
       "post" : {
-        "tags" : [ "PdpGroupDeploy" ],
-        "summary" : "Deploy or update PDP Groups",
-        "description" : "Deploys or updates a PDP Group, returning optional error details",
-        "operationId" : "deployGroup",
-        "produces" : [ "application/json" ],
+        "tags" : [ "DeploymentsUpdate" ],
+        "summary" : "Updates policy deployments within specific PDP groups",
+        "description" : "Updates policy deployments within specific PDP groups, returning optional error details",
+        "operationId" : "updateGroupPolicies",
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "X-ONAP-RequestID",
           "in" : "header",
@@ -25,10 +25,10 @@
         }, {
           "in" : "body",
           "name" : "body",
-          "description" : "List of PDP Group Configuration",
+          "description" : "List of PDP Group Deployments",
           "required" : true,
           "schema" : {
-            "$ref" : "#/definitions/PdpGroups"
+            "$ref" : "#/definitions/DeploymentGroups"
           }
         } ],
         "responses" : {
@@ -84,115 +84,7 @@
     }
   },
   "definitions" : {
-    "Pdp" : {
-      "type" : "object",
-      "properties" : {
-        "instanceId" : {
-          "type" : "string"
-        },
-        "pdpState" : {
-          "type" : "string",
-          "enum" : [ "PASSIVE", "SAFE", "TEST", "ACTIVE", "TERMINATED" ]
-        },
-        "healthy" : {
-          "type" : "string",
-          "enum" : [ "HEALTHY", "NOT_HEALTHY", "TEST_IN_PROGRESS", "UNKNOWN" ]
-        },
-        "message" : {
-          "type" : "string"
-        }
-      }
-    },
-    "PdpGroup" : {
-      "type" : "object",
-      "properties" : {
-        "name" : {
-          "type" : "string"
-        },
-        "description" : {
-          "type" : "string"
-        },
-        "pdpGroupState" : {
-          "type" : "string",
-          "enum" : [ "PASSIVE", "SAFE", "TEST", "ACTIVE", "TERMINATED" ]
-        },
-        "properties" : {
-          "type" : "object",
-          "additionalProperties" : {
-            "type" : "string"
-          }
-        },
-        "pdpSubgroups" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/PdpSubGroup"
-          }
-        }
-      }
-    },
-    "PdpGroups" : {
-      "type" : "object",
-      "properties" : {
-        "groups" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/PdpGroup"
-          }
-        }
-      }
-    },
-    "PdpSubGroup" : {
-      "type" : "object",
-      "properties" : {
-        "pdpType" : {
-          "type" : "string"
-        },
-        "supportedPolicyTypes" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/ToscaPolicyTypeIdentifier"
-          }
-        },
-        "policies" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/ToscaPolicyIdentifier"
-          }
-        },
-        "currentInstanceCount" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "desiredInstanceCount" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "properties" : {
-          "type" : "object",
-          "additionalProperties" : {
-            "type" : "string"
-          }
-        },
-        "pdpInstances" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/Pdp"
-          }
-        }
-      }
-    },
     "ToscaPolicyIdentifier" : {
-      "type" : "object",
-      "properties" : {
-        "name" : {
-          "type" : "string"
-        },
-        "version" : {
-          "type" : "string"
-        }
-      }
-    },
-    "ToscaPolicyTypeIdentifier" : {
       "type" : "object",
       "properties" : {
         "name" : {
@@ -211,14 +103,46 @@
         }
       }
     },
-    "ToscaPolicyIdentifierOptVersion" : {
+    "DeploymentGroup" : {
       "type" : "object",
       "properties" : {
         "name" : {
           "type" : "string"
         },
-        "version" : {
+        "deploymentSubgroups" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/DeploymentSubGroup"
+          }
+        }
+      }
+    },
+    "DeploymentGroups" : {
+      "type" : "object",
+      "properties" : {
+        "groups" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/DeploymentGroup"
+          }
+        }
+      }
+    },
+    "DeploymentSubGroup" : {
+      "type" : "object",
+      "properties" : {
+        "pdpType" : {
           "type" : "string"
+        },
+        "action" : {
+          "type" : "string",
+          "enum" : [ "POST", "DELETE", "PATCH" ]
+        },
+        "policies" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ToscaPolicyIdentifier"
+          }
         }
       }
     }

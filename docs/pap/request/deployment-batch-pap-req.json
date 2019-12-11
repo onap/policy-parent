@@ -1,0 +1,19 @@
+{
+    "groups": [
+        {
+            "name": "SampleGroup",
+            "deploymentSubgroups": [
+                {
+                    "pdpType": "apex",
+                    "action": "POST",
+                    "policies": [
+                        {
+                            "name": "onap.controllloop.operational.apex.bbs.EastRegion",
+                            "version": "1.0.0"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

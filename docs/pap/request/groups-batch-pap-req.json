@@ -14,12 +14,7 @@
                             "version": "1.0.0"
                         }
                     ],
-                    "policies": [
-                        {
-                            "name": "onap.controllloop.operational.apex.bbs.EastRegion",
-                            "version": "1.0.0"
-                        }
-                    ]
+                    "policies": []
                 },
                 {
                     "pdpType": "xacml",
