@@ -2,11 +2,10 @@
 
 .. _policy-development-doc:
 
-Policy Platform Development
----------------------------
+Policy Platform Actor Development Guidelines
+--------------------------------------------
 
 .. toctree::
    :maxdepth: 1
 
-   devtools/devtools.rst
-   actors/actors.rst
+   cds/cds.rst
