@@ -142,18 +142,22 @@ Here is a sample response:
 The state of PDP groups is managed by this operation. PDP groups can be in states PASSIVE, TEST, SAFE, or ACTIVE. For a full
 description of PDP group states, see the :ref:`ONAP Policy Framework Architecture <architecture-label>` page.
 
-.. swaggerv2doc:: swagger/group-pap.json
+.. swaggerv2doc:: swagger/groups-batch-pap.json
 
 This operation allows the PDP groups and subgroups to be created and updated. Many PDP groups can be created or updated
 in a single POST operation by specifying more than one PDP group in the POST operation body.
+This can be used to update the policy types supported by various subgroups.
+However, it cannot be used to update policies; that is done using one of
+the deployment requests.  Consequently, the "policy" property of this
+request will be ignored.
 
 .. note::
   Due to current limitations, if a subgroup is to be deleted from a PDP Group, then the policies must be removed from
-  the subgroup in one request, and then the subgroup deleted in a subsequent request.
+  the subgroup first.
 
 Here is a sample request:
 
-.. literalinclude:: request/group-pap-req.json
+.. literalinclude:: request/groups-batch-pap-req.json
     :language: json
 
 .. swaggerv2doc:: swagger/group-delete-pap.json
@@ -170,13 +174,32 @@ Here is a sample response:
 .. literalinclude:: response/group-query-pap-resp.json
     :language: json
 
+.. swaggerv2doc:: swagger/deployments-batch-pap.json
+
+This operation allows policies to be deployed on specific PDP groups.
+Each subgroup includes an "action" property, which is used to indicate
+that the policies are being added (POST) to the subgroup, deleted (DELETE)
+from the subgroup, or that the subgroup's entire set of policies is being
+replaced (PATCH) by a new set of policies.  As such, a subgroup may appear
+more than once in a single request, one time to delete some policies and
+another time to add new policies to the same subgroup.
+
+Here is a sample request:
+
+.. literalinclude:: request/deployment-batch-pap-req.json
+    :language: json
+
 .. swaggerv2doc:: swagger/policy-deploy-pap.json
 
-This operation allows policies to be deployed on PDP groups.
+This operation allows policies to be deployed across all relevant PDP groups.
+PAP will deploy the specified policies to all relevant subgroups.  Only the
+policies supported by a given subgroup will be deployed to that subgroup.
 
 .. note::
   The policy version is optional.  If left unspecified, then the latest version of the policy is deployed. On the other
   hand, if it is specified, it may be an integer, or it may be a fully qualified version (e.g., "3.0.2").
+  In addition, a subgroup to which a policy is being deployed must have at
+  least one PDP instance, otherwise the request will be rejected.
 
 Here is a sample request:
 
