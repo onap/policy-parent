@@ -152,7 +152,7 @@ the deployment requests.  Consequently, the "policy" property of this
 request will be ignored.
 
 .. note::
-  Due to current limitations, if a subgroup is to be deleted from a PDP Group, then the policies must be removed from
+  If a subgroup is to be deleted from a PDP Group, then the policies must be removed from
   the subgroup first.
 
 Here is a sample request:
