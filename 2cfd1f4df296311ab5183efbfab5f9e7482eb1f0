@@ -22,6 +22,30 @@
       "revId": "2cfd1f4df296311ab5183efbfab5f9e7482eb1f0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "316d86f7_a7ed22f9",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1757
+      },
+      "writtenOn": "2020-01-02T15:44:56Z",
+      "side": 1,
+      "message": "Yup, just fixed these! thanks",
+      "parentUuid": "af05bdee_7fa90d82",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 13
+      },
+      "revId": "2cfd1f4df296311ab5183efbfab5f9e7482eb1f0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
