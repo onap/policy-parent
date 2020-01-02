@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af05bdee_7fa90d82",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-01-02T15:33:44Z",
+      "side": 1,
+      "message": "Watch out for the tabs!!",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 13
+      },
+      "revId": "2cfd1f4df296311ab5183efbfab5f9e7482eb1f0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
