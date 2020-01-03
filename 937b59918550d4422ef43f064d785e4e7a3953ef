@@ -22,6 +22,30 @@
       "revId": "937b59918550d4422ef43f064d785e4e7a3953ef",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf10d71_1f592e01",
+        "filename": "integration/pom.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1757
+      },
+      "writtenOn": "2020-01-03T18:25:46Z",
+      "side": 1,
+      "message": "Nope, 1.10.19 is the latest version for this (there are a couple 2.0.x beta versions available after this)",
+      "parentUuid": "d9d09c7c_71878304",
+      "range": {
+        "startLine": 461,
+        "startChar": 16,
+        "endLine": 461,
+        "endChar": 42
+      },
+      "revId": "937b59918550d4422ef43f064d785e4e7a3953ef",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
