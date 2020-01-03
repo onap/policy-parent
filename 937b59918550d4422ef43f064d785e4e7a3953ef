@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9d09c7c_71878304",
+        "filename": "integration/pom.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-01-03T16:26:55Z",
+      "side": 1,
+      "message": "Should this be the same as 3.2.4 below?",
+      "range": {
+        "startLine": 461,
+        "startChar": 16,
+        "endLine": 461,
+        "endChar": 42
+      },
+      "revId": "937b59918550d4422ef43f064d785e4e7a3953ef",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
