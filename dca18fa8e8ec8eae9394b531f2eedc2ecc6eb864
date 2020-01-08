@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b3ffc0f_6068c60e",
+        "filename": "integration/pom.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-01-08T13:38:28Z",
+      "side": 1,
+      "message": "2020 :)",
+      "range": {
+        "startLine": 4,
+        "startChar": 31,
+        "endLine": 4,
+        "endChar": 40
+      },
+      "revId": "dca18fa8e8ec8eae9394b531f2eedc2ecc6eb864",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
