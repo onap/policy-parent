@@ -44,6 +44,7 @@
         <version.jersey>2.29.1</version.jersey>
         <version.ccsdk>0.4.4</version.ccsdk>
         <version.swagger>1.6.0</version.swagger>
+        <version.javax.bind>2.3.1</version.javax.bind>
         <version.javax.json>1.1.4</version.javax.json>
         <version.json>20190722</version.json>
     </properties>
