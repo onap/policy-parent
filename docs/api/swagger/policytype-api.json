@@ -124,6 +124,9 @@
           "403" : {
             "description" : "Authorization Error"
           },
+          "406" : {
+            "description" : "Not Acceptable Version"
+          },
           "500" : {
             "description" : "Internal Server Error"
           }
