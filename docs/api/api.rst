@@ -12,25 +12,25 @@ Policy Life Cycle API
 
 
 Policy life cycle API comprises of policy design API and policy deployment API. This documentation focuses on policy 
-design API. Policy design API is publicly exposed for clients to Create/Read/Update/Delete (CRUD) policy types, policy type 
-implementation and policies which can be recognized and executable by appropriate policy engines incorporated in ONAP 
-policy framework. Policy design API backend is running in an independent building block component of policy framework 
-that provides REST service for aforementioned CRUD behaviors. Policy design API component interacts with a policy database 
+design API. Policy design API is publicly exposed for clients to Create/Read/Update/Delete (CRUD) policy types, policy type
+implementation and policies which can be recognized and executable by appropriate policy engines incorporated in ONAP
+policy framework. Policy design API backend is running in an independent building block component of policy framework
+that provides REST service for aforementioned CRUD behaviors. Policy design API component interacts with a policy database
 for storing and fetching new policies or policy types as needed. Apart from CRUD, API is also exposed for clients to retrieve
-healthcheck status of this API REST service and statistics report including a variety of counters that reflect the history 
+healthcheck status of this API REST service and statistics report including a variety of counters that reflect the history
 of API invocation.
 
-Starting from Dublin release, we strictly follow `TOSCA Specification <http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.1/TOSCA-Simple-Profile-YAML-v1.1.pdf>`_ 
+Starting from Dublin release, we strictly follow `TOSCA Specification <http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.1/TOSCA-Simple-Profile-YAML-v1.1.pdf>`_
 to define policy type and policy. Policy type is equivalent to policy model mentioned by clients before Dublin release.
-Both policy type and policy are included in a TOSCA Service Template which is used as the entity passed into API POST call 
+Both policy type and policy are included in a TOSCA Service Template which is used as the entity passed into API POST call
 and the entity returned by API GET and DELETE calls. More details are presented in following sessions.
-We encourage clients to compose all kinds of policies and corresponding policy types in well-formed TOSCA Service Template. 
-One Service Template can contain one or more policies and policy types. Each policy type can have multiple policies created 
+We encourage clients to compose all kinds of policies and corresponding policy types in well-formed TOSCA Service Template.
+One Service Template can contain one or more policies and policy types. Each policy type can have multiple policies created
 atop. In other words, different policies can match the same or different policy types. Existence of a policy type is a prerequisite
 of creating such type of policies. In the payload body of each policy to create, policy type name and version should be indicated and
-the specified policy type should be valid and existing in policy database. 
+the specified policy type should be valid and existing in policy database.
 
-In El Alto release, to ease policy creation, we preload several widely used policy types in policy database. Below is a table summarizing 
+Starting from El Alto release, to ease policy creation, we preload several widely used policy types in policy database. Below is a table summarizing
 preloaded policy types.
 
 .. csv-table::
@@ -124,16 +124,52 @@ x-onap-requestid is used to track REST transactions for logging purpose, as desc
 
 .. swaggerv2doc:: swagger/policy-api.json
 
-It is worth noting that in POST policy API, client needs to provide a policy payload encoded in well-formed TOSCA Service Template, and 
-in the JSON/YAML payload, "type" field value should strictly match the policy type name embedded in the API path (case sensitive). 
+It is worth noting that in POST policy API, client needs to provide a policy payload encoded in well-formed TOSCA Service Template, and
+in the JSON/YAML payload, "type" field value should strictly match the policy type name embedded in the API path (case sensitive).
 Otherwise, it will complain the policy type does not exist. Please check out the sample policies in above policy table.
+
+Also, in the POST payload passed into each policy or policy type creation call (i.e. POST API invocation), the client needs to explicitly
+specify the version of the policy or policy type to create. That being said, the "version" field is mandatory in the TOSCA service template
+formatted policy or policy type payload. Likewise in the legacy guard and the operational policy payload, "policy-version" is mandatory too.
+If the version is missing, that POST call will return "406 - Not Acceptable" and the policy or policy type to create will not be stored in
+the database.
+
+To avoid inconsistent versions between the database and deployed in the PDPs, policy API REST service employs some enforcement
+rules that validate the version specified in the POST payload when a new version is to create or an existing version to update.
+Policy API will not blindly override the version of the policy or policy type to create/update.
+Instead, we encourage the client to carefully select a version for the policy or policy type to change and meanwhile policy API will check the validity
+of the version and feed an informative warning back to the client if the specified version is not good.
+To be specific, the following rules are implemented to enforce the version:
+
+1. If the version is not in the database, we simply insert it. For example: if policy version 1.0.0 is stored in the database and now
+   a client wants to create the same policy with updated version 3.0.0, it will pass through and be stored in the database.
+
+2. If the version is already in the database, "406 - Not Acceptable" will be returned along with the message saying "specified version x.x.x"
+   is already existing and the latest version is y.y.y. It can force the client to create a newer version than the latest one.
+   For example, if policy versions "1.0.0" and "2.0.0" are already in the database and a client wants to create version "1.0.0" again, the
+   client will get "406" code returned along with the message "specified version 1.0.0 is already existing and the latest version is 2.0.0".
+   Then the client can change the version to anything newer than "2.0.0", such as "3.0.0".
+
+3. If multiply policies or policy types are included in the POST payload, policy API will also check if duplicate version exists in between
+   any two policies or policy types provided in the payload. For example, a client provides a POST payload which includes two policies with the same
+   name and version but different policy properties. This POST call will not get through and the client will receive "406" code along with a message
+   saying "duplicate policy {name}:{version} found in the payload".
+
+4. The same version validation is applied to legacy types of policies and policy types too (i.e. legacy guard and operational) so that everything
+   is consistent.
+
+5. To avoid unnecessary id/version inconsistency between the ones specified in the entity fields and the ones returned in the metadata field,
+   "policy-id" and "policy-version" in the metadata will only be set by policy API. Any incoming explicit specification in the POST payload will be
+   ignored. For example, A POST payload has a policy with name "sample-policy-name1" and version "1.0.0" specified. In this policy, the metadata
+   also includes "policy-id": "sample-policy-name2" and "policy-version": "2.0.0". The 200 return of this POST call will have this created policy with
+   metadata including "policy-id": "sample-policy-name1" and "policy-version": "1.0.0".
 
 .. swaggerv2doc:: swagger/guard-policy-api.json
 
 It is worth noting that guard policy name should start with one of the three: *guard.frequency.*, *guard.minmax.*, or *guard.blacklist.*.
-Otherwise, it will complain that guard policy type cannot be found (does not exist). Apart from policy name, the policy version specified 
+Otherwise, it will complain that guard policy type cannot be found (does not exist). Apart from policy name, the policy version specified
 in API path should be an integer, e.g. 1, 2, 10, instead of "1.0.0", "2.0.1", etc.
-These naming restrictions will disappear after we evolve to use well-formed TOSCA Service Template for guard policies and 
+These naming restrictions will disappear after we evolve to use well-formed TOSCA Service Template for guard policies and
 legacy policy design API is then deprecated.
 
 .. swaggerv2doc:: swagger/operational-policy-api.json
