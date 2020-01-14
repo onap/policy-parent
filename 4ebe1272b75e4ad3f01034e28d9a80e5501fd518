@@ -2,6 +2,142 @@
   "comments": [
     {
       "key": {
+        "uuid": "58d331c2_b5d4e1b6",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-01-14T13:41:59Z",
+      "side": 1,
+      "message": "\"client needs\" \u003d\u003e \"the client needs\"",
+      "revId": "4ebe1272b75e4ad3f01034e28d9a80e5501fd518",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76550264_61eb8833",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-01-14T13:41:59Z",
+      "side": 1,
+      "message": "\"version\" \u003d\u003e the \"version\"\nTOSCA \u003d\u003e the TOSCA",
+      "revId": "4ebe1272b75e4ad3f01034e28d9a80e5501fd518",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1aaacc_e224ba64",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-01-14T13:41:59Z",
+      "side": 1,
+      "message": "legacy \u003d\u003e the legacy\noperational \u003d\u003e the operational",
+      "revId": "4ebe1272b75e4ad3f01034e28d9a80e5501fd518",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2209dd16_9710cf89",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-01-14T13:41:59Z",
+      "side": 1,
+      "message": "version \u003d\u003e the version",
+      "revId": "4ebe1272b75e4ad3f01034e28d9a80e5501fd518",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab8f22f_d5980cc8",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-01-14T13:41:59Z",
+      "side": 1,
+      "message": "existing in between \u003d\u003e between",
+      "revId": "4ebe1272b75e4ad3f01034e28d9a80e5501fd518",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d45ed20_8d36f7db",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-01-14T13:41:59Z",
+      "side": 1,
+      "message": "client \u003d\u003e the client",
+      "revId": "4ebe1272b75e4ad3f01034e28d9a80e5501fd518",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9696def6_a14b1c4b",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-01-14T13:41:59Z",
+      "side": 1,
+      "message": "the useful \u003d\u003e an",
+      "revId": "4ebe1272b75e4ad3f01034e28d9a80e5501fd518",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3e0a2c3_4368bfa8",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-01-14T13:41:59Z",
+      "side": 1,
+      "message": "says \u003d\u003e such as",
+      "revId": "4ebe1272b75e4ad3f01034e28d9a80e5501fd518",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b348310_742ccca7",
         "filename": "docs/api/api.rst",
         "patchSetId": 2
