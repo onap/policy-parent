@@ -47,6 +47,7 @@
         <version.javax.bind>2.3.1</version.javax.bind>
         <version.javax.json>1.1.4</version.javax.json>
         <version.json>20190722</version.json>
+        <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
     </properties>
 
     <distributionManagement>
@@ -624,6 +625,53 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>pre-unit-test</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>${jacoco.dataFile}</destFile>
+                            <append>true</append>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>${jacoco.dataFile}</dataFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                      <id>pre-integration-test</id>
+                      <phase>pre-integration-test</phase>
+                      <goals>
+                        <goal>prepare-agent</goal>
+                      </goals>
+                      <configuration>
+                        <skip>true</skip>
+                      </configuration>
+                    </execution>
+                    <execution>
+                      <id>post-integration-test</id>
+                      <phase>post-integration-test</phase>
+                      <goals>
+                        <goal>report</goal>
+                      </goals>
+                      <configuration>
+                        <skip>true</skip>
+                      </configuration>
+                    </execution>
+
+                </executions>
             </plugin>
         </plugins>
     </build>
