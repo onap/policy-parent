@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b348310_742ccca7",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-01-14T05:21:56Z",
+      "side": 1,
+      "message": "I think the trailing spaces in general gives some sort of warning or error with the documentation doc8 tool.",
+      "revId": "4ebe1272b75e4ad3f01034e28d9a80e5501fd518",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
