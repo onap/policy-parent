@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e314df70_856b73ad",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-01-16T13:49:52Z",
+      "side": 1,
+      "message": "When making a POST policy API call, the client must not only provide well-formed JSON/YAML, but also must conform to the TOSCA specification.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "22ecfc312aeae6d6a853d5960831cc301cff4de1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e12f04_7f5bcf68",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-01-16T13:49:52Z",
+      "side": 1,
+      "message": "and policies deployed",
+      "range": {
+        "startLine": 135,
+        "startChar": 52,
+        "endLine": 135,
+        "endChar": 64
+      },
+      "revId": "22ecfc312aeae6d6a853d5960831cc301cff4de1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a132eb16_876491b2",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-01-16T13:49:52Z",
+      "side": 1,
+      "message": "This isn\u0027t a good way of describing REST behavior. Use terminology such as return \"200\".",
+      "range": {
+        "startLine": 143,
+        "startChar": 72,
+        "endLine": 143,
+        "endChar": 93
+      },
+      "revId": "22ecfc312aeae6d6a853d5960831cc301cff4de1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f43ba008_2ad32b2d",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-01-16T13:49:52Z",
+      "side": 1,
+      "message": "not good description. Please change to \" The POST call will fail and return \"406\" error back to the calling application.",
+      "range": {
+        "startLine": 153,
+        "startChar": 68,
+        "endLine": 153,
+        "endChar": 89
+      },
+      "revId": "22ecfc312aeae6d6a853d5960831cc301cff4de1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
