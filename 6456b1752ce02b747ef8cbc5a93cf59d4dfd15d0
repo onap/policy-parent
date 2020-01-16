@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18ac82be_de8b634e",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-01-16T15:09:36Z",
+      "side": 1,
+      "message": "multiple",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 15
+      },
+      "revId": "6456b1752ce02b747ef8cbc5a93cf59d4dfd15d0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
