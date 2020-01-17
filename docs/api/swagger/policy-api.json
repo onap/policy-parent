@@ -154,6 +154,9 @@
           "404" : {
             "description" : "Resource Not Found"
           },
+          "406" : {
+            "description" : "Not Acceptable Version"
+          },
           "500" : {
             "description" : "Internal Server Error"
           }
@@ -650,6 +653,9 @@
           },
           "404" : {
             "description" : "Resource Not Found"
+          },
+          "406" : {
+            "description" : "Not Acceptable Version"
           },
           "500" : {
             "description" : "Internal Server Error"
