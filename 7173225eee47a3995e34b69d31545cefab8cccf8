@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29a0ac62_5e3bc85d",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-01-22T12:38:22Z",
+      "side": 1,
+      "message": "See here - this is the new version to use.",
+      "range": {
+        "startLine": 475,
+        "startChar": 12,
+        "endLine": 479,
+        "endChar": 35
+      },
+      "revId": "7173225eee47a3995e34b69d31545cefab8cccf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ee17e6b_6e24267e",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-01-22T12:38:22Z",
+      "side": 1,
+      "message": "This was upgraded to powermock-api-mockito2 by Ali in all the repos. That should be the version to use I believe. Can those changes be made? Perhaps Ali/Jim can help.",
+      "range": {
+        "startLine": 488,
+        "startChar": 13,
+        "endLine": 492,
+        "endChar": 25
+      },
+      "revId": "7173225eee47a3995e34b69d31545cefab8cccf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
