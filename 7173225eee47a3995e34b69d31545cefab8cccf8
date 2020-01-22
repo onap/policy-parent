@@ -45,6 +45,30 @@
       "revId": "7173225eee47a3995e34b69d31545cefab8cccf8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c02ad83_9f17a5f8",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-01-22T13:38:36Z",
+      "side": 1,
+      "message": "yes, let\u0027s not include this here",
+      "parentUuid": "4ee17e6b_6e24267e",
+      "range": {
+        "startLine": 488,
+        "startChar": 13,
+        "endLine": 492,
+        "endChar": 25
+      },
+      "revId": "7173225eee47a3995e34b69d31545cefab8cccf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
