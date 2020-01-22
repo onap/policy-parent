@@ -69,6 +69,30 @@
       "revId": "7173225eee47a3995e34b69d31545cefab8cccf8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade90b9c_dbd12a0d",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-01-22T14:18:39Z",
+      "side": 1,
+      "message": "OK, I missed that. Let me switch the dependency in apex to mockito2 and see if we can abandon this change.",
+      "parentUuid": "4ee17e6b_6e24267e",
+      "range": {
+        "startLine": 488,
+        "startChar": 13,
+        "endLine": 492,
+        "endChar": 25
+      },
+      "revId": "7173225eee47a3995e34b69d31545cefab8cccf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
