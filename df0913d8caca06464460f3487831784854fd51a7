@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4179982_cd73fe5d",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-01-27T14:03:49Z",
+      "side": 1,
+      "message": "The API?  Only PAP can update a group.",
+      "revId": "df0913d8caca06464460f3487831784854fd51a7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
