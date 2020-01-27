@@ -146,14 +146,21 @@ description of PDP group states, see the :ref:`ONAP Policy Framework Architectur
 
 This operation allows the PDP groups and subgroups to be created and updated. Many PDP groups can be created or updated
 in a single POST operation by specifying more than one PDP group in the POST operation body.
-This can be used to update the policy types supported by various subgroups.
+This can be used to create the PDP group by providing all the details including the supported policy types for each subgroup.
 However, it cannot be used to update policies; that is done using one of
-the deployment requests.  Consequently, the "policy" property of this
+the deployment requests.  Consequently, the "policies" property of this
 request will be ignored.
+The API can also be used to update a PDP Group, but supported policy types cannot be updated during the update operation.
+So, "policies" and "supportedPolicyTypes" properties in the request will be ignored if provided during the PDP Group update operation.
 
 .. note::
   If a subgroup is to be deleted from a PDP Group, then the policies must be removed from
   the subgroup first.
+
+.. note::
+  Policies cannot be added/updated during PDP Group create/update operations. So, if provided, they are ignored.
+  Supported policy types are defined during PDP Group creation. They cannot be updated once they are created.
+  So, supportedPolicyTypes are expected during PDP Group create, but ignored if provided during PDP Group update.
 
 Here is a sample request:
 
