@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01f65bc7_4d7327c1",
+        "filename": "docs/drools/tutorial_cl.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-02-13T20:58:01Z",
+      "side": 1,
+      "message": "dublin?",
+      "revId": "a3ad7942ddbf8c9b76775b23f60b7830ae1cf686",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
