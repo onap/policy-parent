@@ -16,6 +16,29 @@
       "revId": "a3ad7942ddbf8c9b76775b23f60b7830ae1cf686",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c74a845c_3991d40e",
+        "filename": "docs/drools/tutorial_cl.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-02-13T21:26:24Z",
+      "side": 1,
+      "message": "change that to master if you can - we\u0027ll have to remember when we branch to change to frankfurt.",
+      "range": {
+        "startLine": 42,
+        "startChar": 95,
+        "endLine": 42,
+        "endChar": 101
+      },
+      "revId": "a3ad7942ddbf8c9b76775b23f60b7830ae1cf686",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
