@@ -32,32 +32,41 @@ without companion components.
         sed -i "s/^RELEASE_REPOSITORY_ID=.*$/RELEASE_REPOSITORY_ID=/g" base.conf
         sed -i "s/^RELEASE_REPOSITORY_URL=.*$/RELEASE_REPOSITORY_URL=/g" base.conf
 
-**Step 3:** Open a *bash* shell into the PDP-D Control Loop container.
+        Note: For MacOS use - sed -i'' -e "s/^SQL_HOST=.*$/SQL_HOST=/g" base.conf and similar for all sed commands.
+
+**Step 3:** Copy a template *feature-healthcheck.conf* for basic health check feature.
+
+    .. code-block:: bash
+
+        cd ..       # come out from config directory
+        wget https://git.onap.org/policy/docker/plain/config/drools/feature-healthcheck.conf?h=dublin -O feature-healthcheck.conf
+
+**Step 4:** Open a *bash* shell into the PDP-D Control Loop container.
 
     .. code-block:: bash
 
         docker run --rm --env-file config/base.conf --env-file feature-healthcheck.conf -p 9696:9696 -p 6969:6969 -it --name pdpd -h pdpd nexus3.onap.org:10001/onap/policy-pdpd-cl:1.4.1 bash
 
-**Step 4:** Disable the distributed-locking feature, since this is a single CL PDP-D instance.
+**Step 5:** Disable the distributed-locking feature, since this is a single CL PDP-D instance.
 
     .. code-block:: bash
 
         features disable distributed-locking
 
-**Step 5:** If using simulators (see tutorials), enable the *controlloop-utils* feature.
+**Step 6:** If using simulators (see tutorials), enable the *controlloop-utils* feature.
 
     .. code-block:: bash
 
         features enable controlloop-utils
 
-**Step 6:** To reduce error logs due to being unable to communicate with DMaaP, change the official configuration to use *noop* topics instead (no network IO involved).
+**Step 7:** To reduce error logs due to being unable to communicate with DMaaP, change the official configuration to use *noop* topics instead (no network IO involved).
 
     .. code-block:: bash
 
         cd $POLICY_HOME/config
         sed -i "s/^dmaap/noop/g" *.properties
 
-**Step 7:** Disable PDP-X guard functionality.
+**Step 8:** Disable PDP-X guard functionality.
 
     .. code-block:: bash
 
@@ -65,13 +74,13 @@ without companion components.
         sed -i "s/^guard.disabled=*$/guard.disabled=true/g" $POLICY_HOME/config/controlloop.properties.environment
         sed -i "s/^aai.customQuery=*$/aai.customQuery=false/g" $POLICY_HOME/config/controlloop.properties.environment
 
-**Step 5:** Start the CL PDP-D.
+**Step 9:** Start the CL PDP-D.
 
     .. code-block:: bash
 
         policy start
 
-**Step 6:** Place the CL PDP-D in *ACTIVE* mode.
+**Step 10:** Place the CL PDP-D in *ACTIVE* mode.
 
     .. code-block:: bash
 
