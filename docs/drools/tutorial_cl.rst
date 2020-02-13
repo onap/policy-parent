@@ -32,11 +32,13 @@ without companion components.
         sed -i "s/^RELEASE_REPOSITORY_ID=.*$/RELEASE_REPOSITORY_ID=/g" base.conf
         sed -i "s/^RELEASE_REPOSITORY_URL=.*$/RELEASE_REPOSITORY_URL=/g" base.conf
 
+        Note: For MacOS use - sed -i'' -e "s/^SQL_HOST=.*$/SQL_HOST=/g" base.conf and similar for all sed commands.
+
 **Step 3:** Open a *bash* shell into the PDP-D Control Loop container.
 
     .. code-block:: bash
 
-        docker run --rm --env-file config/base.conf --env-file feature-healthcheck.conf -p 9696:9696 -p 6969:6969 -it --name pdpd -h pdpd nexus3.onap.org:10001/onap/policy-pdpd-cl:1.4.1 bash
+        docker run --rm --env-file config/base.conf -p 9696:9696 -p 6969:6969 -it --name pdpd -h pdpd nexus3.onap.org:10001/onap/policy-pdpd-cl:1.4.1 bash
 
 **Step 4:** Disable the distributed-locking feature, since this is a single CL PDP-D instance.
 
@@ -65,13 +67,13 @@ without companion components.
         sed -i "s/^guard.disabled=*$/guard.disabled=true/g" $POLICY_HOME/config/controlloop.properties.environment
         sed -i "s/^aai.customQuery=*$/aai.customQuery=false/g" $POLICY_HOME/config/controlloop.properties.environment
 
-**Step 5:** Start the CL PDP-D.
+**Step 8:** Start the CL PDP-D.
 
     .. code-block:: bash
 
         policy start
 
-**Step 6:** Place the CL PDP-D in *ACTIVE* mode.
+**Step 9:** Place the CL PDP-D in *ACTIVE* mode.
 
     .. code-block:: bash
 
