@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b9ccfcf_65154ffc",
+        "filename": "docs/drools/tutorial_cl.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-02-14T16:11:10Z",
+      "side": 1,
+      "message": "is nexus3 still correct?  Or should it be docker.io.hub?",
+      "revId": "afb51f1a2acc1abc3254a72aed47cb2e86904d04",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
