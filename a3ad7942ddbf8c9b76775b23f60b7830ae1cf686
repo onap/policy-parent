@@ -63,6 +63,30 @@
       "revId": "a3ad7942ddbf8c9b76775b23f60b7830ae1cf686",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4564ff_91a93668",
+        "filename": "docs/drools/tutorial_cl.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-02-14T02:34:15Z",
+      "side": 1,
+      "message": "I think we will need to update the doc for this release.   Actually, the feature-healthcheck is not necessary for testing, so we can remove.  As PDP-D does not do healthchecking of the other components anymore (this is done now by PAP).   I think for this release we should remove the reference to healthcheck in line 47.",
+      "parentUuid": "e8214ecb_d0797c74",
+      "range": {
+        "startLine": 42,
+        "startChar": 95,
+        "endLine": 42,
+        "endChar": 101
+      },
+      "revId": "a3ad7942ddbf8c9b76775b23f60b7830ae1cf686",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
