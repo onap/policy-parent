@@ -1461,31 +1461,32 @@ General Configuration Format
                     "engineServiceParameters":{
                       ... (1)
                       "engineParameters":{ (2)
-                        "engineParameters":{...}, (3)
+                        "executorParameters":{...}, (3)
                         "contextParameters":{...} (4)
+                        "taskParameters":[...] (5)
                       }
                     },
-                    "eventInputParameters":{ (5)
-                      "input1":{ (6)
+                    "eventInputParameters":{ (6)
+                      "input1":{ (7)
                         "carrierTechnologyParameters":{...},
                         "eventProtocolParameters":{...}
                       },
-                      "input2":{...}, (7)
+                      "input2":{...}, (8)
                         "carrierTechnologyParameters":{...},
                         "eventProtocolParameters":{...}
                       },
-                      ... (8)
+                      ... (9)
                     },
-                    "eventOutputParameters":{ (9)
-                      "output1":{ (10)
+                    "eventOutputParameters":{ (10)
+                      "output1":{ (11)
                         "carrierTechnologyParameters":{...},
                         "eventProtocolParameters":{...}
                       },
-                      "output2":{ (11)
+                      "output2":{ (12)
                         "carrierTechnologyParameters":{...},
                         "eventProtocolParameters":{...}
                       },
-                      ... (12)
+                      ... (13)
                     }
                   }
 
@@ -1506,31 +1507,35 @@ General Configuration Format
             |                                   | for context schemas, persistence, |
             |                                   | etc.                              |
             +-----------------------------------+-----------------------------------+
-            | **5**                             | configuration of the input        |
+            | **5**                             | list of task parameters that      |
+            |                                   | should be made available in task  |
+            |                                   | logic (optional).                 |
+            +-----------------------------------+-----------------------------------+
+            | **6**                             | configuration of the input        |
             |                                   | interface                         |
             +-----------------------------------+-----------------------------------+
-            | **6**                             | an example input called           |
+            | **7**                             | an example input called           |
             |                                   | ``input1`` with carrier           |
             |                                   | technology and event protocol     |
             +-----------------------------------+-----------------------------------+
-            | **7**                             | an example input called           |
+            | **8**                             | an example input called           |
             |                                   | ``input2`` with carrier           |
             |                                   | technology and event protocol     |
             +-----------------------------------+-----------------------------------+
-            | **8**                             | any further input configuration   |
+            | **9**                             | any further input configuration   |
             +-----------------------------------+-----------------------------------+
-            | **9**                             | configuration of the output       |
+            | **10**                            | configuration of the output       |
             |                                   | interface                         |
             +-----------------------------------+-----------------------------------+
-            | **10**                            | an example output called          |
+            | **11**                            | an example output called          |
             |                                   | ``output1`` with carrier          |
             |                                   | technology and event protocol     |
             +-----------------------------------+-----------------------------------+
-            | **11**                            | an example output called          |
+            | **12**                            | an example output called          |
             |                                   | ``output2`` with carrier          |
             |                                   | technology and event protocol     |
             +-----------------------------------+-----------------------------------+
-            | **12**                            | any further output configuration  |
+            | **13**                            | any further output configuration  |
             +-----------------------------------+-----------------------------------+
 
 Engine Service Parameters
@@ -1557,8 +1562,9 @@ Engine Service Parameters
                     "policyModelFileName" : "examples/models/VPN/VPNPolicyModelJava.json", (6)
                     "periodicEventPeriod": 1000, (7)
                     "engineParameters":{ (8)
-                      "engineParameters":{...}, (9)
-                      "contextParameters":{...} (10)
+                      "executorParameters":{...}, (9)
+                      "contextParameters":{...}, (10)
+                      "taskParameters":[...] (11)
                     }
                   }
 
@@ -1616,6 +1622,10 @@ Engine Service Parameters
             | **10**                            | context specific parameters, e.g. |
             |                                   | for context schemas, persistence, |
             |                                   | etc.                              |
+            +-----------------------------------+-----------------------------------+
+            | **11**                            | list of task parameters that      |
+            |                                   | should be made available in task  |
+            |                                   | logic (optional).                 |
             +-----------------------------------+-----------------------------------+
 
          .. container:: paragraph
@@ -2096,6 +2106,49 @@ Configure AVRO Schema Handler
 
                      -  Since AVRO uses lazy initialization, this
                         rejection might only become visible at runtime
+
+Configure Task Parameters
+#########################
+
+            .. container:: paragraph
+
+               The Task Parameters are added to the configuration as
+               follows:
+
+            .. container:: listingblock
+
+               .. container:: content
+
+                  .. code::
+
+                     "engineServiceParameters": {
+                       "engineParameters": {
+                         "taskParameters": [
+                           {
+                             "key": "ParameterKey1",
+                             "value": "ParameterValue1"
+                           },
+                           {
+                             "taskId": "Task_Act0",
+                             "key": "ParameterKey2",
+                             "value": "ParameterValue2"
+                           }
+                         ]
+                       }
+                     }
+
+            .. container:: paragraph
+
+               TaskParameters can be used to pass parameters from ApexConfig
+               to the policy logic. In the config, these are optional.
+               The list of task parameters provided in the config may be added
+               to the tasks or existing task parameters in the task will be overriden.
+
+            .. container:: paragraph
+
+               If taskId is provided in ApexConfig for an entry, then that
+               parameter is updated only for that particular task. Otherwise,
+               the task parameter is added to all tasks.
 
 Carrier Technologies
 --------------------
@@ -3254,6 +3307,142 @@ REST Requestor Output
                         "eventNameFilter": "GuardRequestEvent", (1)
                         "requestorMode": true, (2)
                         "requestorPeer": "GuardRequestorConsumer", (3)
+                        "requestorTimeout": 500 (4)
+
+               .. container:: colist arabic
+
+                  +-------+---------------------------+
+                  | **1** | a filter on the event     |
+                  +-------+---------------------------+
+                  | **2** | the mode of the requestor |
+                  +-------+---------------------------+
+                  | **3** | a peer for the requestor  |
+                  +-------+---------------------------+
+                  | **4** | a general request timeout |
+                  +-------+---------------------------+
+
+gRPC IO
+#######
+
+            .. container:: paragraph
+
+               APEX can send requests over gRPC at the output side, and get back
+               response at the input side. This can be used to send requests to CDS
+               over gRPC. The media type is ``application/json``, so this plugin
+               does only work with the JSON Event protocol.
+
+gRPC Output
+===========
+
+               .. container:: paragraph
+
+                  APEX will connect to a given host to send a request over
+                  gRPC.
+
+               .. container:: listingblock
+
+                  .. container:: content
+
+                     .. code::
+
+                        "carrierTechnologyParameters": {
+                          "carrierTechnology": "GRPC", (1)
+                          "parameterClassName": "org.onap.policy.apex.plugins.event.carrier.grpc.GrpcCarrierTechnologyParameters",
+                          "parameters": {
+                            "host": "cds-blueprints-processor-grpc", (2)
+                            "port": 9111, (2')
+                            "username": "ccsdkapps", (3)
+                            "password": ccsdkapps, (4)
+                            "timeout" : 10 (5)
+                          }
+                        },
+
+               .. container:: colist arabic
+
+                  +-------+--------------------------------------------------+
+                  | **1** | set GRPC as carrier technology                   |
+                  +-------+--------------------------------------------------+
+                  | **2** | the host to which request is sent                |
+                  +-------+--------------------------------------------------+
+                  | **2'**| the value for port                               |
+                  +-------+--------------------------------------------------+
+                  | **3** | username required to initiate connection         |
+                  +-------+--------------------------------------------------+
+                  | **4** | password required to initiate connection         |
+                  +-------+--------------------------------------------------+
+                  | **5** | the timeout value for completing the request     |
+                  +-------+--------------------------------------------------+
+
+               .. container:: paragraph
+
+                  Further settings are required on the producer to
+                  define the event that is requested, for example:
+
+               .. container:: listingblock
+
+                  .. container:: content
+
+                     .. code::
+
+                        "eventName": "GRPCRequestEvent", (1)
+                        "eventNameFilter": "GRPCRequestEvent", (2)
+                        "requestorMode": true, (3)
+                        "requestorPeer": "GRPCRequestConsumer", (4)
+                        "requestorTimeout": 500 (5)
+
+               .. container:: colist arabic
+
+                  +-------+---------------------------+
+                  | **1** | the event name            |
+                  +-------+---------------------------+
+                  | **2** | a filter on the event     |
+                  +-------+---------------------------+
+                  | **3** | the mode of the requestor |
+                  +-------+---------------------------+
+                  | **4** | a peer for the requestor  |
+                  +-------+---------------------------+
+                  | **5** | a general request timeout |
+                  +-------+---------------------------+
+
+gRPC Input
+==========
+
+               .. container:: paragraph
+
+                  APEX will connect to the host specified in the producer
+                  side, anad take in response back at the consumer side.
+
+               .. container:: listingblock
+
+                  .. container:: content
+
+                     .. code::
+
+                        "carrierTechnologyParameters": {
+                          "carrierTechnology": "GRPC", (1)
+                          "parameterClassName": "org.onap.policy.apex.plugins.event.carrier.grpc.GrpcCarrierTechnologyParameters"
+                        },
+
+               .. container:: colist arabic
+
+                  +-------+------------------------------------------+
+                  | **1** | set GRPC as carrier technology           |
+                  +-------+------------------------------------------+
+
+               .. container:: paragraph
+
+                  Further settings are required on the consumer to
+                  define the event that is requested, for example:
+
+               .. container:: listingblock
+
+                  .. container:: content
+
+                     .. code::
+
+                        "eventNameFilter": "GRPCResponseEvent", (1)
+                        "requestorMode": true, (2)
+                        "requestorPeer": "GRPCRequestProducer", (3)
                         "requestorTimeout": 500 (4)
 
                .. container:: colist arabic

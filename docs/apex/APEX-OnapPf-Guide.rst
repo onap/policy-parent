@@ -264,51 +264,38 @@ Build a Docker Image
                :number-lines:
 
                #
-               # Docker file to build an image that runs APEX on Java 8 in alpine
+               # Docker file to build an image that runs APEX on Java 11 or better in alpine
                #
-               FROM onap/policy-base-alpine:1.4.0
+               FROM onap/policy-jre-alpine:2.0.1
 
                LABEL maintainer="Policy Team"
 
-               ARG BUILD_VERSION=${BUILD_VERSION}
                ARG POLICY_LOGS=/var/log/onap/policy/apex-pdp
-
-               ENV BUILD_VERSION ${BUILD_VERSION}
-               ENV POLICY_HOME=/opt/app/policy
-               ENV POLICY_APEX_PDP_HOME=${POLICY_HOME}/apex-pdp
-               ENV POLICY_LOGS=${POLICY_LOGS}
+               ENV POLICY_HOME=/opt/app/policy/apex-pdp
+               ENV POLICY_LOGS=$POLICY_LOGS
 
                RUN apk add --no-cache \
-                   vim \
-                   iproute2 \
-                   iputils
+                       vim \
+                       iproute2 \
+                       iputils \
+                   && addgroup -S apexuser && adduser -S apexuser -G apexuser \
+                   && mkdir -p $POLICY_HOME \
+                   && mkdir -p $POLICY_LOGS \
+                   && chown -R apexuser:apexuser $POLICY_LOGS \
+                   && mkdir /packages
 
-               # Create apex user and group
-               RUN addgroup -S apexuser && adduser -S apexuser -G apexuser
-
-
-               # Add Apex-specific directories and set ownership as the Apex admin user
-               RUN mkdir -p ${POLICY_APEX_PDP_HOME} \
-                   && mkdir -p ${POLICY_LOGS} \
-                   && chown -R apexuser:apexuser ${POLICY_LOGS}
-
-               # Unpack the tarball
-               RUN mkdir /packages
-               COPY apex-pdp-package-full.tar.gz /packages
-               RUN tar xvfz /packages/apex-pdp-package-full.tar.gz --directory ${POLICY_APEX_PDP_HOME} \
-                   && rm /packages/apex-pdp-package-full.tar.gz
-
-               # Ensure everything has the correct permissions
-               RUN find /opt/app -type d -perm 755 \
+               COPY /maven/apex-pdp-package-full.tar.gz /packages
+               RUN tar xvfz /packages/apex-pdp-package-full.tar.gz --directory $POLICY_HOME \
+                   && rm /packages/apex-pdp-package-full.tar.gz \
+                   && find /opt/app -type d -perm 755 \
                    && find /opt/app -type f -perm 644 \
-                   && chmod a+x ${POLICY_APEX_PDP_HOME}/bin/*
-
-               # Copy examples to Apex user area
-               RUN cp -pr ${POLICY_APEX_PDP_HOME}/examples /home/apexuser \
-                   && chown -R apexuser:apexuser /home/apexuser/*
+                   && chmod 755 $POLICY_HOME/bin/* \
+                   && cp -pr $POLICY_HOME/examples /home/apexuser \
+                   && chown -R apexuser:apexuser /home/apexuser/* $POLICY_HOME \
+                   && chmod 755 $POLICY_HOME/etc/*
 
                USER apexuser
-               ENV PATH ${POLICY_APEX_PDP_HOME}/bin:$PATH
+               ENV PATH $POLICY_HOME/bin:$PATH
                WORKDIR /home/apexuser
 
 
@@ -350,19 +337,20 @@ Format of the configuration file (OnapPfConfig.json) explained
                       "pdpStatusParameters":{
                           "timeIntervalMs": 120000,  (3)
                           "pdpType":"apex",  (4)
+                          "pdpGroup":"defaultGroup",  (5)
                           "description":"Pdp Heartbeat",
-                          "supportedPolicyTypes":[{"name":"onap.policies.controlloop.operational.Apex","version":"1.0.0"}]  (5)
+                          "supportedPolicyTypes":[{"name":"onap.policies.controlloop.operational.Apex","version":"1.0.0"}]  (6)
                       },
                       "topicParameterGroup": {
-                          "topicSources" : [{  (6)
-                              "topic" : "POLICY-PDP-PAP",  (7)
-                              "servers" : [ "message-router" ],  (8)
-                              "topicCommInfrastructure" : "dmaap"  (9)
+                          "topicSources" : [{  (7)
+                              "topic" : "POLICY-PDP-PAP",  (8)
+                              "servers" : [ "message-router" ],  (9)
+                              "topicCommInfrastructure" : "dmaap"  (10)
                           }],
-                          "topicSinks" : [{  (10)
-                              "topic" : "POLICY-PDP-PAP",  (11)
-                              "servers" : [ "message-router" ],  (12)
-                              "topicCommInfrastructure" : "dmaap"  (13)
+                          "topicSinks" : [{  (11)
+                              "topic" : "POLICY-PDP-PAP",  (12)
+                              "servers" : [ "message-router" ],  (13)
+                              "topicCommInfrastructure" : "dmaap"  (14)
                           }]
                       }
                   }
@@ -383,35 +371,37 @@ Format of the configuration file (OnapPfConfig.json) explained
             +-----------------------------------+-------------------------------------------------+
             | **4**                             | Type of the pdp.                                |
             +-----------------------------------+-------------------------------------------------+
-            | **5**                             | List of policy types supported by               |
+            | **5**                             | The group to which the pdp belong to.           |
+            +-----------------------------------+-------------------------------------------------+
+            | **6**                             | List of policy types supported by               |
             |                                   | the PDP. A trailing “.*” can be used to         |
             |                                   | specify multiple policy types; for example,     |
             |                                   | “onap.policies.controlloop.operational.apex.*”  |
             |                                   | would match any policy type beginning with      |
             |                                   | “onap.policies.controlloop.operational.apex.”   |
             +-----------------------------------+-------------------------------------------------+
-            | **6**                             | List of topics' details from                    |
+            | **7**                             | List of topics' details from                    |
             |                                   | which messages are received.                    |
             +-----------------------------------+-------------------------------------------------+
-            | **7**                             | Topic name of the source to which               |
+            | **8**                             | Topic name of the source to which               |
             |                                   | PDP-A listens to for messages                   |
             |                                   | from PAP.                                       |
             +-----------------------------------+-------------------------------------------------+
-            | **8**                             | List of servers for the source                  |
+            | **9**                             | List of servers for the source                  |
             |                                   | topic.                                          |
             +-----------------------------------+-------------------------------------------------+
-            | **9**                             | The source topic infrastructure.                |
+            | **10**                            | The source topic infrastructure.                |
             |                                   | For e.g. dmaap, noop, ueb                       |
             +-----------------------------------+-------------------------------------------------+
-            | **10**                            | List of topics' details to which                |
+            | **11**                            | List of topics' details to which                |
             |                                   | messages are sent.                              |
             +-----------------------------------+-------------------------------------------------+
-            | **11**                            | Topic name of the sink to which                 |
+            | **12**                            | Topic name of the sink to which                 |
             |                                   | PDP-A sends messages.                           |
             +-----------------------------------+-------------------------------------------------+
-            | **12**                            | List of servers for the sink                    |
+            | **13**                            | List of servers for the sink                    |
             |                                   | topic.                                          |
             +-----------------------------------+-------------------------------------------------+
-            | **13**                            | The sink topic infrastructure.                  |
+            | **14**                            | The sink topic infrastructure.                  |
             |                                   | For e.g. dmaap, noop, ueb                       |
             +-----------------------------------+-------------------------------------------------+
