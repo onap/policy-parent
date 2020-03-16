@@ -664,6 +664,13 @@ Concept: TaskParameter
                   values in the configuration information passed to APEX
                   engines.
 
+               .. container:: paragraph
+
+                  The *taskParameters* field is specified under *engineParameters*
+                  in the ApexConfig. It can contain one or more task parameters, where each
+                  item can contain the parameter key, value as well as the taskId to which it is associated.
+                  If the taskId is not specified, then the parameters are added to all tasks.
+
 Concept: Logic
 ##############
 
@@ -1567,6 +1574,22 @@ Writing APEX Task Selection Logic
 |            |             |                                |                .getOutFieldSchemaHelper("authorised")                               |
 |            |             |                                |               .createNewInstance("false");                                          |
 +------------+-------------+--------------------------------+-------------------------------------------------------------------------------------+
+| parameters | Fields      | java.util.Map <String,String>  | .. container:: paragraph                                                            |
+|            |             |                                |                                                                                     |
+|            |             |                                |    All parameters in the current task. This is implemented as a standard Java Map.  |
+|            |             |                                |                                                                                     |
+|            |             |                                | .. container::                                                                      |
+|            |             |                                |                                                                                     |
+|            |             |                                |    .. container:: content                                                           |
+|            |             |                                |                                                                                     |
+|            |             |                                |       .. container:: paragraph                                                      |
+|            |             |                                |                                                                                     |
+|            |             |                                |          **Example:**                                                               |
+|            |             |                                |                                                                                     |
+|            |             |                                |       .. code:: javascript                                                          |
+|            |             |                                |                                                                                     |
+|            |             |                                |          executor.parameters.get("ParameterKey1"))                                  |
++------------+-------------+--------------------------------+-------------------------------------------------------------------------------------+
 | ContextAlbum getContextAlbum(String ctxtAlbumName )       | .. container:: paragraph                                                            |
 |                                                           |                                                                                     |
 |                                                           |    A utility method to retrieve a ``ContextAlbum`` for use in the task.             |
@@ -1604,32 +1627,13 @@ Logic Cheatsheet
       Examples given here use Javascript (if not stated otherwise),
       other execution environments will be similar.
 
-Add Nashorn
-###########
-
-      .. container:: paragraph
-
-         First line in the logic use this import.
-
-      .. container:: listingblock
-
-         .. container:: title
-
-            JS Nashorn
-
-         .. container:: content
-
-            .. code:: javascript
-
-               load("nashorn:mozilla_compat.js");
-
 Finish Logic with Success or Error
 ##################################
 
       .. container:: paragraph
 
          To finish logic, i.e. return to APEX, with success use the
-         following lines close to the end of the logic.
+         following line close to the end of the logic.
 
       .. container:: listingblock
 
@@ -1641,8 +1645,7 @@ Finish Logic with Success or Error
 
             .. code:: javascript
 
-               var returnValueType = Java.type("java.lang.Boolean");
-               var returnValue = new returnValueType(true);
+               true;
 
       .. container:: paragraph
 
@@ -1658,8 +1661,7 @@ Finish Logic with Success or Error
 
             .. code:: javascript
 
-               var returnValueType = Java.type("java.lang.Boolean");
-               var returnValue = new returnValueType(false);
+               false;
 
 Logic Logging
 #############
@@ -1730,6 +1732,43 @@ Logic Logging
                var rootLogger = LoggerFactory.getLogger(logger.ROOT_LOGGER_NAME);
 
                rootLogger.error("Serious error in logic detected: " + executor.subject.id);
+
+Accessing TaskParameters
+########################
+
+      .. container:: paragraph
+
+         TaskParameters available in a Task can be accessed in the logic.
+         The parameters in each task are made available at the executor level.
+         This example assumes a parameter with key ``ParameterKey1``.
+
+      .. container:: listingblock
+
+         .. container:: title
+
+            JS TaskParameter value
+
+         .. container:: content
+
+            .. code:: javascript
+
+               executor.parameters.get("ParameterKey1"))
+
+      .. container:: paragraph
+
+         Alternatively, the task parameters can also be accessed from the task object.
+
+      .. container:: listingblock
+
+         .. container:: title
+
+            JS TaskParameter value using task object
+
+         .. container:: content
+
+            .. code:: javascript
+
+               executor.subject.task.getTaskParameters.get("ParameterKey1").getTaskParameterValue()
 
 Local Variable for Infields
 ###########################
@@ -2057,6 +2096,19 @@ Using Java in Scripting Logic
 Policy Examples
 ^^^^^^^^^^^^^^^
 
+Sample APEX Policy in TOSCA format
+----------------------------------
+
+         .. container:: paragraph
+
+            An example APEX policy in TOSCA format for the vCPE
+            use case can be found here:
+
+         .. container:: ulist
+
+            -  `APEX TOSCA Policy
+               vCPE <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.apex.policy.operational.input.tosca.json>`__
+
 My First Policy
 ---------------
 
@@ -2124,8 +2176,8 @@ Decision Maker
    .. container::
       :name: footer-text
 
-      2.0.0-SNAPSHOT
-      Last updated 2018-09-04 16:04:24 IST
+      2.3.0-SNAPSHOT
+      Last updated 2020-03-16 16:04:24 GMT
 
 .. |APEX Policy Matrix| image:: images/apex-intro/ApexPolicyMatrix.png
 .. |APEX Policy Model for Execution| image:: images/apex-policy-model/UmlPolicyModels.png
