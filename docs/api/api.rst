@@ -29,48 +29,66 @@ atop. In other words, different policies can match the same or different policy 
 of creating such type of policies. In the payload body of each policy to create, policy type name and version should be indicated and
 the specified policy type should be valid and existing in policy database.
 
-Starting from El Alto release, to ease policy creation, we preload several widely used policy types in policy database. Below is a table summarizing
+In Frankfurt release, to ease policy creation, we preload several widely used policy types in policy database. Below is a table summarizing
 preloaded policy types.
 
 .. csv-table::
    :header: "Policy Type Name", "Payload"
    :widths: 15,10
 
-   "Controlloop.Guard.Blacklist", `onap.policies.controlloop.guard.Blacklist.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Blacklist.yaml>`_
-   "Controlloop.Guard.FrequencyLimiter", `onap.policies.controlloop.guard.FrequencyLimiter.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.FrequencyLimiter.yaml>`_
-   "Controlloop.Guard.MinMax", `onap.policies.controlloop.guard.MinMax.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.MinMax.yaml>`_
-   "Controlloop.Guard.Coordination.FirstBlocksSecond", `onap.policies.controlloop.guard.coordination.FirstBlocksSecond.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.coordination.FirstBlocksSecond.yaml>`_
-   "Controlloop.Operational", `onap.policies.controlloop.Operational.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.Operational.yaml>`_
    "Monitoring.TCA", `onap.policies.monitoring.cdap.tca.hi.lo.app.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app.yaml>`_
    "Monitoring.Collectors", `onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.yaml>`_
    "Optimization", `onap.policies.Optimization.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.Optimization.yaml>`_
-   "Optimization.AffinityPolicy", `onap.policies.optimization.AffinityPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.AffinityPolicy.yaml>`_
-   "Optimization.DistancePolicy", `onap.policies.optimization.DistancePolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.DistancePolicy.yaml>`_
-   "Optimization.HpaPolicy", `onap.policies.optimization.HpaPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.HpaPolicy.yaml>`_
-   "Optimization.OptimizationPolicy", `onap.policies.optimization.OptimizationPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.OptimizationPolicy.yaml>`_
-   "Optimization.PciPolicy", `onap.policies.optimization.PciPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.PciPolicy.yaml>`_
-   "Optimization.QueryPolicy", `onap.policies.optimization.QueryPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.QueryPolicy.yaml>`_
-   "Optimization.SubscriberPolicy", `onap.policies.optimization.SubscriberPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.SubscriberPolicy.yaml>`_
-   "Optimization.Vim_fit", `onap.policies.optimization.Vim_fit.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.Vim_fit.yaml>`_
-   "Optimization.VnfPolicy", `onap.policies.optimization.VnfPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.VnfPolicy.yaml>`_
+   "Optimization.Resource", `onap.policies.optimization.Resource.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.Resource.yaml>`_
+   "Optimization.Resource.AffinityPolicy", `onap.policies.optimization.resource.AffinityPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.resource.AffinityPolicy.yaml>`_
+   "Optimization.Resource.DistancePolicy", `onap.policies.optimization.resource.DistancePolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.resource.DistancePolicy.yaml>`_
+   "Optimization.Resource.HpaPolicy", `onap.policies.optimization.resource.HpaPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.resource.HpaPolicy.yaml>`_
+   "Optimization.Resource.OptimizationPolicy", `onap.policies.optimization.resource.OptimizationPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.resource.OptimizationPolicy.yaml>`_
+   "Optimization.Resource.PciPolicy", `onap.policies.optimization.resource.PciPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.resource.PciPolicy.yaml>`_
+   "Optimization.Resource.Vim_fit", `onap.policies.optimization.resource.Vim_fit.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.resource.Vim_fit.yaml>`_
+   "Optimization.Resource.VnfPolicy", `onap.policies.optimization.resource.VnfPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.resource.VnfPolicy.yaml>`_
+   "Optimization.Service", `onap.policies.optimization.Service.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.Service.yaml>`_
+   "Optimization.Service.QueryPolicy", `onap.policies.optimization.service.QueryPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.service.QueryPolicy.yaml>`_
+   "Optimization.Service.SubscriberPolicy", `onap.policies.optimization.service.SubscriberPolicy.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.service.SubscriberPolicy.yaml>`_
+   "Controlloop.Guard.Common", `onap.policies.controlloop.guard.Common.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Common.yaml>`_
+   "Controlloop.Guard.Common.Blacklist", `onap.policies.controlloop.guard.common.Blacklist.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Blacklist.yaml>`_
+   "Controlloop.Guard.Common.FrequencyLimiter", `onap.policies.controlloop.guard.common.FrequencyLimiter.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.FrequencyLimiter.yaml>`_
+   "Controlloop.Guard.Common.MinMax", `onap.policies.controlloop.guard.common.MinMax.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.MinMax.yaml>`_
+   "Controlloop.Guard.Coordination.FirstBlocksSecond", `onap.policies.controlloop.guard.coordination.FirstBlocksSecond.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.coordination.FirstBlocksSecond.yaml>`_
+   "Controlloop.Operational", `onap.policies.controlloop.Operational.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.Operational.yaml>`_
+   "Controlloop.Operational.Common", `onap.policies.controlloop.operational.Common.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.Common.yaml>`_
+   "Controlloop.Operational.Common.Apex", `onap.policies.controlloop.operational.common.Apex.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.common.Apex.yaml>`_
+   "Controlloop.Operational.Common.Drools", `onap.policies.controlloop.operational.common.Drools.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.common.Drools.yaml>`_
+   "Naming", `onap.policies.Naming.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.Naming.yaml>`_
+   "Native.Drools", `onap.policies.native.Drools.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.native.Drools.yaml>`_
+   "Native.Xacml", `onap.policies.native.Xacml.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.native.Xacml.yaml>`_
+   "Native.Apex", `onap.policies.native.Apex.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.native.Apex.yaml>`_
 
-Also, in El Alto release, We provide backward compatibility support for controlloop operational and guard
-policies encoded in legacy format. Below is a table containing sample legacy guard/operational policies and
-well-formed TOSCA monitoring policies.
+In Frankfurt release, we also preload a policy in policy database. Below is a table summarizing the preloaded polic(ies).
+
+.. csv-table::
+   :header: "Policy Type Name", "Payload"
+   :widths: 15,10
+
+   "SDNC.Naming", `sdnc.policy.naming.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/sdnc.policy.naming.input.tosca.yaml>`_
+
+Below is a table containing sample well-formed TOSCA compliant policies.
 
 .. csv-table::
    :header: "Policy Name", "Payload"
    :widths: 15,10
 
    "vCPE.Monitoring.Tosca", `vCPE.policy.monitoring.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.monitoring.input.tosca.yaml>`_  `vCPE.policy.monitoring.input.tosca.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.monitoring.input.tosca.json>`_
-   "vCPE.Optimization.Tosca", `vCPE.policies.optimization.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policies.optimization.input.tosca.yaml>`_
-   "vCPE.Operational.Legacy", `vCPE.policy.operational.input.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.operational.input.json>`_
-   "vDNS.Guard.FrequencyLimiting.Legacy", `vDNS.policy.guard.frequency.input.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.guard.frequency.input.json>`_
-   "vDNS.Guard.MinMax.Legacy", `vDNS.policy.guard.minmax.input.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.guard.minmax.input.json>`_
+   "vCPE.Optimization.Tosca", `vCPE.policies.optimization.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policies.optimization.input.tosca.yaml>`_  `vCPE.policies.optimization.input.tosca.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policies.optimization.input.tosca.json>`_
+   "vCPE.Operational.Tosca", `vCPE.policy.operational.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.operational.input.tosca.yaml>`_  `vCPE.policy.operational.input.tosca.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.policy.operational.input.tosca.json>`_
+   "vDNS.Guard.FrequencyLimiting.Tosca", `vDNS.policy.guard.frequencylimiter.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.guard.frequencylimiter.input.tosca.yaml>`_
+   "vDNS.Guard.MinMax.Tosca", `vDNS.policy.guard.minmaxvnfs.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.guard.minmaxvnfs.input.tosca.yaml>`_
+   "vDNS.Guard.Blacklist.Tosca", `vDNS.policy.guard.blacklist.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.guard.blacklist.input.tosca.yaml>`_
    "vDNS.Monitoring.Tosca", `vDNS.policy.monitoring.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.monitoring.input.tosca.yaml>`_  `vDNS.policy.monitoring.input.tosca.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.monitoring.input.tosca.json>`_
-   "vDNS.Operational.Legacy", `vDNS.policy.operational.input.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.operational.input.json>`_
+   "vDNS.Operational.Tosca", `vDNS.policy.operational.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.operational.input.tosca.yaml>`_  `vDNS.policy.operational.input.tosca.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vDNS.policy.operational.input.tosca.json>`_
    "vFirewall.Monitoring.Tosca", `vFirewall.policy.monitoring.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewall.policy.monitoring.input.tosca.yaml>`_  `vFirewall.policy.monitoring.input.tosca.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewall.policy.monitoring.input.tosca.json>`_
-   "vFirewall.Operational.Legacy", `vFirewall.policy.operational.input.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewall.policy.operational.input.json>`_
+   "vFirewall.Operational.Tosca", `vFirewall.policy.operational.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewall.policy.operational.input.tosca.yaml>`_  `vFirewall.policy.operational.input.tosca.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewall.policy.operational.input.tosca.json>`_
+   "vFirewallCDS.Operational.Tosca", `vFirewallCDS.policy.operational.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewallCDS.policy.operational.input.tosca.yaml>`_
 
 
 Below is a global API table from where swagger JSON for different types of policy design API can be downloaded.
@@ -84,7 +102,6 @@ Global API Table
    "Statistics API", ":download:`link <swagger/statistics-api.json>`"
    "Tosca Policy Type API", ":download:`link <swagger/policytype-api.json>`"
    "Tosca Policy API", ":download:`link <swagger/policy-api.json>`"
-   "Legacy Guard Policy API", ":download:`link <swagger/guard-policy-api.json>`"
    "Legacy Operational Policy API", ":download:`link <swagger/operational-policy-api.json>`"
 
 API Swagger
@@ -129,9 +146,8 @@ Please check out the sample policies in above policy table.
 
 Also, in the POST payload passed into each policy or policy type creation call (i.e. POST API invocation), the client needs to explicitly
 specify the version of the policy or policy type to create. That being said, the "version" field is mandatory in the TOSCA service template
-formatted policy or policy type payload. Likewise in the legacy guard and the operational policy payload, "policy-version" is mandatory too.
-If the version is missing, that POST call will return "406 - Not Acceptable" and the policy or policy type to create will not be stored in
-the database.
+formatted policy or policy type payload. If the version is missing, that POST call will return "406 - Not Acceptable" and 
+the policy or policy type to create will not be stored in the database.
 
 To avoid inconsistent versions between the database and policies deployed in the PDPs, policy API REST service employs some enforcement
 rules that validate the version specified in the POST payload when a new version is to create or an existing version to update.
@@ -140,22 +156,18 @@ Instead, we encourage the client to carefully select a version for the policy or
 of the version and feed an informative warning back to the client if the specified version is not good.
 To be specific, the following rules are implemented to enforce the version:
 
-1. If the version is not in the database, we simply insert it. For example: if policy version 1.0.0 is stored in the database and now
+1. If the incoming version is not in the database, we simply insert it. For example: if policy version 1.0.0 is stored in the database and now
    a client wants to create the same policy with updated version 3.0.0, this POST call will succeed and return "200" to the client.
 
-2. If the version is already in the database, "406 - Not Acceptable" will be returned along with the message saying "specified version x.x.x"
-   is already existing and the latest version is y.y.y. It can force the client to create a newer version than the latest one.
-   For example, if policy versions "1.0.0" and "2.0.0" are already in the database and a client wants to create version "1.0.0" again, the
-   client will get "406" code returned along with the message "specified version 1.0.0 is already existing and the latest version is 2.0.0".
-   Then the client can change the version to anything newer than "2.0.0", such as "3.0.0".
+2. If the incoming version is already in the database and the incoming payload is different from the same version in the database, 
+   "406 - Not Acceptable" will be returned. It can force the client to create a different version than the existing one.
 
-3. If multiple policies or policy types are included in the POST payload, policy API will also check if duplicate version exists in between
+3. If multiple policies are included in the POST payload, policy API will also check if duplicate version exists in between
    any two policies or policy types provided in the payload. For example, a client provides a POST payload which includes two policies with the same
    name and version but different policy properties. This POST call will fail and return "406" error back to the calling application along with a
    message such as "duplicate policy {name}:{version} found in the payload".
 
-4. The same version validation is applied to legacy types of policies and policy types too (i.e. legacy guard and operational) so that everything
-   is consistent.
+4. The same version validation is applied to policy types too.
 
 5. To avoid unnecessary id/version inconsistency between the ones specified in the entity fields and the ones returned in the metadata field,
    "policy-id" and "policy-version" in the metadata will only be set by policy API. Any incoming explicit specification in the POST payload will be
@@ -163,20 +175,9 @@ To be specific, the following rules are implemented to enforce the version:
    also includes "policy-id": "sample-policy-name2" and "policy-version": "2.0.0". The 200 return of this POST call will have this created policy with
    metadata including "policy-id": "sample-policy-name1" and "policy-version": "1.0.0".
 
-.. swaggerv2doc:: swagger/guard-policy-api.json
-
-It is worth noting that guard policy name should start with one of the three: *guard.frequency.*, *guard.minmax.*, or *guard.blacklist.*.
-Otherwise, it will complain that guard policy type cannot be found (does not exist). Apart from policy name, the policy version specified
-in API path should be an integer, e.g. 1, 2, 10, instead of "1.0.0", "2.0.1", etc.
-These naming restrictions will disappear after we evolve to use well-formed TOSCA Service Template for guard policies and
-legacy policy design API is then deprecated.
-
 .. swaggerv2doc:: swagger/operational-policy-api.json
 
-Likewise, the policy version specified in operational policy API path should be an integer too, e.g. 1, 2, 10, instead of
-"1.0.0", "2.0.1", etc. This restriction will disappear after we deprecate legacy policy design API in the near future release.
-
-Regarding DELETE APIs for both TOSCA policies and legacy policies, we only expose API to delete one particular version of policy
+Regarding DELETE APIs for TOSCA compliant policies, we only expose API to delete one particular version of policy
 or policy type at a time for safety purpose. If client has the need to delete multiple or a group of policies or policy types,
 they will need to delete one by one.
 
@@ -192,15 +193,15 @@ Create vFirewall Monitoring Policy::
 
 Get vFirewall Monitoring Policy::
   curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app/versions/1.0.0/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
- 
+
 Delete vFirewall Monitoring Policy::
   curl --user 'healthcheck:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app/versions/1.0.0/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
 
 Create vFirewall Operational Policy::
-  curl --user 'healthcheck:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.Operational/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.operational.input.json
- 
+  curl --user 'healthcheck:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.operational.input.tosca.json
+
 Get vFirewall Operational Policy::
-  curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.Operational/versions/1.0.0/policies/operational.modifyconfig/versions/1" -H "Accept: application/json" -H "Content-Type: application/json"
- 
+  curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies/operational.modifyconfig/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+
 Delete vFirewall Operational Policy::
-  curl --user 'healthcheck:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.Operational/versions/1.0.0/policies/operational.modifyconfig/versions/1" -H "Accept: application/json" -H "Content-Type: application/json"
+  curl --user 'healthcheck:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies/operational.modifyconfig/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
