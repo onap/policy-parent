@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b89848f4_af67673a",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "In the Frankfurt release, also a few other occurrences below.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a415c8_e86d9b79",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "listing the preloaded policy types",
+      "range": {
+        "startLine": 32,
+        "startChar": 128,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e194c0e9_998814d5",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "Trailing space, there are a few others below as well.",
+      "range": {
+        "startLine": 149,
+        "startChar": 121,
+        "endLine": 149,
+        "endChar": 122
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da44ba68_bb6523f3",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "I wonder should add a note somewhere to say that if someone creates a version of a policy and wishes to update a property on the policy, they must delete that version of the policy and re-create it.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 9
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86ce549f_a559a62c",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "This forces the client to update the version of the policy if the policy is changed.",
+      "range": {
+        "startLine": 163,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 119
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "008d05b2_9120d05d",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "them",
+      "range": {
+        "startLine": 182,
+        "startChar": 24,
+        "endLine": 182,
+        "endChar": 25
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae627585_4c00ddee",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "This is a cool feature to have.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 682
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bdf8ed9_32fb376c",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 96,
+        "startChar": 202,
+        "endLine": 96,
+        "endChar": 203
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7770e176_6fd78f39",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 96,
+        "startChar": 231,
+        "endLine": 96,
+        "endChar": 232
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f1b0da_c9e09859",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "A",
+      "range": {
+        "startLine": 96,
+        "startChar": 101,
+        "endLine": 96,
+        "endChar": 102
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d43e10b4_9febae77",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 96,
+        "startChar": 325,
+        "endLine": 96,
+        "endChar": 326
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d5376e1_1143098b",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-18T09:50:59Z",
+      "side": 1,
+      "message": "Replace \"newly added\" with \"the\".\n\nThis document will be used for many years (we hope!) so the native decision API won\u0027t be new then ;-)",
+      "range": {
+        "startLine": 96,
+        "startChar": 370,
+        "endLine": 96,
+        "endChar": 381
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
