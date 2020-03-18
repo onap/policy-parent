@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d308bd4_587a0e9b",
+        "filename": "docs/apex/APEX-OnapPf-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2020-03-18T19:45:37Z",
+      "side": 1,
+      "message": "I am not sure I understood you correctly.\netc folder only contains configuration files. I believe this chmod 755 was added so that, in case when logback files are dynamically mounted, there were some user access denied issues, and this change had to be added.",
+      "parentUuid": "b278e6ae_67200334",
+      "revId": "24d9c43f6c6c96bf25e99c5c7d454bede9976f94",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "756296c4_54965b9c",
         "filename": "docs/apex/APEX-User-Manual.rst",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-18T16:35:03Z",
       "side": 1,
       "message": "\"does only work\" \u003d\u003e \"only works\"",
+      "revId": "24d9c43f6c6c96bf25e99c5c7d454bede9976f94",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e7fc64e_6634b786",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 3332,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2020-03-18T19:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "756296c4_54965b9c",
       "revId": "24d9c43f6c6c96bf25e99c5c7d454bede9976f94",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
