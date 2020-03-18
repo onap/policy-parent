@@ -1,0 +1,41 @@
+{
+    "Request": {
+        "ReturnPolicyIdList": false,
+        "CombinedDecision": false,
+        "AccessSubject": [
+            {
+                "Attribute": [
+                    {
+                        "IncludeInResult": false,
+                        "AttributeId": "subject-id",
+                        "Value": "Julius Hibbert"
+                    }
+                ]
+            }
+        ],
+        "Resource": [
+            {
+                "Attribute": [
+                    {
+                        "IncludeInResult": false,
+                        "AttributeId": "resource-id",
+                        "Value": "http://medico.com/record/patient/BartSimpson",
+                        "DataType": "anyURI"
+                    }
+                ]
+            }
+        ],
+        "Action": [
+            {
+                "Attribute": [
+                    {
+                        "IncludeInResult": false,
+                        "AttributeId": "action-id",
+                        "Value": "read"
+                    }
+                ]
+            }
+        ],
+        "Environment": []
+    }
+}
