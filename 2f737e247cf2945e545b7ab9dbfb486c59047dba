@@ -275,6 +275,40 @@
       "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5dad784_659b2fd6",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-18T16:40:18Z",
+      "side": 1,
+      "message": "\"are all\" \u003d\u003e \"all\"",
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ef2493_0fb1aa86",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-18T16:40:18Z",
+      "side": 1,
+      "message": "\"aforementioned\" \u003d\u003e \"the aforementioned\"",
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
