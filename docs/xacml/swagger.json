@@ -7,45 +7,32 @@
     "x-component" : "Policy Framework",
     "x-planned-retirement-date" : "tbd"
   },
-  "host" : "Pamelas-MBP-2.client.research.att.com:6969",
+  "host" : "policy-xacml-pdp:6969",
   "basePath" : "/",
   "tags" : [ {
+    "name" : "HealthCheck"
+  }, {
     "name" : "Decision"
   }, {
     "name" : "Statistics"
-  }, {
-    "name" : "HealthCheck"
   } ],
   "schemes" : [ "http", "https" ],
   "paths" : {
-    "/policy/pdpx/v1/decision" : {
-      "post" : {
-        "tags" : [ "Decision" ],
-        "summary" : "Fetch the decision using specified decision parameters",
-        "description" : "Returns the policy decision from Policy Xacml PDP",
-        "operationId" : "decision",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
+    "/policy/pdpx/v1/healthcheck" : {
+      "get" : {
+        "tags" : [ "HealthCheck" ],
+        "summary" : "Perform a system healthcheck",
+        "description" : "Provides healthy status of the Policy Xacml PDP component",
+        "operationId" : "healthcheck",
+        "consumes" : [ "application/json", "application/yaml" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
-          "in" : "body",
-          "name" : "body",
-          "required" : false,
-          "schema" : {
-            "$ref" : "#/definitions/DecisionRequest"
-          }
-        }, {
           "name" : "X-ONAP-RequestID",
           "in" : "header",
           "description" : "RequestID for http transaction",
           "required" : false,
           "type" : "string",
           "format" : "uuid"
-        }, {
-          "name" : "abbrev",
-          "in" : "query",
-          "description" : "Specifies whether the DCAE Monitoring decision results should be abbreviated",
-          "required" : false,
-          "type" : "boolean"
         } ],
         "responses" : {
           "200" : {
@@ -70,7 +57,75 @@
               }
             },
             "schema" : {
-              "$ref" : "#/definitions/DecisionResponse"
+              "$ref" : "#/definitions/HealthCheckReport"
+            }
+          },
+          "401" : {
+            "description" : "Authentication Error"
+          },
+          "403" : {
+            "description" : "Authorization Error"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ],
+        "x-interface info" : {
+          "last-mod-release" : "Dublin",
+          "pdpx-version" : "1.0.0"
+        }
+      }
+    },
+    "/policy/pdpx/v1/xacml" : {
+      "post" : {
+        "tags" : [ "Decision" ],
+        "summary" : "Fetch the decision using specified decision parameters",
+        "description" : "Returns the policy decision from Policy Xacml PDP",
+        "operationId" : "xacml",
+        "consumes" : [ "application/xacml+json", "application/xacml+xml" ],
+        "produces" : [ "application/xacml+json", "application/xacml+xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Request"
+          }
+        }, {
+          "name" : "X-ONAP-RequestID",
+          "in" : "header",
+          "description" : "RequestID for http transaction",
+          "required" : false,
+          "type" : "string",
+          "format" : "uuid"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : {
+              "X-MinorVersion" : {
+                "type" : "string",
+                "description" : "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion" : {
+                "type" : "string",
+                "description" : "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID" : {
+                "type" : "string",
+                "format" : "uuid",
+                "description" : "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema" : {
+              "$ref" : "#/definitions/Response"
             }
           },
           "400" : {
@@ -93,7 +148,7 @@
           "basicAuth" : [ ]
         } ],
         "x-interface info" : {
-          "last-mod-release" : "Dublin",
+          "last-mod-release" : "Frankfurt",
           "pdpx-version" : "1.0.0"
         }
       }
@@ -104,8 +159,8 @@
         "summary" : "Fetch current statistics",
         "description" : "Provides current statistics of the Policy Xacml PDP component",
         "operationId" : "statistics",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
+        "consumes" : [ "application/json", "application/yaml" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
           "name" : "X-ONAP-RequestID",
           "in" : "header",
@@ -159,15 +214,22 @@
         }
       }
     },
-    "/policy/pdpx/v1/healthcheck" : {
-      "get" : {
-        "tags" : [ "HealthCheck" ],
-        "summary" : "Perform a system healthcheck",
-        "description" : "Provides healthy status of the Policy Xacml PDP component",
-        "operationId" : "healthcheck",
-        "consumes" : [ "application/json" ],
-        "produces" : [ "application/json" ],
+    "/policy/pdpx/v1/decision" : {
+      "post" : {
+        "tags" : [ "Decision" ],
+        "summary" : "Fetch the decision using specified decision parameters",
+        "description" : "Returns the policy decision from Policy Xacml PDP",
+        "operationId" : "decision",
+        "consumes" : [ "application/json", "application/yaml" ],
+        "produces" : [ "application/json", "application/yaml" ],
         "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/DecisionRequest"
+          }
+        }, {
           "name" : "X-ONAP-RequestID",
           "in" : "header",
           "description" : "RequestID for http transaction",
@@ -198,7 +260,13 @@
               }
             },
             "schema" : {
-              "$ref" : "#/definitions/HealthCheckReport"
+              "$ref" : "#/definitions/DecisionResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "401" : {
@@ -228,28 +296,286 @@
     }
   },
   "definitions" : {
-    "DecisionResponse" : {
+    "HealthCheckReport" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "url" : {
+          "type" : "string"
+        },
+        "healthy" : {
+          "type" : "boolean"
+        },
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Advice" : {
+      "type" : "object",
+      "properties" : {
+        "attributeAssignments" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AttributeAssignment"
+          }
+        },
+        "id" : {
+          "$ref" : "#/definitions/Identifier"
+        }
+      }
+    },
+    "Attribute" : {
+      "type" : "object",
+      "properties" : {
+        "attributeId" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "values" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AttributeValueObject"
+          }
+        },
+        "category" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "issuer" : {
+          "type" : "string"
+        },
+        "includeInResults" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "AttributeAssignment" : {
+      "type" : "object",
+      "properties" : {
+        "attributeValue" : {
+          "$ref" : "#/definitions/AttributeValueObject"
+        },
+        "attributeId" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "category" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "issuer" : {
+          "type" : "string"
+        },
+        "dataTypeId" : {
+          "$ref" : "#/definitions/Identifier"
+        }
+      }
+    },
+    "AttributeCategory" : {
+      "type" : "object",
+      "properties" : {
+        "category" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "attributes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Attribute"
+          }
+        }
+      }
+    },
+    "AttributeValue" : {
+      "type" : "object",
+      "properties" : {
+        "xpathCategory" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "dataTypeId" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "value" : {
+          "type" : "object"
+        }
+      }
+    },
+    "AttributeValueObject" : {
+      "type" : "object",
+      "properties" : {
+        "xpathCategory" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "dataTypeId" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "value" : {
+          "type" : "object"
+        }
+      }
+    },
+    "IdReference" : {
+      "type" : "object",
+      "properties" : {
+        "version" : {
+          "$ref" : "#/definitions/Version"
+        },
+        "id" : {
+          "$ref" : "#/definitions/Identifier"
+        }
+      }
+    },
+    "Identifier" : {
+      "type" : "object",
+      "properties" : {
+        "uri" : {
+          "type" : "string",
+          "format" : "uri"
+        }
+      }
+    },
+    "MissingAttributeDetail" : {
+      "type" : "object",
+      "properties" : {
+        "attributeId" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "category" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "issuer" : {
+          "type" : "string"
+        },
+        "attributeValues" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AttributeValueObject"
+          }
+        },
+        "dataTypeId" : {
+          "$ref" : "#/definitions/Identifier"
+        }
+      }
+    },
+    "Obligation" : {
+      "type" : "object",
+      "properties" : {
+        "attributeAssignments" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AttributeAssignment"
+          }
+        },
+        "id" : {
+          "$ref" : "#/definitions/Identifier"
+        }
+      }
+    },
+    "Response" : {
+      "type" : "object",
+      "properties" : {
+        "results" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Result"
+          }
+        }
+      }
+    },
+    "Result" : {
       "type" : "object",
       "properties" : {
         "status" : {
-          "type" : "string"
+          "$ref" : "#/definitions/Status"
         },
-        "advice" : {
-          "type" : "object",
-          "additionalProperties" : {
-            "type" : "object"
+        "decision" : {
+          "type" : "string",
+          "enum" : [ "PERMIT", "DENY", "INDETERMINATE", "INDETERMINATE_PERMIT", "INDETERMINATE_DENY", "INDETERMINATE_DENYPERMIT", "NOTAPPLICABLE" ]
+        },
+        "associatedAdvice" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Advice"
           }
         },
         "obligations" : {
-          "type" : "object",
-          "additionalProperties" : {
-            "type" : "object"
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Obligation"
           }
         },
-        "policies" : {
-          "type" : "object",
-          "additionalProperties" : {
-            "type" : "object"
+        "policyIdentifiers" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/IdReference"
+          }
+        },
+        "policySetIdentifiers" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/IdReference"
+          }
+        },
+        "attributes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AttributeCategory"
+          }
+        }
+      }
+    },
+    "Status" : {
+      "type" : "object",
+      "properties" : {
+        "statusCode" : {
+          "$ref" : "#/definitions/StatusCode"
+        },
+        "statusMessage" : {
+          "type" : "string"
+        },
+        "statusDetail" : {
+          "$ref" : "#/definitions/StatusDetail"
+        },
+        "ok" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "StatusCode" : {
+      "type" : "object",
+      "properties" : {
+        "statusCodeValue" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "child" : {
+          "$ref" : "#/definitions/StatusCode"
+        }
+      }
+    },
+    "StatusDetail" : {
+      "type" : "object",
+      "properties" : {
+        "missingAttributeDetails" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/MissingAttributeDetail"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "type" : "object",
+      "properties" : {
+        "version" : {
+          "type" : "string"
+        },
+        "versionDigits" : {
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
           }
         }
       }
@@ -259,7 +585,7 @@
       "properties" : {
         "responseCode" : {
           "type" : "string",
-          "enum" : [ "OK", "CREATED", "ACCEPTED", "NO_CONTENT", "RESET_CONTENT", "PARTIAL_CONTENT", "MOVED_PERMANENTLY", "FOUND", "SEE_OTHER", "NOT_MODIFIED", "USE_PROXY", "TEMPORARY_REDIRECT", "BAD_REQUEST", "UNAUTHORIZED", "PAYMENT_REQUIRED", "FORBIDDEN", "NOT_FOUND", "METHOD_NOT_ALLOWED", "NOT_ACCEPTABLE", "PROXY_AUTHENTICATION_REQUIRED", "REQUEST_TIMEOUT", "CONFLICT", "GONE", "LENGTH_REQUIRED", "PRECONDITION_FAILED", "REQUEST_ENTITY_TOO_LARGE", "REQUEST_URI_TOO_LONG", "UNSUPPORTED_MEDIA_TYPE", "REQUESTED_RANGE_NOT_SATISFIABLE", "EXPECTATION_FAILED", "INTERNAL_SERVER_ERROR", "NOT_IMPLEMENTED", "BAD_GATEWAY", "SERVICE_UNAVAILABLE", "GATEWAY_TIMEOUT", "HTTP_VERSION_NOT_SUPPORTED" ]
+          "enum" : [ "OK", "CREATED", "ACCEPTED", "NO_CONTENT", "RESET_CONTENT", "PARTIAL_CONTENT", "MOVED_PERMANENTLY", "FOUND", "SEE_OTHER", "NOT_MODIFIED", "USE_PROXY", "TEMPORARY_REDIRECT", "BAD_REQUEST", "UNAUTHORIZED", "PAYMENT_REQUIRED", "FORBIDDEN", "NOT_FOUND", "METHOD_NOT_ALLOWED", "NOT_ACCEPTABLE", "PROXY_AUTHENTICATION_REQUIRED", "REQUEST_TIMEOUT", "CONFLICT", "GONE", "LENGTH_REQUIRED", "PRECONDITION_FAILED", "REQUEST_ENTITY_TOO_LARGE", "REQUEST_URI_TOO_LONG", "UNSUPPORTED_MEDIA_TYPE", "REQUESTED_RANGE_NOT_SATISFIABLE", "EXPECTATION_FAILED", "PRECONDITION_REQUIRED", "TOO_MANY_REQUESTS", "REQUEST_HEADER_FIELDS_TOO_LARGE", "INTERNAL_SERVER_ERROR", "NOT_IMPLEMENTED", "BAD_GATEWAY", "SERVICE_UNAVAILABLE", "GATEWAY_TIMEOUT", "HTTP_VERSION_NOT_SUPPORTED", "NETWORK_AUTHENTICATION_REQUIRED" ]
         },
         "errorMessage" : {
           "type" : "string"
@@ -278,29 +604,405 @@
         }
       }
     },
-    "DecisionRequest" : {
+    "DOMConfiguration" : {
       "type" : "object",
       "properties" : {
-        "onapName" : {
+        "parameterNames" : {
+          "$ref" : "#/definitions/DOMStringList"
+        }
+      }
+    },
+    "DOMImplementation" : {
+      "type" : "object"
+    },
+    "DOMStringList" : {
+      "type" : "object",
+      "properties" : {
+        "length" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "Document" : {
+      "type" : "object",
+      "properties" : {
+        "documentElement" : {
+          "$ref" : "#/definitions/Element"
+        },
+        "xmlVersion" : {
           "type" : "string"
         },
-        "onapComponent" : {
+        "strictErrorChecking" : {
+          "type" : "boolean"
+        },
+        "documentURI" : {
           "type" : "string"
         },
-        "onapInstance" : {
+        "xmlStandalone" : {
+          "type" : "boolean"
+        },
+        "implementation" : {
+          "$ref" : "#/definitions/DOMImplementation"
+        },
+        "doctype" : {
+          "$ref" : "#/definitions/DocumentType"
+        },
+        "inputEncoding" : {
           "type" : "string"
         },
-        "requestId" : {
+        "xmlEncoding" : {
           "type" : "string"
         },
-        "action" : {
+        "domConfig" : {
+          "$ref" : "#/definitions/DOMConfiguration"
+        },
+        "localName" : {
           "type" : "string"
         },
-        "resource" : {
-          "type" : "object",
-          "additionalProperties" : {
-            "type" : "object"
+        "prefix" : {
+          "type" : "string"
+        },
+        "nodeValue" : {
+          "type" : "string"
+        },
+        "ownerDocument" : {
+          "$ref" : "#/definitions/Document"
+        },
+        "nodeName" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "$ref" : "#/definitions/NodeList"
+        },
+        "nodeType" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "namespaceURI" : {
+          "type" : "string"
+        },
+        "lastChild" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "parentNode" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "firstChild" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "nextSibling" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "previousSibling" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "baseURI" : {
+          "type" : "string"
+        },
+        "textContent" : {
+          "type" : "string"
+        },
+        "attributes" : {
+          "$ref" : "#/definitions/NamedNodeMap"
+        }
+      }
+    },
+    "DocumentType" : {
+      "type" : "object",
+      "properties" : {
+        "entities" : {
+          "$ref" : "#/definitions/NamedNodeMap"
+        },
+        "publicId" : {
+          "type" : "string"
+        },
+        "systemId" : {
+          "type" : "string"
+        },
+        "notations" : {
+          "$ref" : "#/definitions/NamedNodeMap"
+        },
+        "internalSubset" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "localName" : {
+          "type" : "string"
+        },
+        "prefix" : {
+          "type" : "string"
+        },
+        "nodeValue" : {
+          "type" : "string"
+        },
+        "ownerDocument" : {
+          "$ref" : "#/definitions/Document"
+        },
+        "nodeName" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "$ref" : "#/definitions/NodeList"
+        },
+        "nodeType" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "namespaceURI" : {
+          "type" : "string"
+        },
+        "lastChild" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "parentNode" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "firstChild" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "nextSibling" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "previousSibling" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "baseURI" : {
+          "type" : "string"
+        },
+        "textContent" : {
+          "type" : "string"
+        },
+        "attributes" : {
+          "$ref" : "#/definitions/NamedNodeMap"
+        }
+      }
+    },
+    "Element" : {
+      "type" : "object",
+      "properties" : {
+        "tagName" : {
+          "type" : "string"
+        },
+        "schemaTypeInfo" : {
+          "$ref" : "#/definitions/TypeInfo"
+        },
+        "localName" : {
+          "type" : "string"
+        },
+        "prefix" : {
+          "type" : "string"
+        },
+        "nodeValue" : {
+          "type" : "string"
+        },
+        "ownerDocument" : {
+          "$ref" : "#/definitions/Document"
+        },
+        "nodeName" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "$ref" : "#/definitions/NodeList"
+        },
+        "nodeType" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "namespaceURI" : {
+          "type" : "string"
+        },
+        "lastChild" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "parentNode" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "firstChild" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "nextSibling" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "previousSibling" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "baseURI" : {
+          "type" : "string"
+        },
+        "textContent" : {
+          "type" : "string"
+        },
+        "attributes" : {
+          "$ref" : "#/definitions/NamedNodeMap"
+        }
+      }
+    },
+    "NamedNodeMap" : {
+      "type" : "object",
+      "properties" : {
+        "length" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "Node" : {
+      "type" : "object",
+      "properties" : {
+        "localName" : {
+          "type" : "string"
+        },
+        "prefix" : {
+          "type" : "string"
+        },
+        "nodeValue" : {
+          "type" : "string"
+        },
+        "ownerDocument" : {
+          "$ref" : "#/definitions/Document"
+        },
+        "nodeName" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "$ref" : "#/definitions/NodeList"
+        },
+        "nodeType" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "namespaceURI" : {
+          "type" : "string"
+        },
+        "lastChild" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "parentNode" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "firstChild" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "nextSibling" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "previousSibling" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "baseURI" : {
+          "type" : "string"
+        },
+        "textContent" : {
+          "type" : "string"
+        },
+        "attributes" : {
+          "$ref" : "#/definitions/NamedNodeMap"
+        }
+      }
+    },
+    "NodeList" : {
+      "type" : "object",
+      "properties" : {
+        "length" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "Request" : {
+      "type" : "object",
+      "properties" : {
+        "requestDefaults" : {
+          "$ref" : "#/definitions/RequestDefaults"
+        },
+        "multiRequests" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RequestReference"
           }
+        },
+        "status" : {
+          "$ref" : "#/definitions/Status"
+        },
+        "requestAttributesIncludedInResult" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AttributeCategory"
+          }
+        },
+        "combinedDecision" : {
+          "type" : "boolean"
+        },
+        "returnPolicyIdList" : {
+          "type" : "boolean"
+        },
+        "requestAttributes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RequestAttributes"
+          }
+        }
+      }
+    },
+    "RequestAttributes" : {
+      "type" : "object",
+      "properties" : {
+        "contentRoot" : {
+          "$ref" : "#/definitions/Node"
+        },
+        "xmlId" : {
+          "type" : "string"
+        },
+        "category" : {
+          "$ref" : "#/definitions/Identifier"
+        },
+        "attributes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Attribute"
+          }
+        }
+      }
+    },
+    "RequestAttributesReference" : {
+      "type" : "object",
+      "properties" : {
+        "referenceId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "RequestDefaults" : {
+      "type" : "object",
+      "properties" : {
+        "xpathVersion" : {
+          "type" : "string",
+          "format" : "uri"
+        }
+      }
+    },
+    "RequestReference" : {
+      "type" : "object",
+      "properties" : {
+        "attributesReferences" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/RequestAttributesReference"
+          }
+        }
+      }
+    },
+    "TypeInfo" : {
+      "type" : "object",
+      "properties" : {
+        "typeNamespace" : {
+          "type" : "string"
+        },
+        "typeName" : {
+          "type" : "string"
         }
       }
     },
@@ -341,24 +1043,64 @@
         }
       }
     },
-    "HealthCheckReport" : {
+    "DecisionResponse" : {
       "type" : "object",
       "properties" : {
-        "name" : {
+        "status" : {
           "type" : "string"
-        },
-        "url" : {
-          "type" : "string"
-        },
-        "healthy" : {
-          "type" : "boolean"
-        },
-        "code" : {
-          "type" : "integer",
-          "format" : "int32"
         },
         "message" : {
           "type" : "string"
+        },
+        "advice" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
+        "obligations" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
+        "policies" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        }
+      }
+    },
+    "DecisionRequest" : {
+      "type" : "object",
+      "properties" : {
+        "onapName" : {
+          "type" : "string"
+        },
+        "onapComponent" : {
+          "type" : "string"
+        },
+        "onapInstance" : {
+          "type" : "string"
+        },
+        "requestId" : {
+          "type" : "string"
+        },
+        "context" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
+        },
+        "action" : {
+          "type" : "string"
+        },
+        "resource" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "object"
+          }
         }
       }
     }
