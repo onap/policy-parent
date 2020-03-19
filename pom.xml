@@ -24,11 +24,11 @@
         <groupId>org.onap.oparent</groupId>
         <artifactId>oparent</artifactId>
         <version>3.0.0</version>
-        <relativePath />
+        <relativePath>../oparent/oparent/pom.xml</relativePath>
     </parent>
     <groupId>org.onap.policy.parent</groupId>
     <artifactId>policy-parent</artifactId>
-    <version>3.1.1-SNAPSHOT</version>
+    <version>3.1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
