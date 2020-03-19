@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "93f2f3ce_45be4080",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea627a5b_3b74e67f",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9a415c8_e86d9b79",
         "filename": "docs/api/api.rst",
         "patchSetId": 3
@@ -93,6 +117,30 @@
       "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80b97b1d_a4070a62",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6ece9770_cdb80494",
+      "range": {
+        "startLine": 32,
+        "startChar": 128,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "e36a6805_ad6de2ab",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "552f9b75_8f2c9ed9",
+      "range": {
+        "startLine": 149,
+        "startChar": 121,
+        "endLine": 149,
+        "endChar": 122
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da44ba68_bb6523f3",
         "filename": "docs/api/api.rst",
         "patchSetId": 3
@@ -187,6 +259,30 @@
       "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92262d25_4439d567",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "27977a2d_5742fee8",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 9
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "54903b3a_c01026d0",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3327f6c7_0062f91d",
+      "range": {
+        "startLine": 163,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 119
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "008d05b2_9120d05d",
         "filename": "docs/api/api.rst",
         "patchSetId": 3
@@ -281,6 +401,30 @@
       "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67604279_145d9f5e",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6d948fc_1ed6fa05",
+      "range": {
+        "startLine": 182,
+        "startChar": 24,
+        "endLine": 182,
+        "endChar": 25
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -598,6 +742,168 @@
       "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93299f86_5a238e00",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6f8ed509_7e2c6a82",
+      "range": {
+        "startLine": 96,
+        "startChar": 231,
+        "endLine": 96,
+        "endChar": 232
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "654d0a00_a0b3869c",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "286776c2_aad4f729",
+      "range": {
+        "startLine": 96,
+        "startChar": 325,
+        "endLine": 96,
+        "endChar": 326
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e6a3564_dbd59264",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "406b7156_14108046",
+      "range": {
+        "startLine": 96,
+        "startChar": 370,
+        "endLine": 96,
+        "endChar": 381
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af941eb4_3839a239",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2fd503cd_4f3dc824",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 682
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d44b2c5b_129f38dd",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "91423301_ca1b6f2c",
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68ea9277_fd8f33df",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e1289da_530f56e4",
+      "range": {
+        "startLine": 96,
+        "startChar": 101,
+        "endLine": 96,
+        "endChar": 102
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de598f66_14791ec8",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-03-19T09:51:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "876b529d_899bec79",
+      "range": {
+        "startLine": 96,
+        "startChar": 202,
+        "endLine": 96,
+        "endChar": 203
+      },
+      "revId": "2f737e247cf2945e545b7ab9dbfb486c59047dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
