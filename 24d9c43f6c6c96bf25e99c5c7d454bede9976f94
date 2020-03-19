@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "5ec89ac1_618c39be",
+        "filename": "docs/apex/APEX-OnapPf-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2020-03-19T09:54:02Z",
+      "side": 1,
+      "message": "Ok got it. Done. I will have to change the original DockerFile as well.",
+      "parentUuid": "54e650f2_61824ea6",
+      "revId": "24d9c43f6c6c96bf25e99c5c7d454bede9976f94",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "756296c4_54965b9c",
         "filename": "docs/apex/APEX-User-Manual.rst",
         "patchSetId": 1
