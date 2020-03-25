@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0847b4a5_79199bf4",
+        "filename": "docs/drools/droolsTutorialsIndex.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 6006
+      },
+      "writtenOn": "2020-03-25T22:16:05Z",
+      "side": 1,
+      "message": "These walkthroughs are based on using this file: https://git.onap.org/policy/docker/plain/config/drools/base.conf?h\u003ddublin. Since the frankfurt branch does not currently exist, what should happen to these tutorials? Should they keep using the dublin example or is there a particular base.conf in policy/docker that can be copied and pasted for these tutorials?",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "455def1517cf122a9ee06b368cbcd41e2342e6c4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "251e955e_f30ade7e",
+        "filename": "docs/drools/modAmsterTemplate.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 6006
+      },
+      "writtenOn": "2020-03-25T22:16:05Z",
+      "side": 1,
+      "message": "Is there a frankfurt equivalent that can be used in the updated tutorial?",
+      "range": {
+        "startLine": 42,
+        "startChar": 54,
+        "endLine": 42,
+        "endChar": 75
+      },
+      "revId": "455def1517cf122a9ee06b368cbcd41e2342e6c4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
