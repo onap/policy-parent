@@ -9,7 +9,7 @@ Using guard in the PDP-D
 .. contents::
     :depth: 2
 
-This guide will help configure and test guard connection from PDP-D to PDP-X. This guide assumes that the PDP-D is installed and running policy properly with other properties being set properly.
+This guide will help configure and test guard connection from PDP-D (drools-pdp) to PDP-X (xacml-pdp). This guide assumes that the PDP-D is installed and running policy properly with other properties being set properly.
 
 Configuration
 ^^^^^^^^^^^^^ 
@@ -19,7 +19,7 @@ Prerequisites
 
 Stop Policy, open, and verify the config:
 
-- Stop policy with *policy stop*
+- Stop policy with **policy stop**
 - Open *$POLICY_HOME/config/controlloop.properties.environment*
 - Make sure the *sql.db.host*, *sql.db.username* and *sql.db.password* are set correctly
 
@@ -39,7 +39,7 @@ Guard Properties
 
 **guard.disabled** - For enabling / disabling guard functionality.
     - For example, to enable set it to false.
-    - When this is set to true, the previous two properties will be ignored.
+    - When this is set to true, the previous two properties (guard.url and guard.jdbc.url) will be ignored.
     - If guard is enabled, then the following PDP-X properties must also be set.
 
 
