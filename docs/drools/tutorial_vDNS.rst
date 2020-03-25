@@ -8,6 +8,8 @@ Tutorial: Testing the vDNS Use Case in a standalone PDP-D
 
 .. contents::
     :depth: 3
+    
+// TODO update with new vDNS example and tests used in drools-applications
 
 In this tutorial we will test the vDNS flow in a standalone PDP-D docker container.
 

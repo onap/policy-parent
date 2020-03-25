@@ -3,23 +3,23 @@
 .. http://creativecommons.org/licenses/by/4.0
 
 ************************
-Using guard in the PDP-D 
+Using guard in the PDP-D
 ************************
 
 .. contents::
     :depth: 2
 
-This guide will help configure and test guard connection from PDP-D to PDP-X. This guide assumes that the PDP-D is installed and running policy properly with other properties being set properly.
+This guide will help configure and test guard connection from PDP-D (drools-pdp) to PDP-X (xacml-pdp). This guide assumes that the PDP-D is installed and running policy properly with other properties being set properly.
 
 Configuration
-^^^^^^^^^^^^^ 
+^^^^^^^^^^^^^
 
 Prerequisites
 -------------
 
 Stop Policy, open, and verify the config:
 
-- Stop policy with *policy stop*
+- Stop policy with **policy stop**
 - Open *$POLICY_HOME/config/controlloop.properties.environment*
 - Make sure the *sql.db.host*, *sql.db.username* and *sql.db.password* are set correctly
 
@@ -39,7 +39,7 @@ Guard Properties
 
 **guard.disabled** - For enabling / disabling guard functionality.
     - For example, to enable set it to false.
-    - When this is set to true, the previous two properties will be ignored.
+    - When this is set to true, the previous two properties (guard.url and guard.jdbc.url) will be ignored.
     - If guard is enabled, then the following PDP-X properties must also be set.
 
 
@@ -73,6 +73,9 @@ Logs Verification
 -----------------
 Checking the logs is straight forward. Check the *$POLICY_HOME/logs/error.log* file for the word "*callRESTfulPDP*" for any exceptions thrown. If they are thrown then there was a problem with the connection.
 You can also check the *$POLICY_HOME/logs/network.log* file for the word "*Indeterminate*" which implies the connection failed or got a non 200 response code.
+
+// TODO add image examples
+
 
 CLI Verification
 ----------------
