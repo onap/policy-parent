@@ -39,7 +39,7 @@ Installing the Archetype Project in Eclipse
 
           .. image:: mat_add_local_catalog.JPG
 
-      **STEP 5.1.2:** Add the ONAP Staging repository archetype-catalog.xml with a description if desired. Click "OK" then "Apply", then "OK".
+      **STEP 5.1.2:** Add the ONAP Staging repository archetype-catalog.xml (https://nexus.onap.org/content/groups/staging/archetype-catalog.xml) with a description if desired. Click "OK" then "Apply", then "OK".
 
           .. image:: mat_nexus_catalog.JPG
 

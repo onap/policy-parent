@@ -13,9 +13,9 @@ This tutorial is intended for developers who would like to run the PDP-D in an E
 
 Starting the PDP-D
 ^^^^^^^^^^^^^^^^^^ 
-For the Amsterdam release, the project directory will look as follows assuming all drools-pdp projects were selected when importing.
+For the Frankfurt release, the project directory will look as follows assuming all drools-pdp projects were selected when importing.
 
-    .. image:: RunEcl_drools_pdp_project.png
+    .. image:: RunEcl_frankfurt_project_explorer.png
 
 Right click on policy-management hover over "Run As" and select "Java Application"
 
@@ -32,11 +32,11 @@ The PDP-D will start running; the console will display output.
 Interacting with the PDP-D
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To interact with the PDP-D, the Telemetry API can be used. A simple GET on the engine will show that the PDP-D is running in Eclipse.
+To interact with the PDP-D, the Telemetry API can be used. A simple GET on the engine will show that the PDP-D is running in Eclipse. Ensure you are using the correct username and password specified for your setup.
 
     .. code-block:: bash
 
-        curl -k --silent --user @1b3rt:31nst31n -X GET https://localhost:9696/policy/pdp/engine/ | python -m json.tool
+        curl -k --silent --user <username>:<password> -X GET https://localhost:9696/policy/pdp/engine/ | python -m json.tool
 
     .. image:: RunEcl_telemetry.png
 
@@ -46,6 +46,8 @@ An HTTP 200 message for the GET request will also appear in the console in Eclip
 
 
 .. seealso:: To create a controller and run a control loop, refer to `Modifying the Release Template  <modAmsterTemplate.html>`_.
+
+.. seealso:: To use other telemetry commands to interact with the PDP-D, refer to `Getting Information  <clsimulation.html#getting-information>`_.
 
 
 End of Document

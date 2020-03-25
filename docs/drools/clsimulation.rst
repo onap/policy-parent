@@ -24,15 +24,27 @@ Use the command:
 
         http --verify=no --default-scheme=https -a <userName>:<password> PUT :9696/policy/pdp/engine/topics/sources/<comm>/<topic>/events @<onsetFile> Content-Type:"text/plain"
 
-where <comm> is either "dmaap", "ueb", or "noop", depending on how the topic has been defined in the
-configuration.   "dmaap" is the default deployed messaging communication infrastructure in an ONAP installation.
-The following is the equivalent "curl" version:
+or the equivalent "curl" version:
 
     .. code-block:: bash
 
         curl --insecure --silent --user <userName>:<password> -X PUT --header "Content-Type: text/plain" --data @<onsetFile> https://localhost:9696/policy/pdp/engine/topics/sources/<comm>/<topic>/events
+ 
+The <comm> is a messaging communication infrastructure in an ONAP installation. Depending on how a topic has been defined in the configuration, the <comm> is either "dmaap", "ueb", or "noop".
+The default messaging communication infrastructure is "dmaap". 
 
-The topic being used is *unauthenticated.DCAE_CL_OUTPUT*, which is subject to change.  The onset file is a file that contains the data to inject as the onset.  The data contained depends on the use case. This is an example for VoLTE:
+The <topic> is a specific topic name used to send and/or receive information. There are two types of topics: 
+1. source topics (Example: dmaap.source.topics=APPC-LCM-WRITE or dmaap.source.topics=APPC-CL)
+2. sink topics (Example: dmaap.sink.topics=APPC-LCM-READ or dmaap.sink.topics=APPC-CL)
+
+You can extract <comm> and <topic> from the following example:
+Example: dmaap.sink.topics=APPC-LCM-READ
+1. <comm>=dmapp
+2. <topic>=APPC-LCM-READ
+
+Currently, the topic being used is *unauthenticated.DCAE_CL_OUTPUT*, which is subject to change.  
+
+The onset file is a json file that contains the data to inject as the onset.  The data contained depends on the use case. This is an example for VoLTE:
 
     .. code-block:: json
        :caption: VoLTE_Sample_Onset
@@ -59,13 +71,13 @@ The topic being used is *unauthenticated.DCAE_CL_OUTPUT*, which is subject to ch
 Getting Information
 -------------------
 
-To get the name of the active controller(s), use:
+To get the name(s) of the active controller(s), use:
 
     .. code-block:: bash
 
         curl --insecure --silent --user <username>:<password> -X GET https://localhost:9696/policy/pdp/engine/controllers | python -m json.tool
 
-To check the facts currently in memory, use the following command.  There should be 1 each of org.onap.policy.controlloop.PapParams and org.onap.policy.controlloop.Params per policy pushed.
+To check the facts currently in memory, use the following command.
 
     .. code-block:: bash
 
@@ -86,7 +98,7 @@ Currently, there are 4 supported simulators: A&AI, SO, vFC, and guard.  When the
 Using the Simulators
 --------------------
 
-To check the status of the simulators, run the command: "*features status*".  If the feature controlloop-utils is enabled, the simulators are being used, otherwise, they are not.
+To check the status of the simulators, run the command: "*features status*".  If the "feature controlloop-utils" is enabled, the simulators are being used, otherwise, they are not.
 
 **Turning on the simulators**
 
@@ -104,12 +116,13 @@ To check the status of the simulators, run the command: "*features status*".  If
 
 **For Junits**
 
-    For Junits, the package *org.onap.policy.simulators* is neeeded.  In the Util class, there are four methods to start the four different simulators: *buildAaiSim()*, *buildSoSim()*, *buildVfcSim()*, and *buildGuardSim()*.  Once the method is called, the simulator should be up and waiting to respond to requests.  To bring down the simulators, call *HttpServletServer.factory.destroy()*.
+    For Junits, the package *org.onap.policy.simulators* is needed.  In the Util class, there are four methods to start the four different simulators: *buildAaiSim()*, *buildSoSim()*, *buildVfcSim()*, and *buildGuardSim()*.  Once the method is called, the simulator should be up and waiting to respond to requests.  To bring down the simulators, call *HttpServletServer.factory.destroy()*.
 
 Responses
----------
+^^^^^^^^^^
 
-**A&AI**
+A&AI
+--------
 
     .. code-block:: bash
        :caption: vnf-GET-response
@@ -611,7 +624,8 @@ Responses
         }
 
 
-**SO**
+SO
+------
 
     .. code-block:: bash
        :caption: SO-response
@@ -633,7 +647,8 @@ Responses
 
 
 
-**vFC**
+vFC
+-------
 
     .. code-block:: bash
        :caption: vFC-POST-response
@@ -671,7 +686,8 @@ Responses
         }
 
 
-**GUARD**
+GUARD
+---------
 
     .. code-block:: bash
        :caption: permit-response

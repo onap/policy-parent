@@ -49,7 +49,10 @@ Follow these steps to get all of the vservers.  This is useful to get a couple o
 
         curl --silent -k -u "<userName>:<password>" --header "X-FromAppId: <fromApp>" --header "Content-Type: application/json" --header "Accept: application/json" --header "X-TransactionId: <requestID>" -X GET https://aai.api.simpledemo.openecomp.org:8443/aai/v11/cloud-infrastructure/cloud-regions | python -m json.tool
 
-    Take note of all the cloud-owner/cloud-region combinations.  In this example, there are 3 combinations: Skynet/CL-MR1, AMIST/AMCR1, and Rackspace/DFW.
+    Take note of all the cloud-owner/cloud-region combinations.  In this example, there are 3 combinations: 
+    1. Skynet/CL-MR1
+    2. AMIST/AMCR1
+    3. Rackspace/DFW.
 
     .. image:: modAAI_getCloudRegions.png
 
