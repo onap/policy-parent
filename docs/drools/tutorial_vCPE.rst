@@ -9,6 +9,7 @@ Tutorial: Testing the vCPE use case in a standalone PDP-D
 .. contents::
     :depth: 3
 
+// TODO update with new vCPE example and tests used in drools-applications
 
 High Level Architecture
 ^^^^^^^^^^^^^^^^^^^^^^^
