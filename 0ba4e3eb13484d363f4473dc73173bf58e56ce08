@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71748458_218af914",
+        "filename": "docs/drools/modAmsterTemplate.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 6006
+      },
+      "writtenOn": "2020-03-26T21:39:52Z",
+      "side": 1,
+      "message": "Is there an archetype with artifact id “archetype-cl-frankfurt” that exists when you add a remote catalog? I\u0027m not really familiar with remote catalogs and where the archetypes are coming from, I need to look into this more.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816af645_c1adb127",
+        "filename": "docs/drools/modAmsterTemplate.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 6006
+      },
+      "writtenOn": "2020-03-26T21:39:52Z",
+      "side": 1,
+      "message": "I\u0027m assuming this will generate the frankfurt.drl when the archetype is setup properly?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
