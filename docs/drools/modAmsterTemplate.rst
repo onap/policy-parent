@@ -9,7 +9,6 @@ Modifying the Release Template
 .. contents::
     :depth: 3
 
-
 This tutorial is intended for Policy Drools Applications developers who would like to test their code using the PDP-D in Eclipse instead of installing in a lab. The example for this tutorial will walk through making a change to the Amsterdam Control Loop Template, building the archetype project, and instantiating a controller with the PDP-D.
 
 Installing the Archetype Project in Eclipse
@@ -39,7 +38,7 @@ Installing the Archetype Project in Eclipse
 
           .. image:: mat_add_local_catalog.JPG
 
-      **STEP 5.1.2:** Add the ONAP Staging repository archetype-catalog.xml with a description if desired. Click "OK" then "Apply", then "OK".
+      **STEP 5.1.2:** Add the ONAP Staging repository archetype-catalog.xml (https://nexus.onap.org/content/groups/staging/archetype-catalog.xml) with a description if desired. Click "OK" then "Apply", then "OK".
 
           .. image:: mat_nexus_catalog.JPG
 
@@ -84,7 +83,9 @@ Installing the Archetype Project in Eclipse
 
 
 Modifying the Amsterdam Template
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+// TODO Modify for frankfurt 
 
 **STEP 1:** Expand the amsterdam project and "src/main/resources". The drl generated from the archetype will be present as follows:
 

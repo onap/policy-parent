@@ -12,6 +12,13 @@ Control Loop Simulation and Injection of Messages Overview
 Telemetry
 ^^^^^^^^^
 The username and password for the Telemetry commands are in *${POLICY_HOME}/config/engine.properties*.
+Note, you can use these telemetry commands if you are testing the PDP-D locally using eclipse.
+
+// TODO Create additional pages that shows 1. standalone pdpd install or 2. using eclipse 
+// Similar to the standalone install: https://wiki.onap.org/pages/viewpage.action?pageId=11929334
+// and running in eclipse https://wiki.onap.org/display/DW/Running+PDP-D+in+Eclipse
+// I think it would be more logical if the installation was prior to showing the telemetry commands
+// In general, add description and output images for various cmds
 
 Injecting messages:
 -------------------
@@ -24,34 +31,47 @@ Use the command:
 
         http --verify=no --default-scheme=https -a <userName>:<password> PUT :9696/policy/pdp/engine/topics/sources/<comm>/<topic>/events @<onsetFile> Content-Type:"text/plain"
 
-where <comm> is either "dmaap", "ueb", or "noop", depending on how the topic has been defined in the
-configuration.   "dmaap" is the default deployed messaging communication infrastructure in an ONAP installation.
-The following is the equivalent "curl" version:
+or the equivalent "curl" version:
 
     .. code-block:: bash
 
         curl --insecure --silent --user <userName>:<password> -X PUT --header "Content-Type: text/plain" --data @<onsetFile> https://localhost:9696/policy/pdp/engine/topics/sources/<comm>/<topic>/events
 
-The topic being used is *unauthenticated.DCAE_CL_OUTPUT*, which is subject to change.  The onset file is a file that contains the data to inject as the onset.  The data contained depends on the use case. This is an example for VoLTE:
+The <comm> is a messaging communication infrastructure in an ONAP installation. Depending on how a topic has been defined in the configuration, the <comm> is either "dmaap", "ueb", or "noop".
+The default messaging communication infrastructure is "dmaap".
+
+The <topic> is a specific topic name used to send and/or receive information. There are two types of topics:
+1. source topics (Example: dmaap.source.topics=APPC-LCM-WRITE or dmaap.source.topics=APPC-CL)
+2. sink topics (Example: dmaap.sink.topics=APPC-LCM-READ or dmaap.sink.topics=APPC-CL)
+
+You can extract <comm> and <topic> from the following example:
+Example: dmaap.sink.topics=APPC-LCM-READ
+1. <comm>=dmapp
+2. <topic>=APPC-LCM-READ
+
+// TODO: find to new default dmaap topic....error using this topic with telemetry cmds
+
+Currently, the topic being used is *unauthenticated.DCAE_CL_OUTPUT*, which is subject to change.
+
+The onset file is a json file that contains the data to inject as the onset.  The data contained depends on the use case. This is an example for vFirewall:
 
     .. code-block:: json
-       :caption: VoLTE_Sample_Onset
+       :caption: vFirewall_Sample_Onset
 
         {
-            "closedLoopControlName": "ControlLoop-VOLTE-2179b738-fd36-4843-a71a-a8c24c70c55b",
-            "closedLoopAlarmStart": 1484677482204798,
-            "closedLoopEventClient": "DCAE.HolmesInstance",
-            "closedLoopEventStatus": "ONSET",
-            "requestID": "97964e10-686e-4790-8c45-bdfa61df770f",
-            "target_type": "VM",
-            "target": "vserver.vserver-name",
-            "AAI": {
-                "vserver.is-closed-loop-disabled": "false",
-                "vserver.vserver-name": "dfw1lb01lb01",
-                "service-instance.service-instance-id" : "vserver-name-16102016-aai3255-data-11-1",
-                "generic-vnf.vnf-id" : "vnf-id-16102016-aai3255-data-11-1",
-                "generic-vnf.vnf-name" : "vnf-name-16102016-aai3255-data-11-1"
-            },
+            "closedLoopControlName": "ControlLoop-vFirewall-d0a1dfc6-94f5-4fd4-a5b5-4630b438850a",
+	        "closedLoopAlarmStart": 1463679805324,
+	        "closedLoopEventClient": "microservice.stringmatcher",
+	        "closedLoopEventStatus": "ONSET",
+	        "requestID": "c7c6a4aa-bb61-4a15-b831-ba1472dd4a65",
+	        "target_type": "VNF",
+	        "target": "generic-vnf.vnf-name",
+	        "AAI": {
+	            "vserver.is-closed-loop-disabled": "false",
+	            "vserver.prov-status": "ACTIVE",
+	            "generic-vnf.vnf-name": "fw0002vm002fw002",
+	            "vserver.vserver-name": "OzVServer"
+	        },
             "from": "DCAE",
             "version": "1.0.2"
         }
@@ -59,13 +79,15 @@ The topic being used is *unauthenticated.DCAE_CL_OUTPUT*, which is subject to ch
 Getting Information
 -------------------
 
-To get the name of the active controller(s), use:
+To get the name(s) of the active controller(s), use:
 
     .. code-block:: bash
 
         curl --insecure --silent --user <username>:<password> -X GET https://localhost:9696/policy/pdp/engine/controllers | python -m json.tool
 
-To check the facts currently in memory, use the following command.  There should be 1 each of org.onap.policy.controlloop.PapParams and org.onap.policy.controlloop.Params per policy pushed.
+        // TODO add cmd to add a controller and provide example images
+
+To check the facts currently in memory, use the following command.
 
     .. code-block:: bash
 
@@ -77,16 +99,28 @@ To get additional information about the controller, use:
 
         curl --insecure --silent --user <username>:<password> -X GET https://localhost:9696/policy/pdp/engine/controllers/<controllerName> | python -m json.tool
 
-
 Simulators
 ^^^^^^^^^^
 
-Currently, there are 4 supported simulators: A&AI, SO, vFC, and guard.  When they are up, they are accessed via localhost on the following ports: A&AI – 6666, SO – 6667, vFC – 6668, and guard – 6669.  They all respond with hard-coded values representing their various success messages except for with certain inputs.  For the A&AI simulator, if the value being queried with a “GET” query is “getFail” the simulator returns an exception message, if the value being queried in a “GET” query is “disableClosedLoop” the simulator returns a response with the value of “is-closed-loop-disabled” set to true, and if the value being queried in a named query is “error” the response from the simulator is A&AI’s failure message.  The other simulator that can return multiple response is the guard simulator, and that returns a deny response if the closed loop control name passed in is “denyGuard”
+Currently, there are 4 supported simulators: A&AI, SO, vFC, and guard.  When they are up, they are accessed via localhost on the following ports:
+
+1. A&AI - localhost:6666
+
+2. SO - localhost:6667
+
+3. vFC - localhost:6668
+
+4. guard - localhost:6669
+
+
+They all respond with hard-coded values representing their various success messages except for with certain inputs.  For the A&AI simulator, if the value being queried with a “GET” query is “getFail” the simulator returns an exception message, if the value being queried in a “GET” query is “disableClosedLoop” the simulator returns a response with the value of “is-closed-loop-disabled” set to true, and if the value being queried in a named query is “error” the response from the simulator is A&AI’s failure message.
+
+The other simulator that can return multiple responses is the guard simulator, and that returns a deny response if the closed loop control name passed in is “denyGuard”.
 
 Using the Simulators
 --------------------
 
-To check the status of the simulators, run the command: "*features status*".  If the feature controlloop-utils is enabled, the simulators are being used, otherwise, they are not.
+To check the status of the simulators, run the command: "*features status*".  If the "feature controlloop-utils" is enabled, the simulators are being used, otherwise, they are not.
 
 **Turning on the simulators**
 
@@ -99,17 +133,20 @@ To check the status of the simulators, run the command: "*features status*".  If
 
     - First, make sure the controller is off by running the command “*policy stop*”.
     - Then turn the feature off with the command “*features disable controlloop-utils*”.
-    - Finally restart the controller by running “*policy start*”.  
+    - Finally restart the controller by running “*policy start*”.
     - Run “*features status*” again and the *feature controlloop-utils* will be **disabled**.
 
 **For Junits**
 
-    For Junits, the package *org.onap.policy.simulators* is neeeded.  In the Util class, there are four methods to start the four different simulators: *buildAaiSim()*, *buildSoSim()*, *buildVfcSim()*, and *buildGuardSim()*.  Once the method is called, the simulator should be up and waiting to respond to requests.  To bring down the simulators, call *HttpServletServer.factory.destroy()*.
+    For Junits, the package *org.onap.policy.simulators* is needed.  In the Util class, there are four methods to start the four different simulators: *buildAaiSim()*, *buildSoSim()*, *buildVfcSim()*, and *buildGuardSim()*.  Once the method is called, the simulator should be up and waiting to respond to requests.  To bring down the simulators, call *HttpServletServer.factory.destroy()*.
 
 Responses
----------
+^^^^^^^^^^
 
-**A&AI**
+// TODO add requests
+
+A&AI
+--------
 
     .. code-block:: bash
        :caption: vnf-GET-response
@@ -611,7 +648,8 @@ Responses
         }
 
 
-**SO**
+SO
+------
 
     .. code-block:: bash
        :caption: SO-response
@@ -633,7 +671,8 @@ Responses
 
 
 
-**vFC**
+vFC
+-------
 
     .. code-block:: bash
        :caption: vFC-POST-response
@@ -671,7 +710,8 @@ Responses
         }
 
 
-**GUARD**
+GUARD
+---------
 
     .. code-block:: bash
        :caption: permit-response
