@@ -8,11 +8,10 @@ PDP-D Tutorials
 .. toctree::
    :maxdepth: 1
 
-   clsimulation.rst 
-   guardpdp.rst 
-   modAAIdata.rst 
-   modAmsterTemplate.rst 
-   runningEclipse.rst 
+   runningPDPD.rst
+   clsimulation.rst
+   guardpdp.rst
+   modAAIdata.rst
    tutorial_cl.rst
    tutorial_vCPE.rst
    tutorial_vDNS.rst

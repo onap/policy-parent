@@ -9,7 +9,6 @@ Tutorial: Testing the vFW flow in a standalone PDP-D
 .. contents::
     :depth: 3
 
-
 High Level Architecture
 ^^^^^^^^^^^^^^^^^^^^^^^
 The vFW flow begins with an onset message that is sent from DCAE notifying the PDP-D that an action needs to be taken on a VNF. Once the PDP-D has inserted the onset into drools memory, rules begin to fire to start processing the onset for the vFW policy that exists in drools memory. If the onset is not enriched with A&AI data, Policy will query A&AI for the VNF data otherwise the PDP-D will get the A&AI data needed directly from the onset. Then an A&AI named query is executed on the source VNF entity from the onset to find the target VNF entity that the PDP-D will take action on. Once the target entity is retrieved from A&AI, a Guard query is executed to determine if the action to be taken is allowed. If Guard returns a permit, the PDP-D will then send an APPC ModifyConfig recipe request to modify pg-streams as specified in the request payload. If APPC is successful then the PDP-D will send a final success notification on the POLICY-CL-MGT topic and gracefully end processing the event.
