@@ -12,6 +12,8 @@ Using the Control Loop PDP-D docker image for standalone testing
 In this tutorial will start a Control Loop PDP-D container to use to test Operational Policies
 without companion components.
 
+// TODO possibly move this to page for standalone installation
+
 **Step 1:** Copy a template *base.conf* with configuration to instantiate the container.
 
     .. code-block:: bash
