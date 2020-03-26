@@ -9,7 +9,6 @@ Tutorial: Testing the vCPE use case in a standalone PDP-D
 .. contents::
     :depth: 3
 
-
 High Level Architecture
 ^^^^^^^^^^^^^^^^^^^^^^^
 The vCPE flow begins with an onset message that is sent from DCAE notifying the PDP-D that an action needs to be taken on a VM/VNF. Once the PDP-D has inserted the onset into drools memory, rules begin to fire to start processing the onset for the vCPE policy that exists in drools memory. If the onset is not enriched with A&AI data, Policy will query A&AI for the VM/VNF data otherwise the PDP-D will get the A&AI data needed directly from the onset. A Guard query is then executed to determine if the action to be taken is allowed. If Guard returns a permit, the PDP-D will then send an APPC Restart recipe request to restart the VM/VNF specified in the request. If APPC is successful then the PDP-D will send a operation success notification on the POLICY-CL-MGT topic. The PDP-D waits for an abatement message to come from DCAE before ending the transaction. Once the abatement is received the PDP-D sends a final success notification and gracefully ends processing the event.
