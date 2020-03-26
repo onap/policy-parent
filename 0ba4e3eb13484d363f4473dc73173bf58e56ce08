@@ -2,6 +2,142 @@
   "comments": [
     {
       "key": {
+        "uuid": "18471346_b1858d0d",
+        "filename": "docs/drools/clsimulation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f075167_f74a8432",
+        "filename": "docs/drools/clsimulation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fcf9254_291c6a77",
+        "filename": "docs/drools/clsimulation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "\"response\" \u003d\u003e \"responses\"",
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b9fddc_0d2aac4b",
+        "filename": "docs/drools/clsimulation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "We also added a simulator for SDNC, on port 6670, but it hasn\u0027t been added to controlloop-utils yet.\n\nSimilarly, we have simulators for APPC, APPC-LCM, and SDNR, all of which rely on the dmaap simulator, though these haven\u0027t been added to utils yet either.\n\nI believe all of these would be relatively easy to add to utils.",
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fee39ea_9f7a9c81",
+        "filename": "docs/drools/clsimulation.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "it also has buildSdnc() and buildDmaap()",
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "447adadf_7dfe6482",
+        "filename": "docs/drools/guardpdp.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "\"test guard\" \u003d\u003e \"test the guard\"",
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b75d5e53_21d03bba",
+        "filename": "docs/drools/guardpdp.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2032a2e3_de7cc4a1",
+        "filename": "docs/drools/guardpdp.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71748458_218af914",
         "filename": "docs/drools/modAmsterTemplate.rst",
         "patchSetId": 3
@@ -25,6 +161,23 @@
     },
     {
       "key": {
+        "uuid": "bd6fcee0_b0346000",
+        "filename": "docs/drools/modAmsterTemplate.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "does the amsterdam project still exist?",
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "816af645_c1adb127",
         "filename": "docs/drools/modAmsterTemplate.rst",
         "patchSetId": 3
@@ -42,6 +195,40 @@
         "endLine": 91,
         "endChar": 0
       },
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f836188_9d2e7548",
+        "filename": "docs/drools/runningEclipse.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "remove references to the release name\n\n\"follows\" \u003d\u003e \"follows,\"",
+      "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c7f146a_8c0a8f4d",
+        "filename": "docs/drools/tutorial_vDNS.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-03-26T22:09:26Z",
+      "side": 1,
+      "message": "trailing space",
       "revId": "0ba4e3eb13484d363f4473dc73173bf58e56ce08",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
