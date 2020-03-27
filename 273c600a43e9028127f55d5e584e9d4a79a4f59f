@@ -67,6 +67,23 @@
       "revId": "273c600a43e9028127f55d5e584e9d4a79a4f59f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dce81162_6ff210b8",
+        "filename": "docs/drools/modAmsterTemplate.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-03-27T16:07:12Z",
+      "side": 1,
+      "message": "maybe rename this file",
+      "revId": "273c600a43e9028127f55d5e584e9d4a79a4f59f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
