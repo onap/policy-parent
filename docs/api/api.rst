@@ -91,6 +91,7 @@ Below is a table containing sample well-formed TOSCA compliant policies.
 
 
 Below is a global API table from where swagger JSON for different types of policy design API can be downloaded.
+
 Global API Table
 --------------------
 .. csv-table::
