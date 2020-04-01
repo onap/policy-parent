@@ -12,6 +12,87 @@ Policy Release Notes
 ..      * one section describing the purpose of this new release.
 ..      * This note must be removed after content has been added.
 
+..      ===========================
+..      * * *    FRANKFURT    * * *
+..      ===========================
+
+Abstract
+========
+
+This document provides the release notes for the Frankfurt release.
+
+Summary
+=======
+
+
+Release Data
+============
+
++--------------------------------------+--------------------------------------+
+| **Policy Project**                   |                                      |
+|                                      |                                      |
++--------------------------------------+--------------------------------------+
+| **Docker images**                    | - policy-api 2.2.0                   |
+|                                      | - policy-pap 2.2.0                   |
+|                                      | - policy-drools-pdp 1.6.0            |
+|                                      | - policy-xacml-pdp 2.2.0             |
+|                                      | - policy-apex-pdp 2.3.0              |
+|                                      | - policy-distribution 2.3.0          |
+|                                      | - policy-pe 1.6.1                    |
+|                                      |                                      |
++--------------------------------------+--------------------------------------+
+| **Release designation**              | 6.0.0 frankfurt                      |
+|                                      |                                      |
++--------------------------------------+--------------------------------------+
+| **Release date**                     | 2020-05-07 (TBD)                     |
+|                                      |                                      |
++--------------------------------------+--------------------------------------+
+
+
+New features
+------------
+
+
+
+Known Limitations, Issues and Workarounds
+=========================================
+
+System Limitations
+------------------
+
+
+Known Vulnerabilities
+---------------------
+
+
+Workarounds
+-----------
+
+
+Security Notes
+--------------
+
+
+References
+==========
+
+For more information on the ONAP Frankfurt release, please see:
+
+#. `ONAP Home Page`_
+#. `ONAP Documentation`_
+#. `ONAP Release Downloads`_
+#. `ONAP Wiki Page`_
+
+
+.. _`ONAP Home Page`: https://www.onap.org
+.. _`ONAP Wiki Page`: https://wiki.onap.org
+.. _`ONAP Documentation`: https://docs.onap.org
+.. _`ONAP Release Downloads`: https://git.onap.org
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+
 ..      ==========================
 ..      * * *     EL ALTO    * * *
 ..      ==========================
