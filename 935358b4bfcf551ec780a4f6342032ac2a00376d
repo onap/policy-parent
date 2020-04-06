@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a902f60a_f4c88184",
+        "filename": "docs/apex/APEX-MyFirstPolicyExample.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-06T15:54:51Z",
+      "side": 1,
+      "message": "question: is this all new content, or was it copied from somewhere?  (in other words, how much attention is needed in reviewing this?)",
+      "revId": "935358b4bfcf551ec780a4f6342032ac2a00376d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c66a8583_1ca68829",
+        "filename": "docs/apex/APEX-PCVS-Example.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-06T15:54:51Z",
+      "side": 1,
+      "message": "question: is this all new content, or was it copied from somewhere?",
+      "revId": "935358b4bfcf551ec780a4f6342032ac2a00376d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
