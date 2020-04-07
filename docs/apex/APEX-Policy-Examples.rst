@@ -70,8 +70,7 @@ Decision Maker
 
          .. container:: ulist
 
-            -  `Decision Maker on APEX
-               site <https://ericsson.github.io/apex-docs/modules/examples/examples-decisionmaker/index.html>`__
+            -  `Decision Maker on APEX site <apex-DecisionMakerExample>`
 
 .. container::
    :name: footer
