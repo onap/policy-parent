@@ -1,4 +1,5 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
+.. _release_notes:
 
 Policy Release Notes
 ====================
@@ -752,9 +753,9 @@ The Amsterdam release continued evolving the design driven architecture of and f
     - For vLBS Use Case, the following steps are required to setup the service instance:
        	-  Create a Service Instance via VID.
         -  Create a VNF Instance via VID.
-        -  Preload SDNC with topology data used for the actual VNF instantiation (both base and DNS scaling modules). NOTE: you may want to set “vlb_name_0” in the base VF module data to something unique. This is the vLB server name that DCAE will pass to Policy during closed loop. If the same name is used multiple times, the Policy name-query to AAI will show multiple entries, one for each occurrence of that vLB VM name in the OpenStack zone. Note that this is not a limitation, typically server names in a domain are supposed to be unique.
-        -  Instantiate the base VF module (vLB, vPacketGen, and one vDNS) via VID. NOTE: The name of the VF module MUST start with ``Vfmodule_``. The same name MUST appear in the SDNC preload of the base VF module topology. We’ll relax this naming requirement for Beijing Release.
-        -  Run heatbridge from the Robot VM using ``Vfmodule_`` … as stack name (it is the actual stack name in OpenStack)
+        -  Preload SDNC with topology data used for the actual VNF instantiation (both base and DNS scaling modules). NOTE: you may want to set "vlb_name_0" in the base VF module data to something unique. This is the vLB server name that DCAE will pass to Policy during closed loop. If the same name is used multiple times, the Policy name-query to AAI will show multiple entries, one for each occurrence of that vLB VM name in the OpenStack zone. Note that this is not a limitation, typically server names in a domain are supposed to be unique.
+        -  Instantiate the base VF module (vLB, vPacketGen, and one vDNS) via VID. NOTE: The name of the VF module MUST start with ``Vfmodule_``. The same name MUST appear in the SDNC preload of the base VF module topology. We'll relax this naming requirement for Beijing Release.
+        -  Run heatbridge from the Robot VM using ``Vfmodule_`` _ as stack name (it is the actual stack name in OpenStack)
         -  Populate AAI with a dummy VF module for vDNS scaling.
 
 **Security Issues**
