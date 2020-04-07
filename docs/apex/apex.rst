@@ -13,3 +13,4 @@ Policy APEX PDP Engine
    APEX-Developer-Guide.rst
    APEX-Install-Guide.rst
    APEX-OnapPf-Guide.rst
+   APEX-Policy-Examples.rst
