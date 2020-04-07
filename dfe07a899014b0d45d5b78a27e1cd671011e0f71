@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f0ae404_8bec2e0a",
+        "filename": "docs/apex/APEX-DecisionMakerExample.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-07T15:07:53Z",
+      "side": 1,
+      "message": "I think these code artifacts are in the code, why not just reference the location in Github rather than pasting in the code here.",
+      "revId": "dfe07a899014b0d45d5b78a27e1cd671011e0f71",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
