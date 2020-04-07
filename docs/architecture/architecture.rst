@@ -32,7 +32,7 @@ benefit from the ONAP policy Framework because they can use the capabilities of 
 their policies rather than embedding the decision making in their applications.
 
 The Policy Framework is deployment agnostic, it manages Policy Execution (in PDPs) and Enforcement (in PEPs) regardless
-of how the PDPs and PEPs are deployed. This allows policy execution and enforcement can be deployed in a manner that
+of how the PDPs and PEPs are deployed. This allows policy execution and enforcement to be deployed in a manner that
 meets the performance requirements of a given application or use case. In one deployment, policy execution could be
 deployed in a separate executing entity in a Docker container. In another, policy execution could be co-deployed with
 an application to increase performance. An example of co-deployment is the Drools PDP Control Loop image, which is a
@@ -41,23 +41,24 @@ Docker image that combines the ONAP Drools use case application and dependencies
 The ONAP Policy Framework architecture separates policies from the platform that is supporting them. The framework
 supports development, deployment, and execution of any type of policy in ONAP. The Policy Framework is metadata (model)
 driven so that policy development, deployment, and execution is as flexible as possible and can support modern rapid
-development ways of working such as DevOps. A metadata driven approach also allows the amount of programmed support
+development ways of working such as `DevOps
+<https://en.wikipedia.org/wiki/DevOps>`__. A metadata driven approach also allows the amount of programmed support
 required for policies to be reduced or ideally eliminated.
 
 We have identified five capabilities as being essential for the framework:
 
-1. Most obviously, the framework must be capable of being triggered by an event or invoked, and making decisions at run
+#. Most obviously, the framework must be capable of being triggered by an event or invoked, and making decisions at run
    time.
 
-2. It must be deployment agnostic; capable of managing policies for various Policy Decision Points (PDPs) or policy
+#. It must be deployment agnostic; capable of managing policies for various Policy Decision Points (PDPs) or policy
    engines.
 
-3. It must be metadata driven, allowing policies to be deployed, modified, upgraded, and removed as the system executes.
+#. It must be metadata driven, allowing policies to be deployed, modified, upgraded, and removed as the system executes.
 
-4. It must provide a flexible model driven policy design approach for policy type programming and specification of
+#. It must provide a flexible model driven policy design approach for policy type programming and specification of
    policies.
 
-5. It must be extensible, allowing straightforward integration of new PDPs, policy formats, and policy development
+#. It must be extensible, allowing straightforward integration of new PDPs, policy formats, and policy development
    environments.
 
 Another important aim of the architecture of a model driven policy framework is that it enables much more flexible
@@ -66,20 +67,43 @@ policy specification. The ONAP Policy Framework complies with the `TOSCA
 approach for policies, see the :ref:`TOSCA Policy Primer <tosca-label>` for more information on how policies are modeled
 in TOSCA.
 
-1. A Policy Type is a general implementation of a policy for a feature. For example, a Policy Type could be written to
-   manage Service Level Agreements for VPNs. The Policy Type is designed by a domain expert, who specifies the
-   parameters, triggers, and actions that the Policy Type will have. The implementation (the logic, rules, and tasks of
-   the Policy Type) is implemented by a skilled policy developer in consultation with domain experts.
+ 1. A *Policy Type* describes the properties, targets, and triggers that the policy for a feature can have. A Policy type is
+    implementation independent. It is the metadata that specifies:
 
-   a. For example, the VPN Policy Type is used to create VPN policies for a bank network, a car dealership network, or a
-      university with many campuses.
+  - the *configuration* data that the policy can take. The Policy Type describes each property that a policy of a
+    given type can take. The Policy Type describes each property and what its type is. A Policy Type definition also
+    allows the default value, optionality, and the ranges of properties to be defined.
 
-   b. In ONAP, specific ONAP Policy Types are used to create specific policies that drive the ONAP Platform and
-      Components.
+  - the *targets* such as network element types, functions, services, or resources on which a policy of the given type
+    can act.
 
-2. A Policy is created by configuring a Policy Type with parameters. For example, the SLA values in the car dealership
-   VPN policy for a particular dealership are configured with values appropriate for the expected level of activity in
-   that dealership.
+  - the *triggers* such as the event type, filtered event, scheduled trigger, or conditions that can activate a policy
+    of the given type.
+
+  Policy Types are hierarchical, A Policy Type can inherit from a parent Policy Type, inheriting the properties, targets,
+  and triggers of its parent. Policy Types are developed by domain experts in consultation with the developers that
+  implement the logic and rules for the Policy Type.
+
+ 2. A *Policy* is defined using a Policy Type. The Policy defines:
+
+  - the values for each property of the policy type
+  - the specific targets (network elements, functions, services, resources) on which this policy will act
+  - the specific triggers that trigger this policy.
+
+ 3. A *Policy Type Implementation* or *Raw Policy*, is the logic that implements the policy. It is implemented by a
+    skilled policy developer in consultation with domain experts. The implementation has software that reads the Policy
+    Type and parses the incoming confiuration properties. The software has domain logic that is triggered when one of the
+    triggers described in the Policy Type occurs. The software logic executes and acts on the targets specified in the
+    Policy Type.
+
+
+For example, a Policy Type could be written to describe how to manage Service Level Agreements for VPNs. The VPN Policy
+Type can be used to create VPN policies for a bank network, a car dealership network, or a university with many campuses.
+A VPN Policy is created by specifying values for the properties, triggers, and targets specifed in VPN Policy Type.
+The SLA values in the car dealership VPN policy for a particular dealership are configured with values appropriate for
+the expected level of activity in that dealership.
+
+In ONAP, specific ONAP Policy Types are used to create specific policies that drive the ONAP Platform and Components.
 
 For more detailed information on designing Policy Types and developing an implementation for that policy type, see
 :ref:`Policy Design and Development <design-label>`.
