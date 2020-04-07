@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "012f2706_6c26f2fe",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-07T12:57:33Z",
+      "side": 1,
+      "message": "I assume \"#\" is correct.  Should lines 70, 87, etc., be changed, too?",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "583848d5_0025607d",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-07T12:57:33Z",
+      "side": 1,
+      "message": "perhaps combine the sentences on 73 \u0026 74?",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efb4e723_baa6a628",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-07T12:57:33Z",
+      "side": 1,
+      "message": "\"executed\" \u003d\u003e \"executes\" or \"takes\"",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1c34d11_9c44fad4",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-07T12:57:33Z",
+      "side": 1,
+      "message": "\"fromt he\" \u003d\u003e \"from the\"",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e495dfc_5c2288c6",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-07T12:57:33Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15cf50b7_43d98ef0",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-07T12:57:33Z",
+      "side": 1,
+      "message": "\"realership\" \u003d\u003e \"dealership\"",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
