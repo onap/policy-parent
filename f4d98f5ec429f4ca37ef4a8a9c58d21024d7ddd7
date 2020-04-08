@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9298234c_7abab95e",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-08T09:50:26Z",
+      "side": 1,
+      "message": "It means autonumber a list but at 70, it carries on the numbering if you use # so I think I\u0027ll just go back to hard coded numbering.",
+      "parentUuid": "012f2706_6c26f2fe",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "583848d5_0025607d",
         "filename": "docs/architecture/architecture.rst",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a75b6b68_48635fed",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-08T09:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "583848d5_0025607d",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4125156b_294057e8",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-08T09:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efb4e723_baa6a628",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1c34d11_9c44fad4",
         "filename": "docs/architecture/architecture.rst",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1897175_fbeee99e",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-08T09:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c34d11_9c44fad4",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "bcb1e6b2_ba58349c",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-08T09:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e495dfc_5c2288c6",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15cf50b7_43d98ef0",
         "filename": "docs/architecture/architecture.rst",
         "patchSetId": 2
@@ -101,6 +191,24 @@
       "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fef4347_c59e1151",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-08T09:50:26Z",
+      "side": 1,
+      "message": "Nice catch (It could have been a small town where the car dealership owner is also a real estate agent!!!!)",
+      "parentUuid": "15cf50b7_43d98ef0",
+      "revId": "f4d98f5ec429f4ca37ef4a8a9c58d21024d7ddd7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82da2b53_c4f8e34e",
+        "filename": "docs/conf.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-08T09:50:26Z",
+      "side": 1,
+      "message": "This file is mentioned in the .gitignore so it should not be under source control.",
+      "revId": "cef04d48eab5e12b2e35c888ca70a8d1f9aba6b8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
