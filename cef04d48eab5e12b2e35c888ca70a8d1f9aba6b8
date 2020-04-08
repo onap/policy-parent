@@ -16,6 +16,24 @@
       "revId": "cef04d48eab5e12b2e35c888ca70a8d1f9aba6b8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71eba167_e90b57d2",
+        "filename": "docs/conf.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-08T14:00:45Z",
+      "side": 1,
+      "message": "Turns out we DO need this file in order for the repo to build.",
+      "parentUuid": "82da2b53_c4f8e34e",
+      "revId": "cef04d48eab5e12b2e35c888ca70a8d1f9aba6b8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
