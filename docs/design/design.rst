@@ -58,16 +58,19 @@ integration of *PolicyTypeImpl* implementation is outside the scope of the ONAP 
 The *PolicyType* definitions and implementations listed below are preloaded and are always available for use in the
 Policy Framework.
 
-====================================== ===============================================================================
-**Policy Type**                        **Description**
-====================================== ===============================================================================
-onap.policies.Monitoring               Overarching model that supports Policy driven DCAE microservice components used
-                                       in a Control Loops
-onap.policies.controlloop.Operational  Used to support actor/action operational policies for control loops
-onap.policies.controlloop.Guard        Control Loop guard policies for policing control loops
-onap.policies.controlloop.Coordination Control Loop Coordination policies to assist in coordinating multiple control
-                                       loops at runtime
-====================================== ===============================================================================
+=======================================  ===============================================================================
+**Policy Type**                          **Description**
+=======================================  ===============================================================================
+onap.policies.Monitoring                 Overarching model that supports Policy driven DCAE microservice components used
+                                         in a Control Loops
+onap.policies.controlloop.Operational    Used to support actor/action legacy operational policies for control loops
+onap.policies.controlloop.Guard          Control Loop guard policies for policing control loops
+onap.policies.controlloop.Coordination   Control Loop Coordination policies to assist in coordinating multiple control
+                                         loops at runtime
+onap.policies.controlloop.common.Drools  Used to support actor/action legacy operational policies for control loops
+onap.policies.native.drools.Controller   Used to define PDP-D controllers
+onap.policies.native.drools.Artifact     Used to associate a PDP-D controller with an application's software
+=======================================  ===============================================================================
 
 2.1 Policy Type: onap.policies.Monitoring
 -----------------------------------------
@@ -149,7 +152,7 @@ implementations for this policy type
 2. Implementations using APEX to support Control Loops.
 
 .. note::
-  For Dublin, this policy type will ONLY be used for the Policy Framework to distinguish the policy type as operational.
+  For Frankfurt, this policy type will ONLY be used for the Policy Framework to distinguish the policy type as operational.
 
 .. code-block:: yaml
   :caption: Base Policy Type definition for onap.policies.controlloop.Operational
@@ -212,6 +215,38 @@ Policy Framework using the Policy Type Design API.
 Guard policy type definitions for *FrequencyLimiter*, *BlackList*, and  *MinMax* are available in the `ONAP
 policy-models gerrit repository
 <https://github.com/onap/policy-models/tree/master/models-examples/src/main/resources/policytypes>`__.
+
+2.4 Policy Type: onap.policies.controlloop.common.Drools
+--------------------------------------------------------
+
+This policy type supports composition of Tosca-compliant Operational Policies for the PDP-D.  The
+`onap.policies.controlloop.common.Drools policy type specification
+<https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.common.Drools.yaml>`__ is preferred for composition of operational
+policies over its `onap.policies.controlloop.Operational policy type specification
+<https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.Operational.yaml>`__ precursor, which eventually will be deprecated.
+Both policy types are functionally equivalent.
+
+2.5 Policy Type: onap.policies.native.drools.Controller
+-------------------------------------------------------
+
+This policy type supports creation of native PDP-D controllers via policy.   A controller is an abstraction on
+the PDP-D that groups communication channels, message mapping rules, and
+any other arbitrary configuration data to realize an application.
+
+Policies of this type are composed against the
+`onap.policies.native.drools.Controller policy type specification
+<https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.native.Drools.yaml>`__ specification.
+
+2.6 Policy Type: onap.policies.native.drools.Artifact
+-------------------------------------------------------
+
+This policy type supports the dynamic association of a native PDP-D controller with rules and dependent
+java libraries.   This policy type used in conjuction with the onap.policies.native.drools.Controller
+type are used to deploy a brand new PDP-D application on a live PDP-D.
+
+Policies of this type are composed against the
+`onap.policies.native.drools.Controller policy type specification
+<https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.native.Drools.yaml>`__ specification.
 
 3 PDP Deployment and Registration with PAP
 ==========================================
