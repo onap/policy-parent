@@ -2,13 +2,13 @@
 
 title Policy Type Design
 
-participant DCAE_DS <<API_User >>
+participant PolicyTypeDesignClient <<API_User >>
 box "PolicyDesign" #LightBlue
   participant PolicyTypeDesign
 end box
 autonumber
 
-DCAE_DS --> PolicyTypeDesign : Get Policy Type Reference and Metadata
+PolicyTypeDesignClient --> PolicyTypeDesign : Get Policy Type Reference and Metadata
 PolicyTypeDesign --> PolicyDB : Get Policy Type Metadata\nand Artifact
 
 alt Policy Type Artifact exists
@@ -17,12 +17,12 @@ else Policy Artifact does not exist
   PolicyTypeDesign --> DCAE_DS : Return New Policy Type Reference and Empty Metadata
 end
 
-DCAE_DS --> DCAE_DS : Policy Type Editing and Generation Session
+PolicyTypeDesignClient --> PolicyTypeDesignClient : Policy Type Editing and Generation Session
 
-activate DCAE_DS
-deactivate DCAE_DS
+activate PolicyTypeDesignClient
+deactivate PolicyTypeDesignClient
 
-DCAE_DS --> PolicyTypeDesign : Create Policy Type and Metadata
-PolicyTypeDesign --> DCAE_DS : Policy Generation Result
+PolicyTypeDesignClient --> PolicyTypeDesign : Create Policy Type and Metadata
+PolicyTypeDesign --> PolicyTypeDesignClient : Policy Generation Result
 
 @enduml
