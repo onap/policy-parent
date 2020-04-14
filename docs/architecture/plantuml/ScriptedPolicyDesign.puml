@@ -3,7 +3,6 @@
 title Scripted Policy Design
 
 participant Script <<API_User >>
-collections DirectiveFile
 
 box "PolicyDesign" #LightBlue
   participant PolicyTypeDesign
@@ -15,12 +14,11 @@ autonumber
 activate Script
 
 loop
-  Script --> DirectiveFile : Read next directive from script file
-  Script --> PolicyTypeDesign : Read Policy Type for directive
-  Script --> Script : Prepare TOSCA Policy for coreation
-  Script --> Script : Read parameters from script file directive
+  Script --> PolicyTypeDesign : Read Policy Type using command
+  Script --> Script : Prepare TOSCA Policy for creation
+  Script --> Script : Parse parameters from retrieved policy type
   Script --> Script : Set Parameters in TOSCA Policy being prepared
-  Script --> PolicyDesign : Create Policy
+  Script --> PolicyDesign : Create Policy using command
   PolicyDesign --> Script : Policy creation result
 end
 

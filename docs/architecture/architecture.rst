@@ -116,7 +116,7 @@ The Policy Type Implementation is developed that can configure the maximum downt
 can receive a trigger from the analytics system when the maximum downtime is breached, and that can either request more
 resources, report an issue to a trouble ticketing system, and can log a breach.
 
-VPN Policies are created by specifying values for the properties, triggers, and targets specifed in VPN Policy Type.
+VPN Policies are created by specifying values for the properties, triggers, and targets specified in VPN Policy Type.
 
 In the case of the bank network, the *maximumDowntime* threshold is specified as 5 minutes downtime per year and the
 *mitigationStrategy* is defined as *allocateMoreResources*, and the target is specified as being the bank's VPN service
@@ -234,37 +234,34 @@ The UML class diagram above shows thePolicy Framework Object Model.
 2.2 Policy Design Architecture
 ------------------------------
 
-This section describes the architecture of the model driven system used to develop policy types and to create concrete
+This section describes the architecture of the model driven system used to develop policy types and to create
 policies using policy types. The output of Policy Design is deployment-ready artifacts and Policy metadata in the Policy
 Framework database.
 
-Policies that are expressed via natural language or a model require some development work ahead of time for them to be
-translated into concrete runtime policies. Some Policy Domains will be set up and available in the platform during
+Policy types that are expressed via natural language or a model require an implementation that allows them to be
+translated into runtime policies. Some Policy Type implementations are set up and available in the platform during
 startup such as Control Loop Operational Policy Models, OOF placement Models, DCAE microservice models. Policy type
-implementation logic development is done by an experienced developer.
+implementations can also be loaded and deployed at run time.
 
 2.2.1 Policy Type Design
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Policy Type Design is the task of creating policy types that capture the generic and vendor independent aspects of a
-policy for a particular domain use case. The policy type implementation specifies the model information, rules, and
-tasks that a policy type requires to generate concrete policies.
+policy for a particular domain use case.
 
-All policy types are specified in a TOSCA service template. Once policy types are defined and created in the system,
+All policy types are specified in TOSCA service templates. Once policy types are defined and created in the system,
 *PolicyDevelopment* manages them and uses them to allow policies to be created from these policy types in a uniform
 way regardless of the domain that the policy type is addressing or the PDP technology that will execute the policy.
 
 A *PolicyTypeImpl* is developed for a policy type for a certain type of PDP (for example XACML oriented for decision
 policies, Drools rules or Apex state machines oriented for ECA policies). While a policy type is implementation
 independent, a policy type implementation for a policy type is specific for the technology of the PDP on which
-policies that use that policy type implementation will execute. Further, the design environment and tool chain for
-a policy type implementation is specific to the technology of the PDP on which policies that use that policy type
-implementation will use.
-
-The *PolicyTypeImpl* implementation (or raw policy) is the specification of the specific rules or tasks, the flow of
-the policy, its internal states and data structures and other relevant information. *A PolicyTypeImpl* can be specific
-to a particular policy type, it can be more general, providing the implementation of a class of policy types, or
-the same policy type may have many implementations.
+policies that use that policy type implementation will execute. A Policy Type may have many implementations. A
+*PolicyTypeImpl* is the specification of the specific rules or tasks, the flow of the policy, its internal states
+and data structures and other relevant information. A *PolicyTypeImpl* can be specific to a particular policy type
+or it can be more general, providing the implementation of a class of policy types. Further, the design environment
+and tool chain for implementing implementations of policy types is specific to the technology of the PDP on which
+the implementation will run.
 
 *PolicyDevelopment* provides the RESTful :ref:`Policy Design API <design-label>`, which allows other components to query
 policy types, Those components can then create policies that specify values for the properties, triggers, and targets
@@ -284,16 +281,14 @@ It is possible to generate policy types using MDD (Model Driven Development) tec
 using a DSL (Domain Specific Language) or a policy specification environment for a particular application domain. For
 example, policy types for specifying SLAs could be expressed in a SLA DSL and policy types for managing SON features
 could be generated from a visual SON management tool. The ONAP Policy framework provides an API that allows tool chains
-to create policy types. SDC uses this approach for generating Policy Types in the Policy Framework, see the
+to create policy types. DCAE uses this approach for generating Policy Types in the Policy Framework, see the
 :ref:`Policy Design and Development <design-label>` page.
 
-The SDC GUI supports several types of policies that can be captured at design time. DCAE micro service configuration
-policies can be onboarded via the DCAE-DS (DCAE Design Studio).
-
+DCAE micro service configuration policies can be onboarded via the DCAE-DS (DCAE Design Studio).
 
 .. image:: images/PolicyTypeDesign.svg
 
-The GUI implementation in another ONAP component such as SDC DCAE-DS uses the *API_User* API to create and edit ONAP
+The GUI implementation in another ONAP component such as DCAE-DS uses the *API_User* API to create and edit ONAP
 policy types.
 
 2.2.1.2 Programming Policy Type Implementations
@@ -321,15 +316,21 @@ file and posted over the policy design API described on the :ref:`Policy Design 
 A number of mechanisms for policy creation are supported in ONAP. The process in *PolicyDevelopment* for creating a
 policy is the same for all mechanisms. The most general mechanism for creating a policy is using the RESTful
 *Policy Design API*, which provides a full interface to the policy creation support of *PolicyDevelopment*. This API may
-be exercised directly using utilities such as *curl*. *PolicyDevelopment* provides a command line tool that is a loose
-wrapper around the API. It also provides a general purpose Policy GUI in the ONAP Portal for policy creation, which
-again is a general purpose wrapper around the policy creation API. The Policy GUI can interpret any TOSCA Model that has
-been loaded into it and flexibly presents a GUI for a user to create policies from. The development of these mechanisms
-will be phased over a number of ONAP releases.
+be exercised directly using utilities such as *curl*.
+
+In future releases, the Policy Framework may provide a command line tool that will be a loose wrapper around the API. It
+may also provide a general purpose Policy GUI in the ONAP Portal for policy creation, which again would be a general
+purpose wrapper around the policy creation API. The Policy GUI would interpret any TOSCA Model that has been loaded into
+it and flexibly presents a GUI for a user to create policies from. The development of these mechanisms will be phased
+over a number of ONAP releases.
 
 A number of ONAP components use policy in manners which are specific to their particular needs. The manner in which the
 policy creation process is triggered and the way in which information required to create a policy is specified and
 accessed is specialized for these ONAP components.
+
+For example, *CLAMP* provides a GUI for creation of Control Loop policies, which reads the Policy Type associated
+with a control loop, presents the properties as fields in its GUI, and creates a policy using the property values entered
+by the user.
 
 The following subsections outline the mechanisms for policy creation and modification supported by the ONAP Policy
 Framework.
@@ -348,7 +349,7 @@ An *API_User* first gets a reference to and the metadata for the Policy type for
 *API_User* then asks for a reference and the metadata for the policy. *PolicyDevelopment* looks up the policy in the
 database. If the policy already exists, *PolicyDevelopment* reads the artifact and returns the reference of the existing
 policy to the *API_User* with the metadata for the existing policy. If the policy does not exist, *PolicyDevelopment*
-creates and new reference and metadata and returns that to the *API_User*.
+informs the *API_User*.
 
 The *API_User* may now proceed with a policy specification session, where the parameters are set for the policy using
 the policy type specification. Once the *API_User* is happy that the policy is completely and correctly specified, it
@@ -394,10 +395,10 @@ using TOSCA Policy Types.
 
 .. image:: images/ScriptedPolicyDesign.svg
 
-One straightforward way of generating policies from Policy types is to use directives specified in a script file. The
-command line utility is an *API_User*. The script reads directives from a file. For each directive, it reads the policy
-type using the Policy Type API, and uses the parameters of the directive to prepare a TOSCA Policy. It then uses the
-Policy API to create the policy.
+One straightforward way of generating policies from Policy types is to use commands specified in a script file. A
+command line utility such as *curl* is an *API_User*. Commands read policy types using the Policy Type API, parse the
+policy type and uses the properties of the policy type to prepare a TOSCA Policy. It then issues further commands to use
+the Policy API to create policies.
 
 2.2.3 Policy Design Process
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

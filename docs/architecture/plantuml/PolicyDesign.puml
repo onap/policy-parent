@@ -19,7 +19,7 @@ PolicyDesign --> PolicyDB : Get Policy Metadata
 alt Policy Artifact exists
   PolicyDesign --> API_User : Return Policy Reference and Metadata
 else Policy Artifact does not exist
-  PolicyDesign --> API_User : Return New Policy Reference and Empty Metadata
+  PolicyDesign --> API_User : Return Policy Not Found
 end
 
 API_User --> API_User : Policy Editing and Generation Session\nto get Policy Parameters from user
