@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ba5957e_55b68338",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-14T15:22:10Z",
+      "side": 1,
+      "message": "Well it is the application but would it not also contain the Drools rules/XACML? In the case of apex it is the entire policy model.\n\nLet me think about it and I\u0027ll come back in another review on it.",
+      "parentUuid": "1a39b75f_703182aa",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 20
+      },
+      "revId": "66960c8f0aea666145265a2521f7bf9888e93b72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06d4705e_2ce8b12e",
         "filename": "docs/architecture/architecture.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-14T13:43:17Z",
       "side": 1,
       "message": "Not sure this is what DCAE does, I would rather use a better example. Perhaps Optimization or Operational policy types are better candidates.",
+      "range": {
+        "startLine": 284,
+        "startChar": 24,
+        "endLine": 284,
+        "endChar": 29
+      },
+      "revId": "66960c8f0aea666145265a2521f7bf9888e93b72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d0b08cc_95161821",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-14T15:22:10Z",
+      "side": 1,
+      "message": "It\u0027s probably better not to refer to an actual user of the API and just leave it as an API being available for tool chains to use.",
+      "parentUuid": "06d4705e_2ce8b12e",
       "range": {
         "startLine": 284,
         "startChar": 24,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "485bdbf7_9beaa4d8",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-14T15:22:10Z",
+      "side": 1,
+      "message": "OK, I\u0027ll delete this.",
+      "parentUuid": "a386abc8_6a998a62",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 96
+      },
+      "revId": "66960c8f0aea666145265a2521f7bf9888e93b72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7813e696_ef707996",
         "filename": "docs/architecture/architecture.rst",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-04-14T13:43:17Z",
       "side": 1,
       "message": "Let\u0027s use CLAMP instead??",
+      "range": {
+        "startLine": 291,
+        "startChar": 57,
+        "endLine": 291,
+        "endChar": 65
+      },
+      "revId": "66960c8f0aea666145265a2521f7bf9888e93b72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d505ce07_de32931d",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-14T15:22:10Z",
+      "side": 1,
+      "message": "CLAMP does this for policies, not policy types. I\u0027ll change this to be a \"possible\" GUI application.",
+      "parentUuid": "7813e696_ef707996",
       "range": {
         "startLine": 291,
         "startChar": 57,
