@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a39b75f_703182aa",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-04-14T13:43:17Z",
+      "side": 1,
+      "message": "This is essentially an application, which is really the terminology I have been using and what something like drools-applications and xacml applications are. Wondering if we can bridge that gap in terminology somehow?",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 20
+      },
+      "revId": "66960c8f0aea666145265a2521f7bf9888e93b72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d4705e_2ce8b12e",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-04-14T13:43:17Z",
+      "side": 1,
+      "message": "Not sure this is what DCAE does, I would rather use a better example. Perhaps Optimization or Operational policy types are better candidates.",
+      "range": {
+        "startLine": 284,
+        "startChar": 24,
+        "endLine": 284,
+        "endChar": 29
+      },
+      "revId": "66960c8f0aea666145265a2521f7bf9888e93b72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a386abc8_6a998a62",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-04-14T13:43:17Z",
+      "side": 1,
+      "message": "This simply isn\u0027t true anymore, wondering if we remove it. DCAE-MOD (which is a POC) will eventually have policy integrated in it. But I doubt they will take advantage of our many features.",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 96
+      },
+      "revId": "66960c8f0aea666145265a2521f7bf9888e93b72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7813e696_ef707996",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-04-14T13:43:17Z",
+      "side": 1,
+      "message": "Let\u0027s use CLAMP instead??",
+      "range": {
+        "startLine": 291,
+        "startChar": 57,
+        "endLine": 291,
+        "endChar": 65
+      },
+      "revId": "66960c8f0aea666145265a2521f7bf9888e93b72",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
