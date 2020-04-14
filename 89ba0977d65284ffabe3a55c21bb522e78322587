@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a575e683_ec3712cf",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-04-14T12:24:23Z",
+      "side": 1,
+      "message": "are you folks preferring to use github links vs gerrit links?",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 131
+      },
+      "revId": "89ba0977d65284ffabe3a55c21bb522e78322587",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
