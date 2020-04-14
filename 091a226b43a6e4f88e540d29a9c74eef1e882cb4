@@ -16,6 +16,24 @@
       "revId": "091a226b43a6e4f88e540d29a9c74eef1e882cb4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ea3f15c_048da2ed",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-14T10:14:11Z",
+      "side": 1,
+      "message": "I\u0027ll reword this in the next review.",
+      "parentUuid": "2270981f_e1bbbd8d",
+      "revId": "091a226b43a6e4f88e540d29a9c74eef1e882cb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
