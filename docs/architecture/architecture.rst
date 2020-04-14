@@ -93,7 +93,7 @@ in TOSCA.
 
  3. A *Policy Type Implementation* or *Raw Policy*, is the logic that implements the policy. It is implemented by a
     skilled policy developer in consultation with domain experts. The implementation has software that reads the Policy
-    Type and parses the incoming confiuration properties. The software has domain logic that is triggered when one of the
+    Type and parses the incoming configuration properties. The software has domain logic that is triggered when one of the
     triggers described in the Policy Type occurs. The software logic executes and acts on the targets specified in the
     Policy Type.
 
@@ -152,11 +152,11 @@ are executing correctly, and that the state and status of policies is monitored.
 running in the ONAP system and is responsible for making policy decisions and for managing the administrative state of
 the PDPs as directed by \ *PolicyAdministration.*
 
-*PolicyDevelopment* creates policy artifacts and supporting information in the policy database. \ *PolicyAdministration*
-reads those artifacts and the supporting information from the policy database whilst deploying policy artifacts. Once
-the policy artifacts are deployed, *PolicyAdministration* handles the run-time management of the PDPs on which the
-policies are running. *PolicyDevelopment* interacts with ONAP design time components, and has no programmatic interface
-with *PolicyAdministration*, *PolicyExecution* or any other run-time ONAP components.
+*PolicyDevelopment* provides APIs that allow creation of policy artifacts and supporting information in the policy
+database. *PolicyAdministration* reads those artifacts and the supporting information from the policy database whilst
+deploying policy artifacts. Once the policy artifacts are deployed, *PolicyAdministration* handles the run-time
+management of the PDPs on which the policies are running. *PolicyDevelopment* interacts with the database, and has
+no programmatic interface with *PolicyAdministration*, *PolicyExecution* or any other run-time ONAP components.
 
 The diagram below shows a more detailed view of the architecture, as inspired by
 `RFC-2753 <https://tools.ietf.org/html/rfc2753>`__ and `RFC-3198 <https://tools.ietf.org/html/rfc3198>`__.
@@ -164,15 +164,15 @@ The diagram below shows a more detailed view of the architecture, as inspired by
 .. image:: images/PFDesignAndAdmin.svg
 
 *PolicyDevelopment* provides a `CRUD <https://en.wikipedia.org/wiki/Create,_read,_update_and_delete>`__ API for policy
-types and policies. The policy types and policy artifacts and their metadata (Information about policies, policy types,
+types and policies. The policy types and policy artifacts and their metadata (information about policies, policy types,
 and their interrelations) are stored in the *PolicyDB*. The *PolicyDevGUI*, PolicyDistribution, and other applications
-such as *CLAMP* can use the *PolicyDevelopment* API to create, update, and delete policy types and policies.
+such as *CLAMP* can use the *PolicyDevelopment* API to create, update, delete, and read policy types and policies.
 
 *PolicyAdministration* has two important functions:
 
 - Management of the life cycle of PDPs in an ONAP installation. PDPs register with *PolicyAdministration* when they come
-  up. *PolicyAdministration* handles the allocation of PDPs to a PDP Groups and PDP Subgroups, so that they can be
-  managed as microservices in Kubernetes.
+  up. *PolicyAdministration* handles the allocation of PDPs to PDP Groups and PDP Subgroups, so that they can be
+  managed as microservices in infrastructure management systems such as Kubernetes.
 
 - Management of the deployment of policies to PDPs in an ONAP installation. *PolicyAdministration* gives each PDP group
   a set of domain policies to execute.
@@ -182,7 +182,7 @@ three APIs:
 
 - a CRUD API for policy groups and subgroups
 
-- an API that allows the allocation of policies PDP groups and subgroups to be controlled
+- an API that allows the allocation of policies to PDP groups and subgroups to be controlled
 
 - an API allows policy execution to be managed, showing the status of policy execution on PDP Groups, subgroups, and
   individual PDPs as well as the life cycle state of PDPs
@@ -201,8 +201,8 @@ is a group of PDPs of the same type that are running the same policies. *A PDPSu
 structuring of PDPs is required because, in order to simplify deployment and scaling of PDPs in Kubernetes, we gather
 all the PDPs of the same type that are running the same policies together for deployment.
 
-For example, assume we have policies for the SON (Self Organizing Network) and ACPE (Advanced Customer Premises Service)
-domains. For SON,we have XACML, Drools, and APEX policies, and for ACPE we have XACML and Drools policies. The table
+For example, assume we have policies for the SON (Self Organizing Network) and ACPS (Advanced Customer Premises Service)
+domains. For SON,we have XACML, Drools, and APEX policies, and for ACPS we have XACML and Drools policies. The table
 below shows the resulting \ *PDPGroup*, *PDPSubGroup*, and PDP allocations:
 
 ============= ================ ========================= ======================================== ================
@@ -213,8 +213,8 @@ SON           SON-XACML        SON-XACML-Dep             Always 2, be geo redund
                                                          scale down on 40% load, be geo-redundant
 \             SON-APEX         SON-APEX-Dep              At Least 3, scale up on 70% load, scale  >= 3 PDP-A
                                                          down on 40% load, be geo-redundant
-ACPE          ACPE-XACML       ACPE-XACML-Dep            Always 2                                 2 PDP-X
-\             ACPE-Drools      ACPE-Drools-Dep           At Least 2, scale up on 80% load, scale  >=2 PDP-D
+ACPS          ACPS-XACML       ACPS-XACML-Dep            Always 2                                 2 PDP-X
+\             ACPS-Drools      ACPS-Drools-Dep           At Least 2, scale up on 80% load, scale  >=2 PDP-D
                                                          down on 50% load
 ============= ================ ========================= ======================================== ================
 
@@ -229,13 +229,7 @@ implemented as a common model and is used by *PolicyDevelopment*, *PolicyDeploym
 
 .. image:: images/ClassStructure.svg
 
-The UML class diagram above shows the portion of the Policy Framework Object Model that applies to *PolicyDeployment*
-and *PolicyExecution.*
-
-.. image:: images/DesignTimeComponents.svg
-
-The UML class diagram above shows the portion of the Policy Framework Object Model that applies to *PolicyDevelopment*
-and *PolicyDeployment.*
+The UML class diagram above shows thePolicy Framework Object Model.
 
 2.2 Policy Design Architecture
 ------------------------------
@@ -247,7 +241,7 @@ Framework database.
 Policies that are expressed via natural language or a model require some development work ahead of time for them to be
 translated into concrete runtime policies. Some Policy Domains will be set up and available in the platform during
 startup such as Control Loop Operational Policy Models, OOF placement Models, DCAE microservice models. Policy type
-implementation development is done by an experienced developer.
+implementation logic development is done by an experienced developer.
 
 2.2.1 Policy Type Design
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -256,32 +250,32 @@ Policy Type Design is the task of creating policy types that capture the generic
 policy for a particular domain use case. The policy type implementation specifies the model information, rules, and
 tasks that a policy type requires to generate concrete policies.
 
-All policy types must implement the ONAP Policy Framework *PolicyType* interface. This interface allows
-*PolicyDevelopment* to manage policy types and to generate policies from these policy types in a uniform way regardless
-of the domain that the policy type is addressing or the PDP technology that will execute the policy. The interface is
-used by *PolicyDevelopment* to determine the PDP technology of the policy type, the structure, type, and definition of
-the model information that must be supplied to the policy type to generate a concrete policy.
+All policy types are specified in a TOSCA service template. Once policy types are defined and created in the system,
+*PolicyDevelopment* manages them and uses them to allow policies to be created from these policy types in a uniform
+way regardless of the domain that the policy type is addressing or the PDP technology that will execute the policy.
 
-A *PolicyTypeImpl* is developed for a certain type of PDP (for example XACML oriented for decision policies or Drools
-rules oriented for ECA policies). The design environment and tool chain for a policy type is specific for the type of
-policy being designed.
+A *PolicyTypeImpl* is developed for a policy type for a certain type of PDP (for example XACML oriented for decision
+policies, Drools rules or Apex state machines oriented for ECA policies). While a policy type is implementation
+independent, a policy type implementation for a policy type is specific for the technology of the PDP on which
+policies that use that policy type implementation will execute. Further, the design environment and tool chain for
+a policy type implementation is specific to the technology of the PDP on which policies that use that policy type
+implementation will use.
 
-The *PolicyTypeImpl*  implementation (or raw policy) is the specification of the specific rules or tasks, the flow of
-the policy, its internal states and data structures and other relevant information. A *PolicyTypeImpl* is specific to a
-PDP technology, that is XACML, Drools, or APEX. *A PolicyTypeImpl* can be specific to a particular policy type, it can
-be more general, providing the implementation of a class of policy types, or the same policy type may have many
-implementations.
+The *PolicyTypeImpl* implementation (or raw policy) is the specification of the specific rules or tasks, the flow of
+the policy, its internal states and data structures and other relevant information. *A PolicyTypeImpl* can be specific
+to a particular policy type, it can be more general, providing the implementation of a class of policy types, or
+the same policy type may have many implementations.
 
-*PolicyDevelopment* provides the RESTful :ref:`Policy Design API <design-label>` which allows other components to query
-policy types and policy type implementations, to determine the model information, rules, or tasks that they require, to
-specialize policy flow, and to generate policies from policy types. This API is used by the ONAP Policy Framework and
-other components such as \ *PolicyDistribution* to create policies from policy types.
+*PolicyDevelopment* provides the RESTful :ref:`Policy Design API <design-label>`, which allows other components to query
+policy types, Those components can then create policies that specify values for the properties, triggers, and targets
+specified in a policy type. This API is used by components such as *CLAMP* and *PolicyDistribution* to create policies
+from policy types.
 
 Consider a policy type created for managing faults on vCPE equipment in a vendor independent way. The policy type
-captures the generic logic required to manage the faults and specifies the vendor specific information that must be
-supplied to the type for specific vendor vCPE VFs. The actual  vCPE policy that is used for managing particular vCPE
-equipment is created by setting the parameters specified in the policy type together with the specific modeled
-information, rules and tasks in the policy type implementation for that vendor model of vCPE.
+implementation captures the generic logic required to manage the faults and specifies the vendor specific information
+that must be supplied to the type for specific vendor vCPE VFs. The actual vCPE policy that is used for managing
+particular vCPE equipment is created by setting the properties specified in the policy type for that vendor model
+of vCPE.
 
 2.2.1.1 Generating Policy Types
 """""""""""""""""""""""""""""""
