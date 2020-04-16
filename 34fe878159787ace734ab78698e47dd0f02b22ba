@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "438f06a7_eab80155",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-16T13:28:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e11e62c_ad9cd939",
+      "revId": "34fe878159787ace734ab78698e47dd0f02b22ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc2d8546_16ccdc23",
         "filename": "docs/architecture/architecture.rst",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "34fe878159787ace734ab78698e47dd0f02b22ba",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59fa2bc1_7c113c02",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-04-16T13:28:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc2d8546_16ccdc23",
+      "revId": "34fe878159787ace734ab78698e47dd0f02b22ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
