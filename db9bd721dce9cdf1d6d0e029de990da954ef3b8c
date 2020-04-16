@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61e81751_fe121f91",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-04-16T13:42:33Z",
+      "side": 1,
+      "message": "there may be other languages that may be involved in composing an application: drl, xacml.    An application may want to use features, if it needs to package additional \"things\" such as scripts, sql ..  Not sure how this should be phrased.",
+      "revId": "db9bd721dce9cdf1d6d0e029de990da954ef3b8c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ab1fc0_fc0dd5eb",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-04-16T13:42:33Z",
+      "side": 1,
+      "message": "\"drools-pdp\" handles the marshaling/unmarshaling ..",
+      "revId": "db9bd721dce9cdf1d6d0e029de990da954ef3b8c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
