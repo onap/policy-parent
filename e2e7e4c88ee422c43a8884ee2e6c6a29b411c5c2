@@ -682,6 +682,24 @@
     },
     {
       "key": {
+        "uuid": "f2d1403c_27fdb832",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-04-16T18:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60ebaef4_c8188067",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06557b13_20549dc4",
         "filename": "docs/development/devtools/devtools.rst",
         "patchSetId": 4
@@ -699,6 +717,24 @@
     },
     {
       "key": {
+        "uuid": "7a082e4a_86bef6b5",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-04-16T18:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06557b13_20549dc4",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c16ee2d_57bb03e8",
         "filename": "docs/development/devtools/devtools.rst",
         "patchSetId": 4
@@ -713,6 +749,24 @@
       "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "131686a1_5cf0895f",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-04-16T18:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c16ee2d_57bb03e8",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
