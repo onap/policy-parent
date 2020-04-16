@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e11e62c_ad9cd939",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T12:50:34Z",
+      "side": 1,
+      "message": "missing a verb here, perhaps it should be \"is written\"?",
+      "revId": "34fe878159787ace734ab78698e47dd0f02b22ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc2d8546_16ccdc23",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T12:50:34Z",
+      "side": 1,
+      "message": "have we defined \"PDP-A\" and used it previously?  If so, then it\u0027s fine.  Otherwise, maybe it say \"Apex-PDP\" (or some such) instead",
+      "revId": "34fe878159787ace734ab78698e47dd0f02b22ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
