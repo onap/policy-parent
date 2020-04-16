@@ -6,7 +6,7 @@ Policy Platform Development
 ---------------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    devtools/devtools.rst
    actors/actors.rst
