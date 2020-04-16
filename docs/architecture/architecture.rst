@@ -263,6 +263,14 @@ or it can be more general, providing the implementation of a class of policy typ
 and tool chain for implementing implementations of policy types is specific to the technology of the PDP on which
 the implementation will run.
 
+In the *xacml-pdp* and *drools-pdp*, an *application* is written for a given category of policy types. Such an
+application may have logic written in Java or another programming language, and may have additional artifacts such
+as scripts and SQL queries. The *application* unmarshals and marshals events going into and out of policies as well
+as handling the sequencing of events for interactions of the policies with other components in ONAP. For example,
+*drools-applications* handles the interactions for operational policies running in the drools PDP. In the
+*apex-pdp*, all unmarshaling, marshaling, and component interactions are captured in the state machine, logic, and
+configuraiton of the policy, a Java application is not used.
+
 *PolicyDevelopment* provides the RESTful :ref:`Policy Design API <design-label>`, which allows other components to query
 policy types, Those components can then create policies that specify values for the properties, triggers, and targets
 specified in a policy type. This API is used by components such as *CLAMP* and *PolicyDistribution* to create policies
@@ -417,7 +425,7 @@ underlying ONAP management infrastructure and are designed to comply with the ON
 The PAPs keep track of PDPs, support the deployment of PDP groups and the deployment of a *policy set* across those PDP
 groups. A PAP is stateless in a RESTful sense. Therefore, if there is more than one PAP deployed, it does not matter
 which PAP a user contacts to handle a request. The PAP uses the database (persistent storage) to keep track of ongoing
-sessions with clients. Policy management on PDPs is the responsibility of PAPs; management of policy sets or policies by
+sessions with PDPs. Policy management on PDPs is the responsibility of PAPs; management of policy sets or policies by
 any other manner is not permitted.
 
 In the ONAP Policy Framework, the interfaces to the PDP are designed to be as streamlined as possible. Because the PDP
@@ -437,7 +445,7 @@ Deployment and Registration with PAP are explained.
 The ONAP Policy Framework follows the architectural approach for microservices recommended by the `ONAP Architecture
 Subcommittee <https://wiki.onap.org/display/DW/Architecture+Subcommittee>`__.
 
-The ONAP Policy Framework defines `Kubernetes Services
+The ONAP Policy Framework uses an infrastructure such as Kubernetes `Services
 <https://kubernetes.io/docs/concepts/services-networking/service/>`__ to manage the life cycle of Policy Framework
 executable components at runtime. A Kubernetes service allows, among other parameters,  the number of instances (*pods*
 in Kubernetes terminology) that should be deployed for a particular service to be specified and a common endpoint for
@@ -555,15 +563,17 @@ PDP types:
 ================== =====================================================================================================
 PASSIVE MODE       Policy execution is always rejected irrespective of PDP type.
 ACTIVE MODE        Policy execution is executed in the live environment by the PDP.
-SAFE MODE          Policy execution proceeds, but changes to domain state or context are not carried out. The PDP
+SAFE MODE*         Policy execution proceeds, but changes to domain state or context are not carried out. The PDP
                    returns an indication that it is running in SAFE mode together with the action it would have
                    performed if it was operating in ACTIVE mode. The PDP type and the policy types it is running must
                    support SAFE mode operation.
-TEST MODE          Policy execution proceeds and changes to domain and state are carried out in a test or sandbox
+TEST MODE*         Policy execution proceeds and changes to domain and state are carried out in a test or sandbox
                    environment. The PDP returns an indication it is running in TEST mode together with the action it has
                    performed on the test environment. The PDP type and the policy types it is running must support TEST
                    mode operation.
 ================== =====================================================================================================
+
+\* SAFE Mode and TEST Mode will be implemented in future versions of the Policy Framework.
 
 2.3.5 Policy Lifecycle Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -592,7 +602,9 @@ mode of the PDP to PASSIVE. The Policy Set is transparently passed to the PDP by
 in the policy set including any models, rules, tasks, or flows in the policy set in the policy implementations.
 
 Once the Policy Set is loaded, the PAP orders the PDP to enter the life cycle mode that has been specified for it
-(ACTIVE/SAFE/TEST). The PDP begins to execute policies in the specified mode (see section 2.3.4).
+(ACTIVE/SAFE*/TEST*). The PDP begins to execute policies in the specified mode (see section 2.3.4).
+
+\* SAFE Mode and TEST Mode will be implemented in future versions of the Policy Framework.
 
 .. _policy-rollout:
 
@@ -617,10 +629,14 @@ Finally, when the user is satisfied with policy set execution and when quality c
 is set into ACTIVE state and the policy set executes on the target environment. The results of target operation are
 reported. The PDP group can be reverted to SAFE, TEST, or even PASSIVE mode at any time if problems arise.
 
+\* SAFE Mode and TEST Mode will be implemented in future versions of the Policy Framework. In current versions, policies
+transition directly from PASSIVE mode to ACTIVE mode.
+
 2.3.5.3 Policy Upgrade and Rollback
 """""""""""""""""""""""""""""""""""
 
-There are a number of approaches for managing policy upgrade and rollback.
+There are a number of approaches for managing policy upgrade and rollback. Upgrade and rollback will be implemented in
+future versions of the Policy Framework.
 
 The most straightforward approach is to use the approach described in section :ref:`policy-rollout` for upgrading and
 rolling back policy sets. In order to upgrade a policy set, one follows the process in :ref:`policy-rollout` with the
@@ -649,7 +665,7 @@ extended to provide information for specific PDP types. PDPs provide at least th
 ===================== ===============================================================================
 **Field**             **Description**
 ===================== ===============================================================================
-State                 Lifecycle State (PASSIVE/TEST/SAFE/ACTIVE)
+State                 Lifecycle State (PASSIVE/TEST*/SAFE*/ACTIVE)
 Timestamp             Time the report record was generated
 InvocationCount       The number of execution invocations the PDP has processed since the last report
 LastInvocationTime    The time taken to process the last execution invocation
@@ -658,6 +674,11 @@ StartTime             The start time of the PDP
 UpTime                The length of time the PDP has been executing
 RealTimeInfo          Real time information on running policies.
 ===================== ===============================================================================
+
+\* SAFE Mode and TEST Mode will be implemented in future versions of the Policy Framework.
+
+Currently, policy monitoring is supported by PAP and by pdp-apex. Policy monitoring for all PDPs will be supported in
+future versions of the Policy Framework.
 
 2.3.7 PEP Registration and Enforcement Guidelines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
