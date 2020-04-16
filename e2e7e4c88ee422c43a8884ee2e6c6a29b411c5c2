@@ -1,0 +1,1075 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6af75f2e_3dc8f57e",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "should this 18.04?",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b34f89b_879b1d9d",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b17ea30_ffc72b98",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "should this be 11?",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "244a83fb_433526f5",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"as\" \u003d\u003e \"as a\"\n\n\"from ONAP\" \u003d\u003e \"from the ONAP\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e08f324c_b61340f4",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "should this be 11?",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5c52d1e_cbd13dd2",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "should this be 11?",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a46ee91_7969cf39",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"from ONAP\" \u003d\u003e \"from the ONAP\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e68ff3_11daf37c",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"as per\" \u003d\u003e \"as\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "098de79f_90afc4c9",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"few\" \u003d\u003e \"a few\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbbffc4c_f9f95c77",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "11 instead of 1.8?",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57cd54dc_0ecd6049",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "11?",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5125f4a_b403a412",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"( for\" \u003d\u003e \"(for\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5efb96ca_0002a336",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "to be consistent with the two lines below it, \"sends\" \u003d\u003e \"send\"\n\n\"to rest\" \u003d\u003e \"to the REST\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8450aba6_17d7ac44",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"test plan\" \u003d\u003e \"the test plan\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e18bbee_4e2ab05d",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"store\" \u003d\u003e \"store the\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1f534b_c4115e8e",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "either add \".\" to this line, or remove it from the next two lines",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9e3cb42_33804cff",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"VM\" \u003d\u003e \"the VM\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdbee944_daecc2b5",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"Stability\" \u003d\u003e \"The Stability\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71250e03_80e64717",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"a HTML\" \u003d\u003e \"an HTML\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48186911_8b0f2b12",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"built in\" \u003d\u003e \"built-in\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fef7e76_7138b2eb",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"Issue\" \u003d\u003e \"issue\"\n\n\"browser(also can\" \u003d\u003e \"browser (can also\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc361ab_7b36425f",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"running\" \u003d\u003e \"running the\"\n\ntrailing spaces",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd3d314_e3b90720",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"multi-thread\" \u003d\u003e \"multi-threaded\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef8e51d_b88e1ad7",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"in Intel\" \u003d\u003e \"in the Intel\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52aed30e_bb50efff",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"steady\" \u003d\u003e \"a stready\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8fc2bed_17ec5005",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "11?\n\nsame question in several places below",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9396364d_1aebadbf",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"few\" \u003d\u003e \"a few\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c9ad2ff_9e10d815",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"Run\" \u003d\u003e \"Run the\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b1d49a9_76fc4e62",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"( for\" \u003d\u003e \"(for\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c24ceed_981abbbe",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"JMeter test in\" \u003d\u003e \"the JMeter test in the\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0334967_b0581a8e",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"JMeter\" \u003d\u003e \"the JMeter\"\n\n\"background\" \u003d\u003e \"the background\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b56ac48e_9d4cdaf4",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "delete \" occurred\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d77a62c_68d2f95a",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"Performance\" \u003d\u003e \"The performance\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdfd29a1_22631637",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"Intel\" \u003d\u003e \"the Intel\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf080dd_75634ae6",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"large\" \u003d\u003e \"a large\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e845853_3736a8eb",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"Performance\" \u003d\u003e \"The performance\"\n\n\"stability\" \u003d\u003e \"the stability\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c6ac163_2d5c4d05",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"Only\" \u003d\u003e \"The\"\n\n\"performance\" \u003d\u003e \"the performance\"\n\n\"whereas\" \u003d\u003e \"while\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5583667f_32b44a08",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"performance\" \u003d\u003e \"the performance\"\n\n\"stability\" \u003d\u003e \"the stability\"\n\n\"corresponding\" \u003d\u003e \"the corresponding\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff5150ee_892770cd",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"DB\" \u003d\u003e \"the DB\" (appears twice)",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ebaef4_c8188067",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06557b13_20549dc4",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"up-and-running\" \u003d\u003e \"up and running\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c16ee2d_57bb03e8",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "missing the end of the sentence",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a68860d4_530bc890",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"\u0026 other one\" \u003d\u003e \"and another\"\n\n\"steady\" \u003d\u003e \"a stready\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81bce250_616eb0ec",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "18?  same question elsewhere",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32aaef56_bc770470",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "11?  same question elsewhere",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c22de10_94627840",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"below\" \u003d\u003e \"the below\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c8af1f7_cb180916",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "11?",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea35c0d_20567362",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"simulator\" \u003d\u003e \"the simulators\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de1f1045_dfa90edf",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"virtual\" \u003d\u003e \"the virtual\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09cdf86e_76748d32",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"following 4\" \u003d\u003e \"the following four\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9baa069d_e3d9f669",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"virtual\" \u003d\u003e \"the virtual\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def4da44_ad2fc4f9",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"following\" \u003d\u003e \"the following\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04ec901b_b0b4d591",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"few\" \u003d\u003e \"a few\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bde13e2_5b75806a",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"following\" \u003d\u003e \"the following\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e47c4a4e_f7e9fba2",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"( for\" \u003d\u003e \"(for\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c6494f_5936a9a4",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"create in\" \u003d\u003e \"created in\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba3f7a7_a3a1e394",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"verify\" \u003d\u003e \"verifies\"\n\ndelete trailing \".\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ecf1d50_f83b37dc",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"undeploy\" \u003d\u003e \"undeploys\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26285a91_97c20366",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"verify\" \u003d\u003e \"verifies\"\n\ndelete trailing \".\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6cf818a_988af17b",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"of test\" \u003d\u003e \"of the test\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f69e40e_0a134512",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"store\" \u003d\u003e \"store the\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28e87c78_7bdd4926",
+        "filename": "docs/development/devtools/xacml-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"running on\" \u003d\u003e \"run on\" (or \"performed on\")",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc371b6_851b34e8",
+        "filename": "docs/development/devtools/xacml-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-16T18:41:49Z",
+      "side": 1,
+      "message": "\"runs\" \u003d\u003e \"ran\"\n\n\"at duration\" \u003d\u003e \"a duration\"",
+      "revId": "e2e7e4c88ee422c43a8884ee2e6c6a29b411c5c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
