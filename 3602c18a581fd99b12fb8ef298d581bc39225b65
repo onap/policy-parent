@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aacd132_6be84597",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-04-17T20:01:17Z",
+      "side": 1,
+      "message": "minor typo for another review when the file is touched:  configuraiton",
+      "revId": "3602c18a581fd99b12fb8ef298d581bc39225b65",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
