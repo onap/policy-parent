@@ -2,6 +2,7 @@
 .. Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
+.. _policy-development-tools-label:
 
 Policy Platform Development Tools
 #################################
@@ -273,7 +274,7 @@ The following links contain instructions on how to run the S3P Stability and Per
 familiar with the Policy Framework components and test any local changes.
 
 .. toctree::
-    :maxdepth: 1
+   :maxdepth: 1
 
    api-s3p.rst
    pap-s3p.rst
