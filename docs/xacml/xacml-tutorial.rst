@@ -9,7 +9,7 @@ Policy XACML - Custom Application Tutorial
    :maxdepth: 3
 
 This tutorial shows how to build a XACML application for a Policy Type. Please be sure to clone the
-policy repositories before going through the tutorial. See :ref:`<policy-dev-label>` for details.
+policy repositories before going through the tutorial. See :ref:`_policy-development-tools-label` for details.
 
 
 Design a Policy Type
@@ -19,7 +19,7 @@ this example Policy Type in which an ONAP PEP client would like to enforce an ac
 for a *user* to execute a *permission* on an *entity*.
 
 .. literalinclude:: tutorial/tutorial-policy-type.yaml
-  :language: JSON
+  :language: yaml
   :caption: Example Tutorial Policy Type
   :linenos:
 
@@ -28,7 +28,7 @@ an entity called foo, while the audit user can only read the entity called foo. 
 permission.
 
 .. literalinclude:: tutorial/tutorial-policies.yaml
-  :language: JSON
+  :language: yaml
   :caption: Example Policies Derived From Tutorial Policy Type
   :linenos:
 

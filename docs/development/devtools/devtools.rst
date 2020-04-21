@@ -2,6 +2,7 @@
 .. Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
+.. _policy-development-tools-label:
 
 Policy Platform Development Tools
 #################################
