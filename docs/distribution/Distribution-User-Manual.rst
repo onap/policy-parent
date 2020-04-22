@@ -25,11 +25,11 @@ Installation Requirements
                .. container:: ulist
 
                   -  Downloaded distribution: JAVA runtime environment
-                     (JRE, Java 8 or later, Distribution is tested with the
+                     (JRE, Java 11, Distribution is tested with the
                      OpenJDK)
 
                   -  Building from source: JAVA development kit (JDK,
-                     Java 8 or later, Distribution is tested with the OpenJDK)
+                     Java 11, Distribution is tested with the OpenJDK)
 
                   -  Sufficient rights to install Distribution on the system
 
@@ -373,8 +373,8 @@ Introduction to Distribution Configuration
          .. container:: paragraph
 
             The distribution already comes with sdc reception handler,
-            file reception handler, xacml policy decoder, file in csar policy decoder,
-            xacml policy forwarder, apex policy forwarder.
+            file reception handler, hpa optimization policy decoder, file in csar policy decoder,
+            policy lifecycle api forwarder.
 
 General Configuration Format
 ----------------------------
@@ -447,7 +447,7 @@ A configuration example
 
          .. container:: paragraph
 
-            The following example loads HPA use case related plug-ins.
+            The following example loads HPA use case & general tosca policy related plug-ins.
 
          .. container:: paragraph
 
@@ -456,7 +456,7 @@ A configuration example
 
          .. container:: paragraph
 
-            Generated policies are forwarded to XACML policy engine.
+            Generated policies are forwarded to policy lifecycle api's for creation & deployment.
 
          .. container:: listingblock
 
@@ -479,17 +479,22 @@ A configuration example
                                 "receptionHandlerConfigurationName":"sdcConfiguration",
                             "pluginHandlerParameters":{
                                 "policyDecoders":{
-                                    "CsarDecoder":{
-                                        "decoderType":"CsarDecoder",
-                                        "decoderClassName":"org.onap.policy.distribution.reception.decoding.pdpx.PolicyDecoderCsarPdpx",
+                                    "HpaDecoder":{
+                                        "decoderType":"HpaDecoder",
+                                        "decoderClassName":"org.onap.policy.distribution.reception.decoding.hpa.PolicyDecoderCsarHpa",
                                         "decoderConfigurationName": "csarToOptimizationPolicyConfiguration"
+                                    },
+                                    "ToscaPolicyDecoder":{
+                                        "decoderType":"ToscaPolicyDecoder",
+                                        "decoderClassName":"org.onap.policy.distribution.reception.decoding.policy.file.PolicyDecoderFileInCsarToPolicy",
+                                        "decoderConfigurationName": "toscaPolicyDecoderConfiguration"
                                     }
                                 },
                                 "policyForwarders":{
-                                    "PAPEngineForwarder":{
-                                        "forwarderType":"PAPEngine",
-                                        "forwarderClassName":"org.onap.policy.distribution.forwarding.xacml.pdp.XacmlPdpPolicyForwarder",
-                                        "forwarderConfigurationName": "xacmlPdpConfiguration"
+                                    "LifeCycleApiForwarder":{
+                                        "forwarderType":"LifeCycleAPI",
+                                        "forwarderClassName":"org.onap.policy.distribution.forwarding.lifecycle.api.LifecycleApiPolicyForwarder",
+                                        "forwarderConfigurationName": "lifecycleApiConfiguration"
                                     }
                                 }
                             }
@@ -518,13 +523,13 @@ A configuration example
                                 "keystorePassword": "null",
                                 "activeserverTlsAuth": false,
                                 "isFilterinEmptyResources": true,
-                                "isUseHttpsWithDmaap": false
+                                "isUseHttpsWithDmaap": true
                             }
                         }
                     },
                     "policyDecoderConfigurationParameters":{
                         "csarToOptimizationPolicyConfiguration":{
-                            "parameterClassName":"org.onap.policy.distribution.reception.decoding.pdpx.PolicyDecoderCsarPdpxConfigurationParameterGroup",
+                            "parameterClassName":"org.onap.policy.distribution.reception.decoding.hpa.PolicyDecoderCsarHpaParameters",
                             "parameters":{
                                 "policyNamePrefix": "oofCasablanca",
                                 "onapName": "OOF",
@@ -533,20 +538,33 @@ A configuration example
                                 "riskType": "Test",
                                 "riskLevel": "2"
                             }
+                        },
+                        "toscaPolicyDecoderConfiguration":{
+                            "parameterClassName":"org.onap.policy.distribution.reception.decoding.policy.file.PolicyDecoderFileInCsarToPolicyParameterGroup",
+                            "parameters":{
+                                "policyFileName": "tosca_policy",
+                                "policyTypeFileName": "tosca_policy_type"
+                            }
                         }
                     },
                     "policyForwarderConfigurationParameters":{
-                        "xacmlPdpConfiguration":{
-                            "parameterClassName":"org.onap.policy.distribution.forwarding.xacml.pdp.XacmlPdpPolicyForwarderParameterGroup",
-                            "parameters":{
-                                "useHttps": false,
-                                "hostname": "pdp",
-                                "port": 8081,
-                                "userName": "testpdp",
-                                "password": "alpha123",
-                                "clientAuth": "cHl0aG9uOnRlc3Q=",
-                                "isManaged": true,
-                                "pdpGroup": "pdpGroup"
+                        "lifecycleApiConfiguration": {
+                            "parameterClassName": "org.onap.policy.distribution.forwarding.lifecycle.api.LifecycleApiForwarderParameters",
+                            "parameters": {
+                                "apiParameters": {
+                                    "hostName": "policy-api",
+                                    "port": 6969,
+                                    "userName": "healthcheck",
+                                    "password": "zb!XztG34"
+                                },
+                                "papParameters": {
+                                    "hostName": "policy-pap",
+                                    "port": 6969,
+                                    "userName": "healthcheck",
+                                    "password": "zb!XztG34"
+                                },
+                                "isHttps": true,
+                                "deployPolicies": true
                             }
                         }
                     }

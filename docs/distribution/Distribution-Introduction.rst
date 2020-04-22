@@ -10,7 +10,7 @@ Introduction to Policy Distribution
             The main job of policy distribution component is to receive
             incoming notifications, download artifacts, decode policies
             from downloaded artifacts & forward the decoded policies to
-            all configured policy engines.
+            all configured policy forwarders.
 
 |
 
@@ -23,7 +23,7 @@ Introduction to Policy Distribution
             are downloaded using SDC client library.The downloaded CSAR is
             then given to the configured policy decoder for decoding and
             generating policies. The generated policies are then forwarded
-            to all configured policy engines. Related distribution status
+            to all configured policy forwarders. Related distribution status
             is sent to SDC at each step (download/deploy/done) during the
             entire flow.
 
