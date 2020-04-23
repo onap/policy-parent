@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aee6f052_9ef17cf9",
+        "filename": "docs/offeredapis.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T15:21:39Z",
+      "side": 1,
+      "message": "trailing spaces :-)",
+      "revId": "a65548ab2110f61a43ee27af1b9f25679c4a5d56",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55105238_c5154ce8",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T15:21:39Z",
+      "side": 1,
+      "message": "\"will not\" \u003d\u003e \"will\" ?",
+      "revId": "a65548ab2110f61a43ee27af1b9f25679c4a5d56",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
