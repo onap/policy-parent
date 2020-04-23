@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caf9e45a_b4d2c361",
+        "filename": "docs/offeredapis.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T19:14:43Z",
+      "side": 1,
+      "message": "still",
+      "revId": "a6cf5e35596d1f7d2493c75ccc3b96432e346f34",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
