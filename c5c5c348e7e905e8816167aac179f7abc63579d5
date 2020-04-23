@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71d3d683_df77f0a0",
+        "filename": "docs/offeredapis.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T14:18:27Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "revId": "c5c5c348e7e905e8816167aac179f7abc63579d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1453587e_1b2aa892",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T14:18:27Z",
+      "side": 1,
+      "message": "\"client\" \u003d\u003e \"the client\"",
+      "revId": "c5c5c348e7e905e8816167aac179f7abc63579d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b22b190_969826a5",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T14:18:27Z",
+      "side": 1,
+      "message": "\"Mostly\" \u003d\u003e \"Most\"\n\n\"client\" \u003d\u003e \"the client\"\n\n\"provider\" \u003d\u003e \"provide\"\n\n\"API\" \u003d\u003e \"the API\"",
+      "revId": "c5c5c348e7e905e8816167aac179f7abc63579d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed8fa731_ce49b430",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T14:18:27Z",
+      "side": 1,
+      "message": "\"response\" \u003d\u003e \"the response\"",
+      "revId": "c5c5c348e7e905e8816167aac179f7abc63579d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6b092d3_a7257959",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T14:18:27Z",
+      "side": 1,
+      "message": "\"will not be provided by\" \u003d\u003e \"will be provided to\" ?",
+      "revId": "c5c5c348e7e905e8816167aac179f7abc63579d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ce6ff6_592fb9b9",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T14:18:27Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "revId": "c5c5c348e7e905e8816167aac179f7abc63579d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95e47c8d_91812828",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T14:18:27Z",
+      "side": 1,
+      "message": "\"clone\" \u003d\u003e \"cloning\"",
+      "revId": "c5c5c348e7e905e8816167aac179f7abc63579d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab6ee7c9_8bb949f1",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T14:18:27Z",
+      "side": 1,
+      "message": "maybe put quotes around \"true\" (or otherwise highlight it)",
+      "revId": "c5c5c348e7e905e8816167aac179f7abc63579d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9921b3d5_2c2dc797",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T14:18:27Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "c5c5c348e7e905e8816167aac179f7abc63579d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "157ea56b_f4f98267",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-23T14:18:27Z",
+      "side": 1,
+      "message": "\"very\" \u003d\u003e \"are very\"",
+      "revId": "c5c5c348e7e905e8816167aac179f7abc63579d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
