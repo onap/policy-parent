@@ -98,6 +98,12 @@
                 <groupId>org.glassfish.jersey.core</groupId>
                 <artifactId>jersey-server</artifactId>
                 <version>${version.jersey}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.glassfish.jersey.media</groupId>
+                        <artifactId>jersey-media-jaxb</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
