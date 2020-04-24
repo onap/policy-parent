@@ -1,5 +1,5 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
-.. _release_notes:
+.. _policy-release-notes:
 
 Policy Release Notes
 ====================

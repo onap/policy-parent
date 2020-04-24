@@ -7,7 +7,6 @@
       "scope": [],
       "services": ["vCPE"],
       "resources": ["vGMuxInfra", "vG"],
-      "geography": ["US", "INTERNATIONAL"],
-      "policyType": "zone"
+      "geography": ["US", "INTERNATIONAL"]
   }
 }
