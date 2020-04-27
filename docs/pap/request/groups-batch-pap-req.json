@@ -2,7 +2,8 @@
     "groups": [
         {
             "name": "SampleGroup",
-            "pdpGroupState": "PASSIVE",
+            "pdpGroupState": "ACTIVE",
+            "properties": {},
             "pdpSubgroups": [
                 {
                     "pdpType": "apex",
@@ -10,7 +11,7 @@
                     "properties": {},
                     "supportedPolicyTypes": [
                         {
-                            "name": "onap.controllloop.operational.apex.bbs",
+                            "name": "onap.policies.controlloop.operational.Apex",
                             "version": "1.0.0"
                         }
                     ],
