@@ -21,5 +21,6 @@ Policy Framework Architecture
    xacml/xacml
    apex/apex
    distribution/distribution
+   gui/Monitoring-GUI-Demo-Guide
 ..    release-notes.rst
 
