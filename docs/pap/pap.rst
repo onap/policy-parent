@@ -21,6 +21,64 @@ PDP group to arbitrarily appear and disappear and for policy consistency across 
 maintained. The PAP is responsible for controlling the state across the PDPs in a PDP group. The PAP interacts with the
 policy database and transfers policies to PDPs.
 
+The unit of execution and scaling in the Policy Framework is a *PolicyImpl* entity. A *PolicyImpl* entity runs on a PDP.
+As is explained above, a *PolicyImpl* entity is a *PolicyTypeImpl* implementation parameterized with a TOSCA *Policy*.
+
+.. image:: images/PolicyImplPDPSubGroup.svg
+
+In order to achieve horizontal scalability, we group the PDPs running instances of a given *PolicyImpl* entity logically
+together into a *PDPSubGroup*. The number of PDPs in a *PDPSubGroup* can then be scaled up and down using Kubernetes. In
+other words, all PDPs in a subgroup run the same *PolicyImpl*, that is the same policy template implementation (in
+XACML, Drools, or APEX) with the same parameters.
+
+The figure above shows the layout of *PDPGroup* and *PDPSubGroup* entities. The figure shows examples of PDP groups for
+Control Loop and Monitoring policies on the right.
+
+The health of PDPs is monitored by the PAP in order to alert operations teams managing policy. The PAP manages the life
+cycle of policies running on PDPs.
+
+The table below shows the deployment methods in which *PolicyImpl* entities can be deployed to PDP Subgroups.
+
+========== =========================================== ============================== ==================================
+**Method** **Description**                             **Advantages**                 **Disadvantages**
+========== =========================================== ============================== ==================================
+Cold       The *PolicyImpl* (*PolicyTypeImpl* and      No run time configuration      Very restrictive, no run time
+           TOSCA *Policy*) are predeployed on the PDP. required and run time          configuration of PDPs is possible.
+           PDP is fully configured and ready to        administration is simple.
+           execute when started.
+
+           PDPs register with the PAP when they
+           start, providing the *PolicyImpl* they
+           have been predeployed with.
+
+Warm       The *PolicyTypeImpl* entity is predeployed  The configuration, parameters, Administration and management is
+           on the PDP. A TOSCA *Policy* may be loaded  and PDP group of PDPs may be   required. The configuration and
+           at startup. The PDP may be configured or    changed at run time by loading life cycle of the TOSCA policies
+           reconfigured with a new or updated TOSCA    or updating a TOSCA *Policy*   can change at run time and must be
+           *Policy* at run time.                       into the PDP.                  administered and managed.
+
+           PDPs register with the PAP when they start, Support TOSCA *Policy* entity
+           providing the *PolicyImpl* they have been   life cycle managgement is
+           predeployed with if any. The PAP may update supported, allowing features
+           the TOSCA *Policy* on a PDP at any time     such as *PolicyImpl* Safe Mode
+           after registration.                         and *PolicyImpl* retirement.
+
+Hot        The *PolicyImpl* (*PolicyTypeImpl* and      The policy logic, rules,       Administration and management is
+           TOSCA *Policy*) are deployed at run time.   configuration, parameters, and more complex. The *PolicyImpl*
+           The *PolicyImpl* (*PolicyTypeImpl* and      PDP group of PDPs may be       itself and its configuration and
+           TOSCA *Policy*) may be loaded at startup.   changed at run time by loading life cycle as well as the life
+           The PDP may be configured or reconfigured   or updating a TOSCA *Policy*   cycle of the TOSCA policies can
+           with a new or updated *PolicyTypeImpl*      and *PolicyTypeImpl* into the  change at run time and must be
+           and/or TOSCA *Policy* at run time.          PDP.                           administered and managed.
+
+           PDPs register with the PAP when they        Lifecycle management of TOSCA
+           start, providing the *PolicyImpl* they have *Policy* entities and
+           been predeployed with if any. The PAP may   *PolicyTypeImpl* entites is
+           update the TOSCA *Policy* and               supported, allowing features
+           *PolicyTypeImpl* on a PDP at any time after such as *PolicyImpl* Safe Mode
+           registration                                and *PolicyImpl* retirement.
+========== =========================================== ============================== ==================================
+
 
 1 APIs
 ======

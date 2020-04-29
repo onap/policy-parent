@@ -3,9 +3,11 @@
 .. _decision-api-label:
 
 Decision API
-#######################
+############
 
-The Decision API is used by ONAP components that enforce policies and need a decision on which policy to enforce for a specific situation. The Decision API mimics closely the XACML request standard in that it supports a subject, action and resource.
+The Decision API is used by ONAP components that enforce policies and need a decision on which policy to enforce for a 
+specific situation. The Decision API mimics closely the XACML request standard in that it supports a subject, action 
+and resource.
 
 .. csv-table::
    :header: "Field", "Required", "XACML equivalent", "Description"
