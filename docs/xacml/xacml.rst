@@ -110,9 +110,14 @@ This is an example Decision API payload made to retrieve a decision for a Guard 
 .. literalinclude:: decision.guard.json
   :language: JSON
 
+.. _xacml-optimization-label:
+
 Optimization Policy Types
 =========================
-These Policy Types are designed to be used by the OOF Project support several domains including VNF placement in ONAP. The OOF Platform makes a call to the Decision API to request these Policies based on the values specified in the onap.policies.Optimization properties. Each of these properties are treated relative to each other as an "AND". In addition, each value for each property itself is treated as an "OR".
+These Policy Types are designed to be used by the OOF Project support several domains including VNF placement in ONAP.
+The OOF Platform makes a call to the Decision API to request these Policies based on the values specified in the
+onap.policies.Optimization properties. Each of these properties are treated relative to each other as an "AND". In 
+addition, each value for each property itself is treated as an "OR".
 
 .. csv-table::
    :header: "Policy Type", "Action"
@@ -130,7 +135,12 @@ These Policy Types are designed to be used by the OOF Project support several do
    "onap.policies.optimization.resource.Vim_fit", "optimize"
    "onap.policies.optimization.resource.VnfPolicy", "optimize"
 
-The optimization application extends the StdMatchablePolicyTranslator in that the application applies a "closest match" algorithm internally after a XACML decision. This filters the results of the decision to return the one or more policies that match the incoming decision request as close as possible. In addition, there is special consideration for the Subscriber Policy Type. If a decision request contains subscriber context attributes, then internally the application will apply an initial decision to retrieve the scope of the subscriber. The resulting scope attributes are then added into a final internal decision call.
+The optimization application extends the StdMatchablePolicyTranslator in that the application applies a "closest match"
+algorithm internally after a XACML decision. This filters the results of the decision to return the one or more policies
+that match the incoming decision request as close as possible. In addition, there is special consideration for the
+Subscriber Policy Type. If a decision request contains subscriber context attributes, then internally the application
+will apply an initial decision to retrieve the scope of the subscriber. The resulting scope attributes are then added
+into a final internal decision call.
 
 This is an example Decision API payload made to retrieve a decision for an Optimization Policy Type.
 
