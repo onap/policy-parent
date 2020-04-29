@@ -31,6 +31,8 @@ the specified policy type should be valid and existing in policy database.
 
 To ease policy creation, we preload several widely used policy types in policy database. Below is a table listing the preloaded policy types.
 
+.. _policy-preload-label:
+
 .. csv-table::
    :header: "Policy Type Name", "Payload"
    :widths: 15,10
@@ -189,6 +191,8 @@ Sample API Curl Commands
 From API client perspective, using *http* or *https* does not have much difference in curl command.
 Here we list some sample curl commands (using *http*) for POST, GET and DELETE monitoring and operational policies that are used in vFirewall use case.
 JSON payload for POST calls can be downloaded from policy table above.
+
+If you are accessing the api from the container, the default *ip* and *port* would be **https:/policy-api:6969/policy/api/v1/**.
 
 Create vFirewall Monitoring Policy::
   curl --user 'healthcheck:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.monitoring.input.tosca.json
