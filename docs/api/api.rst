@@ -10,10 +10,9 @@ Policy Life Cycle API
 .. contents::
     :depth: 2
 
-Policy life cycle API comprises of policy design API and policy deployment API. This documentation focuses on policy
-design API. Policy design API is publicly exposed for clients to Create/Read/Update/Delete (CRUD) policy types, policy type
-implementation and policies which can be recognized and executable by appropriate policy engines incorporated in ONAP
-policy framework. Policy design API backend is running in an independent building block component of policy framework
+The purpose of this API is to support CRUD of TOSCA *PolicyType* entities. This API is provided by the
+*PolicyDevelopment* component of the Policy Framework, see the :ref:`The ONAP Policy Framework Architecture
+<architecture-label>` page. Policy design API backend is running in an independent building block component of policy framework
 that provides REST service for aforementioned CRUD behaviors. Policy design API component interacts with a policy database
 for storing and fetching new policies or policy types as needed. Apart from CRUD, API is also exposed for clients to retrieve
 healthcheck status of this API REST service and statistics report including a variety of counters that reflect the history
@@ -29,7 +28,45 @@ atop. In other words, different policies can match the same or different policy 
 of creating such type of policies. In the payload body of each policy to create, policy type name and version should be indicated and
 the specified policy type should be valid and existing in policy database.
 
+The API allows applications to create, update, delete, and query *PolicyType* entities so that they become available for
+use in ONAP by applications such as CLAMP. Some Policy Type entities are preloaded in the Policy Framework. The TOSCA
+fields below are valid on API calls:
+
+============ ======= ======== ========== ===============================================================================
+**Field**    **GET** **POST** **DELETE** **Comment**
+============ ======= ======== ========== ===============================================================================
+(name)       M       M        M          The definition of the reference to the Policy Type, GET allows ranges to be
+                                         specified
+version      O       M        C          GET allows ranges to be specified, must be specified if more than one version
+                                         of the Policy Type exists
+description  R       O        N/A        Desciption of the Policy Type
+derived_from R       C        N/A        Must be specified when a Policy Type is derived from another Policy Type such
+                                         as in the case of derived Monitoring Policy Types
+metadata     R       O        N/A        Metadata for the Policy Type
+properties   R       M        N/A        This field holds the specification of the specific Policy Type in ONAP
+targets      R       O        N/A        A list of node types and/or group types to which the Policy Type can be applied
+triggers     R       O        N/A        Specification of policy triggers, not currently supported in ONAP
+============ ======= ======== ========== ===============================================================================
+
+.. note::
+  On this and subsequent tables, use the following legend:   M-Mandatory, O-Optional, R-Read-only, C-Conditional.
+  Conditional means the field is mandatory when some other field is present.
+
+.. note::
+  Preloaded policy types may only be queried over this API, modification or deletion of preloaded policy type
+  implementations is disabled.
+
+.. note::
+  Policy types that are in use (referenced by defined Policies) may not be deleted.
+
+.. note::
+  The group types of targets in TOSCA are groups of TOSCA nodes, not PDP groups; the *target* concept in TOSCA is
+  equivalent to the Policy Enforcement Point (PEP) concept
+
+
 To ease policy creation, we preload several widely used policy types in policy database. Below is a table listing the preloaded policy types.
+
+.. _policy-preload-label:
 
 .. csv-table::
    :header: "Policy Type Name", "Payload"
@@ -93,7 +130,7 @@ Below is a table containing sample well-formed TOSCA compliant policies.
 Below is a global API table from where swagger JSON for different types of policy design API can be downloaded.
 
 Global API Table
---------------------
+----------------
 .. csv-table::
    :header: "API name", "Swagger JSON"
    :widths: 10,5
@@ -105,7 +142,7 @@ Global API Table
    "Legacy Operational Policy API", ":download:`link <swagger/operational-policy-api.json>`"
 
 API Swagger
---------------------
+-----------
 
 It is worth noting that we use basic authorization for API access with username and password set to *healthcheck* and *zb!XztG34* respectively.
 Also, the new APIs support both *http* and *https*.
@@ -189,6 +226,8 @@ Sample API Curl Commands
 From API client perspective, using *http* or *https* does not have much difference in curl command.
 Here we list some sample curl commands (using *http*) for POST, GET and DELETE monitoring and operational policies that are used in vFirewall use case.
 JSON payload for POST calls can be downloaded from policy table above.
+
+If you are accessing the api from the container, the default *ip* and *port* would be **https:/policy-api:6969/policy/api/v1/**.
 
 Create vFirewall Monitoring Policy::
   curl --user 'healthcheck:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.monitoring.input.tosca.json
