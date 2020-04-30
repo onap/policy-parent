@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpGroupStateChange"
+    "name" : "PdpGroup State Change"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json" ],
@@ -10,7 +10,7 @@
   "paths" : {
     "/policy/pap/v1/pdps/groups/{name}" : {
       "put" : {
-        "tags" : [ "PdpGroupStateChange" ],
+        "tags" : [ "PdpGroup State Change" ],
         "summary" : "Change state of a PDP Group",
         "description" : "Changes state of PDP Group, returning optional error details",
         "operationId" : "changeGroupState",

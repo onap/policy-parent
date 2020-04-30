@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpGroupQuery"
+    "name" : "PdpGroup Query"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json" ],
@@ -10,7 +10,7 @@
   "paths" : {
     "/policy/pap/v1/pdps" : {
       "get" : {
-        "tags" : [ "PdpGroupQuery" ],
+        "tags" : [ "PdpGroup Query" ],
         "summary" : "Query details of all PDP groups",
         "description" : "Queries details of all PDP groups, returning all group details",
         "operationId" : "queryGroupDetails",
