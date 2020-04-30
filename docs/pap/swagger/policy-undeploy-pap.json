@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpPolicyUndeploy"
+    "name" : "Undeploy Policy"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json" ],
@@ -10,7 +10,7 @@
   "paths" : {
     "/policy/pap/v1/pdps/policies/{name}" : {
       "delete" : {
-        "tags" : [ "PdpPolicyUndeploy" ],
+        "tags" : [ "Undeploy Policy" ],
         "summary" : "Undeploy a PDP Policy from PDPs",
         "description" : "Undeploys the latest version of a policy from the PDPs, returning optional error details",
         "operationId" : "deletePolicy",

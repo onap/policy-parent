@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpGroupUpdate"
+    "name" : "PdpGroup Create/Update"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json", "application/yaml" ],
@@ -10,7 +10,7 @@
   "paths" : {
     "/policy/pap/v1/pdps/groups/batch" : {
       "post" : {
-        "tags" : [ "PdpGroupUpdate" ],
+        "tags" : [ "PdpGroup Create/Update" ],
         "summary" : "Create or update PDP Groups",
         "description" : "Create or update one or more PDP Groups, returning optional error details",
         "operationId" : "createOrUpdateGroups",

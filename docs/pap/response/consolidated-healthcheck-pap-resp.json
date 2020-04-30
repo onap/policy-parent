@@ -1,0 +1,48 @@
+{
+  "pdps": {
+    "xacml": [
+      {
+        "instanceId": "dev-policy-xacml-pdp-5b6697c845-9j8lb",
+        "pdpState": "ACTIVE",
+        "healthy": "HEALTHY"
+      }
+    ],
+    "drools": [
+      {
+        "instanceId": "dev-drools-0",
+        "pdpState": "ACTIVE",
+        "healthy": "HEALTHY"
+      }
+    ],
+    "apex": [
+      {
+        "instanceId": "dev-policy-apex-pdp-0",
+        "pdpState": "ACTIVE",
+        "healthy": "HEALTHY",
+        "message": "Pdp Heartbeat"
+      }
+    ]
+  },
+  "healthy": true,
+  "api": {
+    "name": "Policy API",
+    "url": "https://dev-policy-api-7fb479754f-7nr5s:6969/policy/api/v1/healthcheck",
+    "healthy": true,
+    "code": 200,
+    "message": "alive"
+  },
+  "distribution": {
+    "name": "Policy SSD",
+    "url": "https://dev-policy-distribution-84854cd6c7-zn8vh:6969/healthcheck",
+    "healthy": true,
+    "code": 200,
+    "message": "alive"
+  },
+  "pap": {
+    "name": "Policy PAP",
+    "url": "https://dev-pap-79fd8f78d4-hwx7j:6969/policy/pap/v1/healthcheck",
+    "healthy": true,
+    "code": 200,
+    "message": "alive"
+  }
+}
