@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpGroupUpdate"
+    "name" : "PdpGroup Create/Update"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json", "application/yaml" ],

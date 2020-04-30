@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpGroupStateChange"
+    "name" : "PdpGroup State Change"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json" ],

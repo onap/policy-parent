@@ -59,13 +59,17 @@ PAP supports the operations listed in the following table, via its REST API:
    :widths: 25,70
 
    "Health check", "Queries the health of the PAP"
+   "Consolidated healthcheck", "Queries the health of all policy components"
    "Statistics", "Queries various statistics"
    "PDP state change", "Changes the state of all PDPs in a PDP Group"
    "PDP Group create/update", "Creates/updates PDP Groups"
    "PDP Group delete", "Deletes a PDP Group"
    "PDP Group query", "Queries all PDP Groups"
+   "Deployment update", "Deploy/undeploy one or more policies in specified PdpGroups"
    "Deploy policy", "Deploys one or more policies to the PDPs"
    "Undeploy policy", "Undeploys a policy from the PDPs"
+   "Policy deployment status", "Queries the status of all deployed policies"
+   "PDP statistics", "Queries the statistics of PDPs"
 
 1.2 DMaaP API
 -------------
@@ -122,6 +126,18 @@ This operation performs a health check on the PAP.
 Here is a sample response:
 
 .. literalinclude:: response/health-check-pap-resp.json
+    :language: json
+
+.. swaggerv2doc:: swagger/consolidated-healthcheck-pap.json
+
+This operation performs a health check of all policy components. The response
+contains health check result of each component. The consolidated health check
+is reported as healthy only if all the components are healthy, otherwise the 
+"healthy" flag is marked as false.
+
+Here is a sample response:
+
+.. literalinclude:: response/consolidated-healthcheck-pap-resp.json
     :language: json
 
 .. swaggerv2doc:: swagger/statistics-pap.json
@@ -223,20 +239,35 @@ This operation allows policies to be undeployed from PDP groups.
 
 .. note::
   Due to current limitations, a fully qualified policy version must always be specified.
+
+.. swaggerv2doc:: swagger/deployed-policy-pap.json
+
+This operation allows the deployed policies to be listed together with deployment status.
+
+Here is a sample response:
+
+.. literalinclude:: response/deployed-policy-pap-resp.json
+    :language: json
+
+.. swaggerv2doc:: swagger/pdp-statistics-pap.json
+
+This operation allows the PDP statistics to be retrieved for all registered PDPs.
+The result can be filtered based on PDP group, PDP subgroup & PDP instance.
+
+Here is a sample response:
+
+.. literalinclude:: response/pdp-statistics-pap-resp.json
+    :language: json
+
   
 3 Future Features 
 =================
 
-3.1 Order Health Check on PDPs
-==============================
+3.1 Disable policies in PDP
+===========================
 
-This operation will allow a PDP group health check to be ordered on PDP groups and on individual PDPs. The operation
-will return a HTTP status code of *202: Accepted* if the health check request has been accepted by the PAP. The PAP will
-then order execution of the health check on the PDPs.
-
-As health checks may be long lived operations, Health checks will be scheduled for execution by this operation. Users
-will check the result of a health check test by issuing a PDP Group Query operation and checking the *healthy* field of
-PDPs.
-
+This operation will allow disabling individual policies running in PDP engine. It is mainly beneficial
+in scenarios where network operators/administrators wants to disable a particular policy in PDP engine 
+for sometime due to failure in system or during scheduled maintenance.
 
 End of Document

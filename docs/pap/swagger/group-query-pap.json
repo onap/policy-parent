@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpGroupQuery"
+    "name" : "PdpGroup Query"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json" ],

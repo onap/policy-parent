@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpPolicyUndeploy"
+    "name" : "Undeploy Policy"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json" ],
