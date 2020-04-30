@@ -48,8 +48,8 @@ Data Models
 
                .. container:: sect2
 
-                  .. rubric:: Sales Decision Event
-                     :name: sales_decision_event
+                  .. rubric:: Sales Input Event
+                     :name: sales_input_event
 
                   .. container:: paragraph
 
@@ -247,7 +247,7 @@ Policy Step 1
 
                   .. container:: ulist
 
-                     -  Alcohol cannot be sold before 11:30am... container::
+                     -  Alcohol cannot be sold before 11:30am...
 
 New Policy Model
 ----------------
@@ -285,13 +285,13 @@ New Policy Model
 
                     .. container:: content
 
-                    |File > New to create a new Policy Model|
+                      |File > New to create a new Policy Model|
 
                   .. container:: imageblock
 
                     .. container:: content
 
-                    |Create a new Policy Model|
+                      |Create a new Policy Model|
 
 Events
 ------
@@ -426,8 +426,6 @@ Events
                for ``SALE_INPUT`` and ``SALE_AUTH`` and add some
                parameter fields.
 
-            .. container:: admonitionblock tip
-
             .. TIP::
 
               .. container:: paragraph
@@ -482,8 +480,6 @@ Events
 
                Remember to click the 'Submit' button at the bottom of
                the event definition pane.
-
-            .. container:: admonitionblock tip
 
             .. TIP::
 
@@ -672,7 +668,7 @@ New Policy
 
             .. container:: paragraph
 
-               For simplicity use the following code for the task logic.
+               For simplicity use the code for the task logic here(|taskLogicMvel_link|).
                Paste the script text into the 'Task Logic' box, and use
                "MVEL" as the 'Task Logic Type / Flavour'.
 
@@ -690,92 +686,6 @@ New Policy
                of the other supported languages please refer to APEX
                Programmers Guide.
 
-            .. container:: listingblock
-
-               .. container:: content
-
-                  .. code:: CodeRay
-
-                     /*
-                      * ============LICENSE_START=======================================================
-                      *  Copyright (C) 2016-2018 Ericsson. All rights reserved.
-                      * ================================================================================
-                      * Licensed under the Apache License, Version 2.0 (the "License");
-                      * you may not use this file except in compliance with the License.
-                      * You may obtain a copy of the License at
-                      *
-                      *      http://www.apache.org/licenses/LICENSE-2.0
-                      *
-                      * Unless required by applicable law or agreed to in writing, software
-                      * distributed under the License is distributed on an "AS IS" BASIS,
-                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                      * See the License for the specific language governing permissions and
-                      * limitations under the License.
-                      *
-                      * SPDX-License-Identifier: Apache-2.0
-                      * ============LICENSE_END=========================================================
-                      */
-                     import java.util.Date;
-                     import java.util.Calendar;
-                     import java.util.TimeZone;
-                     import java.text.SimpleDateFormat;
-
-                     logger.info("Task Execution: '"+subject.id+"'. Input Fields: '"+inFields+"'");
-
-                     outFields.put("amount"      , inFields.get("amount"));
-                     outFields.put("assistant_ID", inFields.get("assistant_ID"));
-                     outFields.put("notes"       , inFields.get("notes"));
-                     outFields.put("quantity"    , inFields.get("quantity"));
-                     outFields.put("branch_ID"   , inFields.get("branch_ID"));
-                     outFields.put("item_ID"     , inFields.get("item_ID"));
-                     outFields.put("time"        , inFields.get("time"));
-                     outFields.put("sale_ID"     , inFields.get("sale_ID"));
-
-                     item_id = inFields.get("item_ID");
-
-                     //The events used later to test this task use GMT timezone!
-                     gmt = TimeZone.getTimeZone("GMT");
-                     timenow = Calendar.getInstance(gmt);
-                     df = new SimpleDateFormat("HH:mm:ss z");
-                     df.setTimeZone(gmt);
-                     timenow.setTimeInMillis(inFields.get("time"));
-
-                     midnight = timenow.clone();
-                     midnight.set(
-                         timenow.get(Calendar.YEAR),timenow.get(Calendar.MONTH),
-                         timenow.get(Calendar.DATE),0,0,0);
-                     eleven30 = timenow.clone();
-                     eleven30.set(
-                         timenow.get(Calendar.YEAR),timenow.get(Calendar.MONTH),
-                         timenow.get(Calendar.DATE),11,30,0);
-
-                     itemisalcohol = false;
-                     if(item_id != null && item_id >=1000 && item_id < 2000)
-                         itemisalcohol = true;
-
-                     if( itemisalcohol
-                         && timenow.after(midnight) && timenow.before(eleven30)){
-                       outFields.put("authorised", false);
-                       outFields.put("message", "Sale not authorised by policy task "+subject.taskName+
-                         " for time "+df.format(timenow.getTime())+
-                         ". Alcohol can not be sold between "+df.format(midnight.getTime())+
-                         " and "+df.format(eleven30.getTime()));
-                       return true;
-                     }
-                     else{
-                       outFields.put("authorised", true);
-                       outFields.put("message", "Sale authorised by policy task "+subject.taskName+
-                         " for time "+df.format(timenow.getTime()));
-                       return true;
-                     }
-
-                     /*
-                     This task checks if a sale request is for an item that is an alcoholic drink.
-                     If the local time is between 00:00:00 GMT and 11:30:00 GMT then the sale is not
-                     authorised. Otherwise the sale is authorised.
-                     In this implementation we assume that items with item_ID value between 1000 and
-                     2000 are all alcoholic drinks :-)
-                     */
 
             .. container:: imageblock
 
@@ -786,94 +696,8 @@ New Policy
             .. container:: paragraph
 
                An alternative version of the same logic is available in
-               JavaScript. Just use "JAVASCRIPT" as the 'Task Logic Type
+               JavaScript(|taskLogicJS_link|). Just use "JAVASCRIPT" as the 'Task Logic Type
                / Flavour' instead.
-
-            .. container:: listingblock
-
-               .. container:: content
-
-                  .. code:: CodeRay
-
-                     /*
-                      * ============LICENSE_START=======================================================
-                      *  Copyright (C) 2016-2018 Ericsson. All rights reserved.
-                      * ================================================================================
-                      * Licensed under the Apache License, Version 2.0 (the "License");
-                      * you may not use this file except in compliance with the License.
-                      * You may obtain a copy of the License at
-                      *
-                      *      http://www.apache.org/licenses/LICENSE-2.0
-                      *
-                      * Unless required by applicable law or agreed to in writing, software
-                      * distributed under the License is distributed on an "AS IS" BASIS,
-                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                      * See the License for the specific language governing permissions and
-                      * limitations under the License.
-                      *
-                      * SPDX-License-Identifier: Apache-2.0
-                      * ============LICENSE_END=========================================================
-                      */
-
-                     var returnValueType = Java.type("java.lang.Boolean");
-                     var returnValue = new returnValueType(true);
-
-                     // Load compatibility script for imports etc
-                     load("nashorn:mozilla_compat.js");
-                     importPackage(java.text);
-                     importClass(java.text.SimpleDateFormat);
-
-                     executor.logger.info("Task Execution: '"+executor.subject.id+"'. Input Fields: '"+executor.inFields+"'");
-
-                     executor.outFields.put("amount"      , executor.inFields.get("amount"));
-                     executor.outFields.put("assistant_ID", executor.inFields.get("assistant_ID"));
-                     executor.outFields.put("notes"       , executor.inFields.get("notes"));
-                     executor.outFields.put("quantity"    , executor.inFields.get("quantity"));
-                     executor.outFields.put("branch_ID"   , executor.inFields.get("branch_ID"));
-                     executor.outFields.put("item_ID"     , executor.inFields.get("item_ID"));
-                     executor.outFields.put("time"        , executor.inFields.get("time"));
-                     executor.outFields.put("sale_ID"     , executor.inFields.get("sale_ID"));
-
-                     item_id = executor.inFields.get("item_ID");
-
-                     //All times in this script are in GMT/UTC since the policy and events assume time is in GMT.
-                     var timenow_gmt =  new Date(Number(executor.inFields.get("time")));
-
-                     var midnight_gmt = new Date(Number(executor.inFields.get("time")));
-                     midnight_gmt.setUTCHours(0,0,0,0);
-
-                     var eleven30_gmt = new Date(Number(executor.inFields.get("time")));
-                     eleven30_gmt.setUTCHours(11,30,0,0);
-
-                     var timeformatter = new java.text.SimpleDateFormat("HH:mm:ss z");
-
-                     var itemisalcohol = false;
-                     if(item_id != null && item_id >=1000 && item_id < 2000)
-                         itemisalcohol = true;
-
-                     if( itemisalcohol
-                         && timenow_gmt.getTime() >= midnight_gmt.getTime()
-                         && timenow_gmt.getTime() <  eleven30_gmt.getTime()) {
-
-                       executor.outFields.put("authorised", false);
-                       executor.outFields.put("message", "Sale not authorised by policy task " +
-                         executor.subject.taskName+ " for time " + timeformatter.format(timenow_gmt.getTime()) +
-                         ". Alcohol can not be sold between " + timeformatter.format(midnight_gmt.getTime()) +
-                         " and " + timeformatter.format(eleven30_gmt.getTime()));
-                     }
-                     else{
-                       executor.outFields.put("authorised", true);
-                       executor.outFields.put("message", "Sale authorised by policy task " +
-                         executor.subject.taskName + " for time "+timeformatter.format(timenow_gmt.getTime()));
-                     }
-
-                     /*
-                     This task checks if a sale request is for an item that is an alcoholic drink.
-                     If the local time is between 00:00:00 GMT and 11:30:00 GMT then the sale is not
-                     authorised. Otherwise the sale is authorised.
-                     In this implementation we assume that items with item_ID value between 1000 and
-                     2000 are all alcoholic drinks :-)
-                     */
 
             .. container:: paragraph
 
@@ -954,11 +778,10 @@ New Policy
                default task is automatically selected and no 'Task
                Selection Logic' is required.
 
-            .. container:: admonitionblock note
-
             .. NOTE::
 
               .. container:: paragraph
+
                   In a 'Policy' 'State' a 'State Output Mapping' has 3 roles: 1) Select which 'State'
                   should be executed next, 2) Select the type of the state’s 'Outgoing Event', and
                   3) Populate the state’s 'Outgoing Event'. This is how states are chained together
@@ -1074,7 +897,7 @@ Test The Policy
             .. container:: paragraph
 
                To start a new APEX Engine you can use the following
-               configuration. In a full APEX installation you can find
+               |policy1_configuration|. In a full APEX installation you can find
                this configuration in
                ``$APEX_HOME/examples/config/MyFirstPolicy/1/MyFirstPolicyConfigStdin2StdoutJsonEvent.json``.
                This configuration expects incoming events to be in
@@ -1086,59 +909,6 @@ Test The Policy
                Editor. Note, you may need to edit this file to provide
                the full path to wherever you stored the exported policy
                model file.
-
-            .. container:: listingblock
-
-               .. container:: content
-
-                  .. code:: CodeRay
-
-                     {
-                         "engineServiceParameters" : {
-                             "name"                : "MyFirstPolicyApexEngine",
-                             "version"             : "0.0.1",
-                             "id"                  : 101,
-                             "instanceCount"       : 4,
-                             "deploymentPort"      : 12345,
-                             "policyModelFileName" : "examples/models/MyFirstPolicy/1/MyFirstPolicyModel_0.0.1.json",
-                             "engineParameters"    : {
-                                 "executorParameters" : {
-                                     "MVEL" : {
-                                         "parameterClassName" : "org.onap.policy.apex.plugins.executor.mvel.MVELExecutorParameters"
-                                     },
-                                     "JAVASCRIPT" : {
-                                         "parameterClassName" : "org.onap.policy.apex.plugins.executor.javascript.JavascriptExecutorParameters"
-                                     }
-                                 }
-                             }
-                         },
-                         "eventOutputParameters": {
-                             "FirstProducer": {
-                                 "carrierTechnologyParameters" : {
-                                     "carrierTechnology" : "FILE",
-                                     "parameters" : {
-                                         "standardIO" : true
-                                     }
-                                 },
-                                 "eventProtocolParameters" : {
-                                     "eventProtocol" : "JSON"
-                                 }
-                             }
-                         },
-                         "eventInputParameters": {
-                             "FirstConsumer": {
-                                 "carrierTechnologyParameters" : {
-                                     "carrierTechnology" : "FILE",
-                                     "parameters" : {
-                                         "standardIO" : true
-                                     }
-                                 },
-                                 "eventProtocolParameters" : {
-                                     "eventProtocol" : "JSON"
-                                 }
-                             }
-                         }
-                     }
 
             .. container:: paragraph
 
@@ -1166,7 +936,7 @@ Test The Policy
                     :language: JSON
                 - .. container:: paragraph
 
-                    Request to buy alcohol item (`item_ID=1249`) at _08:41:06_ on _Monday, 02 January 2017_.
+                    Request to buy alcohol item (`item_ID=1249`) at 08:41:06 on Monday, 02 January 2017.
                     Sale is not authorized.
               * - .. literalinclude:: events/1/EventIn_BoozeItem_201713GMT.json
                     :language: JSON
@@ -1174,7 +944,7 @@ Test The Policy
                     :language: JSON
                 - .. container:: paragraph
 
-                    Request to buy alcohol (`item_ID=1943`) at _20:17:13_ on _Tuesday, 20 December 2016_.
+                    Request to buy alcohol (`item_ID=1943`) at 20:17:13 on Tuesday, 20 December 2016.
                     Sale is authorized.
 
 
@@ -1194,187 +964,11 @@ CLI Editor File
                policy model can again be generated using the APEX CLI
                editor. A sample APEX CLI script is shown below:
 
-            .. container:: listingblock
+               .. container:: ulist
 
-               .. container:: content
+                     -  |policy1ModelMvel_link|
+                     -  |policy1ModelJs_link|
 
-                  .. code:: CodeRay
-
-                     #-------------------------------------------------------------------------------
-                     # ============LICENSE_START=======================================================
-                     #  Copyright (C) 2016-2018 Ericsson. All rights reserved.
-                     # ================================================================================
-                     # Licensed under the Apache License, Version 2.0 (the "License");
-                     # you may not use this file except in compliance with the License.
-                     # You may obtain a copy of the License at
-                     #
-                     #      http://www.apache.org/licenses/LICENSE-2.0
-                     #
-                     # Unless required by applicable law or agreed to in writing, software
-                     # distributed under the License is distributed on an "AS IS" BASIS,
-                     # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                     # See the License for the specific language governing permissions and
-                     # limitations under the License.
-                     #
-                     # SPDX-License-Identifier: Apache-2.0
-                     # ============LICENSE_END=========================================================
-                     #-------------------------------------------------------------------------------
-
-                     model create name=MyFirstPolicyModel version=0.0.1 uuid=540226fb-55ee-4f0e-a444-983a0494818e description="This is my first Apex Policy Model."
-
-                     schema create name=assistant_ID_type version=0.0.1 uuid=36df4c71-9616-4206-8b53-976a5cd4bd87 description="A type for 'assistant_ID' values" flavour=Java schema=java.lang.Long
-
-                     schema create name=authorised_type version=0.0.1 uuid=d48b619e-d00d-4008-b884-02d76ea4350b description="A type for 'authorised' values" flavour=Java schema=java.lang.Boolean
-
-                     schema create name=branch_ID_type version=0.0.1 uuid=6468845f-4122-4128-8e49-0f52c26078b5 description="A type for 'branch_ID' values" flavour=Java schema=java.lang.Long
-
-                     schema create name=item_ID_type version=0.0.1 uuid=4f227ff1-aee0-453a-b6b6-9a4b2e0da932 description="A type for 'item_ID' values" flavour=Java schema=java.lang.Long
-
-                     schema create name=message_type version=0.0.1 uuid=ad1431bb-3155-4e73-b5a3-b89bee498749 description="A type for 'message' values" flavour=Java schema=java.lang.String
-
-                     schema create name=notes_type version=0.0.1 uuid=eecfde90-896c-4343-8f9c-2603ced94e2d description="A type for 'notes' values" flavour=Java schema=java.lang.String
-
-                     schema create name=price_type version=0.0.1 uuid=52c2fc45-fd8c-463c-bd6f-d91b0554aea7 description="A type for 'amount'/'price' values" flavour=Java schema=java.lang.Long
-
-                     schema create name=quantity_type version=0.0.1 uuid=ac3d9842-80af-4a98-951c-bd79a431c613 description="A type for 'quantity' values" flavour=Java schema=java.lang.Integer
-
-                     schema create name=sale_ID_type version=0.0.1 uuid=cca47d74-7754-4a61-b163-ca31f66b157b description="A type for 'sale_ID' values" flavour=Java schema=java.lang.Long
-
-                     schema create name=timestamp_type version=0.0.1 uuid=fd594e88-411d-4a94-b2be-697b3a0d7adf description="A type for 'time' values" flavour=Java schema=java.lang.Long
-
-                     task create name=MorningBoozeCheck version=0.0.1 uuid=3351b0f4-cf06-4fa2-8823-edf67bd30223 description=LS
-                     This task checks if the sales request is for an item that contains alcohol.
-                     If the local time is between 00:00:00 and 11:30:00 then the sale is not authorised. Otherwise the sale is authorised.
-                     In this implementation we assume that all items with item_ID values between 1000 and 2000 contain alcohol :-)
-                     LE
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=sale_ID schemaName=sale_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=amount schemaName=price_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=assistant_ID schemaName=assistant_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=notes schemaName=notes_type schemaVersion=0.0.1 optional=true
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=quantity schemaName=quantity_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=branch_ID schemaName=branch_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=item_ID schemaName=item_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=time schemaName=timestamp_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=sale_ID schemaName=sale_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=amount schemaName=price_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=assistant_ID schemaName=assistant_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=notes schemaName=notes_type schemaVersion=0.0.1 optional=true
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=quantity schemaName=quantity_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=branch_ID schemaName=branch_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=item_ID schemaName=item_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=authorised schemaName=authorised_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=time schemaName=timestamp_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=message schemaName=message_type schemaVersion=0.0.1 optional=true
-                     task logic create name=MorningBoozeCheck version=0.0.1 logicFlavour=MVEL logic=LS
-                     /*
-                      * ============LICENSE_START=======================================================
-                      *  Copyright (C) 2016-2018 Ericsson. All rights reserved.
-                      * ================================================================================
-                      * Licensed under the Apache License, Version 2.0 (the "License");
-                      * you may not use this file except in compliance with the License.
-                      * You may obtain a copy of the License at
-                      *
-                      *      http://www.apache.org/licenses/LICENSE-2.0
-                      *
-                      * Unless required by applicable law or agreed to in writing, software
-                      * distributed under the License is distributed on an "AS IS" BASIS,
-                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                      * See the License for the specific language governing permissions and
-                      * limitations under the License.
-                      *
-                      * SPDX-License-Identifier: Apache-2.0
-                      * ============LICENSE_END=========================================================
-                      */
-                     import java.util.Date;
-                     import java.util.Calendar;
-                     import java.util.TimeZone;
-                     import java.text.SimpleDateFormat;
-
-                     logger.info("Task Execution: '"+subject.id+"'. Input Fields: '"+inFields+"'");
-
-                     outFields.put("amount"      , inFields.get("amount"));
-                     outFields.put("assistant_ID", inFields.get("assistant_ID"));
-                     outFields.put("notes"       , inFields.get("notes"));
-                     outFields.put("quantity"    , inFields.get("quantity"));
-                     outFields.put("branch_ID"   , inFields.get("branch_ID"));
-                     outFields.put("item_ID"     , inFields.get("item_ID"));
-                     outFields.put("time"        , inFields.get("time"));
-                     outFields.put("sale_ID"     , inFields.get("sale_ID"));
-
-                     item_id = inFields.get("item_ID");
-
-                     //The events used later to test this task use GMT timezone!
-                     gmt = TimeZone.getTimeZone("GMT");
-                     timenow = Calendar.getInstance(gmt);
-                     df = new SimpleDateFormat("HH:mm:ss z");
-                     df.setTimeZone(gmt);
-                     timenow.setTimeInMillis(inFields.get("time"));
-
-                     midnight = timenow.clone();
-                     midnight.set(
-                         timenow.get(Calendar.YEAR),timenow.get(Calendar.MONTH),
-                         timenow.get(Calendar.DATE),0,0,0);
-                     eleven30 = timenow.clone();
-                     eleven30.set(
-                         timenow.get(Calendar.YEAR),timenow.get(Calendar.MONTH),
-                         timenow.get(Calendar.DATE),11,30,0);
-
-                     itemisalcohol = false;
-                     if(item_id != null && item_id >=1000 && item_id < 2000)
-                         itemisalcohol = true;
-
-                     if( itemisalcohol
-                         && timenow.after(midnight) && timenow.before(eleven30)){
-                       outFields.put("authorised", false);
-                       outFields.put("message", "Sale not authorised by policy task "+subject.taskName+
-                         " for time "+df.format(timenow.getTime())+
-                         ". Alcohol can not be sold between "+df.format(midnight.getTime())+
-                         " and "+df.format(eleven30.getTime()));
-                       return true;
-                     }
-                     else{
-                       outFields.put("authorised", true);
-                       outFields.put("message", "Sale authorised by policy task "+subject.taskName+
-                         " for time "+df.format(timenow.getTime()));
-                       return true;
-                     }
-
-                     /*
-                     This task checks if a sale request is for an item that is an alcoholic drink.
-                     If the local time is between 00:00:00 GMT and 11:30:00 GMT then the sale is not
-                     authorised. Otherwise the sale is authorised.
-                     In this implementation we assume that items with item_ID value between 1000 and
-                     2000 are all alcoholic drinks :-)
-                     */
-                     LE
-
-                     event create name=SALE_AUTH version=0.0.1 uuid=c4500941-3f98-4080-a9cc-5b9753ed050b description="An event emitted by the Policy to indicate whether the sale of an item has been authorised" nameSpace=com.hyperm source="APEX" target="POS"
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=amount schemaName=price_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=assistant_ID schemaName=assistant_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=authorised schemaName=authorised_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=branch_ID schemaName=branch_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=item_ID schemaName=item_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=message schemaName=message_type schemaVersion=0.0.1 optional=true
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=notes schemaName=notes_type schemaVersion=0.0.1 optional=true
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=quantity schemaName=quantity_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=sale_ID schemaName=sale_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=time schemaName=timestamp_type schemaVersion=0.0.1
-
-                     event create name=SALE_INPUT version=0.0.1 uuid=4f04aa98-e917-4f4a-882a-c75ba5a99374 description="An event raised by the PoS system each time an item is scanned for purchase" nameSpace=com.hyperm source="POS" target="APEX"
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=amount schemaName=price_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=assistant_ID schemaName=assistant_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=branch_ID schemaName=branch_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=item_ID schemaName=item_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=notes schemaName=notes_type schemaVersion=0.0.1 optional=true
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=quantity schemaName=quantity_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=sale_ID schemaName=sale_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=time schemaName=timestamp_type schemaVersion=0.0.1
-
-
-                     policy create name=MyFirstPolicy version=0.0.1 uuid=6c5e410f-489a-46ff-964e-982ce6e8b6d0 description="This is my first Apex policy. It checks if a sale should be authorised or not." template=FREEFORM firstState=BoozeAuthDecide
-                     policy state create name=MyFirstPolicy version=0.0.1 stateName=BoozeAuthDecide triggerName=SALE_INPUT triggerVersion=0.0.1 defaultTaskName=MorningBoozeCheck defaultTaskVersion=0.0.1
-                     policy state output create name=MyFirstPolicy version=0.0.1 stateName=BoozeAuthDecide outputName=MorningBoozeCheck_Output_Direct eventName=SALE_AUTH eventVersion=0.0.1 nextState=NULL
-                     policy state taskref create name=MyFirstPolicy version=0.0.1 stateName=BoozeAuthDecide taskLocalName=MorningBoozeCheck taskName=MorningBoozeCheck taskVersion=0.0.1 outputType=DIRECT outputName=MorningBoozeCheck_Output_Direct
 
 Policy Step 2
 ^^^^^^^^^^^^^
@@ -1384,7 +978,7 @@ Policy Step 2
                .. container:: sect1
 
                   .. rubric:: Scenario
-                     :name: scenario
+                     :name: scenario_policy2
 
                   .. container:: paragraph
 
@@ -1430,8 +1024,7 @@ Extend Policy Model
                the same input and output fields that we used earlier
                when we defined the ``MorningBoozeCheck`` task earlier.
 
-            .. table:: Table 1. Input fields for
-            ``MorningBoozeCheckAlt1`` task
+            .. table:: Table 1. Input fields for ``MorningBoozeCheckAlt1`` task
 
                +-----------------------------------+-----------------------------------+
                | Parameter Name                    | Parameter Type                    |
@@ -1453,8 +1046,7 @@ Extend Policy Model
                | notes                             | notes_type                        |
                +-----------------------------------+-----------------------------------+
 
-            .. table:: Table 2. Output fields for
-            ``MorningBoozeCheckAlt1`` task
+            .. table:: Table 2. Output fields for ``MorningBoozeCheckAlt1`` task
 
                +-----------------------------------+-----------------------------------+
                | Parameter Name                    | Parameter Type                    |
@@ -1487,7 +1079,7 @@ Extend Policy Model
 
             .. container:: paragraph
 
-               For simplicity use the following code for the task logic.
+               For simplicity use the following code for the task logic (|policy2_taskLogic_link|).
                It again assumes that all items with ``item_ID`` between
                1000 and 2000 contain alcohol. We again use the standard
                ``Java`` time utilities to check if the current time is
@@ -1507,98 +1099,9 @@ Extend Policy Model
                of the other supported languages please refer to APEX
                Programmers Guide.
 
-            .. container:: listingblock
+              .. container:: imageblock
 
-               .. container:: content
-
-                  .. code:: CodeRay
-
-                     /*
-                      * ============LICENSE_START=======================================================
-                      *  Copyright (C) 2016-2018 Ericsson. All rights reserved.
-                      * ================================================================================
-                      * Licensed under the Apache License, Version 2.0 (the "License");
-                      * you may not use this file except in compliance with the License.
-                      * You may obtain a copy of the License at
-                      *
-                      *      http://www.apache.org/licenses/LICENSE-2.0
-                      *
-                      * Unless required by applicable law or agreed to in writing, software
-                      * distributed under the License is distributed on an "AS IS" BASIS,
-                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                      * See the License for the specific language governing permissions and
-                      * limitations under the License.
-                      *
-                      * SPDX-License-Identifier: Apache-2.0
-                      * ============LICENSE_END=========================================================
-                      */
-                     import java.util.Date;
-                     import java.util.Calendar;
-                     import java.util.TimeZone;
-                     import java.text.SimpleDateFormat;
-
-                     logger.info("Task Execution: '"+subject.id+"'. Input Event: '"+inFields+"'");
-
-                     outFields.put("amount"      , inFields.get("amount"));
-                     outFields.put("assistant_ID", inFields.get("assistant_ID"));
-                     outFields.put("notes"       , inFields.get("notes"));
-                     outFields.put("quantity"    , inFields.get("quantity"));
-                     outFields.put("branch_ID"   , inFields.get("branch_ID"));
-                     outFields.put("item_ID"     , inFields.get("item_ID"));
-                     outFields.put("time"        , inFields.get("time"));
-                     outFields.put("sale_ID"     , inFields.get("sale_ID"));
-
-                     item_id = inFields.get("item_ID");
-
-                     //The events used later to test this task use CET timezone!
-                     cet = TimeZone.getTimeZone("CET");
-                     timenow = Calendar.getInstance(cet);
-                     df = new SimpleDateFormat("HH:mm:ss z");
-                     df.setTimeZone(cet);
-                     timenow.setTimeInMillis(inFields.get("time"));
-
-                     midnight = timenow.clone();
-                     midnight.set(
-                         timenow.get(Calendar.YEAR),timenow.get(Calendar.MONTH),
-                         timenow.get(Calendar.DATE),0,0,0);
-                     onepm = timenow.clone();
-                     onepm.set(
-                         timenow.get(Calendar.YEAR),timenow.get(Calendar.MONTH),
-                         timenow.get(Calendar.DATE),13,0,0);
-
-                     itemisalcohol = false;
-                     if(item_id != null && item_id >=1000 && item_id < 2000)
-                         itemisalcohol = true;
-
-                     if( itemisalcohol &&
-                         ( (timenow.after(midnight) && timenow.before(onepm))
-                           ||
-                           (timenow.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
-                         )){
-                       outFields.put("authorised", false);
-                       outFields.put("message", "Sale not authorised by policy task "+subject.taskName+
-                         " for time "+df.format(timenow.getTime())+
-                         ". Alcohol can not be sold between "+df.format(midnight.getTime())+
-                         " and "+df.format(onepm.getTime()) +" or on Sunday");
-                       return true;
-                     }
-                     else{
-                       outFields.put("authorised", true);
-                       outFields.put("message", "Sale authorised by policy task "+subject.taskName+
-                         " for time "+df.format(timenow.getTime()));
-                       return true;
-                     }
-
-                     /*
-                     This task checks if a sale request is for an item that is an alcoholic drink.
-                     If the local time is between 00:00:00 CET and 13:00:00 CET then the sale is not authorised.
-                     Also alcohol sales are not allowed on Sundays. Otherwise the sale is authorised.
-                     In this implementation we assume that items with item_ID between 1000 and 2000 are all alcoholic drinks :-)
-                     */
-
-            .. container:: imageblock
-
-               .. container:: content
+                .. container:: content
 
                   |Create a new alternative task
                   \`MorningBoozeCheckAlt1\`|
@@ -1618,7 +1121,7 @@ Extend Policy Model
                Navigate to the ``BoozeAuthDecide`` state in the 'states'
                section at the bottom of the policy definition pane.
 
-            .. container:: imageblock
+              .. container:: imageblock
 
                .. container:: content
 
@@ -1661,9 +1164,7 @@ Extend Policy Model
                logic using the
                ```JavaScript`` <https://en.wikipedia.org/wiki/JavaScript>`__
                scripting language. Sample task selection logic code
-               (specified in
-               ```JavaScript`` <https://en.wikipedia.org/wiki/JavaScript>`__)
-               is given below. Paste the script text into the 'Task
+               is given here (|policy2_taskSelectionLogic_link|). Paste the script text into the 'Task
                Selection Logic' box, and use "JAVASCRIPT" as the 'Task
                Selection Logic Type / Flavour'. It is necessary to mark
                one of the tasks as the 'Default Task' so that the task
@@ -1672,62 +1173,8 @@ Extend Policy Model
                case the ``MorningBoozeCheck`` task can be the default
                task.
 
-            .. container:: listingblock
 
-               .. container:: content
-
-                  .. code:: CodeRay
-
-                     /*
-                      * ============LICENSE_START=======================================================
-                      *  Copyright (C) 2016-2018 Ericsson. All rights reserved.
-                      * ================================================================================
-                      * Licensed under the Apache License, Version 2.0 (the "License");
-                      * you may not use this file except in compliance with the License.
-                      * You may obtain a copy of the License at
-                      *
-                      *      http://www.apache.org/licenses/LICENSE-2.0
-                      *
-                      * Unless required by applicable law or agreed to in writing, software
-                      * distributed under the License is distributed on an "AS IS" BASIS,
-                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                      * See the License for the specific language governing permissions and
-                      * limitations under the License.
-                      *
-                      * SPDX-License-Identifier: Apache-2.0
-                      * ============LICENSE_END=========================================================
-                      */
-
-
-                     var returnValueType = Java.type("java.lang.Boolean");
-                     var returnValue = new returnValueType(true);
-
-                     executor.logger.info("Task Selection Execution: '"+executor.subject.id+
-                         "'. Input Event: '"+executor.inFields+"'");
-
-                     branchid = executor.inFields.get("branch_ID");
-                     taskorig = executor.subject.getTaskKey("MorningBoozeCheck");
-                     taskalt = executor.subject.getTaskKey("MorningBoozeCheckAlt1");
-                     taskdef = executor.subject.getDefaultTaskKey();
-
-                     if(branchid >=0 && branchid <1000){
-                       taskorig.copyTo(executor.selectedTask);
-                     }
-                     else if (branchid >=1000 && branchid <2000){
-                       taskalt.copyTo(executor.selectedTask);
-                     }
-                     else{
-                       taskdef.copyTo(executor.selectedTask);
-                     }
-
-                     /*
-                     This task selection logic selects task "MorningBoozeCheck" for branches with
-                     0<=branch_ID<1000 and selects task "MorningBoozeCheckAlt1" for branches with
-                     1000<=branch_ID<2000. Otherwise the default task is selected.
-                     In this case the default task is also "MorningBoozeCheck"
-                     */
-
-            .. container:: imageblock
+              .. container:: imageblock
 
                .. container:: content
 
@@ -1770,65 +1217,12 @@ Test The Policy
             .. container:: paragraph
 
                To start a new APEX Engine you can use the following
-               configuration. In a full APEX installation you can find
+               |policy2_configuration_link|. In a full APEX installation you can find
                this configuration in
                ``$APEX_HOME/examples/config/MyFirstPolicy/2/MyFirstPolicyConfigStdin2StdoutJsonEvent.json``.
                Note, this has changed from the configuration file in
                Step 1 to enable the ``JAVASCRIPT`` executor for our new
                'Task Selection Logic'.
-
-            .. container:: listingblock
-
-               .. container:: content
-
-                  .. code:: CodeRay
-
-                     {
-                         "engineServiceParameters" : {
-                             "name"                : "MyFirstPolicyApexEngine",
-                             "version"             : "0.0.1",
-                             "id"                  : 102,
-                             "instanceCount"       : 4,
-                             "deploymentPort"      : 12345,
-                             "policyModelFileName" : "examples/models/MyFirstPolicy/2/MyFirstPolicyModel_0.0.1.json",
-                             "engineParameters"    : {
-                                 "executorParameters" : {
-                                     "MVEL" : {
-                                         "parameterClassName" : "org.onap.policy.apex.plugins.executor.mvel.MVELExecutorParameters"
-                                     },
-                                     "JAVASCRIPT" : {
-                                         "parameterClassName" : "org.onap.policy.apex.plugins.executor.javascript.JavascriptExecutorParameters"
-                                     }
-                                 }
-                             }
-                         },
-                         "eventOutputParameters": {
-                             "FirstProducer": {
-                                 "carrierTechnologyParameters" : {
-                                     "carrierTechnology" : "FILE",
-                                     "parameters" : {
-                                         "standardIO" : true
-                                     }
-                                 },
-                                 "eventProtocolParameters" : {
-                                     "eventProtocol" : "JSON"
-                                 }
-                             }
-                         },
-                         "eventInputParameters": {
-                             "FirstConsumer": {
-                                 "carrierTechnologyParameters" : {
-                                     "carrierTechnology" : "FILE",
-                                     "parameters" : {
-                                         "standardIO" : true
-                                     }
-                                 },
-                                 "eventProtocolParameters" : {
-                                     "eventProtocol" : "JSON"
-                                 }
-                             }
-                         }
-                     }
 
             .. container:: paragraph
 
@@ -1853,7 +1247,7 @@ Test The Policy
                     :language: JSON
                 - .. container:: paragraph
 
-                    Request to buy alcohol item (`item_ID=1249`) at _08:41:06 GMT_ on _Monday, 02 January 2017_.
+                    Request to buy alcohol item (`item_ID=1249`) at 08:41:06 GMT on Monday, 02 January 2017.
                     Sale is not authorized. Uses the `MorningBoozeCheck` task.
 
               * - .. literalinclude:: events/2/EventIn_BoozeItem_101433CET_thurs.json
@@ -1862,7 +1256,7 @@ Test The Policy
                     :language: JSON
                 - .. container:: paragraph
 
-                    Request to buy alcohol (`item_ID=1047`) at _10:14:33_ on _Thursday, 22 December 2016_.
+                    Request to buy alcohol (`item_ID=1047`) at 10:14:33 on Thursday, 22 December 2016.
                     Sale is not authorized. Uses the `MorningBoozeCheckAlt1` task.
 
               * - .. literalinclude:: events/2/EventIn_BoozeItem_171937CET_sun.json
@@ -1871,7 +1265,7 @@ Test The Policy
                     :language: JSON
                 - .. container:: paragraph
 
-                    Request to buy alcohol (`item_ID=1443`) at _17:19:37_ on _Sunday, 18 December 2016_.
+                    Request to buy alcohol (`item_ID=1443`) at 17:19:37 on Sunday, 18 December 2016.
                     Sale is not authorized. Uses the `MorningBoozeCheckAlt1` task.
 
               * - .. literalinclude:: events/2/EventIn_NonBoozeItem_111309CET_mon.json
@@ -1880,7 +1274,7 @@ Test The Policy
                     :language: JSON
                 - .. container:: paragraph
 
-                    Request to buy non-alcoholic item (`item_ID=5321`) at _11:13:09_ on _Monday, 2 January 2017_.
+                    Request to buy non-alcoholic item (`item_ID=5321`) at 11:13:09 on Monday, 2 January 2017.
                     Sale is authorized. Uses the `MorningBoozeCheckAlt1` task.
 
 CLI Editor File
@@ -1899,342 +1293,9 @@ CLI Editor File
                policy model can again be generated using the APEX CLI
                editor. A sample APEX CLI script is shown below:
 
-            .. container:: listingblock
+              .. container:: ulist
 
-               .. container:: content
-
-                  .. code:: CodeRay
-
-                     #-------------------------------------------------------------------------------
-                     # ============LICENSE_START=======================================================
-                     #  Copyright (C) 2016-2018 Ericsson. All rights reserved.
-                     # ================================================================================
-                     # Licensed under the Apache License, Version 2.0 (the "License");
-                     # you may not use this file except in compliance with the License.
-                     # You may obtain a copy of the License at
-                     #
-                     #      http://www.apache.org/licenses/LICENSE-2.0
-                     #
-                     # Unless required by applicable law or agreed to in writing, software
-                     # distributed under the License is distributed on an "AS IS" BASIS,
-                     # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                     # See the License for the specific language governing permissions and
-                     # limitations under the License.
-                     #
-                     # SPDX-License-Identifier: Apache-2.0
-                     # ============LICENSE_END=========================================================
-                     #-------------------------------------------------------------------------------
-
-                     model create name=MyFirstPolicyModel version=0.0.1 uuid=540226fb-55ee-4f0e-a444-983a0494818e description="This is my first Apex Policy Model."
-
-                     schema create name=assistant_ID_type version=0.0.1 uuid=36df4c71-9616-4206-8b53-976a5cd4bd87 description="A type for 'assistant_ID' values" flavour=Java schema=java.lang.Long
-
-                     schema create name=authorised_type version=0.0.1 uuid=d48b619e-d00d-4008-b884-02d76ea4350b description="A type for 'authorised' values" flavour=Java schema=java.lang.Boolean
-
-                     schema create name=branch_ID_type version=0.0.1 uuid=6468845f-4122-4128-8e49-0f52c26078b5 description="A type for 'branch_ID' values" flavour=Java schema=java.lang.Long
-
-                     schema create name=item_ID_type version=0.0.1 uuid=4f227ff1-aee0-453a-b6b6-9a4b2e0da932 description="A type for 'item_ID' values" flavour=Java schema=java.lang.Long
-
-                     schema create name=message_type version=0.0.1 uuid=ad1431bb-3155-4e73-b5a3-b89bee498749 description="A type for 'message' values" flavour=Java schema=java.lang.String
-
-                     schema create name=notes_type version=0.0.1 uuid=eecfde90-896c-4343-8f9c-2603ced94e2d description="A type for 'notes' values" flavour=Java schema=java.lang.String
-
-                     schema create name=price_type version=0.0.1 uuid=52c2fc45-fd8c-463c-bd6f-d91b0554aea7 description="A type for 'amount'/'price' values" flavour=Java schema=java.lang.Long
-
-                     schema create name=quantity_type version=0.0.1 uuid=ac3d9842-80af-4a98-951c-bd79a431c613 description="A type for 'quantity' values" flavour=Java schema=java.lang.Integer
-
-                     schema create name=sale_ID_type version=0.0.1 uuid=cca47d74-7754-4a61-b163-ca31f66b157b description="A type for 'sale_ID' values" flavour=Java schema=java.lang.Long
-
-                     schema create name=timestamp_type version=0.0.1 uuid=fd594e88-411d-4a94-b2be-697b3a0d7adf description="A type for 'time' values" flavour=Java schema=java.lang.Long
-
-                     task create name=MorningBoozeCheck version=0.0.1 uuid=3351b0f4-cf06-4fa2-8823-edf67bd30223 description=LS
-                     This task checks if the sales request is for an item that contains alcohol.
-                     If the local time is between 00:00:00 and 11:30:00 then the sale is not authorised. Otherwise the sale is authorised.
-                     In this implementation we assume that all items with item_ID values between 1000 and 2000 contain alcohol :-)
-                     LE
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=sale_ID schemaName=sale_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=amount schemaName=price_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=assistant_ID schemaName=assistant_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=notes schemaName=notes_type schemaVersion=0.0.1 optional=true
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=quantity schemaName=quantity_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=branch_ID schemaName=branch_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=item_ID schemaName=item_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheck version=0.0.1 fieldName=time schemaName=timestamp_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=sale_ID schemaName=sale_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=amount schemaName=price_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=assistant_ID schemaName=assistant_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=notes schemaName=notes_type schemaVersion=0.0.1 optional=true
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=quantity schemaName=quantity_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=branch_ID schemaName=branch_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=item_ID schemaName=item_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=authorised schemaName=authorised_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=time schemaName=timestamp_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheck version=0.0.1 fieldName=message schemaName=message_type schemaVersion=0.0.1 optional=true
-                     task logic create name=MorningBoozeCheck version=0.0.1 logicFlavour=MVEL logic=LS
-                     /*
-                      * ============LICENSE_START=======================================================
-                      *  Copyright (C) 2016-2018 Ericsson. All rights reserved.
-                      * ================================================================================
-                      * Licensed under the Apache License, Version 2.0 (the "License");
-                      * you may not use this file except in compliance with the License.
-                      * You may obtain a copy of the License at
-                      *
-                      *      http://www.apache.org/licenses/LICENSE-2.0
-                      *
-                      * Unless required by applicable law or agreed to in writing, software
-                      * distributed under the License is distributed on an "AS IS" BASIS,
-                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                      * See the License for the specific language governing permissions and
-                      * limitations under the License.
-                      *
-                      * SPDX-License-Identifier: Apache-2.0
-                      * ============LICENSE_END=========================================================
-                      */
-                     import java.util.Date;
-                     import java.util.Calendar;
-                     import java.util.TimeZone;
-                     import java.text.SimpleDateFormat;
-
-                     logger.info("Task Execution: '"+subject.id+"'. Input Fields: '"+inFields+"'");
-
-                     outFields.put("amount"      , inFields.get("amount"));
-                     outFields.put("assistant_ID", inFields.get("assistant_ID"));
-                     outFields.put("notes"       , inFields.get("notes"));
-                     outFields.put("quantity"    , inFields.get("quantity"));
-                     outFields.put("branch_ID"   , inFields.get("branch_ID"));
-                     outFields.put("item_ID"     , inFields.get("item_ID"));
-                     outFields.put("time"        , inFields.get("time"));
-                     outFields.put("sale_ID"     , inFields.get("sale_ID"));
-
-                     item_id = inFields.get("item_ID");
-
-                     //The events used later to test this task use GMT timezone!
-                     gmt = TimeZone.getTimeZone("GMT");
-                     timenow = Calendar.getInstance(gmt);
-                     df = new SimpleDateFormat("HH:mm:ss z");
-                     df.setTimeZone(gmt);
-                     timenow.setTimeInMillis(inFields.get("time"));
-
-                     midnight = timenow.clone();
-                     midnight.set(
-                         timenow.get(Calendar.YEAR),timenow.get(Calendar.MONTH),
-                         timenow.get(Calendar.DATE),0,0,0);
-                     eleven30 = timenow.clone();
-                     eleven30.set(
-                         timenow.get(Calendar.YEAR),timenow.get(Calendar.MONTH),
-                         timenow.get(Calendar.DATE),11,30,0);
-
-                     itemisalcohol = false;
-                     if(item_id != null && item_id >=1000 && item_id < 2000)
-                         itemisalcohol = true;
-
-                     if( itemisalcohol
-                         && timenow.after(midnight) && timenow.before(eleven30)){
-                       outFields.put("authorised", false);
-                       outFields.put("message", "Sale not authorised by policy task "+subject.taskName+
-                         " for time "+df.format(timenow.getTime())+
-                         ". Alcohol can not be sold between "+df.format(midnight.getTime())+
-                         " and "+df.format(eleven30.getTime()));
-                       return true;
-                     }
-                     else{
-                       outFields.put("authorised", true);
-                       outFields.put("message", "Sale authorised by policy task "+subject.taskName+
-                         " for time "+df.format(timenow.getTime()));
-                       return true;
-                     }
-
-                     /*
-                     This task checks if a sale request is for an item that is an alcoholic drink.
-                     If the local time is between 00:00:00 GMT and 11:30:00 GMT then the sale is not
-                     authorised. Otherwise the sale is authorised.
-                     In this implementation we assume that items with item_ID value between 1000 and
-                     2000 are all alcoholic drinks :-)
-                     */
-                     LE
-
-                     task create name=MorningBoozeCheckAlt1 version=0.0.1 uuid=bc6d90c9-c902-4686-afd3-925b30e39990 description=LS
-                     This task checks if a sale request is for an item that is an alcoholic drink.
-                     If the local time is between 00:00:00 CET and 13:00:00 CET then the sale is not authorised.
-                     Also alcohol sales are not allowed on Sundays. Otherwise the sale is authorised.
-                     In this implementation we assume that items with item_ID between 1000 and 2000 are all alcoholic drinks
-                     LE
-                     task inputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=sale_ID schemaName=sale_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=amount schemaName=price_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=assistant_ID schemaName=assistant_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=notes schemaName=notes_type schemaVersion=0.0.1 optional=true
-                     task inputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=quantity schemaName=quantity_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=branch_ID schemaName=branch_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=item_ID schemaName=item_ID_type schemaVersion=0.0.1
-                     task inputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=time schemaName=timestamp_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=sale_ID schemaName=sale_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=amount schemaName=price_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=assistant_ID schemaName=assistant_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=notes schemaName=notes_type schemaVersion=0.0.1 optional=true
-                     task outputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=quantity schemaName=quantity_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=branch_ID schemaName=branch_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=item_ID schemaName=item_ID_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=authorised schemaName=authorised_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=time schemaName=timestamp_type schemaVersion=0.0.1
-                     task outputfield create name=MorningBoozeCheckAlt1 version=0.0.1 fieldName=message schemaName=message_type schemaVersion=0.0.1 optional=true
-                     task logic create name=MorningBoozeCheckAlt1 version=0.0.1 logicFlavour=MVEL logic=LS
-                     /*
-                      * ============LICENSE_START=======================================================
-                      *  Copyright (C) 2016-2018 Ericsson. All rights reserved.
-                      * ================================================================================
-                      * Licensed under the Apache License, Version 2.0 (the "License");
-                      * you may not use this file except in compliance with the License.
-                      * You may obtain a copy of the License at
-                      *
-                      *      http://www.apache.org/licenses/LICENSE-2.0
-                      *
-                      * Unless required by applicable law or agreed to in writing, software
-                      * distributed under the License is distributed on an "AS IS" BASIS,
-                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                      * See the License for the specific language governing permissions and
-                      * limitations under the License.
-                      *
-                      * SPDX-License-Identifier: Apache-2.0
-                      * ============LICENSE_END=========================================================
-                      */
-                     import java.util.Date;
-                     import java.util.Calendar;
-                     import java.util.TimeZone;
-                     import java.text.SimpleDateFormat;
-
-                     logger.info("Task Execution: '"+subject.id+"'. Input Event: '"+inFields+"'");
-
-                     outFields.put("amount"      , inFields.get("amount"));
-                     outFields.put("assistant_ID", inFields.get("assistant_ID"));
-                     outFields.put("notes"       , inFields.get("notes"));
-                     outFields.put("quantity"    , inFields.get("quantity"));
-                     outFields.put("branch_ID"   , inFields.get("branch_ID"));
-                     outFields.put("item_ID"     , inFields.get("item_ID"));
-                     outFields.put("time"        , inFields.get("time"));
-                     outFields.put("sale_ID"     , inFields.get("sale_ID"));
-
-                     item_id = inFields.get("item_ID");
-
-                     //The events used later to test this task use CET timezone!
-                     cet = TimeZone.getTimeZone("CET");
-                     timenow = Calendar.getInstance(cet);
-                     df = new SimpleDateFormat("HH:mm:ss z");
-                     df.setTimeZone(cet);
-                     timenow.setTimeInMillis(inFields.get("time"));
-
-                     midnight = timenow.clone();
-                     midnight.set(
-                         timenow.get(Calendar.YEAR),timenow.get(Calendar.MONTH),
-                         timenow.get(Calendar.DATE),0,0,0);
-                     onepm = timenow.clone();
-                     onepm.set(
-                         timenow.get(Calendar.YEAR),timenow.get(Calendar.MONTH),
-                         timenow.get(Calendar.DATE),13,0,0);
-
-                     itemisalcohol = false;
-                     if(item_id != null && item_id >=1000 && item_id < 2000)
-                         itemisalcohol = true;
-
-                     if( itemisalcohol &&
-                         ( (timenow.after(midnight) && timenow.before(onepm))
-                           ||
-                           (timenow.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
-                         )){
-                       outFields.put("authorised", false);
-                       outFields.put("message", "Sale not authorised by policy task "+subject.taskName+
-                         " for time "+df.format(timenow.getTime())+
-                         ". Alcohol can not be sold between "+df.format(midnight.getTime())+
-                         " and "+df.format(onepm.getTime()) +" or on Sunday");
-                       return true;
-                     }
-                     else{
-                       outFields.put("authorised", true);
-                       outFields.put("message", "Sale authorised by policy task "+subject.taskName+
-                         " for time "+df.format(timenow.getTime()));
-                       return true;
-                     }
-
-                     /*
-                     This task checks if a sale request is for an item that is an alcoholic drink.
-                     If the local time is between 00:00:00 CET and 13:00:00 CET then the sale is not authorised.
-                     Also alcohol sales are not allowed on Sundays. Otherwise the sale is authorised.
-                     In this implementation we assume that items with item_ID between 1000 and 2000 are all alcoholic drinks :-)
-                     */
-                     LE
-
-                     event create name=SALE_AUTH version=0.0.1 uuid=c4500941-3f98-4080-a9cc-5b9753ed050b description="An event emitted by the Policy to indicate whether the sale of an item has been authorised" nameSpace=com.hyperm source="APEX" target="POS"
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=amount schemaName=price_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=assistant_ID schemaName=assistant_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=authorised schemaName=authorised_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=branch_ID schemaName=branch_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=item_ID schemaName=item_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=message schemaName=message_type schemaVersion=0.0.1 optional=true
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=notes schemaName=notes_type schemaVersion=0.0.1 optional=true
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=quantity schemaName=quantity_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=sale_ID schemaName=sale_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_AUTH version=0.0.1 parName=time schemaName=timestamp_type schemaVersion=0.0.1
-
-                     event create name=SALE_INPUT version=0.0.1 uuid=4f04aa98-e917-4f4a-882a-c75ba5a99374 description="An event raised by the PoS system each time an item is scanned for purchase" nameSpace=com.hyperm source="POS" target="APEX"
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=amount schemaName=price_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=assistant_ID schemaName=assistant_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=branch_ID schemaName=branch_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=item_ID schemaName=item_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=notes schemaName=notes_type schemaVersion=0.0.1 optional=true
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=quantity schemaName=quantity_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=sale_ID schemaName=sale_ID_type schemaVersion=0.0.1
-                     event parameter create name=SALE_INPUT version=0.0.1 parName=time schemaName=timestamp_type schemaVersion=0.0.1
-
-
-                     policy create name=MyFirstPolicy version=0.0.1 uuid=6c5e410f-489a-46ff-964e-982ce6e8b6d0 description="This is my first Apex policy. It checks if a sale should be authorised or not." template=FREEFORM firstState=BoozeAuthDecide
-                     policy state create name=MyFirstPolicy version=0.0.1 stateName=BoozeAuthDecide triggerName=SALE_INPUT triggerVersion=0.0.1 defaultTaskName=MorningBoozeCheck defaultTaskVersion=0.0.1
-                     policy state output create name=MyFirstPolicy version=0.0.1 stateName=BoozeAuthDecide outputName=MorningBoozeCheck_Output_Direct eventName=SALE_AUTH eventVersion=0.0.1 nextState=NULL
-                     policy state taskref create name=MyFirstPolicy version=0.0.1 stateName=BoozeAuthDecide taskLocalName=MorningBoozeCheckAlt1 taskName=MorningBoozeCheckAlt1 taskVersion=0.0.1 outputType=DIRECT outputName=MorningBoozeCheck_Output_Direct
-                     policy state taskref create name=MyFirstPolicy version=0.0.1 stateName=BoozeAuthDecide taskLocalName=MorningBoozeCheck taskName=MorningBoozeCheck taskVersion=0.0.1 outputType=DIRECT outputName=MorningBoozeCheck_Output_Direct
-                     policy state selecttasklogic create name=MyFirstPolicy version=0.0.1 stateName=BoozeAuthDecide logicFlavour=JAVASCRIPT logic=LS
-                     /*
-                      * ============LICENSE_START=======================================================
-                      *  Copyright (C) 2016-2018 Ericsson. All rights reserved.
-                      * ================================================================================
-                      * Licensed under the Apache License, Version 2.0 (the "License");
-                      * you may not use this file except in compliance with the License.
-                      * You may obtain a copy of the License at
-                      *
-                      *      http://www.apache.org/licenses/LICENSE-2.0
-                      *
-                      * Unless required by applicable law or agreed to in writing, software
-                      * distributed under the License is distributed on an "AS IS" BASIS,
-                      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-                      * See the License for the specific language governing permissions and
-                      * limitations under the License.
-                      *
-                      * SPDX-License-Identifier: Apache-2.0
-                      * ============LICENSE_END=========================================================
-                      */
-
-                     var returnValueType = Java.type("java.lang.Boolean");
-                     var returnValue = new returnValueType(true);
-
-                     executor.logger.info("Task Selection Execution: '"+executor.subject.id+"'. Input Event: '"+executor.inFields+"'");
-
-                     branchid = executor.inFields.get("branch_ID");
-                     taskorig = executor.subject.getTaskKey("MorningBoozeCheck");
-                     taskalt = executor.subject.getTaskKey("MorningBoozeCheckAlt1");
-                     taskdef = executor.subject.getDefaultTaskKey();
-
-                     if(branchid >=0 && branchid <1000){
-                       taskorig.copyTo(executor.selectedTask);
-                     }
-                     else if (branchid >=1000 && branchid <2000){
-                       taskalt.copyTo(executor.selectedTask);
-                     }
-                     else{
-                       taskdef.copyTo(executor.selectedTask);
-                     }
-
-                     /*
-                     This task selection logic selects task "MorningBoozeCheck" for branches with 0<=branch_ID<1000 and selects task "MorningBoozeCheckAlt1" for branches with 1000<=branch_ID<2000. Otherwise the default task is selected. In this case the default task is also "MorningBoozeCheck"
-                     */
-                     LE
+                     -  |policy2_Model_link|
 
 
    .. container::
@@ -2261,8 +1322,33 @@ CLI Editor File
 .. |Add a Task and Output Mapping| image:: images/mfp/MyFirstPolicy_P1_newState2.png
 .. |Validate the policy model for error using the 'Model' > 'Validate' menu item| image:: images/mfp/MyFirstPolicy_P1_validatePolicyModel.png
 .. |Download the completed policy model using the 'File' > 'Download' menu item| image:: images/mfp/MyFirstPolicy_P1_exportPolicyModel1.png
-.. |Create a new alternative task \`MorningBoozeCheckAlt1\`| image:: images/mfp/MyFirstPolicy_P2_newTask1.png
+.. |Create a new alternative task `MorningBoozeCheckAlt1`| image:: images/mfp/MyFirstPolicy_P2_newTask1.png
 .. |Right click to edit a policy| image:: images/mfp/MyFirstPolicy_P2_editPolicy1.png
 .. |State definition with 2 Tasks and Task Selection Logic| image:: images/mfp/MyFirstPolicy_P2_editState1.png
+.. |taskLogicMvel_link| raw:: html
 
+  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MorningBoozeCheck.mvel" target="_blank">Task Logic: MorningBoozeCheck.mvel</a>
+.. |taskLogicJs_link| raw:: html
 
+  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MorningBoozeCheck.js" target="_blank">Task Logic: MorningBoozeCheck.js</a>
+.. |policy1_configuration| raw:: html
+
+  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/config/MyFirstPolicy/1/MyFirstPolicyConfigStdin2StdoutJsonEvent.json" target="_blank">configuration</a>
+.. |policy1ModelMvel_link| raw:: html
+
+  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MyFirstPolicyModelMvel_0.0.1.apex" target="_blank">APEX CLI Editor code for Policy 1 using .Mvel Task Logic</a>
+.. |policy1ModelJs_link| raw:: html
+
+  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MyFirstPolicyModelJavascript_0.0.1.apex" target="_blank">APEX CLI Editor code for Policy 1 using .Js Task Logic</a>
+.. |policy2_taskLogic_link| raw:: html
+
+  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/2/MorningBoozeCheckAlt1.mvel" target="_blank">`MorningBoozeCheckAlt1` task logic (`MVEL`)</a>
+.. |policy2_taskSelectionLogic_link| raw:: html
+
+  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/2/MyFirstPolicy_BoozeAuthDecideTSL.js" target="_blank">`BoozeAuthDecide` task selection logic (`JavaScript`)</a>
+.. |policy2_configuration_link| raw:: html
+
+  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/config/MyFirstPolicy/2/MyFirstPolicyConfigStdin2StdoutJsonEvent.json" target="_blank">configuration</a>
+.. |policy2_Model_link| raw:: html
+
+  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/2/MyFirstPolicyModel_0.0.1.apex" target="_blank">APEX CLI Editor code for Policy 2</a>

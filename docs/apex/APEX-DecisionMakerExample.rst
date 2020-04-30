@@ -68,11 +68,6 @@ APEX Examples Decision Maker
 .. |makeDecisionExtraMode_Server_link| raw:: html
 
   <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/examples/html/DecisionMaker/MakeDecisionExtraMode_Server.html" target="_blank">HTML Server: Extra Mode</a>
-
-.. |apexConfigRESTServer_link| raw:: html
-
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/examples/config/DecisionMaker/ApexConfigRESTServer.json" target="_blank">APEX Configuration: Rest Server</a>
-
 .. |answerInitTask_link| raw:: html
 
   <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/logic/AnswerInitTask.js" target="_blank">Task Logic: Answer Init</a>
