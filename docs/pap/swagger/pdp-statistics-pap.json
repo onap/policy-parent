@@ -1,0 +1,368 @@
+{
+  "swagger": "2.0",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "PDP Statistics"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json",
+    "application/yaml"
+  ],
+  "produces": [
+    "application/json",
+    "application/yaml"
+  ],
+  "paths": {
+    "/policy/pap/v1/pdps/statistics": {
+      "get": {
+        "tags": [
+          "PDP Statistics"
+        ],
+        "summary": "Fetch  statistics for all PDP Groups and subgroups in the system",
+        "description": "Returns for all PDP Groups and subgroups statistics of the Policy Administration component",
+        "operationId": "pdpStatistics",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/policy/pap/v1/pdps/statistics/{group}": {
+      "get": {
+        "tags": [
+          "PDP Statistics"
+        ],
+        "summary": "Fetch current statistics for given PDP Group",
+        "description": "Returns statistics for given PDP Group of the Policy Administration component",
+        "operationId": "pdpGroupStatistics",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "group",
+            "in": "path",
+            "description": "PDP Group Name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/policy/pap/v1/pdps/statistics/{group}/{type}": {
+      "get": {
+        "tags": [
+          "PDP Statistics"
+        ],
+        "summary": "Fetch statistics for the specified subgroup",
+        "description": "Returns  statistics for the specified subgroup of the Policy Administration component",
+        "operationId": "pdpSubGroupStatistics",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "group",
+            "in": "path",
+            "description": "PDP Group Name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "description": "PDP SubGroup type",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/policy/pap/v1/pdps/statistics/{group}/{type}/{pdp}": {
+      "get": {
+        "tags": [
+          "PDP Statistics"
+        ],
+        "summary": "Fetch statistics for the specified pdp",
+        "description": "Returns  statistics for the specified pdp of the Policy Administration component",
+        "operationId": "pdpInstanceStatistics",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "group",
+            "in": "path",
+            "description": "PDP Group Name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "description": "PDP SubGroup type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pdp",
+            "in": "path",
+            "description": "PDP Instance name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record Count",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "description": "",
+      "type": "basic"
+    }
+  }
+}

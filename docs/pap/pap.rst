@@ -9,29 +9,17 @@ Policy Administration Point (PAP) Architecture
 .. contents::
     :depth: 3
 
-The PAP keeps track of PDPs, supporting the deployment of PDP groups and the deployment of a *policy set* across those
-PDP groups. Policies are created using the Policy API, but are deployed via the PAP. 
+The Policy Administration Point (PAP) keeps track of PDPs, supporting the deployment of PDP groups and the deployment 
+of a policies across those PDP groups. Policies are created using the Policy API, but are deployed via the PAP. 
 
-A PAP is stateless in a RESTful sense, using the database (persistent storage) to track PDPs and the deployment of
-policies to those PDPs. In short, policy management on PDPs is the responsibility of PAPs; management of policy sets or
-policies by any other manner is not permitted.
+The PAP is stateless in a RESTful sense, using the database (persistent storage) to track PDPs and the deployment of
+policies to those PDPs. In short, policy management on PDPs is the responsibility of PAP; management of policies by 
+any other manner is not permitted.
 
 Because the PDP is the main unit of scalability in the Policy Framework, the framework is designed to allow PDPs in a
 PDP group to arbitrarily appear and disappear and for policy consistency across all PDPs in a PDP group to be easily
 maintained. The PAP is responsible for controlling the state across the PDPs in a PDP group. The PAP interacts with the
-Policy database and transfers policy sets to PDPs.
-
-There are a number of rules for PDP group and PDP state management:
-
-1. Only one version of a PDP group may be ACTIVE at any time
-
-2. If a PDP group with a certain version is ACTIVE and a later version   of the same PDP group is activated, then the
-   system upgrades the PDP group
-
-3. If a PDP group with a certain version is ACTIVE and an earlier version of the same PDP group is activated, then the
-   system downgrades the PDP group
-
-4. There is no restriction on the number of PASSIVE versions of a PDP group that can exist in the system
+policy database and transfers policies to PDPs.
 
 
 1 APIs
@@ -59,13 +47,17 @@ PAP supports the operations listed in the following table, via its REST API:
    :widths: 25,70
 
    "Health check", "Queries the health of the PAP"
+   "Consolidated healthcheck", "Queries the health of all policy components"
    "Statistics", "Queries various statistics"
    "PDP state change", "Changes the state of all PDPs in a PDP Group"
    "PDP Group create/update", "Creates/updates PDP Groups"
    "PDP Group delete", "Deletes a PDP Group"
    "PDP Group query", "Queries all PDP Groups"
+   "Deployment update", "Deploy/undeploy one or more policies in specified PdpGroups"
    "Deploy policy", "Deploys one or more policies to the PDPs"
    "Undeploy policy", "Undeploys a policy from the PDPs"
+   "Policy deployment status", "Queries the status of all deployed policies"
+   "PDP statistics", "Queries the statistics of PDPs"
 
 1.2 DMaaP API
 -------------
@@ -122,6 +114,18 @@ This operation performs a health check on the PAP.
 Here is a sample response:
 
 .. literalinclude:: response/health-check-pap-resp.json
+    :language: json
+
+.. swaggerv2doc:: swagger/consolidated-healthcheck-pap.json
+
+This operation performs a health check of all policy components. The response
+contains health check result of each component. The consolidated health check
+is reported as healthy only if all the components are healthy, otherwise the 
+"healthy" flag is marked as false.
+
+Here is a sample response:
+
+.. literalinclude:: response/consolidated-healthcheck-pap-resp.json
     :language: json
 
 .. swaggerv2doc:: swagger/statistics-pap.json
@@ -223,20 +227,36 @@ This operation allows policies to be undeployed from PDP groups.
 
 .. note::
   Due to current limitations, a fully qualified policy version must always be specified.
+
+.. swaggerv2doc:: swagger/deployed-policy-pap.json
+
+This operation allows the deployed policies to be listed together with deployment status.
+The result can be filtered based on policy name & version.
+
+Here is a sample response:
+
+.. literalinclude:: response/deployed-policy-pap-resp.json
+    :language: json
+
+.. swaggerv2doc:: swagger/pdp-statistics-pap.json
+
+This operation allows the PDP statistics to be retrieved for all registered PDPs.
+The result can be filtered based on PDP group, PDP subgroup & PDP instance.
+
+Here is a sample response:
+
+.. literalinclude:: response/pdp-statistics-pap-resp.json
+    :language: json
+
   
 3 Future Features 
 =================
 
-3.1 Order Health Check on PDPs
-==============================
+3.1 Disable policies in PDP
+===========================
 
-This operation will allow a PDP group health check to be ordered on PDP groups and on individual PDPs. The operation
-will return a HTTP status code of *202: Accepted* if the health check request has been accepted by the PAP. The PAP will
-then order execution of the health check on the PDPs.
-
-As health checks may be long lived operations, Health checks will be scheduled for execution by this operation. Users
-will check the result of a health check test by issuing a PDP Group Query operation and checking the *healthy* field of
-PDPs.
-
+This operation will allow disabling individual policies running in PDP engine. It is mainly beneficial
+in scenarios where network operators/administrators wants to disable a particular policy in PDP engine 
+for sometime due to failure in system or during scheduled maintenance.
 
 End of Document

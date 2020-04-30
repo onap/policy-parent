@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "DeploymentsUpdate"
+    "name" : "Deployments Update"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json", "application/yaml" ],
@@ -10,7 +10,7 @@
   "paths" : {
     "/policy/pap/v1/pdps/deployments/batch" : {
       "post" : {
-        "tags" : [ "DeploymentsUpdate" ],
+        "tags" : [ "Deployments Update" ],
         "summary" : "Updates policy deployments within specific PDP groups",
         "description" : "Updates policy deployments within specific PDP groups, returning optional error details",
         "operationId" : "updateGroupPolicies",

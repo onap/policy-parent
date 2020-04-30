@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpPolicyDeploy"
+    "name" : "Deploy Policy"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json" ],
@@ -10,7 +10,7 @@
   "paths" : {
     "/policy/pap/v1/pdps/policies" : {
       "post" : {
-        "tags" : [ "PdpPolicyDeploy" ],
+        "tags" : [ "Deploy Policy" ],
         "summary" : "Deploy or update PDP Policies",
         "description" : "Deploys or updates PDP Policies, returning optional error details",
         "operationId" : "deployPolicies",

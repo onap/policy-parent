@@ -2,7 +2,7 @@
   "swagger" : "2.0",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "PdpGroupDelete"
+    "name" : "PdpGroup Delete"
   } ],
   "schemes" : [ "http", "https" ],
   "consumes" : [ "application/json" ],
@@ -10,7 +10,7 @@
   "paths" : {
     "/policy/pap/v1/pdps/groups/{name}" : {
       "delete" : {
-        "tags" : [ "PdpGroupDelete" ],
+        "tags" : [ "PdpGroup Delete" ],
         "summary" : "Delete PDP Group",
         "description" : "Deletes a PDP Group, returning optional error details",
         "operationId" : "deleteGroup",
