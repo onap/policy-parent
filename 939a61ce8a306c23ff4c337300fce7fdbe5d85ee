@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbf4c714_ffa80b33",
+        "filename": "docs/apex/APEX-PCVS-Example.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-04-30T18:18:04Z",
+      "side": 1,
+      "message": "two typos: \"use to estalish\" \u003d\u003e \"used to establish\"",
+      "revId": "939a61ce8a306c23ff4c337300fce7fdbe5d85ee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
