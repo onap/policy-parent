@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0631db93_05113d8e",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2020-05-01T19:04:47Z",
+      "side": 1,
+      "message": "This is old and should be something like - PDPs register with the PAP when they start, providing the \"pdpGroup\" they have been preconfigured with.\n\nSame comment for Warm and Hot section below.",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
