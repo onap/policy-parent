@@ -22,6 +22,30 @@
       "revId": "8855ba85979d2cb3976bda5e27caec21949c3a5d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e33fa29a_33fea718",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2020-05-01T15:24:47Z",
+      "side": 1,
+      "message": "I think we still have it in CSIT. But should get rid of it and use the \"onap.policies.native.Apex\" which is preloaded by policy/api. Let me do that today.",
+      "parentUuid": "3ec400dc_43825be5",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 0
+      },
+      "revId": "8855ba85979d2cb3976bda5e27caec21949c3a5d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
