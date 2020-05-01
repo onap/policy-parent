@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ec400dc_43825be5",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-01T15:13:08Z",
+      "side": 1,
+      "message": "Does this still exist in Apex? Thinking I can delete section 2.2.1 and 2.2.2",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 0
+      },
+      "revId": "8855ba85979d2cb3976bda5e27caec21949c3a5d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
