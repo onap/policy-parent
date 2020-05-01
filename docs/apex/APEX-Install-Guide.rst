@@ -1027,7 +1027,7 @@ Verify Installation - run an Example
       .. container:: content
 
          .. code:: bash
-                :number-lines:
+             :number-lines:
 
              # $APEX_HOME/bin/apexEngine.sh -c $APEX_HOME/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (1)
              # $APEX_HOME/bin/apexEngine.sh -c C:/apex/apex-full-2.0.0-SNAPSHOT/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json (2)
