@@ -2,6 +2,210 @@
   "comments": [
     {
       "key": {
+        "uuid": "7a66392b_45b7435e",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e8e18e_02710399",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "\"appropriate\" \u003d\u003e \"appropriately\"",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5272e27b_015d7b5a",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "\"follow\" \u003d\u003e \"follows\"?\n\nmaybe add a comma after \"monitoring\"?\n\ntrailing space",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ea1b37c_ab5a6468",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "\"adding\" \u003d\u003e \"adding a\"",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00129d09_4f18a7dc",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "\"a Actor\" \u003d\u003e \"an Actor\"",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "131ad3e9_a81eb725",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "remove trailing \"on\" - maybe reword, or not",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f84bc757_89dbb1b2",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bf05077_0b067e16",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "\"Loaded\" \u003d\u003e \"These are loaded\"?  (may be ok as is)",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed41b53_270fa935",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "\"definition\" \u003d\u003e \"definitions\"\n\ntrailing space",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f577d280_299ab59c",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "\"supports\" \u003d\u003e \"support\"",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd1ede46_f4e89057",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2255b96b_a3a77c71",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "\"policy\" \u003d\u003e \"policies\" ?",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0631db93_05113d8e",
         "filename": "docs/pap/pap.rst",
         "patchSetId": 6
@@ -57,6 +261,23 @@
       "revId": "959a931429f36309c1a621993740d56b0f63e96f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8a20e7b_c131d8aa",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T15:25:24Z",
+      "side": 1,
+      "message": "trailing spaces\n\nsame comment below",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     },
     {
       "key": {
