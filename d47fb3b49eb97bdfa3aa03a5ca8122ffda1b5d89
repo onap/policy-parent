@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "d3d77174_9994f631",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T16:28:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6936a3de_4a01c83c",
+      "revId": "d47fb3b49eb97bdfa3aa03a5ca8122ffda1b5d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c72f7c3_bf39a211",
         "filename": "docs/pap/pap.rst",
         "patchSetId": 9
