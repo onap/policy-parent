@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "815932c3_323fa629",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-04T15:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1f536d_cc3ab79a",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5737a925_b88608c2",
         "filename": "docs/xacml/xacml.rst",
         "patchSetId": 6
@@ -56,6 +74,24 @@
       "revId": "959a931429f36309c1a621993740d56b0f63e96f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7036eded_1e53b130",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-04T15:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5737a925_b88608c2",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
