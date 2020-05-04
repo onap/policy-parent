@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ddcfb69f_2302f3ac",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-04T16:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483c1b00_6f08909b",
+      "revId": "d47fb3b49eb97bdfa3aa03a5ca8122ffda1b5d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14035dde_f3875589",
         "filename": "docs/design/design.rst",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5b8c462e_ad5d717e",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-04T16:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14035dde_f3875589",
+      "revId": "d47fb3b49eb97bdfa3aa03a5ca8122ffda1b5d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "722c10db_24920a76",
         "filename": "docs/design/design.rst",
         "patchSetId": 9
@@ -50,6 +86,24 @@
       "revId": "d47fb3b49eb97bdfa3aa03a5ca8122ffda1b5d89",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6936a3de_4a01c83c",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-04T16:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "722c10db_24920a76",
+      "revId": "d47fb3b49eb97bdfa3aa03a5ca8122ffda1b5d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
