@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "483c1b00_6f08909b",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T16:16:13Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "d47fb3b49eb97bdfa3aa03a5ca8122ffda1b5d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14035dde_f3875589",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T16:16:13Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "d47fb3b49eb97bdfa3aa03a5ca8122ffda1b5d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "722c10db_24920a76",
+        "filename": "docs/design/design.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T16:16:13Z",
+      "side": 1,
+      "message": "Dangling preposition \"upon\"",
+      "revId": "d47fb3b49eb97bdfa3aa03a5ca8122ffda1b5d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c72f7c3_bf39a211",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T16:16:13Z",
+      "side": 1,
+      "message": "updates per Ram\u0027s comments",
+      "revId": "d47fb3b49eb97bdfa3aa03a5ca8122ffda1b5d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c748e2a_837fd135",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-04T16:16:13Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "d47fb3b49eb97bdfa3aa03a5ca8122ffda1b5d89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
