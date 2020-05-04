@@ -22,6 +22,40 @@
       "revId": "959a931429f36309c1a621993740d56b0f63e96f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d1f536d_cc3ab79a",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-04T13:48:11Z",
+      "side": 1,
+      "message": "whitespaces at end of line",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5737a925_b88608c2",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-04T13:48:11Z",
+      "side": 1,
+      "message": "whitespaces end of line",
+      "revId": "959a931429f36309c1a621993740d56b0f63e96f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
