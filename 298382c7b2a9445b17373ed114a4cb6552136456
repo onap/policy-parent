@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0abd325b_8b91e684",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-05T15:42:47Z",
+      "side": 1,
+      "message": "The topmost title header should use \"########\"\n\n# with overline, for parts\n* with overline, for chapters\n\u003d, for sections\n-, for subsections\n^, for subsubsections\n“, for paragraphs\n\nI think that I need to go back and make sure that is correct through the rest of the documentation.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "298382c7b2a9445b17373ed114a4cb6552136456",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
