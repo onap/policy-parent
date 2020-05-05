@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2b9b5ea_d34e05ba",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-05T14:38:32Z",
+      "side": 1,
+      "message": "a couple more trailing spaces here",
+      "revId": "bc1b1d7d7069c4971c38b4f6d066a4e1288a126f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
