@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4790415f_8823555a",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-05T14:23:25Z",
+      "side": 1,
+      "message": "trailing spaces\n\nsame comment several places below",
+      "revId": "3167893f3ca6f457868c4a034fc7e027cf5fa0fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742ad849_9e755344",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-05T14:23:25Z",
+      "side": 1,
+      "message": "\"of test\" \u003d\u003e \"of the test\"",
+      "revId": "3167893f3ca6f457868c4a034fc7e027cf5fa0fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
