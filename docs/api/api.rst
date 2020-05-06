@@ -10,27 +10,63 @@ Policy Life Cycle API
 .. contents::
     :depth: 2
 
-The purpose of this API is to support CRUD of TOSCA *PolicyType* entities. This API is provided by the
+The purpose of this API is to support CRUD of TOSCA *PolicyType* and *Policy* entities. This API is provided by the
 *PolicyDevelopment* component of the Policy Framework, see the :ref:`The ONAP Policy Framework Architecture
-<architecture-label>` page. Policy design API backend is running in an independent building block component of policy framework
-that provides REST service for aforementioned CRUD behaviors. Policy design API component interacts with a policy database
-for storing and fetching new policies or policy types as needed. Apart from CRUD, API is also exposed for clients to retrieve
-healthcheck status of this API REST service and statistics report including a variety of counters that reflect the history
-of API invocation.
+<architecture-label>` page. The Policy design API backend is running in an independent building block component of the
+policy framework that provides REST services for the aforementioned CRUD behaviors. The Policy design API component interacts
+with a policy database for storing and fetching new policies or policy types as needed. Apart from CRUD, an API is also
+exposed for clients to retrieve healthcheck status of the API REST service and statistics report including a variety of
+counters that reflect the history of API invocation.
 
 We strictly follow `TOSCA Specification <http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.1/TOSCA-Simple-Profile-YAML-v1.1.pdf>`_
-to define policy type and policy. A policy type is equivalent to the policy model mentioned by clients before Dublin release.
-Both policy type and policy are included in a TOSCA Service Template which is used as the entity passed into API POST call
-and the entity returned by API GET and DELETE calls. More details are presented in following sessions.
-We encourage clients to compose all kinds of policies and corresponding policy types in well-formed TOSCA Service Template.
-One Service Template can contain one or more policies and policy types. Each policy type can have multiple policies created
-atop. In other words, different policies can match the same or different policy types. Existence of a policy type is a prerequisite
-of creating such type of policies. In the payload body of each policy to create, policy type name and version should be indicated and
-the specified policy type should be valid and existing in policy database.
+to define policy types and policies. A policy type defines the schema for a policy, expressing the properties, targets, and triggers
+that a policy may have. The type (string, int etc) and constraints (such as the range of legal values) of each property is defined
+in the Policy Type. Both Policy Type and policy are included in a TOSCA Service Template, which is used as the entity passed into an API
+POST call and the entity returned by API GET and DELETE calls. More details are presented in following sections. Policy Types and Policies
+can be composed for any given domain of application.  All Policy Types and Policies must be composed as well-formed TOSCA Service Templates.
+One Service Template can contain multiple policies and policy types.
+
+Child policy types can inherit from parent policy types, so a hierarchy of policy types can be built up. For example, optimization the HpaPolicy Policy Type in the table below is a child of a Resource Policy Type, which is a child of an Optimization policy.
+See also `the eamples in Github <hhttps://github.com/onap/policy-models/tree/master/models-examples/src/main/resources/policytypes>`_.
+
+::
+
+ onap.policies.Optimization.yaml
+  onap.policies.optimization.Resource.yaml
+   onap.policies.optimization.resource.AffinityPolicy.yaml
+   onap.policies.optimization.resource.DistancePolicy.yaml
+   onap.policies.optimization.resource.HpaPolicy.yaml
+   onap.policies.optimization.resource.OptimizationPolicy.yaml
+   onap.policies.optimization.resource.PciPolicy.yaml
+   onap.policies.optimization.resource.Vim_fit.yaml
+   onap.policies.optimization.resource.VnfPolicy.yaml
+ onap.policies.optimization.Service.yaml
+   onap.policies.optimization.service.QueryPolicy.yaml
+   onap.policies.optimization.service.SubscriberPolicy.yaml
+
+Custom data types can be defined in TOSCA for properties specified in Policy Types. Data types can also inherit from parents, so a hierarchy of data types can also be built up.
+
+.. warning::
+ When creating a Policy Type, the ancestors of the Policy Type and all its custom Data Type definitions and ancestors MUST either already
+ exist in the database or MUST also be defined in the incoming TOSCA Service Template. Requests with missing or bad references are rejected
+ by the API.
+
+Each Policy Type can have multiple Policy instances created from it. Therefore, many Policy instances of the HpaPolicy PolicType above can created. When a policy is created, its Policy Type is specified in the *type* and *type_version* fields of the policy.
+
+.. warning::
+ The Policy Type specified for a Policy MUST exist in the database before the policy can be created. Requests with missing or bad
+ Policy Type references are rejected by the API. 
 
 The API allows applications to create, update, delete, and query *PolicyType* entities so that they become available for
-use in ONAP by applications such as CLAMP. Some Policy Type entities are preloaded in the Policy Framework. The TOSCA
-fields below are valid on API calls:
+use in ONAP by applications such as CLAMP. Some Policy Type entities are preloaded in the Policy Framework.
+
+.. warning::
+ If a TOSCA entity (Data Type, Policy Type, or Policy with a certain version) already exists in the database and an attempt is made
+ to re-create the entity with different fields, the API will reject the request with the error message "entity in incoming fragment
+ does not equal existing entity". In such cases, delete the Policy or Policy Type and re-create it using the API.
+
+
+The TOSCA fields below are valid on API calls:
 
 ============ ======= ======== ========== ===============================================================================
 **Field**    **GET** **POST** **DELETE** **Comment**
@@ -38,12 +74,16 @@ fields below are valid on API calls:
 (name)       M       M        M          The definition of the reference to the Policy Type, GET allows ranges to be
                                          specified
 version      O       M        C          GET allows ranges to be specified, must be specified if more than one version
-                                         of the Policy Type exists
+                                         of the Policy Type exists ans a specific version is required
 description  R       O        N/A        Desciption of the Policy Type
 derived_from R       C        N/A        Must be specified when a Policy Type is derived from another Policy Type such
-                                         as in the case of derived Monitoring Policy Types
+                                         as in the case of derived Monitoring Policy Types. The referenced Policy Type
+                                         must either already exist in the database or be defined as another policy type
+                                         in the incoming TOSCA service template
 metadata     R       O        N/A        Metadata for the Policy Type
-properties   R       M        N/A        This field holds the specification of the specific Policy Type in ONAP
+properties   R       M        N/A        This field holds the specification of the specific Policy Type in ONAP. Any user
+                                         defined data types specified on properties must either already exist in the
+                                         database or be defined in the incoming TOSCA service template
 targets      R       O        N/A        A list of node types and/or group types to which the Policy Type can be applied
 triggers     R       O        N/A        Specification of policy triggers, not currently supported in ONAP
 ============ ======= ======== ========== ===============================================================================
@@ -57,7 +97,7 @@ triggers     R       O        N/A        Specification of policy triggers, not c
   implementations is disabled.
 
 .. note::
-  Policy types that are in use (referenced by defined Policies) may not be deleted.
+  Policy types that are in use (referenced by defined Policies and/or child policy types) may not be deleted.
 
 .. note::
   The group types of targets in TOSCA are groups of TOSCA nodes, not PDP groups; the *target* concept in TOSCA is
@@ -150,7 +190,7 @@ Also, the new APIs support both *http* and *https*.
 For every API call, client is encouraged to insert an uuid-type requestID as parameter.
 It is helpful for tracking each http transaction and facilitates debugging.
 Mostly importantly, it complies with Logging requirements v1.2.
-If client does not provider the requestID in API call, one will be randomly generated
+If a client does not provider the requestID in API call, one will be randomly generated
 and attached to response header *x-onap-requestid*.
 
 In accordance with `ONAP API Common Versioning Strategy Guidelines <https://wiki.onap.org/display/DW/ONAP+API+Common+Versioning+Strategy+%28CVS%29+Guidelines>`_,
@@ -223,7 +263,7 @@ they will need to delete them one by one.
 Sample API Curl Commands
 -------------------------
 
-From API client perspective, using *http* or *https* does not have much difference in curl command.
+From an API client perspective, using *http* or *https* does not make much difference to the curl command.
 Here we list some sample curl commands (using *http*) for POST, GET and DELETE monitoring and operational policies that are used in vFirewall use case.
 JSON payload for POST calls can be downloaded from policy table above.
 
