@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a830cab_423b460a",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-06T13:47:06Z",
+      "side": 1,
+      "message": "typp - eamples",
+      "revId": "5b3f3e8c8177a330b9c790639b8512fbd6cf819a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
