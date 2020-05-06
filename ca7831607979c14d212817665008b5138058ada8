@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "538be66a_bb2d4dd4",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-06T12:19:21Z",
+      "side": 1,
+      "message": "Policy Type",
+      "range": {
+        "startLine": 54,
+        "startChar": 119,
+        "endLine": 54,
+        "endChar": 128
+      },
+      "revId": "ca7831607979c14d212817665008b5138058ada8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba621fef_bb7b219e",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-06T12:19:21Z",
+      "side": 1,
+      "message": "can be created",
+      "range": {
+        "startLine": 54,
+        "startChar": 135,
+        "endLine": 54,
+        "endChar": 146
+      },
+      "revId": "ca7831607979c14d212817665008b5138058ada8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cf87db4_2798f8f6",
+        "filename": "docs/api/api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-06T12:19:21Z",
+      "side": 1,
+      "message": "provide",
+      "range": {
+        "startLine": 193,
+        "startChar": 21,
+        "endLine": 193,
+        "endChar": 29
+      },
+      "revId": "ca7831607979c14d212817665008b5138058ada8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
