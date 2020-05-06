@@ -47,9 +47,9 @@ RAM: 4 GB
 
 HardDisk: 40 GB
 
-Docker Version: 18.09.6
+Docker version 19.03.8
 
-Java: openjdk version "1.8.0_212"
+Java: openjdk version "11.0.7" 2020-04-14
 
 **JMeter VM details (VM1)**
 
@@ -63,9 +63,9 @@ HardDisk: 40 GB
 
 Docker Version: 18.09.6
 
-Java: openjdk version "1.8.0_212"
+Java: openjdk version "11.0.7" 2020-04-14
 
-JMeter: 5.1.1
+JMeter: 5.2.1
 
 Install Docker in VM1 & VM2
 ---------------------------
@@ -77,7 +77,7 @@ Make the etc/hosts entries
 .. code-block:: bash
 
     $ echo $(hostname -I | cut -d\  -f1) $(hostname) | sudo tee -a /etc/hosts
-    
+
 Make the DNS entries
 
 .. code-block:: bash
@@ -85,18 +85,18 @@ Make the DNS entries
     $ echo "nameserver <PrimaryDNSIPIP>" >> /etc/resolvconf/resolv.conf.d/head
     $ echo "nameserver <SecondaryDNSIP>" >> /etc/resolvconf/resolv.conf.d/head
     $ resolvconf -u
-    
+
 Update the ubuntu software installer
 
 .. code-block:: bash
 
     $ apt-get update
-    
+
 Check and Install Java
 
 .. code-block:: bash
 
-    $ apt-get install -y openjdk-8-jdk
+    $ apt-get install -y openjdk-11-jdk
     $ java -version
 
 Ensure that the Java version that is executing is OpenJDK version 8
@@ -136,16 +136,16 @@ Download & install JMeter
 
     $ mkdir jMeter
     $ cd jMeter
-    $ wget http://mirrors.whoishostingthis.com/apache//jmeter/binaries/apache-jmeter-5.1.1.zip
-    $ unzip apache-jmeter-5.1.1.zip
+    $ wget http://mirrors.whoishostingthis.com/apache//jmeter/binaries/apache-jmeter-5.2.1.zip
+    $ unzip apache-jmeter-5.2.1.zip
 
 Run JMeter
 
 .. code-block:: bash
 
-    $ /home/ubuntu/jMeter/apache-jmeter-5.1.1/bin/jmeter
+    $ /home/ubuntu/jMeter/apache-jmeter-5.2.1/bin/jmeter
 
-The above command will load the JMeter UI. Then navigate to File → Open → Browse and select the test plan jmx file to open. 
+The above command will load the JMeter UI. Then navigate to File → Open → Browse and select the test plan jmx file to open.
 The jmx file is present in the policy/pap git repository.
 
 Install simulators in VM1
@@ -179,7 +179,7 @@ After installation make sure that following docker container is up and running.
 
     root@policytest-policytest-0-uc3y2h5x6p4j:/home/ubuntu/pap# docker ps
     CONTAINER ID        IMAGE                                                         COMMAND                  CREATED             STATUS              PORTS                                            NAMES
-    42ac0ed4b713        nexus3.onap.org:10001/onap/policy-pap:2.0.0-SNAPSHOT-latest   "bash ./policy-pap.sh"   3 days ago          Up 3 days           0.0.0.0:6969->6969/tcp, 0.0.0.0:9090->9090/tcp   policy-pap
+    42ac0ed4b713        nexus3.onap.org:10001/onap/policy-pap:2.2.3-SNAPSHOT          "bash ./policy-pap.sh"   3 days ago          Up 3 days           0.0.0.0:6969->6969/tcp, 0.0.0.0:9090->9090/tcp   policy-pap
 
 Install & configure visualVM in VM2
 -----------------------------------
@@ -191,21 +191,21 @@ Install visualVM
 .. code-block:: bash
 
     $ sudo apt-get install visualvm
-    
+
 Run few commands to configure permissions
 
 .. code-block:: bash
 
-    $ cd /usr/lib/jvm/java-8-openjdk-amd64/bin/
+    $ cd /usr/lib/jvm/java-11-openjdk-amd64/bin/
     $ sudo touch visualvm.policy
     $ sudo chmod 777 visualvm.policy
-     
+
     $ vi visualvm.policy
-     
+
     Add the following in visualvm.policy
-     
-     
-    grant codebase "file:/usr/lib/jvm/java-8-openjdk-amd64/lib/tools.jar" {
+
+
+    grant codebase "file:/usr/lib/jvm/java-11-openjdk-amd64/lib/tools.jar" {
        permission java.security.AllPermission;
     };
 
@@ -213,15 +213,16 @@ Run following commands to start jstatd using port 1111
 
 .. code-block:: bash
 
-    $ cd /usr/lib/jvm/java-8-openjdk-amd64/bin/
+    $ cd /usr/lib/jvm/java-11-openjdk-amd64/bin/
     $ ./jstatd -p 1111 -J-Djava.security.policy=visualvm.policy  &
-    
+
 Run visualVM locally to connect to remote VM2
 
 .. code-block:: bash
 
     # On your windows machine or your linux box locally, launch visualVM
-    
+    $ nohup visualvm
+
 Connect to jstatd & remote apex-pdp JVM
 
     1. Right click on "Remote" in the left panel of the screen and select "Add Remote Host..."
@@ -240,16 +241,28 @@ Test Plan
 The 72 hours stability test will run the following steps sequentially in a single threaded loop.
 
 - **Create Policy Type** - creates an operational policy type using policy/api component
-- **Create Policy** - creates an operational policy using the policy type create in above step using policy/api component
+- **Create Policy defaultDomain** - creates an operational policy using the policy type created in the above step using policy/api component
+- **Create Policy sampleDomain** - creates an operational policy using the policy type created in the above step using policy/api component
 - **Check Health** - checks the health status of pap
 - **Check Statistics** - checks the statistics of pap
-- **Change state to ACTIVE** - changes the state of PdpGroup to ACTIVE
-- **Check PdpGroup Query** - makes a PdpGroup query request and verify that PdpGroup is in ACTIVE state.
-- **Deploy Policy** - deploys the policy in PdpGroup
-- **Undeploy Policy** - undeploy the policy from PdpGroup
-- **Change state to PASSIVE** - changes the state of PdpGroup to PASSIVE
-- **Check PdpGroup Query** - makes a PdpGroup query request and verify that PdpGroup is in PASSIVE state.
-- **Delete Policy** - deletes the operational policy using policy/api component
+- **Change state to ACTIVE** - changes the state of defaultGroup PdpGroup to ACTIVE
+- **Check PdpGroup Query** - makes a PdpGroup query request and verifies that PdpGroup is in the ACTIVE state.
+- **Deploy defaultDomain Policy** - deploys the policy defaultDomain in the existing PdpGroup
+- **Create/Update PDP Group** - creates a new PDPGroup named sampleGroup.
+- **OS Process Sampler** - OS Process Sampler to start a new Pdp Instance
+- **Check PdpGroup Query** - makes a PdpGroup query request and verifies that 2 PdpGroups are in the ACTIVE state and defaultGroup has a policy deployed on it.
+- **Deployment Update sampleDomain** - deploys the policy sampleDomain in sampleGroup PdpGroup using pap api
+- **Check PdpGroup Query** - makes a PdpGroup query request and verifies that the defaultGroup has a policy defaultDomain deployed on it and sampleGroup has policy sampleDomain deployed on it.
+- **Check Deployed Policies** - checks for all the deployed policies using pap api.
+- **OS Process Sampler** - OS Process Sampler to stop the newly created Pdp Instance
+- **Undeploy Policy sampleDomain** - undeploys the policy sampleDomain from sampleGroup PdpGroup using pap api
+- **Undeploy Default Policy** - undeploys the policy defaultDomain from PdpGroup
+- **Change state to PASSIVE(sampleGroup)** - changes the state of sampleGroup PdpGroup to PASSIVE
+- **Delete PdpGroup SampleGroup** - delete the sampleGroup PdpGroup using pap api
+- **Change State to PASSIVE(defaultGroup)** - changes the state of defaultGroup PdpGroup to PASSIVE
+- **Check PdpGroup Query** - makes a PdpGroup query request and verifies that PdpGroup is in the PASSIVE state.
+- **Delete Policy defaultDomain** - deletes the operational policy defaultDomain using policy/api component
+- **Delete Policy sampleDomain** - deletes the operational policy sampleDomain using policy/api component
 - **Delete Policy Type** - deletes the operational policy type using policy/api component
 
 The following steps can be used to configure the parameters of test plan.
@@ -258,14 +271,16 @@ The following steps can be used to configure the parameters of test plan.
 - **HTTP Header Manager** - used to store headers which will be used for making HTTP requests.
 - **User Defined Variables** -  used to store following user defined parameters.
 
-==========  ===============================================
- **Name**    **Description**
-==========  ===============================================
- PAP_HOST     IP Address or host name of PAP component
- PAP_PORT     Port number of PAP for making REST API calls
- API_HOST     IP Address or host name of API component
- API_PORT     Port number of API for making REST API calls
-==========  ===============================================
+===========   ===================================================================
+ **Name**      **Description**
+===========   ===================================================================
+ PAP_HOST      IP Address or host name of PAP component
+ PAP_PORT      Port number of PAP for making REST API calls
+ API_HOST      IP Address or host name of API component
+ API_PORT      Port number of API for making REST API calls
+ DIR           Path where the pdp instance startup and stop script is placed
+ CONFIG_DIR    Path where the pdp default Config file is placed
+===========   ===================================================================
 
 Screenshot of PAP stability test plan
 
@@ -295,3 +310,35 @@ Stability test plan was triggered for 72 hours.
 
 .. image:: images/pap-s3p-jm-1.png
 .. image:: images/pap-s3p-jm-1.png
+
+Test Results Frankfurt release
+-------------------------------
+
+**Summary**
+
+Stability test plan was triggered for 72 hours.
+
+.. Note::
+
+              .. container:: paragraph
+
+                  Test cases for starting and stopping the PDP Instance has been included in the
+                  test plan. These test cases have resulted in a spike in the Average time taken per request.
+
+**Test Statistics**
+
+=======================  =================  ==================  ==================================
+**Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
+=======================  =================  ==================  ==================================
+  29423                  100 %              0 %                 948 ms
+=======================  =================  ==================  ==================================
+
+**VisualVM Screenshot**
+
+.. image:: images/pap-s3p-vvm-1_F.png
+.. image:: images/pap-s3p-vvm-2_F.png
+
+**JMeter Screenshot**
+
+.. image:: images/pap-s3p-jm-1_F.png
+.. image:: images/pap-s3p-jm-1_F.png
