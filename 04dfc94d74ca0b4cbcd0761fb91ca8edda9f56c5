@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed5b2430_f12e9908",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-06T13:16:54Z",
+      "side": 1,
+      "message": "\"create in\" \u003d\u003e \"created in the\"",
+      "revId": "04dfc94d74ca0b4cbcd0761fb91ca8edda9f56c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda9ebde_4d569e2f",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-06T13:16:54Z",
+      "side": 1,
+      "message": "\"verify\" \u003d\u003e \"verifies\"\n\"2 PdpGroup\" \u003d\u003e \"2 PdpGroups\"\n\"ACTIVE\" \u003d\u003e \"the ACTIVE\"",
+      "revId": "04dfc94d74ca0b4cbcd0761fb91ca8edda9f56c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
