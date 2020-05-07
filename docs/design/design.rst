@@ -56,19 +56,19 @@ The *PolicyType* definitions and implementations listed below can be preloaded 
 Policy Framework upon platform installation. For a full listing of available preloaded policy types, see the
 :ref:`Policy API Preloaded Policy Type List <policy-preload-label>`.
 
-=======================================             ===============================================================================
-**Base Policy Types**                               **Description**
-=======================================             ===============================================================================
-onap.policies.Monitoring                            Base model that supports Policy driven DCAE microservice components used
-                                                    in Control Loops
-onap.policies.controlloop.Operational               Legacy actor/action operational policies for control loops (Deprecated)
-onap.policies.controlloop.operational.Common        Base Control Loop operational policy common definitions
-onap.policies.controlloop.guard.Common              Control Loop Guard Policy common definitions
-onap.policies.Optimization                          Base OOF Optimization Policy Type definition
-onap.policies.Naming                                Base SDNC Naming Policy Type definition
-onap.policies.Native                                Base Native Policy Type for PDPs to inherit from in order to provide their own
-                                                    native policy type.
-=======================================             ===============================================================================
+============================================             ===============================================================================
+**Base Policy Types**                                    **Description**
+============================================             ===============================================================================
+onap.policies.Monitoring                                 Base model that supports Policy driven DCAE microservice components used
+                                                         in Control Loops
+onap.policies.controlloop.Operational                    Legacy actor/action operational policies for control loops (Deprecated)
+onap.policies.controlloop.operational.Common             Base Control Loop operational policy common definitions
+onap.policies.controlloop.guard.Common                   Control Loop Guard Policy common definitions
+onap.policies.Optimization                               Base OOF Optimization Policy Type definition
+onap.policies.Naming                                     Base SDNC Naming Policy Type definition
+onap.policies.Native                                     Base Native Policy Type for PDPs to inherit from in order to provide their own
+                                                         native policy type.
+============================================             ===============================================================================
 
 .. note::
    The El Alto onap.policies.controlloop.Guard policy types were deprecated and removed in Frankfurt.
