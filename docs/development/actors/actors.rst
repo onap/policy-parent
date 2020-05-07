@@ -6,6 +6,7 @@ Policy Platform Actor Development Guidelines
 --------------------------------------------
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
-   cds/cds.rst
+    overview.rst
+    cds/cds.rst
