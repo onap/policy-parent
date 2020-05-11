@@ -1,6 +1,8 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
-.. _policy-offeredapis:
+
+.. DO NOT CHANGE THIS LABEL FOR RELEASE NOTES - EVEN THOUGH IT GIVES A WARNING
+.. _offeredapis:
 
 
 Policy Offered APIs
@@ -14,11 +16,6 @@ The Policy Framework supports the public APIs listed in the links below:
    api/api
    pap/pap
    xacml/decision-api
-
--    :ref:`Policy Life Cycle API <api-label>`
--    :ref:`Policy Administration Point (PAP) <pap-label>`
--    :ref:`Decision API <decision-api-label>`
-
 
 .. warning:: The :ref:`Legacy APIs  <legacyapis-label>` are scheduled to be deprecated after the Frankfurt release!
 

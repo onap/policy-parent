@@ -1,5 +1,7 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
-.. _policy-release-notes:
+
+.. DO NOT CHANGE THIS LABEL FOR RELEASE NOTES - EVEN THOUGH IT GIVES A WARNING
+.. _release_notes:
 
 Policy Release Notes
 ====================
@@ -20,11 +22,13 @@ Policy Release Notes
 Abstract
 ========
 
-This document provides the release notes for the Frankfurt release.
+This document provides the release notes for the Policy Framework Project's Frankfurt release.
 
 Summary
 =======
 
+New features include policy update notifications, native policy support, streamlined health check for the Policy Administration Point (PAP),
+configurable pre-loading/pre-deployment of policies, new APIs (e.g. to create one or more Policies with a single call), new experimental PDP monitoring GUI, and enhancements to all three PDPs: XACML, Drools, APEX.
 
 Release Data
 ============
@@ -33,19 +37,19 @@ Release Data
 | **Policy Project**                   |                                      |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
-| **Docker images**                    | - policy-api 2.2.0                   |
-|                                      | - policy-pap 2.2.0                   |
-|                                      | - policy-drools-pdp 1.6.0            |
-|                                      | - policy-xacml-pdp 2.2.0             |
-|                                      | - policy-apex-pdp 2.3.0              |
-|                                      | - policy-distribution 2.3.0          |
-|                                      | - policy-pe 1.6.1                    |
+| **Docker images**                    | - policy-api 2.2.3 (tbd)             |
+|                                      | - policy-pap 2.2.2 (tbd)             |
+|                                      | - policy-drools-pdp 1.6.3 (tbd)      |
+|                                      | - policy-xacml-pdp 2.2.1  (tbd)      |
+|                                      | - policy-apex-pdp 2.3.1   (tbd)      |
+|                                      | - policy-distribution 2.3.1 (tbd)    |
+|                                      | - policy-pe 1.6.3 (tbd)              |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
 | **Release designation**              | 6.0.0 frankfurt                      |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
-| **Release date**                     | 2020-05-07 (TBD)                     |
+| **Release date**                     | 2020-06-04 (tbd)                     |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
 
@@ -53,7 +57,191 @@ Release Data
 New features
 ------------
 
+Common changes in all policy components
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Upgraded all policy components to Java 11.
+* Logback file can be now loaded using OOM configmap.
+  - If needed, logback file can be loaded as a configmap during the OOM deployment. For this, just put the logback.xml file in corresponding config directory in OOM charts.
 
+* TOSCA changes:
+  - “tosca_definitions_version” is now “tosca_simple_yaml_1_1_0”
+  - typeVersion→ type_version, int→integer, bool→boolean, String→string, Map→map, List→list
+* SupportedPolicyTypes now removed from pdp status message.
+  - All PDPs now send PdpGroup to which they belong to in the registration message.
+  - SupportedPolicyTypes are not sent anymore.
+
+* Native Policy Support
+  - Each PDP engine has its own native policy language. A new Policy Type **onap.policies.Native** was created and supported for each PDP
+  engine to support native policy types.
+
+
+POLICY-PAP
+~~~~~~~~~~
+* Policy Update Notifications
+  - PAP now generates notifications  via the DMaaP Message Router when policies are successfully or unsuccessfully deployed (or undeployed) from all relevant PDPs.
+
+* PAP API to fetch Policy deployment status
+  - Clients will be able to poll the PAP API to find out when policies have been successfully or unsuccessfully deployed to the PDP's.
+
+* Removing supportedPolicyTypes from PdpStatus
+  - PDPs are assigned to a PdpGroup based on what group is mentioned in the heartbeat. Earlier this was done based on the supportedPolicyTypes.
+
+* Support policy types with wild-cards, Preload wildcard supported type in PAP
+
+* PAP should NOT make a PDP passive if it cannot deploy a policy.
+  - If a PDP fails to deploy one or more policies specified in a PDP-UPDATE message, PAP will undeploy those policies that failed to deploy to the PDP.  This entails removing the policies from the Pdp Group(s), issuing new PDP-UPDATE requests, and updating the notification tracking data.
+  - Also, re-register pdp if not found in the DB during heartbeat processing.
+
+* Consolidated health check in PAP
+  - PAP can report the health check for ALL the policy components now. The PDP’s health is tracked based on heartbeats, and other component’s REST API is used for healthcheck.
+  - “healthCheckRestClientParameters” (REST parameters for API and Distribution healthcheck) are added to the startup config file in PAP.
+
+* PDP statistics from PAP
+ - All PDPs send statistics data as part of the heartbeat. PAP reads this and saves this data to the database, and this statistics data can be accessed from the monitoring GUI.
+
+* PAP API for Create or Update PdpGroups
+ - A new API is now available just for creating/updating PDP Groups. Policies cannot be added/updated during PDP Group create/update operations. There is another API for this. So, if provided in the create/update group request, they are ignored. Supported policy types are defined during PDP Group creation. They cannot be updated once they are created. Refer to this for details: https://github.com/onap/policy-parent/blob/master/docs/pap/pap.rst#id8
+
+* PAP API to deploy policies to PdpGroups
+ - A new API is introduced to deploy policies on specific PDPGroups. Each subgroup includes an "action" property, which is used to indicate that the policies are being added (POST) to the subgroup, deleted (DELETE) from the subgroup, or that the subgroup's entire set of policies is being replaced (PATCH) by a new set of policies.
+
+POLICY-API
+~~~~~~~~~~
+
+* A new simplified API to create one or more policies in one call.
+  - This simplified API doesn’t require policy type id & policy type version to be part of the URL.
+  - The simple URI “policy/api/v1/policies” with a POST input body takes in a ToscaServiceTemplate with the policies in it.
+
+* List of Preloaded policy types are made configurable
+  - Until El Alto, the list of pre-loaded policy types are hardcoded in the code. Now, this is made configurable, and the list can be specified in the startup config file for the API component under “preloadPolicyTypes”. The list is ignored if the DB already contains one or more policy types.
+
+* Preload default policies for ONAP components
+  - The ability to configure the preloading of initial default policies into the system upon startup.
+
+* A lot of improvements to the API code and validations corresponding to the changes in policy-models.
+  - Creating same policyType/policy repeatedly without any change in request body will always be successful with 200 response
+  - If there is any change in the request body, then that should be a new version. If any change is posted without a version change, then 406 error response is returned.
+
+* Known versioning issues are there in Policy Types handling.
+  - https://jira.onap.org/browse/POLICY-2377 covers the versioning issues in Policy. Basically, multiple versions of a Policy Type cannot be handled in TOSCA. So, in Frankfurt, the latest version of the policy type is examined. This will be further looked into in Guilin.
+
+* Cascaded GET of PolicyTypes and Policies
+  - Fetching/GET PolicyType now returns all of the referenced/parent policyTypes and dataTypes as well.
+  - Fetching/GET Policy allows specifying mode now.
+  - By default the mode is “BARE”, which returns only the requested Policy in response. If mode is specified as “REFERENCED”, all of the referenced/parent policyTypes and dataTypes are returned as well.
+
+* The /deployed API is removed from policy/api
+  - This run time administration job to see the deployment status of a policy is now possible via PAP.
+
+* Changes related to design and support of TOSCA Compliant Policy Types for the operational and guard policy models.
+
+POLICY-DISTRIBUTION
+~~~~~~~~~~~~~~~~~~~
+
+* From Frankfurt release, policy-distribution component uses APIs provided by Policy-API and Policy-PAP for creation of policy types and policies, and deployment of policies.
+  - Note: If “deployPolicies” field in the startup config file is true, then only the policies are deployed using PAP endpoint.
+
+* Policy/engine & apex-pdp dependencies are removed from policy-distribution.
+
+
+APEX-PDP
+~~~~~~~~
+
+* Changed the JavaScript executor from Nashorn to Rhino as part of Java 11 upgrade.
+  - There are minor changes in the JavaScript task logic files associated with this Rhino migration. An example for this change can be seen here: https://gerrit.onap.org/r/c/policy/apex-pdp/+/103546/2/examples/examples-onap-bbs/src/main/resources/logic/SdncResourceUpdateTask.js
+
+  - There is a known issue in Rhino javascript related to the usage of JSON.stringify. This is captured in this JIRA https://jira.onap.org/browse/POLICY-2463.
+
+* APEX supports multiple policy deployment in Frankfurt.
+  - Up through El Alto APEX-PDP had the capability to take in only a single ToscaPolicy. When PAP sends a list of Tosca Policies in PdpUpdate, only the first one is taken and only that single Policy is deployed in APEX. This is fixed in Frankfurt. Now, APEX can deploy a list of Tosca Policies altogether into the engine.
+
+  - Note: There shouldn’t be any duplicates in the deployed policies (for e.g. same input/output parameter names, or same event/task names etc).
+
+  - For example, when 3 policies are deployed and one has duplicates, say same input/task or any such concept is used in the 2nd and 3rd policy, then APEX-PDP ignores the 3rd policy and executes only the 1st and 2nd policies. APEX-PDP also respond back to PAP with the message saying that “only Policy 1 and 2 are deployed. Others failed due to duplicate concept”.
+
+* Context retainment during policy upgrade.
+  - In APEX-PDP, context is referred by the apex concept ‘contextAlbum’. When there is no major version change in the upgraded policy to be deployed, the existing context of the currently running policy is retained. When the upgraded policy starts running, it will have access to this context as well.
+
+  - For example, Policy A v1.1 is currently deployed to APEX. It has a contextAlbum named HeartbeatContext and heartbeats are currently added to the HeartbeatContext based on events coming in to the policy execution. Now, when Policy A v1.2 (with some other changes and same HeartbeatContext) is deployed, Policy Av1.1 is replaced by Policy A1.2 in the APEX engine, but the content in HeartbeatContext is retained for Policy A1.2.
+
+* APEX-PDP now specifies which PdpGroup it belongs to.
+  - Up through El Alto, PAP assigned each PDP to a PDP group based on the supportedPolicyTypes it sends in the heartbeat. But in Frankfurt, each PDP comes up saying which PdpGroup they belong to, and this is sent to PAP in the heartbeat. PAP then registers the PDP the PdpGroup specified by the PDP. If no group name is specified like this, then PAP assigns the PDP to defaultGroup by default. SupportedPolicyTypes are not sent to PAP by the PDP now.
+
+  - In APEX-PDP, this can be specified in the startup config file(OnapPfConfig.json). "pdpGroup": "<groupName>" is added under “pdpStatusParameters” in the config file.
+
+* APEX-PDP now sends PdpStatistics data in heartbeat.
+  - Apex now sends the PdpStatistics data in every heartbeat sent to PAP. PAP saves this data to the database, and this statistics data can be accessed from the monitoring GUI.
+
+* Removed “content” section from ToscaPolicy properties in APEX.
+  - Up through El Alto, APEX specific policy information was placed under properties|content in ToscaPolicy. Avoid placing under "content" and keep the information directly under properties. So, the ToscaPolicy structure will have apex specific policy information in properties|engineServiceParameters, properties|eventInputParameters, properties|eventOutputParameters.
+
+* Passing parameters from ApexConfig to policy logic.
+  - TaskParameters can be used to pass parameters from ApexConfig to the policy logic. Consider a scenario where from CLAMP, serviceId or closedLoopId has to be passed to the policy, and this should be available to perform some logic or action within the policy. In the CLAMP UI, while configuring the APEX Policy, specifying taskParameters with these will enable this.
+
+  - More information about the usage of Task Parameters can be found here: https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/apex/APEX-User-Manual.html#configure-task-parameters
+
+  - In the taskLogic, taskParameters can be accessed as  executor.parameters.get("ParameterKey1"))
+
+  - More information can be found here: https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/apex/APEX-Policy-Guide.html#accessing-taskparameters
+
+* GRPC support for APEX-CDS interaction.
+  - APEX-PDP now supports interaction with CDS over gRPC. Up through El Alto, CDS interaction was possible over REST only. A new plugin was developed in APEX for this feature. Refer the link for more details. https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/apex/APEX-User-Manual.html#grpc-io
+
+POLICY-XACML
+~~~~~~~~~~~~
+
+* Added optional Decision API param to Decision API for monitor decisions that returns abbreviated results.
+  - Return only an abbreviated list of policies (e.g. metadata Policy Id and Version) without the actual contents of the policies (e.g. the Properties).
+
+* XACML PDP now support PASSIVE_MODE.
+* Added support to return status and error if pdp-x failed to load a policy.
+* Changed optimization Decision API application to support "closest matches" algorithm.
+* Changed Xacml-pdp to report the pdp group defined in XacmlPdpParameters config file as part of heartbeat. Also, removed supportedPolicyType from pdpStatus message.
+* Design the TOSCA policy model for SDNC naming policies and implement an application that translates it to a working policy and is available for decision API.
+* XACML pdp support for Control Loop Coordination
+  - Added policies for SON and PCI to support each blocking the other, with test cases and appropriate requests
+
+* Extend PDP-X capabilities so that it can load in and enforce the native XACML policies deployed from PAP.
+
+POLICY-DROOLS-PDP
+~~~~~~~~~~~~~~~~~
+
+* Support for offline mode.
+  - The OOM deployment now supports offline mode for PDP-D by default.
+
+* Parameterize mvn repo urls and proxy settings
+  - This allows the users to build the docker images for drools-pdp and drools-application using their own CI pipelines if needed.
+
+* TOSCA Policy Type design for operational policy supported by Drools so that policy is compliant with TOSCA policies
+* pip updated to pip3 in docker.
+* Extend PDP-D capabilities so that it can instantiate new drools controller instances for executing native Drools policies deployed from PAP.
+* Updated drools to use the redesigned Actors in policy/models.
+* Server Pool feature for supporting multiple active Drools PDP hosts.
+* server-pool is a resilient implementation that supports redundancy within and across data centers involving multiple PDP-Drools. Implementation involves hashing of which PDP-Drools owns which transaction and routing transactions to the appropriate PDP-Drools. By implementing as a feature, any deployment can choose to use or not use server-pool for its redundancy needs.
+
+POLICY-DROOLS-APPLICATIONS
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Support for offline mode.
+* Rate limiting DCAE flooding of ONSETs
+  - Policy will get flooded with potentially hundreds of ONSETs at once being picked up from DMaaP. Processing of multiple ONSETs (potentially hundreds in a batch read) of the same underlying unique network alarm severely impacts performance.
+
+* Design Operational Policy Type for Drools
+  - Design and preload the drools operational policy type.
+  - Backwards compatible support for tosca operational policies in usecases.
+  - Tosca compliant vCPE, vFirewall, vDNS
+
+* PDP-D support for native Drools policy execution
+  - Topics are decoupled from controllers. Native policies require topics configured at installation. Topics can also be overridden or new ones added when being placed in the mounted config directory.
+
+* Update Drools to use new actors.
+  - Add frankfurt rules for Actor redesign
+  - Usecases controller disabled (to be removed shortly after Frankfurt release) and the Frankfurt controller will be used.
+
+* Delete template.demo sub-module and amsterdam controllers
+* Removed vLB from drools-apps.
+* Replace URL with host/port/contextURI in the controlloop properties.
+  - Corresponding changes in base.conf file in OOM which is mounted.
 
 Known Limitations, Issues and Workarounds
 =========================================
@@ -65,6 +253,8 @@ System Limitations
 Known Vulnerabilities
 ---------------------
 
+* `POLICY-2463 <https://jira.onap.org/browse/POLICY-2463>`_ - In APEX Policy javascript task logic, JSON.stringify causing stackoverflow exceptions
+* `POLICY-2487 <https://jira.onap.org/browse/POLICY-2487>`_ - policy/api hangs in loop if preload policy does not exist
 
 Workarounds
 -----------
@@ -72,6 +262,20 @@ Workarounds
 
 Security Notes
 --------------
+
+* `POLICY-2221 <https://jira.onap.org/browse/POLICY-2221>`_ - Password removal from helm charts
+* `POLICY-2064 <https://jira.onap.org/browse/POLICY-2064>`_ - Allow overriding of keystore and truststore in policy helm charts
+* `POLICY-2381 <https://jira.onap.org/browse/POLICY-2381>`_ - Dependency upgrades
+    - Upgrade drools 7.33.0
+    - Upgrade jquery to 3.4.1 in jquery-ui
+    - Upgrade snakeyaml to 1.26
+    - Upgrade org.infinispan infinispan-core 10.1.5.Final
+    - upgrade io.netty 4.1.48.Final
+    - exclude org.glassfish.jersey.media jersey-media-jaxb artifact
+    - Upgrade com.fasterxml.jackson.core 2.10.0.pr3
+    - Upgrade org.org.jgroups 4.1.5.Final
+    - Upgrade commons-codec 20041127.091804
+    - Upgrade com.github.ben-manes.caffeine 2.8.0
 
 
 References
