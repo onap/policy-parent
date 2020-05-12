@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16b7c276_628bdd60",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "In general, below I am updating from content in https://wiki.onap.org/display/DW/2020-04-23+LF+Virtual+Technical+Event+-+Policy+Framework+Overview",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b80e563f_8cfffb5d",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "Support for PDP-D in offline mode which allows deployment in a locked environment.  The default OOM ONAP installation ships with offline mode for the PDP-D.",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04ba9151_59fea426",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "Rewrite to:\n\n* Support for Tosca Compliant Operational Policies that can coexist with the existing Legacy Operational Policies.",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e9f69a1_384f8190",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "remove this item, not worth mentioning.",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212035b3_00c0ebf3",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "Rewrite:\nSupport for TOSCA Compliant Native Policies that allows creation and deployment of new drools-applications.",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd50851c_b090bd14",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "Move this item to drools-applications, as drools-pdp don\u0027t know about actors.",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1c9bc20_03f9c94c",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "These last 2 items refer to server pool, compact them in one line?",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6d37da7_5a505205",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "Add these 2 items:\n\n* Validation of Operational and Native Policies against their policy type.\n* Support for a generic standalone Drools-PDP docker image that can be used for testing or prototyping of new applications.",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73246875_b1a19f44",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "It seems that this will only apply to \"usecases\" controller, it doesn\u0027t seem to have effect for frankfurt controller.   So perhaps say it only applies to the \"usecases\" controller.",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12764c36_67c41cb3",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "Remove as it is covered in drools-pdp section.",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1a4679b_fe16733b",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "Remove as it is covered in drools-pdp section.  The second line \"Topics are decoupled ..\" can be moved up under the item in drools-pdp.",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5a4be1_747f394d",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "I think many times vLB is used as a synonym for vDNS or scale out.   May be it should be VOLTE, or the one that uses VFC I don\u0027t remember its name ?",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d001696_3c65dd14",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-12T15:43:54Z",
+      "side": 1,
+      "message": "Not sure if this last one would qualify as a feature to outline.",
+      "revId": "d5ff9883281a2219e741210d98d2ec7f12f60feb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
