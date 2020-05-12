@@ -94,6 +94,57 @@
     },
     {
       "key": {
+        "uuid": "e0bbc576_1ecd1fc3",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T13:20:18Z",
+      "side": 1,
+      "message": "\"environment(JRE\" \u003d\u003e \"environment (JRE\"",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f21be160_174f1101",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T13:20:18Z",
+      "side": 1,
+      "message": "\"with the\" \u003d\u003e \"with\"",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02bda722_48757043",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T13:20:18Z",
+      "side": 1,
+      "message": "just a general question through these lists: should begin each item with uppercase or lowercase, for consistency?  Or is the result more readable this way?",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3f02b6e_37cb1706",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -179,6 +230,86 @@
         "startChar": 151,
         "endLine": 516,
         "endChar": 152
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebbcb019_6d87f271",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T13:20:18Z",
+      "side": 1,
+      "message": "\"secs\" \u003d\u003e \"seconds\"\n\nprobably need some kind of punctuation between \"message-route\" and \"mariadb must be started\"",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7a24ef_ce3616ab",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T13:20:18Z",
+      "side": 1,
+      "message": "\"into\" \u003d\u003e \"into the\"",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "380a8540_9bf863f4",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T13:20:18Z",
+      "side": 1,
+      "message": "maybe use this instead:\n\n  --user \u0027healthcheck:zb!XztG34\u0027\n\nsame comment elsewhere",
+      "range": {
+        "startLine": 554,
+        "startChar": 93,
+        "endLine": 554,
+        "endChar": 153
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5755dd5c_1ec4e380",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T13:20:18Z",
+      "side": 1,
+      "message": "localhost?",
+      "range": {
+        "startLine": 554,
+        "startChar": 58,
+        "endLine": 554,
+        "endChar": 67
       },
       "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
@@ -318,6 +449,23 @@
         "endLine": 613,
         "endChar": 5
       },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de1e9746_8e30e21b",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T13:20:18Z",
+      "side": 1,
+      "message": "\"Postman send\" \u003d\u003e \"Postman to send\"",
       "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
