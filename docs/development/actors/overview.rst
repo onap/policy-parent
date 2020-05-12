@@ -122,7 +122,7 @@ XxxParams and XxxConfig
   XxxConfig objects are
   shared by all operations created by a single Operator.  As a result, it should not
   contain any data associated with an individual operation; such data should be stored
-  within the operation object, itself
+  within the Operation object, itself
 
 Junit tests
 ***********
@@ -177,7 +177,7 @@ Flow of operation
     "standard" payload
   - Subclasses may override *makeGuardPayload()* to add extra fields to the payload
     (e.g., some SO operations add the VF count)
-  - If any preprocessing step fails, then the "start" & "complete" callbacks will be
+  - If any preprocessing step fails, then the "start" and "complete" callbacks will be
     invoked to indicate a failure of the operation as a whole. Otherwise, the flow will
     continue on to *startOperationAsync()*, after the "start" callback is invoked
   - *StartOperationAsync()* will perform whatever needs to be done to start the operation
