@@ -9,4 +9,5 @@ Policy Platform Actor Development Guidelines
     :maxdepth: 1
 
     overview.rst
+    appc-legacy/appc-legacy.rst
     cds/cds.rst
