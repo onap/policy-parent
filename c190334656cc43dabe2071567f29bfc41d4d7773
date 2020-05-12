@@ -1,0 +1,1027 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b88c6ebf_f4a70663",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "delete extra comma",
+      "range": {
+        "startLine": 30,
+        "startChar": 49,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "182223ef_ab863023",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "delete the last sentence (i.e., because it isn\u0027t optional)",
+      "range": {
+        "startLine": 70,
+        "startChar": 87,
+        "endLine": 70,
+        "endChar": 172
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6afd58bd_4873e9c7",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "delete \"can\"",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 16
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ee7c35_f6476466",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "types",
+      "range": {
+        "startLine": 75,
+        "startChar": 34,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37cce36d_428ea1b1",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "lowercase",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56bf8ef_b90f113b",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "in the",
+      "range": {
+        "startLine": 93,
+        "startChar": 39,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5f6e6bb_3cb4652b",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "to the",
+      "range": {
+        "startLine": 100,
+        "startChar": 90,
+        "endLine": 100,
+        "endChar": 92
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d76e3ca_96eb04cc",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "of the",
+      "range": {
+        "startLine": 100,
+        "startChar": 41,
+        "endLine": 100,
+        "endChar": 43
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8fa49f1_0c3e7ac8",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "\"provided in a\" (or \"the\")",
+      "range": {
+        "startLine": 103,
+        "startChar": 183,
+        "endLine": 103,
+        "endChar": 194
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "211d6bca_ff999136",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "Refer to",
+      "range": {
+        "startLine": 103,
+        "startChar": 350,
+        "endLine": 103,
+        "endChar": 355
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b4429b2_8abb6493",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "perhaps add another sentence that the list is ignored if the DB already contains one or more policy types",
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "210f54ab_b7e73e90",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "El Alto",
+      "range": {
+        "startLine": 116,
+        "startChar": 10,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a44af6e4_c473bc21",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "\"at\" \u003d\u003e \"to\"",
+      "range": {
+        "startLine": 121,
+        "startChar": 24,
+        "endLine": 121,
+        "endChar": 26
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2ce0336_9034beb1",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "is returned",
+      "range": {
+        "startLine": 123,
+        "startChar": 157,
+        "endLine": 123,
+        "endChar": 163
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7ba18fa_39f32a17",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "\"the latest\"",
+      "range": {
+        "startLine": 126,
+        "startChar": 177,
+        "endLine": 126,
+        "endChar": 183
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f633d731_42253799",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "\"examined\"",
+      "range": {
+        "startLine": 126,
+        "startChar": 247,
+        "endLine": 126,
+        "endChar": 258
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea143c0b_52c09928",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "maybe add this (assuming it\u0027s what we\u0027re trying to say):\n\n  ; no new policies or policy types are created.",
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ef0a002_982bd99b",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "\"Changed the\"",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97671b39_f87e9ffc",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "Up through El Alto,",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 17
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68fbc011_96688bdf",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "\"had\"",
+      "range": {
+        "startLine": 156,
+        "startChar": 27,
+        "endLine": 156,
+        "endChar": 30
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0973e80_f3b205fe",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 158,
+        "startChar": 117,
+        "endLine": 158,
+        "endChar": 121
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b8656a5_619485fe",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "ignores the",
+      "range": {
+        "startLine": 160,
+        "startChar": 167,
+        "endLine": 160,
+        "endChar": 174
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ce9675_ab7697e4",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "has",
+      "range": {
+        "startLine": 160,
+        "startChar": 54,
+        "endLine": 160,
+        "endChar": 63
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5443e76_1a6a83cd",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "only the",
+      "range": {
+        "startLine": 160,
+        "startChar": 200,
+        "endLine": 160,
+        "endChar": 204
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54aac2c1_61783654",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "have",
+      "range": {
+        "startLine": 163,
+        "startChar": 265,
+        "endLine": 163,
+        "endChar": 274
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d3cb2f7_c8caf770",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "Av1.2 (with",
+      "range": {
+        "startLine": 165,
+        "startChar": 230,
+        "endLine": 165,
+        "endChar": 240
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9379bc40_37982c75",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "example,",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 12
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "963c921a_af5ad4fb",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "the PdpGroup specified by the PDP",
+      "range": {
+        "startLine": 168,
+        "startChar": 262,
+        "endLine": 168,
+        "endChar": 398
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a70398_1cd76906",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "assigned",
+      "range": {
+        "startLine": 168,
+        "startChar": 23,
+        "endLine": 168,
+        "endChar": 30
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90227387_921b8a2d",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "Up through El Alto,",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fed18bc_15fb8298",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "sent",
+      "range": {
+        "startLine": 168,
+        "startChar": 202,
+        "endLine": 168,
+        "endChar": 206
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e6caef8_b941818d",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "\"can\" \u003d\u003e \"should\"?  If not specified, will APEX-PDP pass \"defaultGroup\"?  If not, then this must be specified, because PAP requires the PDP to identify its PDP group.",
+      "range": {
+        "startLine": 170,
+        "startChar": 22,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f99e5a4_887f9678",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "the database",
+      "range": {
+        "startLine": 173,
+        "startChar": 97,
+        "endLine": 173,
+        "endChar": 105
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811c73f0_2f190a87",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "Up through El Alto",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2bcac09_f64907e9",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "was",
+      "range": {
+        "startLine": 176,
+        "startChar": 52,
+        "endLine": 176,
+        "endChar": 54
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "701f428d_ab5aa027",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "placing",
+      "range": {
+        "startLine": 176,
+        "startChar": 109,
+        "endLine": 176,
+        "endChar": 116
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b17654_d4388ee5",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "the APEX Policy,",
+      "range": {
+        "startLine": 179,
+        "startChar": 301,
+        "endLine": 179,
+        "endChar": 312
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "861ecb51_786a4069",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "to perform",
+      "range": {
+        "startLine": 179,
+        "startChar": 212,
+        "endLine": 179,
+        "endChar": 225
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b680aeae_0cbb4ba3",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "Up through El Alto",
+      "range": {
+        "startLine": 188,
+        "startChar": 58,
+        "endLine": 188,
+        "endChar": 71
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f737053_cfb8e668",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "plugin was",
+      "range": {
+        "startLine": 188,
+        "startChar": 124,
+        "endLine": 188,
+        "endChar": 133
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d47235_268dcc2a",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "a policy",
+      "range": {
+        "startLine": 197,
+        "startChar": 67,
+        "endLine": 197,
+        "endChar": 73
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82d6d103_93aa3727",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "report the",
+      "range": {
+        "startLine": 199,
+        "startChar": 23,
+        "endLine": 199,
+        "endChar": 29
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d45528ef_d866b14a",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "data centers",
+      "range": {
+        "startLine": 220,
+        "startChar": 87,
+        "endLine": 220,
+        "endChar": 98
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc35262_73464223",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "disabled (probably",
+      "range": {
+        "startLine": 239,
+        "startChar": 24,
+        "endLine": 239,
+        "endChar": 41
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "799d012d_f328c898",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-12T14:00:10Z",
+      "side": 1,
+      "message": "a loop if a preloaded",
+      "range": {
+        "startLine": 257,
+        "startChar": 82,
+        "endLine": 257,
+        "endChar": 97
+      },
+      "revId": "c190334656cc43dabe2071567f29bfc41d4d7773",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
