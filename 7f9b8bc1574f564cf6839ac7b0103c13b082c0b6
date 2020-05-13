@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "8904fc20_42976f84",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 6458
+      },
+      "writtenOn": "2020-05-13T17:15:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "947472bd_cfab7e1a",
+      "range": {
+        "startLine": 357,
+        "startChar": 102,
+        "endLine": 357,
+        "endChar": 107
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae434a25_d04ebc36",
         "filename": "docs/development/devtools/pap-s3p.rst",
         "patchSetId": 1
@@ -103,6 +127,54 @@
       "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9755b69d_a2a69949",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 6458
+      },
+      "writtenOn": "2020-05-13T17:15:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "beb16590_548f3652",
+      "range": {
+        "startLine": 362,
+        "startChar": 37,
+        "endLine": 362,
+        "endChar": 46
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd959adb_b77d2b51",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 6458
+      },
+      "writtenOn": "2020-05-13T17:15:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae434a25_d04ebc36",
+      "range": {
+        "startLine": 362,
+        "startChar": 101,
+        "endLine": 362,
+        "endChar": 108
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -169,6 +241,72 @@
     },
     {
       "key": {
+        "uuid": "7ff1f413_ebb51311",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 6458
+      },
+      "writtenOn": "2020-05-13T17:15:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c1777464_189d8989",
+      "range": {
+        "startLine": 364,
+        "startChar": 61,
+        "endLine": 364,
+        "endChar": 70
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2df6b5c_38950ab0",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 6458
+      },
+      "writtenOn": "2020-05-13T17:15:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e17a3219_0f16fc8b",
+      "range": {
+        "startLine": 364,
+        "startChar": 39,
+        "endLine": 364,
+        "endChar": 41
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e09f1d18_ace9f413",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 6458
+      },
+      "writtenOn": "2020-05-13T17:15:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b3d73e6d_d49c2cd5",
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd1697fb_964dd3de",
         "filename": "docs/development/devtools/pap-s3p.rst",
         "patchSetId": 1
@@ -215,6 +353,54 @@
     },
     {
       "key": {
+        "uuid": "c94ed68e_63c64e89",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 6458
+      },
+      "writtenOn": "2020-05-13T17:15:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8c954bc_437a88e2",
+      "range": {
+        "startLine": 373,
+        "startChar": 19,
+        "endLine": 373,
+        "endChar": 30
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad0ce680_9e2e2fbf",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 6458
+      },
+      "writtenOn": "2020-05-13T17:15:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd1697fb_964dd3de",
+      "range": {
+        "startLine": 373,
+        "startChar": 56,
+        "endLine": 373,
+        "endChar": 66
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15daa839_d58aa382",
         "filename": "docs/development/devtools/pap-s3p.rst",
         "patchSetId": 1
@@ -226,6 +412,30 @@
       "writtenOn": "2020-05-13T12:11:05Z",
       "side": 1,
       "message": "With these errors - are they simply timeouts or normal REST busy errors? Or do we think there is an actual bug?",
+      "range": {
+        "startLine": 392,
+        "startChar": 45,
+        "endLine": 392,
+        "endChar": 51
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd7c980c_7eee4983",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 6458
+      },
+      "writtenOn": "2020-05-13T17:15:58Z",
+      "side": 1,
+      "message": "Not an actual bug , happens due to thread race condition.",
+      "parentUuid": "15daa839_d58aa382",
       "range": {
         "startLine": 392,
         "startChar": 45,
