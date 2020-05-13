@@ -37,6 +37,184 @@
     },
     {
       "key": {
+        "uuid": "947472bd_cfab7e1a",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-13T13:15:01Z",
+      "side": 1,
+      "message": "a large",
+      "range": {
+        "startLine": 357,
+        "startChar": 102,
+        "endLine": 357,
+        "endChar": 107
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae434a25_d04ebc36",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-13T13:15:01Z",
+      "side": 1,
+      "message": "below.",
+      "range": {
+        "startLine": 362,
+        "startChar": 101,
+        "endLine": 362,
+        "endChar": 108
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beb16590_548f3652",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-13T13:15:01Z",
+      "side": 1,
+      "message": "\"Stability\" or \"the stability\"",
+      "range": {
+        "startLine": 362,
+        "startChar": 37,
+        "endLine": 362,
+        "endChar": 46
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1777464_189d8989",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-13T13:15:01Z",
+      "side": 1,
+      "message": "behaviors",
+      "range": {
+        "startLine": 364,
+        "startChar": 61,
+        "endLine": 364,
+        "endChar": 70
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17a3219_0f16fc8b",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-13T13:15:01Z",
+      "side": 1,
+      "message": "5 (",
+      "range": {
+        "startLine": 364,
+        "startChar": 39,
+        "endLine": 364,
+        "endChar": 41
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d73e6d_d49c2cd5",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-13T13:15:01Z",
+      "side": 1,
+      "message": "for consistency, should probably add a period to the end of these two bullet items, or remove it from the other bullet items in this list",
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd1697fb_964dd3de",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-13T13:15:01Z",
+      "side": 1,
+      "message": "\"Stability\" or \"the stability\"",
+      "range": {
+        "startLine": 373,
+        "startChar": 56,
+        "endLine": 373,
+        "endChar": 66
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c954bc_437a88e2",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-13T13:15:01Z",
+      "side": 1,
+      "message": "\"Performance\" or \"the performance\"",
+      "range": {
+        "startLine": 373,
+        "startChar": 19,
+        "endLine": 373,
+        "endChar": 30
+      },
+      "revId": "7f9b8bc1574f564cf6839ac7b0103c13b082c0b6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15daa839_d58aa382",
         "filename": "docs/development/devtools/pap-s3p.rst",
         "patchSetId": 1
