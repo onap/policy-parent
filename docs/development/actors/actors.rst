@@ -9,4 +9,12 @@ Policy Platform Actor Development Guidelines
     :maxdepth: 1
 
     overview.rst
+    aai/aai.rst
+    appc-legacy/appc-legacy.rst
+    appclcm/appclcm.rst
     cds/cds.rst
+    guard/guard.rst
+    sdnc/sdnc.rst
+    sdnr/sdnr.rst
+    so/so.rst
+    vfc/vfc.rst
