@@ -2,6 +2,7 @@ from docs_conf.conf import *
 
 branch = 'latest'
 master_doc = 'index'
+extensions = ['sphinx.ext.autosectionlabel']
 
 linkcheck_ignore = [
     'http://localhost',
