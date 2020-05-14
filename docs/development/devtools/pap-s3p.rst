@@ -342,3 +342,57 @@ Stability test plan was triggered for 72 hours.
 
 .. image:: images/pap-s3p-jm-1_F.png
 .. image:: images/pap-s3p-jm-1_F.png
+
+Performance Test of PAP
+++++++++++++++++++++++++
+
+Introduction
+------------
+
+Performance test of PAP has the goal of testing the min/avg/max processing time and rest call throughput for all the requests with multiple requests at the same time.
+
+Setup Details
+-------------
+
+The performance test is performed on a similar setup as Stability test. The JMeter VM will be sending a large number of REST requests to the PAP component and collecting the statistics.
+
+Test Plan
+---------
+
+Performance test plan is the same as the stability test plan above except for the few differences listed below.
+
+- Increase the number of threads up to 5 (simulating 5 users' behaviours at the same time).
+- Reduce the test time to 2 hours.
+- Usage of counters to create different groups by the 'Create/Update PDP Group' test case.
+- Usage of If-Controller for 'Deploy defaultDomain Policy' and 'Undeploy defaultDomain Policy' test cases to install and uninstall the Default policy only in one thread.
+- OS Process Sampler for starting and stopping the PDP Instance has been disabled in the performance test plan for a better performance check.
+
+Run Test
+--------
+
+Running/Triggering the performance test will be the same as the stability test. That is, launch JMeter pointing to corresponding *.jmx* test plan. The *API_HOST* , *API_PORT* , *PAP_HOST* , *PAP_PORT* are already set up in *.jmx*.
+
+Once the test execution is completed, execute the below script to get the statistics:
+
+.. code-block:: bash
+
+    $ cd /home/ubuntu/pap/testsuites/performance/src/main/resources/testplans
+    $ ./results.sh /home/ubuntu/pap_perf/resultTree.log
+
+Test Results
+------------
+
+Test results are shown as below. Overall, the test was running smoothly and successfully. We do see some minor failed transactions, especially in the 'Deploy' and 'Undeploy' Pap API in a multi-threaded fashion .
+
+**Test Statistics**
+
+=======================  =================  ==================  ==================================  =======================
+**Total # of requests**  **Success %**      **Error %**         **Average time taken per request**  **Requests/sec**
+=======================  =================  ==================  ==================================  =======================
+  25743                  99.5 %              0.50 %                 397 ms                           5148
+=======================  =================  ==================  ==================================  =======================
+
+**JMeter Screenshot**
+
+.. image:: images/pap-perf-jm-1_F.png
+.. image:: images/pap-perf-jm-2_F.png
