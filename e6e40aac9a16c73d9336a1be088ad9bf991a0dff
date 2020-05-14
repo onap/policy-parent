@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08dee9a4_6460b6b7",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e8832f3a_db05498c",
+      "range": {
+        "startLine": 1,
+        "startChar": 62,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "725f7d0a_bf9e75e3",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b6aeacce_0c1efc2e",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "725f7d0a_bf9e75e3",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de58ba19_2fa11c4e",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17538413_0952c162",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de58ba19_2fa11c4e",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +183,48 @@
     },
     {
       "key": {
+        "uuid": "513d7983_f96b0e19",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e0bbc576_1ecd1fc3",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc3bb79d_07020d59",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a99a606a_4a8ab814",
+      "range": {
+        "startLine": 14,
+        "startChar": 96,
+        "endLine": 14,
+        "endChar": 105
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f21be160_174f1101",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "0d6e3647_4adf4b3e",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f21be160_174f1101",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02bda722_48757043",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -142,6 +274,24 @@
       "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc3cf7d_eb9fdb08",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "02bda722_48757043",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "ccaf1ec4_fe4266f8",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f3f02b6e_37cb1706",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "737715b2_acac0490",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -188,6 +362,30 @@
       "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4e673c9_878fbe98",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "737715b2_acac0490",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 16
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -254,6 +452,72 @@
     },
     {
       "key": {
+        "uuid": "80e6ef66_6b5cfe70",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ebbcb019_6d87f271",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4cbacf1_93764ff7",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc98251f_3558e641",
+      "range": {
+        "startLine": 516,
+        "startChar": 80,
+        "endLine": 516,
+        "endChar": 118
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce2d8a75_1a03a733",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0750148b_6dd6e540",
+      "range": {
+        "startLine": 516,
+        "startChar": 151,
+        "endLine": 516,
+        "endChar": 152
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7a24ef_ce3616ab",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -268,6 +532,24 @@
       "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f75c4c6_088b0acb",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da7a24ef_ce3616ab",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -317,6 +599,54 @@
     },
     {
       "key": {
+        "uuid": "db1580a0_dec30854",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "380a8540_9bf863f4",
+      "range": {
+        "startLine": 554,
+        "startChar": 93,
+        "endLine": 554,
+        "endChar": 153
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56345649_14907811",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5755dd5c_1ec4e380",
+      "range": {
+        "startLine": 554,
+        "startChar": 58,
+        "endLine": 554,
+        "endChar": 67
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01313ac8_e442552d",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -340,6 +670,30 @@
     },
     {
       "key": {
+        "uuid": "cd7dd881_e48e2bfd",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01313ac8_e442552d",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 555,
+        "endChar": 1
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b30af38_dca89ce6",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -360,6 +714,30 @@
       "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55b9bfbe_693420b0",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5b30af38_dca89ce6",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 2
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -432,6 +810,78 @@
     },
     {
       "key": {
+        "uuid": "e9bdeb2e_afc25f88",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d1e2172_098a49cd",
+      "range": {
+        "startLine": 608,
+        "startChar": 33,
+        "endLine": 608,
+        "endChar": 35
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "044f0dec_1d783d45",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "001a861c_473bf2cf",
+      "range": {
+        "startLine": 608,
+        "startChar": 76,
+        "endLine": 608,
+        "endChar": 105
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "839c2bf3_0e3c1cfb",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a0ca21f0_b0bec391",
+      "range": {
+        "startLine": 608,
+        "startChar": 70,
+        "endLine": 608,
+        "endChar": 72
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7479595_da7a1779",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -455,6 +905,30 @@
     },
     {
       "key": {
+        "uuid": "a6e6f2d1_73e3c3ac",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d7479595_da7a1779",
+      "range": {
+        "startLine": 613,
+        "startChar": 0,
+        "endLine": 613,
+        "endChar": 5
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de1e9746_8e30e21b",
         "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 1
@@ -469,6 +943,24 @@
       "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6584403_bde123af",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de1e9746_8e30e21b",
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -515,6 +1007,54 @@
       "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "214b456c_a86dc235",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "750a793d_b84afa1e",
+      "range": {
+        "startLine": 637,
+        "startChar": 92,
+        "endLine": 637,
+        "endChar": 98
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ad14457_0cf8c248",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ade47bc_c6deb07f",
+      "range": {
+        "startLine": 637,
+        "startChar": 72,
+        "endLine": 637,
+        "endChar": 76
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -584,6 +1124,78 @@
       "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d222e39b_ecb6b52d",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "46c4db6a_d35a6d59",
+      "range": {
+        "startLine": 645,
+        "startChar": 24,
+        "endLine": 645,
+        "endChar": 26
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20a2dad3_4e1ea6b7",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "77d17fde_e5e3d9f8",
+      "range": {
+        "startLine": 645,
+        "startChar": 71,
+        "endLine": 645,
+        "endChar": 72
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3992f19_0b5f58ed",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-14T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1314bc15_7b87eeb0",
+      "range": {
+        "startLine": 645,
+        "startChar": 86,
+        "endLine": 645,
+        "endChar": 88
+      },
+      "revId": "e6e40aac9a16c73d9336a1be088ad9bf991a0dff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
