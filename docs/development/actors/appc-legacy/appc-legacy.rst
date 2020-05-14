@@ -2,6 +2,8 @@
 .. Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
+.. _appc-legacy-label:
+
 #################
 APPC Legacy Actor
 #################
@@ -88,6 +90,9 @@ Suppose the *ControlLoopOperationParams* were populated as follows:
                 "my-key-B": "{\"output\":\"world\"}"
             },
             "context": {
+                "event": {
+                    "requestId": "c7c6a4aa-bb61-4a15-b831-ba1472dd4a65"
+                },
                 "cqdata": {
                     "generic-vnf": [
                         {
@@ -112,7 +117,7 @@ to the APPC topic:
           "CommonHeader": {
             "TimeStamp": 1589400050910,
             "APIver": "1.01",
-            "RequestID": "79e1d7d4-bac1-4399-8ee5-f84419c5723d",
+            "RequestID": "c7c6a4aa-bb61-4a15-b831-ba1472dd4a65",
             "SubRequestID": "ee3f2dc0-a2e0-4ae8-98c3-478c784b8eb5",
             "RequestTrack": [],
             "Flags": []
