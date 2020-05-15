@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "86224ed7_cf375058",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-15T16:47:38Z",
+      "side": 1,
+      "message": "Oh, this was was renamed from \"Rebuilding and/or modifying the Policy Charts\"",
+      "revId": "6a10dcabf2447c01c95b1e4bdcb3aa4923bd579c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7fda6d0_9b73f087",
         "filename": "docs/installation/oom.rst",
         "patchSetId": 1
@@ -31,6 +48,24 @@
       "side": 1,
       "message": "charts have changed quite a bit also - are we sure they don\u0027t exist anymore?? Or did they move to policy/parent?",
       "parentUuid": "d7fda6d0_9b73f087",
+      "revId": "6a10dcabf2447c01c95b1e4bdcb3aa4923bd579c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa921ee_670987c4",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-15T16:47:38Z",
+      "side": 1,
+      "message": "Oh, this is called \"Installing or Upgrading Policy\" see my note above",
+      "parentUuid": "17521c25_7f234992",
       "revId": "6a10dcabf2447c01c95b1e4bdcb3aa4923bd579c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
