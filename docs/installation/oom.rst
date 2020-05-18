@@ -154,7 +154,7 @@ information is secured appropriately before using in production.
 Additional customization can be applied to the PDP-D.  Custom configuration goes under the
 "resources" directory of the drools subchart (oom/kubernetes/policy/charts/drools/resources).
 This requires rebuilding the policy subchart
-(see section :ref:`Rebuilding and/or modifying the Policy Charts`).
+(see section :ref:`Installing or Upgrading Policy`).
 
 Configuration is done by adding or modifying configmaps and/or secrets.
 Configmaps are placed under "drools/resources/configmaps", and
@@ -180,7 +180,7 @@ To *disable AAF*, simply override the "aaf.enabled" value when deploying the hel
 To *override the PDP-D keystore or trustore*, add a suitable replacement(s) under
 "drools/resources/secrets".  Modify the drools chart values.yaml with
 new credentials, and follow the procedures described at
-:ref:`Rebuilding and/or modifying the Policy Charts` to redeploy the chart.
+:ref:`Installing or Upgrading Policy` to redeploy the chart.
 
 To *disable https* for the DMaaP configuration topic, add a copy of
 `engine.properties <https://git.onap.org/policy/drools-pdp/tree/policy-management/src/main/server/config/engine.properties>`_
