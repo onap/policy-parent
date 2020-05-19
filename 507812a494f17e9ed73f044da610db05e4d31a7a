@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "842422d1_79de4f1a",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T20:04:49Z",
+      "side": 1,
+      "message": "I believe doc8 complains about lines that are too long.",
+      "revId": "507812a494f17e9ed73f044da610db05e4d31a7a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c59f53ec_912ec1ed",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T20:04:49Z",
+      "side": 1,
+      "message": "\"and was\"",
+      "range": {
+        "startLine": 368,
+        "startChar": 142,
+        "endLine": 368,
+        "endChar": 145
+      },
+      "revId": "507812a494f17e9ed73f044da610db05e4d31a7a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b6a6731_86c2ada9",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T20:04:49Z",
+      "side": 1,
+      "message": "trailing space\n\nthere are trailing spaces in untouched sections, too - could eliminate all of them at the same time",
+      "revId": "507812a494f17e9ed73f044da610db05e4d31a7a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
