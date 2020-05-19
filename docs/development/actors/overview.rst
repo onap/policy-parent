@@ -63,6 +63,11 @@ Actor
   are loaded first.  If a later actor has the same name as one that has already been
   loaded, a warning will be generated and the later actor discarded.  This makes it
   possible for an organization to override an actor implementation
+- An implementation for a specific Actor will typically be derived from
+  *HttpActor* or *BidirectionalTopicActor*, depending whether it is HTTP/REST-based
+  or DMaaP-topic-based.  These super classes provide most of the functionality needed
+  to configure the operators, extracting operator-specific properties and adding
+  default, actor-level properties
 
 Operator
 ********
@@ -84,8 +89,13 @@ Operation
   and then continue; the invoker need not deal with the dependency
 - Subclasses will typically derive from *HttpOperation* or *BidirectionalTopicOperation*,
   though if neither of those suffice, then they can extend *OperationPartial*, or
-  even just implement a raw *Operation*
-- Operation subclasses should be written in a way so-as to avoid any blocking I/O
+  even just implement a raw *Operation*.  *OperationPartial* is the super class of
+  *HttpOperation* and *BidirectionalTopicOperation* and provides most of the methods
+  used by the Operation subclasses, including a number of utility methods (e.g.,
+  cancellable *allOf*)
+- Operation subclasses should be written in a way so-as to avoid any blocking I/O.  If
+  this proves too difficult, then the implementation should override *doOperation()*
+  instead of *startOperationAsync()*
 - Operations return a "future" when *start()* is invoked.  Typically, if the "future" is
   canceled, then any outstanding operation should be canceled.  For instance, HTTP
   connections should be closed without waiting for a response
