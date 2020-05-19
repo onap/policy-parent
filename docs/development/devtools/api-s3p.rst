@@ -102,7 +102,7 @@ Check and install docker
     $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     $ sudo apt-get update
     $ sudo apt-cache policy docker-ce
-    $ sudo apt-get install -y docker-ce
+    $ sudo apt-get install -y unzip docker-ce
     $ systemctl status docker
     $ docker ps
 
@@ -111,6 +111,12 @@ Change the permissions of the Docker socket file
 .. code-block:: bash
    
     $ sudo chmod 777 /var/run/docker.sock
+
+Or add the current user to the docker group
+
+.. code-block:: bash
+
+    $ sudo usermod -aG docker $USER
 
 Check the status of the Docker service and ensure it is running correctly
 
@@ -129,8 +135,8 @@ Download & install JMeter
    
     $ mkdir jMeter
     $ cd jMeter
-    $ wget http://mirrors.whoishostingthis.com/apache//jmeter/binaries/apache-jmeter-5.1.1.zip
-    $ unzip apache-jmeter-5.1.1.zip
+    $ wget http://mirrors.whoishostingthis.com/apache//jmeter/binaries/apache-jmeter-5.2.1.zip
+    $ unzip apache-jmeter-5.2.1.zip
     
 **Install other necessary components**
 
@@ -141,7 +147,7 @@ Pull api code & run setup components script
     $ cd ~
     $ git clone https://git.onap.org/policy/api
     $ cd api/testsuites/stability/src/main/resources/simulatorsetup
-    $ ./setup_components.sh
+    $ . ./setup_components.sh
     
 After installation, make sure the following mariadb container is up and running
 
@@ -162,7 +168,7 @@ Pull api code & run setup api script
     $ cd ~
     $ git clone https://git.onap.org/policy/api
     $ cd api/testsuites/stability/src/main/resources/apisetup
-    $ ./setup_api.sh <host ip running api> <host ip running mariadb>
+    $ . ./setup_api.sh <host ip running api> <host ip running mariadb>
 
 After installation, make sure the following api container is up and running
 
@@ -228,115 +234,6 @@ Sample Screenshot of visualVM
 
 .. image:: images/results-5.png
 
-Test Plan
----------
-
-The 72+ hours stability test will be running the following steps sequentially in multi-threaded loops.
-Thread number is set to 5 to simulate 5 API clients' behaviors (they can be calling the same policy CRUD API simultaneously).
-
-**Setup Thread (will be running only once)**
-    
-- Get policy-api Healthcheck
-- Get API Counter Statistics
-- Get Preloaded Policy Types
-
-**API Test Flow (5 threads running the same steps in the same loop)**
-
-- Create a new TCA Policy Type with Version 1.0.0
-- Create a new TCA Policy Type with Version 2.0.0
-- Create a new TCA Policy Type with Version 3.0.0
-- Create a new TCA Policy Type with Version 4.0.0
-- Create a new TCA Policy Type with Version 5.0.0
-- Create a new TCA Policy Type with Version 6.0.0
-- Create a new TCA Policy Type with Version 7.0.0
-- Create a new TCA Policy Type with Version 8.0.0
-- Create a new TCA Policy Type with Version 9.0.0
-- Create a new TCA Policy Type with Version 10.0.0
-- Create a new TCA Policy Type with Version 11.0.0
-- A 10 sec timer
-- Get All Existing Policy Types
-- Get All Existing Versions of the New TCA Policy Type
-- Get Version 1.0.0 of the New TCA Policy Type
-- Get Version 2.0.0 of the New TCA Policy Type
-- Get Version 3.0.0 of the New TCA Policy Type
-- Get Version 4.0.0 of the New TCA Policy Type
-- Get Version 5.0.0 of the New TCA Policy Type
-- Get Version 6.0.0 of the New TCA Policy Type
-- Get Version 7.0.0 of the New TCA Policy Type
-- Get Version 8.0.0 of the New TCA Policy Type
-- Get Version 9.0.0 of the New TCA Policy Type
-- Get Version 10.0.0 of the New TCA Policy Type
-- Get Version 11.0.0 of the New TCA Policy Type
-- Get the Latest Version of the New TCA Policy Type
-- A 10 sec timer
-- Create a New TCA Policy with Version 1.0.0 over the New TCA Policy Type Version 2.0.0
-- Create a New TCA Policy with Version 2.0.0 over the New TCA Policy Type Version 2.0.0
-- Create a New TCA Policy with Version 3.0.0 over the New TCA Policy Type Version 2.0.0
-- Create a New TCA Policy with Version 4.0.0 over the New TCA Policy Type Version 2.0.0
-- Create a New TCA Policy with Version 5.0.0 over the New TCA Policy Type Version 2.0.0
-- Create a New TCA Policy with Version 6.0.0 over the New TCA Policy Type Version 2.0.0
-- Create a New TCA Policy with Version 7.0.0 over the New TCA Policy Type Version 2.0.0
-- Create a New TCA Policy with Version 8.0.0 over the New TCA Policy Type Version 2.0.0
-- Create a New TCA Policy with Version 9.0.0 over the New TCA Policy Type Version 2.0.0
-- Create a New TCA Policy with Version 10.0.0 over the New TCA Policy Type Version 2.0.0
-- Create a New TCA Policy with Version 11.0.0 over the New TCA Policy Type Version 2.0.0
-- A 10 sec Timer
-- Get All Existing TCA Policies
-- Get All Existing Versions of TCA Policies
-- Get Version 1.0.0 of the New TCA Policy
-- Get Version 2.0.0 of the New TCA Policy
-- Get Version 3.0.0 of the New TCA Policy
-- Get Version 4.0.0 of the New TCA Policy
-- Get Version 5.0.0 of the New TCA Policy
-- Get Version 6.0.0 of the New TCA Policy
-- Get Version 7.0.0 of the New TCA Policy
-- Get Version 8.0.0 of the New TCA Policy
-- Get Version 9.0.0 of the New TCA Policy
-- Get Version 10.0.0 of the New TCA Policy
-- Get Version 11.0.0 of the New TCA Policy
-- Get the Latest Version of the New TCA Policy
-- A 10 sec Timer
-- Create a New Guard Policy with Version 1
-- Create a New Guard Policy with Version 5
-- Create a New Guard Policy with Version 9
-- Create a New Guard Policy with Version 12
-- A 10 sec Timer
-- Get Version 1 of the New Guard Policy
-- Get Version 5 of the New Guard Policy
-- Get Version 9 of the New Guard Policy
-- Get Version 12 of the New Guard Policy
-- Get the Latest Version of the New Guard Policy
-- A 10 sec Timer
-
-**TearDown Thread (will only be running after API Test Flow is completed)**
-
-- Delete Version 2.0.0 of the New TCA Policy Type (suppose to return 409-Conflict)
-- Delete Version 3.0.0 of the New TCA Policy Type
-- Delete Version 4.0.0 of the New TCA Policy Type
-- Delete Version 5.0.0 of the New TCA Policy Type
-- Delete Version 6.0.0 of the New TCA Policy Type
-- Delete Version 7.0.0 of the New TCA Policy Type
-- Delete Version 8.0.0 of the New TCA Policy Type
-- Delete Version 9.0.0 of the New TCA Policy Type
-- Delete Version 10.0.0 of the New TCA Policy Type
-- Delete Version 11.0.0 of the New TCA Policy Type
-- Delete Version 1.0.0 of the New TCA Policy
-- Delete Version 2.0.0 of the New TCA Policy
-- Delete Version 3.0.0 of the New TCA Policy
-- Delete Version 4.0.0 of the New TCA Policy
-- Delete Version 5.0.0 of the New TCA Policy
-- Delete Version 6.0.0 of the New TCA Policy
-- Delete Version 7.0.0 of the New TCA Policy
-- Delete Version 8.0.0 of the New TCA Policy
-- Delete Version 9.0.0 of the New TCA Policy
-- Delete Version 10.0.0 of the New TCA Policy
-- Delete Version 11.0.0 of the New TCA Policy
-- Re-Delete Version 2.0.0 of the New TCA Policy Type (will return 200 now since all TCA policies created over have been deleted)
-- Delete Version 1 of the new Guard Policy
-- Delete Version 5 of the new Guard Policy
-- Delete Version 9 of the new Guard Policy
-- Delete Version 12 of the new Guard Policy
-
 Run Test
 --------
 
@@ -359,7 +256,7 @@ Run JMeter test in background for 72+ hours
 .. code-block:: bash
   
     $ mkdir s3p
-    $ nohup ./jMeter/apache-jmeter-5.1.1/bin/jmeter.sh -n -t ~/api/testsuites/stability/src/main/resources/testplans/policy_api_stability.jmx &
+    $ nohup ./jMeter/apache-jmeter-5.2.1/bin/jmeter.sh -n -t ~/api/testsuites/stability/src/main/resources/testplans/policy_api_stability.jmx &
 
 (Optional) Monitor JMeter test that is running in background (anytime after re-logging into JMeter VM - VM1)
 
@@ -367,9 +264,74 @@ Run JMeter test in background for 72+ hours
 
     $ tail -f s3p/stability.log nohup.out
 
+Test Plan
+---------
 
-Test Results
-------------
+The 72+ hours stability test will be running the following steps sequentially in multi-threaded loops.
+Thread number is set to 5 to simulate 5 API clients' behaviors (they can be calling the same policy CRUD API simultaneously).
+Each thread creates a different version of the policy types and policies to not interfere with one another while operating simultaneously.  The point version of each entity is set to the running thread number.
+
+**Setup Thread (will be running only once)**
+
+- Get policy-api Healthcheck
+- Get API Counter Statistics
+- Get Preloaded Policy Types
+
+**API Test Flow (5 threads running the same steps in the same loop)**
+
+- Create a new Monitoring Policy Type with Version 6.0.#
+- Create a new Monitoring Policy Type with Version 7.0.#
+- Create a new Optimization Policy Type with Version 6.0.#
+- Create a new Guard Policy Type with Version 6.0.#
+- Create a new Native APEX Policy Type with Version 6.0.#
+- Create a new Native Drools Policy Type with Version 6.0.#
+- Create a new Native XACML Policy Type with Version 6.0.#
+- Get All Policy Types
+- Get All Versions of the new Monitoring Policy Type
+- Get Version 6.0.# of the new Monitoring Policy Type
+- Get Version 6.0.# of the new Optimzation Policy Type
+- Get Version 6.0.# of the new Guard Policy Type
+- Get Version 6.0.# of the new Native APEX Policy Type
+- Get Version 6.0.# of the new Native Drools Policy Type
+- Get Version 6.0.# of the new Native XACML Policy Type
+- Get the Latest Version of the New Monitoring Policy Type
+- Create a new Monitoring Policy with Version 6.0.# over the new Monitoring Policy Type Version 6.0.#
+- Create a new Monitoring Policy with Version 7.0.# over the new Monitoring Policy Type Version 7.0.#
+- Create a new Optimization Policy with Version 6.0.# over the new Optimization Policy Type Version 6.0.#
+- Create a new Guard Policy with Version 6.0.# over the new Guard Policy Type Version 6.0.#
+- Create a new Native APEX Policy with Version 6.0.# over the new Native APEX Policy Type Version 6.0.#
+- Create a new Native Drools Policy with Version 6.0.# over the new Native Drools Policy Type Version 6.0.#
+- Create a new Native XACML Policy with Version 6.0.# over the new Native XACML Policy Type Version 6.0.#
+- Get Version 6.0.# of the new Monitoring Policy
+- Get Version 6.0.# of the new Optimzation Policy
+- Get Version 6.0.# of the new Guard Policy
+- Get Version 6.0.# of the new Native APEX Policy
+- Get Version 6.0.# of the new Native Drools Policy
+- Get Version 6.0.# of the new Native XACML Policy
+- Get the Latest Version of the new Monitoring Policy
+- Delete Version 6.0.# of the new Monitoring Policy
+- Delete Version 7.0.# of the new Monitoring Policy
+- Delete Version 6.0.# of the new Optimzation Policy
+- Delete Version 6.0.# of the new Guard Policy
+- Delete Version 6.0.# of the new Native APEX Policy
+- Delete Version 6.0.# of the new Native Drools Policy
+- Delete Version 6.0.# of the new Native XACML Policy
+- Delete Monitoring Policy Type with Version 6.0.#
+- Delete Monitoring Policy Type with Version 7.0.#
+- Delete Optimization Policy Type with Version 6.0.#
+- Delete Guard Policy Type with Version 6.0.#
+- Delete Native APEX Policy Type with Version 6.0.#
+- Delete Native Drools Policy Type with Version 6.0.#
+- Delete Native XACML Policy Type with Version 6.0.#
+
+**TearDown Thread (will only be running after API Test Flow is completed)**
+
+- Get policy-api Healthcheck
+- Get Preloaded Policy Types
+
+
+Test Results El-Alto
+--------------------
 
 **Summary**
 
@@ -395,6 +357,35 @@ Policy API stability test plan was triggered and running for 72+ hours without a
 .. image:: images/results-3.png
 .. image:: images/results-4.png
 
+
+Test Results Frankfurt
+----------------------
+
+PFPP ONAP Windriver lab
+
+**Summary**
+
+Policy API stability test plan was triggered and running for 72+ hours without any real errors occurring.  The single failure was on teardown was due to simultaneous test plans running concurrently on the lab system.
+
+Compared to El-Alto, 10x the number of API calls were made in the 72 hour run.  However, the latency increased (most likely due to the synchronization added from 
+`POLICY-2533 <https://jira.onap.org/browse/POLICY-2533>`_.
+This will be addressed in the next release.
+
+**Test Statistics**
+
+=======================  =============  ===========  ===============================  ===============================  ===============================
+**Total # of requests**  **Success %**  **Error %**  **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
+=======================  =============  ===========  ===============================  ===============================  ===============================
+    514953                    100%           0%              2510 ms                               336 ms                          15034 ms
+=======================  =============  ===========  ===============================  ===============================  ===============================
+
+**VisualVM Results**
+
+VisualVM results were not captured as this was run in the PFPP ONAP Windriver lab.
+
+**JMeter Results**
+
+.. image:: images/api-s3p-jm-1_F.png
 
 
 Performance Test of Policy API
