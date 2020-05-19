@@ -115,29 +115,41 @@ For security reasons, the ports for the policy containers are configured as Clus
 
 Overriding certificate stores
 *******************************
-Each policy component keystore and or truststore can be overriden.   The procedure will be applicable
-to an installation that requires certificates other than the pre-packaged AAF derived ones
-that come with the official ONAP distribution.
+Policy components package default key and trust stores that supports https based communication with other
+AAF-enabled ONAP components.  Each store can be overriden at installation.
 
 To override a default keystore, the new certificate store (policy-keystore) file should be placed at the
 appropriate helm chart locations below:
 
-* **oom/kubernetes/policy/charts/drools/resources/secrets/policy-keystore** drools pdp keystore override.
-* **oom/kubernetes/policy/charts/policy-apex-pdp/resources/config/policy-keystore** apex pdp keystore override.
-* **oom/kubernetes/policy/charts/policy-api/resources/config/policy-keystore** api keystore override.
-* **oom/kubernetes/policy/charts/policy-distribution/resources/config/policy-keystore** distribution keystore override.
-* **oom/kubernetes/policy/charts/policy-pap/resources/config/policy-keystore** pap keystore override.
-* **oom/kubernetes/policy/charts/policy-xacml-pdp/resources/config/policy-keystore** xacml pdp keystore override.
+* oom/kubernetes/policy/charts/drools/resources/secrets/policy-keystore drools pdp keystore override.
+* oom/kubernetes/policy/charts/policy-apex-pdp/resources/config/policy-keystore apex pdp keystore override.
+* oom/kubernetes/policy/charts/policy-api/resources/config/policy-keystore api keystore override.
+* oom/kubernetes/policy/charts/policy-distribution/resources/config/policy-keystore distribution keystore override.
+* oom/kubernetes/policy/charts/policy-pap/resources/config/policy-keystore pap keystore override.
+* oom/kubernetes/policy/charts/policy-xacml-pdp/resources/config/policy-keystore xacml pdp keystore override.
 
 In the event that the truststore (policy-truststore) needs to be overriden as well, place it at the appropriate
 location below:
 
-* **oom/kubernetes/policy/charts/drools/resources/configmaps/policy-truststore** drools pdp truststore override.
-* **oom/kubernetes/policy/charts/policy-apex-pdp/resources/config/policy-truststore** apex pdp truststore override.
-* **oom/kubernetes/policy/charts/policy-api/resources/config/policy-truststore** api truststore override.
-* **oom/kubernetes/policy/charts/policy-distribution/resources/config/policy-truststore** distribution truststore override.
-* **oom/kubernetes/policy/charts/policy-pap/resources/config/policy-truststore** pap truststore override.
-* **oom/kubernetes/policy/charts/policy-xacml-pdp/resources/config/policy-truststore** xacml pdp truststore override.
+* oom/kubernetes/policy/charts/drools/resources/configmaps/policy-truststore drools pdp truststore override.
+* oom/kubernetes/policy/charts/policy-apex-pdp/resources/config/policy-truststore apex pdp truststore override.
+* oom/kubernetes/policy/charts/policy-api/resources/config/policy-truststore api truststore override.
+* oom/kubernetes/policy/charts/policy-distribution/resources/config/policy-truststore distribution truststore override.
+* oom/kubernetes/policy/charts/policy-pap/resources/config/policy-truststore pap truststore override.
+* oom/kubernetes/policy/charts/policy-xacml-pdp/resources/config/policy-truststore xacml pdp truststore override.
+
+When the keystore passwords are changed, the corresponding component configuration ([1]_) should also change:
+
+* oom/kubernetes/policy/charts/drools/values.yaml
+* oom/kubernetes/policy-apex-pdp/resources/config/config.json
+* oom/kubernetes/policy-distribution/resources/config/config.json
+
+This procedure is applicable to an installation that requires either AAF or non-AAF derived certificates.
+The reader is refered to the AAF documentation when new AAF-compliant keystores are desired:
+
+* `AAF automated configuration and Certificates <https://docs.onap.org/en/latest/submodules/aaf/authz.git/docs/sections/configuration/AAF_4.1_config.html#typical-onap-entity-info-in-aaf>`_.
+* `AAF Certificate Management for Dummies <https://wiki.onap.org/display/DW/AAF+Certificate+Management+for+Dummies>`_.
+* `Instructional Videos <https://wiki.onap.org/display/DW/Instructional+Videos>`_.
 
 After these changes, follow the procedures in the :ref:`Installing or Upgrading Policy` section to make usage of
 the new stores effective.
@@ -170,6 +182,9 @@ Custom configuration supportes these types of files:
 * **policy-truststore** to override the PDP-D policy-truststore.
 * **aaf-cadi.keyfile** to override the PDP-D AAF key.
 * **\*.properties** to override or add properties files.
+* **\*.xml** to override or add xml configuration files.
+* **\*.json** to override json configuration files.
+* **\*settings.xml** to override maven repositories configuration .
 
 Examples
 ^^^^^^^^
@@ -187,3 +202,16 @@ To *disable https* for the DMaaP configuration topic, add a copy of
 with "dmaap.source.topics.PDPD-CONFIGURATION.https" set to "false", or alternatively
 create a ".pre.sh" script (see above) that edits this file before the PDP-D is
 started.
+
+To use *noop topics* for standalone testing, add a "noop.pre.sh" script under
+oom/kubernetes/policy/charts/drools/resources/configmaps/:
+
+.. code-block:: bash
+
+    #!/bin/bash
+    sed -i "s/^dmaap/noop/g" $POLICY_HOME/config/*.properties
+
+
+.. rubric:: Footnotes
+
+.. [1] There is a limitation that store passwords are not configurable for policy-api, policy-pap, and policy-xacml-pdp.
