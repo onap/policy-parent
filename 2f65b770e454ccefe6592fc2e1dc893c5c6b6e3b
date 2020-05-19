@@ -62,6 +62,24 @@
       "revId": "2f65b770e454ccefe6592fc2e1dc893c5c6b6e3b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d884b6b_48cead3e",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-19T18:58:45Z",
+      "side": 1,
+      "message": "ok - one of those 1st items todo right away.",
+      "parentUuid": "070c77cd_cbf27c0f",
+      "revId": "2f65b770e454ccefe6592fc2e1dc893c5c6b6e3b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
