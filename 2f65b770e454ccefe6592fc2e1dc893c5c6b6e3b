@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f8d5232f_fda745a1",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-19T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ad8bf6_0d92688f",
+      "range": {
+        "startLine": 118,
+        "startChar": 60,
+        "endLine": 118,
+        "endChar": 69
+      },
+      "revId": "2f65b770e454ccefe6592fc2e1dc893c5c6b6e3b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5066780c_ea0bfae6",
         "filename": "docs/installation/oom.rst",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2f65b770e454ccefe6592fc2e1dc893c5c6b6e3b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b46217d_5b70e4b8",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-19T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5066780c_ea0bfae6",
+      "range": {
+        "startLine": 119,
+        "startChar": 48,
+        "endLine": 119,
+        "endChar": 57
+      },
+      "revId": "2f65b770e454ccefe6592fc2e1dc893c5c6b6e3b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,24 @@
       "side": 1,
       "message": "Also true for apex-pdp \u0026 distribution\nThe password is currently hardcoded inside the startup script of each component.",
       "parentUuid": "6d884b6b_48cead3e",
+      "revId": "2f65b770e454ccefe6592fc2e1dc893c5c6b6e3b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c56fa9d_c5db71b5",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-19T21:49:33Z",
+      "side": 1,
+      "message": "Ok, we can resolve with the same ticket.   I saw this in the oom charts, fyi,\n\n./policy-apex-pdp/resources/config/config.json:    [\"javax.net.ssl.trustStorePassword\", \"UG9sMWN5XzBuYXA\u003d\"]\n./policy-distribution/resources/config/config.json:                \"keystorePath\": \"null\",\n./policy-distribution/resources/config/config.json:                \"keystorePassword\": \"null\",",
+      "parentUuid": "1267a057_8275ba92",
       "revId": "2f65b770e454ccefe6592fc2e1dc893c5c6b6e3b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
