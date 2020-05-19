@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "070c77cd_cbf27c0f",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-19T18:17:41Z",
+      "side": 1,
+      "message": "When I tried to complete the password section above, and looking at the configuration, I couldn\u0027t find\nlogic to configure it.  I opened ticket POLICY-2575 for backlog in guilin, this is probably a must do.",
+      "revId": "2f65b770e454ccefe6592fc2e1dc893c5c6b6e3b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
