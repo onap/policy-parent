@@ -15,17 +15,17 @@ Both the Performance and the Stability tests were executed against a default ONA
 General Setup
 *************
 
-The kubernetes installation allocated all policy components in the same worker node VM and some additional ones.   The worker VM hosting the policy components has the
-following spec:
+The kubernetes installation allocated all policy components in the same worker node VM and some additional ones.
+The worker VM hosting the policy components has the following spec:
 
-- 16GB RAM 
+- 16GB RAM
 - 8 VCPU
 - 160GB Ephemeral Disk
 
-The standalone VM designated to run jmeter has the same configuration and was only
-used to run this tool allocating 12G of heap memory to the jmeter tool.
+The standalone VM designated to run jmeter has the same configuration.  The jmeter JVM
+was instantiated with a max heap configuration of 12G.
 
-Other ONAP components used during the estability tests are:
+Other ONAP components used during the stability tests are:
 
 - Policy XACML PDP to process guard queries for each transaction.
 - DMaaP to carry PDP-D and jmeter initiated traffic to complete transactions.
@@ -37,13 +37,13 @@ The following components are simulated during the tests.
 
 - SO actor for the vDNS use case.
 - APPC responses for the vCPE and vFW use cases.
-- AAI to answer queries for the usecases under test.
+- AAI to answer queries for the use cases under test.
 
-In order to restrict APPC responses to just the jmeter too driving all transactions,
+In order to avoid interferences with the APPC component while running the tests,
 the APPC component was disabled.
 
-SO, and AAI actors were simulated internally within the PDP-D by enabling the
-feature-controlloop-utils previous to run the tests.
+SO, and AAI actors were simulated within the PDP-D JVM by enabling the
+feature-controlloop-utils before running the tests.
 
 PDP-D Setup
 ***********
@@ -52,7 +52,7 @@ The kubernetes charts were modified previous to the installation with
 the changes below.
 
 The oom/kubernetes/policy/charts/drools/resources/configmaps/base.conf was
-modified:
+modified as follows:
 
 .. code-block:: bash
 
@@ -136,25 +136,11 @@ The feature-controlloop-utils was started by adding the following script:
     #!/bin/bash
     bash -c "features enable controlloop-utils"
 
-The PDP-D uses a small configuration:
-
 
 Stability Test of Policy PDP-D
 ******************************
 
-The 72 hour stability test happened in parallel with the estability run of the API component.
-
-.. code-block:: bash
-
-  small:
-    limits:
-      cpu: 1
-      memory: 4Gi
-    requests:
-      cpu: 100m
-      memory: 1Gi
-
-Approximately 3.75G heap was allocated to the PDP-D JVM at initialization.
+The 72 hour stability test happened in parallel with the stability run of the API component.
 
 Worker Node performance
 =======================
@@ -170,22 +156,36 @@ stability runs.  The table below show the usage ranges:
 PDP-D performance
 =================
 
-The PDP-D was monitored during the run an stayed below the following ranges:
+The PDP-D uses a small configuration:
+
+.. code-block:: bash
+
+  small:
+    limits:
+      cpu: 1
+      memory: 4Gi
+    requests:
+      cpu: 100m
+      memory: 1Gi
+
+In practicality, this corresponded to an allocated 3.75G heap for the JVM based.
+
+The PDP-D was monitored during the run and stayed below the following ranges:
 
 .. code-block:: bash
 
     NAME           CPU(cores)   MEMORY(bytes)
     dev-drools-0   <=142m         684Mi
 
-Garbagge collection was monitored without detecting any major spike.
+Garbagge collection was monitored without detecting any significant degradation.
 
-The following use cases were tested:
+The test set focused on the following use cases:
 
 - vCPE
 - vDNS
 - vFirewall
 
-For 72 hours the following 5 scenarios were run in parallel:
+For 72 hours the following 5 scenarios ran in parallel:
 
 - vCPE success scenario
 - vCPE failure scenario (failure returned by simulated APPC recipient through DMaaP).
@@ -193,10 +193,12 @@ For 72 hours the following 5 scenarios were run in parallel:
 - vDNS failure scenario.
 - vFirewall success scenario.
 
-Five threads, one for each scenario described above, push the traffic back to back
-with no pauses.
+Five threads ran in parallel, one for each scenario.   The transactions were initiated
+by each jmeter thread group.   Each thread initiates a transaction, monitors the transaction, and
+as soon as the transaction ending was detected, it initiated the next one, so back to back with no
+pauses.
 
-All transactions completed successfully as expected in each scenario.
+All transactions completed successfully as it was expected in each scenario, with no failures.
 
 The command executed was
 
@@ -210,7 +212,8 @@ ellapsed times).
 
 The count reflects the number of successful transactions as expected in the
 use case, as well as the average, standard deviation, and max/min.   An histogram
-of the response times have been added as a visual indication on the most common transaction times.
+of the response times have been added as a visual indication on the most common
+transaction times.
 
 vCPE Success scenario
 =====================
@@ -226,8 +229,6 @@ ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e:
     50%         276.000000
     max        1125.000000
 
-
-Transaction Times histogram:
 
 .. image:: images/ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e.png
 
@@ -248,8 +249,6 @@ ControlLoop-vCPE-Fail:
     max        5394.000000
 
 
-Transaction Times histogram:
-
 .. image:: images/ControlLoop-vCPE-Fail.png
 
 vDNS Success scenario
@@ -266,7 +265,6 @@ ControlLoop-vDNS-6f37f56d-a87d-4b85-b6a9-cc953cf779b3:
     50%          20.000000
     max         672.000000
 
-Transaction Times histogram:
 
 .. image:: images/ControlLoop-vDNS-6f37f56d-a87d-4b85-b6a9-cc953cf779b3.png
 
@@ -284,11 +282,10 @@ ControlLoop-vDNS-Fail:
     50%       3010.000000
     max       3602.000000
 
-Transaction Times histogram:
 
 .. image:: images/ControlLoop-vDNS-Fail.png
 
-vFirewall Failure scenario
+vFirewall Sucess scenario
 ==========================
 
 ControlLoop-vFirewall-d0a1dfc6-94f5-4fd4-a5b5-4630b438850a:
@@ -302,7 +299,6 @@ ControlLoop-vFirewall-d0a1dfc6-94f5-4fd4-a5b5-4630b438850a:
     50%         181.000000
     max        3972.000000
 
-Transaction Times histogram:
 
 .. image:: images/ControlLoop-vFirewall-d0a1dfc6-94f5-4fd4-a5b5-4630b438850a.png
 
