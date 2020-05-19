@@ -2,6 +2,109 @@
   "comments": [
     {
       "key": {
+        "uuid": "1aca03ef_d4c777db",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:25:33Z",
+      "side": 1,
+      "message": "trailing space",
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7380f74_1df47682",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:25:33Z",
+      "side": 1,
+      "message": "\"stability\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 38,
+        "endLine": 28,
+        "endChar": 48
+      },
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5dee883_0dcefce3",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:25:33Z",
+      "side": 1,
+      "message": "remove \"too\"?",
+      "range": {
+        "startLine": 42,
+        "startChar": 55,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "668fa1f3_382c8f10",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:25:33Z",
+      "side": 1,
+      "message": "next time around, perhaps we can launch the docker image for the simulators on their own VM (this image was added to facilitate the CSITs), to make it possible to isolate the CPU load and memory usage of drools-pdp from the simulators.",
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1dbb306_991a0182",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:25:33Z",
+      "side": 1,
+      "message": "\"prior to running\"",
+      "range": {
+        "startLine": 46,
+        "startChar": 26,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d18d926_b7e4aafe",
         "filename": "docs/development/devtools/drools-s3p.rst",
         "patchSetId": 2
@@ -19,6 +122,109 @@
         "endLine": 71,
         "endChar": 9
       },
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "154fe50d_f15d888f",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:25:33Z",
+      "side": 1,
+      "message": "\"stability\"",
+      "range": {
+        "startLine": 145,
+        "startChar": 57,
+        "endLine": 145,
+        "endChar": 68
+      },
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0572089d_31afca46",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:25:33Z",
+      "side": 1,
+      "message": "1374m - meaning 1374 cpu-minutes were consumed during the stability test?",
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd24ea8_eff5d001",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:25:33Z",
+      "side": 1,
+      "message": "\"and\"",
+      "range": {
+        "startLine": 173,
+        "startChar": 39,
+        "endLine": 173,
+        "endChar": 42
+      },
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d52d8e76_d506c40b",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:25:33Z",
+      "side": 1,
+      "message": "\"Garbage\"",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 8
+      },
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f15171_03a86120",
+        "filename": "docs/development/devtools/images/ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:25:33Z",
+      "side": 1,
+      "message": "interesting - wonder why the bimodal distribution?",
       "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
