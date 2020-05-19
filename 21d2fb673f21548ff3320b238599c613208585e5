@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd447367_e28ef0db",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-19T21:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22e96e6d_1349b30c",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 9
+      },
+      "revId": "21d2fb673f21548ff3320b238599c613208585e5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3ce3116_d0461387",
         "filename": "docs/development/devtools/drools-s3p.rst",
         "patchSetId": 1
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "2205c901_2b107e5f",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-19T21:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3ce3116_d0461387",
+      "range": {
+        "startLine": 197,
+        "startChar": 43,
+        "endLine": 197,
+        "endChar": 53
+      },
+      "revId": "21d2fb673f21548ff3320b238599c613208585e5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cea40f5_a68ec04b",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-19T21:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e5d8b7b_1ebbf13b",
+      "range": {
+        "startLine": 197,
+        "startChar": 68,
+        "endLine": 197,
+        "endChar": 77
+      },
+      "revId": "21d2fb673f21548ff3320b238599c613208585e5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8f4520c_13bf79a6",
         "filename": "docs/development/devtools/drools-s3p.rst",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "21d2fb673f21548ff3320b238599c613208585e5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4182619f_12e436ee",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-19T21:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8f4520c_13bf79a6",
+      "range": {
+        "startLine": 288,
+        "startChar": 10,
+        "endLine": 288,
+        "endChar": 16
+      },
+      "revId": "21d2fb673f21548ff3320b238599c613208585e5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
