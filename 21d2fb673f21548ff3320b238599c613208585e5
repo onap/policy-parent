@@ -68,6 +68,29 @@
       "revId": "21d2fb673f21548ff3320b238599c613208585e5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8f4520c_13bf79a6",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-19T20:21:49Z",
+      "side": 1,
+      "message": "Success",
+      "range": {
+        "startLine": 288,
+        "startChar": 10,
+        "endLine": 288,
+        "endChar": 16
+      },
+      "revId": "21d2fb673f21548ff3320b238599c613208585e5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
