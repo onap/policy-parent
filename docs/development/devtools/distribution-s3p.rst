@@ -270,3 +270,63 @@ Stability test plan was triggered for 72 hours.
 
 .. image:: images/distribution-summary-report.png
 .. image:: images/distribution-results-tree.png
+
+Performance Test of Policy Distribution
++++++++++++++++++++++++++++++++++++++++
+
+Introduction
+------------
+
+Performance test of distribution has the goal of testing the min/avg/max processing time and
+rest call throughput for all the requests when the number of requests are large enough to saturate
+the resource and find the bottleneck.
+It also tests that distribution can handle multiple policy csar's and that these are deployed within 30 seconds consistently.
+
+Setup Details
+-------------
+
+The performance test is based on the same setup as the distribution stability tests.
+
+Test Plan
+---------
+
+Performance test plan is different from the stability test plan.
+Instead of handling one policy csar at a time, multiple csar's are deployed within the watched folder at the exact same time.
+We then expect all policies from these csar's to be deployed within 30 seconds.
+Alongside these, there are multithreaded tests running towards the healtchcheck and statistics endpoints of the distribution service.
+
+Run Test
+--------
+
+Copy the performance test plans folder onto VM2.
+Edit the /tmp/ folder permissions to allow the Testplan to insert the CSAR into the /tmp/policydistribution/distributionmount/ folder.
+
+.. code-block:: bash
+
+    $ sudo chmod a+trwx /tmp
+
+From the apache jMeter folder run the test, pointing it towards the stabiltiy.jmx file inside the testplans folder
+
+.. code-block:: bash
+
+    $ ./bin/jmeter -n -t /home/rossc/testplans/performance.jmx -Jduration=259200 -l testresults.jtl
+
+Test Results
+------------
+
+**Summary**
+
+Performance test plan was triggered for 4 hours.
+
+**Test Statistics**
+
+=======================  =================  ==================  ==================================
+**Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
+=======================  =================  ==================  ==================================
+239819                   100 %              0 %                 100 ms
+=======================  =================  ==================  ==================================
+
+**JMeter Screenshot**
+
+.. image:: images/distribution-performance-summary-report.png
+.. image:: images/distribution-performance-api-report.png
