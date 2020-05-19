@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "338ae1b4_c32f5e04",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:43:44Z",
+      "side": 1,
+      "message": "the \"+\" doesn\u0027t have to extend to the end of the preceding line?",
+      "revId": "36149394e65f67217f83e7f8c00df8870dd0a9c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f06e8d5_e2000f78",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:43:44Z",
+      "side": 1,
+      "message": "I believe that doc8 will complain about lines that are \"too long\" (not sure of the limit - may be 80, may be 72).",
+      "revId": "36149394e65f67217f83e7f8c00df8870dd0a9c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb3665d4_98c37eb7",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:43:44Z",
+      "side": 1,
+      "message": "\"from\"",
+      "range": {
+        "startLine": 291,
+        "startChar": 35,
+        "endLine": 291,
+        "endChar": 37
+      },
+      "revId": "36149394e65f67217f83e7f8c00df8870dd0a9c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5996f2ac_df1432eb",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-19T12:43:44Z",
+      "side": 1,
+      "message": "maybe add an extra blank line to the end of the file to make gerrit happy",
+      "revId": "36149394e65f67217f83e7f8c00df8870dd0a9c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
