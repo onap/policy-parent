@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d18d926_b7e4aafe",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-05-19T11:21:06Z",
+      "side": 1,
+      "message": "we should probably at some point change this to SO",
+      "range": {
+        "startLine": 71,
+        "startChar": 6,
+        "endLine": 71,
+        "endChar": 9
+      },
+      "revId": "794fa0b116fd5bdc51b6e97839bcb6018d4dfc52",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
