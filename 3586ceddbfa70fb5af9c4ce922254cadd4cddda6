@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02f786e4_dd2645b3",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-05-20T12:38:54Z",
+      "side": 1,
+      "message": "This is \"policy-pdpd-cl 1.6.4\" (next point version).   We can also modify once we release it, but I noticed that policy-pe was bumped to the next version already.",
+      "revId": "3586ceddbfa70fb5af9c4ce922254cadd4cddda6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
