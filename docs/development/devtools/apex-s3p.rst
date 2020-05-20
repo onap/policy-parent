@@ -33,7 +33,7 @@ Version: Mitaka
 
 **apex-pdp VM details**
 
-OS:Ubuntu 16.04.5 LTS
+OS:Ubuntu 18.04 LTS
 
 CPU: 4 core
 
@@ -41,13 +41,13 @@ RAM: 4 GB
 
 HardDisk: 40 GB
 
-Docker Version: 18.06.1-ce, build e68fc7a
+Docker Version: 19.03.8, build afacb8b7f0
 
-Java: openjdk version "1.8.0_181"
+Java: openjdk version "11.0.7"
 
 **JMeter VM details**
 
-OS: Ubuntu 16.04.3 LTS
+OS: Ubuntu 18.04 LTS
 
 CPU: 4 core
 
@@ -55,9 +55,9 @@ RAM: 4 GB
 
 HardDisk: 40 GB
 
-Java: openjdk version "1.8.0_181"
+Java: openjdk version "11.0.7"
 
-JMeter: 5.1.1
+JMeter: 5.2.1
 
 Install JMeter in virtual machine
 ---------------------------------
@@ -88,7 +88,7 @@ Check & Install Java
 
 .. code-block:: bash
 
-    apt-get install -y openjdk-8-jdk
+    apt-get install -y openjdk-11-jdk
   
     java -version
 
@@ -102,10 +102,10 @@ Download & install JMeter
     cd jMeter
      
      
-    wget http://mirrors.whoishostingthis.com/apache//jmeter/binaries/apache-jmeter-5.1.1.zip
+    wget http://mirrors.whoishostingthis.com/apache//jmeter/binaries/apache-jmeter-5.2.1.zip
      
      
-    unzip apache-jmeter-5.1.1.zip 
+    unzip apache-jmeter-5.2.1.zip
 
 Install apex-pdp in virtual machine
 -----------------------------------
@@ -138,7 +138,7 @@ We will be running apex-pdp as docker container. So we need to first install doc
 
 .. code-block:: bash
 
-    apt-get install -y openjdk-8-jdk
+    apt-get install -y openjdk-11-jdk
     java -version
 
 Ensure that the Java version that is executing is OpenJDK version 8
@@ -148,24 +148,20 @@ Ensure that the Java version that is executing is OpenJDK version 8
 .. code-block:: bash
 
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-    apt-get update
-    apt-cache policy docker-ce
-    apt-get install -y docker-ce
-    systemctl status docker
-    docker ps
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    sudo apt-get update
+    sudo apt-cache policy docker-ce
+    sudo apt-get install -y docker-ce
+    sudo systemctl enable docker
+    sudo systemctl start docker
+    sudo usermod -aG docker <your user id>
 
-6. Change the permissions of the Docker socket file
-
-.. code-block:: bash
-
-    chmod 777 /var/run/docker.sock
+6. Logout and re-login to ensure the ``usermod`` command takes effective
 
 7. Check the status of the Docker service and ensure it is running correctly
 
 .. code-block:: bash
 
-    service docker status
     docker ps
 
 **Install apex-pdp**
@@ -174,7 +170,7 @@ Run the below command to create the container hosting apex-pdp by pulling the im
 
 .. code-block:: bash
 
-    docker run -d --name apex -p 12561:12561 -p 23324:23324 -it nexus3.onap.org:10001/onap/policy-apex-pdp:2.1.0-latest /bin/bash -c "/opt/app/policy/apex-pdp/bin/apexApps.sh jmx-test -c /opt/app/policy/apex-pdp/examples/config/SampleDomain/RESTServerJsonEvent.json"
+    docker run -d --name apex -p 12561:12561 -p 23324:23324 -p 9911:9911 nexus3.onap.org:10001/onap/policy-apex-pdp:2.3.1 /bin/bash -c "/opt/app/policy/apex-pdp/bin/apexApps.sh jmx-test -c /opt/app/policy/apex-pdp/examples/config/SampleDomain/RESTServerJsonEvent.json"
     docker ps
 
 Note: If you observe that requests from JMeter client is failing due to timeout, then modify the "RESTServerJsonEvent.json" mentioned in the above command and increase the "synchronousTimeout" property as per needed.
@@ -190,53 +186,6 @@ Install visualVM
 
     sudo apt-get install visualvm
 
-Login to docker container (using root)
-
-.. code-block:: bash
-
-    docker exec -u 0 -it apex /bin/bash
-    
-Run few commands to configure permissions
-
-.. code-block:: bash
-
-    cd /usr/lib/jvm/java-1.8-openjdk/bin/
- 
-    touch visualvm.policy
-     
-    vi visualvm.policy
-     
-    Add the following in visualvm.policy
-     
-     
-    grant codebase "file:/usr/lib/jvm/java-1.8-openjdk/lib/tools.jar" {
-       permission java.security.AllPermission;
-    };
-     
-     
-    chmod 777 visualvm.policy
-     
-     
-    exit
-
-Login to docker container (using normal user)
-
-.. code-block:: bash
-
-    docker exec -it apex /bin/bash
-
-Run following commands to start jstatd using port 1111
-
-.. code-block:: bash
-
-    cd /usr/lib/jvm/java-1.8-openjdk/bin/
-     
-     
-    ./jstatd -p 1111 -J-Djava.security.policy=visualvm.policy  &
-     
-     
-    exit
-
 Login to VM using graphical interface in separate terminal window.
 
 .. code-block:: bash
@@ -249,25 +198,15 @@ Open visualVM
 
     visualvm &
     
-Connect to jstatd & remote apex-pdp JVM
-
-1. Right click on "Remote" in the left panel of the screen and select "Add Remote Host..."
-
-2. Enter the IP address of apex-pdp docker container.
-
-.. code-block:: bash
-    
-    docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
-
-3. Right click on IP address, select "Add jstatd Connection..."
-4. In "jstatd Connections" tab, enter port 1111 and click OK.
-5. Right click on IP address, select "Add JMX Connection..."
-6. Enter the apex-pdp docker container IP Address (from step 2) <IP address>:9911 ( for example - 172.17.0.2:9911) and click OK.
-7. Double click on the newly added nodes under "Remote" to start monitoring CPU, Memory & GC.
+Connect to apex-pdp JVM's JMX agent
+1. Right click on "Local" in the left panel of the screen and select "Add Local JMX Connection..."
+2. Enter localhost:9911 for "Connection", and click OK
+3. Double click on the newly added nodes under "Local" to start monitoring CPU, Memory & GC.
 
 Sample Screenshot of visualVM
 
-.. image:: images/apex-s3p-vvm-sample.jpg
+.. image:: images/stability-visualvm1.PNG
+.. image:: images/stability-visualvm2.PNG
 
 Test Plan
 ---------
@@ -316,17 +255,17 @@ After the test stop, we can generate a HTML test report via command
 
 .. code-block:: bash
 
-    ~/jMeter/apache-jmeter-5.1.1/bin/jmeter -g stability.log -o ./result/
+    ~/jMeter/apache-jmeter-5.2.1/bin/jmeter -g stability.log -o ./result/
 
 ==============================================  ===================================================  ================================  =============  ============
 **Number of Client Threads running in JMeter**  **Number of Server Threads running in Apex engine**  **Total number of input events**  **Success %**  **Error %**
 ==============================================  ===================================================  ================================  =============  ============
-20                                              4                                                    6394602                           99.999971%     0.0029%
+20                                              4                                                    8594220                           100%           0%
 ==============================================  ===================================================  ================================  =============  ============
 
-:download:`result.zip <zip/result.zip>`
-:download:`onap.zip <zip/onap.zip>`
+.. image:: images/stability-jmeter.PNG
 
+:download:`result.zip <zip/result.tar>`
 
 Setting up Performance Tests in APEX
 ++++++++++++++++++++++++++++++++++++
@@ -373,7 +312,7 @@ The results are similar to those below:
  
 :download:`Example APEX performance metrics <json/example-apex-perf.json>`
 
-Performance Test Result
+Performance Test Result Frankfurt
 -----------------------
 
 **Summary**
@@ -382,22 +321,22 @@ Performance test was triggered for 2 hours on a 4 core, 4GB RAM virtual machine.
 
 **Test Statistics**
 
-:download:`Attached result log <json/result.json>`
+:download:`Attached result log <json/frankfurt-apex-perf.json>`
 
 ===============  =============  =================  ==============  =====================  ==================  =============  ===========
 **batchNumber**  **batchSize**  **eventsNotSent**  **eventsSent**  **eventsNotReceived**  **eventsReceived**  **Success %**  **Error %**
 ===============  =============  =================  ==============  =====================  ==================  =============  ===========
-3650             182500         0                  182500          0                      182500              100 %          0 %
+-1               431250         0                  431250          0                      431250              100 %          0 %
 ===============  =============  =================  ==============  =====================  ==================  =============  ===========
 
 ========================  =========================  ========================
 **averageRoundTripNano**  **shortestRoundTripNano**  **longestRoundTripNano**
 ========================  =========================  ========================
-40024623                  7439158                    5161374486              
+148965724                 20169907                   429339393
 ========================  =========================  ========================
 
 ============================  =============================  ============================
 **averageApexExecutionNano**  **shortestApexExecutionNano**  **longestApexExecutionNano**
 ============================  =============================  ============================
-1335622                       513650                         5104326434                  
+62451899                      3901010                        354528579
 ============================  =============================  ============================
