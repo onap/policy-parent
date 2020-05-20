@@ -37,19 +37,19 @@ Release Data
 | **Policy Project**                   |                                      |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
-| **Docker images**                    | - policy-api 2.2.3 (tbd)             |
-|                                      | - policy-pap 2.2.2 (tbd)             |
-|                                      | - policy-drools-pdp 1.6.3 (tbd)      |
-|                                      | - policy-xacml-pdp 2.2.1  (tbd)      |
-|                                      | - policy-apex-pdp 2.3.1   (tbd)      |
-|                                      | - policy-distribution 2.3.1 (tbd)    |
-|                                      | - policy-pe 1.6.3 (tbd)              |
+| **Docker images**                    | - policy-api 2.2.4                   |
+|                                      | - policy-pap 2.2.3                   |
+|                                      | - policy-pdpd-cl 1.6.4               |
+|                                      | - policy-xacml-pdp 2.2.2             |
+|                                      | - policy-apex-pdp 2.3.2              |
+|                                      | - policy-distribution 2.3.2          |
+|                                      | - policy-pe 1.6.4                    |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
 | **Release designation**              | 6.0.0 frankfurt                      |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
-| **Release date**                     | 2020-06-04 (tbd)                     |
+| **Release date**                     | 2020-06-04                           |
 |                                      |                                      |
 +--------------------------------------+--------------------------------------+
 
