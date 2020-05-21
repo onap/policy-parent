@@ -13,15 +13,17 @@ Summary
 ^^^^^^^
 
 The "controlloop-usecases" feature enables the "usecases" controller in a PDP-D.
-The "usecases" controller supports the official ONAP use cases in a more efficient manner than
-the legacy "amsterdam" controller.
-The main difference is that control loop provisioning does not need a new version upgrade
-each time a control loop is added or removed.
+The "usecases" controller is carried forward from the El Alto release and will be deprecated in favor of the
+"frankfurt" controller.
+
+.. note::
+   This feature is disabled by default. Please use the 'frankfurt' feature in lieu of this. We will be renaming the 'frankfurt'
+   controller feature back to use cases in the Guilin release.
 
 Usage
 ^^^^^
 
-The feature is enabled by default.  The lifecycle "enabled" property can be toggled with
+The feature is disabled by default.  The lifecycle "enabled" property can be toggled with
 the "features" command line tool.
 
     .. code-block:: bash

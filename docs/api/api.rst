@@ -2,9 +2,6 @@
 .. Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
-.. DO NOT REMOVE THIS LABEL - EVEN IF IT GENERATES A WARNING
-.. _offeredapis:
-
 .. THIS IS USED INTERNALLY IN POLICY ONLY
 .. _api-label:
 

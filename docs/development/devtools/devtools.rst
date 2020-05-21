@@ -281,3 +281,5 @@ familiar with the Policy Framework components and test any local changes.
    apex-s3p.rst
    drools-s3p.rst
    xacml-s3p.rst
+   distribution-s3p.rst
+

@@ -9,9 +9,11 @@ PDP-D Tutorials
    :maxdepth: 1
 
    runningPDPD.rst
+   runningEclipse.rst
    clsimulation.rst
    guardpdp.rst
    modAAIdata.rst
+   modTemplate.rst
    tutorial_cl.rst
    tutorial_vCPE.rst
    tutorial_vDNS.rst

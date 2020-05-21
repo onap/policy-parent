@@ -9,6 +9,9 @@ Policy Administration Point (PAP) Architecture
 .. contents::
     :depth: 3
 
+.. toctree::
+   InternalPapPdp.rst
+
 The Policy Administration Point (PAP) keeps track of PDPs, supporting the deployment of PDP groups and the deployment
 of policies across those PDP groups. Policies are created using the Policy API, but are deployed via the PAP.
 

@@ -313,7 +313,7 @@ The results are similar to those below:
 :download:`Example APEX performance metrics <json/example-apex-perf.json>`
 
 Performance Test Result Frankfurt
------------------------
+---------------------------------
 
 **Summary**
 

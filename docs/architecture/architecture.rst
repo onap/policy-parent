@@ -20,6 +20,13 @@ mapping out the components, software structure, and execution ecosystem of the f
 .. contents::
     :depth: 6
 
+.. toctree::
+   :caption: References
+   :maxdepth: 1
+
+   tosca-policy-primer
+
+
 1. Overview
 ===========
 
