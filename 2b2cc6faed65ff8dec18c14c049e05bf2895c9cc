@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23548977_33d7bb72",
+        "filename": "docs/apex/APEX-Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-21T13:25:48Z",
+      "side": 1,
+      "message": "not sure what\u0027s up with gerrit, but for some reason, it won\u0027t let me see this file to review the changes",
+      "revId": "2b2cc6faed65ff8dec18c14c049e05bf2895c9cc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f862a36_1d0d3ff1",
+        "filename": "docs/apex/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-21T13:25:48Z",
+      "side": 1,
+      "message": "\", and mariadb\" \u003d\u003e \".  Mariadb\"",
+      "range": {
+        "startLine": 516,
+        "startChar": 55,
+        "endLine": 516,
+        "endChar": 68
+      },
+      "revId": "2b2cc6faed65ff8dec18c14c049e05bf2895c9cc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12cff8cb_9a1e53de",
+        "filename": "docs/apex/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-21T13:25:48Z",
+      "side": 1,
+      "message": "a seperate",
+      "range": {
+        "startLine": 516,
+        "startChar": 88,
+        "endLine": 516,
+        "endChar": 97
+      },
+      "revId": "2b2cc6faed65ff8dec18c14c049e05bf2895c9cc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b4ff06_f182f1f8",
+        "filename": "docs/apex/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-21T13:25:48Z",
+      "side": 1,
+      "message": "startups",
+      "range": {
+        "startLine": 516,
+        "startChar": 170,
+        "endLine": 516,
+        "endChar": 178
+      },
+      "revId": "2b2cc6faed65ff8dec18c14c049e05bf2895c9cc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75884245_63defae4",
+        "filename": "docs/apex/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-21T13:25:48Z",
+      "side": 1,
+      "message": "needs several",
+      "range": {
+        "startLine": 516,
+        "startChar": 116,
+        "endLine": 516,
+        "endChar": 125
+      },
+      "revId": "2b2cc6faed65ff8dec18c14c049e05bf2895c9cc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd707452_b41f9e38",
+        "filename": "docs/apex/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-21T13:25:48Z",
+      "side": 1,
+      "message": "show that",
+      "range": {
+        "startLine": 645,
+        "startChar": 92,
+        "endLine": 645,
+        "endChar": 97
+      },
+      "revId": "2b2cc6faed65ff8dec18c14c049e05bf2895c9cc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c054d00_ccf1f0e9",
+        "filename": "docs/apex/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-21T13:25:48Z",
+      "side": 1,
+      "message": "to send",
+      "range": {
+        "startLine": 645,
+        "startChar": 20,
+        "endLine": 645,
+        "endChar": 25
+      },
+      "revId": "2b2cc6faed65ff8dec18c14c049e05bf2895c9cc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
