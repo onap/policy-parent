@@ -11,6 +11,11 @@
 Policy Framework Architecture
 #############################
 
+.. toctree::
+   :maxdepth: 1
+
+   tosca-policy-primer
+
 Abstract
 
 This document describes the ONAP Policy Framework. It lays out the architecture of the framework and shows the APIs

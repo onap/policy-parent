@@ -4,6 +4,13 @@
 Policy Examples
 ***************
 
+.. toctree::
+   :maxdepth: 1
+
+   APEX-MyFirstPolicyExample.rst
+   APEX-PCVS-Example.rst
+   APEX-DecisionMakerExample.rst
+
 .. contents::
     :depth: 3
 
