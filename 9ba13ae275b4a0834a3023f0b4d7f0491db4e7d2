@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35d3e72b_8577b68a",
+        "filename": "docs/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-05-22T12:47:00Z",
+      "side": 1,
+      "message": "\"needs\" \"several\"",
+      "range": {
+        "startLine": 516,
+        "startChar": 114,
+        "endLine": 516,
+        "endChar": 127
+      },
+      "revId": "9ba13ae275b4a0834a3023f0b4d7f0491db4e7d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
