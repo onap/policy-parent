@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be129416_9a79ed68",
+        "filename": "docs/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-25T07:25:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b31de314_2e22625b",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 86
+      },
+      "revId": "9ba13ae275b4a0834a3023f0b4d7f0491db4e7d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65a61994_5187df7a",
         "filename": "docs/gui/Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "9ba13ae275b4a0834a3023f0b4d7f0491db4e7d2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "557e81b4_fae90701",
+        "filename": "docs/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-25T07:25:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65a61994_5187df7a",
+      "range": {
+        "startLine": 34,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "9ba13ae275b4a0834a3023f0b4d7f0491db4e7d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "16823d2d_eea298d7",
+        "filename": "docs/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-25T07:25:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "963b14ed_3da8968c",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 58
+      },
+      "revId": "9ba13ae275b4a0834a3023f0b4d7f0491db4e7d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35d3e72b_8577b68a",
         "filename": "docs/gui/Monitoring-GUI-Demo-Guide.rst",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "9ba13ae275b4a0834a3023f0b4d7f0491db4e7d2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d8d46c3_7ffc8456",
+        "filename": "docs/gui/Monitoring-GUI-Demo-Guide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 5307
+      },
+      "writtenOn": "2020-05-25T07:25:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35d3e72b_8577b68a",
+      "range": {
+        "startLine": 516,
+        "startChar": 114,
+        "endLine": 516,
+        "endChar": 127
+      },
+      "revId": "9ba13ae275b4a0834a3023f0b4d7f0491db4e7d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
