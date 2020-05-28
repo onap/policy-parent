@@ -151,15 +151,23 @@ The jmx file is present in the policy/pap git repository.
 Install simulators in VM1
 -------------------------
 
-For installing simulator, there is a script placed at `install simulator script <https://gerrit.onap.org/r/gitweb?p=policy/pap.git;a=blob;f=testsuites/stability/src/main/resources/simulatorsetup/setup_components.sh;h=86de3c1efcb468431a2395eef610db209a613fc3;hb=refs/heads/master>`_
+Clone PAP to VM1 using the following command :
 
-Copy the script & all related files in virtual machine and run it.
+.. code-block:: bash
+
+    root@policytest-policytest-3-p5djn6as2477:~$ git clone http://gerrit.onap.org/r/policy/pap
+
+For installing simulator, execute the script `setup_components.sh` as shown below:
+
+.. code-block:: bash
+
+    root@policytest-policytest-3-p5djn6as2477:~$ ./pap/testsuites/stability/src/main/resources/simulatorsetup/setup_components.sh
 
 After installation make sure that following 4 docker containers are up and running.
 
 .. code-block:: bash
 
-    root@policytest-policytest-3-p5djn6as2477:/home/ubuntu/simulator# docker ps
+    root@policytest-policytest-3-p5djn6as2477:~$ docker ps
     CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS                    NAMES
     887efa8dac12        nexus3.onap.org:10001/onap/policy-api   "bash ./policy-api.sh"   6 days ago          Up 6 days           0.0.0.0:6969->6969/tcp   policy-api
     0a931c0a63ac        pdp/simulator:latest                    "bash pdp-sim.sh"        6 days ago          Up 6 days                                    pdp-simulator
@@ -169,15 +177,24 @@ After installation make sure that following 4 docker containers are up and runni
 Install PAP in VM2
 ------------------
 
-For installing PAP, there is a script placed at `install pap script <https://gerrit.onap.org/r/gitweb?p=policy/pap.git;a=blob;f=testsuites/stability/src/main/resources/papsetup/setup_pap.sh;h=dc5e69e76da9f48f6b23cc012e14148f1373d1e1;hb=refs/heads/master>`_
+Clone PAP to VM1 using the following command :
 
-Copy the script & all related files in virtual machine and run it.
+.. code-block:: bash
+
+    root@policytest-policytest-3-p5djn6as2477:~$ git clone http://gerrit.onap.org/r/policy/pap
+
+For installing simulator, execute the script `setup_pap.sh` as shown below:
+
+.. code-block:: bash
+
+    root@policytest-policytest-3-p5djn6as2477:~$ cd pap/testsuites/stability/src/main/resources/papsetup/
+    root@policytest-policytest-3-p5djn6as2477:~$ ./setup_pap.sh <VM2_IP> <VM1_IP>
 
 After installation make sure that following docker container is up and running.
 
 .. code-block:: bash
 
-    root@policytest-policytest-0-uc3y2h5x6p4j:/home/ubuntu/pap# docker ps
+    root@policytest-policytest-0-uc3y2h5x6p4j:~$ docker ps
     CONTAINER ID        IMAGE                                                         COMMAND                  CREATED             STATUS              PORTS                                            NAMES
     42ac0ed4b713        nexus3.onap.org:10001/onap/policy-pap:2.2.3-SNAPSHOT          "bash ./policy-pap.sh"   3 days ago          Up 3 days           0.0.0.0:6969->6969/tcp, 0.0.0.0:9090->9090/tcp   policy-pap
 
