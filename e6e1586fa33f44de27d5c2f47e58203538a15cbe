@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae6b8f4d_f63ed7f8",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2020-05-28T17:27:32Z",
+      "side": 1,
+      "message": "\"VM1\" -\u003e \"VM2\"",
+      "range": {
+        "startLine": 180,
+        "startChar": 13,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "e6e1586fa33f44de27d5c2f47e58203538a15cbe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d5825fe_1832964a",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2020-05-28T17:27:32Z",
+      "side": 1,
+      "message": "\"Simulator\" -\u003e \"PAP\"",
+      "range": {
+        "startLine": 186,
+        "startChar": 15,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "e6e1586fa33f44de27d5c2f47e58203538a15cbe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
