@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "635eb625_9aba0df8",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "\"the rest\"",
+      "range": {
+        "startLine": 276,
+        "startChar": 42,
+        "endLine": 276,
+        "endChar": 46
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e0be17_2d78a450",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "\"in a\"",
+      "range": {
+        "startLine": 283,
+        "startChar": 57,
+        "endLine": 283,
+        "endChar": 60
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e21858_a4db5bc9",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "\"using the\"",
+      "range": {
+        "startLine": 291,
+        "startChar": 41,
+        "endLine": 291,
+        "endChar": 46
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0bfe843_5b28bda5",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "\"the test\"",
+      "range": {
+        "startLine": 293,
+        "startChar": 63,
+        "endLine": 293,
+        "endChar": 68
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a075cd_88629c71",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "\"store the\"",
+      "range": {
+        "startLine": 297,
+        "startChar": 40,
+        "endLine": 297,
+        "endChar": 45
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4953b50f_ff425034",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "change trailing \".\" to \":\"",
+      "range": {
+        "startLine": 297,
+        "startChar": 79,
+        "endLine": 297,
+        "endChar": 80
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65301f37_b7a759be",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "\"the VM in\"",
+      "range": {
+        "startLine": 310,
+        "startChar": 41,
+        "endLine": 310,
+        "endChar": 44
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0b4c67_936577dd",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "add \",\" after \"hours\"",
+      "range": {
+        "startLine": 324,
+        "startChar": 41,
+        "endLine": 324,
+        "endChar": 46
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c94875a_40ebe453",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "\"The stability\"",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 10
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aebfeb2_44294990",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "\"via the\"",
+      "range": {
+        "startLine": 326,
+        "startChar": 56,
+        "endLine": 326,
+        "endChar": 60
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3290a24e_6acfd9e5",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "\"stops\"",
+      "range": {
+        "startLine": 326,
+        "startChar": 15,
+        "endLine": 326,
+        "endChar": 19
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c0f923_665fe5a4",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-02T16:37:43Z",
+      "side": 1,
+      "message": "\"an HTML\"",
+      "range": {
+        "startLine": 326,
+        "startChar": 37,
+        "endLine": 326,
+        "endChar": 43
+      },
+      "revId": "7d508410a4db6eae6941051bbd82efe513a6146c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
