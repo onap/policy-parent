@@ -267,6 +267,86 @@ After the test stop, we can generate a HTML test report via command
 
 :download:`result.zip <zip/result.tar>`
 
+
+Frankfurt release
+^^^^^^^^^^^^^^^^^^
+
+The 72 hour Stability Test for apex-pdp has the goal of introducing a steady flow of transactions using jMeter.
+
+The input event will be submitted through rest interface of DMaaP , which then triggers a grpc request to CDS. Based on the response, another DMaaP event is triggered.
+
+This test will be performed in an OOM deployment setup. The test will be performed in a multi-threaded environment where 5 threads running in JMeter will keep sending events for the duration of 72 hours.
+
+Test Plan Frankfurt release
+---------------------------
+
+The 72 hours stability test will run the following steps in 5 threaded loop.
+
+- **Create Policy** - creates a policy using the policy/api component
+- **Deploy Policy** - deploys the policy in the existing PdpGroup
+- **Check Health** - checks the health status of apex
+- **Send Input Event** - trigger 'unauthenticated.DCAE_CL_OUTPUT' event of DMaaP.
+- **Get Output Event Response** - check for the triggered output event.
+- **Undeploy Policy** - undeploys the policy from PdpGroup
+- **Delete Policy** - deletes the policy using policy/api component
+
+The following steps can be used to configure the parameters of test plan.
+
+- **HTTP Header Manager** - used to store headers which will be used for making HTTP requests.
+- **HTTP Request Defaults** -  used to store HTTP request details like Server Name or IP, Port, Protocol etc.
+- **User Defined Variables** -  used to store following user defined parameters.
+
+==================  ============================================================================  ============================
+**Name**            **Description**                                                               **Default Value**
+==================  ============================================================================  ============================
+wait                Wait time after each request (in milliseconds)                                120000
+threads             Number of threads to run test cases in parallel.                              5
+threadsTimeOutInMs  Synchronization timer for threads running in parallel (in milliseconds).      150000
+==================  ============================================================================  ============================
+
+
+Download and update the jmx file presented in the apex-pdp git repository - `jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/apex-pdp-stability/src/main/resources;h=99d373033a190a690d4e05012bc3a656cae7bc3f;hb=refs/heads/master>`_.
+
+- HTTPSampler.domain - The ip address of VM which the apex container is running
+- HTTPSampler.port - The  listening port, here is 23324
+- ThreadGroup.druation - Set the duration to 72 hours (in seconds)
+
+Use the CLI mode to start the test
+
+.. code-block:: bash
+
+    ./jmeter.sh -n -t ~/apexPdpStabilityTestPlan.jmx -Jusers=1 -l ~/stability.log
+
+
+Stability Test Results Frankfurt release
+-----------------------------------------
+
+Stability test plan was triggered for 72 hours injecting input events to apex-pdp from 5 client threads running in JMeter.
+
+After the test stop, we can generate a HTML test report via command
+
+.. code-block:: bash
+
+    ~/jMeter/apache-jmeter-5.2.1/bin/jmeter -g stability.log -o ./result/
+
+==============================================  ===================================================  ================================  =============  ============
+**Number of Client Threads running in JMeter**  **Number of Server Threads running in Apex engine**  **Total number of input events**  **Success %**  **Error %**
+==============================================  ===================================================  ================================  =============  ============
+5                                                4                                                    26766                             100%           0%
+==============================================  ===================================================  ================================  =============  ============
+
+**VisualVM Screenshot**
+
+.. image:: images/frankfurt/apex_s3p_vm-1.png
+.. image:: images/frankfurt/apex_s3p_vm-2.png
+
+**JMeter Screenshot**
+
+.. image:: images/frankfurt/apex_s3p_jm-1.png
+.. image:: images/frankfurt/apex_s3p_jm-2.png
+
+:download:`result.zip <zip/frankfurt/apex_s3p_result.tar>`
+
 Setting up Performance Tests in APEX
 ++++++++++++++++++++++++++++++++++++
 
