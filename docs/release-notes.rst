@@ -258,7 +258,7 @@ Known Vulnerabilities
 
 Workarounds
 -----------
-
+* `POLICY-2463 <https://jira.onap.org/browse/POLICY-2463>`_ - Parse incoming object using JSON.Parse() or cast the object to a String
 
 Security Notes
 --------------
