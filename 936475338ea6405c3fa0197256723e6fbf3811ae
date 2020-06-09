@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34ba3d86_ba694537",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-06-09T21:05:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ee67030_411e9211",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "936475338ea6405c3fa0197256723e6fbf3811ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0def6e3b_97e983cc",
         "filename": "docs/installation/oom.rst",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "936475338ea6405c3fa0197256723e6fbf3811ae",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d31cd530_5a307895",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-06-09T21:05:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0def6e3b_97e983cc",
+      "range": {
+        "startLine": 95,
+        "startChar": 21,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "936475338ea6405c3fa0197256723e6fbf3811ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -115,6 +163,30 @@
       "revId": "936475338ea6405c3fa0197256723e6fbf3811ae",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75174440_f5741eb3",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-06-09T21:05:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b64b6348_f549de99",
+      "range": {
+        "startLine": 232,
+        "startChar": 19,
+        "endLine": 232,
+        "endChar": 28
+      },
+      "revId": "936475338ea6405c3fa0197256723e6fbf3811ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
