@@ -85,13 +85,29 @@ After undeploying policy, loop on monitoring the policy pods until they go away.
   kubectl get pods -n onap
 
 **Step 4** Delete NFS persisted data for Policy
-Sudo to root if you logged in using another account such as ubuntu.
 
 .. code-block:: bash
 
   rm -fr /dockerdata-nfs/dev-policy
 
-**Step 5** Re-Deploy Policy pods
+**Step 5** Make sure there is no orphan policy database persistent volumes or claims.
+
+First, find if there is any orphan PVs or PVCs with the following commands:
+
+.. code-block:: bash
+
+  kubectl get pvc -n onap | grep policy
+  kubectl get pv -n onap | grep policy
+
+If there are any orphan resources, delete them with
+
+.. code-block:: bash
+
+    kubectl delete pvc <orphan-policy-mariadb-resource>
+    kubectl delete pv <orphan-policy-mariadb-resource>
+
+**Step 6** Re-Deploy Policy pods
+
 After deploying policy, loop on monitoring the policy pods until they come up.
 
 .. code-block:: bash
@@ -103,7 +119,9 @@ Restarting a faulty component
 *****************************
 Each policy component can be restarted independently by issuing the following command:
 
-kubectl delete pod <policy-pod> -n onap
+.. code-block:: bash
+
+    kubectl delete pod <policy-pod> -n onap
 
 Exposing ports
 **************

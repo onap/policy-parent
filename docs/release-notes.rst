@@ -206,42 +206,21 @@ POLICY-XACML
 POLICY-DROOLS-PDP
 ~~~~~~~~~~~~~~~~~
 
-* Support for offline mode.
-  - The OOM deployment now supports offline mode for PDP-D by default.
-
-* Parameterize mvn repo urls and proxy settings
-  - This allows the users to build the docker images for drools-pdp and drools-application using their own CI pipelines if needed.
-
-* TOSCA Policy Type design for operational policy supported by Drools so that policy is compliant with TOSCA policies
-* pip updated to pip3 in docker.
-* Extend PDP-D capabilities so that it can instantiate new drools controller instances for executing native Drools policies deployed from PAP.
-* Updated drools to use the redesigned Actors in policy/models.
-* Server Pool feature for supporting multiple active Drools PDP hosts.
-* server-pool is a resilient implementation that supports redundancy within and across data centers involving multiple PDP-Drools. Implementation involves hashing of which PDP-Drools owns which transaction and routing transactions to the appropriate PDP-Drools. By implementing as a feature, any deployment can choose to use or not use server-pool for its redundancy needs.
+* Support for PDP-D in offline mode to support locked deployments.   This is the default ONAP installation.
+* Parameterize maven repository URLs for easier CI/CD integration.
+* Support for Tosca Compliant Operational Policies.
+* Support for TOSCA Compliant Native Policies that allows creation and deployment of new drools-applications.
+* Validation of Operational and Native Policies against their policy type.
+* Support for a generic Drools-PDP docker image to host any type of application.
+* Experimental Server Pool feature that supports multiple active Drools PDP hosts.
 
 POLICY-DROOLS-APPLICATIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Support for offline mode.
-* Rate limiting DCAE flooding of ONSETs
-  - Policy will get flooded with potentially hundreds of ONSETs at once being picked up from DMaaP. Processing of multiple ONSETs (potentially hundreds in a batch read) of the same underlying unique network alarm severely impacts performance.
-
-* Design Operational Policy Type for Drools
-  - Design and preload the drools operational policy type.
-  - Backwards compatible support for tosca operational policies in usecases.
-  - Tosca compliant vCPE, vFirewall, vDNS
-
-* PDP-D support for native Drools policy execution
-  - Topics are decoupled from controllers. Native policies require topics configured at installation. Topics can also be overridden or new ones added when being placed in the mounted config directory.
-
-* Update Drools to use new actors.
-  - Add frankfurt rules for Actor redesign
-  - Usecases controller disabled (to be removed shortly after Frankfurt release) and the Frankfurt controller will be used.
-
-* Delete template.demo sub-module and amsterdam controllers
-* Removed vLB from drools-apps.
-* Replace URL with host/port/contextURI in the controlloop properties.
-  - Corresponding changes in base.conf file in OOM which is mounted.
+* Removal of DCAE ONSET alarm duplicates (with different request IDs).
+* Support of a new controller (frankfurt) that supports the ONAP use cases under the new actor architecture.
+* Deprecated the "usecases" controller supporting the use cases under the legacy actor architecture.
+* Deleted the unsupported "amsterdam" controller related projects.
 
 Known Limitations, Issues and Workarounds
 =========================================
@@ -249,6 +228,10 @@ Known Limitations, Issues and Workarounds
 System Limitations
 ------------------
 
+The policy API component requires a fresh new database when migrating to the frankfurt release.
+Therefore upgrades requires a fresh new database installation.
+Please see the
+`Installing or Upgrading Policy <https://onap.readthedocs.io/en/frankfurt/submodules/policy/parent.git/docs/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
 
 Known Vulnerabilities
 ---------------------
