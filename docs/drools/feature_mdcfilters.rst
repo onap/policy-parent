@@ -9,12 +9,7 @@ Feature: MDC Filters
 .. contents::
     :depth: 3
 
-Summary
-^^^^^^^
 The MDC Filter Feature provides configurable properties for network topics to extract fields from JSON strings and place them in a mapped diagnostic context (MDC).
-
-Network Log Structure Before Feature Enabled
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before enabling the feature, the network log contains the entire content of each message received on a topic. Below is a sample message from the network log. Note that the topic used for this tutorial is DCAE-CL.
 
@@ -26,7 +21,7 @@ Before enabling the feature, the network log contains the entire content of each
 The network log can become voluminous if messages received from various topics carry large messages for various controllers. With the MDC Filter Feature, users can define keywords in JSON messages to extract and structure according to a desired format. This is done through configuring the feature's properties.
 
 Configuring the MDC Filter Feature
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==================================
 
 To configure the feature, the feature must be enabled using the following command:
 
@@ -63,7 +58,7 @@ This filter is specifying that the dmaap source topic *DCAE-CL* will search each
 
 
 Configuring Multiple Filters and Paths
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+======================================
 
 Multiple fields can be found for a given JSON document by a comma separated list of <mdcKey,jsonPath> pairs. For the previous example, another filter is added by adding a comma and specifying the filter as follows:
 
@@ -81,7 +76,7 @@ Now when the filter is searching for closedLoopControlName it will check the fir
 
 
 Accessing the MDC Values in logback.xml
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=======================================
 
 Once the feature properties have been defined, logback.xml contains a "abstractNetworkPattern" property that will hold the desired message structure defined by the user. The user has the flexibility to define the message structure however they choose but for this tutorial the following pattern is used:
 
@@ -105,7 +100,7 @@ The "value" portion consists of two headers in bracket notation, the first heade
 To reference the keys from the feature properties the syntax "%X{KEY_DEFINED_IN_PROPERTIES}" provides access to the value. An optional addition is to append ":-", which specifies a default value to display in the log if the field was not found in the message received. For this tutorial, a default of "NULL" is displayed for any of the fields that were not found while filtering. The "|" has no special meaning and is just used as a field separator for readability; the user can decorate the log format to their desired visual appeal.
 
 Network Log Structure After Feature Enabled
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===========================================
 
 Once the feature and logback.xml is configured to the user's desired settings, start the PDP-D by running "policy start". Based on the configurations from the previous sections of this tutorial, the following log message is written to network log when a message is received on the DCAE-CL topic:
 

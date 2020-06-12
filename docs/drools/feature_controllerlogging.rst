@@ -9,12 +9,7 @@ Feature: Controller Logging
 .. contents::
     :depth: 3
 
-Summary
-^^^^^^^
 The controller logging feature provides a way to log network topic messages to a separate controller log file for each controller. This allows a clear separation of network traffic between all of the controllers.
-
-Enabling Controller Logging
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Type "features enable controller-logging". The feature will now display as "enabled".
 

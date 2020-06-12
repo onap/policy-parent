@@ -2,15 +2,14 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
+.. _feature-tt-label:
+
 *************************
 Feature: Test Transaction
 *************************
 
 .. contents::
     :depth: 3
-
-Summary
-^^^^^^^
 
 The Test Transaction feature provides a mechanism by which the health of drools policy controllers can be tested.
 
@@ -20,16 +19,13 @@ The injection of the event triggers the "TT" rule (see *TestTransactionTemplate.
 
 If it is ever the case that a drools controller does not have the "TT" rule present in its *.drl*, or that the forward progress counter is not incremented, the Test Transaction thread for that particular drools session (i.e. controller) is terminated and a message is logged to *error.log*.
 
-Usage
-^^^^^
-
 Prior to being enabled, the following drools rules need to be appended to the rules templates of any use-case that is to be monitored by the feature.
 
     .. code-block:: java
        :caption: TestTransactionTemplate.drl
        :linenos:
 
-        /* 
+        /*
          * ============LICENSE_START=======================================================
          * feature-test-transaction
          * ================================================================================
@@ -38,9 +34,9 @@ Prior to being enabled, the following drools rules need to be appended to the ru
          * Licensed under the Apache License, Version 2.0 (the "License");
          * you may not use this file except in compliance with the License.
          * You may obtain a copy of the License at
-         * 
+         *
          *      http://www.apache.org/licenses/LICENSE-2.0
-         * 
+         *
          * Unless required by applicable law or agreed to in writing, software
          * distributed under the License is distributed on an "AS IS" BASIS,
          * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -48,15 +44,15 @@ Prior to being enabled, the following drools rules need to be appended to the ru
          * limitations under the License.
          * ============LICENSE_END=========================================================
          */
-        
+
         package org.onap.policy.drools.rules;
-        
+
         import java.util.EventObject;
-        
+
         declare ForwardProgress
             counter : Long
         end
-        
+
         rule "TT.SETUP"
         when
         then
@@ -64,9 +60,9 @@ Prior to being enabled, the following drools rules need to be appended to the ru
             fp.setCounter(0L);
             insert(fp);
         end
-        
+
         rule "TT"
-        when 
+        when
             $fp : ForwardProgress()
             $tt : EventObject(source == "43868e59-d1f3-43c2-bd6f-86f89a61eea5")
         then

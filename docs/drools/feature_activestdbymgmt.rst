@@ -2,25 +2,22 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
+.. _feature-asm-label:
+
 **********************************
-Feature: Active/Standby Management 
+Feature: Active/Standby Management
 **********************************
 
 .. contents::
     :depth: 3
 
-Summary
-^^^^^^^
 When the Feature Session Persistence is enabled, there can only be one active/providing service Drools PDP due to the behavior of Drools persistence. The Active/Standby Management Feature controls the selection of the Drools PDP that is providing service. It utilizes its own database and the State Management Feature database in the election algorithm.  All Drools PDP nodes periodically run the election algorithm and, since they all use the same data, all nodes come to the same conclusion with the "elected" node assuming an active/providingservice state.  Thus, the algorithm is distributed and has no single point of failure - assuming the database is configured for high availability.
 
 When the algorithm selects a Drools PDP to be active/providing service the controllers and topic endpoints are unlocked and allowed to process transactions. When a Drools PDP transitions to a hotstandby or coldstandby state, the controllers and topic endpoints are locked, preventing the Drools PDP from handling transactions.
 
 
-Usage
-^^^^^
-
 Enabling and Disabling Feature State Management
------------------------------------------------
+===============================================
 
 The Active/Standby Management Feature is enabled from the command line when logged in as policy after configuring the feature properties file (see Description Details section).  From the command line:
 
@@ -49,7 +46,7 @@ The Drools PDP must be stopped prior to enabling/disabling features and then res
 
 
 Description Details
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 Election Algorithm
 ------------------
@@ -93,12 +90,12 @@ The properties are found in the feature-active-standby-management.properties fil
         javax.persistence.jdbc.url=jdbc:mariadb://${{SQL_HOST}}:3306/activestandbymanagement
         javax.persistence.jdbc.user=${{SQL_USER}}
         javax.persistence.jdbc.password=${{SQL_PASSWORD}}
-        
+
         # Must be unique across the system
         resource.name=pdp1
         # Name of the site in which this node is hosted 
         site_name=site1
-        
+
         # Needed by DroolsPdpsElectionHandler
         pdp.checkInterval=1500 # The interval in ms between updates of the updatedDate
         pdp.updateInterval=1000 # The interval in ms between executions of the election handler
