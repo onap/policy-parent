@@ -2,12 +2,11 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
+ .. _feature-pool:
+
 ****************
 Feature: Pooling
 ****************
-
-Summary
-^^^^^^^
 
 The Pooling feature provides the ability to load-balance work across a “pool” of active-active Drools-PDP hosts.   This particular implementation uses a DMaaP topic for communication between the hosts within the pool.
 
@@ -16,7 +15,7 @@ The pool is adjusted automatically, with no manual intervention when:
     * a host goes offline, whether gracefully or due to a failure in the host or in the network
 
 Assumptions and Limitations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===========================
     * Session persistence is not required
     * Data may be lost when processing is moved from one host to another
     * The entire pool may shut down if the inter-host DMaaP topic becomes inaccessible
@@ -25,7 +24,7 @@ Assumptions and Limitations
 
 
 Key Points
-^^^^^^^^^^
+==========
     * Requests are received on a common DMaaP topic
         - DMaaP distributes the requests randomly to the hosts
         - The request topic should have at least as many partitions as there are hosts
@@ -38,7 +37,8 @@ Key Points
     * Precludes feature(s): session-persistence, active-standby, state-management
 
 Example Scenario
-^^^^^^^^^^^^^^^^
+================
+
     1. Incoming DMaaP message is received on a topic — all hosts are listening, but only one random host receives the message
     2. Decode message to determine “request ID” key (message-specific operation)
     3. Hash request ID to determine the bucket number
@@ -51,7 +51,8 @@ Example Scenario
     .. image:: poolingPdps.png
 
 Bucket Reassignment
-^^^^^^^^^^^^^^^^^^^
+===================
+
     * When a host goes up or down, buckets are rebalanced
     * Attempts to maintain an even distribution
     * Leaves buckets with their current owner, where possible
@@ -62,7 +63,7 @@ Bucket Reassignment
     .. image:: poolingBuckets.png
 
 Usage
-^^^^^
+=====
 
 For pooling to be enabled, the distributed-locking feature must be also be enabled.
 
