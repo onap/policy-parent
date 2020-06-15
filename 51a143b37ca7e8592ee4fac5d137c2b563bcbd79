@@ -1,0 +1,1024 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09c8b555_581bbd01",
+        "filename": "docs/drools/drools.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "trailing spaces\n\nsame comment below",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b6bc68_db8c8feb",
+        "filename": "docs/drools/feature_activestdbymgmt.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "trailing spaces\n\nsame comment below",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03cb00f8_858cce34",
+        "filename": "docs/drools/feature_eelf.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e8ca52e_fde1cad7",
+        "filename": "docs/drools/feature_statemgmt.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "trailing spaces\n\nsame comment below",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b40efe1_d5c57981",
+        "filename": "docs/drools/mdc_enablefeature.png",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "is it OK that this refers to controlloop-amsterdam and not frankfurt or usecases?",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1098b443_4b189aee",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "missing policy types",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29df0f6e_c0c00216",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"is\" \u003d\u003e \"are\"",
+      "range": {
+        "startLine": 101,
+        "startChar": 56,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7348eb4_967308fc",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"configuration\" \u003d\u003e \"configurations\"",
+      "range": {
+        "startLine": 126,
+        "startChar": 36,
+        "endLine": 126,
+        "endChar": 49
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb39d521_3cf9f374",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"AA\" \u003d\u003e \"AAI\" (or \"A\u0026AI\")",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b0a3733_e46a2b70",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"configuration\" \u003d\u003e \"configurations\"",
+      "range": {
+        "startLine": 338,
+        "startChar": 42,
+        "endLine": 338,
+        "endChar": 56
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1def0b35_cd403d97",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"dettach\" \u003d\u003e \"detached\"",
+      "range": {
+        "startLine": 432,
+        "startChar": 24,
+        "endLine": 432,
+        "endChar": 31
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce004206_46434100",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "is this right?",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d764386_f9dfb727",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "I didn\u0027t know that.  How does that happen?",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf533c89_a2805996",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"send\" \u003d\u003e \"send a\"",
+      "range": {
+        "startLine": 675,
+        "startChar": 75,
+        "endLine": 675,
+        "endChar": 81
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e723e3c1_f99a1cad",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"for\" \u003d\u003e \"for a\"",
+      "range": {
+        "startLine": 676,
+        "startChar": 41,
+        "endLine": 676,
+        "endChar": 45
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b42db55_8d61be9f",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"send\" \u003d\u003e \"send a\"",
+      "range": {
+        "startLine": 821,
+        "startChar": 74,
+        "endLine": 821,
+        "endChar": 80
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac41e64e_f80ab645",
+        "filename": "docs/drools/pdpdApps.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"for\" \u003d\u003e \"for a\"",
+      "range": {
+        "startLine": 822,
+        "startChar": 35,
+        "endLine": 822,
+        "endChar": 39
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d5ae1d5_0001893d",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"remote\" - delete one of them",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "466b5475_afe8d46b",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"referred\" \u003d\u003e \"referred to\"",
+      "range": {
+        "startLine": 68,
+        "startChar": 71,
+        "endLine": 68,
+        "endChar": 80
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b20d76a_b5da5330",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "maybe add \", respectively\" to the end of the sentence",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8adedaf7_571667e4",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"*Endpoints*configuration\" \u003d\u003e \"*Endpoints* configuration\"",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4251781b_17470f7a",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "delete \"lines\"?  Or change \"This\" to \"These\"?",
+      "range": {
+        "startLine": 279,
+        "startChar": 35,
+        "endLine": 279,
+        "endChar": 41
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b87815_9ffd86ea",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"means\" \u003d\u003e \"a means\"",
+      "range": {
+        "startLine": 318,
+        "startChar": 14,
+        "endLine": 318,
+        "endChar": 20
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7a5288_c7e654fb",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"Policies\" \u003d\u003e \"Policies,\"",
+      "range": {
+        "startLine": 437,
+        "startChar": 44,
+        "endLine": 437,
+        "endChar": 53
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ac4433_8fee4dcd",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"for\" \u003d\u003e \"to\"",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 4
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a691198_a30da394",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"entity. Therefore\" \u003d\u003e \"entity, thus\"",
+      "range": {
+        "startLine": 525,
+        "startChar": 89,
+        "endLine": 525,
+        "endChar": 95
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e349f689_e9eb7905",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"holds\" \u003d\u003e \"holds,\"",
+      "range": {
+        "startLine": 525,
+        "startChar": 60,
+        "endLine": 525,
+        "endChar": 66
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d34bc29_6e9e863b",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "remove the \",\"",
+      "range": {
+        "startLine": 526,
+        "startChar": 33,
+        "endLine": 526,
+        "endChar": 35
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fdfad71_77ffc3c5",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"features\" \u003d\u003e \"feature\"",
+      "range": {
+        "startLine": 628,
+        "startChar": 90,
+        "endLine": 628,
+        "endChar": 98
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25d87184_b7a75763",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"preferable\" \u003d\u003e \"preferably\"",
+      "range": {
+        "startLine": 668,
+        "startChar": 32,
+        "endLine": 668,
+        "endChar": 42
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d210ae3_1a082890",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "preferably",
+      "range": {
+        "startLine": 672,
+        "startChar": 33,
+        "endLine": 672,
+        "endChar": 44
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e5c0aa6_77f41b96",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "remove \"against\"",
+      "range": {
+        "startLine": 679,
+        "startChar": 82,
+        "endLine": 679,
+        "endChar": 89
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "265af378_1840d64f",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"Ideally\" \u003d\u003e \"In addition\"",
+      "range": {
+        "startLine": 681,
+        "startChar": 60,
+        "endLine": 681,
+        "endChar": 67
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e8d8912_31dd2151",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "remove \"scripts\"",
+      "range": {
+        "startLine": 685,
+        "startChar": 63,
+        "endLine": 685,
+        "endChar": 70
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7694dc51_1c4c636c",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"feature\" \u003d\u003e \"feature,\"",
+      "range": {
+        "startLine": 685,
+        "startChar": 51,
+        "endLine": 685,
+        "endChar": 59
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c62a9d9c_6b5a2b12",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "add \"and\" before \"downgrade\"",
+      "range": {
+        "startLine": 687,
+        "startChar": 23,
+        "endLine": 687,
+        "endChar": 33
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bca1e8e_0615186c",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "still want to refer to \"Dublin\"?  Or maybe change to something like:\n\n  to work with the architectural framework introduced with the Dublin Release\n\nsame comment below",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea4ca7a6_c24f951d",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "delete \"into\"",
+      "range": {
+        "startLine": 980,
+        "startChar": 57,
+        "endLine": 980,
+        "endChar": 62
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bf1128e_bb18f56c",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"this\" \u003d\u003e \"these\"",
+      "range": {
+        "startLine": 980,
+        "startChar": 47,
+        "endLine": 980,
+        "endChar": 52
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997bde7c_85125158",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"variables\" \u003d\u003e \"variables,\"",
+      "range": {
+        "startLine": 1036,
+        "startChar": 97,
+        "endLine": 1036,
+        "endChar": 106
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea285c46_2e066a80",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "delete \"add\"",
+      "range": {
+        "startLine": 1047,
+        "startChar": 15,
+        "endLine": 1047,
+        "endChar": 19
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bdd19e8_ce713ea9",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "delete \"similarly\"?",
+      "range": {
+        "startLine": 1048,
+        "startChar": 13,
+        "endLine": 1048,
+        "endChar": 22
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c82596e_207b3b2c",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "guards should be disabled if SQL variables are empty",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9abe4fe5_24fc1006",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"placed\" \u003d\u003e \"place\"",
+      "range": {
+        "startLine": 1138,
+        "startChar": 65,
+        "endLine": 1138,
+        "endChar": 72
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a6b2355_82dfb0d6",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"dettach\" \u003d\u003e \"detached\"",
+      "range": {
+        "startLine": 1154,
+        "startChar": 24,
+        "endLine": 1154,
+        "endChar": 32
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d303a3a0_9b0b6e04",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "\"world, mount\" \u003d\u003e \"world. Mount\"",
+      "range": {
+        "startLine": 1156,
+        "startChar": 70,
+        "endLine": 1156,
+        "endChar": 82
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061f3c96_6275e80b",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "Not exactly sure what you\u0027re trying to say.  If meaning to say mount and then source, then \"sourced\" \u003d\u003e \"source\"",
+      "range": {
+        "startLine": 1157,
+        "startChar": 16,
+        "endLine": 1157,
+        "endChar": 24
+      },
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f4d36c_04c2c7de",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T15:16:29Z",
+      "side": 1,
+      "message": "is this correct?",
+      "revId": "51a143b37ca7e8592ee4fac5d137c2b563bcbd79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
