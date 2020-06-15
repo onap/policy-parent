@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "952b66e7_115edde2",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-15T16:45:19Z",
+      "side": 1,
+      "message": "\"contain\" \u003d\u003e \"contains\"",
+      "range": {
+        "startLine": 279,
+        "startChar": 40,
+        "endLine": 279,
+        "endChar": 47
+      },
+      "revId": "5e77564f00da4ec60917581598b7a901a3b1de28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
