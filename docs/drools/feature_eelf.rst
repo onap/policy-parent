@@ -3,23 +3,18 @@
 .. http://creativecommons.org/licenses/by/4.0
 
 *************************************************
-Feature: EELF (Event and Error Logging Framework) 
+Feature: EELF (Event and Error Logging Framework)
 *************************************************
 
 .. contents::
     :depth: 3
 
-Summary
-^^^^^^^
 The EELF feature provides backwards compatibility with R0 logging functionality. It supports the use of EELF/Common Framework style logging at the same time as traditional logging.
 
 .. seealso:: Additional information for EELF logging can be found at `EELF wiki`_.
 
 .. _EELF wiki: https://github.com/att/EELF/wiki
 
-
-Usage
-^^^^^
 
 To utilize the eelf logging capabilities, first stop policy engine and then enable the feature using the "*features*" command.
 
