@@ -7,6 +7,7 @@
 
 .. THIS IS USED INTERNALLY IN POLICY ONLY
 .. _architecture-label:
+.. Test
 
 Policy Framework Architecture
 #############################
