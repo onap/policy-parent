@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f0389e63_c9d07f07",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-06-18T13:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b57b0714_90c75131",
+      "revId": "8b88531b823b491c81ad7fb7fb127f0365c1859f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f63f0427_59adf6ef",
         "filename": "integration/pom.xml",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "165f9ce9_eec6fbbc",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-06-18T13:08:25Z",
+      "side": 1,
+      "message": "Done\n\nIsn\u0027t it odd that it seemed to work even with the incorrect token.",
+      "parentUuid": "f63f0427_59adf6ef",
+      "revId": "8b88531b823b491c81ad7fb7fb127f0365c1859f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f657969_67bb3bb2",
         "filename": "integration/pom.xml",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "8b88531b823b491c81ad7fb7fb127f0365c1859f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3db6001_12eb3f97",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-06-18T13:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f657969_67bb3bb2",
+      "revId": "8b88531b823b491c81ad7fb7fb127f0365c1859f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
