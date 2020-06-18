@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b57b0714_90c75131",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-06-18T12:38:41Z",
+      "side": 1,
+      "message": "can remove if empty, or put in one tag \u003cexcludes/\u003e",
+      "revId": "8b88531b823b491c81ad7fb7fb127f0365c1859f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f63f0427_59adf6ef",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-06-18T12:38:41Z",
+      "side": 1,
+      "message": "This is \"failOnViolation\".   Check:   https://maven.apache.org/plugins/maven-checkstyle-plugin/check-mojo.html",
+      "revId": "8b88531b823b491c81ad7fb7fb127f0365c1859f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f657969_67bb3bb2",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-06-18T12:38:41Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "8b88531b823b491c81ad7fb7fb127f0365c1859f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
