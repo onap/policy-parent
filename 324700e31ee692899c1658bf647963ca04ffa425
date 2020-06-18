@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b4fac90_3f8fb4d8",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-06-18T13:25:07Z",
+      "side": 1,
+      "message": "can delete this",
+      "revId": "324700e31ee692899c1658bf647963ca04ffa425",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
