@@ -530,6 +530,13 @@
                 <artifactId>netty-handler-proxy</artifactId>
                 <version>${version.netty}</version>
             </dependency>
+
+            <!-- Commons Lang -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.10</version>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>
