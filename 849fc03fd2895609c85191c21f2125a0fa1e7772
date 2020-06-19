@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb8f12af_c80ae632",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-06-19T16:14:37Z",
+      "side": 1,
+      "message": "this needs to be removed - and a review for drools-pdp put up that either removes usage of log4j or upgrades to recommended dependency that replaces this one.",
+      "range": {
+        "startLine": 284,
+        "startChar": 12,
+        "endLine": 288,
+        "endChar": 25
+      },
+      "revId": "849fc03fd2895609c85191c21f2125a0fa1e7772",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
