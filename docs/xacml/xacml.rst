@@ -110,6 +110,11 @@ This is an example Decision API payload made to retrieve a decision for a Guard 
 .. literalinclude:: decision.guard.json
   :language: JSON
 
+The return decision simply has "permit" or "deny" in the response to tell the calling application whether they are allowed to perform the operation.
+
+.. literalinclude:: decision.guard.response.json
+  :language: JSON
+
 .. _xacml-optimization-label:
 
 Optimization Policy Types
