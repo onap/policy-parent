@@ -16,6 +16,24 @@
       "revId": "afd0c37342a4864136f5307335fcf42fd93e388b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0287d9_85f50089",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-06-24T22:44:16Z",
+      "side": 1,
+      "message": "There are some in common/policy-enpoints and drools-pdp that instantiate our jetty servers with the AAF Cadi filter from this library.   Utkarsh review covers one issue in common.\n\nUtkarsh, can you also build drools-pdp against these changes to make sure?",
+      "parentUuid": "8574c1a3_c7657be0",
+      "revId": "afd0c37342a4864136f5307335fcf42fd93e388b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
