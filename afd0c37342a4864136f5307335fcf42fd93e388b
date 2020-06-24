@@ -34,6 +34,24 @@
       "revId": "afd0c37342a4864136f5307335fcf42fd93e388b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2afbf48d_cdd8f9b7",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1725
+      },
+      "writtenOn": "2020-06-24T23:14:28Z",
+      "side": 1,
+      "message": "@Jorge: Yes the build for drools-pdp is success.",
+      "parentUuid": "da0287d9_85f50089",
+      "revId": "afd0c37342a4864136f5307335fcf42fd93e388b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
