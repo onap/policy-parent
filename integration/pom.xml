@@ -545,6 +545,13 @@
                 <artifactId>commons-io</artifactId>
                 <version>2.7</version>
             </dependency>
+
+            <!-- Slf4j -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-ext</artifactId>
+                <version>1.7.30</version>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>
