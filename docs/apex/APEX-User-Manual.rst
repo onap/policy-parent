@@ -28,11 +28,11 @@ Installation Requirements
                .. container:: ulist
 
                   -  Downloaded distribution: JAVA runtime environment
-                     (JRE, Java 8 or later, APEX is tested with the
-                     Oracle Java)
+                     (JRE, Java 11 or later, APEX is tested with the
+                     OpenJDK Java)
 
                   -  Building from source: JAVA development kit (JDK,
-                     Java 8 or later, APEX is tested with the Oracle
+                     Java 11 or later, APEX is tested with the OpenJDK
                      Java)
 
                   -  A web archive capable webserver, for instance for
@@ -64,12 +64,6 @@ Installation Requirements
 
                               -  Windows for instance
                                  `7Zip <http://www.7-zip.org/>`__
-
-                        -  RPM to install from the RPM distribution
-
-                           .. container:: ulist
-
-                              -  Install: ``sudo apt-get install rpm``
 
                         -  DPKG to install from the DEB distribution
 
@@ -171,11 +165,6 @@ Build APEX
       During the build, several (a lot) of Maven dependencies will be downloaded and stored in the configured local Maven
       repository. The first standard build (and any first specific build) requires Internet access to download those
       dependencies.
-
-   .. important::
-      Building RPM distributions
-      RPM images are only build if the ``rpm`` package is installed (Unix). To install  ``rpm`` run ``sudo apt-get install rpm``,
-      then build APEX.
 
    .. container:: paragraph
 
@@ -305,7 +294,7 @@ Install APEX
 
    .. container:: ulist
 
-      -  Unix: automatically using ``rpm`` or ``dpkg`` from ``.rpm`` or
+      -  Unix: automatically using ``dpkg`` from
          ``.deb`` archive
 
       -  Windows, Unix, Cygwin: manually from a ``.tar.gz`` archive
@@ -313,10 +302,13 @@ Install APEX
       -  Windows, Unix, Cygwin: build from source using Maven, then
          install manually
 
-Install with RPM and DPKG
-#########################
+Install with DPKG
+#################
 
       .. container:: paragraph
+
+         You can get the APEX debian package from the
+         `ONAP Nexus Repository <https://nexus.onap.org/content/groups/public/org/onap/policy/apex-pdp/packages/apex-pdp-package-full/>`__.
 
          The install distributions of APEX automatically install the
          system. The installation directory is
@@ -331,29 +323,6 @@ Install with RPM and DPKG
          directories and the log file location. The user is also used by
          the standard APEX start scripts to run APEX with this user’s
          permissions.
-
-         +-----------------------------------------------------------------------+
-         | RPM Installation                                                      |
-         +=======================================================================+
-         | .. container::                                                        |
-         |                                                                       |
-         |    .. container:: listingblock                                        |
-         |                                                                       |
-         |       .. container:: content                                          |
-         |                                                                       |
-         |          .. code::                                                    |
-         |             :number-lines:                                            |
-         |                                                                       |
-         |             # sudo rpm -i apex-pdp-package-full-2.0.0-SNAPSHOT.rpm    |
-         |             ********************preinst*******************            |
-         |             arguments 1                                               |
-         |             **********************************************            |
-         |             creating group apexuser . . .                             |
-         |             creating user apexuser . . .                              |
-         |             ********************postinst****************              |
-         |             arguments 1                                               |
-         |             ***********************************************           |
-         +-----------------------------------------------------------------------+
 
 +--------------------------------------------------------------------------------------+
 | DPKG Installation                                                                    |
@@ -393,7 +362,10 @@ Install Manually from Archive (Unix, Cygwin)
 
    .. container:: paragraph
 
-      Download a ``tar.gz`` archive. Create a directory where APEX
+      You can download a ``tar.gz`` archive from the
+      `ONAP Nexus Repository <https://nexus.onap.org/content/groups/public/org/onap/policy/apex-pdp/packages/apex-pdp-package-full/>`__.
+
+      Create a directory where APEX
       should be installed. Extract the ``tar`` archive. The following
       example shows how to install APEX in ``/opt/apex`` and create a
       link to ``/opt/apex/apex`` for the most recent installation.
@@ -417,7 +389,10 @@ Install Manually from Archive (Windows, 7Zip, GUI)
 
    .. container:: paragraph
 
-      Download a ``tar.gz`` archive and copy the file into the install
+      You can download a ``tar.gz`` archive from the
+      `ONAP Nexus Repository <https://nexus.onap.org/content/groups/public/org/onap/policy/apex-pdp/packages/apex-pdp-package-full/>`__.
+
+      Copy the ``tar.gz`` file into the install
       folder (in this example ``C:\apex``). Assuming you are using 7Zip,
       right click on the file and extract the ``tar`` archive. Note: the
       screenshots might show an older version than you have.
@@ -455,7 +430,10 @@ Install Manually from Archive (Windows, 7Zip, CMD)
 
    .. container:: paragraph
 
-      Download a ``tar.gz`` archive and copy the file into the install
+      You can download a ``tar.gz`` archive from the
+      `ONAP Nexus Repository <https://nexus.onap.org/content/groups/public/org/onap/policy/apex-pdp/packages/apex-pdp-package-full/>`__.
+
+      Copy the ``tar.gz`` file into the install
       folder (in this example ``C:\apex``). Start ``cmd``, for instance
       typing ``Windows+R`` and then ``cmd`` in the dialog. Assuming
       ``7Zip`` is installed in the standard folder, simply run the
@@ -491,11 +469,6 @@ Build and Install Manually (Unix, Windows, Cygwin)
          APEX from source can be found in *APEX HowTo: Build*). Install
          from the created artifacts (``rpm``, ``deb``, ``tar.gz``, or
          copying manually).
-
-      .. important::
-         Building RPM distributions
-         RPM images are only build if the ``rpm`` package is installed (Unix). To install ``rpm`` run
-         ``sudo apt-get install rpm``, then build APEX.
 
       .. container:: paragraph
 
@@ -1138,14 +1111,14 @@ Verify Installation - run an Example
 
    Terminate APEX by simply using ``CTRL+C`` in the console.
 
-Verify a Full Installation - REST Editor
+Verify a Full Installation - REST Client
 ########################################
 
    .. container:: paragraph
 
-      APEX has a REST application for viewing policy models. The
+      APEX has a REST application for deploying, monitoring, and viewing policy models. The
       application can also be used to create new policy models close to
-      the engine native policy language. Start the REST editor as
+      the engine native policy language. Start the REST client as
       follows.
 
    .. container:: listingblock
@@ -1155,7 +1128,7 @@ Verify a Full Installation - REST Editor
          .. code::
             :number-lines:
 
-            # $APEX_HOME/bin/apexApps.sh rest-editor
+            # $APEX_HOME/bin/apexApps.sh full-client
 
 .. container:: listingblock
 
@@ -1164,13 +1137,13 @@ Verify a Full Installation - REST Editor
       .. code::
             :number-lines:
 
-            >%APEX_HOME%\bin\apexApps.bat rest-editor
+            >%APEX_HOME%\bin\apexApps.bat full-client
 
 .. container:: paragraph
 
    The script will start a simple web server
    (`Grizzly <https://javaee.github.io/grizzly/>`__) and deploy a
-   ``war`` web archive in it. Once the editor is started, it will be
+   ``war`` web archive in it. Once the client is started, it will be
    available on ``localhost:18989``. The last few line of the messages
    should be:
 
@@ -1181,18 +1154,19 @@ Verify a Full Installation - REST Editor
       .. code::
          :number-lines:
 
-         Apex Editor REST endpoint (ApexEditorMain: Config=[ApexEditorParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=READY) starting at http://localhost:18989/apexservices/ . . .
-         Sep 05, 2018 10:35:57 PM org.glassfish.grizzly.http.server.NetworkListener start
+         Apex Editor REST endpoint (ApexServicesRestMain: Config=[ApexServicesRestParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=READY) starting at http://localhost:18989/apexservices/ . . .
+         Jul 02, 2020 2:57:39 PM org.glassfish.grizzly.http.server.NetworkListener start
          INFO: Started listener bound to [localhost:18989]
-         Sep 05, 2018 10:35:57 PM org.glassfish.grizzly.http.server.HttpServer start
+         Jul 02, 2020 2:57:39 PM org.glassfish.grizzly.http.server.HttpServer start
          INFO: [HttpServer] Started.
-         Apex Editor REST endpoint (ApexEditorMain: Config=[ApexEditorParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=RUNNING) started at http://localhost:18989/apexservices/
+         Apex Editor REST endpoint (ApexServicesRestMain: Config=[ApexServicesRestParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=RUNNING) started at http://localhost:18989/apexservices/
+
 
 .. container:: paragraph
 
    Now open a browser (Firefox, Chrome, Opera, Internet Explorer) and
    use the URL ``http://localhost:18989/``. This will connect the
-   browser to the started REST editor. The start screen should be as
+   browser to the started REST client. Click on the "Policy Editor" button and the Policy Editor start screen should be as
    follows.
 
 .. container:: imageblock
@@ -1230,20 +1204,20 @@ Verify a Full Installation - REST Editor
    terminate your browser (or the tab), and then use ``CTRL+C`` in the
    console where you started the REST editor.
 
-Installing WAR Applications
----------------------------
+Installing the WAR Application
+------------------------------
 
    .. container:: paragraph
 
-      APEX comes with a set of WAR files. These are complete
-      applications that can be installed and run in an application
-      server. All of these applications are realized as servlets. You
-      can find the WAR applications in ``$APEX_HOME/war`` (UNIX, Cygwin)
-      or ``%APEX_HOME%\war`` (Windows).
+      The three APEX clients are packaged in a WAR file. This is a complete
+      application that can be installed and run in an application
+      server. The application is realized as a servlet. You
+      can find the WAR application in the `ONAP Nexus Repository <https://nexus.onap.org/content/groups/public/org/onap/policy/apex-pdp/client/apex-client-full/>`__.
+
 
    .. container:: paragraph
 
-      Installing and using the WAR applications requires a web server
+      Installing and using the WAR application requires a web server
       that can execute ``war`` web archives. We recommend to use `Apache
       Tomcat <https://tomcat.apache.org/>`__, however other web servers
       can be used as well.
@@ -1257,7 +1231,7 @@ Installing WAR Applications
 
    .. container:: paragraph
 
-      There are multiple ways to install the APEX WAR applications:
+      There are multiple ways to install the APEX WAR application:
 
    .. container:: ulist
 
@@ -1287,23 +1261,7 @@ Installing WAR Applications
 
    .. container:: paragraph
 
-      The current APEX version provides the following WAR applications:
-
-   .. container:: ulist
-
-      -  client-deployment-2.0.0-SNAPSHOT.war - a client to deploy new
-         policy models to a running engine
-
-      -  client-editor-2.0.0-SNAPSHOT.war - the standard policy REST
-         editor GUI
-
-      -  client-monitoring-2.0.0-SNAPSHOT.war - a client for monitoring
-         a running APEX engine
-
-      -  client-full-2.0.0-SNAPSHOT.war - a full client with a
-         one-stop-access to deployment, monitoring, and REST editor
-
-      -  examples-servlet-2.0.0-SNAPSHOT.war - an example APEX servlet
+      The WAR application file has a name similar to *apex-client-full-<VERSION>.war*.
 
 Running APEX in Docker
 ----------------------
@@ -1559,7 +1517,8 @@ Engine Service Parameters
                     "id"             :  45,  (3)
                     "instanceCount"  : 4,  (4)
                     "deploymentPort" : 12345,  (5)
-                    "policyModelFileName" : "examples/models/VPN/VPNPolicyModelJava.json", (6)
+                    "policyModelFileName" : "examples/models/VPN/VPNPolicyModelJava.json", (6a)
+                    "policy_type_impl" : {...}, (6b)
                     "periodicEventPeriod": 1000, (7)
                     "engineParameters":{ (8)
                       "executorParameters":{...}, (9)
@@ -1601,8 +1560,12 @@ Engine Service Parameters
             |                                   | Websocket connection to the       |
             |                                   | engine                            |
             +-----------------------------------+-----------------------------------+
-            | **6**                             | the model file to load into the   |
+            | **6a**                            | the model file to load into the   |
             |                                   | engine on startup (optional)      |
+            +-----------------------------------+-----------------------------------+
+            | **6b**                            | the model as a JSON block to load |
+            |                                   | into the engine on startup        |
+            |                                   | (optional)                        |
             +-----------------------------------+-----------------------------------+
             | **7**                             | an optional timer for periodic    |
             |                                   | policies, in milliseconds (a      |
