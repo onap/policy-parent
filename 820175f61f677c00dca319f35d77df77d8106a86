@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c7400a3_b6b61ff2",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1564,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-07-02T16:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ced0059_2461b7bf",
+      "range": {
+        "startLine": 1564,
+        "startChar": 77,
+        "endLine": 1564,
+        "endChar": 79
+      },
+      "revId": "820175f61f677c00dca319f35d77df77d8106a86",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dde0532_ca9a2459",
         "filename": "docs/apex/APEX-User-Manual.rst",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "820175f61f677c00dca319f35d77df77d8106a86",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b040d8d0_188a89c2",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-07-02T16:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dde0532_ca9a2459",
+      "range": {
+        "startLine": 1568,
+        "startChar": 59,
+        "endLine": 1568,
+        "endChar": 63
+      },
+      "revId": "820175f61f677c00dca319f35d77df77d8106a86",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
