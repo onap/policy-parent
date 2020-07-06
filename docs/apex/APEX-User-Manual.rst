@@ -1173,11 +1173,11 @@ Verify a Full Installation - REST Client
 
    .. container:: content
 
-      |REST Editor Start Screen|
+      |Policy Editor Start Screen|
 
    .. container:: title
 
-      Figure 1. REST Editor Start Screen
+      Figure 1. Policy Editor Start Screen
 
 .. container:: paragraph
 
@@ -1192,17 +1192,17 @@ Verify a Full Installation - REST Client
 
    .. container:: content
 
-      |REST Editor with loaded SampleDomain Policy Model|
+      |Policy Editor with loaded SampleDomain Policy Model|
 
    .. container:: title
 
-      Figure 2. REST Editor with loaded SampleDomain Policy Model
+      Figure 2. Policy Editor with loaded SampleDomain Policy Model
 
 .. container:: paragraph
 
-   Now you can use the REST editor. To finish this verification, simply
+   Now you can use the Policy editor. To finish this verification, simply
    terminate your browser (or the tab), and then use ``CTRL+C`` in the
-   console where you started the REST editor.
+   console where you started the Policy editor.
 
 Installing the WAR Application
 ------------------------------
@@ -2873,7 +2873,12 @@ REST Client Input
                             "org.onap.policy.apex.plugins.event.carrier.restclient.RESTClientCarrierTechnologyParameters",
                           "parameters" : {
                             "url" : "http://example.org:8080/triggers/events", (2)
-                            "httpCodeFilter" : "[2][0-9][0-9]" (3)
+                            "httpMethod": "GET", (3)
+                            "httpCodeFilter" : "[2][0-9][0-9]", (4)
+                             "httpHeaders" : [ (5)
+                                ["Keep-Alive", "300"],
+                                ["Cache-Control", "no-cache"]
+                             ]
                           }
                         }
 
@@ -2884,7 +2889,14 @@ REST Client Input
                   +-------+--------------------------------------------------+
                   | **2** | the URL of the HTTP server for events            |
                   +-------+--------------------------------------------------+
-                  | **3** | use HTTP CODE FILTER for filtering status code   |
+                  | **3** | the HTTP method to use (GET/PUT/POST/DELETE),    |
+                  |       | optional, defaults to GET                        |
+                  +-------+--------------------------------------------------+
+                  | **4** | use HTTP CODE FILTER for filtering status code,  |
+                  |       | optional, defaults to [2][0-9][0-9]              |
+                  +-------+--------------------------------------------------+
+                  | **5** | HTTP headers to use on the REST request,         |
+                  |       | optional                                         |
                   +-------+--------------------------------------------------+
 
 REST Client Output
@@ -2920,8 +2932,11 @@ REST Client Output
                           "parameters" : {
                             "url" : "http://example.com:8888/actions/events", (2)
                             "url" : "http://example.{site}.com:8888/{trig}/events", (2')
-                            "httpMethod" : "PUT" (3)
-                          }
+                            "httpMethod" : "PUT". (3)
+                            "httpHeaders" : [ (4)
+                               ["Keep-Alive", "300"],
+                               ["Cache-Control", "no-cache"]
+                            ]                          }
                         }
 
                .. container:: colist arabic
@@ -2933,7 +2948,11 @@ REST Client Output
                   +-------+--------------------------------------------------+
                   | **2'**| the tagged URL of the HTTP server for events     |
                   +-------+--------------------------------------------------+
-                  | **3** | use HTTP PUT (remove this line to use HTTP POST) |
+                  | **3** | the HTTP method to use (GET/PUT/POST/DELETE),    |
+                  |       | optional, defaults to POST                       |
+                  +-------+--------------------------------------------------+
+                  | **4** | HTTP headers to use on the REST request,         |
+                  |       | optional                                         |
                   +-------+--------------------------------------------------+
 
 REST Server IO
@@ -3148,14 +3167,81 @@ REST Requestor IO
                APEX can act as REST requestor on the input as well as on
                the output interface. The media type is
                ``application/json``, so this plugin only works with
-               the JSON Event protocol.
+               the JSON Event protocol. This plugin allows APEX to send REST requests
+               and to receive the reply of that request without tying up APEX resources
+               while the request is being processed. The REST Requestor pairs a REST
+               requestor producer and consumer together to handle the REST request
+               and response. The REST request is created from an APEX output event
+               and the REST response is input into APEX as a new input event.
 
-REST Requestor Input
-====================
+REST Requestor Output (REST Request Producer)
+=============================================
 
                .. container:: paragraph
 
-                  APEX will connect to a given URL to request an input.
+                  APEX sends a REST request when events are output by APEX, the REST
+                  request configuration is specified on the REST Request Consumer (see
+                  below).
+
+               .. container:: listingblock
+
+                  .. container:: content
+
+                     .. code::
+
+                        "carrierTechnologyParameters": {
+                          "carrierTechnology": "RESTREQUESTOR", (1)
+                          "parameterClassName": "org.onap.policy.apex.plugins.event.carrier.restrequestor.RESTRequestorCarrierTechnologyParameters"
+                        },
+
+               .. container:: colist arabic
+
+                  +-------+------------------------------------------+
+                  | **1** | set REST requestor as carrier technology |
+                  +-------+------------------------------------------+
+
+               .. container:: paragraph
+
+                  The settings below are required on the producer to
+                  define the event that triggers the REST request and
+                  to specify the peered consumer configuration for the
+                  REST request, for example:
+
+               .. container:: listingblock
+
+                  .. container:: content
+
+                     .. code::
+
+                        "eventNameFilter": "GuardRequestEvent", (1)
+                        "requestorMode": true, (2)
+                        "requestorPeer": "GuardRequestorConsumer", (3)
+                        "requestorTimeout": 500 (4)
+
+               .. container:: colist arabic
+
+                  +-------+-------------------------------------------+
+                  | **1** | a filter on the event                     |
+                  +-------+-------------------------------------------+
+                  | **2** | requestor mode must be set to *true*      |
+                  +-------+-------------------------------------------+
+                  | **3** | the peered consumer for REST requests,    |
+                  |       | that consumer specifies the full          |
+                  |       | configuration for REST requests           |
+                  +-------+-------------------------------------------+
+                  | **4** | the request timeout in milliseconds,      |
+                  |       | overridden by timeout on consumer if that |
+                  |       | is set, optional defaults to 500          |
+                  |       | millisconds                               |
+                  +-------+-------------------------------------------+
+
+REST Requestor Input (REST Request Consumer)
+============================================
+
+               .. container:: paragraph
+
+                  APEX will connect to a given URL to issue a REST request and
+                  wait for a REST response.
                   The URL can be configured statically or tagged
                   as ``?example.{site}.org:8080/{trig}/events``,
                   all tags such as ``site`` and ``trig`` in the URL
@@ -3186,9 +3272,14 @@ REST Requestor Input
                             "url": "http://localhost:54321/some/path/to/rest/resource", (2)
                             "url": "http://localhost:54321/{site}/path/to/rest/{resValue}", (2')
                             "httpMethod": "POST", (3)
-                            "restRequestTimeout": 2000, (4)
-                            "httpCodeFilter" : "[2][0-9][0-9]" (5)
-                          }
+                            "requestorMode": true, (4)
+                            "requestorPeer": "GuardRequestorProducer", (5)
+                            "restRequestTimeout": 2000, (6)
+                            "httpCodeFilter" : "[2][0-9][0-9]" (7)
+                            "httpHeaders" : [ (8)
+                               ["Keep-Alive", "300"],
+                               ["Cache-Control", "no-cache"]
+                            ]                          }
                         },
 
                .. container:: colist arabic
@@ -3200,17 +3291,31 @@ REST Requestor Input
                   +-------+--------------------------------------------------+
                   | **2'**| the tagged URL of the HTTP server for events     |
                   +-------+--------------------------------------------------+
-                  | **3** | use HTTP PUT (remove this line to use HTTP POST) |
+                  | **3** | the HTTP method to use (GET/PUT/POST/DELETE),    |
+                  |       | optional, defaults to GET                        |
                   +-------+--------------------------------------------------+
-                  | **4** | request timeout in milliseconds                  |
+                  | **4** | requestor mode must be set to *true*             |
                   +-------+--------------------------------------------------+
-                  | **5** | use HTTP CODE FILTER for filtering status code   |
+                  | **5** | the peered producer for REST requests, that      |
+                  |       | producer specifies the APEX output event that    |
+                  |       | triggers the REST request                        |
+                  +-------+--------------------------------------------------+
+                  | **6** | request timeout in milliseconds, overrides any   |
+                  |       | value set in the REST Requestor Producer,        |
+                  |       | optional, defaults to 500 millisconds            |
+                  +-------+--------------------------------------------------+
+                  | **7** | use HTTP CODE FILTER for filtering status code   |
+                  |       | optional, defaults to [2][0-9][0-9]              |
+                  +-------+--------------------------------------------------+
+                  | **8** | HTTP headers to use on the REST request,         |
+                  |       | optional                                         |
                   +-------+--------------------------------------------------+
 
                .. container:: paragraph
 
-                  Further settings are required on the consumer to
-                  define the event that is requested, for example:
+                  Further settings may be required on the consumer to
+                  define the input event that is produced and forwarded into
+                  APEX, for example:
 
                .. container:: listingblock
 
@@ -3219,10 +3324,7 @@ REST Requestor Input
                      .. code::
 
                         "eventName": "GuardResponseEvent", (1)
-                        "eventNameFilter": "GuardResponseEvent", (2)
-                        "requestorMode": true, (3)
-                        "requestorPeer": "GuardRequestorProducer", (4)
-                        "requestorTimeout": 500 (5)
+                        "eventNameFilter": "GuardResponseEvent" (2)
 
                .. container:: colist arabic
 
@@ -3230,65 +3332,6 @@ REST Requestor Input
                   | **1** | the event name            |
                   +-------+---------------------------+
                   | **2** | a filter on the event     |
-                  +-------+---------------------------+
-                  | **3** | the mode of the requestor |
-                  +-------+---------------------------+
-                  | **4** | a peer for the requestor  |
-                  +-------+---------------------------+
-                  | **5** | a general request timeout |
-                  +-------+---------------------------+
-
-REST Requestor Output
-=====================
-
-               .. container:: paragraph
-
-                  APEX will connect to a given URL to send events, but
-                  not receive any events.
-
-               .. container:: listingblock
-
-                  .. container:: content
-
-                     .. code::
-
-                        "carrierTechnologyParameters": {
-                          "carrierTechnology": "RESTREQUESTOR", (1)
-                          "parameterClassName": "org.onap.policy.apex.plugins.event.carrier.restrequestor.RESTRequestorCarrierTechnologyParameters"
-                        },
-
-               .. container:: colist arabic
-
-                  +-------+------------------------------------------+
-                  | **1** | set REST requestor as carrier technology |
-                  +-------+------------------------------------------+
-
-               .. container:: paragraph
-
-                  Further settings are required on the consumer to
-                  define the event that is requested, for example:
-
-               .. container:: listingblock
-
-                  .. container:: content
-
-                     .. code::
-
-                        "eventNameFilter": "GuardRequestEvent", (1)
-                        "requestorMode": true, (2)
-                        "requestorPeer": "GuardRequestorConsumer", (3)
-                        "requestorTimeout": 500 (4)
-
-               .. container:: colist arabic
-
-                  +-------+---------------------------+
-                  | **1** | a filter on the event     |
-                  +-------+---------------------------+
-                  | **2** | the mode of the requestor |
-                  +-------+---------------------------+
-                  | **3** | a peer for the requestor  |
-                  +-------+---------------------------+
-                  | **4** | a general request timeout |
                   +-------+---------------------------+
 
 gRPC IO
@@ -4194,250 +4237,13 @@ The APEX CLI Tosca Editor
 
                   %APEX_HOME%/\bin/\apexCLIToscaEditor.bat -c %APEX_HOME%\examples\PolicyModel.apex -ot %APEX_HOME%\examples\test.json  -l %APEX_HOME%\examples\test.log -ac %APEX_HOME%\examples\RESTServerStandaloneJsonEvent.json -t %APEX_HOME%\examples\ToscaTemplate.json
 
-The APEX REST Editor
+
+The APEX Client
 --------------------
 
          .. container:: paragraph
 
-            The standard way to use the APEX REST Editor is via an
-            installation of the *war* file on a webserver. However, the
-            REST editor can also be started via command line. This will
-            start a Grizzly webserver with the *war* deployed. Access to
-            the REST Editor is then via the provided URL
-
-         .. container:: paragraph
-
-            On UNIX and Cygwin systems use:
-
-         .. container:: ulist
-
-            -  ``apexRESTEditor.sh`` - simply starts the webserver with
-               the REST editor
-
-            -  ``apexApps.sh rest-editor`` - simply starts the webserver
-               with the REST editor
-
-         .. container:: paragraph
-
-            On Windows systems use:
-
-         .. container:: ulist
-
-            -  ``apexRESTEditor.bat`` - simply starts the webserver with
-               the REST editor
-
-            -  ``apexApps.bat rest-editor`` - simply starts the
-               webserver with the REST editor
-
-         .. container:: paragraph
-
-            Summary of alternatives to start the APEX REST Editor:
-
-         +-------------------------------------------------------------+---------------------------------------------------------------+
-         | Unix, Cygwin                                                | Windows                                                       |
-         +=============================================================+===============================================================+
-         | .. container::                                              | .. container::                                                |
-         |                                                             |                                                               |
-         |    .. container:: listingblock                              |    .. container:: listingblock                                |
-         |                                                             |                                                               |
-         |       .. container:: content                                |       .. container:: content                                  |
-         |                                                             |                                                               |
-         |          .. code::                                          |          .. code::                                            |
-         |                                                             |                                                               |
-         |             # $APEX_HOME/bin/apexRESTEditor.sh.sh [args]    |             > %APEX_HOME%\bin\apexRESTEditor.bat [args]       |
-         |             # $APEX_HOME/bin/apexApps.sh rest-editor [args] |             > %APEX_HOME%\bin\apexApps.bat rest-editor [args] |
-         +-------------------------------------------------------------+---------------------------------------------------------------+
-
-         .. container:: paragraph
-
-            The option ``-h`` provides a help screen with all command
-            line arguments.
-
-         .. container:: listingblock
-
-            .. container:: content
-
-               .. code::
-
-                  usage: org.onap.policy.apex.client.editor.rest.ApexEditorMain [options...]
-                  -h,--help                        outputs the usage of this command
-                  -l,--listen <ADDRESS>            the IP address to listen on.  Default value is localhost to restrict access to the
-                                                   local machine only.
-                  -p,--port <PORT>                 port to use for the Apex RESTful editor REST calls.
-                  -t,--time-to-live <TIME_TO_LIVE> the amount of time in seconds that the server will run for before terminating. Default
-                                                   value is -1 to run indefinitely.
-
-         .. container:: paragraph
-
-            If the REST Editor is started without any arguments the
-            final messages will look similar to this:
-
-         .. container:: listingblock
-
-            .. container:: content
-
-               .. code::
-
-                  Apex Editor REST endpoint (ApexEditorMain: Config=[ApexEditorParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=READY) starting at http://localhost:18989/apexservices/ . . .
-                  Sep 05, 2018 11:24:30 PM org.glassfish.grizzly.http.server.NetworkListener start
-                  INFO: Started listener bound to [localhost:18989]
-                  Sep 05, 2018 11:24:30 PM org.glassfish.grizzly.http.server.HttpServer start
-                  INFO: [HttpServer] Started.
-                  Apex Editor REST endpoint (ApexEditorMain: Config=[ApexEditorParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=RUNNING) started at http://localhost:18989/apexservices/
-
-         .. container:: paragraph
-
-            The last line states the URL on which the REST Editor can be
-            accessed. The example above stated
-            ``http://0.0.0.0:18989/apex/``. In a web browser use the URL
-            ``http://localhost:18989`` and the REST Editor will start.
-
-The APEX Monitoring Client
---------------------------
-
-         .. container:: paragraph
-
-            The standard way to use the APEX Monitoring Client is via an
-            installation of the *war* file on a webserver. However, the
-            Monitoring Client can also be started via command line. This
-            will start a Grizzly webserver with the *war* deployed.
-            Access to the Monitoring Client is then via the provided URL
-
-         .. container:: paragraph
-
-            On UNIX and Cygwin systems use:
-
-         .. container:: ulist
-
-            -  ``apexApps.sh eng-monitoring`` - simply starts the
-               webserver with the Monitoring Client
-
-         .. container:: paragraph
-
-            On Windows systems use:
-
-         .. container:: ulist
-
-            -  ``apexApps.bat eng-monitoring`` - simply starts the
-               webserver with the Monitoring Client
-
-         .. container:: paragraph
-
-            The option ``-h`` provides a help screen with all command
-            line arguments.
-
-         .. container:: listingblock
-
-            .. container:: content
-
-               .. code::
-
-                  usage: org.onap.policy.apex.client.monitoring.rest.ApexMonitoringRestMain [options...]
-                  -h,--help                        outputs the usage of this command
-                  -p,--port <PORT>                 port to use for the Apex Services REST calls
-                  -t,--time-to-live <TIME_TO_LIVE> the amount of time in seconds that the server will run for before terminating
-
-         .. container:: paragraph
-
-            If the Monitoring Client is started without any arguments
-            the final messages will look similar to this:
-
-         .. container:: listingblock
-
-            .. container:: content
-
-               .. code::
-
-                  Apex Services REST endpoint (ApexMonitoringRestMain: Config=[ApexMonitoringRestParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=READY) starting at http://localhost:18989/apexservices/ . . .
-                  Sep 05, 2018 11:26:20 PM org.glassfish.grizzly.http.server.NetworkListener start
-                  INFO: Started listener bound to [localhost:18989]
-                  Sep 05, 2018 11:26:20 PM org.glassfish.grizzly.http.server.HttpServer start
-                  INFO: [HttpServer] Started.
-                  Apex Services REST endpoint (ApexMonitoringRestMain: Config=[ApexMonitoringRestParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=RUNNING) started at http://localhost:18989/apexservices/
-
-         .. container:: paragraph
-
-            The last line states the URL on which the Monitoring Client
-            can be accessed. The example above stated
-            ``http://localhost:18989/apexservices``. In a web browser
-            use the URL ``http://localhost:18989``.
-
-The APEX Deployment Client
---------------------------
-
-         .. container:: paragraph
-
-            The standard way to use the APEX Deployment Client is via an
-            installation of the *war* file on a webserver. However, the
-            Deployment Client can also be started via command line. This
-            will start a Grizzly webserver with the *war* deployed.
-            Access to the Deployment Client is then via the provided URL
-
-         .. container:: paragraph
-
-            On UNIX and Cygwin systems use:
-
-         .. container:: ulist
-
-            -  ``apexApps.sh eng-deployment`` - simply starts the
-               webserver with the Deployment Client
-
-         .. container:: paragraph
-
-            On Windows systems use:
-
-         .. container:: ulist
-
-            -  ``apexApps.bat eng-deployment`` - simply starts the
-               webserver with the Deployment Client
-
-         .. container:: paragraph
-
-            The option ``-h`` provides a help screen with all command
-            line arguments.
-
-         .. container:: listingblock
-
-            .. container:: content
-
-               .. code::
-
-                  usage: org.onap.policy.apex.client.deployment.rest.ApexDeploymentRestMain [options...]
-                  -h,--help                        outputs the usage of this command
-                  -p,--port <PORT>                 port to use for the Apex Services REST calls
-                  -t,--time-to-live <TIME_TO_LIVE> the amount of time in seconds that the server will run for before terminating
-
-         .. container:: paragraph
-
-            If the Deployment Client is started without any arguments
-            the final messages will look similar to this:
-
-         .. container:: listingblock
-
-            .. container:: content
-
-               .. code::
-
-                  Apex Services REST endpoint (ApexDeploymentRestMain: Config=[ApexDeploymentRestParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=READY) starting at http://localhost:18989/apexservices/ . . .
-                  Sep 05, 2018 11:27:09 PM org.glassfish.grizzly.http.server.NetworkListener start
-                  INFO: Started listener bound to [localhost:18989]
-                  Sep 05, 2018 11:27:09 PM org.glassfish.grizzly.http.server.HttpServer start
-                  INFO: [HttpServer] Started.
-                  Apex Services REST endpoint (ApexDeploymentRestMain: Config=[ApexDeploymentRestParameters: URI=http://localhost:18989/apexservices/, TTL=-1sec], State=RUNNING) started at http://localhost:18989/apexservices/
-
-         .. container:: paragraph
-
-            The last line states the URL on which the Deployment Client
-            can be accessed. The example above stated
-            ``http://localhost:18989/apexservices``. In a web browser
-            use the URL ``http://localhost:18989``.
-
-The APEX Full Client
---------------------
-
-         .. container:: paragraph
-
-            The APEX Full Client combines the REST Editor, the
+            The APEX Client combines the Policy Editor, the
             Monitoring Client, and the Deployment Client into a single
             application. The standard way to use the APEX Full Client is
             via an installation of the *war* file on a webserver.
@@ -4510,7 +4316,7 @@ The APEX Application Launcher
 
          .. container:: paragraph
 
-            The standard applications (Engine, CLI Editor, REST Editor)
+            The standard applications (Engine and CLI Editor)
             come with dedicated start scripts. For all other APEX
             applications, we provide an application launcher.
 
@@ -5937,13 +5743,5 @@ Send Events
    .. container::
       :name: footer-text
 
-      2.0.0-SNAPSHOT
-      Last updated 2018-09-10 15:38:16 IST
-
-.. |Extract the TAR archive| image:: images/install-guide/win-extract-tar-gz.png
-.. |Extract the APEX distribution| image:: images/install-guide/win-extract-tar.png
-.. |REST Editor Start Screen| image:: images/install-guide/rest-start.png
-.. |REST Editor with loaded SampleDomain Policy Model| image:: images/install-guide/rest-loaded.png
-.. |APEX Configuration Matrix| image:: images/apex-intro/ApexEngineConfig.png
 
 
