@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e649b565_1d361efe",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 2879,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-07-06T14:49:35Z",
+      "side": 1,
+      "message": "If an apex-pdp policy is deployed at run time that uses some arbitrary REST end point that requires passwords, then the authorization can be sent in this insecure way.\n\nHere, we\u0027re just trying to show that http headers can be specified in the apex-pdp policy config and I used the \"Authorization\" header as an example. I\u0027ll pick a less dangerous one and change the example.",
+      "parentUuid": "f658d8ca_c574e0d2",
+      "revId": "d41ce04125853631900c217a4f1885277683bc0e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f439cee2_793f8ae4",
         "filename": "docs/apex/APEX-User-Manual.rst",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "d41ce04125853631900c217a4f1885277683bc0e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "417725b3_8fca786e",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 3172,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-07-06T14:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f439cee2_793f8ae4",
+      "range": {
+        "startLine": 3172,
+        "startChar": 15,
+        "endLine": 3172,
+        "endChar": 25
+      },
+      "revId": "d41ce04125853631900c217a4f1885277683bc0e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
