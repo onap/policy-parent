@@ -2873,7 +2873,11 @@ REST Client Input
                             "org.onap.policy.apex.plugins.event.carrier.restclient.RESTClientCarrierTechnologyParameters",
                           "parameters" : {
                             "url" : "http://example.org:8080/triggers/events", (2)
-                            "httpCodeFilter" : "[2][0-9][0-9]" (3)
+                            "httpMethod": "GET", (3)
+                            "httpCodeFilter" : "[2][0-9][0-9]", (4)
+                             "httpHeaders" : [ (5)
+                                ["Authorization", "Basic 0123456789ABCDEF0123456789AB"]
+                             ]
                           }
                         }
 
@@ -2884,7 +2888,14 @@ REST Client Input
                   +-------+--------------------------------------------------+
                   | **2** | the URL of the HTTP server for events            |
                   +-------+--------------------------------------------------+
-                  | **3** | use HTTP CODE FILTER for filtering status code   |
+                  | **3** | the HTTP method to use (GET/PUT/POST/DELETE),    |
+                  |       | optional, defaults to GET                        |
+                  +-------+--------------------------------------------------+
+                  | **4** | use HTTP CODE FILTER for filtering status code,  |
+                  |       | optional, defaults to [2][0-9][0-9]              |
+                  +-------+--------------------------------------------------+
+                  | **5** | HTTP headers to use on the REST request, for     |
+                  |       | example, Authorization headers, optional         |
                   +-------+--------------------------------------------------+
 
 REST Client Output
@@ -2920,7 +2931,10 @@ REST Client Output
                           "parameters" : {
                             "url" : "http://example.com:8888/actions/events", (2)
                             "url" : "http://example.{site}.com:8888/{trig}/events", (2')
-                            "httpMethod" : "PUT" (3)
+                            "httpMethod" : "PUT". (3)
+                            "httpHeaders" : [ (5)
+                                ["Authorization", "Basic 0123456789ABCDEF0123456789AB"]
+                            ]
                           }
                         }
 
@@ -2933,7 +2947,11 @@ REST Client Output
                   +-------+--------------------------------------------------+
                   | **2'**| the tagged URL of the HTTP server for events     |
                   +-------+--------------------------------------------------+
-                  | **3** | use HTTP PUT (remove this line to use HTTP POST) |
+                  | **3** | the HTTP method to use (GET/PUT/POST/DELETE),    |
+                  |       | optional, defaults to POST                       |
+                  +-------+--------------------------------------------------+
+                  | **4** | HTTP headers to use on the REST request, for     |
+                  |       | example, Authorization headers, optional         |
                   +-------+--------------------------------------------------+
 
 REST Server IO
@@ -3148,14 +3166,81 @@ REST Requestor IO
                APEX can act as REST requestor on the input as well as on
                the output interface. The media type is
                ``application/json``, so this plugin only works with
-               the JSON Event protocol.
+               the JSON Event protocol. This plugin allows APEX to send REST requests
+               and to receive the reply of that request without tying up APEX resources
+               while the request is being processed. The REST Requestor pairs a REST
+               requrestor producer and consumer together to handle the REST request
+               and response. The REST request is created from an APEX output event
+               and the REST response is input into APEX as a new input event.
 
-REST Requestor Input
-====================
+REST Requestor Output (REST Request Producer)
+=============================================
 
                .. container:: paragraph
 
-                  APEX will connect to a given URL to request an input.
+                  APEX sends a REST request when events are output by APEX, the REST
+                  request configuration is specified on the REST Request Consumer (see
+                  below).
+
+               .. container:: listingblock
+
+                  .. container:: content
+
+                     .. code::
+
+                        "carrierTechnologyParameters": {
+                          "carrierTechnology": "RESTREQUESTOR", (1)
+                          "parameterClassName": "org.onap.policy.apex.plugins.event.carrier.restrequestor.RESTRequestorCarrierTechnologyParameters"
+                        },
+
+               .. container:: colist arabic
+
+                  +-------+------------------------------------------+
+                  | **1** | set REST requestor as carrier technology |
+                  +-------+------------------------------------------+
+
+               .. container:: paragraph
+
+                  The settings below are required on the producer to
+                  define the event that triggers the REST request and
+                  to specify the peered consumer configuration for the
+                  REST request, for example:
+
+               .. container:: listingblock
+
+                  .. container:: content
+
+                     .. code::
+
+                        "eventNameFilter": "GuardRequestEvent", (1)
+                        "requestorMode": true, (2)
+                        "requestorPeer": "GuardRequestorConsumer", (3)
+                        "requestorTimeout": 500 (4)
+
+               .. container:: colist arabic
+
+                  +-------+-------------------------------------------+
+                  | **1** | a filter on the event                     |
+                  +-------+-------------------------------------------+
+                  | **2** | requestor mode must be set to *true*      |
+                  +-------+-------------------------------------------+
+                  | **3** | the peered consumer for REST requests,    |
+                  |       | that consumer specifies the full          |
+                  |       | configuration for REST requests           |
+                  +-------+-------------------------------------------+
+                  | **4** | the request timeout in milliseconds,      |
+                  |       | overridden by timeout on consumer if that |
+                  |       | is set, optional defaults to 500          |
+                  |       | millisconds                               |
+                  +-------+-------------------------------------------+
+
+REST Requestor Input (REST Request Consumer)
+============================================
+
+               .. container:: paragraph
+
+                  APEX will connect to a given URL to issue a REST request and
+                  wait for a REST response.
                   The URL can be configured statically or tagged
                   as ``?example.{site}.org:8080/{trig}/events``,
                   all tags such as ``site`` and ``trig`` in the URL
@@ -3186,8 +3271,13 @@ REST Requestor Input
                             "url": "http://localhost:54321/some/path/to/rest/resource", (2)
                             "url": "http://localhost:54321/{site}/path/to/rest/{resValue}", (2')
                             "httpMethod": "POST", (3)
-                            "restRequestTimeout": 2000, (4)
-                            "httpCodeFilter" : "[2][0-9][0-9]" (5)
+                            "requestorMode": true, (4)
+                            "requestorPeer": "GuardRequestorProducer", (5)
+                            "restRequestTimeout": 2000, (6)
+                            "httpCodeFilter" : "[2][0-9][0-9]" (7)
+                            "httpHeaders" : [ (8)
+                               ["Authorization", "Basic 0123456789ABCDEF0123456789AB"]
+                            ]
                           }
                         },
 
@@ -3200,17 +3290,31 @@ REST Requestor Input
                   +-------+--------------------------------------------------+
                   | **2'**| the tagged URL of the HTTP server for events     |
                   +-------+--------------------------------------------------+
-                  | **3** | use HTTP PUT (remove this line to use HTTP POST) |
+                  | **3** | the HTTP method to use (GET/PUT/POST/DELETE),    |
+                  |       | optional, defaults to GET                        |
                   +-------+--------------------------------------------------+
-                  | **4** | request timeout in milliseconds                  |
+                  | **4** | requestor mode must be set to *true*             |
                   +-------+--------------------------------------------------+
-                  | **5** | use HTTP CODE FILTER for filtering status code   |
+                  | **5** | the peered producer for REST requests, that      |
+                  |       | producer specifies the APEX output event that    |
+                  |       | triggers the REST request                        |
+                  +-------+--------------------------------------------------+
+                  | **6** | request timeout in milliseconds, overrides any   |
+                  |       | value set in the REST Requestor Producer,        |
+                  |       | optional, defaults to 500 millisconds            |
+                  +-------+--------------------------------------------------+
+                  | **7** | use HTTP CODE FILTER for filtering status code   |
+                  |       | optional, defaults to [2][0-9][0-9]              |
+                  +-------+--------------------------------------------------+
+                  | **8** | HTTP headers to use on the REST request, for     |
+                  |       | example, Authorization headers, optional         |
                   +-------+--------------------------------------------------+
 
                .. container:: paragraph
 
-                  Further settings are required on the consumer to
-                  define the event that is requested, for example:
+                  Further settings may be required on the consumer to
+                  define the input event that is produced and forwarded into
+                  APEX, for example:
 
                .. container:: listingblock
 
@@ -3219,10 +3323,7 @@ REST Requestor Input
                      .. code::
 
                         "eventName": "GuardResponseEvent", (1)
-                        "eventNameFilter": "GuardResponseEvent", (2)
-                        "requestorMode": true, (3)
-                        "requestorPeer": "GuardRequestorProducer", (4)
-                        "requestorTimeout": 500 (5)
+                        "eventNameFilter": "GuardResponseEvent" (2)
 
                .. container:: colist arabic
 
@@ -3230,65 +3331,6 @@ REST Requestor Input
                   | **1** | the event name            |
                   +-------+---------------------------+
                   | **2** | a filter on the event     |
-                  +-------+---------------------------+
-                  | **3** | the mode of the requestor |
-                  +-------+---------------------------+
-                  | **4** | a peer for the requestor  |
-                  +-------+---------------------------+
-                  | **5** | a general request timeout |
-                  +-------+---------------------------+
-
-REST Requestor Output
-=====================
-
-               .. container:: paragraph
-
-                  APEX will connect to a given URL to send events, but
-                  not receive any events.
-
-               .. container:: listingblock
-
-                  .. container:: content
-
-                     .. code::
-
-                        "carrierTechnologyParameters": {
-                          "carrierTechnology": "RESTREQUESTOR", (1)
-                          "parameterClassName": "org.onap.policy.apex.plugins.event.carrier.restrequestor.RESTRequestorCarrierTechnologyParameters"
-                        },
-
-               .. container:: colist arabic
-
-                  +-------+------------------------------------------+
-                  | **1** | set REST requestor as carrier technology |
-                  +-------+------------------------------------------+
-
-               .. container:: paragraph
-
-                  Further settings are required on the consumer to
-                  define the event that is requested, for example:
-
-               .. container:: listingblock
-
-                  .. container:: content
-
-                     .. code::
-
-                        "eventNameFilter": "GuardRequestEvent", (1)
-                        "requestorMode": true, (2)
-                        "requestorPeer": "GuardRequestorConsumer", (3)
-                        "requestorTimeout": 500 (4)
-
-               .. container:: colist arabic
-
-                  +-------+---------------------------+
-                  | **1** | a filter on the event     |
-                  +-------+---------------------------+
-                  | **2** | the mode of the requestor |
-                  +-------+---------------------------+
-                  | **3** | a peer for the requestor  |
-                  +-------+---------------------------+
-                  | **4** | a general request timeout |
                   +-------+---------------------------+
 
 gRPC IO
