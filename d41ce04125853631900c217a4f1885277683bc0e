@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "735e8608_dc24deb9",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 2879,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-07-06T14:52:16Z",
+      "side": 1,
+      "message": "Got it - thanks for the explanation.",
+      "parentUuid": "e649b565_1d361efe",
+      "revId": "d41ce04125853631900c217a4f1885277683bc0e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f439cee2_793f8ae4",
         "filename": "docs/apex/APEX-User-Manual.rst",
         "patchSetId": 1
