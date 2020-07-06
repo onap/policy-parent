@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f658d8ca_c574e0d2",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 2879,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-07-06T12:52:42Z",
+      "side": 1,
+      "message": "so this means that apex-pdp still has some unencrypted (other than base-64) passwords that need to be removed in Guilin or Honolulu?",
+      "revId": "d41ce04125853631900c217a4f1885277683bc0e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f439cee2_793f8ae4",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 3172,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-07-06T12:52:42Z",
+      "side": 1,
+      "message": "\"requrestor\" \u003d\u003e \"requestor\"",
+      "range": {
+        "startLine": 3172,
+        "startChar": 15,
+        "endLine": 3172,
+        "endChar": 25
+      },
+      "revId": "d41ce04125853631900c217a4f1885277683bc0e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
