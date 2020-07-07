@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fb09473_3a1076a7",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-07-07T12:52:59Z",
+      "side": 1,
+      "message": "I put this in the wrong spot - should be up one directory. Can we just moved the decision.guard.response.json up instead? Sorry my bad.",
+      "range": {
+        "startLine": 115,
+        "startChar": 20,
+        "endLine": 115,
+        "endChar": 28
+      },
+      "revId": "35e5472c1e824e2642681f962aa97a371264e439",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
