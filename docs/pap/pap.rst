@@ -166,7 +166,8 @@ are added in the response to each call:
    "x-minorversion", "0", "MINOR version of the API"
    "x-patchversion", "0", "PATCH version of the API"
    "x-onap-requestid", "e1763e61-9eef-4911-b952-1be1edd9812b", "described above; used for logging purposes"
-    
+
+:download:`Download Health Check PAP API Swagger <swagger/health-check-pap.json>`
 
 .. swaggerv2doc:: swagger/health-check-pap.json
 
@@ -176,6 +177,8 @@ Here is a sample response:
 
 .. literalinclude:: response/health-check-pap-resp.json
     :language: json
+
+:download:`Download Consolidated Health Check PAP API Swagger <swagger/consolidated-healthcheck-pap.json>`
 
 .. swaggerv2doc:: swagger/consolidated-healthcheck-pap.json
 
@@ -188,6 +191,8 @@ Here is a sample response:
 
 .. literalinclude:: response/consolidated-healthcheck-pap-resp.json
     :language: json
+
+:download:`Download Statistics PAP API Swagger <swagger/statistics-pap.json>`
 
 .. swaggerv2doc:: swagger/statistics-pap.json
 
@@ -202,10 +207,14 @@ Here is a sample response:
 .. literalinclude:: response/statistics-pap-resp.json
     :language: json
 
+:download:`Download State Change PAP Swagger <swagger/state-change-pap.json>`
+
 .. swaggerv2doc:: swagger/state-change-pap.json
 
 The state of PDP groups is managed by this operation. PDP groups can be in states PASSIVE, TEST, SAFE, or ACTIVE. For a full
 description of PDP group states, see the :ref:`ONAP Policy Framework Architecture <architecture-label>` page.
+
+:download:`Download Group Batch PAP API Swagger <swagger/groups-batch-pap.json>`
 
 .. swaggerv2doc:: swagger/groups-batch-pap.json
 
@@ -232,9 +241,13 @@ Here is a sample request:
 .. literalinclude:: request/groups-batch-pap-req.json
     :language: json
 
+:download:`Download Group Delete PAP API Swagger  <swagger/group-delete-pap.json>`
+
 .. swaggerv2doc:: swagger/group-delete-pap.json
 
 The API also allows PDP groups to be deleted. DELETE operations are only permitted on PDP groups in PASSIVE state.
+
+:download:`Download Group Query PAP API Swagger  <swagger/group-query-pap.json>`
 
 .. swaggerv2doc:: swagger/group-query-pap.json
 
@@ -245,6 +258,8 @@ Here is a sample response:
 
 .. literalinclude:: response/group-query-pap-resp.json
     :language: json
+
+:download:`Download Deployments Batch PAP API Swagger  <swagger/deployments-batch-pap.json>`
 
 .. swaggerv2doc:: swagger/deployments-batch-pap.json
 
@@ -260,6 +275,8 @@ Here is a sample request:
 
 .. literalinclude:: request/deployment-batch-pap-req.json
     :language: json
+
+:download:`Download Deploy PAP API Swagger  <swagger/policy-deploy-pap.json>`
 
 .. swaggerv2doc:: swagger/policy-deploy-pap.json
 
@@ -278,6 +295,8 @@ Here is a sample request:
 .. literalinclude:: request/policy-deploy-pap-req.json
     :language: json
 
+:download:`Download Undeploy PAP API Swagger  <swagger/policy-undeploy-pap.json>`
+
 .. swaggerv2doc:: swagger/policy-undeploy-pap.json
 
 This operation allows policies to be undeployed from PDP groups.
@@ -289,6 +308,8 @@ This operation allows policies to be undeployed from PDP groups.
 .. note::
   Due to current limitations, a fully qualified policy version must always be specified.
 
+:download:`Download Deployed Policy PAP API Swagger  <swagger/deployed-policy-pap.json>`
+
 .. swaggerv2doc:: swagger/deployed-policy-pap.json
 
 This operation allows the deployed policies to be listed together with their respective deployment status.
@@ -298,6 +319,8 @@ Here is a sample response:
 
 .. literalinclude:: response/deployed-policy-pap-resp.json
     :language: json
+
+:download:`Download PDP Statistics PAP API Swagger  <swagger/pdp-statistics-pap.json>`
 
 .. swaggerv2doc:: swagger/pdp-statistics-pap.json
 
