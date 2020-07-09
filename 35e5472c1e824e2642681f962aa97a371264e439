@@ -22,6 +22,30 @@
       "revId": "35e5472c1e824e2642681f962aa97a371264e439",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bffb5f5_80628300",
+        "filename": "docs/xacml/xacml.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-07-09T21:46:55Z",
+      "side": 1,
+      "message": "OK will do",
+      "parentUuid": "7fb09473_3a1076a7",
+      "range": {
+        "startLine": 115,
+        "startChar": 20,
+        "endLine": 115,
+        "endChar": 28
+      },
+      "revId": "35e5472c1e824e2642681f962aa97a371264e439",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
