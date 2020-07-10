@@ -34,6 +34,24 @@
       "revId": "75f953274061c7b1d7f5f7247a0b458aafd3432e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6afdbf38_1d415df2",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2020-07-10T14:06:44Z",
+      "side": 1,
+      "message": "The files in the tarball are all PDFs, the contents is PDFs of printouts of the JMX generated pages.",
+      "parentUuid": "a8bd0356_24c61e32",
+      "revId": "75f953274061c7b1d7f5f7247a0b458aafd3432e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
