@@ -265,7 +265,7 @@ After the test stop, we can generate a HTML test report via command
 
 .. image:: images/stability-jmeter.PNG
 
-:download:`result.zip <zip/result.tar>`
+:download:`result.zip <zip/frankfurt/apex_s3p_result.tar.gz>`
 
 
 Frankfurt release
@@ -345,7 +345,7 @@ After the test stops, we can generate an HTML test report via the command:
 .. image:: images/frankfurt/apex_s3p_jm-1.png
 .. image:: images/frankfurt/apex_s3p_jm-2.png
 
-:download:`result.zip <zip/frankfurt/apex_s3p_result.tar>`
+:download:`result.zip <zip/frankfurt/apex_s3p_result.tar.gz>`
 
 Setting up Performance Tests in APEX
 ++++++++++++++++++++++++++++++++++++

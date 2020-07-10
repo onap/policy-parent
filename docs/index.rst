@@ -22,5 +22,4 @@ Policy Framework Architecture
    apex/apex
    distribution/distribution
    gui/Monitoring-GUI-Demo-Guide
-..    release-notes.rst
-
+   release-notes
