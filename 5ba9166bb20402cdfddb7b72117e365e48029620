@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a70be53_7cc2fde7",
+        "filename": "docs/apex/APEX-Policy-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1598,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-07-10T17:48:39Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 1598,
+        "startChar": 12,
+        "endLine": 1598,
+        "endChar": 21
+      },
+      "revId": "5ba9166bb20402cdfddb7b72117e365e48029620",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af864594_5bc2c984",
+        "filename": "docs/apex/APEX-Policy-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-07-10T17:48:39Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 1599,
+        "startChar": 74,
+        "endLine": 1599,
+        "endChar": 86
+      },
+      "revId": "5ba9166bb20402cdfddb7b72117e365e48029620",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
