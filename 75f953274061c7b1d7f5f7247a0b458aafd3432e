@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d238743_b6191d30",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-07-10T13:27:20Z",
+      "side": 1,
+      "message": "not sure it is that valuable to attach results.",
+      "revId": "75f953274061c7b1d7f5f7247a0b458aafd3432e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
