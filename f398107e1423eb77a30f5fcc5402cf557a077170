@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1ef4626_86548664",
+        "filename": "docs/apex/APEX-Policy-Guide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2020-07-13T13:13:16Z",
+      "side": 1,
+      "message": "Sorry for the late comment Liam. Wouldn\u0027t it be better to mention about the JSON.strigify issue in Rhino here (one that is detailed here https://jira.onap.org/browse/POLICY-2463)",
+      "range": {
+        "startLine": 1591,
+        "startChar": 0,
+        "endLine": 1592,
+        "endChar": 60
+      },
+      "revId": "f398107e1423eb77a30f5fcc5402cf557a077170",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
