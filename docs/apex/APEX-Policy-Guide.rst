@@ -7,7 +7,7 @@ APEX Policy Guide
 
 
 .. contents::
-    :depth: 3
+    :depth: 5
 
 ******************
 APEX Policy Matrix

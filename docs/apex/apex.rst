@@ -3,14 +3,12 @@
 .. _apex-doc:
 
 Policy APEX PDP Engine
-------------------------------------------------
+----------------------
 .. toctree::
    :maxdepth: 1
 
    APEX-Introduction.rst
    APEX-User-Manual.rst
    APEX-Policy-Guide.rst
-   APEX-Developer-Guide.rst
-   APEX-Install-Guide.rst
    APEX-OnapPf-Guide.rst
    APEX-Policy-Examples.rst
