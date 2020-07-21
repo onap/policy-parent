@@ -17,10 +17,6 @@ The Policy Framework supports the public APIs listed in the links below:
    pap/pap
    xacml/decision-api
 
-.. warning:: The :ref:`Legacy APIs  <legacyapis-label>` are scheduled to be deprecated after the Frankfurt release!
-
--    :ref:`Legacy APIs <legacyapis-label>`  (To be DEPRECATED)
-
 Postman Environment for API Testing
 -----------------------------------
 
@@ -31,6 +27,8 @@ The following environment file from postman can be used for testing API's. All y
 Postman Collection for API Testing
 ----------------------------------
 
-The following collection can be used in Postman to assist in testing the Policy APIs.
+Postman collection for `Policy Framework Lifecycle API <https://github.com/onap/policy-api/blob/master/postman/lifecycle-api-collection.json>`_
 
-:download:`link <PolicyAPI.postman_collection.json>`
+Postman collection for `Policy Framework Administration API <https://github.com/onap/policy-pap/blob/master/postman/pap-api-collection.json>`_
+
+Postman collection for `Policy Framework Decision API <https://github.com/onap/policy-xacml-pdp/blob/master/postman/decision-api-collection.json>`_
