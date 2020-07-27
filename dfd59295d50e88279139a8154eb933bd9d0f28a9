@@ -16,6 +16,24 @@
       "revId": "dfd59295d50e88279139a8154eb933bd9d0f28a9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc2ce65_9f055212",
+        "filename": "docs/offeredapis.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 6738
+      },
+      "writtenOn": "2020-07-27T13:53:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "084d4040_1d5e78bd",
+      "revId": "dfd59295d50e88279139a8154eb933bd9d0f28a9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
