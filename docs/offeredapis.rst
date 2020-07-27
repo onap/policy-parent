@@ -32,3 +32,17 @@ Postman collection for `Policy Framework Lifecycle API <https://github.com/onap/
 Postman collection for `Policy Framework Administration API <https://github.com/onap/policy-pap/blob/master/postman/pap-api-collection.json>`_
 
 Postman collection for `Policy Framework Decision API <https://github.com/onap/policy-xacml-pdp/blob/master/postman/decision-api-collection.json>`_
+
+API Swagger Generation
+----------------------
+
+The standard for API definition in the RESTful API world is the OpenAPI Specification (OAS). The OAS, which is based on
+the original "Swagger Specification," is being widely used in API developments.
+
+Execute the below curl command for swagger generation by filling in the authorization details, IP and Port information:
+
+.. code-block:: bash
+
+  “curl -k --user ‘{user_id}:{password}’ https://{ip}:{port}/swagger.json”
+
+
