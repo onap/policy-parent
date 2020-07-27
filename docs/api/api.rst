@@ -288,3 +288,12 @@ Get vFirewall Operational Policy::
 
 Delete vFirewall Operational Policy::
   curl --user 'healthcheck:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies/operational.modifyconfig/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+
+Get all available policies::
+  curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policies" -H "Accept: application/json" -H "Content-Type: application/json"
+
+Get version 1.0.0 of vFirewall Monitoring Policy::
+  curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+
+Delete version 1.0.0 of vFirewall Monitoring Policy::
+  curl --user 'healthcheck:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"

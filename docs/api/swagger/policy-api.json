@@ -506,8 +506,287 @@
           "last-mod-release" : "Dublin"
         }
       }
-    }, 
+    },
+    "/policy/api/v1/policies/{policyId}/versions/{policyVersion}": {
+      "get": {
+        "tags": [
+          "Policy"
+        ],
+        "summary": "Retrieve specific version of a specified policy",
+        "description": "Returns a particular version of specified policy",
+        "operationId": "getSpecificPolicy",
+        "consumes": [
+          "application/json",
+          "application/yaml"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "Name of policy",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "policyVersion",
+            "in": "path",
+            "description": "Version of policy",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "description": "Fetch mode for policies, BARE for bare policies (default), REFERENCED for fully referenced policies",
+            "required": false,
+            "type": "string",
+            "default": "bare",
+            "enum": [
+              "BARE",
+              "REFERENCED"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ToscaServiceTemplate"
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "404": {
+            "description": "Resource Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Guilin"
+        }
+      },
+      "delete": {
+        "tags": [
+          "Policy"
+        ],
+        "summary": "Delete a particular version of a policy",
+        "description": "Rule: the version that has been deployed in PDP group(s) cannot be deleted",
+        "operationId": "deleteSpecificPolicy",
+        "consumes": [
+          "application/json",
+          "application/yaml"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "description": "ID of policy",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "policyVersion",
+            "in": "path",
+            "description": "Version of policy",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ToscaServiceTemplate"
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "404": {
+            "description": "Resource Not Found"
+          },
+          "409": {
+            "description": "Delete Conflict, Rule Violation"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Guilin"
+        }
+      }
+    },
     "/policy/api/v1/policies" : {
+      "get": {
+        "tags": [
+          "Policy"
+        ],
+        "summary": "Retrieve all versions of available policies",
+        "description": "Returns all version of available policies",
+        "operationId": "getPolicies",
+        "consumes": [
+          "application/json",
+          "application/yaml"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "description": "Fetch mode for policies, BARE for bare policies (default), REFERENCED for fully referenced policies",
+            "required": false,
+            "type": "string",
+            "default": "bare",
+            "enum": [
+              "BARE",
+              "REFERENCED"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ToscaServiceTemplate"
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "404": {
+            "description": "Resource Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Guilin"
+        }
+      },
       "post" : {
         "tags" : [ "Policy" ],
         "summary" : "Create one or more new policies",
