@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "084d4040_1d5e78bd",
+        "filename": "docs/offeredapis.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-07-27T12:15:34Z",
+      "side": 1,
+      "message": "perhaps use hard line wraps?",
+      "revId": "dfd59295d50e88279139a8154eb933bd9d0f28a9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
