@@ -1,9 +1,26 @@
+/*-
+ * ============LICENSE_START=======================================================
+ * Copyright (C) 2020 AT&T Intellectual Property. All rights reserved.
+ * ================================================================================
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============LICENSE_END=========================================================
+ */
+
 package org.onap.policy.tutorial.tutorial;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Properties;
 import java.util.ServiceLoader;
 
@@ -12,16 +29,16 @@ import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+import org.onap.policy.common.endpoints.parameters.RestServerParameters;
 import org.onap.policy.common.utils.coder.CoderException;
 import org.onap.policy.common.utils.coder.StandardCoder;
 import org.onap.policy.common.utils.resources.TextFileUtils;
 import org.onap.policy.models.decisions.concepts.DecisionRequest;
 import org.onap.policy.models.decisions.concepts.DecisionResponse;
-import org.onap.policy.models.tosca.authorative.concepts.ToscaPolicy;
-import org.onap.policy.pdp.xacml.application.common.TestUtils;
 import org.onap.policy.pdp.xacml.application.common.XacmlApplicationException;
 import org.onap.policy.pdp.xacml.application.common.XacmlApplicationServiceProvider;
 import org.onap.policy.pdp.xacml.application.common.XacmlPolicyUtils;
+import org.onap.policy.pdp.xacml.xacmltest.TestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,9 +84,9 @@ public class TutorialApplicationTest {
         // Tell the application to initialize based on the properties file
         // we just built for it.
         //
-        service.initialize(propertiesFile.toPath().getParent());
-	}
-    
+        service.initialize(propertiesFile.toPath().getParent(), new RestServerParameters());
+    }
+
     @Test
     public void test() throws CoderException, XacmlApplicationException, IOException {
         //
@@ -83,10 +100,10 @@ public class TutorialApplicationTest {
                 TextFileUtils
                 .getTextFileAsString("src/test/resources/tutorial-decision-request.json"),
                 DecisionRequest.class);
-    	//
+        //
         // Test a decision
         //
-        Pair<DecisionResponse, Response> decision = service.makeDecision(decisionRequest);
+        Pair<DecisionResponse, Response> decision = service.makeDecision(decisionRequest, null);
         LOGGER.info(decision.getLeft().toString());
     }
 

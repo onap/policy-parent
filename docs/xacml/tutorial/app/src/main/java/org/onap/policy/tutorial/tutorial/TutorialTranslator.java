@@ -1,3 +1,21 @@
+/*-
+ * ============LICENSE_START=======================================================
+ * Copyright (C) 2020 AT&T Intellectual Property. All rights reserved.
+ * ================================================================================
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============LICENSE_END=========================================================
+ */
+
 package org.onap.policy.tutorial.tutorial;
 
 import java.util.List;
@@ -32,7 +50,8 @@ public class TutorialTranslator implements ToscaPolicyTranslator {
             new IdentifierImpl(ToscaDictionary.ID_URN_ONAP, "tutorial-entity");
     private static final Identifier ID_TUTORIAL_PERM = new IdentifierImpl(ToscaDictionary.ID_URN_ONAP, "tutorial-perm");
 
-    public PolicyType convertPolicy(ToscaPolicy toscaPolicy) throws ToscaPolicyConversionException {
+    @SuppressWarnings("unchecked")
+	public PolicyType convertPolicy(ToscaPolicy toscaPolicy) throws ToscaPolicyConversionException {
         //
         // Here is our policy with a version and default combining algo
         //
