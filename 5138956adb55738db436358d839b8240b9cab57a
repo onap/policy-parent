@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2e3d6055_223aa7a5",
+        "filename": "docs/xacml/tutorial/app/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-07-28T18:49:16Z",
+      "side": 1,
+      "message": "not sure if we need a license header for tutorial code.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "5138956adb55738db436358d839b8240b9cab57a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1a6bbbb_8af1ccda",
         "filename": "docs/xacml/tutorial/app/src/test/java/org/onap/policy/tutorial/tutorial/TutorialApplicationTest.java",
         "patchSetId": 2
