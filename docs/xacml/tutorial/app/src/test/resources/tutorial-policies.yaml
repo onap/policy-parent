@@ -1,9 +1,10 @@
-tosca_definitions_version: tosca_simple_yaml_1_0_0
+tosca_definitions_version: tosca_simple_yaml_1_1_0
 topology_template:
     policies:
         -
             onap.policy.tutorial.demo:
                 type: onap.policies.Authorization
+                type_version: 1.0.0
                 version: 1.0.0
                 metadata:
                     policy-id: onap.policy.tutorial.demo
@@ -21,6 +22,7 @@ topology_template:
             onap.policy.tutorial.audit:
                 type: onap.policies.Authorization
                 version: 1.0.0
+                type_version: 1.0.0
                 metadata:
                     policy-id: onap.policy.tutorial.bar
                     policy-version: 1
