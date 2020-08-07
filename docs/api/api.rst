@@ -133,7 +133,6 @@ To ease policy creation, we preload several widely used policy types in policy d
    "Controlloop.Guard.Common.FrequencyLimiter", `onap.policies.controlloop.guard.common.FrequencyLimiter.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.FrequencyLimiter.yaml>`_
    "Controlloop.Guard.Common.MinMax", `onap.policies.controlloop.guard.common.MinMax.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.MinMax.yaml>`_
    "Controlloop.Guard.Coordination.FirstBlocksSecond", `onap.policies.controlloop.guard.coordination.FirstBlocksSecond.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.coordination.FirstBlocksSecond.yaml>`_
-   "Controlloop.Operational", `onap.policies.controlloop.Operational.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.Operational.yaml>`_
    "Controlloop.Operational.Common", `onap.policies.controlloop.operational.Common.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.Common.yaml>`_
    "Controlloop.Operational.Common.Apex", `onap.policies.controlloop.operational.common.Apex.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.common.Apex.yaml>`_
    "Controlloop.Operational.Common.Drools", `onap.policies.controlloop.operational.common.Drools.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.common.Drools.yaml>`_
@@ -181,7 +180,6 @@ Global API Table
    "Statistics API", ":download:`link <swagger/statistics-api.json>`"
    "Tosca Policy Type API", ":download:`link <swagger/policytype-api.json>`"
    "Tosca Policy API", ":download:`link <swagger/policy-api.json>`"
-   "Legacy Operational Policy API", ":download:`link <swagger/operational-policy-api.json>`"
 
 API Swagger
 -----------
@@ -255,8 +253,6 @@ To be specific, the following rules are implemented to enforce the version:
    ignored. For example, A POST payload has a policy with name "sample-policy-name1" and version "1.0.0" specified. In this policy, the metadata
    also includes "policy-id": "sample-policy-name2" and "policy-version": "2.0.0". The 200 return of this POST call will have this created policy with
    metadata including "policy-id": "sample-policy-name1" and "policy-version": "1.0.0".
-
-.. swaggerv2doc:: swagger/operational-policy-api.json
 
 Regarding DELETE APIs for TOSCA compliant policies, we only expose API to delete one particular version of policy
 or policy type at a time for safety purpose. If client has the need to delete multiple or a group of policies or policy types,

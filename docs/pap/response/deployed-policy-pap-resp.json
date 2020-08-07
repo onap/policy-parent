@@ -9,15 +9,6 @@
     "incomplete-count": 0
   },
   {
-    "policy-type": "onap.policies.controlloop.Operational",
-    "policy-type-version": "1.0.0",
-    "policy-id": "OPERATIONAL_vFW_CDS_Service_v2_0_OperationalPolicyLegacy_1_0_0_Ly6",
-    "policy-version": "1.0.0",
-    "success-count": 1,
-    "failure-count": 0,
-    "incomplete-count": 0
-  },
-  {
     "policy-type": "onap.policies.monitoring.cdap.tca.hi.lo.app",
     "policy-type-version": "1.0.0",
     "policy-id": "MICROSERVICE_vFW_CDS_Service_v2_0_app_1_0_0_WNX",

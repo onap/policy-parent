@@ -479,11 +479,6 @@ A configuration example
                                 "receptionHandlerConfigurationName":"sdcConfiguration",
                             "pluginHandlerParameters":{
                                 "policyDecoders":{
-                                    "HpaDecoder":{
-                                        "decoderType":"HpaDecoder",
-                                        "decoderClassName":"org.onap.policy.distribution.reception.decoding.hpa.PolicyDecoderCsarHpa",
-                                        "decoderConfigurationName": "csarToOptimizationPolicyConfiguration"
-                                    },
                                     "ToscaPolicyDecoder":{
                                         "decoderType":"ToscaPolicyDecoder",
                                         "decoderClassName":"org.onap.policy.distribution.reception.decoding.policy.file.PolicyDecoderFileInCsarToPolicy",
@@ -528,17 +523,6 @@ A configuration example
                         }
                     },
                     "policyDecoderConfigurationParameters":{
-                        "csarToOptimizationPolicyConfiguration":{
-                            "parameterClassName":"org.onap.policy.distribution.reception.decoding.hpa.PolicyDecoderCsarHpaParameters",
-                            "parameters":{
-                                "policyNamePrefix": "oofCasablanca",
-                                "onapName": "OOF",
-                                "version": "1.0",
-                                "priority": "3",
-                                "riskType": "Test",
-                                "riskLevel": "2"
-                            }
-                        },
                         "toscaPolicyDecoderConfiguration":{
                             "parameterClassName":"org.onap.policy.distribution.reception.decoding.policy.file.PolicyDecoderFileInCsarToPolicyParameterGroup",
                             "parameters":{

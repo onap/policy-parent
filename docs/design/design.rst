@@ -61,7 +61,6 @@ Policy Framework upon platform installation. For a full listing of available pre
 ============================================             ===============================================================================
 onap.policies.Monitoring                                 Base model that supports Policy driven DCAE microservice components used
                                                          in Control Loops
-onap.policies.controlloop.Operational                    Legacy actor/action operational policies for control loops (Deprecated)
 onap.policies.controlloop.operational.Common             Base Control Loop operational policy common definitions
 onap.policies.controlloop.guard.Common                   Control Loop Guard Policy common definitions
 onap.policies.Optimization                               Base OOF Optimization Policy Type definition
@@ -273,44 +272,3 @@ will route XACML Request/Response RESTful API calls to the **native** applicatio
 This policy type supports Apex native policy types.
 
 `Apex Native Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.native.Apex.yaml>`_
-
-
-7 Base Policy Type: onap.policies.controlloop.Operational (Deprecated)
-----------------------------------------------------------------------
-
-This policy type is used to support legacy YAML definitions for actor/action operational policies for control loops.
-There are two types of implementations for this policy type:
-
-1. Drools implementations that support runtime Control Loop actions taken on components such as SO/APPC/VFC/SDNC/SDNR
-2. Implementations using APEX to support Control Loops.
-
-.. note::
-  This policy type will be deprecated after Frankfurt and is discouraged from being used.
-
-.. code-block:: yaml
-  :caption: Base Policy Type definition for onap.policies.controlloop.Operational
-  :linenos:
-
-  tosca_definitions_version: tosca_simple_yaml_1_1_0
-  policy_types:
-    - onap.policies.controlloop.Operational:
-        derived_from: tosca.policies.Root
-        version: 1.0.0
-        description: Operational Policy for Control Loops
-
-There are no properties defined for this policy type, instead it is expected that the user submit the REST call with a
-special JSON format used to bridge the Casablanca Legacy API to the new Lifecycle API introduced in Dublin release.
-
-.. code-block:: json
-  :caption: Example Policy Payload for onap.policies.controlloop.Operational Policy Type
-
-  {
-     "policy-id" : "operational.restart",
-     "policy-version" : "1",
-     "content" : "controlLoop%3A%0A%20%20version%3A%202.0.0%0A%20%20controlLoopName%3A%20ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e%0A%20%20trigger_policy%3A%20unique-policy-id-1-restart%0A%20%20timeout%3A%203600%0A%20%20abatement%3A%20true%0A%20%0Apolicies%3A%0A%20%20-%20id%3A%20unique-policy-id-1-restart%0A%20%20%20%20name%3A%20Restart%20the%20VM%0A%20%20%20%20description%3A%0A%20%20%20%20actor%3A%20APPC%0A%20%20%20%20recipe%3A%20Restart%0A%20%20%20%20target%3A%0A%20%20%20%20%20%20type%3A%20VM%0A%20%20%20%20retry%3A%203%0A%20%20%20%20timeout%3A%201200%0A%20%20%20%20success%3A%20final_success%0A%20%20%20%20failure%3A%20final_failure%0A%20%20%20%20failure_timeout%3A%20final_failure_timeout%0A%20%20%20%20failure_retries%3A%20final_failure_retries%0A%20%20%20%20failure_exception%3A%20final_failure_exception%0A%20%20%20%20failure_guard%3A%20final_failure_guard",
-     "controllerName" : "frankfurt"
-  }
-
-For the **"content"** property, please refer to the `YAML Operational Policy format
-<https://github.com/onap/policy-models/blob/master/models-interactions/model-yaml/README-v2.0.0.md>`__ to define the
-**content** field and URL Encode the yaml.

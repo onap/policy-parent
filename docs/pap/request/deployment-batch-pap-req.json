@@ -8,7 +8,7 @@
                     "action": "POST",
                     "policies": [
                         {
-                            "name": "onap.controllloop.operational.apex.bbs.EastRegion",
+                            "name": "onap.policies.native.apex.bbs.EastRegion",
                             "version": "1.0.0"
                         }
                     ]

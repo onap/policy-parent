@@ -11,7 +11,7 @@
                     "properties": {},
                     "supportedPolicyTypes": [
                         {
-                            "name": "onap.policies.controlloop.operational.Apex",
+                            "name": "onap.policies.controlloop.operational.common.Apex",
                             "version": "1.0.0"
                         }
                     ],

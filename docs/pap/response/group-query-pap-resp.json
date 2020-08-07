@@ -14,7 +14,7 @@
                     "properties": {},
                     "supportedPolicyTypes": [
                         {
-                            "name": "onap.policies.controlloop.Operational",
+                            "name": "onap.policies.controlloop.operational.common.Apex",
                             "version": "1.0.0"
                         }
                     ]
@@ -28,7 +28,7 @@
                     "properties": {},
                     "supportedPolicyTypes": [
                         {
-                            "name": "onap.policies.controlloop.Operational",
+                            "name": "onap.policies.controlloop.operational.common.Drools",
                             "version": "1.0.0"
                         }
                     ]
@@ -86,7 +86,11 @@
                     "properties": {},
                     "supportedPolicyTypes": [
                         {
-                            "name": "onap.policies.controlloop.operational.Apex",
+                            "name": "onap.policies.controlloop.operational.common.Apex",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.native.Apex",
                             "version": "1.0.0"
                         }
                     ]
@@ -100,7 +104,15 @@
                     "properties": {},
                     "supportedPolicyTypes": [
                         {
-                            "name": "onap.policies.controlloop.Operational",
+                            "name": "onap.policies.controlloop.operational.common.Drools",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.native.drools.Controller",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "name": "onap.policies.native.drools.Artifact",
                             "version": "1.0.0"
                         }
                     ]
