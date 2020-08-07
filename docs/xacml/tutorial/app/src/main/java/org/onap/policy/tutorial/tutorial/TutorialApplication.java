@@ -26,7 +26,7 @@ import org.onap.policy.pdp.xacml.application.common.std.StdXacmlApplicationServi
 
 public class TutorialApplication extends StdXacmlApplicationServiceProvider {
 
-    private final ToscaPolicyTypeIdentifier supportedPolicyType = new ToscaPolicyTypeIdentifier();
+    private final ToscaPolicyTypeIdentifier supportedPolicyType = new ToscaPolicyTypeIdentifier("onap.policies.Authorization", "1.0.0");
     private final TutorialTranslator translator = new TutorialTranslator();
 
     @Override

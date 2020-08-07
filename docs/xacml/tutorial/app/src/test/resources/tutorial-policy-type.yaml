@@ -1,6 +1,5 @@
 tosca_definitions_version: tosca_simple_yaml_1_1_0
 policy_types:
-  -
     onap.policies.Authorization:
         derived_from: tosca.policies.Root
         version: 1.0.0
@@ -17,18 +16,17 @@ policy_types:
                 entry_schema:
                     type: onap.datatypes.Tutorial
 data_types:
-  -
     onap.datatypes.Tutorial:
-    derived_from: tosca.datatypes.Root
-    version: 1.0.0
-    properties:
-        entity:
-            type: string
-            required: true
-            description: The resource
-        permission:
-            type: string
-            required: true
-            description: The permission level
-            constraints:
-                - valid_values: [read, write, delete]
+        derived_from: tosca.datatypes.Root
+        version: 1.0.0
+        properties:
+            entity:
+                type: string
+                required: true
+                description: The resource
+            permission:
+                type: string
+                required: true
+                description: The permission level
+                constraints:
+                    - valid_values: [read, write, delete]
