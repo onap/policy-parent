@@ -7,6 +7,6 @@
   "resource": {
     "user": "demo",
     "entity": "foo",
-    "permission" : "read"
+    "permission" : "write"
   }
 }
