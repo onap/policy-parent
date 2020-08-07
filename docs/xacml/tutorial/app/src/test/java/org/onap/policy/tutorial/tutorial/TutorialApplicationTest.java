@@ -101,9 +101,15 @@ public class TutorialApplicationTest {
                 .getTextFileAsString("src/test/resources/tutorial-decision-request.json"),
                 DecisionRequest.class);
         //
-        // Test a decision
+        // Test a decision - should start with a permit
         //
         Pair<DecisionResponse, Response> decision = service.makeDecision(decisionRequest, null);
+        LOGGER.info(decision.getLeft().toString());
+        //
+        // This should be a deny
+        //
+        decisionRequest.getResource().put("user", "audit");
+        decision = service.makeDecision(decisionRequest, null);
         LOGGER.info(decision.getLeft().toString());
     }
 
