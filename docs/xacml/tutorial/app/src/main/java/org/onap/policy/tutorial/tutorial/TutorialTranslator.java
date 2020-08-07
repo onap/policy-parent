@@ -48,7 +48,7 @@ public class TutorialTranslator implements ToscaPolicyTranslator {
     private static final Identifier ID_TUTORIAL_USER = new IdentifierImpl(ToscaDictionary.ID_URN_ONAP, "tutorial-user");
     private static final Identifier ID_TUTORIAL_ENTITY =
             new IdentifierImpl(ToscaDictionary.ID_URN_ONAP, "tutorial-entity");
-    private static final Identifier ID_TUTORIAL_PERM = new IdentifierImpl(ToscaDictionary.ID_URN_ONAP, "tutorial-perm");
+    private static final Identifier ID_TUTORIAL_PERM = new IdentifierImpl(ToscaDictionary.ID_URN_ONAP, "tutorial-permission");
 
     @SuppressWarnings("unchecked")
 	public PolicyType convertPolicy(ToscaPolicy toscaPolicy) throws ToscaPolicyConversionException {
@@ -74,7 +74,7 @@ public class TutorialTranslator implements ToscaPolicyTranslator {
         // For simplicity, let's just match on the action "authorize" and the user
         //
         MatchType matchAction = ToscaPolicyTranslatorUtils.buildMatchTypeDesignator(XACML3.ID_FUNCTION_STRING_EQUAL,
-                "authorize", XACML3.ID_DATATYPE_STRING, XACML3.ID_ACTION, XACML3.ID_ATTRIBUTE_CATEGORY_ACTION);
+                "authorize", XACML3.ID_DATATYPE_STRING, XACML3.ID_ACTION_ACTION_ID, XACML3.ID_ATTRIBUTE_CATEGORY_ACTION);
         Map<String, Object> props = toscaPolicy.getProperties();
         String user = props.get("user").toString();
         MatchType matchUser = ToscaPolicyTranslatorUtils.buildMatchTypeDesignator(XACML3.ID_FUNCTION_STRING_EQUAL, user,
@@ -83,14 +83,14 @@ public class TutorialTranslator implements ToscaPolicyTranslator {
         //
         // Create AllOf (AND) of just Policy Id
         //
-        anyOf.getAllOf().add(ToscaPolicyTranslatorUtils.buildAllOf(matchAction));
-        anyOf.getAllOf().add(ToscaPolicyTranslatorUtils.buildAllOf(matchUser));
+        anyOf.getAllOf().add(ToscaPolicyTranslatorUtils.buildAllOf(matchAction, matchUser));
         TargetType target = new TargetType();
         target.getAnyOf().add(anyOf);
         newPolicyType.setTarget(target);
         //
         // Now add the rule for each permission
         //
+        int ruleNumber = 0;
         List<Object> permissions = (List<Object>) props.get("permissions");
         for (Object permission : permissions) {
 
@@ -102,18 +102,20 @@ public class TutorialTranslator implements ToscaPolicyTranslator {
                     XACML3.ID_FUNCTION_STRING_EQUAL, ((Map<String, String>) permission).get("permission"),
                     XACML3.ID_DATATYPE_STRING, ID_TUTORIAL_PERM, XACML3.ID_ATTRIBUTE_CATEGORY_RESOURCE);
             anyOf = new AnyOfType();
-            anyOf.getAllOf().add(ToscaPolicyTranslatorUtils.buildAllOf(matchEntity));
-            anyOf.getAllOf().add(ToscaPolicyTranslatorUtils.buildAllOf(matchPermission));
+            anyOf.getAllOf().add(ToscaPolicyTranslatorUtils.buildAllOf(matchEntity, matchPermission));
             target = new TargetType();
             target.getAnyOf().add(anyOf);
 
             RuleType rule = new RuleType();
             rule.setDescription("Default is to PERMIT if the policy matches.");
-            rule.setRuleId(newPolicyType.getPolicyId() + ":rule");
+            rule.setRuleId(newPolicyType.getPolicyId() + ":rule" + ruleNumber);
+
             rule.setEffect(EffectType.PERMIT);
             rule.setTarget(target);
 
             newPolicyType.getCombinerParametersOrRuleCombinerParametersOrVariableDefinition().add(rule);
+
+            ruleNumber++;
         }
         return newPolicyType;
     }
@@ -140,18 +142,11 @@ public class TutorialTranslator implements ToscaPolicyTranslator {
                 // Just simply return a Permit response
                 //
                 decisionResponse.setStatus(Decision.PERMIT.toString());
-            }
-            if (xacmlResult.getDecision() == Decision.DENY) {
+            } else {
                 //
                 // Just simply return a Deny response
                 //
                 decisionResponse.setStatus(Decision.DENY.toString());
-            }
-            if (xacmlResult.getDecision() == Decision.NOTAPPLICABLE) {
-                //
-                // There is no guard policy, so we return a permit
-                //
-                decisionResponse.setStatus(Decision.PERMIT.toString());
             }
         }
 
