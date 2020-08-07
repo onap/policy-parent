@@ -18,7 +18,7 @@ Follow :ref:`TOSCA Policy Primer <tosca-label>` for more information. For the tu
 this example Policy Type in which an ONAP PEP client would like to enforce an action **authorize**
 for a *user* to execute a *permission* on an *entity*.
 
-.. literalinclude:: tutorial/tutorial-policy-type.yaml
+.. literalinclude:: tutorial/app/src/test/resources/tutorial-policy-type.yaml
   :language: yaml
   :caption: Example Tutorial Policy Type
   :linenos:
@@ -27,7 +27,7 @@ We would expect then to be able to create the following policies to allow the de
 an entity called foo, while the audit user can only read the entity called foo. Neither user has Delete
 permission.
 
-.. literalinclude:: tutorial/tutorial-policies.yaml
+.. literalinclude:: tutorial/app/src/test/resources/tutorial-policies.yaml
   :language: yaml
   :caption: Example Policies Derived From Tutorial Policy Type
   :linenos:
@@ -37,12 +37,13 @@ Design Decision Request and expected Decision Response
 For the PEP (Policy Enforcement Point) client applications that call the Decision API, you need
 to design how the Decision API Request resource fields will be sent via the PEP.
 
-.. literalinclude:: tutorial/tutorial-decision-request.json
+.. literalinclude:: tutorial/app/src/test/resources/tutorial-decision-request.json
   :language: JSON
   :caption: Example Decision Request
   :linenos:
 
-For simplicity, we expect only a *Permit* or *Deny* in the Decision Response.
+For simplicity, this tutorial expects only a *Permit* or *Deny* in the Decision Response. However, one could
+customize the Decision Response object and send back whatever information is desired.
 
 .. literalinclude:: tutorial/tutorial-decision-response.json
   :language: JSON
@@ -54,7 +55,8 @@ Create A Maven Project
 This part of the tutorial assumes you understand how to use Eclipse to create a Maven
 project. Please follow any examples for the Eclipse installation you have to create
 an empty application. For the tutorial, use groupId *org.onap.policy.tutorial* and artifactId
-*tutorial*.
+*tutorial*. If you wish to go directly to the source code, please see the
+:ref:`Download Tutorial Application Example` below to download it.
 
 .. image:: tutorial/images/eclipse-create-maven.png
 
@@ -67,13 +69,22 @@ Be sure to import the policy/xacml-pdp project into Eclipse.
 Add Dependencies Into Application pom.xml
 *****************************************
 
+Here we import the XACML PDP Application common dependency which has the interfaces we need to implement. In addition,
+we are importing a testing dependency that has common code for producing a JUnit test.
+
 .. code-block:: java
   :caption: pom.xml dependencies
 
     <dependency>
       <groupId>org.onap.policy.xacml-pdp.applications</groupId>
       <artifactId>common</artifactId>
-      <version>2.1.0-SNAPSHOT</version>
+      <version>2.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.onap.policy.xacml-pdp</groupId>
+      <artifactId>xacml-test</artifactId>
+      <version>2.2.2</version>
+      <scope>test</scope>
     </dependency>
 
 Create META-INF to expose Java Service
@@ -297,19 +308,19 @@ Create xacml.properties for the XACML PDP engine to use
 In the applications *src/test/resources* directory, create a xacml.properties file that will be used by the embedded
 XACML PDP Engine when loading.
 
-.. literalinclude:: tutorial/tutorial-xacml.properties
+.. literalinclude:: tutorial/app/src/test/resources/xacml.properties
   :caption: Example xacml.properties file
   :linenos:
   :emphasize-lines: 20, 25
 
-Create a JUnit and use the TestUtils.java class in application/common
-*********************************************************************
+Create a JUnit and use the TestUtils.java class in xacml-test dependency
+************************************************************************
 Using Eclipse, create a JUnit and be sure to add a setup() method stub. Here you will be utilizing a TestUtils.java
-class from the policy/xamcl-pdp repo's application/common submodule to use some utility methods for building the JUnit test.
+class from the policy/xamcl-pdp repo's xacml-test submodule to use some utility methods for building the JUnit test.
 
 .. image: tutorial/images/eclipse-junit-create.png
 
-Copy the TOSCA Policy Type :download:`link <tutorial/tutorial-policy-type.yaml>` and the TOSCA Policies :download:`link <tutorial/tutorial-policies.yaml>`
+Copy the TOSCA Policy Type :download:`link <tutorial/app/src/test/resources/tutorial-policy-type.yaml>` and the TOSCA Policies :download:`link <tutorial/app/src/test/resources/tutorial-policies.yaml>`
 into the src/test/resources directory.
 
 We will create a temporary folder which is used by the **StdXacmlApplicationServiceProvider** to store working copies of policies as they are loaded
@@ -319,12 +330,41 @@ into the application.
   :caption: Example Translator Implementation
   :linenos:
 
-Run the JUnit test!!
+Run the JUnit test. Its easiest to run it via a terminal command line using maven commands.
 
-Where To Go From Here
+
+.. code-block:: bash
+   :caption: Running Maven Commands
+   :linenos:
+
+   > mvn clean install
+
+Building Docker Image
 *********************
 Once you have created enough JUnit tests that test the TutorialTranslator.java and TutorialRequest.java classes, you are ready to now make your
-application available to the ONAP XACML PDP Engine. These steps are covered in another tutorial.
+application build a docker image that incorporates your application with the XACML PDP Engine. The XACML PDP Engine
+must be able to *find* your Java.Service in the classpath. This is easy to do, just create a jar file for your application
+and copy into the same directory used to startup the XACML PDP.
 
+Here is a Dockerfile as an example:
 
+.. literalinclude:: tutorial/app/src/main/docker/Dockerfile
+  :caption: Dockerfile
+  :linenos:
+
+Download Tutorial Application Example
+*************************************
+
+If you don't wish to use Eclipse, or go through the steps outlined above. The tutorial is
+available for download:
+
+:download:`Download tutorial tar <tutorial/tutorial.tar>`
+
+After you tar xf tutorial.jar, you can import it into Eclipse or your favorite editor. Or simply
+use a terminal command line to build, test and run the tutorial.
+
+In addition, there is a POSTMAN collection available for setting up and running tests against a
+running instance of ONAP Policy Components (api, pap, dmaap-simulator, tutorial-xacml-pdp).
+
+:download:`Download tutorial POSTMAN Collection <tutorial/PolicyApplicationTutorial.postman_collection.json>`
 
