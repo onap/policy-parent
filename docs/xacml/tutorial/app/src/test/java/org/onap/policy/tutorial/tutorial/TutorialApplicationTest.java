@@ -18,6 +18,8 @@
 
 package org.onap.policy.tutorial.tutorial;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
@@ -101,10 +103,18 @@ public class TutorialApplicationTest {
                 .getTextFileAsString("src/test/resources/tutorial-decision-request.json"),
                 DecisionRequest.class);
         //
-        // Test a decision
+        // Test a decision - should start with a permit
         //
         Pair<DecisionResponse, Response> decision = service.makeDecision(decisionRequest, null);
         LOGGER.info(decision.getLeft().toString());
+        assertEquals("Permit", decision.getLeft().getStatus());
+        //
+        // This should be a deny
+        //
+        decisionRequest.getResource().put("user", "audit");
+        decision = service.makeDecision(decisionRequest, null);
+        LOGGER.info(decision.getLeft().toString());
+        assertEquals("Deny", decision.getLeft().getStatus());
     }
 
 }
