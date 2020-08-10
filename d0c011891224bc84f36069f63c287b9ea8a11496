@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0826eced_33858453",
+        "filename": "docs/xacml/tutorial/app/src/main/docker/README.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-08-10T12:47:22Z",
+      "side": 1,
+      "message": "should return... ?",
+      "revId": "d0c011891224bc84f36069f63c287b9ea8a11496",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9c4226f_1a17b246",
+        "filename": "docs/xacml/tutorial/app/src/main/java/org/onap/policy/tutorial/tutorial/TutorialTranslator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-08-10T12:47:22Z",
+      "side": 1,
+      "message": "make this a plain \"int\"?",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 16
+      },
+      "revId": "d0c011891224bc84f36069f63c287b9ea8a11496",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bb8c5d0_1fee62e1",
+        "filename": "docs/xacml/tutorial/app/src/main/java/org/onap/policy/tutorial/tutorial/TutorialTranslator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-08-10T12:47:22Z",
+      "side": 1,
+      "message": "remove \".toString()\"",
+      "range": {
+        "startLine": 111,
+        "startChar": 77,
+        "endLine": 111,
+        "endChar": 88
+      },
+      "revId": "d0c011891224bc84f36069f63c287b9ea8a11496",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc791b73_6e249de3",
+        "filename": "docs/xacml/xacml-tutorial.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-08-10T12:47:22Z",
+      "side": 1,
+      "message": "\"outlines\" \u003d\u003e \"outlined\"",
+      "range": {
+        "startLine": 358,
+        "startChar": 58,
+        "endLine": 358,
+        "endChar": 67
+      },
+      "revId": "d0c011891224bc84f36069f63c287b9ea8a11496",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
