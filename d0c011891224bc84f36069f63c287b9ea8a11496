@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ea00338f_7cb6f2ec",
+        "filename": "docs/xacml/tutorial/app/src/main/docker/README.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-08-12T12:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0826eced_33858453",
+      "revId": "d0c011891224bc84f36069f63c287b9ea8a11496",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9c4226f_1a17b246",
         "filename": "docs/xacml/tutorial/app/src/main/java/org/onap/policy/tutorial/tutorial/TutorialTranslator.java",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "d0c011891224bc84f36069f63c287b9ea8a11496",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e3a6584_e61351c9",
+        "filename": "docs/xacml/tutorial/app/src/main/java/org/onap/policy/tutorial/tutorial/TutorialTranslator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-08-12T12:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9c4226f_1a17b246",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 16
+      },
+      "revId": "d0c011891224bc84f36069f63c287b9ea8a11496",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "565e0bb9_85018b61",
+        "filename": "docs/xacml/tutorial/app/src/main/java/org/onap/policy/tutorial/tutorial/TutorialTranslator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-08-12T12:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb8c5d0_1fee62e1",
+      "range": {
+        "startLine": 111,
+        "startChar": 77,
+        "endLine": 111,
+        "endChar": 88
+      },
+      "revId": "d0c011891224bc84f36069f63c287b9ea8a11496",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc791b73_6e249de3",
         "filename": "docs/xacml/xacml-tutorial.rst",
         "patchSetId": 4
@@ -85,6 +151,30 @@
       "revId": "d0c011891224bc84f36069f63c287b9ea8a11496",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e01336ec_c5f4d615",
+        "filename": "docs/xacml/xacml-tutorial.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-08-12T12:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc791b73_6e249de3",
+      "range": {
+        "startLine": 358,
+        "startChar": 58,
+        "endLine": 358,
+        "endChar": 67
+      },
+      "revId": "d0c011891224bc84f36069f63c287b9ea8a11496",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
