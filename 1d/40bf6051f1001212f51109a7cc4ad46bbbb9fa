@@ -1,0 +1,10 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Liam Fallon <liam.fallon@est.tech>
+Code-Review+1: Sofia Wallin <sofia.wallin@est.tech>
+Code-Review+2: Pamela Dragosh <pdragosh@research.att.com>
+Code-Review+1: Jim Hahn <jrh3@att.com>
+Submitted-by: Jim Hahn <jrh3@att.com>
+Submitted-at: Tue, 18 Aug 2020 13:18:03 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/policy/parent/+/111362
+Project: policy/parent
+Branch: refs/heads/master
