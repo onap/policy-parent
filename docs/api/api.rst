@@ -32,7 +32,7 @@ One Service Template can contain multiple policies and policy types.
 
 Child policy types can inherit from parent policy types, so a hierarchy of policy types can be built up. For example, the HpaPolicy Policy
 Type in the table below is a child of a Resource Policy Type, which is a child of an Optimization policy.
-See also `the examples in Github <hhttps://github.com/onap/policy-models/tree/master/models-examples/src/main/resources/policytypes>`_.
+See also `the examples in Github <https://github.com/onap/policy-models/tree/master/models-examples/src/main/resources/policytypes>`_.
 
 ::
 
