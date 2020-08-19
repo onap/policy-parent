@@ -19,43 +19,69 @@ Policy Release Notes
 ..      * * *    FRANKFURT    * * *
 ..      ===========================
 
-Abstract
-========
 
-This document provides the release notes for the Policy Framework Project's Frankfurt release.
+Version: 6.0.1
+--------------
+
+:Release Date: 2020-08-17 (Frankfurt Maintenance Release #1)
+
+**Artifacts**
+
+Artifacts released:
+
+.. csv-table::
+   :header: "Repository", "Java Artifact", "Docker Image (if applicable)"
+   :widths: 15,10,10
+
+   "policy/drools-applications", "1.6.4", "onap/policy-pdpd-cl:1.6.4"
+
+
+**Bug Fixes**
+
+
+    * `[POLICY-2704] <https://jira.onap.org/browse/POLICY-2704>`_ - Legacy PDP-X and PAP stuck in PodIntializing
+
+
+**Security Notes**
+
+*Fixed Security Issues*
+
+
+    * `[POLICY-2678] <https://jira.onap.org/browse/POLICY-2678>`_ - policy/engine tomcat upgrade for CVE-2020-11996
+
+
+Version: 6.0.0
+--------------
+
+:Release Date: 2020-06-04 (Frankfurt Release)
+
+New features
+------------
+
+Artifacts released:
+
+.. csv-table::
+   :header: "Repository", "Java Artifact", "Docker Image (if applicable)"
+   :widths: 15,10,10
+
+   "policy/parent", "3.1.3", ""
+   "policy/common", "1.6.5", ""
+   "policy/models", "2.2.6", ""
+   "policy/api", "2.2.4", "onap/policy-api:2.2.4"
+   "policy/pap", "2.2.3", "onap/policy-pap:2.2.3"
+   "policy/drools-pdp", "1.6.3", "onap/policy-drools:1.6.3"
+   "policy/apex-pdp", "2.3.2", "onap/policy-apex-pdp:2.3.2"
+   "policy/xacml-pdp", "2.2.2", "onap/policy-xacml-pdp:2.2.2"
+   "policy/drools-applications", "1.6.4", "onap/policy-pdpd-cl:1.6.4"
+   "policy/engine", "1.6.4", "onap/policy-pe:1.6.4"
+   "policy/distribution", "2.3.2", "onap/policy-distribution:2.3.2"
+   "policy/docker", "2.0.1", "onap/policy-jdk-alpine:2.0.1, onap/policy-jre-alpine:2.0.1, onap/policy-jdk-debian:2.0.1, onap/policy-jre-debian:2.0.1"
 
 Summary
 =======
 
 New features include policy update notifications, native policy support, streamlined health check for the Policy Administration Point (PAP),
 configurable pre-loading/pre-deployment of policies, new APIs (e.g. to create one or more Policies with a single call), new experimental PDP monitoring GUI, and enhancements to all three PDPs: XACML, Drools, APEX.
-
-Release Data
-============
-
-+--------------------------------------+--------------------------------------+
-| **Policy Project**                   |                                      |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| **Docker images**                    | - policy-api 2.2.4                   |
-|                                      | - policy-pap 2.2.3                   |
-|                                      | - policy-pdpd-cl 1.6.4               |
-|                                      | - policy-xacml-pdp 2.2.2             |
-|                                      | - policy-apex-pdp 2.3.2              |
-|                                      | - policy-distribution 2.3.2          |
-|                                      | - policy-pe 1.6.4                    |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| **Release designation**              | 6.0.0 frankfurt                      |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-| **Release date**                     | 2020-06-04                           |
-|                                      |                                      |
-+--------------------------------------+--------------------------------------+
-
-
-New features
-------------
 
 Common changes in all policy components
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -285,6 +311,48 @@ Quick Links:
 ..      * * *     EL ALTO    * * *
 ..      ==========================
 
+Version: 5.0.2
+--------------
+
+:Release Date: 2020-10-24 (El Alto Maintenance Release #1)
+
+**New Features**
+
+Artifacts released:
+
+.. csv-table::
+   :header: "Repository", "Java Artifact", "Docker Image (if applicable)"
+   :widths: 15,10,10
+
+   "policy/api", "2.1.3", "onap/policy-api:2.1.3"
+   "policy/pap", "2.1.3", "onap/policy-pap:2.1.3"
+   "policy/drools-pdp", "1.5.3", "onap/policy-drools:1.5.3"
+   "policy/apex-pdp", "2.2.3", "onap/policy-apex-pdp:2.2.3"
+   "policy/xacml-pdp", "2.1.3", "onap/policy-xacml-pdp:2.1.3"
+   "policy/drools-applications", "1.5.4", "onap/policy-pdpd-cl:1.5.4"
+   "policy/engine", "1.5.3", "onap/policy-pe:1.5.3"
+   "policy/distribution", "2.2.2", "onap/policy-distribution:2.2.2"
+   "policy/docker", "1.4.0", "onap/policy-common-alpine:1.4.0, onap/policy/base-alpine:1.4.0"
+
+
+**Bug Fixes**
+
+
+    * `[PORTAL-760]  <https://jira.onap.org/browse/PORTAL-760>`_  - Access to Policy portal is impossible
+    * `[POLICY-2107] <https://jira.onap.org/browse/POLICY-2107>`_ - policy/distribution license issue in resource needs to be removed
+    * `[POLICY-2169] <https://jira.onap.org/browse/POLICY-2169>`_ - SDC client interface change caused compile error in policy distribution
+    * `[POLICY-2171] <https://jira.onap.org/browse/POLICY-2171>`_ - Upgrade elalto branch models and drools-applications
+    * `[POLICY-1509] <https://jira.onap.org/browse/POLICY-1509>`_ - Investigate Apex org.python.jython-standalone.2.7.1
+    * `[POLICY-2062] <https://jira.onap.org/browse/POLICY-2062>`_ - APEX PDP logs > 4G filled local storage
+
+
+**Security Notes**
+
+*Fixed Security Issues*
+
+
+    * `[POLICY-2475] <https://jira.onap.org/browse/POLICY-2475>`_ - Update El Alto component certificates
+
 Version: 5.0.1
 --------------
 
@@ -314,49 +382,49 @@ Artifacts released:
 The El Alto release for POLICY delivered the following Epics. For a full list of stories and tasks delivered in the El Alto release, refer to `JiraPolicyElAlto`_.
 
     * [POLICY-1727] - This epic covers technical debt left over from Dublin
-	- POLICY-969	Docker improvement in policy framwork modules
-	- POLICY-1074	Fix checkstyle warnings in every repository
-	- POLICY-1121	RPM build for Apex
-	- POLICY-1223	CII Silver Badging Requirements
-	- POLICY-1600	Clean up hash code equality checks, cloning and copying in policy-models
-	- POLICY-1646	Replace uses of getCanonicalName() with getName()
-	- POLICY-1652	Move PapRestServer to policy/common
-	- POLICY-1732	Enable maven-checkstyle-plugin in apex-pdp
-	- POLICY-1737	Upgrade oParent 2.0.0 - change daily jobs to staging jobs
-	- POLICY-1742	Make HTTP return code handling configurable in APEX
-	- POLICY-1743	Make URL configurable in REST Requestor and REST Client
-	- POLICY-1744	Remove topic.properties and incorporate into overall properties
-	- POLICY-1770	PAP REST API for PDPGroup Healthcheck
-	- POLICY-1771	Boost policy/api JUnit code coverage
-	- POLICY-1772	Boost policy/xacml-pdp JUnit code coverage
-	- POLICY-1773	Enhance the policy/xacml-pdp S3P Stability and Performance tests
-	- POLICY-1784	Better Handling of "version" field value with clients
-	- POLICY-1785	Deploy same policy with a new version simply adds to the list
-	- POLICY-1786	Create a simple way to populate the guard database for testing
-	- POLICY-1791	Address Sonar issues in new policy repos
-	- POLICY-1795	PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs. 
-	- POLICY-1800	API|PAP components use different version formats
-	- POLICY-1805	Build up stability test for api component to follow S3P requirements
-	- POLICY-1806	Build up S3P performance test for api component
-	- POLICY-1847	Add control loop coordination as a preloaded policy type
-	- POLICY-1871	Change policy/distribution to support ToscaPolicyType & ToscaPolicy
-	- POLICY-1881	Upgrade policy/distribution to latest SDC artifacts
-	- POLICY-1885	Apex-pdp: Extend CLIEditor to generate policy in ToscaServiceTemplate format
-	- POLICY-1898	Move apex-pdp & distribution documents to policy/parent
-	- POLICY-1942	Boost policy/apex-pdp JUnit code coverage
-	- POLICY-1953	Create addTopic taking BusTopicParams instead of Properties in policy/endpoints
+    - POLICY-969    Docker improvement in policy framwork modules
+    - POLICY-1074   Fix checkstyle warnings in every repository
+    - POLICY-1121   RPM build for Apex
+    - POLICY-1223   CII Silver Badging Requirements
+    - POLICY-1600   Clean up hash code equality checks, cloning and copying in policy-models
+    - POLICY-1646   Replace uses of getCanonicalName() with getName()
+    - POLICY-1652   Move PapRestServer to policy/common
+    - POLICY-1732   Enable maven-checkstyle-plugin in apex-pdp
+    - POLICY-1737   Upgrade oParent 2.0.0 - change daily jobs to staging jobs
+    - POLICY-1742   Make HTTP return code handling configurable in APEX
+    - POLICY-1743   Make URL configurable in REST Requestor and REST Client
+    - POLICY-1744   Remove topic.properties and incorporate into overall properties
+    - POLICY-1770   PAP REST API for PDPGroup Healthcheck
+    - POLICY-1771   Boost policy/api JUnit code coverage
+    - POLICY-1772   Boost policy/xacml-pdp JUnit code coverage
+    - POLICY-1773   Enhance the policy/xacml-pdp S3P Stability and Performance tests
+    - POLICY-1784   Better Handling of "version" field value with clients
+    - POLICY-1785   Deploy same policy with a new version simply adds to the list
+    - POLICY-1786   Create a simple way to populate the guard database for testing
+    - POLICY-1791   Address Sonar issues in new policy repos
+    - POLICY-1795   PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs.
+    - POLICY-1800   API|PAP components use different version formats
+    - POLICY-1805   Build up stability test for api component to follow S3P requirements
+    - POLICY-1806   Build up S3P performance test for api component
+    - POLICY-1847   Add control loop coordination as a preloaded policy type
+    - POLICY-1871   Change policy/distribution to support ToscaPolicyType & ToscaPolicy
+    - POLICY-1881   Upgrade policy/distribution to latest SDC artifacts
+    - POLICY-1885   Apex-pdp: Extend CLIEditor to generate policy in ToscaServiceTemplate format
+    - POLICY-1898   Move apex-pdp & distribution documents to policy/parent
+    - POLICY-1942   Boost policy/apex-pdp JUnit code coverage
+    - POLICY-1953   Create addTopic taking BusTopicParams instead of Properties in policy/endpoints
 
     * Additional items delivered with the release.
-	- POLICY-1637	Remove "version" from PdpGroup
-	- POLICY-1653	Remove isNullVersion() method
-	- POLICY-1966	Fix more sonar issues in policy drools
-	- POLICY-1988	Generate El Alto AAF Certificates
+    - POLICY-1637   Remove "version" from PdpGroup
+    - POLICY-1653   Remove isNullVersion() method
+    - POLICY-1966   Fix more sonar issues in policy drools
+    - POLICY-1988   Generate El Alto AAF Certificates
 
     * [POLICY-1823] - This epic covers the work to develop features that will be deployed dark in El Alto.
-	- POLICY-1762	Create CDS API model implementation
-	- POLICY-1763	Create CDS Actor
-	- POLICY-1899	Update optimization xacml application to support more flexible Decision API
-	- POLICY-1911	XACML PDP must be able to retrieve Policy Type from API
+    - POLICY-1762   Create CDS API model implementation
+    - POLICY-1763   Create CDS Actor
+    - POLICY-1899   Update optimization xacml application to support more flexible Decision API
+    - POLICY-1911   XACML PDP must be able to retrieve Policy Type from API
 
 
 **Bug Fixes**
@@ -366,12 +434,12 @@ The following bug fixes have been deployed with this release:
     * `[POLICY-1671] <https://jira.onap.org/browse/POLICY-1671>`_ - policy/engine JUnit tests now take over 30 minutes to run
     * `[POLICY-1725] <https://jira.onap.org/browse/POLICY-1725>`_ - XACML PDP returns 500 vs 400 for bad syntax JSON
     * `[POLICY-1793] <https://jira.onap.org/browse/POLICY-1793>`_ - API|MODELS: Retrieving Legacy Operational Policy as a Tosca Policy with wrong version
-    * `[POLICY-1795] <https://jira.onap.org/browse/POLICY-1795>`_ - PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs. 
+    * `[POLICY-1795] <https://jira.onap.org/browse/POLICY-1795>`_ - PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs.
     * `[POLICY-1800] <https://jira.onap.org/browse/POLICY-1800>`_ - API|PAP components use different version formats
     * `[POLICY-1802] <https://jira.onap.org/browse/POLICY-1802>`_ - Apex-pdp: context album is mandatory for policy model to compile
     * `[POLICY-1803] <https://jira.onap.org/browse/POLICY-1803>`_ - PAP should undeploy policies when subgroup is deleted
-    * `[POLICY-1807] <https://jira.onap.org/browse/POLICY-1807>`_ - Latest version is always returned when using the endpoint to retrieve all versions of a particular policy 
-    * `[POLICY-1808] <https://jira.onap.org/browse/POLICY-1808>`_ - API|PAP|PDP-X [new] should publish docker images with the following tag X.Y-SNAPSHOT-latest 
+    * `[POLICY-1807] <https://jira.onap.org/browse/POLICY-1807>`_ - Latest version is always returned when using the endpoint to retrieve all versions of a particular policy
+    * `[POLICY-1808] <https://jira.onap.org/browse/POLICY-1808>`_ - API|PAP|PDP-X [new] should publish docker images with the following tag X.Y-SNAPSHOT-latest
     * `[POLICY-1810] <https://jira.onap.org/browse/POLICY-1810>`_ - API: support "../deployed" REST API (URLs) for legacy policies
     * `[POLICY-1811] <https://jira.onap.org/browse/POLICY-1811>`_ - The endpoint of retrieving the latest version of TOSCA policy does not return the latest one, especially when there are double-digit versions
     * `[POLICY-1818] <https://jira.onap.org/browse/POLICY-1818>`_ - APEX does not allow arbitrary Kafka parameters to be specified
@@ -392,7 +460,7 @@ The following bug fixes have been deployed with this release:
 *Fixed Security Issues*
 
 
-    * `[POLICY-2115] <https://jira.onap.org/browse/POLICY-2115>`_ - Upgrade org.jgroups : jgroups : 4.0.12.Final 
+    * `[POLICY-2115] <https://jira.onap.org/browse/POLICY-2115>`_ - Upgrade org.jgroups : jgroups : 4.0.12.Final
     * `[POLICY-2084] <https://jira.onap.org/browse/POLICY-2084>`_ - Investigate pip (py2.py3-none-any) 9.0.1 (.whl) in apex-pdp
     * `[POLICY-2072] <https://jira.onap.org/browse/POLICY-2072>`_ - Upgrade io.netty : netty-codec-http2 and netty-common to 4.1.39.Final
     * `[POLICY-2005] <https://jira.onap.org/browse/POLICY-2005>`_ - Upgrade elastic search to 6.8.2
@@ -462,96 +530,96 @@ Artifacts released:
 The Dublin release for POLICY delivered the following Epics. For a full list of stories and tasks delivered in the Dublin release, refer to `JiraPolicyDublin`_.
 
     * [POLICY-1068] - This epic covers the work to cleanup, enhance, fix, etc. any Control Loop based code base.
-        - POLICY-1195	Separate model code from drools-applications into other repositories
-        - POLICY-1367	Spike - Experimentation for management of Drools templates and Operational Policies
-        - POLICY-1397	PDP-D: NOOP Endpoints Support to test Operational Policies.
-        - POLICY-1459	PDP-D [Control Loop] : Create a Control Loop flavored PDP-D image
+        - POLICY-1195   Separate model code from drools-applications into other repositories
+        - POLICY-1367   Spike - Experimentation for management of Drools templates and Operational Policies
+        - POLICY-1397   PDP-D: NOOP Endpoints Support to test Operational Policies.
+        - POLICY-1459   PDP-D [Control Loop] : Create a Control Loop flavored PDP-D image
 
     * [POLICY-1069] - This epic covers the work to harden the codebase for the Policy Framework project.
-        - POLICY-1007	Remove Jackson from policy framework components
-        - POLICY-1202	policy-engine & apex-pdp are using different version of eclipselink
-        - POLICY-1250	Fix issues reported by sonar in policy modules
-        - POLICY-1368	Remove hibernate from policy repos
-        - POLICY-1457	Use Alpine in base docker images
+        - POLICY-1007   Remove Jackson from policy framework components
+        - POLICY-1202   policy-engine & apex-pdp are using different version of eclipselink
+        - POLICY-1250   Fix issues reported by sonar in policy modules
+        - POLICY-1368   Remove hibernate from policy repos
+        - POLICY-1457   Use Alpine in base docker images
 
     * [POLICY-1072] - This epic covers the work to support S3P Performance criteria.
         - S3P Performance related items
 
     * [POLICY-1171] - Enhance CLC Facility
-        - POLICY-1173	High-level specification of coordination directives
+        - POLICY-1173   High-level specification of coordination directives
 
     * [POLICY-1220] - This epic covers the work to support S3P Security criteria
-        - POLICY-1538	Upgrade Elasticsearch to 6.4.x to clear security issue
+        - POLICY-1538   Upgrade Elasticsearch to 6.4.x to clear security issue
 
     * [POLICY-1269] - R4 Dublin - ReBuild Policy Infrastructure
-        - POLICY-1270	Policy Lifecycle API RESTful HealthCheck/Statistics Main Entry Point
-        - POLICY-1271	PAP RESTful HealthCheck/Statistics Main Entry Point
-        - POLICY-1272	Create the S3P JMeter tests for API, PAP, XACML (2nd Gen)
-        - POLICY-1273	Policy Type Application Design Requirements
-        - POLICY-1436	XACML PDP RESTful HealthCheck/Statistics Main Entry Point
-        - POLICY-1440	XACML PDP RESTful Decision API Main Entry Point
-        - POLICY-1441	Policy Lifecycle API RESTful Create/Read Main Entry Point for Policy Types
-        - POLICY-1442	Policy Lifecycle API RESTful Create/Read Main Entry Point for Concrete Policies
-        - POLICY-1443	PAP Dmaap PDP Register/UnRegister Main Entry Point
-        - POLICY-1444	PAP Dmaap Policy Deploy/Undeploy Policies Main Entry Point
-        - POLICY-1445	XACML PDP upgrade to xacml 2.0.0
-        - POLICY-1446	Policy Lifecycle API RESTful Delete Main Entry Point for Policy Types
-        - POLICY-1447	Policy Lifecycle API RESTful Delete Main Entry Point for Concrete Policies
-        - POLICY-1449	XACML PDP Dmaap Register/UnRegister Functionality
-        - POLICY-1451	XACML PDP Dmaap Deploy/UnDeploy Functionality
-        - POLICY-1452	Apex PDP Dmaap Register/UnRegister Functionality
-        - POLICY-1453	Apex PDP Dmaap Deploy/UnDeploy Functionality
-        - POLICY-1454	Drools PDP Dmaap Register/UnRegister Functionality
-        - POLICY-1455	Drools PDP Dmaap Deploy/UnDeploy Functionality
-        - POLICY-1456	Policy Architecture and Roadmap Documentation
-        - POLICY-1458	Create S3P JMeter Tests for Policy API
-        - POLICY-1460	Create S3P JMeter Tests for PAP
-        - POLICY-1461	Create S3P JMeter Tests for Policy XACML Engine (2nd Generation)
-        - POLICY-1462	Create S3P JMeter Tests for Policy SDC Distribution
-        - POLICY-1471	Policy Application Designer - Develop Guard and Control Loop Coordination Policy Type application
-        - POLICY-1474	Modifications of Control Loop Operational Policy to support new Policy Lifecycle API
-        - POLICY-1515	Prototype Policy Lifecycle API Swagger Entry Points
-        - POLICY-1516	Prototype the Policy Decision API
-        - POLICY-1541	PAP REST API for PDPGroup Query, Statistics & Delete
-        - POLICY-1542	PAP REST API for PDPGroup Deployment, State Management & Health Check
+        - POLICY-1270   Policy Lifecycle API RESTful HealthCheck/Statistics Main Entry Point
+        - POLICY-1271   PAP RESTful HealthCheck/Statistics Main Entry Point
+        - POLICY-1272   Create the S3P JMeter tests for API, PAP, XACML (2nd Gen)
+        - POLICY-1273   Policy Type Application Design Requirements
+        - POLICY-1436   XACML PDP RESTful HealthCheck/Statistics Main Entry Point
+        - POLICY-1440   XACML PDP RESTful Decision API Main Entry Point
+        - POLICY-1441   Policy Lifecycle API RESTful Create/Read Main Entry Point for Policy Types
+        - POLICY-1442   Policy Lifecycle API RESTful Create/Read Main Entry Point for Concrete Policies
+        - POLICY-1443   PAP Dmaap PDP Register/UnRegister Main Entry Point
+        - POLICY-1444   PAP Dmaap Policy Deploy/Undeploy Policies Main Entry Point
+        - POLICY-1445   XACML PDP upgrade to xacml 2.0.0
+        - POLICY-1446   Policy Lifecycle API RESTful Delete Main Entry Point for Policy Types
+        - POLICY-1447   Policy Lifecycle API RESTful Delete Main Entry Point for Concrete Policies
+        - POLICY-1449   XACML PDP Dmaap Register/UnRegister Functionality
+        - POLICY-1451   XACML PDP Dmaap Deploy/UnDeploy Functionality
+        - POLICY-1452   Apex PDP Dmaap Register/UnRegister Functionality
+        - POLICY-1453   Apex PDP Dmaap Deploy/UnDeploy Functionality
+        - POLICY-1454   Drools PDP Dmaap Register/UnRegister Functionality
+        - POLICY-1455   Drools PDP Dmaap Deploy/UnDeploy Functionality
+        - POLICY-1456   Policy Architecture and Roadmap Documentation
+        - POLICY-1458   Create S3P JMeter Tests for Policy API
+        - POLICY-1460   Create S3P JMeter Tests for PAP
+        - POLICY-1461   Create S3P JMeter Tests for Policy XACML Engine (2nd Generation)
+        - POLICY-1462   Create S3P JMeter Tests for Policy SDC Distribution
+        - POLICY-1471   Policy Application Designer - Develop Guard and Control Loop Coordination Policy Type application
+        - POLICY-1474   Modifications of Control Loop Operational Policy to support new Policy Lifecycle API
+        - POLICY-1515   Prototype Policy Lifecycle API Swagger Entry Points
+        - POLICY-1516   Prototype the Policy Decision API
+        - POLICY-1541   PAP REST API for PDPGroup Query, Statistics & Delete
+        - POLICY-1542   PAP REST API for PDPGroup Deployment, State Management & Health Check
 
     * [POLICY-1399] - This epic covers the work to support model drive control loop design as defined by the Control Loop Subcommittee
         - Model drive control loop related items
 
     * [POLICY-1404] - This epic covers the work to support the CCVPN Use Case for Dublin
-        - POLICY-1405	Develop SDNC API for trigger bandwidth
+        - POLICY-1405   Develop SDNC API for trigger bandwidth
 
     * [POLICY-1408] - This epic covers the work done with the Casablanca release
-        - POLICY-1410	List Policy API
-        - POLICY-1413	Dashboard enhancements
-        - POLICY-1414	Push Policy and DeletePolicy API enhancement
-        - POLICY-1416	Model enhancements to support CLAMP
-        - POLICY-1417	Resiliency improvements
-        - POLICY-1418	PDP APIs - make ClientAuth optional
-        - POLICY-1419	Better multi-role support
-        - POLICY-1420	Model enhancement to support embedded JSON
-        - POLICY-1421	New audit data for push/delete
-        - POLICY-1422	Enhanced encryption
-        - POLICY-1423	Save original model file
-        - POLICY-1427	Controller Logging Feature
-        - POLICY-1489	PDP-D: Nested JSON Event Filtering support with JsonPath
-        - POLICY-1499	Mdc Filter Feature
+        - POLICY-1410   List Policy API
+        - POLICY-1413   Dashboard enhancements
+        - POLICY-1414   Push Policy and DeletePolicy API enhancement
+        - POLICY-1416   Model enhancements to support CLAMP
+        - POLICY-1417   Resiliency improvements
+        - POLICY-1418   PDP APIs - make ClientAuth optional
+        - POLICY-1419   Better multi-role support
+        - POLICY-1420   Model enhancement to support embedded JSON
+        - POLICY-1421   New audit data for push/delete
+        - POLICY-1422   Enhanced encryption
+        - POLICY-1423   Save original model file
+        - POLICY-1427   Controller Logging Feature
+        - POLICY-1489   PDP-D: Nested JSON Event Filtering support with JsonPath
+        - POLICY-1499   Mdc Filter Feature
 
     * [POLICY-1438] - This epic covers the work to support 5G OOF PCI Use Case
-        - POLICY-1463	Functional code changes in Policy for OOF SON use case
-        - POLICY-1464	Config related aspects for OOF SON use case
+        - POLICY-1463   Functional code changes in Policy for OOF SON use case
+        - POLICY-1464   Config related aspects for OOF SON use case
 
     * [POLICY-1450] - This epic covers the work to support the Scale Out Use Case.
-        - POLICY-1278	AAI named-queries are being deprecated and should be replaced with custom-queries
-        - POLICY-1545	E2E Automation - Parse the newly added model ids from operation policy
+        - POLICY-1278   AAI named-queries are being deprecated and should be replaced with custom-queries
+        - POLICY-1545   E2E Automation - Parse the newly added model ids from operation policy
 
     * Additional items delivered with the release.
-        - POLICY-1159	Move expectException to policy-common/utils-test
-        - POLICY-1176	Work on technical debt introduced by CLC POC
-        - POLICY-1266	A&AI Modularity
-        - POLICY-1274	further improvement in PSSD S3P test
-        - POLICY-1401	Build onap.policies.Monitoring TOSCA Policy Template
-        - POLICY-1465	Support configurable Heap Memory Settings for JVM processes
+        - POLICY-1159   Move expectException to policy-common/utils-test
+        - POLICY-1176   Work on technical debt introduced by CLC POC
+        - POLICY-1266   A&AI Modularity
+        - POLICY-1274   further improvement in PSSD S3P test
+        - POLICY-1401   Build onap.policies.Monitoring TOSCA Policy Template
+        - POLICY-1465   Support configurable Heap Memory Settings for JVM processes
 
 
 **Bug Fixes**
@@ -589,7 +657,7 @@ Quick Links:
 
 The following known issues will be addressed in a future release:
 
-    * `[POLICY-1795] - <https://jira.onap.org/browse/POLICY-1795>`_ PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs. 
+    * `[POLICY-1795] - <https://jira.onap.org/browse/POLICY-1795>`_ PAP: bounced apex and xacml pdps show deleted instance in pdp status through APIs.
     * `[POLICY-1810] - <https://jira.onap.org/browse/POLICY-1810>`_ API: ensure that the REST APISs (URLs) are supported and consistent regardless the type of policy: operational, guard, tosca-compliant.
     * `[POLICY-1277] - <https://jira.onap.org/browse/POLICY-1277>`_ policy config takes too long time to become retrievable in PDP
     * `[POLICY-1378] - <https://jira.onap.org/browse/POLICY-1378>`_ add support to append value into policyScope while one policy could be used by several services
@@ -599,7 +667,7 @@ The following known issues will be addressed in a future release:
     * `[POLICY-1793] - <https://jira.onap.org/browse/POLICY-1793>`_ API|MODELS: Retrieving Legacy Operational Policy as a Tosca Policy with wrong version
     * `[POLICY-1800] - <https://jira.onap.org/browse/POLICY-1800>`_ API|PAP components use different version formats
     * `[POLICY-1802] - <https://jira.onap.org/browse/POLICY-1802>`_ Apex-pdp: context album is mandatory for policy model to compile
-    * `[POLICY-1808] - <https://jira.onap.org/browse/POLICY-1808>`_ API|PAP|PDP-X [new] should publish docker images with the following tag X.Y-SNAPSHOT-latest 
+    * `[POLICY-1808] - <https://jira.onap.org/browse/POLICY-1808>`_ API|PAP|PDP-X [new] should publish docker images with the following tag X.Y-SNAPSHOT-latest
     * `[POLICY-1818] - <https://jira.onap.org/browse/POLICY-1818>`_ APEX does not allow arbitrary Kafka parameters to be specified
     * `[POLICY-1276] - <https://jira.onap.org/browse/POLICY-1276>`_ JRuby interpreter shutdown fails on second and subsequent runs
     * `[POLICY-1803] - <https://jira.onap.org/browse/POLICY-1803>`_ PAP should undeploy policies when subgroup is deleted
@@ -757,59 +825,59 @@ Version: 2.0.0
 The Beijing release for POLICY delivered the following Epics. For a full list of stories and tasks delivered in the Beijing release, refer to `JiraPolicyBeijing`_.
 
     * [POLICY-390] - This epic covers the work to harden the Policy platform software base (incl 50% JUnit coverage)
-        - POLICY-238	policy/drools-applications: clean up maven structure
-        - POLICY-336	Address Technical Debt
-        - POLICY-338	Address JUnit Code Coverage
-        - POLICY-377	Policy Create API should validate input matches DCAE microservice template
-        - POLICY-389	Cleanup Jenkin's CI/CD process's
-        - POLICY-449	Policy API + Console : Common Policy Validation
-        - POLICY-568	Integration with org.onap AAF project
-        - POLICY-610	Support vDNS scale out for multiple times in Beijing release
+        - POLICY-238    policy/drools-applications: clean up maven structure
+        - POLICY-336    Address Technical Debt
+        - POLICY-338    Address JUnit Code Coverage
+        - POLICY-377    Policy Create API should validate input matches DCAE microservice template
+        - POLICY-389    Cleanup Jenkin's CI/CD process's
+        - POLICY-449    Policy API + Console : Common Policy Validation
+        - POLICY-568    Integration with org.onap AAF project
+        - POLICY-610    Support vDNS scale out for multiple times in Beijing release
 
     * [POLICY-391] - This epic covers the work to support Release Planning activities
-        - POLICY-552	ONAP Licensing Scan - Use Restrictions
+        - POLICY-552    ONAP Licensing Scan - Use Restrictions
 
     * [POLICY-392] - Platform Maturity Requirements - Performance Level 1
-        - POLICY-529	Platform Maturity Performance - Drools PDP
-        - POLICY-567	Platform Maturity Performance - PDP-X
+        - POLICY-529    Platform Maturity Performance - Drools PDP
+        - POLICY-567    Platform Maturity Performance - PDP-X
 
     * [POLICY-394] - This epic covers the work required to support a Policy developer environment in which Policy Developers can create, update policy templates/rules separate from the policy Platform runtime platform.
-        - POLICY-488	pap should not add rules to official template provided in drools applications
+        - POLICY-488    pap should not add rules to official template provided in drools applications
 
     * [POLICY-398] - This epic covers the body of work involved in supporting policy that is platform specific.
-        - POLICY-434	need PDP /getConfig to return an indicator of where to find the config data - in config.content versus config field
+        - POLICY-434    need PDP /getConfig to return an indicator of where to find the config data - in config.content versus config field
 
     * [POLICY-399] - This epic covers the work required to policy enable Hardware Platform Enablement
-        - POLICY-622	Integrate OOF Policy Model into Policy Platform
+        - POLICY-622    Integrate OOF Policy Model into Policy Platform
 
     * [POLICY-512] - This epic covers the work to support Platform Maturity Requirements - Stability Level 1
-        - POLICY-525	Platform Maturity Stability - Drools PDP
-        - POLICY-526	Platform Maturity Stability - XACML PDP
+        - POLICY-525    Platform Maturity Stability - Drools PDP
+        - POLICY-526    Platform Maturity Stability - XACML PDP
 
     * [POLICY-513] - Platform Maturity Requirements - Resiliency Level 2
-        - POLICY-527	Platform Maturity Resiliency - Policy Engine GUI and PAP
-        - POLICY-528	Platform Maturity Resiliency - Drools PDP
-        - POLICY-569	Platform Maturity Resiliency - BRMS Gateway
-        - POLICY-585	Platform Maturity Resiliency - XACML PDP
-        - POLICY-586	Platform Maturity Resiliency - Planning
-        - POLICY-681	Regression Test Use Cases
+        - POLICY-527    Platform Maturity Resiliency - Policy Engine GUI and PAP
+        - POLICY-528    Platform Maturity Resiliency - Drools PDP
+        - POLICY-569    Platform Maturity Resiliency - BRMS Gateway
+        - POLICY-585    Platform Maturity Resiliency - XACML PDP
+        - POLICY-586    Platform Maturity Resiliency - Planning
+        - POLICY-681    Regression Test Use Cases
 
     * [POLICY-514] - This epic covers the work to support Platform Maturity Requirements - Security Level 1
-        - POLICY-523	Platform Maturity Security - CII Badging - Project Website
+        - POLICY-523    Platform Maturity Security - CII Badging - Project Website
 
     * [POLICY-515] - This epic covers the work to support Platform Maturity Requirements - Escalability Level 1
-        - POLICY-531	Platform Maturity Scalability - XACML PDP
-        - POLICY-532	Platform Maturity Scalability - Drools PDP
-        - POLICY-623	Docker image re-design
+        - POLICY-531    Platform Maturity Scalability - XACML PDP
+        - POLICY-532    Platform Maturity Scalability - Drools PDP
+        - POLICY-623    Docker image re-design
 
     * [POLICY-516] - This epic covers the work to support Platform Maturity Requirements - Manageability Level 1
-        - POLICY-533	Platform Maturity Manageability L1 - Logging
-        - POLICY-534	Platform Maturity Manageability - Instantiation < 1 hour
+        - POLICY-533    Platform Maturity Manageability L1 - Logging
+        - POLICY-534    Platform Maturity Manageability - Instantiation < 1 hour
 
     * [POLICY-517] - This epic covers the work to support Platform Maturity Requirements - Usability Level 1
-        - POLICY-535	Platform Maturity Usability - User Guide
-        - POLICY-536	Platform Maturity Usability - Deployment Documentation
-        - POLICY-537	Platform Maturity Usability - API Documentation
+        - POLICY-535    Platform Maturity Usability - User Guide
+        - POLICY-536    Platform Maturity Usability - Deployment Documentation
+        - POLICY-537    Platform Maturity Usability - API Documentation
 
     * [POLICY-546] - R2 Beijing - Various enhancements requested by clients to the way we handle TOSCA models.
 
@@ -938,7 +1006,7 @@ The Amsterdam release continued evolving the design driven architecture of and f
     - The operational policy template has been tested with the vFW, vCPE, vDNS and VOLTE use cases.  Additional development may/may not be required for other scenarios.
 
     - For vLBS Use Case, the following steps are required to setup the service instance:
-       	-  Create a Service Instance via VID.
+        -  Create a Service Instance via VID.
         -  Create a VNF Instance via VID.
         -  Preload SDNC with topology data used for the actual VNF instantiation (both base and DNS scaling modules). NOTE: you may want to set "vlb_name_0" in the base VF module data to something unique. This is the vLB server name that DCAE will pass to Policy during closed loop. If the same name is used multiple times, the Policy name-query to AAI will show multiple entries, one for each occurrence of that vLB VM name in the OpenStack zone. Note that this is not a limitation, typically server names in a domain are supposed to be unique.
         -  Instantiate the base VF module (vLB, vPacketGen, and one vDNS) via VID. NOTE: The name of the VF module MUST start with ``Vfmodule_``. The same name MUST appear in the SDNC preload of the base VF module topology. We'll relax this naming requirement for Beijing Release.
@@ -968,22 +1036,22 @@ The Amsterdam release continued evolving the design driven architecture of and f
 
 .. note
 ..      CHANGE  HISTORY
-..	09/19/2019 - Updated for El Alto Release.
-..	05/16/2019 - Updated for Dublin Release.
+..  09/19/2019 - Updated for El Alto Release.
+..  05/16/2019 - Updated for Dublin Release.
 ..      01/17/2019 - Updated for Casablanca Maintenance Release.
 ..      11/19/2018 - Updated for Casablanca.  Also, fixed bugs is a list of bugs where the "Affected Version" is Beijing.
-..		Changed version number to use ONAP versions.
+..      Changed version number to use ONAP versions.
 ..      10/08/2018 - Initial document for Casablanca release.
-..	05/29/2018 - Information for Beijing release.
+..  05/29/2018 - Information for Beijing release.
 ..      03/22/2018 - Initial document for Beijing release.
 ..      01/15/2018 - Added change for version 1.1.3 to the Amsterdam branch.  Also corrected prior version (1.2.0) to (1.1.1)
-..		Also, Set up initial information for Beijing.
-..		Excluded POLICY-454 from bug list since it doesn't apply to Beijing per Jorge.
+..      Also, Set up initial information for Beijing.
+..      Excluded POLICY-454 from bug list since it doesn't apply to Beijing per Jorge.
 
 
 End of Release Notes
 
 .. How to notes for SS
-..	For initial document: list epic and user stories for each, list user stories with no epics.
-..     	For Bugs section, list bugs where Affected Version is a prior release (Casablanca, Beijing etc), Fixed Version is the current release (Dublin), Resolution is done.
-..     	For Known issues, list bugs that are slotted for a future release.
+..  For initial document: list epic and user stories for each, list user stories with no epics.
+..      For Bugs section, list bugs where Affected Version is a prior release (Casablanca, Beijing etc), Fixed Version is the current release (Dublin), Resolution is done.
+..      For Known issues, list bugs that are slotted for a future release.
