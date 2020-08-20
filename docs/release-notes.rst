@@ -16,6 +16,48 @@ Policy Release Notes
 ..      * * *     EL ALTO    * * *
 ..      ==========================
 
+Version: 5.0.2
+--------------
+
+:Release Date: 2020-08-24 (El Alto Maintenance Release #1)
+
+**New Features**
+
+Artifacts released:
+
+.. csv-table::
+   :header: "Repository", "Java Artifact", "Docker Image (if applicable)"
+   :widths: 15,10,10
+
+   "policy/api", "2.1.3", "onap/policy-api:2.1.3"
+   "policy/pap", "2.1.3", "onap/policy-pap:2.1.3"
+   "policy/drools-pdp", "1.5.3", "onap/policy-drools:1.5.3"
+   "policy/apex-pdp", "2.2.3", "onap/policy-apex-pdp:2.2.3"
+   "policy/xacml-pdp", "2.1.3", "onap/policy-xacml-pdp:2.1.3"
+   "policy/drools-applications", "1.5.4", "onap/policy-pdpd-cl:1.5.4"
+   "policy/engine", "1.5.3", "onap/policy-pe:1.5.3"
+   "policy/distribution", "2.2.2", "onap/policy-distribution:2.2.2"
+   "policy/docker", "1.4.0", "onap/policy-common-alpine:1.4.0, onap/policy/base-alpine:1.4.0"
+
+
+**Bug Fixes**
+
+
+    * `[PORTAL-760]  <https://jira.onap.org/browse/PORTAL-760>`_  - Access to Policy portal is impossible
+    * `[POLICY-2107] <https://jira.onap.org/browse/POLICY-2107>`_ - policy/distribution license issue in resource needs to be removed
+    * `[POLICY-2169] <https://jira.onap.org/browse/POLICY-2169>`_ - SDC client interface change caused compile error in policy distribution
+    * `[POLICY-2171] <https://jira.onap.org/browse/POLICY-2171>`_ - Upgrade elalto branch models and drools-applications
+    * `[POLICY-1509] <https://jira.onap.org/browse/POLICY-1509>`_ - Investigate Apex org.python.jython-standalone.2.7.1
+    * `[POLICY-2062] <https://jira.onap.org/browse/POLICY-2062>`_ - APEX PDP logs > 4G filled local storage
+
+
+**Security Notes**
+
+*Fixed Security Issues*
+
+
+    * `[POLICY-2475] <https://jira.onap.org/browse/POLICY-2475>`_ - Update El Alto component certificates
+
 Version: 5.0.1
 --------------
 
