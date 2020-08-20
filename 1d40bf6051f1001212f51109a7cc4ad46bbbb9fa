@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7edbb121_25df4c88",
+        "filename": "docs/pap/notification/dmaap-pap-notif.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-08-20T14:12:18Z",
+      "side": 0,
+      "message": "i think this was an oopsy",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "1d40bf6051f1001212f51109a7cc4ad46bbbb9fa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
