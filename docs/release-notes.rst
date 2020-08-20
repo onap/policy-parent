@@ -23,7 +23,7 @@ Policy Release Notes
 Version: 6.0.1
 --------------
 
-:Release Date: 2020-08-17 (Frankfurt Maintenance Release #1)
+:Release Date: 2020-08-21 (Frankfurt Maintenance Release #1)
 
 **Artifacts**
 
@@ -314,7 +314,7 @@ Quick Links:
 Version: 5.0.2
 --------------
 
-:Release Date: 2020-10-24 (El Alto Maintenance Release #1)
+:Release Date: 2020-08-24 (El Alto Maintenance Release #1)
 
 **New Features**
 
