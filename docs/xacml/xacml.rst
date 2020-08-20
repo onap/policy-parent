@@ -79,9 +79,12 @@ The following policy types derive from onap.policies.Monitoring:
 .. csv-table::
    :header: "Derived Policy Type", "Action", "Description"
 
-   "onap.policies.monitoring.cdap.tca.hi.lo.app", "configure", "TCA DCAE microservice component"
+   "onap.policies.monitoring.tcagen2", "configure", "TCA DCAE microservice gen2 component"
    "onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server", "configure", "REST Collector"
    "onap.policies.monitoring.docker.sonhandler.app", "configure", "SON Handler microservice component"
+
+.. note::
+   DCAE project deprecated TCA DCAE microservice in lieu for their gen2 microservice. Thus, the policy type onap.policies.monitoring.cdap.tca.hi.lo.app was removed from Policy Framework.
 
 This is an example Decision API payload made to retrieve a decision for a Monitoring Policy by id. Not recommended - as users may change id's of a policy. Available for backward compatibility.
 
