@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8ac10b3_7df49d64",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-08-21T13:34:43Z",
+      "side": 1,
+      "message": "should this be \"Java\"?\n\nsame question on the next line",
+      "range": {
+        "startLine": 1019,
+        "startChar": 180,
+        "endLine": 1019,
+        "endChar": 184
+      },
+      "revId": "b621de4c26b67e9733d253a3edbe11b7b32c5423",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
