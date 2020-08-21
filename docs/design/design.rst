@@ -176,6 +176,13 @@ The Blacklist Guard Supports blacklisting control loop actions from being perfor
 
 Please see the definition of the `Guard Blacklist Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Blacklist.yaml>`_
 
+3.4 Filter Guard onap.policies.controlloop.guard.common.Filter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Filter Guard Supports filtering control loop actions from being performed on specific entity id's.
+
+Please see the definition of the `Guard Filter Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Filter.yaml>`_
+
 4 Optimization onap.policies.Optimization
 -----------------------------------------
 
