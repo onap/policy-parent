@@ -114,7 +114,7 @@ To ease policy creation, we preload several widely used policy types in policy d
    :header: "Policy Type Name", "Payload"
    :widths: 15,10
 
-   "Monitoring.TCA", `onap.policies.monitoring.cdap.tca.hi.lo.app.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app.yaml>`_
+   "Monitoring.TCA", `onap.policies.monitoring.tcagen2.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.monitoring.tcagen2.yaml>`_
    "Monitoring.Collectors", `onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.yaml>`_
    "Optimization", `onap.policies.Optimization.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.Optimization.yaml>`_
    "Optimization.Resource", `onap.policies.optimization.Resource.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.Resource.yaml>`_
@@ -268,13 +268,13 @@ JSON payload for POST calls can be downloaded from policy table above.
 If you are accessing the api from the container, the default *ip* and *port* would be **https:/policy-api:6969/policy/api/v1/**.
 
 Create vFirewall Monitoring Policy::
-  curl --user 'healthcheck:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.monitoring.input.tosca.json
+  curl --user 'healthcheck:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.tcagen2/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.monitoring.input.tosca.json
 
 Get vFirewall Monitoring Policy::
-  curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app/versions/1.0.0/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+  curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.tcagen2/versions/1.0.0/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
 
 Delete vFirewall Monitoring Policy::
-  curl --user 'healthcheck:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.cdap.tca.hi.lo.app/versions/1.0.0/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+  curl --user 'healthcheck:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.tcagen2/versions/1.0.0/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
 
 Create vFirewall Operational Policy::
   curl --user 'healthcheck:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.operational.input.tosca.json

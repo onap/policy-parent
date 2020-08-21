@@ -4,6 +4,6 @@
   "ONAPInstance": "622431a4-9dea-4eae-b443-3b2164639c64",
   "action": "configure",
   "resource": {
-      "policy-type": "onap.policies.monitoring.cdap.tca.hi.lo.app"
+      "policy-type": "onap.policies.monitoring.tcagen2"
   }
 }

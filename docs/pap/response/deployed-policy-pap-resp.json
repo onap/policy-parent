@@ -1,6 +1,6 @@
 [
   {
-    "policy-type": "onap.policies.monitoring.cdap.tca.hi.lo.app",
+    "policy-type": "onap.policies.monitoring.tcagen2",
     "policy-type-version": "1.0.0",
     "policy-id": "MICROSERVICE_vFW_CDS_Service_v2_0_app_1_0_0_I95",
     "policy-version": "1.0.0",
@@ -9,7 +9,7 @@
     "incomplete-count": 0
   },
   {
-    "policy-type": "onap.policies.monitoring.cdap.tca.hi.lo.app",
+    "policy-type": "onap.policies.monitoring.tcagen2",
     "policy-type-version": "1.0.0",
     "policy-id": "MICROSERVICE_vFW_CDS_Service_v2_0_app_1_0_0_WNX",
     "policy-version": "1.0.0",

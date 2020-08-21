@@ -23,7 +23,7 @@
                     "properties": {},
                     "supportedPolicyTypes": [
                         {
-                            "name": "onap.policies.monitoring.cdap.tca.hi.lo.app",
+                            "name": "onap.policies.monitoring.tcagen2",
                             "version": "1.0.0"
                         }
                     ],

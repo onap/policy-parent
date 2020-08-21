@@ -250,10 +250,10 @@ sent to the PAP in a *PDP_STATUS* message is unknown to the PAP, the PAP locks t
     pdp_group: onap.pdpgroup.Monitoring
     pdp_subgroup: xacml
     supported_policy_types:
-      - onap.monitoring.cdap.tca.hi.lo.app
+      - onap.monitoring.tcagen2
      policies:
       - onap.scaleout.tca:message
-          policy_type: onap.policies.monitoring.cdap.tca.hi.lo.app
+          policy_type: onap.policies.monitoring.tcagen2
           policy_type_version: 1.0.0
           properties:
             # Omitted for brevity
