@@ -106,6 +106,7 @@ These Policy Types are used by Control Loop Drools Engine to support guarding co
    "onap.policies.controlloop.guard.common.FrequencyLimiter", "guard", "Limits frequency of actions over a specified time period"
    "onap.policies.controlloop.guard.common.Blacklist", "guard", "Blacklists a regexp of VNF IDs"
    "onap.policies.controlloop.guard.common.MinMax", "guard", "For scaling, enforces a min/max number of VNFS"
+   "onap.policies.controlloop.guard.common.Filter", "guard", "Used for filtering entities in A&AI from Control Loop actions"
    "onap.policies.controlloop.guard.coordination.FirstBlocksSecond", "guard", "Gives priority to one control loop vs another"
 
 This is an example Decision API payload made to retrieve a decision for a Guard Policy Type.
@@ -117,6 +118,90 @@ The return decision simply has "permit" or "deny" in the response to tell the ca
 
 .. literalinclude:: decision.guard.response.json
   :language: JSON
+
+Guard Common Base Policy Type
+-----------------------------
+Each guard Policy Type derives from **onap.policies.controlloop.guard.Common** base policy type. Thus, they share a set of common
+properties.
+
+.. csv-table:: Common Properties for all Guards
+   :header: "Property", "Examples", "Required", "Type", "Description"
+
+   "actor", "APPC, SO", "Required", "String", "Identifies the actor involved in the Control Loop operation."
+   "operation", "Restart, VF Module Create", "Required", "String", "Identifies the Control Loop operation the actor must perform."
+   "timeRange", "", "Optional", "tosca.datatypes.TimeInterval", "A given time range the guard is in effect."
+   "id", "control-loop-id", "Optional", "String", "A specific Control Loop id the guard is in effect."
+
+`Common Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Common.yaml>`__
+
+Frequency Limiter Guard Policy Type
+-----------------------------------
+The Frequency Limiter Guard is used to specify limits as to how many operations can occur over a given time period.
+
+.. csv-table:: Frequency Guard Properties
+   :header: "Property", "Examples", "Required", "Type", "Description"
+
+   "timeWindow", "10, 60", "Required", "integer", "The time window to count the actions against."
+   "timeUnits", "second minute, hour, day, week, month, year", "Required", "String", "The units of time the window is counting"
+   "limit", "5", "Required", "integer", "The limit value to be checked against."
+
+.. literalinclude:: example.guard.limiter.yaml
+  :language: YAML
+
+`Frequency Limiter Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.FrequencyLimiter.yaml>`__
+
+Min/Max Guard Policy Type
+-------------------------
+The Min/Max Guard is used to specify a minimum or maximum number of an entity in A&AI. Typically this is a VFModule for Scaling operations. One should specify either a min or a max value, or both a min and max value. At least one must be specified.
+
+.. csv-table:: Min/Max Guard Properties
+   :header: "Property", "Examples", "Required", "Type", "Description"
+
+   "target", "e6130d03-56f1-4b0a-9a1d-e1b2ebc30e0e", "Required", "String", "The target entity that has scaling restricted."
+   "min", "1", "Optional", "integer", "Minimum value. Optional only if max is not specified."
+   "max", "5", "Optional", "integer", "Maximum value. Optional only if min is not specified."
+
+.. literalinclude:: example.guard.minmax.yaml
+  :language: YAML
+
+`Min/Max Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.MinMax.yaml>`__
+
+Blacklist Guard Policy Type
+---------------------------
+The Blacklist Guard is used to specify a list of A&AI entities that are blacklisted from having an operation performed on them. Recommend using vnf-id for the A&AI entity that is specified.
+
+.. csv-table:: Blacklist Guard Properties
+   :header: "Property", "Examples", "Required", "Type", "Description"
+
+   "blacklist", "e6130d03-56f1-4b0a-9a1d-e1b2ebc30e0e", "Required", "list of string", "List of target entity's that are blacklisted from an operation."
+
+.. literalinclude:: example.guard.blacklist.yaml
+  :language: YAML
+
+`Blacklist Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Blacklist.yaml>`__
+
+Filter Guard Policy Type
+------------------------
+The Filter Guard is a more robust guard for blacklisting and whitelisting A&AI entities from control loop operations. The intent for this guard is to filter in or out a block of entities, while allowing the ability to filter in or out specific entities. This allows a DevOps team to control the introduction of a Control Loop for a region or specific VNF's, as well as block specific VNF's that ill-behaving when emergency network conditions arise. Care and testing should be taken to understand the ramification of combining multiple filters as well as use in conjunction to other Guard Policy Types. The **algorithm** property allows the Policy Designer to specify a precedence needed towards blacklisting or whitelisting. See the examples in the Policy Type link below for more information.
+
+.. csv-table:: Filter Guard Properties
+   :header: "Property", "Examples", "Required", "Type", "Description"
+
+   "algorithm", "", "Required", "What algorithm to be applied", "blacklist-overrides or whitelist-overrides are the valid values. Indicates whether blacklisting or whitelisting has precedence."
+   "filters", "", "Required", "list of onap.datatypes.guard.filter", "List of datatypes that describe the filter."
+
+.. csv-table:: Filter Guard onap.datatypes.guard.filter Properties
+   :header: "Property", "Examples", "Required", "Type", "Description"
+
+   "field", "generic-vnf.vnf-name", "Required", "String", "Field used to perform filter on and must be a string value. See the Policy Type below for valid values."
+   "filter", "vnf-id-1", "Required", "String", "The filter being applied."
+   "function", "string-equal", "Required", "String", "The function that is applied to the filter. See the Policy Type below for valid values."
+   "blacklist", "true", "Required", "boolean", "Whether the result of the filter function applied to the filter is blacklisted or whitelisted (eg Deny or Permit)."
+
+.. literalinclude:: example.guard.filter.yaml
+  :language: YAML
+
+`Filter Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Filter.yaml>`__
 
 .. _xacml-optimization-label:
 
