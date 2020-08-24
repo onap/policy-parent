@@ -1,0 +1,39 @@
+tosca_definitions_version: tosca_simple_yaml_1_1_0
+topology_template:
+   policies:
+   -  filter.block.region.allow.one.vnf:
+         description: Block this region from Control Loop actions, but allow a specific vnf.
+         type: onap.policies.controlloop.guard.common.Filter
+         type_version: 1.0.0
+         version: 1.0.0
+         properties:
+            actor: SO
+            operation: VF Module Create
+            algorithm: whitelist-overrides
+            filters:
+            -  field: cloud-region.cloud-region-id
+               filter: RegionOne
+               function: string-equal
+               blacklist: true
+            -  field: generic-vnf.vnf-id
+               filter: e6130d03-56f1-4b0a-9a1d-e1b2ebc30e0e
+               function: string-equal
+               blacklist: false
+   -  filter.allow.region.block.one.vnf:
+         description: allow this region to do Control Loop actions, but block a specific vnf.
+         type: onap.policies.controlloop.guard.common.Filter
+         type_version: 1.0.0
+         version: 1.0.0
+         properties:
+            actor: SO
+            operation: VF Module Create
+            algorithm: blacklist-overrides
+            filters:
+            -  field: cloud-region.cloud-region-id
+               filter: RegionTwo
+               function: string-equal
+               blacklist: false
+            -  field: generic-vnf.vnf-id
+               filter: f17face5-69cb-4c88-9e0b-7426db7edddd
+               function: string-equal
+               blacklist: true
