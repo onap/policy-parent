@@ -23,6 +23,7 @@ The following Policy Types are supported by the XACML PDP Engine (PDP-X):
     "Optimization", "onap.policies.Optimization", "optimize", "Optimization policy types used by OOF"
     "Naming", "onap.policies.Naming", "naming", "Naming policy types used by SDNC"
     "Native", "onap.policies.native.Xacml", "native", "Native XACML Policies"
+    "Match", "onap.policies.Match", "native", "Matchable Policy Types for the ONAP community to use"
 
 Each Policy Type is implemented as an application that extends the **XacmlApplicationServiceProvider**, and provides a **ToscaPolicyTranslator** that translates the TOSCA representation of the policy into a XACML OASIS 3.0 standard policy.
 
@@ -44,6 +45,8 @@ A simple translator that wraps the TOSCA policy into a XACML policy and performs
 `Implementation of Combined Results Translator <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdCombinedPolicyResultsTranslator.java>`_.
 
 The Monitoring and Naming applications use this translator.
+
+.. _xacml-matchable-label:
 
 StdMatchableTranslator Translator
 ---------------------------------
@@ -255,6 +258,31 @@ According to the XACML 3.0 specification, two content-types are supported and us
 This is an example Native Decision API payload made to retrieve a decision for whether Julius Hibbert can read http://medico.com/record/patient/BartSimpson.
 
 .. literalinclude:: decision.native.json
+  :language: JSON
+
+Match Policy Type
+=================
+
+This Policy type can be used to design your own Policy Type and utilize the :ref:`StdMatchableTranslator <xacml-matchable-label>`, and does not need to build your own custom application. You can design your Policy Type by inheriting from the Match policy type (eg. onap.policies.match.<YourPolicyType>) and adding a **matchable** metadata set to **true** for the properties that you would like to request a Decision on. All a user would need to do is then use the Policy Lifecycle API to add their Policy Type and then create policies from it. Then deploy those policies to the XACML PDP and they would be able to get Decisions without customizing their ONAP installation.
+
+Here is an example Policy Type:
+
+.. literalinclude:: match.policy-type.yaml
+  :language: YAML
+
+Here are example Policies:
+
+.. literalinclude:: match.policies.yaml
+  :language: YAML
+
+This is an example Decision API request that can be made:
+
+.. literalinclude:: decision.match.request.json
+  :language: JSON
+
+Which would render the following decision response:
+
+.. literalinclude:: decision.match.response.json
   :language: JSON
 
 Supporting Your Own Policy Types and Translators

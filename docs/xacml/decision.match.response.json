@@ -1,0 +1,18 @@
+{
+  "policies": {
+    "test_match_1": {
+      "type": "onap.policies.match.Test",
+      "type_version": "1.0.0",
+      "properties": {
+        "matchable": "foo",
+        "nonmatchable": "value1"
+      },
+      "name": "test_match_1",
+      "version": "1.0.0",
+      "metadata": {
+        "policy-id": "test_match_1",
+        "policy-version": "1.0.0"
+      }
+    }
+  }
+}
