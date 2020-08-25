@@ -1,0 +1,10 @@
+{
+  "ONAPName": "my-ONAP",
+  "ONAPComponent": "my-component",
+  "ONAPInstance": "my-instance",
+  "requestId": "unique-request-1",
+  "action": "match",
+  "resource": {
+      "matchable": "foo"
+  }
+}
