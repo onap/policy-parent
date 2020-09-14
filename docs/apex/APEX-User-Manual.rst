@@ -943,7 +943,7 @@ Verify Installation - run Engine
       .. container:: paragraph
 
          A simple verification of an APEX installation can be done by
-         simply starting the APEX engine without any configuration. On
+         simply starting the APEX engine without specifying a tosca policy. On
          Unix (or Cygwin) start the engine using
          ``$APEX_HOME/bin/apexApps.sh engine``. On Windows start the engine
          using ``%APEX_HOME%\bin\apexApps.bat engine``. The engine will fail
@@ -958,21 +958,16 @@ Verify Installation - run Engine
                :number-lines:
 
                Starting Apex service with parameters [] . . .
-               start of Apex service failed: Apex configuration file was not specified as an argument
-               2018-09-03 13:11:33,914 Apex [main] ERROR o.o.p.a.service.engine.main.ApexMain - start of Apex service failed
-               org.onap.policy.apex.model.basicmodel.concepts.ApexException: Apex configuration file was not specified as an argument
-                       at org.onap.policy.apex.service.engine.main.ApexCommandLineArguments.validateReadableFile(ApexCommandLineArguments.java:267)
-                       at org.onap.policy.apex.service.engine.main.ApexCommandLineArguments.validate(ApexCommandLineArguments.java:161)
-                       at org.onap.policy.apex.service.engine.main.ApexMain.<init>(ApexMain.java:68)
-                       at org.onap.policy.apex.service.engine.main.ApexMain.main(ApexMain.java:165)
-               usage: org.onap.policy.apex.service.engine.main.ApexMain [options...]
-               options
-               -c,--config-file <CONFIG_FILE>the full path to the configuration file to use, the configuration file must be a Json file
-                                             containing the Apex configuration parameters
-               -h,--help                     outputs the usage of this command
-               -m,--model-file <MODEL_FILE>  the full path to the model file to use, if set it overrides the model file set in the
-                                             configuration file
-               -v,--version                  outputs the version of Apex
+               start of Apex service failed.
+               org.onap.policy.apex.model.basicmodel.concepts.ApexException: Arguments validation failed.
+                at org.onap.policy.apex.service.engine.main.ApexMain.populateApexParameters(ApexMain.java:238)
+                at org.onap.policy.apex.service.engine.main.ApexMain.<init>(ApexMain.java:86)
+                at org.onap.policy.apex.service.engine.main.ApexMain.main(ApexMain.java:351)
+               Caused by: org.onap.policy.apex.model.basicmodel.concepts.ApexException: Tosca Policy file was not specified as an argument
+                at org.onap.policy.apex.service.engine.main.ApexCommandLineArguments.validateReadableFile(ApexCommandLineArguments.java:242)
+                at org.onap.policy.apex.service.engine.main.ApexCommandLineArguments.validate(ApexCommandLineArguments.java:172)
+                at org.onap.policy.apex.service.engine.main.ApexMain.populateApexParameters(ApexMain.java:235)
+                ... 2 common frames omitted
 
 Verify Installation - run an Example
 ####################################
@@ -1007,7 +1002,9 @@ Verify Installation - run an Example
 
    .. container:: paragraph
 
-         You can now try to run apex.
+         Create a Tosca Policy for the SampleDomain example using ApexCliToscaEditor
+         as explained in the section "The APEX CLI Tosca Editor". Assume the tosca policy name is SampleDomain_tosca.json.
+         You can then try to run apex using the ToscaPolicy.
 
    .. container:: listingblock
 
@@ -1016,8 +1013,8 @@ Verify Installation - run an Example
         .. code::
          :number-lines:
 
-          # $APEX_HOME/bin/apexApps.sh engine -c $APEX_HOME/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json -m $APEX_HOME/examples/models/SampleDomain/SamplePolicyModelJAVA.json (1)
-          >%APEX_HOME%\bin\apexApps.bat engine -c %APEX_HOME%\examples\config\SampleDomain\Stdin2StdoutJsonEventJava.json -m %APEX_HOME%\examples\models\SampleDomain\SamplePolicyModelJAVA.json :: (2)
+          # $APEX_HOME/bin/apexApps.sh engine -p $APEX_HOME/examples/SampleDomain_tosca.json (1)
+          >%APEX_HOME%\bin\apexApps.bat engine -p %APEX_HOME%\examples\SampleDomain_tosca.json(2)
 
 .. container:: colist arabic
 
@@ -1039,7 +1036,7 @@ Verify Installation - run an Example
       .. code::
          :number-lines:
 
-         Starting Apex service with parameters [-c, v:/dev/ericsson/apex/onap/apex-pdp/packages/apex-pdp-package-full/target/install_hierarchy/examples/config/SampleDomain/Stdin2StdoutJsonEventJava.json] . . .
+         Starting Apex service with parameters [-p, /home/ubuntu/apex/SampleDomain_tosca.json] . . .
          2018-09-05 15:16:42,800 Apex [main] INFO o.o.p.a.s.e.r.impl.EngineServiceImpl - Created apex engine MyApexEngine-0:0.0.1 .
          2018-09-05 15:16:42,804 Apex [main] INFO o.o.p.a.s.e.r.impl.EngineServiceImpl - Created apex engine MyApexEngine-1:0.0.1 .
          2018-09-05 15:16:42,804 Apex [main] INFO o.o.p.a.s.e.r.impl.EngineServiceImpl - Created apex engine MyApexEngine-2:0.0.1 .
@@ -1361,6 +1358,51 @@ Build a Docker Image
                USER apexuser
                ENV PATH /opt/app/policy/apex-pdp/bin:$PATH
                WORKDIR /home/apexuser
+
+Running APEX in Standalone mode
+-------------------------------
+
+   .. container:: paragraph
+
+      APEX Engine can run in standalone mode by taking in a ToscaPolicy
+      as an argument and executing it.
+      Assume there is a tosca policy named ToscaPolicy.json in APEX_HOME directory
+      This policy can be executed in standalone mode using any of the below methods.
+
+Run in an APEX installation
+###########################
+
+   .. container:: listingblock
+
+      .. container:: content
+
+        .. code::
+         :number-lines:
+
+          # $APEX_HOME/bin/apexApps.sh engine -p $APEX_HOME/ToscaPolicy.json(1)
+          >%APEX_HOME%\bin\apexApps.bat engine -p %APEX_HOME%\ToscaPolicy.json(2)
+
+.. container:: colist arabic
+
+   +-------+---------+
+   | **1** | UNIX    |
+   +-------+---------+
+   | **2** | Windows |
+   +-------+---------+
+
+Run in a docker container
+#########################
+
+   .. container:: listingblock
+
+      .. container:: content
+
+        .. code::
+         :number-lines:
+
+          # docker run -p 6969:6969 -v $APEX_HOME/ToscaPolicy.json:/tmp/policy/ToscaPolicy.json \
+            --name apex -it nexus3.onap.org:10001/onap/policy-apex-pdp:latest /bin/bash \
+            -c "/opt/app/policy/apex-pdp/bin/apexEngine.sh -p /tmp/policy/ToscaPolicy.json"
 
 APEX Configurations Explained
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
