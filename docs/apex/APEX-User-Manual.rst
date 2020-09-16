@@ -1556,8 +1556,7 @@ Engine Service Parameters
                     "id"             :  45,  (3)
                     "instanceCount"  : 4,  (4)
                     "deploymentPort" : 12345,  (5)
-                    "policyModelFileName" : "examples/models/VPN/VPNPolicyModelJava.json", (6a)
-                    "policy_type_impl" : {...}, (6b)
+                    "policy_type_impl" : {...}, (6)
                     "periodicEventPeriod": 1000, (7)
                     "engineParameters":{ (8)
                       "executorParameters":{...}, (9)
@@ -1599,13 +1598,7 @@ Engine Service Parameters
             |                                   | Websocket connection to the       |
             |                                   | engine                            |
             +-----------------------------------+-----------------------------------+
-            | **6a**                            | the APEX policy model file to     |
-            |                                   | load into the engine on startup   |
-            |                                   | when APEX is running native       |
-            |                                   | policies in standalone mode       |
-            |                                   | (optional)                        |
-            +-----------------------------------+-----------------------------------+
-            | **6b**                            | the APEX policy model as a JSON   |
+            | **6**                             | the APEX policy model as a JSON   |
             |                                   | or YAML block to load into the    |
             |                                   | engine on startup when            |
             |                                   | APEX is running a policy that has |
@@ -3836,7 +3829,6 @@ A configuration example
                       "id"             :  45,
                       "instanceCount"  : 4,
                       "deploymentPort" : 12345,
-                      "policyModelFileName" : "examples/models/some-model.json",
                       "engineParameters"    : {
                         "executorParameters" : {
                           "JAVASCRIPT" : {
@@ -4055,12 +4047,9 @@ The APEX Engine
 
          .. container:: paragraph
 
-            The APEX engine comes with a few CLI arguments for setting
-            configuration and policy model. The configuration file is
-            always required. The policy model file is only required if
-            no model file is specified in the configuration, or if the
-            specified model file should be over written. The option
-            ``-h`` prints a help screen.
+            The APEX engine comes with a few CLI arguments, the main one is for setting
+            the tosca policy file for execution. The tosca policy file is
+            always required. The option ``-h`` prints a help screen.
 
          .. container:: listingblock
 
@@ -4070,12 +4059,9 @@ The APEX Engine
 
                   usage: org.onap.policy.apex.service.engine.main.ApexMain [options...]
                   options
-                  -c,--config-file <CONFIG_FILE>  the full path to the configuration file to use, the configuration file must be a Json file
-                                                  containing the Apex configuration parameters
-                  -h,--help                       outputs the usage of this command
-                  -m,--model-file <MODEL_FILE>    the full path to the model file to use, if set it overrides the model file set in the
-                                                  configuration file
-                  -v,--version                    outputs the version of Apex
+                  -p,--tosca-policy-file <TOSCA_POLICY_FILE>     the full path to the ToscaPolicy file to use.
+                  -h,--help                                      outputs the usage of this command
+                  -v,--version                                   outputs the version of Apex
 
 The APEX CLI Editor
 -------------------
@@ -5203,11 +5189,21 @@ Example Configuration for a Production Server
                 </logger>
             </configuration>
 
+Unsupported Features
+^^^^^^^^^^^^^^^^^^^^
+
+         .. container:: paragraph
+
+            This section documents some legacy and unsupported features
+            in apex-pdp. The documentation here has not been updated for
+            recent versions of apex-pdp. For example, the apex-pdp models
+            specified in this example should now be in TOSCA format.
+
 Building a System with Websocket Backend
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 Websockets
-----------
+##########
 
          .. container:: paragraph
 
@@ -5229,7 +5225,7 @@ Websockets
             does not support WAMP at the moment.
 
 Websocket in Java
------------------
+#################
 
          .. container:: paragraph
 
@@ -5243,7 +5239,7 @@ Websocket in Java
             Netty, … there are also Kafka extensions for Websockets.
 
 Websocket Example Code for Websocket clients (FOSS)
----------------------------------------------------
+###################################################
 
          .. container:: paragraph
 
@@ -5276,7 +5272,7 @@ Websocket Example Code for Websocket clients (FOSS)
                example <http://www.programmingforliving.com/2013/08/jsr-356-java-api-for-websocket-client-api.html>`__
 
 BCP: Websocket Configuration
-----------------------------
+############################
 
          .. container:: paragraph
 
@@ -5309,7 +5305,7 @@ BCP: Websocket Configuration
             reconnected manually after an APEX boot.
 
 Demo with VPN Policy Model
---------------------------
+##########################
 
          .. container:: paragraph
 
@@ -5336,7 +5332,7 @@ Demo with VPN Policy Model
                in an editor (we need to send those events to APEX)
 
 A Websocket Configuration for the VPN Domain
-############################################
+********************************************
 
             .. container:: paragraph
 
@@ -5403,7 +5399,7 @@ A Websocket Configuration for the VPN Domain
                     }
 
 Start APEX Engine
-#################
+*****************
 
    .. container:: paragraph
 
@@ -5454,7 +5450,7 @@ Start APEX Engine
    policy is triggered/executed.
 
 Run the Websocket Echo Client
-#############################
+*****************************
 
    .. container:: paragraph
 
@@ -5544,7 +5540,7 @@ Run the Websocket Echo Client
             ws-simple-echo: opened connection to APEX (Web Socket Protocol Handshake)
 
 Run the Websocket Console Client
-################################
+********************************
 
    .. container:: paragraph
 
@@ -5635,7 +5631,7 @@ Run the Websocket Console Client
             ws-simple-console: opened connection to APEX (Web Socket Protocol Handshake)
 
 Send Events
-###########
+***********
 
    .. container:: paragraph
 
