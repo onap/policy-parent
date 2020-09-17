@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6573d349_e05aabff",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-09-17T14:06:55Z",
+      "side": 1,
+      "message": "not requesting any specific action, but just the observation about the inconsistent field naming that stands out: camel case vs \"_\" word separator.",
+      "revId": "cf3ff824c82bcddbbb9b61622f2da71ed214e7ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
