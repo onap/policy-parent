@@ -16,6 +16,29 @@
       "revId": "cf3ff824c82bcddbbb9b61622f2da71ed214e7ed",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f668c81_513e1f3a",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 5192,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2020-09-17T18:49:15Z",
+      "side": 1,
+      "message": "May be we add removal of \"content\" field from Apex ToscaPolicy here. As that is one of the breaking change for someone upgrading from El Alto to Frankfurt and beyond. Also, the breaking change in JavaScript logic because of migration from Nashorn to Rhino.\nOr they are best fit for release notes, not sure.",
+      "range": {
+        "startLine": 5192,
+        "startChar": 0,
+        "endLine": 5192,
+        "endChar": 20
+      },
+      "revId": "cf3ff824c82bcddbbb9b61622f2da71ed214e7ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
