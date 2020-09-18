@@ -39,6 +39,30 @@
       "revId": "cf3ff824c82bcddbbb9b61622f2da71ed214e7ed",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b8ba21d_f389bfe2",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 5192,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2020-09-18T09:28:52Z",
+      "side": 1,
+      "message": "It can be added. But, these were added to the release notes earlier.",
+      "parentUuid": "5f668c81_513e1f3a",
+      "range": {
+        "startLine": 5192,
+        "startChar": 0,
+        "endLine": 5192,
+        "endChar": 20
+      },
+      "revId": "cf3ff824c82bcddbbb9b61622f2da71ed214e7ed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
