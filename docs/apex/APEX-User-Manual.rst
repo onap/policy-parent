@@ -1781,6 +1781,52 @@ Input and Output Interfaces
             | **18** | any other output configuration (e.g. event name filter, see below) |
             +--------+--------------------------------------------------------------------+
 
+Event Name
+##########
+
+            .. container:: paragraph
+
+               Any event defined in APEX has to be unique. The "name" of
+               of an event is used as an identifier for an ApexEvent. Every
+               event has to be tagged to an eventName. This can be done in different
+               ways. Either the actual event can have a field called "name". Or, the
+               event has some other field that can act as the identifier, which can be
+               specified using "nameAlias". But in other cases, where a "name" or "nameAlias"
+               cannot be specified, the incoming event coming over an endpoint can be
+               manually tagged to an "eventName" before consuming it.
+
+            .. container:: paragraph
+
+               The "eventName" can have a single event's name if the event coming
+               over the endpoint has to be always mapped to the specified eventName's
+               definition. Otherwise, if different events can come over the endpoint,
+               then "eventName" field can consist of multiple event names separated by
+               "|" symbol. In this case, based on the received event's structure, it is
+               mapped to any one of the event name specified in the "eventName" field.
+
+            .. container:: paragraph
+
+               The following code shows some examples on how to specify the eventName field:
+
+            .. container:: listingblock
+
+               .. container:: content
+
+                  .. code::
+
+                     "eventInputParameters": {
+                       "Input1": {
+                         "carrierTechnologyParameters" : {...},
+                         "eventProtocolParameters":{...},
+                         "eventName" : "VesEvent" (1)
+                       },
+                       "Input2": {
+                         "carrierTechnologyParameters" : {...},
+                         "eventProtocolParameters":{...},
+                         "eventName" : "AAISuccessResponseEvent|AAIFailureResponseEvent" (2)
+                       }
+                     }
+
 Event Filters
 #############
 
@@ -5777,6 +5823,3 @@ Send Events
 
    .. container::
       :name: footer-text
-
-
-
