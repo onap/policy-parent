@@ -227,6 +227,12 @@ request will be ignored.
 This can also be used to update a PDP Group, but supported policy types cannot be updated during the update operation.
 So, "policies" and "supportedPolicyTypes" properties in the request will be ignored if provided during the PDP Group update operation.
 
+The "desiredInstanceCount" specifies the minimum number of PDPs of the given
+type that should be registered with PAP.  Currently, this is just used for
+health check purposes; if the number of PDPs registered with PAP drops below
+the given value, then PAP will return an "unhealthy" indicator if a
+"Consolidated Health Check" is performed.
+
 .. note::
   If a subgroup is to be deleted from a PDP Group, then the policies must be removed from
   the subgroup first.
