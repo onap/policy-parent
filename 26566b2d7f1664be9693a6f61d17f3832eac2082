@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6fb366d_eee7579b",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-10-15T14:19:49Z",
+      "side": 1,
+      "message": "leave pods and delete lines 26-36.   Note that the command line in 24 is for pods not services as changed here",
+      "revId": "26566b2d7f1664be9693a6f61d17f3832eac2082",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2933f93_e3ec0f45",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-10-15T14:19:49Z",
+      "side": 1,
+      "message": "\"pods\" should be change to \"services\"",
+      "revId": "26566b2d7f1664be9693a6f61d17f3832eac2082",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa6ce3f9_d87c419f",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-10-15T14:19:49Z",
+      "side": 1,
+      "message": "remove this section, lines 26-36 as the output is outdated and does not refer to the right command command output of line 24.",
+      "revId": "26566b2d7f1664be9693a6f61d17f3832eac2082",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d6b58b1_dff6199c",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-10-15T14:19:49Z",
+      "side": 1,
+      "message": "remove SKIP_LINT\u003dtrue here, it is not recommended as make time is not that significant in the policy chart.",
+      "revId": "26566b2d7f1664be9693a6f61d17f3832eac2082",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3813ee3_d9507d45",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-10-15T14:19:49Z",
+      "side": 1,
+      "message": "Make a note that SKIP_LINT is only to reduce the \"make\" time (linting is still a good thing).",
+      "revId": "26566b2d7f1664be9693a6f61d17f3832eac2082",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
