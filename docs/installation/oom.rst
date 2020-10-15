@@ -17,7 +17,7 @@ Please refer to the OOM documentation on how to install and deploy ONAP.
 
 Policy Pods
 ***********
-To get a listing of the Policy Pods, run the following command:
+To get a listing of the Policy Services, run the following command:
 
 .. code-block:: bash
 
@@ -34,6 +34,10 @@ To get a listing of the Policy Pods, run the following command:
   policy-pap                 ClusterIP   10.43.175.164   <none>        6969/TCP                              5d15h   app=policy-pap,release=dev-policy
   policy-xacml-pdp           ClusterIP   10.43.181.208   <none>        6969/TCP                              5d15h   app=policy-xacml-pdp,release=dev-policy
   policydb                   ClusterIP   10.43.93.233    <none>        3306/TCP                              5d15h   app=policydb,release=dev-policy
+
+.. note::
+   To get the pods status, run with this command:
+   kubectl get pods -n onap | grep policy
 
 Some of these pods are shared between the legacy components and the latest framework components, while others are not.
 
@@ -73,8 +77,8 @@ From your local copy, edit any of the values.yaml files in the policy tree to ma
 
 .. code-block:: bash
 
-  make policy
-  make onap
+  make SKIP_LINT=TRUE policy
+  make SKIP_LINT=TRUE onap
 
 **Step 3** Undeploy Policy
 After undeploying policy, loop on monitoring the policy pods until they go away.
@@ -82,7 +86,7 @@ After undeploying policy, loop on monitoring the policy pods until they go away.
 .. code-block:: bash
 
   helm del --purge dev-policy
-  kubectl get pods -n onap
+  kubectl get pods -n onap | grep policy
 
 **Step 4** Delete NFS persisted data for Policy
 
@@ -113,7 +117,7 @@ After deploying policy, loop on monitoring the policy pods until they come up.
 .. code-block:: bash
 
   helm deploy dev-policy local/onap --namespace onap
-  kubectl get pods -n onap
+  kubectl get pods -n onap | grep policy
 
 Restarting a faulty component
 *****************************
