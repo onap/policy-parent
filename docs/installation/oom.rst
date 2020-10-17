@@ -21,37 +21,18 @@ To get a listing of the Policy Pods, run the following command:
 
 .. code-block:: bash
 
-  kubectl get pods | grep policy
+  kubectl get pods -n onap | grep dev-policy
 
-  brmsgw                     ClusterIP   10.43.77.177    <none>        9989/TCP                              5d15h   app=brmsgw,release=dev-policy
-  drools                     ClusterIP   10.43.167.154   <none>        6969/TCP,9696/TCP                     5d15h   app=drools,release=dev-policy
-  nexus                      ClusterIP   10.43.239.92    <none>        8081/TCP                              5d15h   app=nexus,release=dev-policy
-  pap                        NodePort    10.43.207.229   <none>        8443:30219/TCP,9091:30218/TCP         5d15h   app=pap,release=dev-policy
-  pdp                        ClusterIP   None            <none>        8081/TCP                              5d15h   app=pdp,release=dev-policy
-  policy-apex-pdp            ClusterIP   10.43.226.0     <none>        6969/TCP                              5d15h   app=policy-apex-pdp,release=dev-policy
-  policy-api                 ClusterIP   10.43.102.56    <none>        6969/TCP                              5d15h   app=policy-api,release=dev-policy
-  policy-distribution        ClusterIP   10.43.4.211     <none>        6969/TCP                              5d15h   app=policy-distribution,release=dev-policy
-  policy-pap                 ClusterIP   10.43.175.164   <none>        6969/TCP                              5d15h   app=policy-pap,release=dev-policy
-  policy-xacml-pdp           ClusterIP   10.43.181.208   <none>        6969/TCP                              5d15h   app=policy-xacml-pdp,release=dev-policy
-  policydb                   ClusterIP   10.43.93.233    <none>        3306/TCP                              5d15h   app=policydb,release=dev-policy
+  dev-policy-59684c7b9c-5gd6r                        2/2     Running            0          8m41s
+  dev-policy-apex-pdp-0                              1/1     Running            0          8m41s
+  dev-policy-api-56f55f59c5-nl5cg                    1/1     Running            0          8m41s
+  dev-policy-distribution-54cc59b8bd-jkg5d           1/1     Running            0          8m41s
+  dev-policy-mariadb-0                               1/1     Running            0          8m41s
+  dev-policy-xacml-pdp-765c7d58b5-l6pr7              1/1     Running            0          8m41s
 
-Some of these pods are shared between the legacy components and the latest framework components, while others are not.
-
-.. csv-table::
-   :header: "Policy Pod", "Latest Framework", "Legacy"
-   :widths: 15,10,10
-
-   "brmsgw", "", "yes"
-   "drools", "yes", "yes"
-   "nexus", "yes", "yes"
-   "pap", "", "yes"
-   "pdp", "", "yes"
-   "policy-apex-pdp", "yes", ""
-   "policy-api", "yes", ""
-   "policy-distribution", "yes", "yes"
-   "policy-pap", "yes", ""
-   "policy-xacml-pdp", "yes", ""
-   "policydb", "yes", "yes"
+.. note::
+   To get a listing of the Policy services, run this command:
+   kubectl get svc -n onap | grep policy
 
 Accessing Policy Containers
 ***************************
@@ -74,7 +55,10 @@ From your local copy, edit any of the values.yaml files in the policy tree to ma
 .. code-block:: bash
 
   make policy
-  make onap
+  make SKIP_LINT=TRUE onap
+
+.. note::
+   SKIP_LINT is only to reduce the "make" time
 
 **Step 3** Undeploy Policy
 After undeploying policy, loop on monitoring the policy pods until they go away.
@@ -82,13 +66,13 @@ After undeploying policy, loop on monitoring the policy pods until they go away.
 .. code-block:: bash
 
   helm del --purge dev-policy
-  kubectl get pods -n onap
+  kubectl get pods -n onap | grep dev-policy
 
 **Step 4** Delete NFS persisted data for Policy
 
 .. code-block:: bash
 
-  rm -fr /dockerdata-nfs/dev-policy
+  rm -fr /dockerdata-nfs/dev/policy
 
 **Step 5** Make sure there is no orphan policy database persistent volume or claim.
 
@@ -113,7 +97,7 @@ After deploying policy, loop on monitoring the policy pods until they come up.
 .. code-block:: bash
 
   helm deploy dev-policy local/onap --namespace onap
-  kubectl get pods -n onap
+  kubectl get pods -n onap | grep dev-policy
 
 Restarting a faulty component
 *****************************
