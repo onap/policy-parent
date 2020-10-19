@@ -161,7 +161,7 @@ Additional PDP-D Customizations
 
 Credentials and other configuration parameters can be set as values
 when deploying the policy (drools) subchart.  Please refer to
-`PDP-D Default Values <https://git.onap.org/oom/tree/kubernetes/policy/charts/drools/values.yaml>`_
+`PDP-D Default Values <https://git.onap.org/oom/tree/kubernetes/policy/components/policy-drools-pdp/values.yaml>`_
 for the current default values.  It is strongly recommended that sensitive
 information is secured appropriately before using in production.
 
