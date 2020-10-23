@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a31c0c77_22974f93",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-10-23T18:26:41Z",
+      "side": 1,
+      "message": "\"shows\" \u003d\u003e \"show\"",
+      "range": {
+        "startLine": 127,
+        "startChar": 21,
+        "endLine": 127,
+        "endChar": 27
+      },
+      "revId": "a4ff7b8a6846734dafa9c55f37b081ee7e5efd24",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
