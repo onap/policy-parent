@@ -80,40 +80,32 @@ Stability Test of Policy XACML PDP
 Summary
 =======
 
-The Stability test was run with the same pods/VMs and uses the same jmeter script as the
-performance test, except that it was run for 72 hours instead of 20 minutes.  In
-addition, it was run in the background via "nohup", to prevent it from being interrupted:
+The stability test was performed on a default ONAP OOM installation in the Intel Wind River Lab environment.
+JMeter was installed on a separate VM to inject the traffic defined in the
+`XACML PDP stability script
+<https://git.onap.org/policy/xacml-pdp/tree/testsuites/stability/src/main/resources/testplans/stability.jmx>`_
+with the following command:
 
 .. code-block:: bash
 
-    nohup jmeter -Jduration=259200 \
-        -Jxacml_ip=$ip -Jpap_ip=$ip -Japi_ip=$ip \
-        -Jxacml_port=31104 -Jpap_port=32425 -Japi_port=30709 \
-        -n -t perf.jmx &
+    jmeter.sh -Jduration=259200 -Jusers=2 -Jxacml_ip=$ip -Jpap_ip=$ip -Japi_ip=$ip \
+        -Jxacml_port=31104 -Jpap_port=32425 -Japi_port=30709 --nongui --testfile stability.jmx
 
-The memory and CPU usage can be monitored by running "top" on the xacml pod.  By taking
-a snapshot before the test is started, and again when it completes, the total CPU used
-by all of the requests can be computed.
+The default log level of the root and org.eclipse.jetty.server.RequestLog loggers in the logback.xml
+of the XACML PDP
+(om/kubernetes/policy/components/policy-xacml-pdp/resources/config/logback.xml)
+was set to ERROR since the OOM installation did not have log rotation enabled of the
+container logs in the kubernetes worker nodes.
 
 Results
 =======
 
-The final output of the jmeter script is found in the nohup.out file:
-
-.. image:: images/xacml-s3p-jmeter.png
-
-The final memory and CPU from "top":
-
-.. image:: images/xacml-s3p-top.png
-
-The through-put reported by jmeter was 4849 requests/second, with 0 errors.  In addition,
-the memory usage observed via "top" indicated that the virtual memory and resident set
-sizes remained virtually unchanged through-out the test.
-
-Unfortunately, the initial CPU usage was not recorded, so the CPU time reported in
-the "top" screen-shot includes XACML-PDP start-up time as well as requests that were
-executed before the stability test was started.  Nevertheless, even including that, we find:
+The stability summary results were reported by JMeter with the following line:
 
 .. code-block:: bash
 
-    13,166 CPU minutes * 60sec/min * 1000ms/sec / 1,256,834,239 requests = 0.63ms/request
+    2020-10-23 19:44:31,515 INFO o.a.j.r.Summariser: summary = 1061746369 in 72:00:16 = 4096.0/s Avg:     0 Min:     0 Max:  2584 Err:     0 (0.00%)
+
+The XACML PDP offered good performance with JMeter for the traffic mix described above, creating 4096 threads per second
+to inject the traffic load.   No errors were encountered, and no significant CPU spikes were noted.
+

@@ -124,7 +124,7 @@ The load was performed against a non-tweaked ONAP OOM installation.
 
 **JMeter Results**
 
-The following graphs shows the response time distribution.   The "Get Policy Types" API calls are the most expensive calls that
+The following graphs show the response time distributions.   The "Get Policy Types" API calls are the most expensive calls that
 average a 10 seconds plus response time.
 
 .. image:: images/api-response-time-distribution.png
