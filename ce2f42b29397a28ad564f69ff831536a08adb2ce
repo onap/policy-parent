@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b12a310_4df4649f",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-10-27T23:21:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a2346f15_f3c9e3a2",
+      "range": {
+        "startLine": 13,
+        "startChar": 123,
+        "endLine": 13,
+        "endChar": 132
+      },
+      "revId": "ce2f42b29397a28ad564f69ff831536a08adb2ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f341713e_4fd075b1",
         "filename": "docs/development/devtools/drools-s3p.rst",
         "patchSetId": 1
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "6b329410_eb403334",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-10-27T23:21:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b947b89b_d7d7496f",
+      "range": {
+        "startLine": 135,
+        "startChar": 109,
+        "endLine": 135,
+        "endChar": 116
+      },
+      "revId": "ce2f42b29397a28ad564f69ff831536a08adb2ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8445720_8156784e",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-10-27T23:21:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f341713e_4fd075b1",
+      "range": {
+        "startLine": 135,
+        "startChar": 62,
+        "endLine": 135,
+        "endChar": 65
+      },
+      "revId": "ce2f42b29397a28ad564f69ff831536a08adb2ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60547b54_5569e7df",
         "filename": "docs/development/devtools/images/ControlLoop-vFirewall-d0a1dfc6-94f5-4fd4-a5b5-4630b438850a.png",
         "patchSetId": 1
@@ -82,6 +154,24 @@
       "writtenOn": "2020-10-27T20:46:09Z",
       "side": 1,
       "message": "interesting.  wonder why it was slower this time?",
+      "revId": "ce2f42b29397a28ad564f69ff831536a08adb2ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4058d066_196f9707",
+        "filename": "docs/development/devtools/images/ControlLoop-vFirewall-d0a1dfc6-94f5-4fd4-a5b5-4630b438850a.png",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-10-27T23:21:25Z",
+      "side": 1,
+      "message": "Right. It took longer time than before. I need to re-enable debug and network log to see what happened in details.",
+      "parentUuid": "60547b54_5569e7df",
       "revId": "ce2f42b29397a28ad564f69ff831536a08adb2ce",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
