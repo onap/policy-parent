@@ -33,31 +33,21 @@ Version: Mitaka
 
 **apex-pdp VM details**
 
-OS:Ubuntu 18.04 LTS
-
-CPU: 4 core
-
-RAM: 4 GB
-
-HardDisk: 40 GB
-
-Docker Version: 19.03.8, build afacb8b7f0
-
-Java: openjdk version "11.0.7"
+- OS:Ubuntu 18.04 LTS
+- CPU: 8 core, Intel Xeon E3-12xx v2 (Ivy Bridge)
+- RAM: 4 GB
+- HardDisk: 40 GB
+- Docker Version: 19.03.8, build afacb8b7f0
+- Java: openjdk version "11.0.8"
 
 **JMeter VM details**
 
-OS: Ubuntu 18.04 LTS
-
-CPU: 4 core
-
-RAM: 4 GB
-
-HardDisk: 40 GB
-
-Java: openjdk version "11.0.7"
-
-JMeter: 5.2.1
+- OS: Ubuntu 18.04 LTS
+- CPU: 8 core, Intel Xeon E3-12xx v2 (Ivy Bridge)
+- RAM: 16 GB
+- HardDisk: 40 GB
+- Java: openjdk version "11.0.8"
+- JMeter: 5.2.1
 
 Install JMeter in virtual machine
 ---------------------------------
@@ -251,7 +241,7 @@ Stability Test Result
 
 Stability test plan was triggered for 72 hours injecting input events to apex-pdp from 20 client threads running in JMeter.
 
-After the test stop, we can generate a HTML test report via command
+After the test has complete - we can generate a HTML test report via the following command
 
 .. code-block:: bash
 
@@ -323,6 +313,8 @@ Stability Test Results Frankfurt release
 
 The stability test plan was triggered for 72 hours, injecting input events to apex-pdp from 5 client threads running in JMeter.
 
+The stability tests were executed as part of a full ONAP OOM deployment in Nordix lab.
+
 After the test stops, we can generate an HTML test report via the command:
 
 .. code-block:: bash
@@ -332,7 +324,7 @@ After the test stops, we can generate an HTML test report via the command:
 ==============================================  ===================================================  ================================  =============  ============
 **Number of Client Threads running in JMeter**  **Number of Server Threads running in Apex engine**  **Total number of input events**  **Success %**  **Error %**
 ==============================================  ===================================================  ================================  =============  ============
-5                                                4                                                    26766                             100%           0%
+5                                                4                                                    18581                             100%           0%
 ==============================================  ===================================================  ================================  =============  ============
 
 **VisualVM Screenshot**
@@ -355,7 +347,7 @@ It is in the module `performance-benchmark-test <https://github.com/onap/policy-
 To execute a benchmark test, you start the REST server, and then configure and run APEX against the server.
 There are example configurations for running tests in the `resources of this module <https://github.com/onap/policy-apex-pdp/tree/master/testsuites/performance/performance-benchmark-test/src/main/resources/examples/benchmark>`_.
 
-In order to run the test for 72 hours, set the batch count in the `EventGeneratorConfig.json <https://github.com/onap/policy-apex-pdp/blob/master/testsuites/performance/performance-benchmark-test/src/main/resources/examples/benchmark/EventGeneratorConfig.json>`_ file to zero, which causes the REST server to generate batches forever.
+In order to run the test for 2 hours, set the batch count in the `EventGeneratorConfig.json <https://github.com/onap/policy-apex-pdp/blob/master/testsuites/performance/performance-benchmark-test/src/main/resources/examples/benchmark/EventGeneratorConfig.json>`_ file to zero, which causes the REST server to generate batches forever.
 
 Here is an example of how to do this:
 
