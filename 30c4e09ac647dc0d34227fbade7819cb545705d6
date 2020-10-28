@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef33ff3f_dfe8a17d",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2020-10-28T12:09:48Z",
+      "side": 1,
+      "message": "Do you want to update this as well?",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 40
+      },
+      "revId": "30c4e09ac647dc0d34227fbade7819cb545705d6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b2310e_9a9fed83",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2020-10-28T12:09:48Z",
+      "side": 1,
+      "message": "Maybe it is better to comment about what actions are being performed as part of the tests.",
+      "range": {
+        "startLine": 327,
+        "startChar": 102,
+        "endLine": 327,
+        "endChar": 107
+      },
+      "revId": "30c4e09ac647dc0d34227fbade7819cb545705d6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b50d0f44_1e875e95",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2020-10-28T12:09:48Z",
+      "side": 1,
+      "message": "Did we use this same method for performance tests?",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 333
+      },
+      "revId": "30c4e09ac647dc0d34227fbade7819cb545705d6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5e0f46_d77c445d",
+        "filename": "docs/development/devtools/images/apex_s3p_vm-1.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2020-10-28T12:09:48Z",
+      "side": 1,
+      "message": "I wonder how you connected to the visual vm? The tests were performed on the component running as kubernetes pods, and the jmx ports were not open in that I guess.",
+      "revId": "30c4e09ac647dc0d34227fbade7819cb545705d6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
