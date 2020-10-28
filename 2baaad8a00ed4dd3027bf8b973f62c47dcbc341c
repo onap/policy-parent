@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "3b13887a_790cc249",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-10-28T20:43:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a2c9b5df_369c9a1e",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f6a61d1_c697fada",
         "filename": "docs/development/devtools/drools-s3p.rst",
         "patchSetId": 2
