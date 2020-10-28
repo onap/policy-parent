@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67243039_2c44ae1b",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2020-10-28T12:54:54Z",
+      "side": 1,
+      "message": "Yes, I will do this.",
+      "parentUuid": "ef33ff3f_dfe8a17d",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 40
+      },
+      "revId": "30c4e09ac647dc0d34227fbade7819cb545705d6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95b2310e_9a9fed83",
         "filename": "docs/development/devtools/apex-s3p.rst",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-10-28T12:09:48Z",
       "side": 1,
       "message": "Maybe it is better to comment about what actions are being performed as part of the tests.",
+      "range": {
+        "startLine": 327,
+        "startChar": 102,
+        "endLine": 327,
+        "endChar": 107
+      },
+      "revId": "30c4e09ac647dc0d34227fbade7819cb545705d6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c298ff1_92bfcd61",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2020-10-28T12:54:54Z",
+      "side": 1,
+      "message": "No problem, I change this now also.",
+      "parentUuid": "95b2310e_9a9fed83",
       "range": {
         "startLine": 327,
         "startChar": 102,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e027666f_fdfe2c1b",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2020-10-28T12:54:54Z",
+      "side": 1,
+      "message": "I still have to update this with the performance tests. Should\u0027ve marked review as In Progress until this was added.",
+      "parentUuid": "b50d0f44_1e875e95",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 333
+      },
+      "revId": "30c4e09ac647dc0d34227fbade7819cb545705d6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec5e0f46_d77c445d",
         "filename": "docs/development/devtools/images/apex_s3p_vm-1.png",
         "patchSetId": 2
@@ -82,6 +154,24 @@
       "writtenOn": "2020-10-28T12:09:48Z",
       "side": 1,
       "message": "I wonder how you connected to the visual vm? The tests were performed on the component running as kubernetes pods, and the jmx ports were not open in that I guess.",
+      "revId": "30c4e09ac647dc0d34227fbade7819cb545705d6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa790b29_3ed4d0ba",
+        "filename": "docs/development/devtools/images/apex_s3p_vm-1.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2020-10-28T12:54:54Z",
+      "side": 1,
+      "message": "No, I did not manage to connect to visualvm. These are the previous screenshots by whoever ran these tests before me. I need to ask do I remove these?",
+      "parentUuid": "ec5e0f46_d77c445d",
       "revId": "30c4e09ac647dc0d34227fbade7819cb545705d6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
