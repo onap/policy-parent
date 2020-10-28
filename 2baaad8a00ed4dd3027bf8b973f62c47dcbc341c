@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f705464e_941e7bf7",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-10-28T16:05:30Z",
+      "side": 1,
+      "message": "I think these changes are not needed , as the feature-controlloop-utils should be populate the corresponding properties files when enabled (fyi, this has to be added last release as there was breakage in feature-controlloop-utils, but that was in theory solved in the beginning of guilin).   If you could confirm, and if so, delete this section to make configuration more straightforward.",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88201fc3_9b820e43",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-10-28T16:05:30Z",
+      "side": 1,
+      "message": "I believe it is preferable to just add a \nom/kubernetes/policy/charts/drools/resources/configmaps/features.pre.sh\ncustomization script as it was before (the documented way) rather than change the statefulset.yaml.",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f6a61d1_c697fada",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-10-28T16:05:30Z",
+      "side": 1,
+      "message": "If this is the upper memory utilizations, could convert into a percentage and put it in table above, so it is more descriptive, it does not need to follow same format as in Frankfurt release.   If the information is not available could delete the line or section",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ad8309_664c008e",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-10-28T16:05:30Z",
+      "side": 1,
+      "message": "I think you can remove 135-140 lines and just mention that a default OOM installation was used to run the stability run.",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "687a2cca_57ef406a",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-10-28T16:05:30Z",
+      "side": 1,
+      "message": "Not sure if this was monitored, but can be removed if wasn\u0027t.",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
