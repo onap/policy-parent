@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce5a5674_72609d64",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-10-28T18:07:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f705464e_941e7bf7",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88201fc3_9b820e43",
         "filename": "docs/development/devtools/drools-s3p.rst",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-10-28T16:05:30Z",
       "side": 1,
       "message": "I believe it is preferable to just add a \nom/kubernetes/policy/charts/drools/resources/configmaps/features.pre.sh\ncustomization script as it was before (the documented way) rather than change the statefulset.yaml.",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4183f400_a9ea25fe",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-10-28T18:07:33Z",
+      "side": 1,
+      "message": "under policy/charts only contains the tgz package files for helm deployment. that is why I kubectl edit the statefulset.",
+      "parentUuid": "88201fc3_9b820e43",
       "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a3753899_9041422a",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-10-28T18:07:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2f6a61d1_c697fada",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4ad8309_664c008e",
         "filename": "docs/development/devtools/drools-s3p.rst",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "d067db13_6c79300f",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-10-28T18:07:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f4ad8309_664c008e",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "687a2cca_57ef406a",
         "filename": "docs/development/devtools/drools-s3p.rst",
         "patchSetId": 2
@@ -84,6 +156,24 @@
       "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5f1037_8c126251",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 2477
+      },
+      "writtenOn": "2020-10-28T18:07:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "687a2cca_57ef406a",
+      "revId": "2baaad8a00ed4dd3027bf8b973f62c47dcbc341c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
