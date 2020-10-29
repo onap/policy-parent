@@ -310,15 +310,14 @@ See each of the ONAP Policy type application implementations which each have the
 
 `Standard Tosca Policy Translator implementation <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdBaseTranslator.java>`.
 
-XACML Application Tutorial
-==========================
+XACML Application and Enforcement Tutorials
+===========================================
 
-The following tutorial can be helpful to get started:
+The following tutorials can be helpful to get started on building your own application as well as building enforcement into your application.
 
 .. toctree::
    :maxdepth: 1
 
    xacml-tutorial
-
-Once your application is developed and the ONAP XACML PDP Engine can find your application via setting the classpath appropriately, then use the :ref:`PAP REST API <pap-label>` to ensure the ONAP XACML PDP is registering your custom Policy Type with the PAP. Once successful, then you should be able to start deploying the created policies to the XACML PDP Engine.
+   xacml-tutorial-enforcement
 
