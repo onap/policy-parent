@@ -40,11 +40,10 @@
         <version.dmaap>1.1.11</version.dmaap>
         <version.powermock>2.0.4</version.powermock>
         <version.eclipselink>2.7.5</version.eclipselink>
-        <version.jackson>2.10.4</version.jackson>
         <version.drools>7.33.0.Final</version.drools>
         <version.jersey>2.30.1</version.jersey>
         <version.ccsdk>0.4.4</version.ccsdk>
-        <version.swagger>1.6.0</version.swagger>
+        <version.swagger>1.6.2</version.swagger>
         <version.javax.bind>2.3.1</version.javax.bind>
         <version.javax.json>1.1.4</version.javax.json>
         <version.netty>4.1.48.Final</version.netty>
@@ -60,38 +59,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Jackson -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>${version.jackson}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${version.jackson}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${version.jackson}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.dataformat</groupId>
-                <artifactId>jackson-dataformat-yaml</artifactId>
-                <version>${version.jackson}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.jaxrs</groupId>
-                <artifactId>jackson-jaxrs-base</artifactId>
-                <version>${version.jackson}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.jaxrs</groupId>
-                <artifactId>jackson-jaxrs-json-provider</artifactId>
-                <version>${version.jackson}</version>
-            </dependency>
-
             <!-- Jersey -->
             <dependency>
                 <groupId>org.glassfish.jersey.core</groupId>
@@ -157,6 +124,12 @@
                 <groupId>org.glassfish.jersey.media</groupId>
                 <artifactId>jersey-media-json-jackson</artifactId>
                 <version>${version.jersey}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.module</groupId>
+                        <artifactId>jackson-module-jaxb-annotations</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
