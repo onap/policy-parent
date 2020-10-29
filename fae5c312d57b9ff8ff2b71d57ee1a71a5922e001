@@ -46,6 +46,30 @@
       "revId": "fae5c312d57b9ff8ff2b71d57ee1a71a5922e001",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68639428_fc2a2065",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-10-29T13:52:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4071bc_a850879a",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "fae5c312d57b9ff8ff2b71d57ee1a71a5922e001",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
