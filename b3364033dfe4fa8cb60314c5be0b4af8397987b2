@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2ab2a7c1_9e9478dc",
+        "filename": "docs/xacml/xacml-tutorial-enforcement.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-10-29T20:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc57f788_b211969e",
+      "range": {
+        "startLine": 19,
+        "startChar": 40,
+        "endLine": 19,
+        "endChar": 43
+      },
+      "revId": "b3364033dfe4fa8cb60314c5be0b4af8397987b2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "919ee9f0_06185f62",
         "filename": "docs/xacml/xacml-tutorial-enforcement.rst",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "b3364033dfe4fa8cb60314c5be0b4af8397987b2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff556f1a_49620455",
+        "filename": "docs/xacml/xacml-tutorial-enforcement.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-10-29T20:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "919ee9f0_06185f62",
+      "range": {
+        "startLine": 150,
+        "startChar": 3,
+        "endLine": 150,
+        "endChar": 7
+      },
+      "revId": "b3364033dfe4fa8cb60314c5be0b4af8397987b2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
