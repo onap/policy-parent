@@ -50,31 +50,31 @@ for the latest images:
 At the time of this writing *1.6.4* is the latest version.
 
 The *onap/policy-pdpd-cl* image extends the *onap/policy-drools* image with
-the *frankfurt* controller that realizes the *control loop* application.
+the *usecases* controller that realizes the *control loop* application.
 
-Frankfurt Controller
+Usecases Controller
 ====================
 
-The `frankfurt <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-frankfurt>`__
+The `usecases <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-usecases>`__
 controller is the *control loop* application in ONAP.
 
 There are three parts in this controller:
 
-* The `drl rules <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-frankfurt/src/main/resources/frankfurt.drl>`__.
-* The `kmodule.xml <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-frankfurt/src/main/resources/META-INF/kmodule.xml>`__.
-* The `dependencies <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-frankfurt/pom.xml>`__.
+* The `drl rules <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-usecases/src/main/resources/usecases.drl>`__.
+* The `kmodule.xml <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-usecases/src/main/resources/META-INF/kmodule.xml>`__.
+* The `dependencies <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-usecases/pom.xml>`__.
 
 The `kmodule.xml` specifies only one session, and declares in the *kbase* section the two operational policy types that
 it supports.
 
-The Frankfurt controller relies on the new Actor framework to interact with remote
+The Usecases controller relies on the new Actor framework to interact with remote
 components, part of a control loop transaction.   The reader is referred to the
 *Policy Platform Actor Development Guidelines* in the documentation for further information.
 
 Operational Policy Types
 ========================
 
-The *frankfurt* controller supports the two Operational policy types:
+The *usecases* controller supports the two Operational policy types:
 
 - *onap.policies.controlloop.Operational*.
 - *onap.policies.controlloop.operational.common.Drools*.
@@ -108,11 +108,12 @@ The enabled features in the *onap/policy-pdpd-cl* image are:
 - **lifecycle**: enables the lifecycle APIs.
 - **controlloop-trans**: control loop transaction tracking.
 - **controlloop-management**: generic controller capabilities.
-- **controlloop-frankfurt**: new *controller* introduced in the frankfurt release to realize the ONAP use cases.
+- **controlloop-usecases**: new *controller* introduced in the guilin release to realize the ONAP use cases.
 
 The following features are installed but disabled:
 
-- **controlloop-usecases**: *controller* used pre-frankfurt releases.
+- **controlloop-frankfurt**: *controller* used in the frankfurt release.
+- **controlloop-tdjam**: experimental java-only *controller* to be deprecated post guilin.
 - **controlloop-utils**: *actor* simulators.
 
 Control Loops Transaction (controlloop-trans)
@@ -129,17 +130,24 @@ It installs common control loop application resources, and provides
 telemetry API extensions.   *Actor* configurations are packaged in this
 feature.
 
-Frankfurt Controller (controlloop-frankfurt)
+Usecases Controller (controlloop-usecases)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It is the *frankfurt* release implementation of the ONAP use cases.
+It is the *guilin* release implementation of the ONAP use cases.
 It relies on the new *Actor* model framework to carry out a policy's
 execution.
 
-Usecases Controller (controlloop-usecases)
+Frankfurt Controller (controlloop-frankfurt)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is the deprecated pre-frankfurt controller.
+This is the frankfurt controller that will be deprecated after the
+guilin release.
+
+TDJAM Controller (controlloop-tdjam)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is an experimental, java-only controller that will be deprecated after the
+guilin release.
 
 Utilities (controlloop-utils)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -338,7 +346,7 @@ The *active.post.sh* script makes the PDP-D active.
 Actor Properties
 """"""""""""""""
 
-In the *frankfurt* release, some *actors* configurations need to be overridden to support *http* for compatibility
+In the *guilin* release, some *actors* configurations need to be overridden to support *http* for compatibility
 with the *controlloop-utils* feature.
 
 AAI-http-client.properties
@@ -548,7 +556,7 @@ Verify that the policy shows with the telemetry tools:
 
     docker exec -it PDPD bash -c "/opt/app/policy/bin/telemetry"
     > get /policy/pdp/engine/lifecycle/policies
-    > get /policy/pdp/engine/controllers/frankfurt/drools/facts/frankfurt/controlloops
+    > get /policy/pdp/engine/controllers/usecases/drools/facts/usecases/controlloops
 
 
 dcae.vdns.onset.json
@@ -644,7 +652,7 @@ Verify that the policy shows with the telemetry tools:
 
     docker exec -it PDPD bash -c "/opt/app/policy/bin/telemetry"
     > get /policy/pdp/engine/lifecycle/policies
-    > get /policy/pdp/engine/controllers/frankfurt/drools/facts/frankfurt/controlloops
+    > get /policy/pdp/engine/controllers/usecases/drools/facts/usecases/controlloops
 
 
 dcae.vcpe.onset.json
@@ -788,7 +796,7 @@ Verify that the policy shows with the telemetry tools:
 
     docker exec -it PDPD bash -c "/opt/app/policy/bin/telemetry"
     > get /policy/pdp/engine/lifecycle/policies
-    > get /policy/pdp/engine/controllers/frankfurt/drools/facts/frankfurt/controlloops
+    > get /policy/pdp/engine/controllers/usecases/drools/facts/usecases/controlloops
 
 
 dcae.vfw.onset.json

@@ -216,27 +216,27 @@ Controllers
 defined in *<name>-controller.properties* files.
 
 For example, see the
-`frankfurt controller configuration <https://git.onap.org/policy/drools-applications/tree/controlloop/common/feature-controlloop-frankfurt/src/main/feature/config/frankfurt-controller.properties>`__.
+`usecases controller configuration <https://git.onap.org/policy/drools-applications/tree/controlloop/common/feature-controlloop-usecases/src/main/feature/config/usecases-controller.properties>`__.
 
 This configuration file has two sections: *a)* application maven coordinates, and *b)* endpoint references and coders.
 
 Maven Coordinates
 ~~~~~~~~~~~~~~~~~
 
-The coordinates section (*rules*) points to the *controller-frankfurt* *kjar* artifact.
+The coordinates section (*rules*) points to the *controller-usecases* *kjar* artifact.
 It is the *brain* of the control loop application.
 
 .. code-block:: bash
 
-    controller.name=frankfurt
+    controller.name=usecases
 
     rules.groupId=${project.groupId}
-    rules.artifactId=controller-frankfurt
+    rules.artifactId=controller-usecases
     rules.version=${project.version}
     .....
 
 This *kjar* contains the
-`frankfurt DRL <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-frankfurt/src/main/resources/frankfurt.drl>`__ file (there may be more than one DRL file included).
+`usecases DRL <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-usecases/src/main/resources/usecases.drl>`__ file (there may be more than one DRL file included).
 
 .. code-block:: bash
 
@@ -256,7 +256,7 @@ This *kjar* contains the
     ...
 
 The DRL in conjuction with the dependent java libraries in the kjar
-`pom <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-frankfurt/pom.xml>`__
+`pom <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-usecases/pom.xml>`__
 realizes the application's function.  For intance, it realizes the
 vFirewall, vCPE, and vDNS use cases in ONAP.
 
@@ -274,7 +274,7 @@ vFirewall, vCPE, and vDNS use cases in ONAP.
 Endpoints References and Coders
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The *frankfurt-controller.properties* configuration also contains a mix of
+The *usecases-controller.properties* configuration also contains a mix of
 source (of incoming controller traffic) and sink (of outgoing controller traffic)
 configuration.  This configuration also contains specific
 filtering and mapping rules for incoming and outgoing dmaap messages
@@ -442,7 +442,7 @@ application *controller* that understands them to execute them.   These are:
 
 A minimum of one application *controller* that supports these capabilities
 must be installed in order to honor the *operational policy types*.
-One such controller is the *frankfurt* controller residing in the
+One such controller is the *usecases* controller residing in the
 `policy/drools-applications <https://git.onap.org/policy/drools-applications>`__
 repository.
 
@@ -459,8 +459,8 @@ explicitly in a native *onap.policies.native.drools.Controller* policy.
     }
 
 The *controller* application could declare its supported policy types in the *kjar*.
-For example, the *frankfurt controller* packages this information in the
-`kmodule.xml <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-frankfurt/src/main/resources/META-INF/kmodule.xml>`__.    One advantage of this approach is that the PDP-D would only
+For example, the *usecases controller* packages this information in the
+`kmodule.xml <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-usecases/src/main/resources/META-INF/kmodule.xml>`__.    One advantage of this approach is that the PDP-D would only
 commit to execute policies against these policy types if a supporting controller is up and running.
 
 .. code-block:: bash
@@ -469,7 +469,7 @@ commit to execute policies against these policy types if a supporting controller
         <kbase name="onap.policies.controlloop.operational.common.Drools" default="false" equalsBehavior="equality"/>
         <kbase name="onap.policies.controlloop.Operational" equalsBehavior="equality"
                packages="org.onap.policy.controlloop" includes="onap.policies.controlloop.operational.common.Drools">
-            <ksession name="frankfurt"/>
+            <ksession name="usecases"/>
         </kbase>
     </kmodule>
 
@@ -841,7 +841,7 @@ The following command will provide a report on the upgrade or downgrade activies
 
     db-migrator -s ALL -o report
 
-For example in the official frankfurt delivery:
+For example in the official guilin delivery:
 
 .. code-block:: bash
 
@@ -960,8 +960,7 @@ The *status* option provides generic status of the system.
     controlloop-management 1.6.4           enabled
     controlloop-utils      1.6.4           enabled
     controlloop-trans      1.6.4           enabled
-    controlloop-frankfurt  1.6.4           enabled
-    controlloop-usecases   1.6.4           disabled
+    controlloop-usecases   1.6.4           enabled
 
     [migration]
     pooling: OK @ 1811
@@ -993,7 +992,7 @@ Telemetry Shell
     Server: Jetty(9.4.24.v20191120)
 
     [
-        "frankfurt"
+        "usecases"
     ]
 
     https://localhost:9696/policy/pdp/engine> exit
