@@ -237,7 +237,7 @@ The Policy Framework requires a MariaDb instance running. The easiest way to do 
 
 One example on how to do this is to use the scripts used by the policy/api S3P tests.
 
-`Simulator Setup Script Example <https://gerrit.onap.org/r/gitweb?p=policy/api.git;a=tree;f=testsuites/stability/src/main/resources/simulatorsetup;h=9038413f67cff2e2a79d6345f198f96ee0c57de1;hb=refs/heads/master>`_
+`Simulator Setup Script Example <https://gerrit.onap.org/r/gitweb?p=policy/api.git;a=tree;f=testsuites/stability/src/main/resources/simulatorsetup;h=9038413f67cff2e2a79d6345f198f96ee0c57de1;hb=refs/heads/guilin>`_
 
     .. code-block:: bash
 
@@ -246,7 +246,7 @@ One example on how to do this is to use the scripts used by the policy/api S3P t
 
 Another example on how to run the MariaDb is using the docker compose file used by the Policy API CSITs:
 
-`Example Compose Script to run MariaDB <https://gerrit.onap.org/r/gitweb?p=integration/csit.git;a=blob;f=scripts/policy/docker-compose-api.yml;h=e32190f1e6cb6d9b64ddf53a2db2c746723a0c6a;hb=refs/heads/master>`_
+`Example Compose Script to run MariaDB <https://gerrit.onap.org/r/gitweb?p=integration/csit.git;a=blob;f=scripts/policy/docker-compose-api.yml;h=e32190f1e6cb6d9b64ddf53a2db2c746723a0c6a;hb=refs/heads/guilin>`_
 
 Running the API component standalone
 +++++++++++++++++++++++++++++++++++++
@@ -256,7 +256,7 @@ running MariaDb database instance. The easiest way to do this is to run the dock
 information on doing so. Once the mariadb is up and running, a configuration file must be provided to the api in order for it to know how to
 connect to the mariadb. You can locate the default configuration file in the packaging of the api component:
 
-`Default API Configuration <https://gerrit.onap.org/r/gitweb?p=policy/api.git;a=blob;f=packages/policy-api-tarball/src/main/resources/etc/defaultConfig.json;h=042fb9d54c79ce4dad517e2564636632a8ecc550;hb=refs/heads/master>`_
+`Default API Configuration <https://gerrit.onap.org/r/gitweb?p=policy/api.git;a=blob;f=packages/policy-api-tarball/src/main/resources/etc/defaultConfig.json;h=042fb9d54c79ce4dad517e2564636632a8ecc550;hb=refs/heads/guilin>`_
 
 You will want to change the fields pertaining to "host", "port" and "databaseUrl" to your local environment settings.
 
@@ -265,7 +265,7 @@ Running the API component using Docker Compose
 
 An example of running the api using a docker compose script is located in the Policy Integration CSIT test repository.
 
-`Policy CSIT API Docker Compose <https://gerrit.onap.org/r/gitweb?p=integration/csit.git;a=blob;f=scripts/policy/docker-compose-api.yml;h=e32190f1e6cb6d9b64ddf53a2db2c746723a0c6a;hb=refs/heads/master>`_
+`Policy CSIT API Docker Compose <https://gerrit.onap.org/r/gitweb?p=integration/csit.git;a=blob;f=scripts/policy/docker-compose-api.yml;h=e32190f1e6cb6d9b64ddf53a2db2c746723a0c6a;hb=refs/heads/guilin>`_
 
 Running the Stability/Performance Tests
 ***************************************

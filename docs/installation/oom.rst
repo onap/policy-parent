@@ -11,7 +11,7 @@ Policy OOM Installation
 
 Policy OOM Charts
 *****************
-The policy K8S charts are located in the `OOM repository <https://gerrit.onap.org/r/gitweb?p=oom.git;a=tree;f=kubernetes/policy;h=78576c7a0d30cb87054e9776326cdde20986e6e3;hb=refs/heads/master>`_.
+The policy K8S charts are located in the `OOM repository <https://gerrit.onap.org/r/gitweb?p=oom.git;a=tree;f=kubernetes/policy;h=78576c7a0d30cb87054e9776326cdde20986e6e3;hb=refs/heads/guilin>`_.
 
 Please refer to the OOM documentation on how to install and deploy ONAP.
 

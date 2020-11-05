@@ -862,67 +862,67 @@ Mininet Topology
 
 .. |avroSchemaEdges_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/avro/topology-edges.avsc" target="_blank">AVRO Schema Edges</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/avro/topology-edges.avsc" target="_blank">AVRO Schema Edges</a>
 .. |avroSchemaNodes_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src//main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/avro/topology-nodes.avsc" target="_blank">AVRO Schema Nodes</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src//main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/avro/topology-nodes.avsc" target="_blank">AVRO Schema Nodes</a>
 .. |avroSchemaCustomers_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/avro/customers.avsc" target="_blank">AVRO Schema Customers</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/avro/customers.avsc" target="_blank">AVRO Schema Customers</a>
 .. |avroSchemaLinkStatus_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/avro/link-status.avsc" target="_blank">AVRO Schema Link Status</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/avro/link-status.avsc" target="_blank">AVRO Schema Link Status</a>
 .. |cntxtNodes_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/ctxt-nodes.js" target="_blank">Logic Node Context</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/ctxt-nodes.js" target="_blank">Logic Node Context</a>
 .. |cntxtEdges_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/ctxt-edges.js" target="_blank">Logic Edge Context</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/ctxt-edges.js" target="_blank">Logic Edge Context</a>
 .. |cntxtCustomer_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/ctxt-customer.js" target="_blank">Logic Customer Context</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/ctxt-customer.js" target="_blank">Logic Customer Context</a>
 .. |taskMatch_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-match.js" target="_blank">Logic Policy Match State</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-match.js" target="_blank">Logic Policy Match State</a>
 .. |taskEstablish_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-establish.js" target="_blank">Logic Policy Establish State</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-establish.js" target="_blank">Logic Policy Establish State</a>
 .. |tslDecide_Link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/tsl-decide.js" target="_blank">JS Logic Policy Decide State - TSL</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/tsl-decide.js" target="_blank">JS Logic Policy Decide State - TSL</a>
 .. |taskDecideNone_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-decide-none.js" target="_blank">Logic: Decide None</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-decide-none.js" target="_blank">Logic: Decide None</a>
 .. |taskDecideSolved_Link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-decide-solved.js" target="_blank">Logic: Decide Solved</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-decide-solved.js" target="_blank">Logic: Decide Solved</a>
 .. |taskDecideSla_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-decide-sla.js" target="_blank">Logic: Decide SLA</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-decide-sla.js" target="_blank">Logic: Decide SLA</a>
 .. |taskDecidePriority_Link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-decide-priority.js" target="_blank">Logic: Decide Priority</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-decide-priority.js" target="_blank">Logic: Decide Priority</a>
 .. |taskAct_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-act.js" target="_blank">Logic Policy Act State</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/logic/task-act.js" target="_blank">Logic Policy Act State</a>
 .. |vpnsla-apex_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/vpnsla.apex" target="_blank">APEX VPN SLA Policy Specification</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/org/onap/policy/apex/examples/pcvs/vpnsla/vpnsla.apex" target="_blank">APEX VPN SLA Policy Specification</a>
 .. |ctxtNodesJson_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/examples/events/pcvs/vpnsla/CtxtNodes.json" target="_blank">Context Events Nodes</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/examples/events/pcvs/vpnsla/CtxtNodes.json" target="_blank">Context Events Nodes</a>
 .. |ctxtEdgesJson_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/examples/events/pcvs/vpnsla/CtxtEdges.json" target="_blank">Context Events Edges</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/examples/events/pcvs/vpnsla/CtxtEdges.json" target="_blank">Context Events Edges</a>
 .. |ctxtCustomerJson_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/examples/events/pcvs/vpnsla/CtxtCustomers.json" target="_blank">Context Events Customers</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/examples/events/pcvs/vpnsla/CtxtCustomers.json" target="_blank">Context Events Customers</a>
 .. |triggerEdgeJson_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/examples/events/pcvs/vpnsla/Trigger_Edge09.json" target="_blank">Trigger Examples</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/examples/events/pcvs/vpnsla/Trigger_Edge09.json" target="_blank">Trigger Examples</a>
 .. |linkMonitor_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/examples/scripts/pcvs/vpnsla/LinkMonitor.py" target="_blank">Link Monitor</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/examples/scripts/pcvs/vpnsla/LinkMonitor.py" target="_blank">Link Monitor</a>
 .. |mininetTopology_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-pcvs/src/main/resources/examples/scripts/pcvs/vpnsla/MininetTopology.py" target="_blank">Mininet Topology</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-pcvs/src/main/resources/examples/scripts/pcvs/vpnsla/MininetTopology.py" target="_blank">Mininet Topology</a>

@@ -27,11 +27,11 @@ The following environment file from postman can be used for testing API's. All y
 Postman Collection for API Testing
 ----------------------------------
 
-Postman collection for `Policy Framework Lifecycle API <https://github.com/onap/policy-api/blob/master/postman/lifecycle-api-collection.json>`_
+Postman collection for `Policy Framework Lifecycle API <https://github.com/onap/policy-api/blob/guilin/postman/lifecycle-api-collection.json>`_
 
-Postman collection for `Policy Framework Administration API <https://github.com/onap/policy-pap/blob/master/postman/pap-api-collection.json>`_
+Postman collection for `Policy Framework Administration API <https://github.com/onap/policy-pap/blob/guilin/postman/pap-api-collection.json>`_
 
-Postman collection for `Policy Framework Decision API <https://github.com/onap/policy-xacml-pdp/blob/master/postman/decision-api-collection.json>`_
+Postman collection for `Policy Framework Decision API <https://github.com/onap/policy-xacml-pdp/blob/guilin/postman/decision-api-collection.json>`_
 
 API Swagger Generation
 ----------------------

@@ -115,7 +115,7 @@ your analytics policy type name.
             description: A description of this property
 
 For more examples of monitoring policy type definitions, please refer to the examples in the `ONAP policy-models gerrit
-repository <https://github.com/onap/policy-models/tree/master/models-examples/src/main/resources/policytypes>`__. Please
+repository <https://github.com/onap/policy-models/tree/guilin/models-examples/src/main/resources/policytypes>`__. Please
 note that some of the examples do not adhere to TOSCA naming conventions due to backward compatibility.
 
 
@@ -132,7 +132,7 @@ properties and datatypes that are independent of the PDP engine used to enforce 
 
 Drools PDP Control Loop Operational Policy definition extends the base common policy type by adding a property for **controllerName**.
 
-Please see the definition of the `Drools Operational Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.common.Drools.yaml>`_
+Please see the definition of the `Drools Operational Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.common.Drools.yaml>`_
 
 
 2.2 onap.policies.controlloop.operational.common.Apex
@@ -140,7 +140,7 @@ Please see the definition of the `Drools Operational Policy Type <https://github
 
 Apex PDP Control Loop Operational Policy definition extends the base common policy type by adding additional properties.
 
-Please see the definition of the `Apex Operational Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.common.Apex.yaml>`_
+Please see the definition of the `Apex Operational Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.common.Apex.yaml>`_
 
 3 Base Policy Type: onap.policies.controlloop.guard.Common
 ----------------------------------------------------------
@@ -153,35 +153,35 @@ onap.controlloop.Operational policy type implementations.
 .. image:: images/Guard.svg
    :alt:  Guard Policy Type Inheritance
 
-Please see the definition of the `Common Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Common.yaml>`_
+Please see the definition of the `Common Guard Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Common.yaml>`_
 
 3.1 Frequency Limiter Guard onap.policies.controlloop.guard.common.FrequencyLimiter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The frequency limiter supports limiting the frequency of actions being taken by an Actor.
 
-Please see the definition of the `Guard Frequency Limiter Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.FrequencyLimiter.yaml>`_
+Please see the definition of the `Guard Frequency Limiter Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.FrequencyLimiter.yaml>`_
 
 3.2 Min/Max Guard onap.policies.controlloop.guard.common.MinMax
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Min/Max Guard supports Min/Max number of entity for scaling operations.
 
-Please see the definition of the `Guard Min/Max Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.MinMax.yaml>`_
+Please see the definition of the `Guard Min/Max Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.MinMax.yaml>`_
 
 3.3 Blacklist Guard onap.policies.controlloop.guard.common.Blacklist
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Blacklist Guard Supports blacklisting control loop actions from being performed on specific entity id's.
 
-Please see the definition of the `Guard Blacklist Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Blacklist.yaml>`_
+Please see the definition of the `Guard Blacklist Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Blacklist.yaml>`_
 
 3.4 Filter Guard onap.policies.controlloop.guard.common.Filter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Filter Guard Supports filtering control loop actions from being performed on specific entity id's.
 
-Please see the definition of the `Guard Filter Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Filter.yaml>`_
+Please see the definition of the `Guard Filter Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Filter.yaml>`_
 
 4 Optimization onap.policies.Optimization
 -----------------------------------------
@@ -192,7 +192,7 @@ by all its derived policy types.
 .. image:: images/Optimization.svg
    :alt:  Optimization Policy Type Inheritance
 
-Please see the definition of the `Base Optimization Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.Optimization.yaml>`_.
+Please see the definition of the `Base Optimization Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.Optimization.yaml>`_.
 
 These Policy Types are unique in that some properties have an additional metadata property **matchable** set to **true**
 which indicates that this property can be used to support more fine-grained Policy Decisions. For more information,
@@ -204,7 +204,7 @@ see the :ref:`XACML Optimization application implementation <xacml-optimization-
 This policy type further extends the base onap.policies.Optimization type by defining additional properties specific to
 a service. For more information:
 
-`Service Optimization Base Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.Service.yaml>`_
+`Service Optimization Base Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.optimization.Service.yaml>`_
 
 Several additional policy types inherit from the Service Optimization Policy Type. For more information, :ref:`XACML Optimization
 application implementation <xacml-optimization-label>`.
@@ -215,7 +215,7 @@ application implementation <xacml-optimization-label>`.
 This policy type further extends the base onap.policies.Optimization type by defining additional properties specific to
 a resource. For more information:
 
-`Resource Optimization Base Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.optimization.Resource.yaml>`_
+`Resource Optimization Base Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.optimization.Resource.yaml>`_
 
 Several additional policy types inherit from the Resource Optimization Policy Type. For more information, :ref:`XACML Optimization
 application implementation <xacml-optimization-label>`.
@@ -225,7 +225,7 @@ application implementation <xacml-optimization-label>`.
 
 Naming policies are used in SDNC to enforce which naming policy should be used during instantiation.
 
-Policies of this type are composed using the `Naming Policy Type Model <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.Naming.yaml>`_.
+Policies of this type are composed using the `Naming Policy Type Model <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.Naming.yaml>`_.
 
 6 Native Policy Types onap.policies.Native
 ------------------------------------------
@@ -251,7 +251,7 @@ any other arbitrary configuration data to realize an application.
 
 Policies of this type are composed using the
 `onap.policies.native.drools.Controller policy type specification
-<https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.native.Drools.yaml>`__ specification.
+<https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.native.Drools.yaml>`__ specification.
 
 6.2 Policy Type: onap.policies.native.drools.Artifact
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -262,7 +262,7 @@ type to create or upgrade a drools application on a live PDP-D.
 
 Policies of this type are composed against the
 `onap.policies.native.drools.Controller policy type specification
-<https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.native.Drools.yaml>`__ specification.
+<https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.native.Drools.yaml>`__ specification.
 
 6.3 Policy Type: onap.policies.native.Xacml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -271,11 +271,11 @@ This policy type supports XACML OASIS 3.0 XML Policies. The policies are URL enc
 API json and yaml Content-Types. When deployed to the XACML PDP (PDP-X), they will be managed by the **native** application. The PDP-X
 will route XACML Request/Response RESTful API calls to the **native** application who manages those decisions.
 
-`XACML Native Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.native.Xacml.yaml>`_
+`XACML Native Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.native.Xacml.yaml>`_
 
 6.4 Policy Type: onap.policies.native.Apex
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This policy type supports Apex native policy types.
 
-`Apex Native Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.native.Apex.yaml>`_
+`Apex Native Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.native.Apex.yaml>`_

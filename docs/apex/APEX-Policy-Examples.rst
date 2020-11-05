@@ -25,7 +25,7 @@ Sample APEX Policy in TOSCA format
          .. container:: ulist
 
             -  `APEX TOSCA Policy
-               vCPE <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vCPE.apex.policy.operational.input.tosca.json>`__
+               vCPE <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policies/vCPE.apex.policy.operational.input.tosca.json>`__
 
 My First Policy
 ^^^^^^^^^^^^^^^

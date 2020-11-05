@@ -31,7 +31,7 @@ By cloning the policy/xacml-pdp repository, a developer can run the JUnit tests 
 
 See the :ref:`policy-development-tools-label` for more information on cloning and developing the policy repositories.
 
-XACML-PDP applications are located in the 'applications' sub-module in the policy/xacml-pdp repo. `Click here to view the applications sub-modules <https://github.com/onap/policy-xacml-pdp/tree/master/applications>`_
+XACML-PDP applications are located in the 'applications' sub-module in the policy/xacml-pdp repo. `Click here to view the applications sub-modules <https://github.com/onap/policy-xacml-pdp/tree/guilin/applications>`_
 
 XACML PDP TOSCA Translators
 ===========================
@@ -42,7 +42,7 @@ StdCombinedPolicyResultsTranslator Translator
 ---------------------------------------------
 A simple translator that wraps the TOSCA policy into a XACML policy and performs matching of the policy based on either policy-id and/or policy-type. The use of this translator is discouraged as it behaves like a database call and does not take advantage of the fine-grain decision making features described by the XACML OASIS 3.0 standard. It is used to support backward compatibility of legacy "configure" policies.
 
-`Implementation of Combined Results Translator <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdCombinedPolicyResultsTranslator.java>`_.
+`Implementation of Combined Results Translator <https://github.com/onap/policy-xacml-pdp/blob/guilin/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdCombinedPolicyResultsTranslator.java>`_.
 
 The Monitoring and Naming applications use this translator.
 
@@ -54,7 +54,7 @@ More robust translator that searches metadata of TOSCA properties for a **matcha
 
 Each of the properties designated as "matchable" are treated relative to each other as an "AND" during a Decision request call. In addition, each value of a "matchable property that is an array, is treated as an "OR". The more properties specified in a decision request, the more fine-grained a policy will be returned. In addition, the use of "policy-type" can be used in a decision request to further filter the decision results to a specific type of policy.
 
-`Implementation of Matchable Translator <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdMatchableTranslator.java>`_.
+`Implementation of Matchable Translator <https://github.com/onap/policy-xacml-pdp/blob/guilin/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdMatchableTranslator.java>`_.
 
 The Optimization application uses this translator.
 
@@ -62,16 +62,16 @@ GuardTranslator and CoordinationGuardTranslator
 -----------------------------------------------
 These two translators are used by the Guard application and are very specific to those Policy Types. They are good examples on how to build your own translator for a very specific implementation of a policy type. This can be the case if any of the Std* translators are not appropriate to use directly or override for your application.
 
-`Implementation of Guard Translator <https://github.com/onap/policy-xacml-pdp/blob/master/applications/guard/src/main/java/org/onap/policy/xacml/pdp/application/guard/GuardTranslator.java>`_
+`Implementation of Guard Translator <https://github.com/onap/policy-xacml-pdp/blob/guilin/applications/guard/src/main/java/org/onap/policy/xacml/pdp/application/guard/GuardTranslator.java>`_
 
-`Implementation of Coordination Translator <https://github.com/onap/policy-xacml-pdp/blob/master/applications/guard/src/main/java/org/onap/policy/xacml/pdp/application/guard/CoordinationGuardTranslator.java>`_
+`Implementation of Coordination Translator <https://github.com/onap/policy-xacml-pdp/blob/guilin/applications/guard/src/main/java/org/onap/policy/xacml/pdp/application/guard/CoordinationGuardTranslator.java>`_
 
 Native XACML OAISIS 3.0 XML Policy Translator
 -----------------------------------------------
 
 This translator pulls a URL encoded XML XACML policy from a TOSCA Policy and loads it into a XACML Engine. This allows native XACML policies to be used to support complex use cases in which a translation from TOSCA to XACML is too difficult.
 
-`Implementation of Native Policy Translator <https://github.com/onap/policy-xacml-pdp/tree/master/applications/native/src/main/java/org/onap/policy/xacml/pdp/application/nativ>`_
+`Implementation of Native Policy Translator <https://github.com/onap/policy-xacml-pdp/tree/guilin/applications/native/src/main/java/org/onap/policy/xacml/pdp/application/nativ>`_
 
 Monitoring Policy Types
 =======================
@@ -135,7 +135,7 @@ properties.
    "timeRange", "start_time: T00:00:00Z end_time: T08:00:00Z", "Optional", "tosca.datatypes.TimeInterval", "A given time range the guard is in effect. Following the TOSCA specification the format should be ISO 8601 format "
    "id", "control-loop-id", "Optional", "String", "A specific Control Loop id the guard is in effect."
 
-`Common Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Common.yaml>`__
+`Common Guard Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.Common.yaml>`__
 
 Frequency Limiter Guard Policy Type
 -----------------------------------
@@ -151,7 +151,7 @@ The Frequency Limiter Guard is used to specify limits as to how many operations 
 .. literalinclude:: example.guard.limiter.yaml
   :language: YAML
 
-`Frequency Limiter Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.FrequencyLimiter.yaml>`__
+`Frequency Limiter Guard Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.FrequencyLimiter.yaml>`__
 
 Min/Max Guard Policy Type
 -------------------------
@@ -167,7 +167,7 @@ The Min/Max Guard is used to specify a minimum or maximum number of instantiated
 .. literalinclude:: example.guard.minmax.yaml
   :language: YAML
 
-`Min/Max Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.MinMax.yaml>`__
+`Min/Max Guard Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.MinMax.yaml>`__
 
 Blacklist Guard Policy Type
 ---------------------------
@@ -181,7 +181,7 @@ The Blacklist Guard is used to specify a list of A&AI entities that are blacklis
 .. literalinclude:: example.guard.blacklist.yaml
   :language: YAML
 
-`Blacklist Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Blacklist.yaml>`__
+`Blacklist Guard Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Blacklist.yaml>`__
 
 Filter Guard Policy Type
 ------------------------
@@ -204,7 +204,7 @@ The Filter Guard is a more robust guard for blacklisting and whitelisting A&AI e
 .. literalinclude:: example.guard.filter.yaml
   :language: YAML
 
-`Filter Guard Policy Type <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Filter.yaml>`__
+`Filter Guard Policy Type <https://github.com/onap/policy-models/blob/guilin/models-examples/src/main/resources/policytypes/onap.policies.controlloop.guard.common.Filter.yaml>`__
 
 .. _xacml-optimization-label:
 
@@ -293,22 +293,22 @@ In order to support your own custom Policy Type that the XACML PDP Engine can su
 XacmlApplicationServiceProvider
 ===============================
 
-`Interface for XacmlApplicationServiceProvider <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/XacmlApplicationServiceProvider.java>`_
+`Interface for XacmlApplicationServiceProvider <https://github.com/onap/policy-xacml-pdp/blob/guilin/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/XacmlApplicationServiceProvider.java>`_
 
 See each of the ONAP Policy Type application implementations which re-use the **StdXacmlApplicationServiceProvider** class. This implementation can be used as a basis for your own custom applications.
 
-`Standard Application Service Provider implementation <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdXacmlApplicationServiceProvider.java>`_
+`Standard Application Service Provider implementation <https://github.com/onap/policy-xacml-pdp/blob/guilin/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdXacmlApplicationServiceProvider.java>`_
 
 ToscaPolicyTranslator
 =====================
 
 Your custom **XacmlApplicationServiceProvider** must provide an implementation of a *ToscaPolicyTranslator*.
 
-`Interface for ToscaPolicyTranslator <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/ToscaPolicyTranslator.java>`_
+`Interface for ToscaPolicyTranslator <https://github.com/onap/policy-xacml-pdp/blob/guilin/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/ToscaPolicyTranslator.java>`_
 
 See each of the ONAP Policy type application implementations which each have their own *ToscaPolicyTranslator*. Most use or extend the **StdBaseTranslator**.
 
-`Standard Tosca Policy Translator implementation <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdBaseTranslator.java>`.
+`Standard Tosca Policy Translator implementation <https://github.com/onap/policy-xacml-pdp/blob/guilin/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdBaseTranslator.java>`.
 
 XACML Application Tutorial
 ==========================

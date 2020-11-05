@@ -232,7 +232,7 @@ threadsTimeOutInMs  Synchronization timer for threads running in parallel (in mi
 ==================  ============================================================================  ============================
 
 
-Download and update the jmx file presented in the apex-pdp git repository - `jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/apex-pdp-stability/src/main/resources;h=99d373033a190a690d4e05012bc3a656cae7bc3f;hb=refs/heads/master>`_.
+Download and update the jmx file presented in the apex-pdp git repository - `jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/apex-pdp-stability/src/main/resources;h=99d373033a190a690d4e05012bc3a656cae7bc3f;hb=refs/heads/guilin>`_.
 
 - HTTPSampler.domain - The ip address of VM which the apex container is running
 - HTTPSampler.port - The  listening port, here is 23324
@@ -305,7 +305,7 @@ threadsTimeOutInMs  Synchronization timer for threads running in parallel (in mi
 ==================  ============================================================================  ============================
 
 
-Download and update the jmx file presented in the apex-pdp git repository - `jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/apex-pdp-stability/src/main/resources;h=99d373033a190a690d4e05012bc3a656cae7bc3f;hb=refs/heads/master>`_.
+Download and update the jmx file presented in the apex-pdp git repository - `jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/apex-pdp-stability/src/main/resources;h=99d373033a190a690d4e05012bc3a656cae7bc3f;hb=refs/heads/guilin>`_.
 
 - HTTPSampler.domain - The ip address of the VM in which the apex container is running
 - HTTPSampler.port - The  listening port, here is 23324
@@ -351,11 +351,11 @@ Setting up Performance Tests in APEX
 ++++++++++++++++++++++++++++++++++++
 
 The apex-pdp has built in support for performance testing. A special performance testing REST server is available in the code base for performance testing.
-It is in the module `performance-benchmark-test <https://github.com/onap/policy-apex-pdp/tree/master/testsuites/performance/performance-benchmark-test>`_.
+It is in the module `performance-benchmark-test <https://github.com/onap/policy-apex-pdp/tree/guilin/testsuites/performance/performance-benchmark-test>`_.
 To execute a benchmark test, you start the REST server, and then configure and run APEX against the server.
-There are example configurations for running tests in the `resources of this module <https://github.com/onap/policy-apex-pdp/tree/master/testsuites/performance/performance-benchmark-test/src/main/resources/examples/benchmark>`_.
+There are example configurations for running tests in the `resources of this module <https://github.com/onap/policy-apex-pdp/tree/guilin/testsuites/performance/performance-benchmark-test/src/main/resources/examples/benchmark>`_.
 
-In order to run the test for 72 hours, set the batch count in the `EventGeneratorConfig.json <https://github.com/onap/policy-apex-pdp/blob/master/testsuites/performance/performance-benchmark-test/src/main/resources/examples/benchmark/EventGeneratorConfig.json>`_ file to zero, which causes the REST server to generate batches forever.
+In order to run the test for 72 hours, set the batch count in the `EventGeneratorConfig.json <https://github.com/onap/policy-apex-pdp/blob/guilin/testsuites/performance/performance-benchmark-test/src/main/resources/examples/benchmark/EventGeneratorConfig.json>`_ file to zero, which causes the REST server to generate batches forever.
 
 Here is an example of how to do this:
 
@@ -382,7 +382,7 @@ Here is an example of how to do this:
 
     bin/apexApps.sh engine -c ~/git/onap/policy/apex-pdp/testsuites/performance/performance-benchmark-test/src/main/resources/examples/benchmark/Javascript64.json
 
-5. To get the test results, Issue the following command using CURL or from a browser(also can store the result into a file by setting outfile in the `EventGeneratorConfig.json <https://github.com/onap/policy-apex-pdp/blob/master/testsuites/performance/performance-benchmark-test/src/main/resources/examples/benchmark/EventGeneratorConfig.json>`_ file, statistics would be written into this file after event generator terminated)
+5. To get the test results, Issue the following command using CURL or from a browser(also can store the result into a file by setting outfile in the `EventGeneratorConfig.json <https://github.com/onap/policy-apex-pdp/blob/guilin/testsuites/performance/performance-benchmark-test/src/main/resources/examples/benchmark/EventGeneratorConfig.json>`_ file, statistics would be written into this file after event generator terminated)
 
 .. code-block:: bash
 

@@ -5300,10 +5300,10 @@ Websocket Example Code for Websocket clients (FOSS)
                implementation <https://github.com/TooTallNate/Java-WebSocket>`__
 
             -  `Websocket sending client example, using
-               AWT <https://github.com/TooTallNate/Java-WebSocket/blob/master/src/main/example/ChatClient.java>`__
+               AWT <https://github.com/TooTallNate/Java-WebSocket/blob/guilin/src/main/example/ChatClient.java>`__
 
             -  `Websocket receiving client example (simple echo
-               client) <https://github.com/TooTallNate/Java-WebSocket/blob/master/src/main/example/ExampleClient.java>`__
+               client) <https://github.com/TooTallNate/Java-WebSocket/blob/guilin/src/main/example/ExampleClient.java>`__
 
          .. container:: paragraph
 

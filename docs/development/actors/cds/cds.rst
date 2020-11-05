@@ -279,7 +279,7 @@ For integration testing use CLAMP UI to configure the Operational Policy
 --------------
 For detailed description of the Operational Policy YAML specification refer to:
 
-* https://gerrit.onap.org/r/gitweb?p=policy/drools-applications.git;a=blob;f=controlloop/common/policy-yaml/README-v2.0.0.md;h=eadaf658a52eac0d0cf6603025ef8b4c760f553b;hb=refs/heads/master
+* https://gerrit.onap.org/r/gitweb?p=policy/drools-applications.git;a=blob;f=controlloop/common/policy-yaml/README-v2.0.0.md;h=eadaf658a52eac0d0cf6603025ef8b4c760f553b;hb=refs/heads/guilin
 * https://wiki.onap.org/display/DW/Control+Loop+Operational+Policy
 
 4.2 Control Loop Operational Policy YAML to use the CDS actor

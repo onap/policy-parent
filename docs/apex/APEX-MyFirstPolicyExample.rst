@@ -1327,28 +1327,28 @@ CLI Editor File
 .. |State definition with 2 Tasks and Task Selection Logic| image:: images/mfp/MyFirstPolicy_P2_editState1.png
 .. |taskLogicMvel_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MorningBoozeCheck.mvel" target="_blank">Task Logic: MorningBoozeCheck.mvel</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MorningBoozeCheck.mvel" target="_blank">Task Logic: MorningBoozeCheck.mvel</a>
 .. |taskLogicJs_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MorningBoozeCheck.js" target="_blank">Task Logic: MorningBoozeCheck.js</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MorningBoozeCheck.js" target="_blank">Task Logic: MorningBoozeCheck.js</a>
 .. |policy1_configuration| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/config/MyFirstPolicy/1/MyFirstPolicyConfigStdin2StdoutJsonEvent.json" target="_blank">configuration</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-myfirstpolicy/src/main/resources/examples/config/MyFirstPolicy/1/MyFirstPolicyConfigStdin2StdoutJsonEvent.json" target="_blank">configuration</a>
 .. |policy1ModelMvel_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MyFirstPolicyModelMvel_0.0.1.apex" target="_blank">APEX CLI Editor code for Policy 1 using .Mvel Task Logic</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MyFirstPolicyModelMvel_0.0.1.apex" target="_blank">APEX CLI Editor code for Policy 1 using .Mvel Task Logic</a>
 .. |policy1ModelJs_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MyFirstPolicyModelJavascript_0.0.1.apex" target="_blank">APEX CLI Editor code for Policy 1 using .Js Task Logic</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/1/MyFirstPolicyModelJavascript_0.0.1.apex" target="_blank">APEX CLI Editor code for Policy 1 using .Js Task Logic</a>
 .. |policy2_taskLogic_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/2/MorningBoozeCheckAlt1.mvel" target="_blank">`MorningBoozeCheckAlt1` task logic (`MVEL`)</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/2/MorningBoozeCheckAlt1.mvel" target="_blank">`MorningBoozeCheckAlt1` task logic (`MVEL`)</a>
 .. |policy2_taskSelectionLogic_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/2/MyFirstPolicy_BoozeAuthDecideTSL.js" target="_blank">`BoozeAuthDecide` task selection logic (`JavaScript`)</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/2/MyFirstPolicy_BoozeAuthDecideTSL.js" target="_blank">`BoozeAuthDecide` task selection logic (`JavaScript`)</a>
 .. |policy2_configuration_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/config/MyFirstPolicy/2/MyFirstPolicyConfigStdin2StdoutJsonEvent.json" target="_blank">configuration</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-myfirstpolicy/src/main/resources/examples/config/MyFirstPolicy/2/MyFirstPolicyConfigStdin2StdoutJsonEvent.json" target="_blank">configuration</a>
 .. |policy2_Model_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/tree/master/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/2/MyFirstPolicyModel_0.0.1.apex" target="_blank">APEX CLI Editor code for Policy 2</a>
+  <a href="https://github.com/onap/policy-apex-pdp/tree/guilin/examples/examples-myfirstpolicy/src/main/resources/examples/models/MyFirstPolicy/2/MyFirstPolicyModel_0.0.1.apex" target="_blank">APEX CLI Editor code for Policy 2</a>

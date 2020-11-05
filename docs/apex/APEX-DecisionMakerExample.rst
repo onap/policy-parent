@@ -44,57 +44,57 @@ APEX Examples Decision Maker
    :target: http://www.onap.org/
 .. |apexConfigRESTClient_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/examples/config/DecisionMaker/ApexConfigRESTClient.json" target="_blank">APEX Configuration: Rest Client</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/examples/config/DecisionMaker/ApexConfigRESTClient.json" target="_blank">APEX Configuration: Rest Client</a>
 .. |apexConfigRESTServer_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/examples/config/DecisionMaker/ApexConfigRESTServer.json" target="_blank">APEX Configuration: Rest Server</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/examples/config/DecisionMaker/ApexConfigRESTServer.json" target="_blank">APEX Configuration: Rest Server</a>
 
 .. |answerInitiationEvent_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/examples/config/DecisionMaker/AnswerInitiationEvent.json" target="_blank">Initiation Event</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/examples/config/DecisionMaker/AnswerInitiationEvent.json" target="_blank">Initiation Event</a>
 
 .. |makeDecision_Client_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/examples/html/DecisionMaker/MakeDecision_Client.html" target="_blank">HTML Client</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/examples/html/DecisionMaker/MakeDecision_Client.html" target="_blank">HTML Client</a>
 
 .. |makeDecision_Server_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/examples/html/DecisionMaker/MakeDecision_Server.html" target="_blank">HTML Server</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/examples/html/DecisionMaker/MakeDecision_Server.html" target="_blank">HTML Server</a>
 
 .. |makeDecisionExtraMode_Client_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/examples/html/DecisionMaker/MakeDecisionExtraMode_Client.html" target="_blank">HTML Client: Extra Mode</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/examples/html/DecisionMaker/MakeDecisionExtraMode_Client.html" target="_blank">HTML Client: Extra Mode</a>
 
 .. |makeDecisionExtraMode_Server_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/examples/html/DecisionMaker/MakeDecisionExtraMode_Server.html" target="_blank">HTML Server: Extra Mode</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/examples/html/DecisionMaker/MakeDecisionExtraMode_Server.html" target="_blank">HTML Server: Extra Mode</a>
 .. |answerInitTask_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/logic/AnswerInitTask.js" target="_blank">Task Logic: Answer Init</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/logic/AnswerInitTask.js" target="_blank">Task Logic: Answer Init</a>
 
 .. |ditheringAnswerTask_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/logic/DitheringAnswerTask.js" target="_blank">Task Logic: Dithering Answer</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/logic/DitheringAnswerTask.js" target="_blank">Task Logic: Dithering Answer</a>
 
 .. |makeDecisionStateTSL_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/logic/MakeDecisionStateTSL.js" target="_blank">Task Selection Logic: Make Decision State</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/logic/MakeDecisionStateTSL.js" target="_blank">Task Selection Logic: Make Decision State</a>
 
 .. |optimisticAnswerTask_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/logic/OptimisticAnswerTask.js" target="_blank">Task Logic: Optimistic Answer</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/logic/OptimisticAnswerTask.js" target="_blank">Task Logic: Optimistic Answer</a>
 
 .. |pessimisticAnswerTask_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/logic/PessimisticAnswerTask.js" target="_blank">Task Logic: Pessimistic Answer</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/logic/PessimisticAnswerTask.js" target="_blank">Task Logic: Pessimistic Answer</a>
 
 .. |randomAnswerTask_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/logic/RandomAnswerTask.js" target="_blank">Task Logic: Random Answer</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/logic/RandomAnswerTask.js" target="_blank">Task Logic: Random Answer</a>
 
 .. |roundRobinAnswerTask_link| raw:: html
 
-  <a href="https://github.com/onap/policy-apex-pdp/blob/master/examples/examples-decisionmaker/src/main/resources/logic/RoundRobinAnswerTask.js" target="_blank">Task Logic: RoundRobin Answer</a>
+  <a href="https://github.com/onap/policy-apex-pdp/blob/guilin/examples/examples-decisionmaker/src/main/resources/logic/RoundRobinAnswerTask.js" target="_blank">Task Logic: RoundRobin Answer</a>
 
 
 
