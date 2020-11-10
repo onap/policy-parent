@@ -4,7 +4,7 @@
 .. _release_notes:
 
 Policy Release Notes
-====================
+####################
 
 .. note
 ..      * This Release Notes must be updated each time the team decides to Release new artifacts.
@@ -13,7 +13,139 @@ Policy Release Notes
 ..      * this Release Notes.
 ..      * Except the date and the version number, all the other sections are optional but there must be at least
 ..      * one section describing the purpose of this new release.
-..      * This note must be removed after content has been added.
+
+..      ========================
+..      * * *    GUILIN    * * *
+..      ========================
+
+Version: 7.0.0
+--------------
+
+:Release Date: 2020-11-19 (Guilin Release)
+
+New features
+============
+
+Artifacts released:
+
+.. csv-table::
+   :header: "Repository", "Java Artifact", "Docker Image (if applicable)"
+   :widths: 15,10,10
+
+   "policy/parent", "3.2.0", ""
+   "policy/common", "1.7.1", ""
+   "policy/models", "2.3.5", ""
+   "policy/api", "2.3.3", "onap/policy-api:2.3.3"
+   "policy/pap", "2.3.3", "onap/policy-pap:2.3.3"
+   "policy/drools-pdp", "1.7.4", "onap/policy-drools:1.7.4"
+   "policy/apex-pdp", "2.4.4", "onap/policy-apex-pdp:2.4.4"
+   "policy/xacml-pdp", "2.3.3", "onap/policy-xacml-pdp:2.3.3"
+   "policy/drools-applications", "1.7.5", "onap/policy-pdpd-cl:1.7.5"
+   "policy/distribution", "2.4.3", "onap/policy-distribution:2.4.3"
+   "policy/docker", "2.1.1", "onap/policy-jdk-alpine:2.1.1, onap/policy-jre-alpine:2.1.1"
+
+Key Updates
+===========
+
+* Kubernetes integration
+   - All components return with non-zero exit code in case of application failure
+   - All components log to standard out (i.e., k8s logs) by default
+   - Continue to write log files inside individual pods, as well
+* Multi-tenancy
+   - Basic initial support using the existing features
+* E2E Network Slicing
+   - Added ModifyNSSI operation to SO actor
+* Consolidated health check
+   - Indicate failure if there aren’t enough PDPs registered
+* Legacy operational policies
+   - Removed from all components
+* OOM helm charts refactoring
+   - Name standardization
+   - Automated certificate generation
+* Actor Model
+   - Support various use cases and provide more flexibility to Policy Designers
+* Guard Application
+   - Support policy filtering and “matchable”
+* Policy Lifecycle & Administration API
+   - Query/Delete by policy name & version without policy type
+* Apex-PDP enhancements
+   - Support multiple event & response types coming from a single endpoint
+   - Standalone installation now supports Tosca-based policies
+   - Legacy policy format has been removed
+   - Support chaining/handling of gRPC failure responses
+* Policy Distribution
+   - HPA decoders & related classes have been removed
+* Policy Engine
+   - Deprecated
+
+Known Limitations, Issues and Workarounds
+=========================================
+
+System Limitations
+~~~~~~~~~~~~~~~~~~
+
+The policy API component requires a fresh new database when migrating to the guilin release.
+Therefore, upgrades require a fresh new database installation.
+Please see the
+`Installing or Upgrading Policy <https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
+
+Known Vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~
+
+* `POLICY-2463 <https://jira.onap.org/browse/POLICY-2463>`_ - In APEX Policy javascript task logic, JSON.stringify causing stackoverflow exceptions
+
+Workarounds
+~~~~~~~~~~~
+* `POLICY-2463 <https://jira.onap.org/browse/POLICY-2463>`_ - Use the stringify method of the execution context
+
+Security Notes
+==============
+
+* `POLICY-2878 <https://jira.onap.org/browse/POLICY-2878>`_ - Dependency upgrades
+    - Upgrade com.fasterxml.jackson to 2.11.1
+* `POLICY-2387 <https://jira.onap.org/browse/POLICY-2387>`_ - Dependency upgrades
+    - Upgrade org.json to 20200518
+    - Upgrade com.google.re2j to 1.4
+    - Upgrade com.thoughtworks.xstream to 1.4.12
+    - Upgrade org.eclipse.persistence to 2.2.1
+    - Upgrade org.apache.httpcomponents to 4.5.12
+    - Upgrade org.projectlombok to 1.18.12
+    - Upgrade org.slf4j to 1.7.30
+    - Upgrade org.codehaus.plexus to 3.3.0
+    - Upgrade com.h2database to 1.4.200
+    - Upgrade io.cucumber to 6.1.2
+    - Upgrade org.assertj to 3.16.1
+    - Upgrade com.openpojo to 0.8.13
+    - Upgrade org.mockito to 3.3.3
+    - Upgrade org.awaitility to 4.0.3
+    - Upgrade org.onap.aaf.authz to 2.1.21
+* `POLICY-2668 <https://jira.onap.org/browse/POLICY-2668>`_ - Dependency upgrades
+    - Upgrade org.java-websocket to 1.5.1
+* `POLICY-2623 <https://jira.onap.org/browse/POLICY-2623>`_ - Remove log4j dependency
+* `POLICY-1996 <https://jira.onap.org/browse/POLICY-1996>`_ - Dependency upgrades
+    - Upgrade org.onap.dmaap.messagerouter.dmaapclient to 1.1.11
+
+
+References
+==========
+
+For more information on the ONAP Frankfurt release, please see:
+
+#. `ONAP Home Page`_
+#. `ONAP Documentation`_
+#. `ONAP Release Downloads`_
+#. `ONAP Wiki Page`_
+
+
+.. _`ONAP Home Page`: https://www.onap.org
+.. _`ONAP Wiki Page`: https://wiki.onap.org
+.. _`ONAP Documentation`: https://docs.onap.org
+.. _`ONAP Release Downloads`: https://git.onap.org
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+
 
 ..      ===========================
 ..      * * *    FRANKFURT    * * *
@@ -56,7 +188,7 @@ Version: 6.0.0
 :Release Date: 2020-06-04 (Frankfurt Release)
 
 New features
-------------
+============
 
 Artifacts released:
 
@@ -84,140 +216,142 @@ New features include policy update notifications, native policy support, streaml
 configurable pre-loading/pre-deployment of policies, new APIs (e.g. to create one or more Policies with a single call), new experimental PDP monitoring GUI, and enhancements to all three PDPs: XACML, Drools, APEX.
 
 Common changes in all policy components
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=======================================
+
 * Upgraded all policy components to Java 11.
 * Logback file can be now loaded using OOM configmap.
-  - If needed, logback file can be loaded as a configmap during the OOM deployment. For this, just put the logback.xml file in corresponding config directory in OOM charts.
+   - If needed, logback file can be loaded as a configmap during the OOM deployment. For this, just put the logback.xml file in corresponding config directory in OOM charts.
 
 * TOSCA changes:
-  - “tosca_definitions_version” is now “tosca_simple_yaml_1_1_0”
-  - typeVersion→ type_version, int→integer, bool→boolean, String→string, Map→map, List→list
+   - “tosca_definitions_version” is now “tosca_simple_yaml_1_1_0”
+   - typeVersion→ type_version, int→integer, bool→boolean, String→string, Map→map, List→list
 * SupportedPolicyTypes now removed from pdp status message.
-  - All PDPs now send PdpGroup to which they belong to in the registration message.
-  - SupportedPolicyTypes are not sent anymore.
+   - All PDPs now send PdpGroup to which they belong to in the registration message.
+   - SupportedPolicyTypes are not sent anymore.
 
 * Native Policy Support
-  - Each PDP engine has its own native policy language. A new Policy Type **onap.policies.Native** was created and supported for each PDP
-  engine to support native policy types.
+   - Each PDP engine has its own native policy language. A new Policy Type **onap.policies.Native** was created and supported for each PDP
+     engine to support native policy types.
 
 
 POLICY-PAP
-~~~~~~~~~~
+==========
+
 * Policy Update Notifications
-  - PAP now generates notifications  via the DMaaP Message Router when policies are successfully or unsuccessfully deployed (or undeployed) from all relevant PDPs.
+   - PAP now generates notifications  via the DMaaP Message Router when policies are successfully or unsuccessfully deployed (or undeployed) from all relevant PDPs.
 
 * PAP API to fetch Policy deployment status
-  - Clients will be able to poll the PAP API to find out when policies have been successfully or unsuccessfully deployed to the PDP's.
+   - Clients will be able to poll the PAP API to find out when policies have been successfully or unsuccessfully deployed to the PDP's.
 
 * Removing supportedPolicyTypes from PdpStatus
-  - PDPs are assigned to a PdpGroup based on what group is mentioned in the heartbeat. Earlier this was done based on the supportedPolicyTypes.
+   - PDPs are assigned to a PdpGroup based on what group is mentioned in the heartbeat. Earlier this was done based on the supportedPolicyTypes.
 
 * Support policy types with wild-cards, Preload wildcard supported type in PAP
 
 * PAP should NOT make a PDP passive if it cannot deploy a policy.
-  - If a PDP fails to deploy one or more policies specified in a PDP-UPDATE message, PAP will undeploy those policies that failed to deploy to the PDP.  This entails removing the policies from the Pdp Group(s), issuing new PDP-UPDATE requests, and updating the notification tracking data.
-  - Also, re-register pdp if not found in the DB during heartbeat processing.
+   - If a PDP fails to deploy one or more policies specified in a PDP-UPDATE message, PAP will undeploy those policies that failed to deploy to the PDP.  This entails removing the policies from the Pdp Group(s), issuing new PDP-UPDATE requests, and updating the notification tracking data.
+   - Also, re-register pdp if not found in the DB during heartbeat processing.
 
 * Consolidated health check in PAP
-  - PAP can report the health check for ALL the policy components now. The PDP’s health is tracked based on heartbeats, and other component’s REST API is used for healthcheck.
-  - “healthCheckRestClientParameters” (REST parameters for API and Distribution healthcheck) are added to the startup config file in PAP.
+   - PAP can report the health check for ALL the policy components now. The PDP’s health is tracked based on heartbeats, and other component’s REST API is used for healthcheck.
+   - “healthCheckRestClientParameters” (REST parameters for API and Distribution healthcheck) are added to the startup config file in PAP.
 
 * PDP statistics from PAP
- - All PDPs send statistics data as part of the heartbeat. PAP reads this and saves this data to the database, and this statistics data can be accessed from the monitoring GUI.
+   - All PDPs send statistics data as part of the heartbeat. PAP reads this and saves this data to the database, and this statistics data can be accessed from the monitoring GUI.
 
 * PAP API for Create or Update PdpGroups
- - A new API is now available just for creating/updating PDP Groups. Policies cannot be added/updated during PDP Group create/update operations. There is another API for this. So, if provided in the create/update group request, they are ignored. Supported policy types are defined during PDP Group creation. They cannot be updated once they are created. Refer to this for details: https://github.com/onap/policy-parent/blob/master/docs/pap/pap.rst#id8
+   - A new API is now available just for creating/updating PDP Groups. Policies cannot be added/updated during PDP Group create/update operations. There is another API for this. So, if provided in the create/update group request, they are ignored. Supported policy types are defined during PDP Group creation. They cannot be updated once they are created. Refer to this for details: https://github.com/onap/policy-parent/blob/master/docs/pap/pap.rst#id8
 
 * PAP API to deploy policies to PdpGroups
- - A new API is introduced to deploy policies on specific PDPGroups. Each subgroup includes an "action" property, which is used to indicate that the policies are being added (POST) to the subgroup, deleted (DELETE) from the subgroup, or that the subgroup's entire set of policies is being replaced (PATCH) by a new set of policies.
+   - A new API is introduced to deploy policies on specific PDPGroups. Each subgroup includes an "action" property, which is used to indicate that the policies are being added (POST) to the subgroup, deleted (DELETE) from the subgroup, or that the subgroup's entire set of policies is being replaced (PATCH) by a new set of policies.
 
 POLICY-API
-~~~~~~~~~~
+==========
 
 * A new simplified API to create one or more policies in one call.
-  - This simplified API doesn’t require policy type id & policy type version to be part of the URL.
-  - The simple URI “policy/api/v1/policies” with a POST input body takes in a ToscaServiceTemplate with the policies in it.
+   - This simplified API doesn’t require policy type id & policy type version to be part of the URL.
+   - The simple URI “policy/api/v1/policies” with a POST input body takes in a ToscaServiceTemplate with the policies in it.
 
 * List of Preloaded policy types are made configurable
-  - Until El Alto, the list of pre-loaded policy types are hardcoded in the code. Now, this is made configurable, and the list can be specified in the startup config file for the API component under “preloadPolicyTypes”. The list is ignored if the DB already contains one or more policy types.
+   - Until El Alto, the list of pre-loaded policy types are hardcoded in the code. Now, this is made configurable, and the list can be specified in the startup config file for the API component under “preloadPolicyTypes”. The list is ignored if the DB already contains one or more policy types.
 
 * Preload default policies for ONAP components
-  - The ability to configure the preloading of initial default policies into the system upon startup.
+   - The ability to configure the preloading of initial default policies into the system upon startup.
 
 * A lot of improvements to the API code and validations corresponding to the changes in policy-models.
-  - Creating same policyType/policy repeatedly without any change in request body will always be successful with 200 response
-  - If there is any change in the request body, then that should be a new version. If any change is posted without a version change, then 406 error response is returned.
+   - Creating same policyType/policy repeatedly without any change in request body will always be successful with 200 response
+   - If there is any change in the request body, then that should be a new version. If any change is posted without a version change, then 406 error response is returned.
 
 * Known versioning issues are there in Policy Types handling.
-  - https://jira.onap.org/browse/POLICY-2377 covers the versioning issues in Policy. Basically, multiple versions of a Policy Type cannot be handled in TOSCA. So, in Frankfurt, the latest version of the policy type is examined. This will be further looked into in Guilin.
+   - https://jira.onap.org/browse/POLICY-2377 covers the versioning issues in Policy. Basically, multiple versions of a Policy Type cannot be handled in TOSCA. So, in Frankfurt, the latest version of the policy type is examined. This will be further looked into in Guilin.
 
 * Cascaded GET of PolicyTypes and Policies
-  - Fetching/GET PolicyType now returns all of the referenced/parent policyTypes and dataTypes as well.
-  - Fetching/GET Policy allows specifying mode now.
-  - By default the mode is “BARE”, which returns only the requested Policy in response. If mode is specified as “REFERENCED”, all of the referenced/parent policyTypes and dataTypes are returned as well.
+   - Fetching/GET PolicyType now returns all of the referenced/parent policyTypes and dataTypes as well.
+   - Fetching/GET Policy allows specifying mode now.
+   - By default the mode is “BARE”, which returns only the requested Policy in response. If mode is specified as “REFERENCED”, all of the referenced/parent policyTypes and dataTypes are returned as well.
 
 * The /deployed API is removed from policy/api
-  - This run time administration job to see the deployment status of a policy is now possible via PAP.
+   - This run time administration job to see the deployment status of a policy is now possible via PAP.
 
 * Changes related to design and support of TOSCA Compliant Policy Types for the operational and guard policy models.
 
 POLICY-DISTRIBUTION
-~~~~~~~~~~~~~~~~~~~
+===================
 
 * From Frankfurt release, policy-distribution component uses APIs provided by Policy-API and Policy-PAP for creation of policy types and policies, and deployment of policies.
-  - Note: If “deployPolicies” field in the startup config file is true, then only the policies are deployed using PAP endpoint.
+   - Note: If “deployPolicies” field in the startup config file is true, then only the policies are deployed using PAP endpoint.
 
 * Policy/engine & apex-pdp dependencies are removed from policy-distribution.
 
 
-APEX-PDP
-~~~~~~~~
+POLICY-APEX-PDP
+===============
 
 * Changed the JavaScript executor from Nashorn to Rhino as part of Java 11 upgrade.
-  - There are minor changes in the JavaScript task logic files associated with this Rhino migration. An example for this change can be seen here: https://gerrit.onap.org/r/c/policy/apex-pdp/+/103546/2/examples/examples-onap-bbs/src/main/resources/logic/SdncResourceUpdateTask.js
+   - There are minor changes in the JavaScript task logic files associated with this Rhino migration. An example for this change can be seen here: https://gerrit.onap.org/r/c/policy/apex-pdp/+/103546/2/examples/examples-onap-bbs/src/main/resources/logic/SdncResourceUpdateTask.js
 
-  - There is a known issue in Rhino javascript related to the usage of JSON.stringify. This is captured in this JIRA https://jira.onap.org/browse/POLICY-2463.
+   - There is a known issue in Rhino javascript related to the usage of JSON.stringify. This is captured in this JIRA https://jira.onap.org/browse/POLICY-2463.
 
 * APEX supports multiple policy deployment in Frankfurt.
-  - Up through El Alto APEX-PDP had the capability to take in only a single ToscaPolicy. When PAP sends a list of Tosca Policies in PdpUpdate, only the first one is taken and only that single Policy is deployed in APEX. This is fixed in Frankfurt. Now, APEX can deploy a list of Tosca Policies altogether into the engine.
+   - Up through El Alto APEX-PDP had the capability to take in only a single ToscaPolicy. When PAP sends a list of Tosca Policies in PdpUpdate, only the first one is taken and only that single Policy is deployed in APEX. This is fixed in Frankfurt. Now, APEX can deploy a list of Tosca Policies altogether into the engine.
 
-  - Note: There shouldn’t be any duplicates in the deployed policies (for e.g. same input/output parameter names, or same event/task names etc).
+   - Note: There shouldn’t be any duplicates in the deployed policies (for e.g. same input/output parameter names, or same event/task names etc).
 
-  - For example, when 3 policies are deployed and one has duplicates, say same input/task or any such concept is used in the 2nd and 3rd policy, then APEX-PDP ignores the 3rd policy and executes only the 1st and 2nd policies. APEX-PDP also respond back to PAP with the message saying that “only Policy 1 and 2 are deployed. Others failed due to duplicate concept”.
+   - For example, when 3 policies are deployed and one has duplicates, say same input/task or any such concept is used in the 2nd and 3rd policy, then APEX-PDP ignores the 3rd policy and executes only the 1st and 2nd policies. APEX-PDP also respond back to PAP with the message saying that “only Policy 1 and 2 are deployed. Others failed due to duplicate concept”.
 
 * Context retainment during policy upgrade.
-  - In APEX-PDP, context is referred by the apex concept ‘contextAlbum’. When there is no major version change in the upgraded policy to be deployed, the existing context of the currently running policy is retained. When the upgraded policy starts running, it will have access to this context as well.
+   - In APEX-PDP, context is referred by the apex concept ‘contextAlbum’. When there is no major version change in the upgraded policy to be deployed, the existing context of the currently running policy is retained. When the upgraded policy starts running, it will have access to this context as well.
 
-  - For example, Policy A v1.1 is currently deployed to APEX. It has a contextAlbum named HeartbeatContext and heartbeats are currently added to the HeartbeatContext based on events coming in to the policy execution. Now, when Policy A v1.2 (with some other changes and same HeartbeatContext) is deployed, Policy Av1.1 is replaced by Policy A1.2 in the APEX engine, but the content in HeartbeatContext is retained for Policy A1.2.
+   - For example, Policy A v1.1 is currently deployed to APEX. It has a contextAlbum named HeartbeatContext and heartbeats are currently added to the HeartbeatContext based on events coming in to the policy execution. Now, when Policy A v1.2 (with some other changes and same HeartbeatContext) is deployed, Policy Av1.1 is replaced by Policy A1.2 in the APEX engine, but the content in HeartbeatContext is retained for Policy A1.2.
 
 * APEX-PDP now specifies which PdpGroup it belongs to.
-  - Up through El Alto, PAP assigned each PDP to a PDP group based on the supportedPolicyTypes it sends in the heartbeat. But in Frankfurt, each PDP comes up saying which PdpGroup they belong to, and this is sent to PAP in the heartbeat. PAP then registers the PDP the PdpGroup specified by the PDP. If no group name is specified like this, then PAP assigns the PDP to defaultGroup by default. SupportedPolicyTypes are not sent to PAP by the PDP now.
+   - Up through El Alto, PAP assigned each PDP to a PDP group based on the supportedPolicyTypes it sends in the heartbeat. But in Frankfurt, each PDP comes up saying which PdpGroup they belong to, and this is sent to PAP in the heartbeat. PAP then registers the PDP the PdpGroup specified by the PDP. If no group name is specified like this, then PAP assigns the PDP to defaultGroup by default. SupportedPolicyTypes are not sent to PAP by the PDP now.
 
-  - In APEX-PDP, this can be specified in the startup config file(OnapPfConfig.json). "pdpGroup": "<groupName>" is added under “pdpStatusParameters” in the config file.
+   - In APEX-PDP, this can be specified in the startup config file(OnapPfConfig.json). "pdpGroup": "<groupName>" is added under “pdpStatusParameters” in the config file.
 
 * APEX-PDP now sends PdpStatistics data in heartbeat.
-  - Apex now sends the PdpStatistics data in every heartbeat sent to PAP. PAP saves this data to the database, and this statistics data can be accessed from the monitoring GUI.
+   - Apex now sends the PdpStatistics data in every heartbeat sent to PAP. PAP saves this data to the database, and this statistics data can be accessed from the monitoring GUI.
 
 * Removed “content” section from ToscaPolicy properties in APEX.
-  - Up through El Alto, APEX specific policy information was placed under properties|content in ToscaPolicy. Avoid placing under "content" and keep the information directly under properties. So, the ToscaPolicy structure will have apex specific policy information in properties|engineServiceParameters, properties|eventInputParameters, properties|eventOutputParameters.
+   - Up through El Alto, APEX specific policy information was placed under properties|content in ToscaPolicy. Avoid placing under "content" and keep the information directly under properties. So, the ToscaPolicy structure will have apex specific policy information in properties|engineServiceParameters, properties|eventInputParameters, properties|eventOutputParameters.
 
 * Passing parameters from ApexConfig to policy logic.
-  - TaskParameters can be used to pass parameters from ApexConfig to the policy logic. Consider a scenario where from CLAMP, serviceId or closedLoopId has to be passed to the policy, and this should be available to perform some logic or action within the policy. In the CLAMP UI, while configuring the APEX Policy, specifying taskParameters with these will enable this.
+   - TaskParameters can be used to pass parameters from ApexConfig to the policy logic. Consider a scenario where from CLAMP, serviceId or closedLoopId has to be passed to the policy, and this should be available to perform some logic or action within the policy. In the CLAMP UI, while configuring the APEX Policy, specifying taskParameters with these will enable this.
 
-  - More information about the usage of Task Parameters can be found here: https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/apex/APEX-User-Manual.html#configure-task-parameters
+   - More information about the usage of Task Parameters can be found here: https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/apex/APEX-User-Manual.html#configure-task-parameters
 
-  - In the taskLogic, taskParameters can be accessed as  executor.parameters.get("ParameterKey1"))
+   - In the taskLogic, taskParameters can be accessed as  executor.parameters.get("ParameterKey1"))
 
-  - More information can be found here: https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/apex/APEX-Policy-Guide.html#accessing-taskparameters
+   - More information can be found here: https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/apex/APEX-Policy-Guide.html#accessing-taskparameters
 
 * GRPC support for APEX-CDS interaction.
-  - APEX-PDP now supports interaction with CDS over gRPC. Up through El Alto, CDS interaction was possible over REST only. A new plugin was developed in APEX for this feature. Refer the link for more details. https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/apex/APEX-User-Manual.html#grpc-io
+   - APEX-PDP now supports interaction with CDS over gRPC. Up through El Alto, CDS interaction was possible over REST only. A new plugin was developed in APEX for this feature. Refer the link for more details. https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/apex/APEX-User-Manual.html#grpc-io
 
-POLICY-XACML
-~~~~~~~~~~~~
+POLICY-XACML-PDP
+================
 
 * Added optional Decision API param to Decision API for monitor decisions that returns abbreviated results.
-  - Return only an abbreviated list of policies (e.g. metadata Policy Id and Version) without the actual contents of the policies (e.g. the Properties).
+   - Return only an abbreviated list of policies (e.g. metadata Policy Id and Version) without the actual contents of the policies (e.g. the Properties).
 
 * XACML PDP now support PASSIVE_MODE.
 * Added support to return status and error if pdp-x failed to load a policy.
@@ -225,12 +359,12 @@ POLICY-XACML
 * Changed Xacml-pdp to report the pdp group defined in XacmlPdpParameters config file as part of heartbeat. Also, removed supportedPolicyType from pdpStatus message.
 * Design the TOSCA policy model for SDNC naming policies and implement an application that translates it to a working policy and is available for decision API.
 * XACML pdp support for Control Loop Coordination
-  - Added policies for SON and PCI to support each blocking the other, with test cases and appropriate requests
+   - Added policies for SON and PCI to support each blocking the other, with test cases and appropriate requests
 
 * Extend PDP-X capabilities so that it can load in and enforce the native XACML policies deployed from PAP.
 
 POLICY-DROOLS-PDP
-~~~~~~~~~~~~~~~~~
+=================
 
 * Support for PDP-D in offline mode to support locked deployments.   This is the default ONAP installation.
 * Parameterize maven repository URLs for easier CI/CD integration.
@@ -241,18 +375,19 @@ POLICY-DROOLS-PDP
 * Experimental Server Pool feature that supports multiple active Drools PDP hosts.
 
 POLICY-DROOLS-APPLICATIONS
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+==========================
 
 * Removal of DCAE ONSET alarm duplicates (with different request IDs).
 * Support of a new controller (frankfurt) that supports the ONAP use cases under the new actor architecture.
 * Deprecated the "usecases" controller supporting the use cases under the legacy actor architecture.
 * Deleted the unsupported "amsterdam" controller related projects.
 
+
 Known Limitations, Issues and Workarounds
 =========================================
 
 System Limitations
-------------------
+~~~~~~~~~~~~~~~~~~
 
 The policy API component requires a fresh new database when migrating to the frankfurt release.
 Therefore, upgrades require a fresh new database installation.
@@ -260,17 +395,17 @@ Please see the
 `Installing or Upgrading Policy <https://onap.readthedocs.io/en/frankfurt/submodules/policy/parent.git/docs/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
 
 Known Vulnerabilities
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 * `POLICY-2463 <https://jira.onap.org/browse/POLICY-2463>`_ - In APEX Policy javascript task logic, JSON.stringify causing stackoverflow exceptions
 * `POLICY-2487 <https://jira.onap.org/browse/POLICY-2487>`_ - policy/api hangs in loop if preload policy does not exist
 
 Workarounds
------------
+~~~~~~~~~~~
 * `POLICY-2463 <https://jira.onap.org/browse/POLICY-2463>`_ - Parse incoming object using JSON.Parse() or cast the object to a String
 
 Security Notes
---------------
+==============
 
 * `POLICY-2221 <https://jira.onap.org/browse/POLICY-2221>`_ - Password removal from helm charts
 * `POLICY-2064 <https://jira.onap.org/browse/POLICY-2064>`_ - Allow overriding of keystore and truststore in policy helm charts
@@ -285,27 +420,6 @@ Security Notes
     - Upgrade org.org.jgroups 4.1.5.Final
     - Upgrade commons-codec 20041127.091804
     - Upgrade com.github.ben-manes.caffeine 2.8.0
-
-
-References
-==========
-
-For more information on the ONAP Frankfurt release, please see:
-
-#. `ONAP Home Page`_
-#. `ONAP Documentation`_
-#. `ONAP Release Downloads`_
-#. `ONAP Wiki Page`_
-
-
-.. _`ONAP Home Page`: https://www.onap.org
-.. _`ONAP Wiki Page`: https://wiki.onap.org
-.. _`ONAP Documentation`: https://docs.onap.org
-.. _`ONAP Release Downloads`: https://git.onap.org
-
-Quick Links:
-    - `POLICY project page`_
-    - `Passing Badge information for POLICY`_
 
 ..      ==========================
 ..      * * *     EL ALTO    * * *
@@ -382,6 +496,7 @@ Artifacts released:
 The El Alto release for POLICY delivered the following Epics. For a full list of stories and tasks delivered in the El Alto release, refer to `JiraPolicyElAlto`_.
 
     * [POLICY-1727] - This epic covers technical debt left over from Dublin
+    
     - POLICY-969    Docker improvement in policy framwork modules
     - POLICY-1074   Fix checkstyle warnings in every repository
     - POLICY-1121   RPM build for Apex
@@ -415,12 +530,14 @@ The El Alto release for POLICY delivered the following Epics. For a full list of
     - POLICY-1953   Create addTopic taking BusTopicParams instead of Properties in policy/endpoints
 
     * Additional items delivered with the release.
+    
     - POLICY-1637   Remove "version" from PdpGroup
     - POLICY-1653   Remove isNullVersion() method
     - POLICY-1966   Fix more sonar issues in policy drools
     - POLICY-1988   Generate El Alto AAF Certificates
 
     * [POLICY-1823] - This epic covers the work to develop features that will be deployed dark in El Alto.
+    
     - POLICY-1762   Create CDS API model implementation
     - POLICY-1763   Create CDS Actor
     - POLICY-1899   Update optimization xacml application to support more flexible Decision API
