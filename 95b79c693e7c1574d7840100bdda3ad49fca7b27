@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1bc1044d_5ec56a68",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2020-11-11T22:49:49Z",
+      "side": 1,
+      "message": "Opps! just saw your commit message.",
+      "parentUuid": "35c7e48f_4f854555",
+      "range": {
+        "startLine": 41,
+        "startChar": 23,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "95b79c693e7c1574d7840100bdda3ad49fca7b27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbaca9d9_1afe16cf",
         "filename": "docs/release-notes.rst",
         "patchSetId": 3
