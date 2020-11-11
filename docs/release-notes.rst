@@ -259,6 +259,8 @@ Therefore, upgrades require a fresh new database installation.
 Please see the
 `Installing or Upgrading Policy <https://onap.readthedocs.io/en/frankfurt/submodules/policy/parent.git/docs/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
 
+For an operational policy targeted towards VNF, the CDS actor always requires "vserver" information to query A&AI while processing ONSET events.
+
 Known Vulnerabilities
 ---------------------
 

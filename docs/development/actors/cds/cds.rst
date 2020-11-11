@@ -419,3 +419,29 @@ To view the configured policies use the below REST API.
       https://{$POLICY_API_URL}:{$POLICY_API_SERVICE_PORT}/policy/api/v1/policytypes/onap.policies.controlloop.Operational/versions/1.0.0/policies/operational.modifyconfig \
       -H 'Authorization: Basic aGVhbHRoY2hlY2s6emIhWHp0RzM0' \
       -H 'Content-Type: application/json' \
+
+4.4 Limitations
+---------------
+
+For an operational policy targeted towards VNF, the CDS actor always requires "vserver" information to query A&AI while processing ONSET events.
+Example of an ONSET event below:
+
+.. code-block:: bash
+
+    {
+      "closedLoopControlName": "ControlLoop-vFirewall-d0a1dfc6-94f5-4fd4-a5b5-4630b438850a",
+      "closedLoopAlarmStart": 1463679805324,
+      "closedLoopEventClient": "microservice.stringmatcher",
+      "closedLoopEventStatus": "ONSET",
+      "requestID": "c7c6a4aa-bb61-4a15-b831-ba1472dd4a65",
+      "target_type": "VNF",
+      "target": "generic-vnf.vnf-id",
+      "AAI": {
+        "generic-vnf.is-closed-loop-disabled": "false",
+        "generic-vnf.prov-status": "ACTIVE",
+        "generic-vnf.vnf-id": "5483ffc5-2ecd-4352-bb9f-7d945a7561d5",
+        "vserver.vserver-name": "RegionOne_ONAP-NF_20200418T084319286Z_vfw_001"
+      },
+      "from": "DCAE",
+      "version": "1.0.2"
+    }
