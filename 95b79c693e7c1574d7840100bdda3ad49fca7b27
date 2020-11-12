@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "aaa91555_aa0b3d94",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2020-11-12T14:13:55Z",
+      "side": 1,
+      "message": "matchable is NOT a guard policy - please separate\n\n* Matchable Application\n  - Support for ONAP or 3rd party components to create matchable policy types out of the box",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 45
+      },
+      "revId": "95b79c693e7c1574d7840100bdda3ad49fca7b27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbaca9d9_1afe16cf",
         "filename": "docs/release-notes.rst",
         "patchSetId": 3
