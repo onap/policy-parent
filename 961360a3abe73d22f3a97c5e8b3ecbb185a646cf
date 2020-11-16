@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8433e8b_1f2e247e",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-11-16T14:39:24Z",
+      "side": 1,
+      "message": "Probably should update this section to the work that you did Jim ?   \"usecases\" is back, and actor refactoring ?",
+      "revId": "961360a3abe73d22f3a97c5e8b3ecbb185a646cf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
