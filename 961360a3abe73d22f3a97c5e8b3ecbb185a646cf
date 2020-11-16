@@ -52,6 +52,24 @@
       "revId": "961360a3abe73d22f3a97c5e8b3ecbb185a646cf",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a362f860_65f6a462",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2020-11-16T15:54:40Z",
+      "side": 1,
+      "message": "OK.  I\u0027ll do that in another review, to make the cherry pick smoother (hopefully)",
+      "parentUuid": "e91a20af_ff1c41b5",
+      "revId": "961360a3abe73d22f3a97c5e8b3ecbb185a646cf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
