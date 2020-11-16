@@ -34,6 +34,24 @@
       "revId": "961360a3abe73d22f3a97c5e8b3ecbb185a646cf",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91a20af_ff1c41b5",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2020-11-16T15:15:33Z",
+      "side": 1,
+      "message": "I think it probably makes sense to mention it in guilin, I think it is the only controller used.",
+      "parentUuid": "e6d0130b_37e6c728",
+      "revId": "961360a3abe73d22f3a97c5e8b3ecbb185a646cf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
