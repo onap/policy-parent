@@ -64,6 +64,8 @@ Key Updates
    - Automated certificate generation
 * Actor Model
    - Support various use cases and provide more flexibility to Policy Designers
+   - Reintroduced the "usecases" controller into drools-pdp, supporting the use cases
+     under the revised actor architecture
 * Guard Application
    - Support policy filtering
 * Matchable Application
