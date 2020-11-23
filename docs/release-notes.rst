@@ -21,7 +21,7 @@ Policy Release Notes
 Version: 7.0.0
 --------------
 
-:Release Date: 2020-11-19 (Guilin Release)
+:Release Date: 2020-12-03 (Guilin Release)
 
 New features
 ============
