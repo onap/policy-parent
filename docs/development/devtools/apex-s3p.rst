@@ -118,7 +118,7 @@ Once the test has complete - we can generate a HTML test report via the followin
 
 .. image:: images/stability-jmeter.PNG
 
-:download:`result.zip <zip/frankfurt/apex_s3p_result.tar.gz>`
+:download:`result.zip <apex-s3p-results/apex_s3p_results.zip>`
 
 
 Stability Test of Apex PDP
@@ -200,7 +200,7 @@ Once the tests complete, we can generate an HTML test report via the command:
 .. image:: images/apex_s3p_jm-1.png
 .. image:: images/apex_s3p_jm-2.png
 
-:download:`result.zip <zip/frankfurt/apex_s3p_result.tar.gz>`
+:download:`result.zip <apex-s3p-results/apex_s3p_results.zip>`
 
 Setting up Performance Tests in APEX
 ++++++++++++++++++++++++++++++++++++
