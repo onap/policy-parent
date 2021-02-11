@@ -42,7 +42,7 @@
         <version.eclipselink>2.7.8</version.eclipselink>
         <version.drools>7.33.0.Final</version.drools>
         <version.jersey>2.33</version.jersey>
-        <version.jackson>2.11.4</version.jackson>
+        <version.jackson>2.11.3</version.jackson>
         <version.ccsdk>0.4.4</version.ccsdk>
         <version.swagger>1.6.2</version.swagger>
         <version.javax.bind>2.3.1</version.javax.bind>
