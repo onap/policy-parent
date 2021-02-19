@@ -30,8 +30,8 @@
           "type" : "string"
         } ],
         "responses" : {
-          "200" : {
-            "description" : "successful operation",
+          "202" : {
+            "description" : "operation accepted",
             "headers" : {
               "X-MinorVersion" : {
                 "type" : "string",
@@ -102,8 +102,8 @@
           "type" : "string"
         } ],
         "responses" : {
-          "200" : {
-            "description" : "successful operation",
+          "202" : {
+            "description" : "operation accepted",
             "headers" : {
               "X-MinorVersion" : {
                 "type" : "string",

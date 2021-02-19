@@ -1,0 +1,32 @@
+[
+    {
+        "pdpGroup": "defaultGroup",
+        "pdpType": "apex",
+        "pdpId": "policy-apex-pdp-0",
+        "policy": {
+            "name": "onap.policies.apex.Controlloop",
+            "version": "1.0.0"
+        },
+        "policyType": {
+            "name": "onap.policies.native.Apex",
+            "version": "1.0.0"
+        },
+        "deploy": true,
+        "state": "SUCCESS"
+    },
+    {
+        "pdpGroup": "defaultGroup",
+        "pdpType": "drools",
+        "pdpId": "policy-drools-pdp-0",
+        "policy": {
+            "name": "OPERATIONAL_vFW_CDS_Service_v2_0_Drools_1_0_0_6SN",
+            "version": "1.0.0"
+        },
+        "policyType": {
+            "name": "onap.policies.controlloop.operational.common.Drools",
+            "version": "1.0.0"
+        },
+        "deploy": true,
+        "state": "SUCCESS"
+    }
+]

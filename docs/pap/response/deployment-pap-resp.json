@@ -1,0 +1,4 @@
+{
+    "message": "Use the policy status url to fetch the latest status. Kindly note that when a policy is successfully undeployed, it will no longer appear in policy status response.",
+    "uri": "/policy/pap/v1/policies/status"
+}

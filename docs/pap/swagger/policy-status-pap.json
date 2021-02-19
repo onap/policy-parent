@@ -1,0 +1,402 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "The APIs listed here are used to fetch status of policies in PdpGroups",
+    "version": "v1"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Pdp Policy Status"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json",
+    "application/yaml"
+  ],
+  "produces": [
+    "application/json",
+    "application/yaml"
+  ],
+  "paths": {
+    "/policy/pap/v1/policies/status": {
+      "get": {
+        "tags": [
+          "Status of policies in all PdpGroups"
+        ],
+        "summary": "Queries status of policies in all PdpGroups",
+        "description": "Queries status of policies in all PdpGroups, returning status of policies in all the PDPs belonging to all PdpGroups",
+        "operationId": "queryAllPolicies",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PdpPolicyStatus"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Honolulu"
+        }
+      }
+    },
+    "/policy/pap/v1/policies/status/{pdpGroupName}": {
+      "get": {
+        "tags": [
+          "Status of policies in a PdpGroup"
+        ],
+        "summary": "Queries status of policies in a specific PdpGroup",
+        "description": "Queries status of policies in a specific PdpGroup, returning status of policies in all the PDPs belonging to the PdpGroup",
+        "operationId": "queryAllPoliciesInPdpGroup",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "pdpGroupName",
+            "in": "path",
+            "description": "Name of the PdpGroup",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PdpPolicyStatus"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Honolulu"
+        }
+      }
+    },
+    "/policy/pap/v1/policies/status/{pdpGroupName}/{policyName}": {
+      "get": {
+        "tags": [
+          "Status of all versions of a policy in a PdpGroup"
+        ],
+        "summary": "Queries status of all versions of a specific policy in a specific PdpGroup",
+        "description": "Queries status of all versions of a specific policy in a specific PdpGroup, returning status of all versions of the policy in the PDPs belonging to the PdpGroup",
+        "operationId": "queryAllVersionPolicy",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "pdpGroupName",
+            "in": "path",
+            "description": "Name of the PdpGroup",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "policyName",
+            "in": "path",
+            "description": "Name of the Policy",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PdpPolicyStatus"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Honolulu"
+        }
+      }
+    },
+    "/policy/pap/v1/policies/status/{pdpGroupName}/{policyName}/{policyVersion}": {
+      "get": {
+        "tags": [
+          "Status of a version of a policy in a PdpGroup"
+        ],
+        "summary": "Queries status of a specific version of a specific policy in a specific PdpGroup",
+        "description": "Queries status of a specific version of a specific policy in a specific PdpGroup, returning status of the policy in the PDPs belonging to the PdpGroup",
+        "operationId": "querySpecificVersionPolicy",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "pdpGroupName",
+            "in": "path",
+            "description": "Name of the PdpGroup",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "policyName",
+            "in": "path",
+            "description": "Name of the Policy",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "policyVersion",
+            "in": "path",
+            "description": "Version of the Policy",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PdpPolicyStatus"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Honolulu"
+        }
+      }
+    },
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "description": "",
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "PdpPolicyStatus": {
+      "type": "object",
+      "properties": {
+        "pdpGroup": {
+          "type": "string"
+        },
+        "pdpType": {
+          "type": "string"
+        },
+        "pdpId": {
+          "type": "string"
+        },
+        "policy": {
+          "$ref": "#/definitions/ToscaConceptIdentifier"
+        },
+        "policyType": {
+          "$ref": "#/definitions/ToscaConceptIdentifier"
+        },
+        "deploy": {
+          "type": "boolean"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    },
+    "ToscaConceptIdentifier": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

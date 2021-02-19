@@ -282,6 +282,11 @@ Here is a sample request:
 .. literalinclude:: request/deployment-batch-pap-req.json
     :language: json
 
+Here is a sample response:
+
+.. literalinclude:: response/deployment-pap-resp.json
+    :language: json
+
 :download:`Download Deploy PAP API Swagger  <swagger/policy-deploy-pap.json>`
 
 .. swaggerv2doc:: swagger/policy-deploy-pap.json
@@ -301,6 +306,11 @@ Here is a sample request:
 .. literalinclude:: request/policy-deploy-pap-req.json
     :language: json
 
+Here is a sample response:
+
+.. literalinclude:: response/deployment-pap-resp.json
+    :language: json
+
 :download:`Download Undeploy PAP API Swagger  <swagger/policy-undeploy-pap.json>`
 
 .. swaggerv2doc:: swagger/policy-undeploy-pap.json
@@ -313,6 +323,26 @@ This operation allows policies to be undeployed from PDP groups.
 
 .. note::
   Due to current limitations, a fully qualified policy version must always be specified.
+
+Here is a sample response:
+
+.. literalinclude:: response/deployment-pap-resp.json
+    :language: json
+
+:download:`Download Policy Status PAP API Swagger  <swagger/policy-status-pap.json>`
+
+.. swaggerv2doc:: swagger/policy-status-pap.json
+
+This operation allows the status of all policies that are deployed or undeployed to be listed together.
+The result can be filtered based on pdp group name, policy name & version.
+
+.. note::
+  When a policy is successfully undeployed, it will no longer appear in the policy status response.
+
+Here is a sample response:
+
+.. literalinclude:: response/policy-status-pap-resp.json
+    :language: json
 
 :download:`Download Deployed Policy PAP API Swagger  <swagger/deployed-policy-pap.json>`
 
