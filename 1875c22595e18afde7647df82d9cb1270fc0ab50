@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b13fbfc7_13eac33f",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-02-22T16:22:34Z",
+      "side": 1,
+      "message": "Pdp Policy Status -\u003e Policy Status",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "1875c22595e18afde7647df82d9cb1270fc0ab50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee5c2ed_56e4337c",
+        "filename": "docs/pap/swagger/policy-status-pap.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-02-22T16:22:34Z",
+      "side": 1,
+      "message": "Pdp Policy Status -\u003e Policy Status",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "1875c22595e18afde7647df82d9cb1270fc0ab50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
