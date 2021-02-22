@@ -26,7 +26,7 @@
     "/policy/pap/v1/policies/status": {
       "get": {
         "tags": [
-          "Status of policies in all PdpGroups"
+          "Policy Status"
         ],
         "summary": "Queries status of policies in all PdpGroups",
         "description": "Queries status of policies in all PdpGroups, returning status of policies in all the PDPs belonging to all PdpGroups",
@@ -98,7 +98,7 @@
     "/policy/pap/v1/policies/status/{pdpGroupName}": {
       "get": {
         "tags": [
-          "Status of policies in a PdpGroup"
+          "Policy Status"
         ],
         "summary": "Queries status of policies in a specific PdpGroup",
         "description": "Queries status of policies in a specific PdpGroup, returning status of policies in all the PDPs belonging to the PdpGroup",
@@ -159,6 +159,9 @@
           "403": {
             "description": "Authorization Error"
           },
+          "404": {
+            "description": "Resource not found"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -177,7 +180,7 @@
     "/policy/pap/v1/policies/status/{pdpGroupName}/{policyName}": {
       "get": {
         "tags": [
-          "Status of all versions of a policy in a PdpGroup"
+          "Policy Status"
         ],
         "summary": "Queries status of all versions of a specific policy in a specific PdpGroup",
         "description": "Queries status of all versions of a specific policy in a specific PdpGroup, returning status of all versions of the policy in the PDPs belonging to the PdpGroup",
@@ -245,6 +248,9 @@
           "403": {
             "description": "Authorization Error"
           },
+          "404": {
+            "description": "Resource not found"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -263,7 +269,7 @@
     "/policy/pap/v1/policies/status/{pdpGroupName}/{policyName}/{policyVersion}": {
       "get": {
         "tags": [
-          "Status of a version of a policy in a PdpGroup"
+          "Policy Status"
         ],
         "summary": "Queries status of a specific version of a specific policy in a specific PdpGroup",
         "description": "Queries status of a specific version of a specific policy in a specific PdpGroup, returning status of the policy in the PDPs belonging to the PdpGroup",
@@ -337,6 +343,9 @@
           },
           "403": {
             "description": "Authorization Error"
+          },
+          "404": {
+            "description": "Resource not found"
           },
           "500": {
             "description": "Internal Server Error"
