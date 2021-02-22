@@ -352,7 +352,7 @@
           "last-mod-release": "Honolulu"
         }
       }
-    },
+    }
   },
   "securityDefinitions": {
     "basicAuth": {
