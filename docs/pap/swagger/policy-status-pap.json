@@ -7,7 +7,7 @@
   "basePath": "/",
   "tags": [
     {
-      "name": "Pdp Policy Status"
+      "name": "Policy Status"
     }
   ],
   "schemes": [
@@ -352,7 +352,7 @@
           "last-mod-release": "Honolulu"
         }
       }
-    },
+    }
   },
   "securityDefinitions": {
     "basicAuth": {

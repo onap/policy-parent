@@ -117,6 +117,7 @@ PAP supports the operations listed in the following table, via its REST API:
    "Deployment update", "Deploy/undeploy one or more policies in specified PdpGroups"
    "Deploy policy", "Deploys one or more policies to the PDPs"
    "Undeploy policy", "Undeploys a policy from the PDPs"
+   "Policy Status", "Queries the status of all policies"
    "Policy deployment status", "Queries the status of all deployed policies"
    "PDP statistics", "Queries the statistics of PDPs"
 
