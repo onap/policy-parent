@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb44f0e8_aa8356c0",
+        "filename": "docs/development/actors/cds/cds.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-03-22T14:43:18Z",
+      "side": 1,
+      "message": "This how we\u0027ve always done it, but I wonder if it wouldn\u0027t be better to use the \"-u\" option instead:\n\n  -u \"user-name:password\"\n\nsame comment for other \"curl\" requests below",
+      "range": {
+        "startLine": 345,
+        "startChar": 4,
+        "endLine": 345,
+        "endChar": 74
+      },
+      "revId": "b75020e56e277557616f99ccfdf33520a522e40a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
