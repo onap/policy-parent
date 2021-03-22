@@ -46,6 +46,30 @@
       "revId": "b75020e56e277557616f99ccfdf33520a522e40a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eca3f2d8_ceef2cd0",
+        "filename": "docs/development/actors/cds/cds.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-03-22T21:49:42Z",
+      "side": 1,
+      "message": "Agree",
+      "parentUuid": "247db1b5_fd9c1ed4",
+      "range": {
+        "startLine": 345,
+        "startChar": 4,
+        "endLine": 345,
+        "endChar": 74
+      },
+      "revId": "b75020e56e277557616f99ccfdf33520a522e40a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
