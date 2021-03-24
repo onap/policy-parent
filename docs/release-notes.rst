@@ -14,6 +14,135 @@ Policy Release Notes
 ..      * Except the date and the version number, all the other sections are optional but there must be at least
 ..      * one section describing the purpose of this new release.
 
+..      ==========================
+..      * * *    HONOLULU    * * *
+..      ==========================
+
+Version: 8.0.0
+--------------
+
+:Release Date: 2021-04-08 (Honolulu Release)
+
+New features
+============
+
+Artifacts released:
+
+.. csv-table::
+   :header: "Repository", "Java Artifact", "Docker Image (if applicable)"
+   :widths: 15,10,10
+
+   "policy/parent", "3.3.0", ""
+   "policy/common", "1.8.0", ""
+   "policy/models", "2.4.2", ""
+   "policy/api", "2.4.2", "onap/policy-api:2.4.2"
+   "policy/pap", "2.4.2", "onap/policy-pap:2.4.2"
+   "policy/drools-pdp", "1.8.2", "onap/policy-drools:1.8.2"
+   "policy/apex-pdp", "2.5.2", "onap/policy-apex-pdp:2.5.2"
+   "policy/xacml-pdp", "2.4.2", "onap/policy-xacml-pdp:2.4.2"
+   "policy/drools-applications", "1.8.2", "onap/policy-pdpd-cl:1.8.2"
+   "policy/distribution", "2.5.2", "onap/policy-distribution:2.5.2"
+   "policy/docker", "2.2.1", "onap/policy-jdk-alpine:2.2.1, onap/policy-jre-alpine:2.2.1"
+
+Key Updates
+===========
+
+* Enhanced statistics
+   - PDPs provide statistics, retrievable via PAP REST API
+* PDP deployment status
+   - Policy deployment API enhanced to reflect actual policy deployment status in PDPs
+   - Make PAP component stateless
+* Policy support
+   - Upgrade XACML 3.0 code to use new Time Extensions
+   - Enhancements for interoperability between Native Policies and other policy types
+   - Support for arbitrary policy types on the Drools PDP
+   - Improve handling of multiple policies in APEX PDP
+   - Update policy-models TOSCA handling with Control Loop Entities
+* Alternative locking mechanisms
+   - Support NO locking feature in Drools-PDP
+* Security
+   - Remove credentials in code from the Apex JMS plugin
+* Actor enhancements
+   - Actors should give better warnings than NPE when data is missing
+   - Remove old event-specific actor code
+* PDP functional assignments
+   - Make PDP type configurable in drools-pdp
+   - Make PDP type configurable in xacml-pdp
+* Performance improvements
+   - Support policy updates between PAP and the PDPs, phase 1
+* Maintainability
+   - Use ONAP base docker image
+   - Remove GPLv3 components from docker containers
+   - Move CSITs to Policy repos
+   - Deprecate server pool feature in drools-pdp
+* PoCs
+   - Merge CLAMP functionality into Policy Framework project
+   - TOSCA Defined Control Loop
+
+
+Known Limitations, Issues and Workarounds
+=========================================
+
+System Limitations
+~~~~~~~~~~~~~~~~~~
+
+The policy API component requires a fresh new database when migrating to the honolulu release.
+Therefore, upgrades require a fresh new database installation.
+Please see the
+`Installing or Upgrading Policy <https://onap.readthedocs.io/en/latest/submodules/policy/parent.git/docs/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
+
+Known Vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~
+
+Workarounds
+~~~~~~~~~~~
+
+Security Notes
+==============
+
+* `POLICY-3005 <https://jira.onap.org/browse/POLICY-3005>`_ - Bump direct dependency versions
+    - Upgrade org.onap.dmaap.messagerouter.dmaapclient to 1.1.12
+    - Upgrade org.eclipse.persistence to 2.7.8
+    - Upgrade org.glassfish.jersey.containers to 2.33
+    - Upgrade com.fasterxml.jackson.module to 2.11.3
+    - Upgrade com.google.re2j to 1.5
+    - Upgrade org.mariadb.jdbc to 2.7.1
+    - Upgrade commons-codec to 1.15
+    - Upgrade com.thoughtworks.xstream to 1.4.15
+    - Upgrade org.apache.httpcomponents:httpclient to 4.5.13
+    - Upgrade org.apache.httpcomponents:httpcore to 4.4.14
+    - Upgrade org.json to 20201115
+    - Upgrade org.projectlombok to 1.18.16
+    - Upgrade org.yaml to 1.27
+    - Upgrade io.cucumber to 6.9.1
+    - Upgrade org.apache.commons:commons-lang3 to 3.11
+    - Upgrade commons-io to 2.8.0
+* `POLICY-2936 <https://jira.onap.org/browse/POLICY-2936>`_ - Upgrade to latest version of CDS API
+    - Upgrade io.grpc to 1.35.0
+    - Upgrade com.google.protobuf to 3.14.0
+
+
+References
+==========
+
+For more information on the ONAP Honolulu release, please see:
+
+#. `ONAP Home Page`_
+#. `ONAP Documentation`_
+#. `ONAP Release Downloads`_
+#. `ONAP Wiki Page`_
+
+
+.. _`ONAP Home Page`: https://www.onap.org
+.. _`ONAP Wiki Page`: https://wiki.onap.org
+.. _`ONAP Documentation`: https://docs.onap.org
+.. _`ONAP Release Downloads`: https://git.onap.org
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+
+
 ..      ========================
 ..      * * *    GUILIN    * * *
 ..      ========================
@@ -133,7 +262,7 @@ Security Notes
 References
 ==========
 
-For more information on the ONAP Frankfurt release, please see:
+For more information on the ONAP Guilin release, please see:
 
 #. `ONAP Home Page`_
 #. `ONAP Documentation`_
