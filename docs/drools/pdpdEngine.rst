@@ -783,6 +783,7 @@ unnecessary or have not been thoroughly tested:
    feature_sesspersist.rst
    feature_statemgmt.rst
    feature_testtransaction.rst
+   feature_nolocking.rst
 
 Data Migration
 ==============
