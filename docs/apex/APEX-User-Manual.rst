@@ -1401,7 +1401,7 @@ Run in a docker container
          :number-lines:
 
           # docker run -p 6969:6969 -v $APEX_HOME/ToscaPolicy.json:/tmp/policy/ToscaPolicy.json \
-            --name apex -it nexus3.onap.org:10001/onap/policy-apex-pdp:latest /bin/bash \
+            --name apex -it nexus3.onap.org:10001/onap/policy-apex-pdp:latest \
             -c "/opt/app/policy/apex-pdp/bin/apexEngine.sh -p /tmp/policy/ToscaPolicy.json"
 
 APEX Configurations Explained
