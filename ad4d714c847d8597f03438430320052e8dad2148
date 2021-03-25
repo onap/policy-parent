@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44a77053_48540b11",
+        "filename": "docs/drools/feature_nolocking.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-03-25T20:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e73ee7b2_0a1297e5",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "ad4d714c847d8597f03438430320052e8dad2148",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "feca30af_cc7514a5",
         "filename": "docs/drools/feature_nolocking.rst",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "ad4d714c847d8597f03438430320052e8dad2148",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50a8260c_9bfb5015",
+        "filename": "docs/drools/feature_nolocking.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-03-25T20:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feca30af_cc7514a5",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "ad4d714c847d8597f03438430320052e8dad2148",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
