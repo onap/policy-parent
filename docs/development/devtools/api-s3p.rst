@@ -118,23 +118,24 @@ The load was performed against a non-tweaked ONAP OOM installation.
 =======================  =============  ===========  ===============================  ===============================  ===============================
 **Total # of requests**  **Success %**    **TPS**    **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
 =======================  =============  ===========  ===============================  ===============================  ===============================
-    176407                    100%         0.68              7340 ms                               34 ms                          49298 ms
+    627746                    100%         2.42              2058 ms                               26 ms                          72809 ms
 =======================  =============  ===========  ===============================  ===============================  ===============================
 
+.. image:: images/api-s3p-jm-1_H.png
 
 **JMeter Results**
 
 The following graphs show the response time distributions.   The "Get Policy Types" API calls are the most expensive calls that
 average a 10 seconds plus response time.
 
-.. image:: images/api-response-time-distribution.png
-.. image:: images/api-response-time-overtime.png
+.. image:: images/api-response-time-distribution_H.png
+.. image:: images/api-response-time-overtime_H.png
 
 
 Performance Test of Policy API
 ++++++++++++++++++++++++++++++
 
-A specific performance test was omitted in Guilin.   The JMeter script used in the stability run injected
+A specific performance test was omitted in Honululu (as in Guilin).   The JMeter script used in the stability run injected
 back to back traffic with 5 parallel threads with no pauses between requests.   Since the JMeter threads operate
 in synchronous mode (waiting for a request's response before sending the next request), JMeter injection rates autoregulate
 because of the backpressure imposed by the response times.   Even though the response times are high, the
