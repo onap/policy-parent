@@ -16,6 +16,24 @@
       "revId": "3801177ca5834c1e797062a53d730bed6c58b39b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b67662c9_f82548d7",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-03-29T13:32:35Z",
+      "side": 0,
+      "message": "agreed",
+      "parentUuid": "185057e5_d9c3fa79",
+      "revId": "3801177ca5834c1e797062a53d730bed6c58b39b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
