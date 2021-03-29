@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50c49017_219dc4d5",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-03-29T18:36:29Z",
+      "side": 1,
+      "message": "https://gerrit.onap.org/r/c/policy/parent/+/119990",
+      "parentUuid": "ba96c765_e82a6a80",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 18
+      },
+      "revId": "4cb510192cf10672d617334d5f95e24fc48cfdda",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "040cc3d0_c754e1c6",
         "filename": "docs/release-notes.rst",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "4cb510192cf10672d617334d5f95e24fc48cfdda",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9087683b_63cf6848",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-03-29T18:36:29Z",
+      "side": 1,
+      "message": "https://gerrit.onap.org/r/c/policy/parent/+/119990",
+      "parentUuid": "8fe191ca_59aac24a",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 14
+      },
+      "revId": "4cb510192cf10672d617334d5f95e24fc48cfdda",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
