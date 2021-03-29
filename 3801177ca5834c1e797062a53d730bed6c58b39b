@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "185057e5_d9c3fa79",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-03-29T13:29:57Z",
+      "side": 0,
+      "message": "Can you remove the actual files if not relevant in honolulu, you could simply overwrite them with the new ones?",
+      "revId": "3801177ca5834c1e797062a53d730bed6c58b39b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
