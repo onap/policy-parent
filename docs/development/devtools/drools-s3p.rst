@@ -25,6 +25,15 @@ The worker VM hosting the policy components has the following spec:
 The standalone VM designated to run jmeter has the same configuration.  The jmeter JVM
 was instantiated with a max heap configuration of 12G.
 
+The drools-pdp container uses the default JVM memory settings from a default OOM installation:
+
+.. code-block:: bash
+
+    VM settings:
+        Max. Heap Size (Estimated): 989.88M
+        Using VM: OpenJDK 64-Bit Server VM
+
+
 Other ONAP components used during the stability tests are:
 
 - Policy XACML PDP to process guard queries for each transaction.
@@ -57,24 +66,11 @@ The feature-controlloop-utils was started by adding the following script:
 
     oom/kubernetes/policy/charts/drools/resources/configmaps/features.pre.sh:
 
-    #!/bin/bash
-    bash -c "features enable controlloop-utils"
+    #!/bin/sh
+    sh -c "features enable controlloop-utils"
 
 Stability Test of Policy PDP-D
 ******************************
-
-The 72 hour stability test happened in parallel with the stability run of the API component.
-
-Worker Node performance
-=======================
-
-The VM named onap-k8s-09 was monitored for the duration of the 72 hours
-stability run.  The table below show the usage ranges:
-
-.. code-block:: bash
-
-    NAME          CPU(cores)   CPU%
-    onap-k8s-09   <=1214m      <=20%
 
 PDP-D performance
 =================
@@ -104,16 +100,10 @@ The command executed was
 
 .. code-block:: bash
 
-    ./jmeter -n -t /home/ubuntu/drools-applications/testsuites/stability/src/main/resources/frankfurt/s3p.jmx  -l /home/ubuntu/jmeter_result/jmeter.jtl -e -o /home/ubuntu/jmeter_result > /dev/null 2>&1
+    ./jmeter -n -t /home/ubuntu/drools-applications/testsuites/stability/src/main/resources/s3p.jmx  -l /home/ubuntu/jmeter_result/jmeter.jtl -e -o /home/ubuntu/jmeter_result > /dev/null 2>&1
 
-The results were computed by taking the ellapsed time from the audit.log
-(this log reports all end to end transactions, marking the start, end, and
-ellapsed times).
+The results were computed by monitoring the statistics REST endpoint accessible through the telemetry shell or APIs.
 
-The count reflects the number of successful transactions as expected in the
-use case, as well as the average, standard deviation, and max/min.   An histogram
-of the response times have been added as a visual indication on the most common
-transaction times.
 
 vCPE Success scenario
 =====================
@@ -122,9 +112,22 @@ ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e:
 
 .. code-block:: bash
 
-    Max: 4323 ms, Min: 143 ms, Average: 380 ms [samples taken for average: 260628]
+    # Times are in milliseconds
 
-.. image:: images/ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e.png
+    # Previous to the run, there was 1 failure as a consequence of testing
+    # the flows before the stability load was initiated.   There was
+    # an additional failure encountered during the execution.
+
+    "ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e": {
+        "policyExecutedCount": 161328,
+        "policyExecutedSuccessCount": 161326,
+        "totalElapsedTime": 44932780,
+        "averageExecutionTime": 278.5181741545175,
+        "birthTime": 1616092087842,
+        "lastStart": 1616356511841,
+        "lastExecutionTime": 1616356541972,
+        "policyExecutedFailCount": 2
+    }
 
 
 vCPE Failure scenario
@@ -134,9 +137,18 @@ ControlLoop-vCPE-Fail:
 
 .. code-block:: bash
 
-   Max: 3723 ms, Min: 148 ms, Average: 671 ms [samples taken for average: 87888]
+    # Times are in milliseconds
 
-.. image:: images/ControlLoop-vCPE-Fail.png
+    "ControlLoop-vCPE-Fail": {
+        "policyExecutedCount": 250172,
+        "policyExecutedSuccessCount": 0,
+        "totalElapsedTime": 63258856,
+        "averageExecutionTime": 252.8614553187407,
+        "birthTime": 1616092143137,
+        "lastStart": 1616440688824,
+        "lastExecutionTime": 1616440689010,
+        "policyExecutedFailCount": 250172
+    }
 
 vDNS Success scenario
 =====================
@@ -145,9 +157,18 @@ ControlLoop-vDNS-6f37f56d-a87d-4b85-b6a9-cc953cf779b3:
 
 .. code-block:: bash
 
-   Max: 6437 ms, Min: 19 ms, Average: 165 ms [samples taken for average: 59259]
+    # Times are in milliseconds
 
-.. image:: images/ControlLoop-vDNS-6f37f56d-a87d-4b85-b6a9-cc953cf779b3.png
+    "ControlLoop-vDNS-6f37f56d-a87d-4b85-b6a9-cc953cf779b3": {
+        "policyExecutedCount": 235438,
+        "policyExecutedSuccessCount": 235438,
+        "totalElapsedTime": 37564263,
+        "averageExecutionTime": 159.550552587093,
+        "birthTime": 1616092578063,
+        "lastStart": 1616356511253,
+        "lastExecutionTime": 1616356511653,
+        "policyExecutedFailCount": 0
+    }
 
 vDNS Failure scenario
 =====================
@@ -156,9 +177,19 @@ ControlLoop-vDNS-Fail:
 
 .. code-block:: bash
 
-    Max: 1176 ms, Min: 4 ms, Average: 5 ms [samples taken for average: 340810]
+    # Times are in milliseconds
 
-.. image:: images/ControlLoop-vDNS-Fail.png
+    "ControlLoop-vDNS-Fail": {
+        "policyExecutedCount": 2754574,
+        "policyExecutedSuccessCount": 0,
+        "totalElapsedTime": 14396495,
+        "averageExecutionTime": 5.22639616869977,
+        "birthTime": 1616092659237,
+        "lastStart": 1616440696444,
+        "lastExecutionTime": 1616440696444,
+        "policyExecutedFailCount": 2754574
+    }
+
 
 vFirewall Success scenario
 ==========================
@@ -167,6 +198,19 @@ ControlLoop-vFirewall-d0a1dfc6-94f5-4fd4-a5b5-4630b438850a:
 
 .. code-block:: bash
 
-    Max: 4016 ms, Min: 177 ms, Average: 644 ms [samples taken for average: 36460]
+    # Times are in milliseconds
 
-.. image:: images/ControlLoop-vFirewall-d0a1dfc6-94f5-4fd4-a5b5-4630b438850a.png
+    # Previous to the run, there were 2 failures as a consequence of testing
+    # the flows before the stability load was initiated.   There was
+    # an additional failure encountered during the execution.
+
+    "ControlLoop-vFirewall-d0a1dfc6-94f5-4fd4-a5b5-4630b438850a": {
+        "policyExecutedCount": 145197,
+        "policyExecutedSuccessCount": 145194,
+        "totalElapsedTime": 33100249,
+        "averageExecutionTime": 227.96785746261975,
+        "birthTime": 1616092985229,
+        "lastStart": 1616356511732,
+        "lastExecutionTime": 1616356541972,
+        "policyExecutedFailCount": 3
+    }
