@@ -45,6 +45,30 @@
       "revId": "4cb510192cf10672d617334d5f95e24fc48cfdda",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fe191ca_59aac24a",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-03-29T17:36:07Z",
+      "side": 1,
+      "message": "thx.  As this review is just a cherry pick, this and the other comment will be done in a separate review.",
+      "parentUuid": "040cc3d0_c754e1c6",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 14
+      },
+      "revId": "4cb510192cf10672d617334d5f95e24fc48cfdda",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
