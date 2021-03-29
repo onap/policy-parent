@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78b0727f_7caf69b3",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-03-29T15:44:44Z",
+      "side": 1,
+      "message": "This is expected, this is the vcpe failure scenario that simulates error response from appc to the restart (see line 142).",
+      "parentUuid": "ac080d17_9754ce59",
+      "range": {
+        "startLine": 150,
+        "startChar": 35,
+        "endLine": 150,
+        "endChar": 41
+      },
+      "revId": "233c1d856feb5540504d6da35f9b4069bc9fcf50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce84b12a_3d219fe3",
         "filename": "docs/development/devtools/drools-s3p.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2021-03-29T15:28:18Z",
       "side": 1,
       "message": "hmm, this sounds like a problem",
+      "range": {
+        "startLine": 190,
+        "startChar": 35,
+        "endLine": 190,
+        "endChar": 42
+      },
+      "revId": "233c1d856feb5540504d6da35f9b4069bc9fcf50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4acddc51_26585f46",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-03-29T15:44:44Z",
+      "side": 1,
+      "message": "same, expected too, dns failure case.",
+      "parentUuid": "ce84b12a_3d219fe3",
       "range": {
         "startLine": 190,
         "startChar": 35,
