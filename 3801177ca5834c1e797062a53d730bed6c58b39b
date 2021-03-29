@@ -34,6 +34,24 @@
       "revId": "3801177ca5834c1e797062a53d730bed6c58b39b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b67c6e_068d6def",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 7629
+      },
+      "writtenOn": "2021-03-29T13:40:40Z",
+      "side": 0,
+      "message": "Yes, I am deliting them now",
+      "parentUuid": "b67662c9_f82548d7",
+      "revId": "3801177ca5834c1e797062a53d730bed6c58b39b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
