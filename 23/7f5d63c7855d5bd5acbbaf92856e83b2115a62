@@ -1,0 +1,10 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Jim Hahn <jrh3@att.com>
+Code-Review+2: Jorge Hernandez <jorge.hernandez-herrero@att.com>
+Code-Review+2: Pamela Dragosh <pdragosh@research.att.com>
+Code-Review+1: Ram Krishna Verma <ram_krishna.verma@bell.ca>
+Submitted-by: Jim Hahn <jrh3@att.com>
+Submitted-at: Tue, 30 Mar 2021 18:15:45 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/policy/parent/+/120021
+Project: policy/parent
+Branch: refs/heads/honolulu
