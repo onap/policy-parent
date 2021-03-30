@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27ff9e30_d7198d8d",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-03-30T14:28:38Z",
+      "side": 0,
+      "message": "please delete these old images, if they still exist",
+      "revId": "5db08bd661c5e7c92f4bc211c6f56421a9439946",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
