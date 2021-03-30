@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5762e86a_65ab5a1a",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-03-30T19:19:50Z",
+      "side": 1,
+      "message": "yes, this should be \"latest\" as AAF doesn\u0027t have honolulu-specific docs",
+      "range": {
+        "startLine": 152,
+        "startChar": 98,
+        "endLine": 152,
+        "endChar": 104
+      },
+      "revId": "182f20f07db480d0faec75c0fb165e3b316c347c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
