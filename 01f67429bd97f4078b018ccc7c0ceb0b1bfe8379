@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "116d6a89_50d98f3e",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-03-30T18:17:04Z",
+      "side": 1,
+      "message": "Seems too big difference between min \u0026 max time taken.",
+      "range": {
+        "startLine": 173,
+        "startChar": 129,
+        "endLine": 173,
+        "endChar": 137
+      },
+      "revId": "01f67429bd97f4078b018ccc7c0ceb0b1bfe8379",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
