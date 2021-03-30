@@ -393,7 +393,7 @@ this information to automatically generate a policy.
 
 Note that SDC provides a wrapper for the SDC API as a Java Client and also provides a TOSCA parser. See the
 documentation for the `Policy Distribution Component
-<https://docs.onap.org/en/latest/submodules/policy/distribution.git/docs/index.html>`__.
+<https://docs.onap.org/en/honolulu/submodules/policy/distribution.git/docs/index.html>`__.
 
 In Step 4 above, the \ *PolicyDesign* must download the CSAR file. If the policy is to be composed from the TOSCA
 definition, it must also parse the TOSCA definition.
