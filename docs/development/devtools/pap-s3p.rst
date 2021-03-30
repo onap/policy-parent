@@ -68,7 +68,7 @@ The test was run in the background via "nohup", to prevent it from being interru
 
 .. code-block:: bash
 
-    nohup ./jMeter/apache-jmeter-5.3/bin/jmeter.sh -n -t stability.jmx -l testresults.jtl
+    nohup ./jMeter/apache-jmeter-5.3/bin/jmeter.sh -n -t stabil.jmx -l testresults.jtl
 
 Test Results
 ------------
@@ -92,20 +92,18 @@ Stability test plan was triggered for 72 hours.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-35059                    99.99 %            0.01 %              354 ms
+31071                    100.00 %           0.00 %              269 ms
 =======================  =================  ==================  ==================================
 
 .. Note::
 
               .. container:: paragraph
 
-                  There were only 3 failures during the 72 hours test, and all these 3 happened because the 2nd PDP instance didn't
-                  get registered in time to the new group created, and as a result, the PdpGroup Query failed. This can be ignored,
-                  as it was only a matter of one missing heartbeat over a period of 24 hours.
+                  There were no failures during the 72 hours test.
 
 **JMeter Screenshot**
 
-.. image:: images/pap-s3p-jm-stability.JPG
+.. image:: images/pap-s3p-stability-result-jm.PNG
 
 **Memory and CPU usage**
 
@@ -113,11 +111,11 @@ The memory and CPU usage can be monitored by running "top" command on the PAP po
 
 Memory and CPU usage before test execution:
 
-.. image:: images/pap-s3p-top-before.JPG
+.. image:: images/pap-s3p-mem-bt.PNG
 
 Memory and CPU usage after test execution:
 
-.. image:: images/pap-s3p-top-after.JPG
+.. image:: images/pap-s3p-mem-at.PNG
 
 The CPU and memory usage by the PAP pod is consistent over the period of 72 hours test execution.
 
@@ -168,12 +166,12 @@ Test results are shown as below.
 
 **Test Statistics**
 
-=======================  =================  ==================  ==================================  =======================
-**Total # of requests**  **Success %**      **Error %**         **Average time taken per request**  **Requests/sec**
-=======================  =================  ==================  ==================================  =======================
-44293                    100 %              0.00 %              943 ms                              8858
-=======================  =================  ==================  ==================================  =======================
+=======================  =================  ==================  ==================================
+**Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
+=======================  =================  ==================  ==================================
+55043                    100 %              0.00 %              812 ms
+=======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
 
-.. image:: images/pap-s3p-jm-performance.JPG
+.. image:: images/pap-s3p-performance-result-jm.JPG
