@@ -135,14 +135,57 @@ average a 10 seconds plus response time.
 Performance Test of Policy API
 ++++++++++++++++++++++++++++++
 
-A specific performance test was omitted in Honululu (as in Guilin).   The JMeter script used in the stability run injected
-back to back traffic with 5 parallel threads with no pauses between requests.   Since the JMeter threads operate
-in synchronous mode (waiting for a request's response before sending the next request), JMeter injection rates autoregulate
-because of the backpressure imposed by the response times.   Even though the response times are high, the
-"Response over Time" graph above indicates that they remain constant at large, throughout the duration of the test.
-This together with the absence of notorious spikes in the kubernetes node CPU utilization suggests that the API
-component is not strained.   A more enlightning set of tests, would plot jmeter threads (increasing load)
-against response times.   These tests have not been performed in this release.
+Introduction
+------------
+
+Performance test of policy-api has the goal of testing the min/avg/max processing time and rest call throughput for all the requests when the number of requests are large enough to saturate the resource and find the bottleneck.
+
+Setup Details
+-------------
+
+Setup Details
+-------------
+
+The performance test was performed on a default ONAP OOM installation in the Intel Wind River Lab environment.
+JMeter was installed on a separate VM to inject the traffic defined in the
+`API performace script
+<https://git.onap.org/policy/api/tree/testsuites/performance/src/main/resources/testplans/policy_api_performance.jmx>`_
+with the following command:
+
+.. code-block:: bash
+
+    jmeter.sh --nongui --testfile policy_api_performance.jmx --logfile result.jtl
+
+
+Test Plan
+---------
+
+Performance test plan is the same as stability test plan above.
+Only differences are, in performance test, we increase the number of threads up to 20 (simulating 20 users' behaviors at the same time) whereas reducing the test time down to 2.5 hours.
+
+Run Test
+--------
+
+Running/Triggering performance test will be the same as stability test. That is, launch JMeter pointing to corresponding *.jmx* test plan. The *API_HOST* and *API_PORT* are already set up in *.jmx*.
+
+**Test Statistics**
+
+=======================  =============  ===========  ===============================  ===============================  ===============================
+**Total # of requests**  **Success %**    **TPS**    **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
+=======================  =============  ===========  ===============================  ===============================  ===============================
+    4082                     100%           0.45              1297 ms                              4 ms                          63612 ms
+=======================  =============  ===========  ===============================  ===============================  ===============================
+
+.. image:: images/api-s3p-jm-2_H.png
+
+Test Results
+------------
+
+The following graphs show the response time distributions.
+
+.. image:: images/api-response-time-distribution_performance_H.png
+.. image:: images/api-response-time-overtime_performance_H.png
+
 
 
 
