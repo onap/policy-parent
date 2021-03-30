@@ -34,9 +34,12 @@ The 72 hours stability test ran the following steps sequentially in a single thr
 - **Change state to ACTIVE** - changes the state of defaultGroup PdpGroup to ACTIVE
 - **Check PdpGroup Query** - makes a PdpGroup query request and verifies that PdpGroup is in the ACTIVE state.
 - **Deploy defaultDomain Policy** - deploys the policy defaultDomain in the existing PdpGroup
+- **Check status of defaultGroup** - checks the status of defaultGroup PdpGroup with the defaultDomain policy 1.0.0.
 - **Create/Update PDP Group** - creates a new PDPGroup named sampleGroup.
 - **Check PdpGroup Query** - makes a PdpGroup query request and verifies that 2 PdpGroups are in the ACTIVE state and defaultGroup has a policy deployed on it.
 - **Deployment Update sampleDomain** - deploys the policy sampleDomain in sampleGroup PdpGroup using pap api
+- **Check status of sampleGroup** - checks the status of the sampleGroup PdpGroup.
+- **Check status of PdpGroups** - checks the status of both PdpGroups.
 - **Check PdpGroup Query** - makes a PdpGroup query request and verifies that the defaultGroup has a policy defaultDomain deployed on it and sampleGroup has policy sampleDomain deployed on it.
 - **Check Consolidated Health** - checks the consolidated health status of all policy components.
 - **Check Deployed Policies** - checks for all the deployed policies using pap api.
@@ -68,14 +71,14 @@ The test was run in the background via "nohup", to prevent it from being interru
 
 .. code-block:: bash
 
-    nohup ./jMeter/apache-jmeter-5.3/bin/jmeter.sh -n -t stability.jmx -l testresults.jtl
+    nohup ./jMeter/apache-jmeter-5.3/bin/jmeter.sh -n -t stabil.jmx -l testresults.jtl
 
 Test Results
 ------------
 
 **Summary**
 
-Stability test plan was triggered for 72 hours.
+Stability test plan was triggered for 24 hours.
 
 .. Note::
 
@@ -92,20 +95,18 @@ Stability test plan was triggered for 72 hours.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-35059                    99.99 %            0.01 %              354 ms
+11921                    100.00 %           0.00 %              382 ms
 =======================  =================  ==================  ==================================
 
 .. Note::
 
               .. container:: paragraph
 
-                  There were only 3 failures during the 72 hours test, and all these 3 happened because the 2nd PDP instance didn't
-                  get registered in time to the new group created, and as a result, the PdpGroup Query failed. This can be ignored,
-                  as it was only a matter of one missing heartbeat over a period of 24 hours.
+                  There were no failures during the 24 hours test.
 
 **JMeter Screenshot**
 
-.. image:: images/pap-s3p-jm-stability.JPG
+.. image:: images/pap-s3p-stability-result-jmeter.PNG
 
 **Memory and CPU usage**
 
@@ -113,13 +114,12 @@ The memory and CPU usage can be monitored by running "top" command on the PAP po
 
 Memory and CPU usage before test execution:
 
-.. image:: images/pap-s3p-top-before.JPG
+.. image:: images/pap-s3p-mem-bt.PNG
 
 Memory and CPU usage after test execution:
 
-.. image:: images/pap-s3p-top-after.JPG
+.. image:: images/pap-s3p-mem-at.PNG
 
-The CPU and memory usage by the PAP pod is consistent over the period of 72 hours test execution.
 
 Performance Test of PAP
 ++++++++++++++++++++++++
@@ -168,12 +168,12 @@ Test results are shown as below.
 
 **Test Statistics**
 
-=======================  =================  ==================  ==================================  =======================
-**Total # of requests**  **Success %**      **Error %**         **Average time taken per request**  **Requests/sec**
-=======================  =================  ==================  ==================================  =======================
-44293                    100 %              0.00 %              943 ms                              8858
-=======================  =================  ==================  ==================================  =======================
+=======================  =================  ==================  ==================================
+**Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
+=======================  =================  ==================  ==================================
+20093                    100 %              0.00 %              367 ms
+=======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
 
-.. image:: images/pap-s3p-jm-performance.JPG
+.. image:: images/pap-s3p-performance-result-jmeter.PNG
