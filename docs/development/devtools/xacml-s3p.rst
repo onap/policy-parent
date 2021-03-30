@@ -7,8 +7,71 @@
 .. toctree::
    :maxdepth: 2
 
-Policy XACML PDP component
 ##########################
+
+Performance Test of Policy XACML PDP
+************************************
+
+The Performance test was executed by performing requests
+against the Policy RESTful APIs residing on the XACML PDP installed on a Cloud based Virtual Machine.
+
+VM Configuration:
+- 16GB RAM
+- 8 VCPU
+- 1TB Disk
+
+ONAP was deployed using a K8s Configuration on a separate VM.
+
+Summary
+=======
+
+The Performance test was executed, and the result analyzed, via:
+
+.. code-block:: bash
+
+    jmeter -Jduration=1200 -Jusers=10 \
+        -Jxacml_ip=$ip -Jpap_ip=$ip -Japi_ip=$ip \
+        -Jxacml_port=31104 -Jpap_port=32425 -Japi_port=30709 \
+        -n -t perf.jmx -l testresults.jtl
+
+Note: the ports listed above correspond to port 6969 of the respective components.
+
+The performance test, perf.jmx, runs the following, all in parallel:
+
+- Healthcheck, 10 simultaneous threads
+- Statistics, 10 simultaneous threads
+- Decisions, 10 simultaneous threads, each running the following in sequence:
+
+   - Monitoring Decision
+   - Monitoring Decision, abbreviated
+   - Naming Decision
+   - Optimization Decision
+   - Default Guard Decision (always "Permit")
+   - Frequency Limiter Guard Decision
+   - Min/Max Guard Decision
+
+When the script starts up, it uses policy-api to create, and policy-pap to deploy,
+the policies that are needed by the test.  It assumes that the "naming" policy has
+already been created and deployed.  Once the test completes, it undeploys and deletes
+the policies that it previously created.
+
+Results
+=======
+
+The test was run for 20 minutes at a time, for different numbers of users (i.e.,
+threads), with the following results:
+
+.. csv-table::
+   :header: "Number of Users", "Throughput (requests/second)", "Average Latency (ms)"
+
+   10, 8929, 3.10
+   20, 10827, 5.05
+   40, 11800, 9.35
+   80, 11750, 18.62
+
+
+Stability Test of Policy XACML PDP
+************************************
 
 The stability test was executed by performing requests
 against the Policy RESTful APIs residing on the XACML PDP installed in the windriver
@@ -20,10 +83,6 @@ lab.  This was running on a kubernetes pod having the following configuration:
 
 The test was run via jmeter, which was installed on a separate VM so-as not
 to impact the performance of the XACML-PDP being tested.
-
-
-Stability Test of Policy XACML PDP
-************************************
 
 Summary
 =======
