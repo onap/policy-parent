@@ -89,7 +89,7 @@ System Limitations
 The policy API component requires a fresh new database when migrating to the honolulu release.
 Therefore, upgrades require a fresh new database installation.
 Please see the
-`Installing or Upgrading Policy <https://onap.readthedocs.io/en/honolulu/submodules/policy/parent.git/docs/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
+`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/honolulu/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
 
 Known Vulnerabilities
 ~~~~~~~~~~~~~~~~~~~~~
@@ -220,7 +220,7 @@ System Limitations
 The policy API component requires a fresh new database when migrating to the guilin release.
 Therefore, upgrades require a fresh new database installation.
 Please see the
-`Installing or Upgrading Policy <https://onap.readthedocs.io/en/honolulu/submodules/policy/parent.git/docs/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
+`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/guilin/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
 
 Known Vulnerabilities
 ~~~~~~~~~~~~~~~~~~~~~
@@ -471,14 +471,14 @@ POLICY-APEX-PDP
 * Passing parameters from ApexConfig to policy logic.
    - TaskParameters can be used to pass parameters from ApexConfig to the policy logic. Consider a scenario where from CLAMP, serviceId or closedLoopId has to be passed to the policy, and this should be available to perform some logic or action within the policy. In the CLAMP UI, while configuring the APEX Policy, specifying taskParameters with these will enable this.
 
-   - More information about the usage of Task Parameters can be found here: https://onap.readthedocs.io/en/honolulu/submodules/policy/parent.git/docs/apex/APEX-User-Manual.html#configure-task-parameters
+   - More information about the usage of Task Parameters can be found here: https://docs.onap.org/projects/onap-policy-parent/en/frankfurt/apex/APEX-User-Manual.html#configure-task-parameters
 
    - In the taskLogic, taskParameters can be accessed as  executor.parameters.get("ParameterKey1"))
 
-   - More information can be found here: https://onap.readthedocs.io/en/honolulu/submodules/policy/parent.git/docs/apex/APEX-Policy-Guide.html#accessing-taskparameters
+   - More information can be found here: https://docs.onap.org/projects/onap-policy-parent/en/frankfurt/apex/APEX-Policy-Guide.html#accessing-taskparameters
 
 * GRPC support for APEX-CDS interaction.
-   - APEX-PDP now supports interaction with CDS over gRPC. Up through El Alto, CDS interaction was possible over REST only. A new plugin was developed in APEX for this feature. Refer the link for more details. https://onap.readthedocs.io/en/honolulu/submodules/policy/parent.git/docs/apex/APEX-User-Manual.html#grpc-io
+   - APEX-PDP now supports interaction with CDS over gRPC. Up through El Alto, CDS interaction was possible over REST only. A new plugin was developed in APEX for this feature. Refer the link for more details. https://docs.onap.org/projects/onap-policy-parent/en/frankfurt/apex/APEX-User-Manual.html#grpc-io
 
 POLICY-XACML-PDP
 ================
@@ -525,7 +525,7 @@ System Limitations
 The policy API component requires a fresh new database when migrating to the frankfurt release.
 Therefore, upgrades require a fresh new database installation.
 Please see the
-`Installing or Upgrading Policy <https://onap.readthedocs.io/en/frankfurt/submodules/policy/parent.git/docs/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
+`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/frankfurt/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
 
 Known Vulnerabilities
 ~~~~~~~~~~~~~~~~~~~~~
