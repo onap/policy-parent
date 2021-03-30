@@ -97,6 +97,8 @@ Known Vulnerabilities
 Workarounds
 ~~~~~~~~~~~
 
+* `POLICY-2998 <https://jira.onap.org/browse/POLICY-2998>`_ - Provide a script to periodically purge the statistics table
+
 Security Notes
 ==============
 
@@ -117,6 +119,9 @@ Security Notes
     - Upgrade io.cucumber to 6.9.1
     - Upgrade org.apache.commons:commons-lang3 to 3.11
     - Upgrade commons-io to 2.8.0
+* `POLICY-2943 <https://jira.onap.org/browse/POLICY-2943>`_ - Review license scan issues
+    - Upgrade com.hazelcast to 4.1.1
+    - Upgrade io.netty to 4.1.58.Final
 * `POLICY-2936 <https://jira.onap.org/browse/POLICY-2936>`_ - Upgrade to latest version of CDS API
     - Upgrade io.grpc to 1.35.0
     - Upgrade com.google.protobuf to 3.14.0
