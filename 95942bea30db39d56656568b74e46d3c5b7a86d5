@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08faa3bc_db273f8a",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-03-31T19:16:28Z",
+      "side": 1,
+      "message": "S3P tests must be complete by RC2 so we recommended to run it for a shorter timeframe than normal so it could be completed and documentation updated.  Testing for 72 hours can resume now that this is done.",
+      "parentUuid": "f73d4fc4_2c32a977",
+      "range": {
+        "startLine": 81,
+        "startChar": 38,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "95942bea30db39d56656568b74e46d3c5b7a86d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb44b145_95651b6e",
         "filename": "docs/development/devtools/pap-s3p.rst",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2021-03-31T19:08:48Z",
       "side": 1,
       "message": "Almost 50% less traffic this time. Do you know the reason?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 6
+      },
+      "revId": "95942bea30db39d56656568b74e46d3c5b7a86d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5b4a6f3_06e5c114",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-03-31T19:16:28Z",
+      "side": 1,
+      "message": "guessing it\u0027s due to the shorter run time.  Interestingly, I\u0027d expected it to be ~70% less.",
+      "parentUuid": "fb44b145_95651b6e",
       "range": {
         "startLine": 174,
         "startChar": 0,
