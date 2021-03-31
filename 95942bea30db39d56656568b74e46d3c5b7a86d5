@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "ad7acdf9_b60a0e67",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-03-31T20:37:36Z",
+      "side": 1,
+      "message": "Got it, thanks!",
+      "parentUuid": "08faa3bc_db273f8a",
+      "range": {
+        "startLine": 81,
+        "startChar": 38,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "95942bea30db39d56656568b74e46d3c5b7a86d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98b1203b_53cb9148",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-03-31T20:37:36Z",
+      "side": 1,
+      "message": "Here it is almost 65% less. So we are good with stability numbers.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 5
+      },
+      "revId": "95942bea30db39d56656568b74e46d3c5b7a86d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb44b145_95651b6e",
         "filename": "docs/development/devtools/pap-s3p.rst",
         "patchSetId": 2
@@ -84,6 +131,30 @@
       "side": 1,
       "message": "guessing it\u0027s due to the shorter run time.  Interestingly, I\u0027d expected it to be ~70% less.",
       "parentUuid": "fb44b145_95651b6e",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 6
+      },
+      "revId": "95942bea30db39d56656568b74e46d3c5b7a86d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d42c3b7a_949e2467",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-03-31T20:37:36Z",
+      "side": 1,
+      "message": "For performance, we only run for 2 hours. And I guess that\u0027s what was followed this time too as there are no updates at line 143 \u0026 144. So curious about the less traffic.",
+      "parentUuid": "a5b4a6f3_06e5c114",
       "range": {
         "startLine": 174,
         "startChar": 0,
