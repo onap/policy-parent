@@ -39,7 +39,7 @@ APEX Examples Decision Maker
 
 .. |File > New to create a new Policy Model| image:: images/mfp/MyFirstPolicy_P1_newPolicyModel1.png
 .. |Create a new Policy Model| image:: images/mfp/MyFirstPolicy_P1_newPolicyModel2.png
-.. |ONAP| image:: ../../../images/logos.png
+.. |ONAP| image:: ../_static/logo_onap_2017.png
    :class: builtBy
    :target: http://www.onap.org/
 .. |apexConfigRESTClient_link| raw:: html
