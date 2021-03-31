@@ -113,7 +113,7 @@ Once the test has complete - we can generate a HTML test report via the followin
 ==============================================  ================================  =============  ============ ============================
 **Number of Client Threads running in JMeter**  **Total number of input events**  **Success %**  **Error %**  **Average Time per Request**
 ==============================================  ================================  =============  ============ ============================
-5                                               8594220                           100%           0%           5518.73
+5                                               129326                            100%           0%           6716.12
 ==============================================  ================================  =============  ============ ============================
 
 .. image:: images/stability-jmeter.PNG
@@ -191,7 +191,7 @@ Once the tests complete, we can generate an HTML test report via the command:
 ==============================================  ================================  =============  ============ ============================
 **Number of Client Threads running in JMeter**  **Total number of input events**  **Success %**  **Error %**  **Average Time per Request**
 ==============================================  ================================  =============  ============ ============================
-5                                               8594220                           100%           0%           5518.73
+5                                               9025                              100%           0%           3474.43
 ==============================================  ================================  =============  ============ ============================
 
 
@@ -207,7 +207,7 @@ Setting up Performance Tests in APEX
 
 The Performance test is performed on a similar setup to the Stability test. JMeter will send a large number of REST requests and will then retrieve those requests.
 
-Performnce test plan will be the same as the stability test plan except for some differences listed below:
+Performance test plan will be the same as the stability test plan except for some differences listed below:
 
 - Increase the number of threads from 5 to 60.
 - Reduce test time to ninety minutes.
