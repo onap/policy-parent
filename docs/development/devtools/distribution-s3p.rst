@@ -121,7 +121,7 @@ Run the setup_components.sh script to start the test support components:
 
 .. code-block:: bash
 
-    ~/distribution/testsuites/stability/src/main/resources/distributionsetup/setup_distribution.sh
+    ~/distribution/testsuites/stability/src/main/resources/simulatorsetup/setup_components.sh
 
 After installation, ensure the following docker containers are up and running:
 
@@ -182,7 +182,7 @@ Download and install JMeter
 VM2 Only: Install & configure visualVM
 --------------------------------------
 
-VisualVM needs to be installed in the virtual machine running Distrbution (VM2). It will be used to monitor CPU, Memory and GC for Distribution while the stability tests are running.
+VisualVM needs to be installed in the virtual machine running Distribution (VM2). It will be used to monitor CPU, Memory and GC for Distribution while the stability tests are running.
 
 .. code-block:: bash
 
@@ -222,7 +222,7 @@ This will load up the visualVM GUI
 Connect to Distribution JMX Port.
 
     1. Right click on "Local" in the left panel of the screen and select "Add JMX Connection"
-    2. Enter the Port 9090. this is the JMX port exposed by the dsitribution container
+    2. Enter the Port 9090. this is the JMX port exposed by the distribution container
     3. Double click on the newly added nodes under "Local" to start monitoring CPU, Memory & GC.
 
 Example Screenshot of visualVM
@@ -236,9 +236,9 @@ Stability Test of Policy Distribution
 Introduction
 ------------
 
-The 72 hour Stability Test for policy distribution has the goal of introducing a steady flow of transactions initiated from a test client server running JMeter. The policy distribution is configured with a special FileSystemReception plugin to monitor a local directory for newly added csar files to be processed by itself. The input CSAR will be added/removed by the test client(JMeter) and the result will be pulled from the backend(PAP and PolicyAPI) by the test client (JMeter).
+The 72 hour Stability Test for policy distribution has the goal of introducing a steady flow of transactions initiated from a test client server running JMeter. The policy distribution is configured with a special FileSystemReception plugin to monitor a local directory for newly added csar files to be processed by itself. The input CSAR will be added/removed by the test client(JMeter) and the result will be pulled from the backend (PAP and PolicyAPI) by the test client (JMeter).
 
-The test will be performed in an environment where Jmeter will continuously add/remove a test csar into the special directory where policy distribuion is monitoring and will then get the processed results from PAP and PolicyAPI to verify the successful deployment of the policy. The policy will then be undeployed and the test will loop continuously until 72 hours have elapsed.
+The test will be performed in an environment where Jmeter will continuously add/remove a test csar into the special directory where policy distribution is monitoring and will then get the processed results from PAP and PolicyAPI to verify the successful deployment of the policy. The policy will then be undeployed and the test will loop continuously until 72 hours have elapsed.
 
 
 Test Plan Sequence
@@ -291,7 +291,7 @@ From the apache JMeter folder run the test for 72h, pointing it towards the stab
 
 .. code-block:: bash
 
-    ~/jmeter/apache-jmeter-5.1.1/bin/jmeter -n -t ~/distribution/testsuites/stability/src/main/resources/testplans/stability.jmx -Jduration=259200 -l ~/20201016-1715-distr-stability.jtl &
+    ~/jmeter/apache-jmeter-5.1.1/bin/jmeter -n -t ~/distribution/testsuites/stability/src/main/resources/testplans/stability.jmx -Jduration=259200 -l ~/distr-stability.jtl &
 
 
 Test Results
@@ -304,18 +304,13 @@ Test Results
 
 **Test Statistics**
 
-.. csv-table:: Stability Results - Summary Report
-   :file: csv/20201016-1715-distr-stability-summary.csv
-   :header-rows: 1
-
-.. csv-table:: Stability Results - Aggregate Report
-   :file: csv/20201016-1715-distr-stability-aggregate.csv
-   :header-rows: 1
+.. image:: images/dist_stability_statistics.PNG
+.. image:: images/dist_stability_threshold.PNG
 
 **VisualVM Screenshots**
 
-.. image:: images/20201016-1715-distr-stability-20201018T2040-monitor.png
-.. image:: images/20201016-1715-distr-stability-20201018T2040-threads.png
+.. image:: images/dist_stability_monitor.PNG
+.. image:: images/dist_stability_threads.PNG
 
 
 Performance Test of Policy Distribution
@@ -342,7 +337,7 @@ Performance test plan is different from the stability test plan.
 
 - Instead of handling one policy csar at a time, multiple csar's are deployed within the watched folder at the exact same time.
 - We expect all policies from these csar's to be deployed within 30 seconds.
-- There are also multithreaded tests running towards the healtchcheck and statistics endpoints of the distribution service.
+- There are also multithreaded tests running towards the healthcheck and statistics endpoints of the distribution service.
 
 
 Running the Test Plan
@@ -359,7 +354,7 @@ From the apache JMeter folder run the test for 4h, pointing it towards the perfo
 
 .. code-block:: bash
 
-    ~/jmeter/apache-jmeter-5.1.1/bin/jmeter -n -t ~/distribution/testsuites/performance/src/main/resources/testplans/performance.jmx -Jduration=14400 -l ~/20201020-1730-distr-performance.jtl &
+    ~/jmeter/apache-jmeter-5.1.1/bin/jmeter -n -t ~/distribution/testsuites/performance/src/main/resources/testplans/performance.jmx -Jduration=14400 -l ~/distr-performance.jtl &
 
 Test Results
 ------------
@@ -371,13 +366,8 @@ Test Results
 
 **Test Statistics**
 
-.. csv-table:: Performance Results - Summary Report
-   :file: csv/20201020-1730-distr-performance-summary.csv
-   :header-rows: 1
-
-.. csv-table:: Performance Results - Aggregate Report
-   :file: csv/20201020-1730-distr-performance-aggregate.csv
-   :header-rows: 1
+.. image:: images/dist_perf_statistics.PNG
+.. image:: images/dist_perf_threshold.PNG
 
 **VisualVM Screenshots**
 
