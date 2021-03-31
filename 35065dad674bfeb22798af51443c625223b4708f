@@ -22,6 +22,30 @@
       "revId": "35065dad674bfeb22798af51443c625223b4708f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94d29bb2_89a10e0d",
+        "filename": "docs/development/devtools/xacml-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 7630
+      },
+      "writtenOn": "2021-03-31T16:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66813d60_f206bed9",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 8
+      },
+      "revId": "35065dad674bfeb22798af51443c625223b4708f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
