@@ -8,8 +8,8 @@ APEX User Manual
 .. contents::
     :depth: 3
 
-Installation
-^^^^^^^^^^^^
+Installation of Apex
+^^^^^^^^^^^^^^^^^^^^
 
 Requirements
 ------------
@@ -226,13 +226,14 @@ Build APEX
 +----------------------------------------------------------------------------------------------------------------+
 | Unix, Cygwin                                                                                                   |
 +================================================================================================================+
-| .. container::                                                                                                 |
+| .. container:: content                                                                                         |
 |                                                                                                                |
 | .. container:: listingblock                                                                                    |
 |                                                                                                                |
 | .. container:: content                                                                                         |
 |                                                                                                                |
 | .. code::                                                                                                      |
+|                                                                                                                |
 | :number-lines:                                                                                                 |
 |                                                                                                                |
 | -rwxrwx---+ 1 esvevan Domain Users       772 Sep  3 11:55 apex-pdp-package-full_2.0.0~SNAPSHOT_all.changes*    |
