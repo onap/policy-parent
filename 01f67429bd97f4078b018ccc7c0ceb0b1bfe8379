@@ -22,6 +22,30 @@
       "revId": "01f67429bd97f4078b018ccc7c0ceb0b1bfe8379",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce2306a_0d7ac2b7",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 7629
+      },
+      "writtenOn": "2021-03-31T12:50:30Z",
+      "side": 1,
+      "message": "\"Get All Policy Types\" got that score near the end of the tests. In the time distribuion picture is the one in light green.",
+      "parentUuid": "116d6a89_50d98f3e",
+      "range": {
+        "startLine": 173,
+        "startChar": 129,
+        "endLine": 173,
+        "endChar": 137
+      },
+      "revId": "01f67429bd97f4078b018ccc7c0ceb0b1bfe8379",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
