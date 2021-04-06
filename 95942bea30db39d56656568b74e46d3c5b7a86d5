@@ -188,6 +188,30 @@
       "revId": "95942bea30db39d56656568b74e46d3c5b7a86d5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc0503b_d58c96a7",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-04-06T13:22:55Z",
+      "side": 1,
+      "message": "@Ram: are you OK with these numbers now?",
+      "parentUuid": "6a8793d3_e3217ef4",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 6
+      },
+      "revId": "95942bea30db39d56656568b74e46d3c5b7a86d5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
