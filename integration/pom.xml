@@ -49,6 +49,7 @@
         <version.javax.json>1.1.4</version.javax.json>
         <version.netty>4.1.58.Final</version.netty>
         <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
+        <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
     </properties>
 
     <distributionManagement>
