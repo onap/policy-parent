@@ -209,7 +209,7 @@ The Performance test is performed on a similar setup to the Stability test. JMet
 
 Performnce test plan will be the same as the stability test plan except for some differences listed below:
 
-- Increase the number of threads from 5 to 60.
+- Increase the number of threads from 5 to 20.
 - Reduce test time to ninety minutes.
 - Calculate the amount of requests handled in the time frame.
 
@@ -240,11 +240,11 @@ Performance test was triggered for 90 minutes. The results are shown below.
 ============================ =========== ========= ==================================
 **Total Number of Requests** **Success** **Error** **Average Time Taken per Request**
 ============================ =========== ========= ==================================
-9870                         100 %       0 %       5506.09 ms
+32304                        99,99 %     0.01 %    8746.50 ms
 ============================ =========== ========= ==================================
 
 **JMeter Screenshot**
 
-.. image:: images/apex_perf_jm_1.png
+.. image:: images/apex_perf_jm_1.PNG
 
-.. image:: images/apex_perf_jm_2.png
+.. image:: images/apex_perf_jm_2.PNG
