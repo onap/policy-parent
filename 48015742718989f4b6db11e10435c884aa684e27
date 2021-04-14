@@ -103,6 +103,30 @@
       "revId": "48015742718989f4b6db11e10435c884aa684e27",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd3f02ef_c6710907",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-04-14T16:37:33Z",
+      "side": 1,
+      "message": "Curious why is it still showing old numbers, when the new one is already updated in master - https://github.com/onap/policy-parent/blob/master/docs/development/devtools/apex-s3p.rst",
+      "parentUuid": "fd4db303_205d85a8",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 4
+      },
+      "revId": "48015742718989f4b6db11e10435c884aa684e27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
