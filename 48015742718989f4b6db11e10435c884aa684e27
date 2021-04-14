@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10218293_653cab6f",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 7662
+      },
+      "writtenOn": "2021-04-14T12:49:06Z",
+      "side": 1,
+      "message": "I removed also link to result",
+      "revId": "48015742718989f4b6db11e10435c884aa684e27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d5f6d3_a6497a7e",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 7662
+      },
+      "writtenOn": "2021-04-14T12:49:06Z",
+      "side": 1,
+      "message": "I removed also link to result",
+      "revId": "48015742718989f4b6db11e10435c884aa684e27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
