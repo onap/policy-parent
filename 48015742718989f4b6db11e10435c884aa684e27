@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "98d4c9de_9d7c2b58",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 7662
+      },
+      "writtenOn": "2021-04-15T12:36:05Z",
+      "side": 1,
+      "message": "The link was needed, and I have restored it",
+      "parentUuid": "10218293_653cab6f",
+      "revId": "48015742718989f4b6db11e10435c884aa684e27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fc785c8_0ee70af8",
         "filename": "docs/development/devtools/apex-s3p.rst",
         "patchSetId": 2
@@ -79,6 +97,24 @@
       "revId": "48015742718989f4b6db11e10435c884aa684e27",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87e702cc_f6899cee",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 7662
+      },
+      "writtenOn": "2021-04-15T12:36:05Z",
+      "side": 1,
+      "message": "The link was needed, and I have restored it",
+      "parentUuid": "89d5f6d3_a6497a7e",
+      "revId": "48015742718989f4b6db11e10435c884aa684e27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
