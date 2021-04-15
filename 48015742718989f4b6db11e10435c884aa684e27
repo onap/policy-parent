@@ -174,6 +174,30 @@
       "revId": "48015742718989f4b6db11e10435c884aa684e27",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3bc37a9_55f1f02d",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-04-15T09:58:18Z",
+      "side": 1,
+      "message": "@Arkadiusz once a change is merged, please update your repo and then push other changes!\nThe numbers got updated properly now after I did a rebase I think. Please check all the changes you made.",
+      "parentUuid": "78b6a33d_8e45c53b",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 4
+      },
+      "revId": "48015742718989f4b6db11e10435c884aa684e27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
