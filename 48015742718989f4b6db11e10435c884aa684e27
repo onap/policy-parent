@@ -198,6 +198,30 @@
       "revId": "48015742718989f4b6db11e10435c884aa684e27",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f126642_2a94365e",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 7662
+      },
+      "writtenOn": "2021-04-15T10:18:06Z",
+      "side": 1,
+      "message": "there is no conflict in lines, so on that particular file there should be no problems",
+      "parentUuid": "a3bc37a9_55f1f02d",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 4
+      },
+      "revId": "48015742718989f4b6db11e10435c884aa684e27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
