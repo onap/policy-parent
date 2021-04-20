@@ -45,6 +45,54 @@
       "revId": "a59ed26f0f3eeff1bf9835c190e704a6566f8cf1",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc43dd56_b842123f",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-04-20T12:38:07Z",
+      "side": 1,
+      "message": "change was needed in a different place\n\n\"on a VM\u0027s\" \u003d\u003e \"on VM\u0027s\"\n\"on separate\" \u003d\u003e \"on a separate\"",
+      "parentUuid": "828d49af_4e908e33",
+      "range": {
+        "startLine": 28,
+        "startChar": 186,
+        "endLine": 28,
+        "endChar": 189
+      },
+      "revId": "a59ed26f0f3eeff1bf9835c190e704a6566f8cf1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c3a5fbc_3d584755",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-04-20T12:38:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eb27ec5_9d728535",
+      "range": {
+        "startLine": 28,
+        "startChar": 204,
+        "endLine": 28,
+        "endChar": 213
+      },
+      "revId": "a59ed26f0f3eeff1bf9835c190e704a6566f8cf1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
