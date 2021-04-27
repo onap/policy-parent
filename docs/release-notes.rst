@@ -21,7 +21,7 @@ Policy Release Notes
 Version: 8.0.0
 --------------
 
-:Release Date: 2021-04-22 (Honolulu Release)
+:Release Date: 2021-04-29 (Honolulu Release)
 
 New features
 ============
