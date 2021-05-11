@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a86923e_f3904028",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-05-11T14:10:21Z",
+      "side": 1,
+      "message": "I hope no method signature has changed (like last time). Fingers crossed!",
+      "range": {
+        "startLine": 50,
+        "startChar": 27,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "c5035e27bfcfea6f8dcc9244646bc981401729ea",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
