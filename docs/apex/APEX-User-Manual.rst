@@ -2580,6 +2580,36 @@ Kafka Input
                                 "org.apache.kafka.common.serialization.StringDeserializer", (9)
                             "valueDeserializer" :
                                 "org.apache.kafka.common.serialization.StringDeserializer" (10)
+                            "kafkaProperties": [  (11)
+                                                 [
+                                                   "security.protocol",
+                                                   "SASL_SSL"
+                                                 ],
+                                                 [
+                                                   "ssl.truststore.type",
+                                                   "JKS"
+                                                 ],
+                                                 [
+                                                   "ssl.truststore.location",
+                                                   "/opt/app/policy/apex-pdp/etc/ssl/test.jks"
+                                                 ],
+                                                 [
+                                                   "ssl.truststore.password",
+                                                   "policy0nap"
+                                                 ],
+                                                 [
+                                                   "sasl.mechanism",
+                                                   "SCRAM-SHA-512"
+                                                 ],
+                                                 [
+                                                   "sasl.jaas.config",
+                                                   "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"policy\" password=\"policy\";"
+                                                 ],
+                                                 [
+                                                   "ssl.endpoint.identification.algorithm",
+                                                   ""
+                                                 ]
+                                               ]
                           }
                         }
 
@@ -2606,6 +2636,13 @@ Kafka Input
                   +--------+-------------------------------------+
                   | **10** | value for the Kafka de-serializer   |
                   +--------+-------------------------------------+
+                  | **11** | properties for Kafka connectivity   |
+                  +--------+-------------------------------------+
+
+               .. container:: paragraph
+
+                  Kindly note that the above Kafka properties is just a reference,
+                  and the actual properties required depends on the Kafka server installation.
 
 Kafka Output
 ============
@@ -2638,32 +2675,69 @@ Kafka Output
                                 "org.apache.kafka.common.serialization.StringSerializer", (9)
                             "valueSerializer"   :
                                 "org.apache.kafka.common.serialization.StringSerializer" (10)
+                            "kafkaProperties": [  (11)
+                                                 [
+                                                   "security.protocol",
+                                                   "SASL_SSL"
+                                                 ],
+                                                 [
+                                                   "ssl.truststore.type",
+                                                   "JKS"
+                                                 ],
+                                                 [
+                                                   "ssl.truststore.location",
+                                                   "/opt/app/policy/apex-pdp/etc/ssl/test.jks"
+                                                 ],
+                                                 [
+                                                   "ssl.truststore.password",
+                                                   "policy0nap"
+                                                 ],
+                                                 [
+                                                   "sasl.mechanism",
+                                                   "SCRAM-SHA-512"
+                                                 ],
+                                                 [
+                                                   "sasl.jaas.config",
+                                                   "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"policy\" password=\"policy\";"
+                                                 ],
+                                                 [
+                                                   "ssl.endpoint.identification.algorithm",
+                                                   ""
+                                                 ]
+                                               ]
                           }
                         }
 
                .. container:: colist arabic
 
-                  +--------+---------------------------------+
-                  | **1**  | set Kafka as carrier technology |
-                  +--------+---------------------------------+
-                  | **2**  | bootstrap server and port       |
-                  +--------+---------------------------------+
-                  | **3**  | acknowledgement strategy        |
-                  +--------+---------------------------------+
-                  | **4**  | number of retries               |
-                  +--------+---------------------------------+
-                  | **5**  | batch size                      |
-                  +--------+---------------------------------+
-                  | **6**  | time to linger in milliseconds  |
-                  +--------+---------------------------------+
-                  | **7**  | buffer memory in byte           |
-                  +--------+---------------------------------+
-                  | **8**  | producer topic                  |
-                  +--------+---------------------------------+
-                  | **9**  | key for the Kafka serializer    |
-                  +--------+---------------------------------+
-                  | **10** | value for the Kafka serializer  |
-                  +--------+---------------------------------+
+                  +--------+-----------------------------------+
+                  | **1**  | set Kafka as carrier technology   |
+                  +--------+-----------------------------------+
+                  | **2**  | bootstrap server and port         |
+                  +--------+-----------------------------------+
+                  | **3**  | acknowledgement strategy          |
+                  +--------+-----------------------------------+
+                  | **4**  | number of retries                 |
+                  +--------+-----------------------------------+
+                  | **5**  | batch size                        |
+                  +--------+-----------------------------------+
+                  | **6**  | time to linger in milliseconds    |
+                  +--------+-----------------------------------+
+                  | **7**  | buffer memory in byte             |
+                  +--------+-----------------------------------+
+                  | **8**  | producer topic                    |
+                  +--------+-----------------------------------+
+                  | **9**  | key for the Kafka serializer      |
+                  +--------+-----------------------------------+
+                  | **10** | value for the Kafka serializer    |
+                  +--------+-----------------------------------+
+                  | **11** | properties for Kafka connectivity |
+                  +--------+-----------------------------------+
+            
+               .. container:: paragraph
+
+                  Kindly note that the above Kafka properties is just a reference,
+                  and the actual properties required depends on the Kafka server installation.
 
 JMS IO
 ######
