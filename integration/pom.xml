@@ -2,7 +2,7 @@
   ============LICENSE_START=======================================================
    Copyright (C) 2018 Ericsson. All rights reserved.
    Modifications Copyright (C) 2018-2021 AT&T. All rights reserved.
-   Modifications Copyright (C) 2019-2020 Nordix Foundation.
+   Modifications Copyright (C) 2019-2021 Nordix Foundation.
    Modifications Copyright (C) 2020 Bell Canada.
   ================================================================================
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -586,6 +586,58 @@
                                                 <ignore />
                                             </action>
                                         </pluginExecution>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>de.jpdigital</groupId>
+                                                <artifactId>hibernate52-ddl-maven-plugin</artifactId>
+                                                <versionRange>[2.3.0,)</versionRange>
+                                                <goals>
+                                                    <goal>gen-ddl</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <ignore />
+                                            </action>
+                                        </pluginExecution>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>org.codehaus.groovy.maven</groupId>
+                                                <artifactId>gmaven-plugin</artifactId>
+                                                <versionRange>[1.0,)</versionRange>
+                                                <goals>
+                                                    <goal>execute</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <ignore />
+                                            </action>
+                                        </pluginExecution>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>org.codehaus.mojo</groupId>
+                                                <artifactId>exec-maven-plugin</artifactId>
+                                                <versionRange>[3.0.0,)</versionRange>
+                                                <goals>
+                                                    <goal>exec</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <ignore />
+                                            </action>
+                                        </pluginExecution>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>org.codehaus.mojo</groupId>
+                                                <artifactId>keytool-maven-plugin</artifactId>
+                                                <versionRange>[1.5.0,)</versionRange>
+                                                <goals>
+                                                    <goal>generateKeyPair</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <ignore />
+                                            </action>
+                                        </pluginExecution>
                                     </pluginExecutions>
                                 </lifecycleMappingMetadata>
                             </configuration>
@@ -747,31 +799,31 @@
                         </configuration>
                     </execution>
                     <execution>
-                      <id>pre-integration-test</id>
-                      <phase>pre-integration-test</phase>
-                      <goals>
-                        <goal>prepare-agent</goal>
-                      </goals>
-                      <configuration>
-                        <skip>true</skip>
-                      </configuration>
+                        <id>pre-integration-test</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
                     </execution>
                     <execution>
-                      <id>post-integration-test</id>
-                      <phase>post-integration-test</phase>
-                      <goals>
-                        <goal>report</goal>
-                      </goals>
-                      <configuration>
-                        <skip>true</skip>
-                      </configuration>
+                        <id>post-integration-test</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
                     </execution>
                     <execution>
-                      <id>report-aggregate</id>
-                      <phase>prepare-package</phase>
-                      <goals>
-                        <goal>report-aggregate</goal>
-                      </goals>
+                        <id>report-aggregate</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report-aggregate</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
