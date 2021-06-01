@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b0d10399_3f75980b",
+        "filename": "docs/pap/InternalPapPdp.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-06-01T14:39:54Z",
+      "side": 1,
+      "message": "yes, PDPs should always look at it, but PAP may not provide it.  For example, if the UPDATE only undeploys policies, then PAP may not even provide \"policiesToBeDeployed\".",
+      "parentUuid": "f9f33fc6_ba6baf83",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "2ea63e25fd868baad7eaecda66386ffd9b09f6bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d36c5ffe_1458f18b",
         "filename": "docs/pap/InternalPapPdp.rst",
         "patchSetId": 1
