@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "126574f9_5142b0c2",
+        "filename": "docs/pap/InternalPapPdp.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-06-01T18:27:25Z",
+      "side": 1,
+      "message": "I believe it sends an empty list in all cases (which also makes logic easier on PDPs)",
+      "parentUuid": "b606c363_875f4f96",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "2ea63e25fd868baad7eaecda66386ffd9b09f6bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d36c5ffe_1458f18b",
         "filename": "docs/pap/InternalPapPdp.rst",
         "patchSetId": 1
