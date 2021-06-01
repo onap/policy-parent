@@ -2,8 +2,8 @@
   ============LICENSE_START=======================================================
    Copyright (C) 2018 Ericsson. All rights reserved.
    Modifications Copyright (C) 2018-2021 AT&T. All rights reserved.
-   Modifications Copyright (C) 2019-2020 Nordix Foundation.
-   Modifications Copyright (C) 2020 Bell Canada.
+   Modifications Copyright (C) 2019-2021 Nordix Foundation.
+   Modifications Copyright (C) 2020-2021 Bell Canada.
   ================================================================================
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@
         <version.drools>7.33.0.Final</version.drools>
         <version.jersey>2.33</version.jersey>
         <version.jackson>2.11.3</version.jackson>
-        <version.ccsdk>0.4.4</version.ccsdk>
+        <version.ccsdk>0.7.5</version.ccsdk>
         <version.swagger>1.6.2</version.swagger>
         <version.javax.bind>2.3.1</version.javax.bind>
         <version.javax.json>1.1.4</version.javax.json>
@@ -281,11 +281,17 @@
                 <version>${version.dmaap}</version>
             </dependency>
 
-            <!-- Common Controller SDK -->
+            <!-- CDS dependencies -->
             <dependency>
-                <groupId>org.onap.ccsdk.cds.components</groupId>
-                <artifactId>proto-definition</artifactId>
+                <groupId>org.onap.ccsdk.cds.blueprintsprocessor</groupId>
+                <artifactId>blueprint-proto</artifactId>
                 <version>${version.ccsdk}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.springfox</groupId>
+                        <artifactId>springfox-boot-starter</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- AAF Client -->
