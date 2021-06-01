@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18ae87d4_23390e8d",
+        "filename": "docs/pap/InternalPapPdp.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-06-01T13:54:18Z",
+      "side": 1,
+      "message": "should it be \"O\"?  (do any of the PDPs assume it\u0027s there?  If so, \"M\" is correct, otherwise it should probably be \"O\")",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "2ea63e25fd868baad7eaecda66386ffd9b09f6bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
