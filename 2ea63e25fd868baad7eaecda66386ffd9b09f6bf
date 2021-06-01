@@ -22,6 +22,98 @@
       "revId": "2ea63e25fd868baad7eaecda66386ffd9b09f6bf",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9f33fc6_ba6baf83",
+        "filename": "docs/pap/InternalPapPdp.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-06-01T14:25:59Z",
+      "side": 1,
+      "message": "I think it is correct, PDPs should always look at it in UPDATE messages, at least it is implemented like that in PDP-D.",
+      "parentUuid": "18ae87d4_23390e8d",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "2ea63e25fd868baad7eaecda66386ffd9b09f6bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d36c5ffe_1458f18b",
+        "filename": "docs/pap/InternalPapPdp.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-06-01T14:25:59Z",
+      "side": 1,
+      "message": "I don\u0027t think this state was ever supported.",
+      "revId": "2ea63e25fd868baad7eaecda66386ffd9b09f6bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc59c64_bb67a281",
+        "filename": "docs/pap/InternalPapPdp.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-06-01T14:25:59Z",
+      "side": 1,
+      "message": "I think this documentation is outdated.   Wasn\u0027t this field removed in Guilin?",
+      "revId": "2ea63e25fd868baad7eaecda66386ffd9b09f6bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe5d809c_ab7ef0e2",
+        "filename": "docs/pap/InternalPapPdp.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-06-01T14:25:59Z",
+      "side": 1,
+      "message": "not sure about, status is an array of policy ids if I recall correctly",
+      "revId": "2ea63e25fd868baad7eaecda66386ffd9b09f6bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f81861_1f6ac3d2",
+        "filename": "docs/pap/InternalPapPdp.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-06-01T14:25:59Z",
+      "side": 1,
+      "message": "This field doesn\u0027t exist I think",
+      "revId": "2ea63e25fd868baad7eaecda66386ffd9b09f6bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
