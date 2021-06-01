@@ -54,7 +54,9 @@ pdp_subgroup                    O        M        C        C       The PDP subgr
                                                                    group and subgroup can be used to specify the scope
                                                                    of the operation
 supported_policy_types          M        N/A      N/A      N/A     A list of the policy types supported by the PDP
-policies                        O        M        N/A      N/A     The list of policies running on the PDP
+policies                        M        N/A      N/A      N/A     The list of policies running on the PDP
+policiesToBeDeployed            N/A      M        N/A      N/A     The list of policies to be deployed on the PDP
+policiesToBeUndeployed          N/A      M        N/A      N/A     The list of policies to be undeployed from the PDP
 ->(name)                        O        M        N/A      N/A     The name of a TOSCA policy running on the PDP
 ->policy_type                   O        M        N/A      N/A     The TOSCA policy type of the policyWhen a PDP starts,
                                                                    it commences periodic sending of *PDP_STATUS*
@@ -199,31 +201,30 @@ sent to the PAP in a *PDP_STATUS* message is unknown to the PAP, the PAP locks t
   :linenos:
 
   pdp_status:
-    name: drools_2
+    name: apex_3
     version: 2.3.4
-    pdp_type: drools
+    pdp_type: apex
     state: safe
     healthy: true
-    description: Drools PDP running control loop policies
+    description: APEX PDP running control loop policies
     pdp_group: onap.pdpgroup.controlloop.operational
-    pdp_subgroup: drools
+    pdp_subgroup: apex
     supported_policy_types:
-      - onap.controllloop.operational.drools.vCPE
-      - onap.controllloop.operational.drools.vFW
+      - onap.controllloop.operational.apex.BBS
     policies:
-      - onap.controllloop.operational.drools.vcpe.EastRegion:
-          policy_type: onap.controllloop.operational.drools.vCPE
+      - onap.controllloop.operational.apex.bbs.EastRegion:
+          policy_type: onap.controllloop.operational.apex.BBS
           policy_type_version: 1.0.0
           properties:
             # Omitted for brevity
-      - onap.controllloop.operational.drools.vfw.EastRegion:
-          policy_type: onap.controllloop.operational.drools.vFW
+      - onap.controllloop.operational.apex.bbs.WestRegion:
+          policy_type: onap.controllloop.operational.apex.BBS
           policy_type_version: 1.0.0
           properties:
             # Omitted for brevity
-    instance: drools_2
+    instance: apex_3
     deployment_instance_info:
-      node_address: drools_2_pod
+      node_address: apex_3_pod
       # Other deployment instance info
     statistics:
       policy_download_count: 3
@@ -307,7 +308,7 @@ The following examples illustrate how the operation is used.
     description: XACML PDP running control loop policies, Upgraded
     pdp_group: onap.pdpgroup.controlloop.operational
     pdp_subgroup: xacml
-    policies:
+    policiesToBeDeployed:
       - onap.policies.controlloop.guard.frequencylimiter.EastRegion:
           policy_type: onap.policies.controlloop.guard.FrequencyLimiter
           policy_type_version: 1.0.1
@@ -334,17 +335,7 @@ The following examples illustrate how the operation is used.
     description: Drools PDP running control loop policies, extra policy added
     pdp_group: onap.pdpgroup.controlloop.operational
     pdp_subgroup: drools
-    policies:
-      - onap.controllloop.operational.drools.vcpe.EastRegion:
-          policy_type: onap.controllloop.operational.drools.vCPE
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
-      - onap.controllloop.operational.drools.vfw.EastRegion:
-          policy_type: onap.controllloop.operational.drools.vFW
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
+    policiesToBeDeployed:
       - onap.controllloop.operational.drools.vfw.WestRegion:
           policy_type: onap.controllloop.operational.drools.vFW
           policy_type_version: 1.0.0
@@ -361,8 +352,9 @@ The following examples illustrate how the operation is used.
     description: APEX PDP updated to remove a control loop policy
     pdp_group: onap.pdpgroup.controlloop.operational
     pdp_subgroup: apex
-    policies:
-      - onap.controllloop.operational.apex.bbs.EastRegion:
+    policiesToBeDeployed: []
+    policiesToBeUndeployed:
+      - onap.controllloop.operational.apex.bbs.WestRegion:
           policy_type: onap.controllloop.operational.apex.BBS
           policy_type_version: 1.0.0
           properties:
