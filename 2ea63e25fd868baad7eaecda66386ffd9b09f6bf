@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "76ed9fae_0eff9d93",
+        "filename": "docs/pap/InternalPapPdp.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-06-02T14:20:36Z",
+      "side": 1,
+      "message": "I am ok too in making it mandatory, considering it makes PDPs easier to manage.",
+      "parentUuid": "ec1a7790_854ee89e",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "2ea63e25fd868baad7eaecda66386ffd9b09f6bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d36c5ffe_1458f18b",
         "filename": "docs/pap/InternalPapPdp.rst",
         "patchSetId": 1
