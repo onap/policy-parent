@@ -596,7 +596,7 @@
                                             <pluginExecutionFilter>
                                                 <groupId>de.jpdigital</groupId>
                                                 <artifactId>hibernate52-ddl-maven-plugin</artifactId>
-                                                <versionRange>[2.3.0,)</versionRange>
+                                                <versionRange>[2.2.0,)</versionRange>
                                                 <goals>
                                                     <goal>gen-ddl</goal>
                                                 </goals>
