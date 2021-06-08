@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2582bd0_128aeb6f",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2021-06-08T11:32:22Z",
+      "side": 1,
+      "message": "This should eventually be removed, eg use only log4j. Right Jorge? A separate JIRA for that work.",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "831ecf744cba1172efcd25a5f2fe3b19e4249a18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
