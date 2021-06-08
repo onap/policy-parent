@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67f61e7a_66ca3143",
+        "filename": "integration/pom.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2021-06-08T08:16:49Z",
+      "side": 1,
+      "message": "Not sure it\u0027s a problem for clamp runtime to move on 2.3.0 ? \nDid you try ?",
+      "revId": "d738ae7ec4c112a2e615f1d290279c16058e77f2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
