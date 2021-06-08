@@ -16,6 +16,24 @@
       "revId": "d738ae7ec4c112a2e615f1d290279c16058e77f2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400a00e8_615fe81d",
+        "filename": "integration/pom.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-06-08T14:51:12Z",
+      "side": 1,
+      "message": "This is only to stop errors in Eclipse, it works for any version for 2.2.0 on. I didn\u0027t try 2.3.0 in CLAMP because I didn\u0027t want to change anything functional in this administrative review.",
+      "parentUuid": "67f61e7a_66ca3143",
+      "revId": "d738ae7ec4c112a2e615f1d290279c16058e77f2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
