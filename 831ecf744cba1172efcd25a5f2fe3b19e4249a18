@@ -46,6 +46,30 @@
       "revId": "831ecf744cba1172efcd25a5f2fe3b19e4249a18",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cb79a43_0fa3d4c0",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-06-08T13:15:40Z",
+      "side": 1,
+      "message": "yeah, or at least, upgrade to 2.0.0, we went through that work in policy/common (common-logging) and policy/engine to move to eelf 2.0.0 I think there may have been some security issues in some of the dependent libraries.    \n\nOne item for consideration is perhaps is that there may be some loss of functionality if the replacement is a blind replacement of loggers for audit and metrics log files for some internal teams, but not sure how much these are looked at in CLAMP.   Clearly in ONAP, we are moving away from it.  As a note, in the drools pdp we accomplished the transaction logging with metrics, audit logging functionality with the feature-controlloop-trans feature, but transactions are a little more complicated in drools to keep track of.",
+      "parentUuid": "869aba25_8fd7b5ee",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "831ecf744cba1172efcd25a5f2fe3b19e4249a18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
