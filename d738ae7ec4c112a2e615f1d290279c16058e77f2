@@ -34,6 +34,24 @@
       "revId": "d738ae7ec4c112a2e615f1d290279c16058e77f2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ebd63f0_3047d8fa",
+        "filename": "integration/pom.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-06-09T18:41:07Z",
+      "side": 1,
+      "message": "@Seb: are we good with this answer?",
+      "parentUuid": "400a00e8_615fe81d",
+      "revId": "d738ae7ec4c112a2e615f1d290279c16058e77f2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
