@@ -18,9 +18,8 @@ See :ref:`pdpd-engine-label` for the description of the PDP-D infrastructure.
 
 At this time *Control Loops* are the only type of applications supported.
 
-*Control Loop* applications must support at least one of the following *Policy Types*:
+*Control Loop* applications must support the following *Policy Type*:
 
-- **onap.policies.controlloop.Operational**  (Operational Policies for Legacy Control Loops)
 - **onap.policies.controlloop.operational.common.Drools** (Tosca Compliant Operational Policies)
 
 Software
@@ -45,9 +44,9 @@ for the latest images:
 
 .. code-block:: bash
 
-    docker pull onap/policy-pdpd-cl:1.6.4
+    docker pull onap/policy-pdpd-cl:1.8.2
 
-At the time of this writing *1.6.4* is the latest version.
+At the time of this writing *1.8.2* is the latest version.
 
 The *onap/policy-pdpd-cl* image extends the *onap/policy-drools* image with
 the *usecases* controller that realizes the *control loop* application.
@@ -74,23 +73,15 @@ components, part of a control loop transaction.   The reader is referred to the
 Operational Policy Types
 ========================
 
-The *usecases* controller supports the two Operational policy types:
+The *usecases* controller supports the following policy type:
 
-- *onap.policies.controlloop.Operational*.
 - *onap.policies.controlloop.operational.common.Drools*.
 
-The *onap.policies.controlloop.Operational* is the legacy operational type, used before
-the *frankfurt* release.    The *onap.policies.controlloop.operational.common.Drools*
+The *onap.policies.controlloop.operational.common.Drools*
 is the Tosca compliant policy type introduced in *frankfurt*.
-
-The legacy operational policy type is defined at the
-`onap.policies.controlloop.Operational.yaml <https://git.onap.org/policy/models/tree/models-examples/src/main/resources/policytypes/onap.policies.controlloop.Operational.yaml>`__.
 
 The Tosca Compliant Operational Policy Type is defined at the
 `onap.policies.controlloop.operational.common.Drools <https://git.onap.org/policy/models/tree/models-examples/src/main/resources/policytypes/onap.policies.controlloop.operational.common.Drools.yaml>`__.
-
-An example of a Legacy Operational Policy can be found
-`here <https://git.onap.org/policy/models/tree/models-examples/src/main/resources/policies/vDNS.policy.operational.legacy.input.json>`__.
 
 An example of a Tosca Compliant Operational Policy can be found
 `here <https://git.onap.org/policy/models/tree/models-examples/src/main/resources/policies/vDNS.policy.operational.input.tosca.json>`__.
@@ -112,7 +103,6 @@ The enabled features in the *onap/policy-pdpd-cl* image are:
 
 The following features are installed but disabled:
 
-- **controlloop-frankfurt**: *controller* used in the frankfurt release.
 - **controlloop-tdjam**: experimental java-only *controller* to be deprecated post guilin.
 - **controlloop-utils**: *actor* simulators.
 
@@ -137,12 +127,6 @@ It is the *guilin* release implementation of the ONAP use cases.
 It relies on the new *Actor* model framework to carry out a policy's
 execution.
 
-Frankfurt Controller (controlloop-frankfurt)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This is the frankfurt controller that will be deprecated after the
-guilin release.
-
 TDJAM Controller (controlloop-tdjam)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -157,7 +141,7 @@ Enables *actor simulators* for testing purposes.
 Offline Mode
 ============
 
-The default ONAP installation in *onap/policy-pdpd-cl:1.6.4* is *OFFLINE*.
+The default ONAP installation in *onap/policy-pdpd-cl:1.8.2* is *OFFLINE*.
 In this configuration, the *rules* artifact and the *dependencies* are all in the local
 maven repository.   This requires that the maven dependencies are preloaded in the local
 repository.
@@ -166,7 +150,7 @@ An offline configuration requires two configuration items:
 
 - *OFFLINE* environment variable set to true (see `values.yaml <https://git.onap.org/oom/tree/kubernetes/policy/values.yaml>`__.
 - override of the default *settings.xml* (see
-  `settings.xml <https://git.onap.org/oom/tree/kubernetes/policy/charts/drools/resources/configmaps/settings.xml>`__) override.
+  `settings.xml <https://git.onap.org/oom/tree/kubernetes/policy/components/policy-drools-pdp/resources/configmaps/settings.xml>`__) override.
 
 Running the PDP-D Control Loop Application in a single container
 ================================================================
@@ -871,12 +855,11 @@ and an entry is added to the *$POLICY_LOGS/audit.log* indicating successful comp
 Running PDP-D Control Loop Application with other components
 ============================================================
 
-The reader can also look at the `integration/csit repository <https://git.onap.org/integration/csit>`__.
+The reader can also look at the `policy/docker repository <https://github.com/onap/policy-docker/tree/master/csit>`__.
 More specifically, these directories have examples of other PDP-D Control Loop configurations:
 
-* `plans <https://git.onap.org/integration/csit/tree/plans/policy/drools-applications>`__: startup scripts.
-* `scripts <https://git.onap.org/integration/csit/tree/scripts/policy/drools-apps/docker-compose-drools-apps.yml>`__: docker-compose and related files.
-* `plans <https://git.onap.org/integration/csit/tree/tests/policy/drools-applications>`__: test plan.
+* `plans <https://github.com/onap/policy-docker/tree/master/csit/drools-pdp/plans>`__: startup scripts.
+* `tests <https://github.com/onap/policy-docker/tree/master/csit/drools-pdp/tests>`__: test plan.
 
 Additional information
 ======================

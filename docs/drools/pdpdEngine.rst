@@ -40,11 +40,11 @@ Docker Image
 ~~~~~~~~~~~~
 
 Check the *drools-pdp* `released versions <https://wiki.onap.org/display/DW/Policy+Framework+Project%3A+Component+Versions>`__ page for the latest versions.
-At the time of this writing *1.6.3* is the latest version.
+At the time of this writing *1.8.2* is the latest version.
 
 .. code-block:: bash
 
-    docker pull onap/policy-drools:1.6.3
+    docker pull onap/policy-drools:1.8.2
 
 A container instantiated from this image will run under the non-priviledged *policy* account.
 
@@ -60,7 +60,7 @@ The following command can be used to explore the directory layout.
 
 .. code-block:: bash
 
-    docker run --rm -it nexus3.onap.org:10001/onap/policy-drools:1.6.3 -- bash
+    docker run --rm -it nexus3.onap.org:10001/onap/policy-drools:1.8.2 -- bash
 
 Communication Endpoints
 =======================
@@ -438,7 +438,6 @@ The PDP-D also recognizes Tosca Operational Policies, although it needs an
 application *controller* that understands them to execute them.   These are:
 
 - *onap.policies.controlloop.operational.common.Drools*
-- *onap.policies.controlloop.Operational*
 
 A minimum of one application *controller* that supports these capabilities
 must be installed in order to honor the *operational policy types*.

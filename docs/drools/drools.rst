@@ -33,7 +33,6 @@ The PDP-D Engine hosts applications by means of *controllers*.
 types supported by the *Control Loop* applications are:
 
 - onap.policies.controlloop.operational.common.Drools
-- onap.policies.controlloop.Operational
 
 
 **PDP-D Applications**
