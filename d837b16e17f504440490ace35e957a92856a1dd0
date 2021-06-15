@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e0ebaf51_4136d75a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-06-15T13:01:31Z",
+      "side": 1,
+      "message": "seems like the desired line limit is ~72 characters in the description",
+      "revId": "d837b16e17f504440490ace35e957a92856a1dd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14ef64e5_31786374",
         "filename": "integration/pom.xml",
         "patchSetId": 1
@@ -19,6 +36,81 @@
         "endLine": 58,
         "endChar": 1
       },
+      "revId": "d837b16e17f504440490ace35e957a92856a1dd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1572eae8_31c244dd",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-06-15T13:01:31Z",
+      "side": 1,
+      "message": "yeah, I don\u0027t think this one belongs in the parent pom",
+      "parentUuid": "14ef64e5_31786374",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "d837b16e17f504440490ace35e957a92856a1dd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac2d48c6_59f33b96",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-06-15T13:01:31Z",
+      "side": 1,
+      "message": "let\u0027s leave this one out, too",
+      "revId": "d837b16e17f504440490ace35e957a92856a1dd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acd0de7f_6eabf298",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-06-15T13:01:31Z",
+      "side": 1,
+      "message": "let\u0027s leave this out, too, unless things will work with a newer version (2.2 is the current one in mavencentral)",
+      "revId": "d837b16e17f504440490ace35e957a92856a1dd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e31d1ea_a049f385",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-06-15T13:01:31Z",
+      "side": 1,
+      "message": "is this compatible with the other repos?\n\nsame question with the other surefire plugins.  Seems like these are already defined somewhere, perhaps oparent?",
       "revId": "d837b16e17f504440490ace35e957a92856a1dd0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
