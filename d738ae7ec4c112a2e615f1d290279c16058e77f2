@@ -70,6 +70,24 @@
       "revId": "d738ae7ec4c112a2e615f1d290279c16058e77f2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d78e205a_9501ed30",
+        "filename": "integration/pom.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 23
+      },
+      "writtenOn": "2021-06-15T08:09:00Z",
+      "side": 1,
+      "message": "For me it\u0027s ok, although I would avoid having IDE related stuffs in a project build but that\u0027s another debate 😄",
+      "parentUuid": "24278fec_e74270e7",
+      "revId": "d738ae7ec4c112a2e615f1d290279c16058e77f2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
