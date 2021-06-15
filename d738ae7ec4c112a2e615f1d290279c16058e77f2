@@ -52,6 +52,24 @@
       "revId": "d738ae7ec4c112a2e615f1d290279c16058e77f2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24278fec_e74270e7",
+        "filename": "integration/pom.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-06-15T07:31:08Z",
+      "side": 1,
+      "message": "Can we complete this review? The code above will work for any version from 2.2.0, so if CLAMP moves to 2.3.0, the code will still work.",
+      "parentUuid": "1ebd63f0_3047d8fa",
+      "revId": "d738ae7ec4c112a2e615f1d290279c16058e77f2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
