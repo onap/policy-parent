@@ -603,7 +603,7 @@
                                             <pluginExecutionFilter>
                                                 <groupId>de.jpdigital</groupId>
                                                 <artifactId>hibernate52-ddl-maven-plugin</artifactId>
-                                                <versionRange>[2.3.0,)</versionRange>
+                                                <versionRange>[2.2.0,)</versionRange>
                                                 <goals>
                                                     <goal>gen-ddl</goal>
                                                 </goals>
@@ -645,6 +645,19 @@
                                                 <versionRange>[1.5.0,)</versionRange>
                                                 <goals>
                                                     <goal>generateKeyPair</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <ignore />
+                                            </action>
+                                        </pluginExecution>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>com.github.eirslett</groupId>
+                                                <artifactId>frontend-maven-plugin</artifactId>
+                                                <versionRange>[1.11.0,)</versionRange>
+                                                <goals>
+                                                    <goal>npm</goal>
                                                 </goals>
                                             </pluginExecutionFilter>
                                             <action>
