@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14ef64e5_31786374",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-06-15T11:00:29Z",
+      "side": 1,
+      "message": "When we reviewed this in the CL team, we weren\u0027t sure whether we should put the policy common and models dependencies in here so we thought we\u0027d get peoples thoughts.\n\nAdvantage: The dependency version is in one place and makes things easier when releasing/stepping\n\nDisadvantage: It smells of bad layering\n\nThoughts?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "d837b16e17f504440490ace35e957a92856a1dd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
