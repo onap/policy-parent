@@ -68,23 +68,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Spring BOM -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${version.springboot}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!-- Camel BOM -->
-            <dependency>
-                <groupId>org.apache.camel.springboot</groupId>
-                <artifactId>camel-spring-boot-bom</artifactId>
-                <version>${version.camel}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
 
             <!-- Jackson - needed by glassfish jersey -->
             <dependency>
