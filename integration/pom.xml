@@ -68,6 +68,24 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Spring BOM -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${version.springboot}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Camel BOM -->
+            <dependency>
+                <groupId>org.apache.camel.springboot</groupId>
+                <artifactId>camel-spring-boot-bom</artifactId>
+                <version>${version.camel}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- Jackson - needed by glassfish jersey -->
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
@@ -425,6 +443,108 @@
                 <version>${version.drools}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>2.1.3</version>
+            </dependency>
+
+            <!-- Mockserver -->
+            <dependency>
+                <groupId>org.mock-server</groupId>
+                <artifactId>mockserver-netty</artifactId>
+                <version>${version.mockserver}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mock-server</groupId>
+                <artifactId>mockserver-client-java</artifactId>
+                <version>${version.mockserver}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Immutables -->
+            <dependency>
+                <groupId>org.immutables</groupId>
+                <artifactId>value</artifactId>
+                <version>${version.immutable}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.immutables</groupId>
+                <artifactId>gson</artifactId>
+                <version>${version.immutable}</version>
+            </dependency>
+
+            <!-- Springfox -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${version.springfox}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${version.springfox}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- File upload -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.4</version>
+            </dependency>
+
+            <!-- Janino -->
+            <dependency>
+                <groupId>org.codehaus.janino</groupId>
+                <artifactId>janino</artifactId>
+                <version>3.0.8</version>
+            </dependency>
+
+            <!-- Tomcat -->
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>${version.tomcat}</version>
+            </dependency>
+
+            <!-- jaxws -->
+            <dependency>
+                <groupId>javax.xml.ws</groupId>
+                <artifactId>jaxws-api</artifactId>
+                <version>2.3.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.onap.sdc.sdc-distribution-client</groupId>
+                <artifactId>sdc-distribution-client</artifactId>
+                <version>1.4.1</version>
+            </dependency>
+
+            <dependency>
+            <groupId>org.onap.sdc.sdc-tosca</groupId>
+            <artifactId>sdc-tosca</artifactId>
+            <version>1.5.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.ws.rs</groupId>
+                <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
+                <version>1.0.1.Final</version>
+            </dependency>
+
+            <!-- transaction api -->
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>jta</artifactId>
+                <version>1.1</version>
+            </dependency>
+
             <!-- Test dependencies -->
 
             <!-- In memory Database Engine -->
@@ -440,6 +560,14 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.13.1</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Junit vintage -->
+            <dependency>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+                <version>5.7.1</version>
                 <scope>test</scope>
             </dependency>
 
@@ -540,6 +668,32 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>2.8.0</version>
+            </dependency>
+
+            <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-vfs2</artifactId>
+            <version>2.8.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.googlecode.json-simple</groupId>
+                <artifactId>json-simple</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.docker-java</groupId>
+                <artifactId>docker-java-core</artifactId>
+                <version>3.2.7</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.docker-java</groupId>
+                <artifactId>docker-java</artifactId>
+                <version>3.2.7</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
 
@@ -786,6 +940,11 @@
                     <artifactId>kie-maven-plugin</artifactId>
                     <version>${version.drools}</version>
                     <extensions>true</extensions>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${version.springboot}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
