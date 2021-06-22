@@ -55,6 +55,7 @@
         <version.mockserver>5.11.2</version.mockserver>
         <version.immutable>2.8.8</version.immutable>
         <version.springfox>3.0.0</version.springfox>
+        <version.jakarta-api>2.0.2</version.jakarta-api>
         <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
         <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
     </properties>
@@ -68,6 +69,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${version.jakarta-api}</version>
+            </dependency>
 
             <!-- Jackson - needed by glassfish jersey -->
             <dependency>
