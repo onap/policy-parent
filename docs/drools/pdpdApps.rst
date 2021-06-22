@@ -86,6 +86,25 @@ The Tosca Compliant Operational Policy Type is defined at the
 An example of a Tosca Compliant Operational Policy can be found
 `here <https://git.onap.org/policy/models/tree/models-examples/src/main/resources/policies/vDNS.policy.operational.input.tosca.json>`__.
 
+Policy Chaining
+===============
+
+The *usecases* controller supports chaining of multiple operations inside a Tosca Operational Policy. The next operation can be chained based on the result/output from an operation.
+The possibilities available for chaining are:
+
+- *success: chain after the result of operation is success*
+- *failure: chain after the result of operation is failure due to issues with controller/actor*
+- *failure_timeout: chain after the result of operation is failure due to timeout*
+- *failure_retries: chain after the result of operation is failure after all retries*
+- *failure_exception: chain after the result of operation is failure due to exception*
+- *failure_guard: chain after the result of operation is failure due to guard not allowing the operation*
+
+An example of policy chaining for VNF can be found
+`here <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewall.cds.policy.operational.chaining.yaml>`__.
+
+An example of policy chaining for PNF can be found
+`here <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/pnf.cds.policy.operational.chaining.yaml>`__.
+
 Features
 ========
 
