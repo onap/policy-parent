@@ -210,7 +210,7 @@
             <dependency>
                 <groupId>com.thoughtworks.xstream</groupId>
                 <artifactId>xstream</artifactId>
-                <version>1.4.15</version>
+                <version>1.4.17</version>
             </dependency>
 
             <!-- Eclipse JPA API -->
@@ -307,6 +307,11 @@
                         <artifactId>springfox-boot-starter</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>net.minidev</groupId>
+                <artifactId>json-smart</artifactId>
+                <version>2.4.7</version>
             </dependency>
 
             <!-- AAF Client -->
