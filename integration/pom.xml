@@ -200,6 +200,13 @@
                 </exclusions>
             </dependency>
 
+            <!--  Swagger Models -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${version.swagger}</version>
+            </dependency>
+
             <!-- Encoder and decoders for various formats -->
             <dependency>
                 <groupId>commons-codec</groupId>
