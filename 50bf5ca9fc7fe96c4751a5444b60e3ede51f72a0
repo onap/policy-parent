@@ -46,6 +46,30 @@
       "revId": "50bf5ca9fc7fe96c4751a5444b60e3ede51f72a0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f592a10c_d0911071",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-13T14:46:39Z",
+      "side": 1,
+      "message": "well of course they told you to use it, why would we be consistent? 😄",
+      "parentUuid": "1cdf5373_311a5e2f",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "50bf5ca9fc7fe96c4751a5444b60e3ede51f72a0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
