@@ -1,0 +1,26 @@
+{
+    "name":"PapGroup",
+    "restServerParameters":{
+      "host":"0.0.0.0",
+      "port":6901,
+      "userName":"username",
+      "password":"password"
+    },
+    "pdpParameters": {
+      "heartBeatMs": 1,
+      "updateParameters": {
+          "maxRetryCount": 1,
+          "maxWaitMs": 1
+      },
+      "stateChangeParameters": {
+        "maxRetryCount": 1,
+        "maxWaitMs": 1
+      }
+    },
+    "databaseProviderParameters": {
+      "name": "PolicyProviderParameterGroup",
+      "implementation": "org.onap.policy.models.provider.impl.DatabasePolicyModelsProviderImpl",
+      "persistenceUnit": "PdpGroupTest"
+    },
+    "savePdpStatisticsInDb": false
+  }
