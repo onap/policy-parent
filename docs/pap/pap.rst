@@ -369,11 +369,27 @@ Here is a sample response:
 .. literalinclude:: response/pdp-statistics-pap-resp.json
     :language: json
 
-
-3 Future Features
+3 Configuration
 =================
 
-3.1 Disable policies in PDP
+3.1 Disable collection of PDP Statistics
+========================================
+
+This configuration is to inform PAP to not save the PDP statistics in the database.
+
+In `config.json
+<https://github.com/onap/policy-pap/blob/master/packages/policy-pap-tarball/src/main/resources/etc/defaultConfig.json>`_,
+add or change the property savePdpStatisticsInDb to false.
+
+.. note::
+  By default, if the property is not present, it will be considered as false and
+  PDP statistics will not be saved in the database.
+
+
+4 Future Features
+=================
+
+4.1 Disable policies in PDP
 ===========================
 
 This operation will allow disabling individual policies running in PDP engine. It is mainly beneficial
