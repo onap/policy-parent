@@ -2,6 +2,7 @@
 .project
 .settings
 .classpath
+.checkstyle
 .jupiter
 .pydevproject
 target
@@ -9,7 +10,6 @@ target
 /bin/
 .idea
 **/*.iml
-docs/conf.py
 docs/conf.pyc
 docs/html/
 docs/_static/
