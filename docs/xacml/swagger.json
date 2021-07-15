@@ -3,7 +3,7 @@
   "info" : {
     "description" : "Policy Xacml PDP Service",
     "version" : "Swagger Server",
-    "title" : "",
+    "title" : "Policy Xacml PDP Service",
     "x-component" : "Policy Framework",
     "x-planned-retirement-date" : "tbd"
   },
