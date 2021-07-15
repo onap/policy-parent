@@ -105,6 +105,30 @@
       "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a498400_5c086f11",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-15T20:56:43Z",
+      "side": 1,
+      "message": "so we can\u0027t use ${project.version} instead of ${version.parent.resources}, and we also can\u0027t define version.parent.resources in terms of ${project.version}?\n\n  \u003cversion.parent.resources\u003e${project.version}\u003c/version.parent.resources\u003e\n\nseems like one of these should work. 😞\n\nanother idea: can we move the plugin stuff to its own pom and then have the other repos include that just like they do the integration/pom?  that way, it just becomes a normal part of the release process: when we update a repo\u0027s pom to point to a new version of integration/pom, we also change its version of resources/pom",
+      "parentUuid": "ee97d019_bfaa35e1",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
