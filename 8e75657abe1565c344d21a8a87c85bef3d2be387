@@ -57,6 +57,30 @@
       "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9113f87f_cdcb17fc",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-07-15T20:42:33Z",
+      "side": 1,
+      "message": "Yes, ${project.version}.\n\nHowever, when this plygin is pulled in by a POM in a module, the variable ${project.version} takes the value of the version of the project in that POM, not the parent one.\n\nSo say if we\u0027re using this in the CLMAP runtime pom, then ${project.version} is set to 6.1.2-SNAPSHOT, resulting in a \"dependency not found\" error. I was using ${project.version} until I found out this was happening.",
+      "parentUuid": "f4372a14_c93873aa",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
