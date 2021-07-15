@@ -129,6 +129,30 @@
       "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f5ef29_f2d9d73b",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-15T21:04:12Z",
+      "side": 1,
+      "message": "I guess if worse comes to worse, we just update the \"Release Versioning\" instructions to include a special step for policy/parent.\n\nI am a little concerned about what happens when we do a stage-release, as the \"-SNAPSHOT\" suffix just kind of magically disappears without us manually stripping it.  Would that break something when we try to build one of the other repos after manually changing them to point at release versions of their dependents?",
+      "parentUuid": "5a498400_5c086f11",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
