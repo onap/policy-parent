@@ -2,6 +2,7 @@
 .project
 .settings
 .classpath
+.checkstyle
 .jupiter
 .pydevproject
 target
