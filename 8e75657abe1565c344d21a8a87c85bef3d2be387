@@ -81,6 +81,30 @@
       "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee97d019_bfaa35e1",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-07-15T20:43:47Z",
+      "side": 1,
+      "message": "I was hoping this won\u0027t be such a huge issue because hopefully policy-parent shouldn\u0027t change much.",
+      "parentUuid": "9113f87f_cdcb17fc",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
