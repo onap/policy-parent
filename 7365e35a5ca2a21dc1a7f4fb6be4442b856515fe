@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce939050_9552e551",
+        "filename": "docs/pap/config/config.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-15T14:51:45Z",
+      "side": 1,
+      "message": "missing a newline",
+      "revId": "7365e35a5ca2a21dc1a7f4fb6be4442b856515fe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83a3b4c9_58c464d7",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-15T14:51:45Z",
+      "side": 1,
+      "message": "maybe remove the trailing \"s\"",
+      "range": {
+        "startLine": 372,
+        "startChar": 15,
+        "endLine": 372,
+        "endChar": 16
+      },
+      "revId": "7365e35a5ca2a21dc1a7f4fb6be4442b856515fe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73a85ad2_2e05815c",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-15T14:51:45Z",
+      "side": 1,
+      "message": "\"to\" \u003d\u003e \"to the\"",
+      "range": {
+        "startLine": 378,
+        "startChar": 67,
+        "endLine": 378,
+        "endChar": 69
+      },
+      "revId": "7365e35a5ca2a21dc1a7f4fb6be4442b856515fe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb73089_033b3c19",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-15T14:51:45Z",
+      "side": 1,
+      "message": "\"as\" \u003d\u003e \"to\"",
+      "range": {
+        "startLine": 380,
+        "startChar": 65,
+        "endLine": 380,
+        "endChar": 67
+      },
+      "revId": "7365e35a5ca2a21dc1a7f4fb6be4442b856515fe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f1f9ad_6a867f29",
+        "filename": "docs/pap/pap.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-15T14:51:45Z",
+      "side": 1,
+      "message": "\"On\" \u003d\u003e \"In\"",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 2
+      },
+      "revId": "7365e35a5ca2a21dc1a7f4fb6be4442b856515fe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
