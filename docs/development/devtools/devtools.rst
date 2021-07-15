@@ -283,3 +283,52 @@ familiar with the Policy Framework components and test any local changes.
    xacml-s3p.rst
    distribution-s3p.rst
 
+Generating Swagger Documentation
+********************************
+The `Policy Parent Integration POM <https://github.com/onap/policy-parent/blob/master/integration/pom.xml>`_ contains a *generateSwaggerDocs* profile. This
+profile can be activated on any module that has a Swagger endopint. When active, this profile creates a tarball in Nexus with the name
+*<project-artifactId>-swagger-docs.tar.gz*. The tarball contains the fillowing files:
+
+.. code-block:: bash
+
+    swagger/swagger.html
+    swagger/swagger.json
+    swagger/swagger.pdf
+
+The profile is activated when:
+
+1. The following property is defined at the top of the *pom.xml* file for a module
+
+    .. code-block:: bash
+
+        <!--  This property triggers generation of the Swagger documents -->
+        <swagger.generation.phase>post-integration-test</swagger.generation.phase>
+
+    See the `CLAMP runtime POM <https://github.com/onap/policy-clamp/blob/master/runtime/pom.xml>`_ for an example of the usage of this property.
+
+2. Unit tests are being executed in the build, in other wirds when the *skipTests* flag is *false*.
+
+You **must** create a unit test in your module that generates the following file:
+
+.. code-block:: bash
+
+    src/test/resources/swagger/swagger.json
+
+Typically, you do this by starting your REST endpoint in a unit test, issuing a REST call to get the Swagger API documentation. The test case below is an example
+of such a test case.
+
+.. code-block:: java
+
+   @Test
+   public void testSwaggerJson() throws Exception {
+       ResponseEntity<String> httpsEntity = getRestTemplate()
+               .getForEntity("https://localhost:" + this.httpsPort + "/restservices/clds/api-doc", String.class);
+       assertThat(httpsEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+       assertThat(httpsEntity.getBody()).contains("swagger");
+       FileUtils.writeStringToFile(new File("target/swagger/swagger.json"), httpsEntity.getBody(),
+               Charset.defaultCharset());
+   }
+
+See `this unit test case <https://github.com/onap/policy-clamp/blob/master/runtime/src/test/java/org/onap/policy/clamp/clds/it/HttpsItCase.java>`_
+for the full example.
+
