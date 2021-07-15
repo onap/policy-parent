@@ -16,6 +16,47 @@
       "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25961c78_b8861007",
+        "filename": "docs/conf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-15T16:45:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c308dcee_7a0e9060",
+      "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4372a14_c93873aa",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-15T16:45:35Z",
+      "side": 1,
+      "message": "isn\u0027t there a ${xxx} for this since it\u0027s this pom\u0027s version, too?  would rather not have to manually update this when we bump the version for policy-parent.",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
