@@ -285,6 +285,19 @@ Which would render the following decision response:
 .. literalinclude:: decision.match.response.json
   :language: JSON
 
+Overriding or Extending the ONAP XACML PDP Supported Policy Types
+*****************************************************************
+
+It is possible to extend or replace one or more of the existing ONAP application implementations with your own. Since the XACML application loader uses the java.util.Service class to search the classpath to find and load applications, it may be necessary via the configuration file to exclude the ONAP packaged applications in order for your custom application to be loaded. This can be done via the configuration file by adding an **exclusions** property with a list of the Java class names you wish to exclude.
+
+`A configuration file example is located here <https://github.com/onap/policy-xacml-pdp/blob/7711185bb36b387e3596653ca170262f919ff474/main/src/test/resources/parameters/XacmlPdpConfigParameters_Exclusions.json#L19>`_
+
+A coding example is available in the JUnit test for the Application Manager called `**testXacmlPdpApplicationManagerSimple** <https://github.com/onap/policy-xacml-pdp/blob/7711185bb36b387e3596653ca170262f919ff474/main/src/test/java/org/onap/policy/pdpx/main/rest/XacmlPdpApplicationManagerTest.java#L143>`_. This example demonstrates how to exclude the Match and Guard applications while verifying a `custom **TestGuardOverrideApplication** class <https://github.com/onap/policy-xacml-pdp/blob/master/main/src/test/java/org/onap/policy/pdpx/main/rest/TestGuardOverrideApplication.java>`_ is loaded and associated with the **guard** action. Thus, replacing and extending the guard application.
+
+Note that this XACML PDP feature is exclusive to the XACML PDP and is secondary to the ability of the PAP to group PDP's and declare which Policy Types are supported by a PDP group. For example, even if a PDP group excludes a Policy Type for a XACML PDP, this simply prevents policies being deployed to that group using the PAP Deployment API. If there is no **exclusions** in the configuration file, then any application will be loaded that it is in the classpath. If needed, one could use both PDP group Policy Type supported feature **and** the exclusions configuration to completely restrict which Policy Types as well as which applications are loaded at runtime.
+
+For more information on PDP groups and setting supported Policy Types, please refer to the :ref:`PAP Documentation <pap-label>`
+
 Supporting Your Own Policy Types and Translators
 ************************************************
 
