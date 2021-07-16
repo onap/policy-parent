@@ -177,6 +177,30 @@
       "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2bdadd3_d4ddf86f",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-07-16T08:54:47Z",
+      "side": 1,
+      "message": "\u003cversion.parent.resources\u003e${project.version}\u003c/version.parent.resources\u003e doesn\u0027t work, it just gets the \"project.version\" of the POM of whatever module is being built.\n\nThe issue is that this profile needs to be in the inheritance hierarchy of the POM of the module that\u0027s being built when the effective POM is created AND the plugins in the profile need to have the resources (assembly and asciidoc template) to build the swagger docs.\n\nThese resources should very seldom change so it will be OK for the \"version.parent.resources\" to point at an earlier version than the current policy-parent once we have done one release.\n\nSo it\u0027ll be OK for policy-parent to be on 3.4.1-SNAPSHOT and have versino.oarent.resources point ant version 3.4.0",
+      "parentUuid": "bf5cf24e_859482c4",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "8e75657abe1565c344d21a8a87c85bef3d2be387",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
