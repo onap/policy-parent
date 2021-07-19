@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df7dc279_f034b631",
+        "filename": "integration/pom.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-07-19T13:21:17Z",
+      "side": 1,
+      "message": "I wonder - does this mean we have to do two releases of policy/parent?",
+      "revId": "123321473628cbacd35963f4f30bf2ab621fd3b7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
