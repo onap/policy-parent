@@ -58,6 +58,8 @@
         <version.jakarta-api>2.0.2</version.jakarta-api>
         <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
         <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
+        <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
+        <docker.push.registry>nexus3.onap.org:10003</docker.push.registry>
     </properties>
 
     <distributionManagement>
