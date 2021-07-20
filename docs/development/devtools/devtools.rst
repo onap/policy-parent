@@ -332,3 +332,47 @@ of such a test case.
 See `this unit test case <https://github.com/onap/policy-clamp/blob/master/runtime/src/test/java/org/onap/policy/clamp/clds/it/HttpsItCase.java>`_
 for the full example.
 
+Running the DMaaP Simulator during Development
+**********************************************
+It is sometimes convenient to run the DMaaP simulator during development. You can run it from the command line using Maven or from within your IDE.
+
+Running on the Command Line
++++++++++++++++++++++++++++
+1. Check out the policy models repository
+2. Go to the *models-sim/policy-models-simulators* subdirectory in the policy-models repo
+3. Run the following Maven command:
+
+   .. code-block:: bash
+
+      mvn exec:java  -Dexec.mainClass=org.onap.policy.models.simulators.Main -Dexec.args="src/test/resources/simParameters.json"
+
+Running in Eclipse
+++++++++++++++++++
+1. Check out the policy models repository
+2. Go to the *models-sim/policy-models-simulators* module in the policy-models repo
+3. Specify a run configuration using the class *org.onap.policy.models.simulators.Main* as the main class
+4. Specify an argument of *src/test/resources/simParameters.json* to the run configuration
+5. Run the configuration
+
+Specifying a local configuration file
++++++++++++++++++++++++++++++++++++++
+
+You may specify a local configuration file instead of *src/test/resources/simParameters.json* on the command line or as an arument in the run configuration in eclipse:
+
+.. code-block:: json
+
+   {
+     "dmaapProvider": {
+       "name": "DMaaP simulator",
+       "topicSweepSec": 900
+     },
+     "restServers": [
+       {
+         "name": "DMaaP simulator",
+         "providerClass": "org.onap.policy.models.sim.dmaap.rest.DmaapSimRestControllerV1",
+         "host": "localhost",
+         "port": 3904,
+         "https": false
+       }
+     ]
+   }
