@@ -42,8 +42,13 @@
         <version.eclipselink>2.7.8</version.eclipselink>
         <version.drools>7.33.0.Final</version.drools>
         <version.jersey>2.33</version.jersey>
+<<<<<<< HEAD   (56e980 Add section for policy chaining)
         <version.jackson>2.11.3</version.jackson>
         <version.ccsdk>0.7.5</version.ccsdk>
+=======
+        <version.jackson>2.12.3</version.jackson>
+        <version.ccsdk>1.1.4</version.ccsdk>
+>>>>>>> CHANGE (0d2a12 Upgrade the CDS dependency)
         <version.swagger>1.6.2</version.swagger>
         <version.javax.bind>2.3.1</version.javax.bind>
         <version.javax.json>1.1.4</version.javax.json>
@@ -283,7 +288,7 @@
 
             <!-- CDS dependencies -->
             <dependency>
-                <groupId>org.onap.ccsdk.cds.blueprintsprocessor</groupId>
+                <groupId>org.onap.ccsdk.cds.blueprintsprocessor.modules</groupId>
                 <artifactId>blueprint-proto</artifactId>
                 <version>${version.ccsdk}</version>
                 <exclusions>
