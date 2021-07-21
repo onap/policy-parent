@@ -315,18 +315,18 @@ See each of the ONAP Policy Type application implementations which re-use the **
 ToscaPolicyTranslator
 =====================
 
-Your custom **XacmlApplicationServiceProvider** must provide an implementation of a *ToscaPolicyTranslator*.
+Your custom **XacmlApplicationServiceProvider** must provide an implementation of a **ToscaPolicyTranslator**.
 
 `Interface for ToscaPolicyTranslator <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/ToscaPolicyTranslator.java>`_
 
-See each of the ONAP Policy type application implementations which each have their own *ToscaPolicyTranslator*. Most use or extend the **StdBaseTranslator**.
+See each of the ONAP Policy type application implementations which each have their own *ToscaPolicyTranslator*. Most use or extend the **StdBaseTranslator** which contain methods that applications can use to support XACML obligations, advice as well as return attributes to the calling client applications via the **DecisionResponse**.
 
-`Standard Tosca Policy Translator implementation <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdBaseTranslator.java>`.
+`Standard Tosca Policy Translator implementation <https://github.com/onap/policy-xacml-pdp/blob/master/applications/common/src/main/java/org/onap/policy/pdp/xacml/application/common/std/StdBaseTranslator.java>`_.
 
 XACML Application and Enforcement Tutorials
 ===========================================
 
-The following tutorials can be helpful to get started on building your own decision application as well as building enforcement into your application.
+The following tutorials can be helpful to get started on building your own decision application as well as building enforcement into your application. They also show how to build and extend both the **XacmlApplicationServiceProvider** and **ToscaPolicyTranslator** classes.
 
 .. toctree::
    :maxdepth: 1

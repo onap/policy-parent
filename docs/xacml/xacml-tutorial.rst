@@ -217,7 +217,7 @@ For the tutorial, we will build code that translates the TOSCA Policy into one X
 on the user and action. It will then have one or more rules for each entity and permission combination. The
 default combining algorithm for the XACML Rules are to "Deny Unless Permit".
 
-`See the tutorial example for details on how the translator is implemented <https://github.com/onap/policy-xacml-pdp/blob/master/tutorials/tutorial-xacml-application/src/main/java/org/onap/policy/tutorial/tutorial/TutorialTranslator.java>`_
+`See the tutorial example for details on how the translator is implemented <https://github.com/onap/policy-xacml-pdp/blob/master/tutorials/tutorial-xacml-application/src/main/java/org/onap/policy/tutorial/tutorial/TutorialTranslator.java>`_. Note that in the Tutorial Translator, it also shows how a developer could extend the translator to return or act upon obligations, advice and attributes.
 
 .. Note::
   There are many ways to build the policy based on the attributes. How to do so is a matter of experience and
