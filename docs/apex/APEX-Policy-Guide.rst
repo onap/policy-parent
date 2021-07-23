@@ -542,6 +542,11 @@ Concept: State
 
 .. container:: paragraph
 
+  A state that is the final state of a policy may output multiple events, and the task associated with the final state
+  outputs those events.
+
+.. container:: paragraph
+
   A *State* concept is keyed with a ``ReferenceKey`` key, which references the *Policy* concept that owns the state.
   The *LocalName* field of the ``ReferenceKey`` holds the name of the state. As a state is part of a chain of states,
   the *NextState* field of a state holds the ``ReferenceKey`` key of the state in the policy to execute after this
@@ -606,7 +611,8 @@ Writing APEX Task Logic
   What do Tasks do? The function of an Apex Task is to provide the logic that can be executed for an Apex State as one
   of the steps in an Apex Policy. Each task receives some *incoming fields*, executes some logic (e.g: make a decision
   based on *shared state* or *context*, *incoming fields*, *external context*, etc.), perhaps set some *shared state*
-  or *context* and then emits *outgoing fields*. The state that uses the task is responsible for extracting the
+  or *context* and then emits *outgoing fields* (in case of single outgoing event), or a set of *outgoing fields*
+  (in case of multiple outgoing events). The state that uses the task is responsible for extracting the
   *incoming fields* from the state input event. The state also has an *output mapper* associated with the task, and
   this *output mapper* is responsible for mapping the *outgoing fields* from the task into an appropriate output event
   for the state.
@@ -852,13 +858,40 @@ Table 1. The ``executor`` Fields / Methods
   +-----------------------------------------------------+--------------------------------------------------------------------------+-------------------------------+----------------------------------------------------------------------------------+
   | outFields                                           | Fields                                                                   | java.util.Map <String,Object> |The outgoing task fields. This is implemented as a standard initially empty Java  |
   |                                                     |                                                                          |                               |(modifiable) Map. To create a new schema-compliant instance of a field object     |
-  |                                                     |                                                                          |                               |see the utility method subject.getOutFieldSchemaHelper() below                    |
+  |                                                     |                                                                          |                               |see the utility method subject.getOutFieldSchemaHelper() below that takes         |
+  |                                                     |                                                                          |                               |fieldName as an argument.                                                         |
   |                                                     |                                                                          |                               |                                                                                  |
   |                                                     |                                                                          |                               |**Example:**                                                                      |
   |                                                     |                                                                          |                               |                                                                                  |
   |                                                     |                                                                          |                               |.. code:: javascript                                                              |
   |                                                     |                                                                          |                               |                                                                                  |
   |                                                     |                                                                          |                               |  executor.outFields["authorised"] = false;                                       |
+  +-----------------------------------------------------+--------------------------------------------------------------------------+-------------------------------+----------------------------------------------------------------------------------+
+  | outFieldsList                                       | Fields                                                                   | java.util.Collection          |The collection of outgoing task fields when there are multiple outputs from the   |
+  |                                                     |                                                                          |   <Map<String, Object>>       |final state. To create a new schema-compliant instance of a field, see the        |
+  |                                                     |                                                                          |                               |utility method subject.getOutFieldSchemaHelper() below that takes eventName and   |
+  |                                                     |                                                                          |                               |fieldName as arguments.                                                           |
+  |                                                     |                                                                          |                               |To add the set of output fields to the outFieldsList, the utility method          |
+  |                                                     |                                                                          |                               |executor.addFieldsToOutput can be used as shown below.                            |
+  +-----------------------------------------------------+--------------------------------------------------------------------------+-------------------------------+----------------------------------------------------------------------------------+
+  | void addFieldsToOutput(Map<String, Object> fields)  |A utility method to add fields to outgoing fields.                        |                               |                                                                                  |
+  |                                                     |When there are multiple output events emitted from the task associated    |                               |                                                                                  |
+  |                                                     |with a final state, this utility method can be used to add the            |                               |                                                                                  |
+  |                                                     |corresponding fields to the outFieldsList.                                |                               |                                                                                  |
+  |                                                     |                                                                          |                               |                                                                                  |
+  |                                                     |**Example:**                                                              |                               |                                                                                  |
+  |                                                     |                                                                          |                               |                                                                                  |
+  |                                                     |.. code:: javascript                                                      |                               |                                                                                  |
+  |                                                     |                                                                          |                               |                                                                                  |
+  |                                                     |  var cdsRequestEventFields = java.util.HashMap();                        |                               |                                                                                  |
+  |                                                     |  var actionIdentifiers = executor.subject.getOutFieldSchemaHelper        |                               |                                                                                  |
+  |                                                     |  ("CDSRequestEvent","actionIdentifiers").createNewInstance();            |                               |                                                                                  |
+  |                                                     |  cdsRequestEventFields.put("actionIdentifiers", actionIdentifiers);      |                               |                                                                                  |
+  |                                                     |  executor.addFieldsToOutput(cdsRequestEventFields);                      |                               |                                                                                  |
+  |                                                     |                                                                          |                               |                                                                                  |
+  |                                                     |  var logEventFields = java.util.HashMap();                               |                               |                                                                                  |
+  |                                                     |  logEventFields.put("status", "FINAL_SUCCESS");                          |                               |                                                                                  |
+  |                                                     |  executor.addFieldsToOutput(logEventFields);                             |                               |                                                                                  |
   +-----------------------------------------------------+--------------------------------------------------------------------------+-------------------------------+----------------------------------------------------------------------------------+
   | logger                                              | Logger                                                                   | org.slf4j.ext.XLogger         |A helpful logger                                                                  |
   |                                                     |                                                                          |                               |                                                                                  |
@@ -898,7 +931,18 @@ Table 1. The ``executor`` Fields / Methods
   |                                                     |                                                                          |                               |    get a ``SchemaHelper`` helper object to manipulate outgoing                   |
   |                                                     |                                                                          |                               |    task fields in a schema-aware manner, e.g. to instantiate new                 |
   |                                                     |                                                                          |                               |    schema-compliant field objects to populate the                                |
-  |                                                     |                                                                          |                               |    ``executor.outFields`` outgoing fields map                                    |
+  |                                                     |                                                                          |                               |    ``executor.outFields`` outgoing fields map. This can be used only when there  |
+  |                                                     |                                                                          |                               |    is a single outgoing event from a task.                                       |
+  |                                                     |                                                                          |                               |                                                                                  |
+  |                                                     |                                                                          |                               |  - **SchemaHelper getOutFieldSchemaHelper( String eventname, String fieldName )**|
+  |                                                     |                                                                          |                               |    to get a ``SchemaHelper`` helper object to manipulate outgoing                |
+  |                                                     |                                                                          |                               |    task fields in a schema-aware manner, e.g. to instantiate new                 |
+  |                                                     |                                                                          |                               |    schema-compliant field objects to populate the                                |
+  |                                                     |                                                                          |                               |    ``executor.outFieldsList`` collection of outgoing fields map. This must be    |
+  |                                                     |                                                                          |                               |    used in case of multiple outgoing events from a task, as the intention is to  |
+  |                                                     |                                                                          |                               |    fetch the schema of a field associated to one of the expected events.         |
+  |                                                     |                                                                          |                               |    This method works fine in case of single outgoing event too, but the previous |
+  |                                                     |                                                                          |                               |    method is enough as the field anyway belongs to the single event.             |
   |                                                     |                                                                          |                               |                                                                                  |
   |                                                     |                                                                          |                               |**Example:**                                                                      |
   |                                                     |                                                                          |                               |                                                                                  |
@@ -906,12 +950,15 @@ Table 1. The ``executor`` Fields / Methods
   |                                                     |                                                                          |                               |                                                                                  |
   |                                                     |                                                                          |                               |  executor.logger.info("Task name: " + executor.subject.getTaskName());           |
   |                                                     |                                                                          |                               |  executor.logger.info("Task id: " + executor.subject.getId());                   |
-  |                                                     |                                                                          |                               |  executor.logger.info("Task inputs definitions: "                                |
-  |                                                     |                                                                          |                               |    + "executor.subject.task.getInputFieldSet());                                 |
-  |                                                     |                                                                          |                               |  executor.logger.info("Task outputs definitions: "                               |
-  |                                                     |                                                                          |                               |    + "executor.subject.task.getOutputFieldSet());                                |
   |                                                     |                                                                          |                               |  executor.outFields["authorised"] = executor.subject                             |
   |                                                     |                                                                          |                               |    .getOutFieldSchemaHelper("authorised").createNewInstance("false");            |
+  |                                                     |                                                                          |                               |                                                                                  |
+  |                                                     |                                                                          |                               |  var actionIdentifiers = executor.subject.getOutFieldSchemaHelper                |
+  |                                                     |                                                                          |                               |    ("CDSRequestEvent","actionIdentifiers").createNewInstance();                  |
+  |                                                     |                                                                          |                               |  actionIdentifiers.put("blueprintName", "sample-bp");                            |
+  |                                                     |                                                                          |                               |  var cdsRequestEventFields = java.util.HashMap();                                |
+  |                                                     |                                                                          |                               |  cdsRequestEventFields.put("actionIdentifiers", actionIdentifiers);              |
+  |                                                     |                                                                          |                               |  executor.addFieldsToOutput(cdsRequestEventFields);                              |
   +-----------------------------------------------------+--------------------------------------------------------------------------+-------------------------------+----------------------------------------------------------------------------------+
   | ContextAlbum getContextAlbum(String ctxtAlbumName ) |A utility method to retrieve a ``ContextAlbum`` for use in the task.      |                               |                                                                                  |
   |                                                     |This is how you access the context used by the task. The returned         |                               |                                                                                  |
@@ -1159,10 +1206,6 @@ Table 2. The ``executor`` Fields / Methods
   |                                                     |                                                                          |                               |                                                                                  |
   |                                                     |                                                                          |                               |   executor.logger.info("Task name: " + executor.subject.getTaskName());          |
   |                                                     |                                                                          |                               |   executor.logger.info("Task id: " + executor.subject.getId());                  |
-  |                                                     |                                                                          |                               |   executor.logger.info("Task inputs definitions: "                               |
-  |                                                     |                                                                          |                               |     + "executor.subject.task.getInputFieldSet());                                |
-  |                                                     |                                                                          |                               |   executor.logger.info("Task outputs definitions: "                              |
-  |                                                     |                                                                          |                               |     + "executor.subject.task.getOutputFieldSet());                               |
   |                                                     |                                                                          |                               |   executor.outFields["authorised"] = executor.subject                            |
   |                                                     |                                                                          |                               |     .getOutFieldSchemaHelper("authorised")                                       |
   |                                                     |                                                                          |                               |     .createNewInstance("false");                                                 |
@@ -1414,8 +1457,11 @@ Create a instance of an Outfield using Schemas
 
   If the backend is Java, then the Java class implementing the schema needs to be imported.
 
+*Single outgoing event*
+
 .. container:: paragraph
 
+  When there is a single outgoing event associated with a task, the fieldName alone is enough to fetch its schema.
   The following example assumes an outfield ``situation``. The ``subject`` method ``getOutFieldSchemaHelper()`` is used
   to create a new instance.
 
@@ -1448,6 +1494,23 @@ Create a instance of an Outfield using Schemas
     .. code:: javascript
 
       situation.put("problemID", "my-problem");
+
+*Multiple outgoing events*
+
+.. container:: paragraph
+
+  When there are multiple outgoing events associated with a task, the fieldName along with the eventName it belongs to
+  are needed to fetch its schema.
+  The following example assumes an outfield ``actionIdentifiers`` which belongs to ``CDSRequestEvent``.
+  The ``subject`` method ``getOutFieldSchemaHelper()`` is used to create a new instance.
+
+.. container:: listingblock
+
+  .. container:: content
+
+    .. code:: javascript
+
+      var actionIdentifiers = executor.subject.getOutFieldSchemaHelper("CDSRequestEvent", "actionIdentifiers").createNewInstance();
 
 Create a instance of an Context Album entry using Schemas
 ---------------------------------------------------------
@@ -1787,6 +1850,95 @@ Equal Value and Equal Type operator ``===``
 The *Equal Value and Equal Type* operator ``===`` is not supported in Rhino. Developers must use the Equal To
 operator ``==`` instead. To check types, they may need to explicitly find and check the type of the variables
 they are using.
+
+*************************************************
+Writing Multiple Output Events from a Final State
+*************************************************
+
+.. container:: paragraph
+
+  APEX-PDP now supports sending multiple events from a final state in a Policy. The task assocaiated with the final
+  state can populate the fields of multiple events, and then they can be passed over as the output events from the final
+  state of a policy.
+
+.. note::
+  inputfields and outputfields are not needed as part of the task definition anymore. Fields of an event are already
+  defined as part of the event definition. Input event(single trigger event) and output event/events can be populated
+  to a task as part of the policy/state definition because the event tagging is done there anyway.
+
+.. container:: paragraph
+
+  Consider a simple example where a policy *CDSActionPolicy* has a state *MakeCDSRequestState* which is also a final
+  state. The state is triggered by an event *AAIEvent*. A task called *HandleCDSActionTask* is associated with
+  *MakeCDSRequestState*.There are two output events expected from *MakeCDSRequestState* which are *CDSRequestEvent*
+  (request event sent to CDS) and *LogEvent* (log event sent to DMaaP).
+  Writing an APEX policy with this example will involve the below changes.
+
+*Command File*
+
+.. container:: listingblock
+
+  .. container:: title
+
+    Define all the concepts in the Policy. Only relevant parts for the multiple output support are shown.
+
+  .. container:: content
+
+    .. code::
+      ## Define Events
+      event create name=AAIEvent version=0.0.1 nameSpace=org.onap.policy.apex.test source=AAI target=APEX
+      ..
+      event create name=CDSRequestEvent version=0.0.1 nameSpace=org.onap.policy.apex.test source=APEX target=CDS
+      event parameter create name=CDSRequestEvent parName=actionIdentifiers schemaName=CDSActionIdentifiersType
+      ..
+      event create name=LogEvent version=0.0.1 nameSpace=org.onap.policy.apex.test source=APEX target=DMaaP
+      event parameter create name=LogEvent  parName=status schemaName=SimpleStringType
+      ..
+
+      ## Define Tasks
+      task create name=HandleCDSActionTask
+      task contextref create name=HandleCDSActionTask albumName=EventDetailsAlbum
+      task logic create name=HandleCDSActionTask logicFlavour=JAVASCRIPT logic=LS
+      #MACROFILE:"src/main/resources/logic/HandleCDSActionTask.js"
+      LE
+      ..
+
+      ## Define Policies and States
+      policy create name=CDSActionPolicy template=Freestyle firstState=MakeCDSRequestState
+      policy state create name=CDSActionPolicy stateName=MakeCDSRequestState triggerName=AAIEvent defaultTaskName=HandleCDSActionTask
+      # Specify CDSRequestEvent as output
+      policy state output create name=CDSActionPolicy stateName=MakeCDSRequestState outputName=CDSActionStateOutput eventName=CDSRequestEvent
+      # Specify LogEvent as output
+      policy state output create name=CDSActionPolicy stateName=MakeCDSRequestState outputName=CDSActionStateOutput eventName=LogEvent
+      policy state taskref create name=CDSActionPolicy stateName=MakeCDSRequestState taskName=HandleCDSActionTask outputType=DIRECT outputName=CDSActionStateOutput
+
+*Task Logic File*
+
+.. container:: listingblock
+
+  .. container:: title
+
+    Create outfields' instance if required, populate and add them the output events
+
+  .. container:: content
+
+    .. code:: javascript
+
+      ..
+      var cdsRequestEventFields = java.util.HashMap();
+      var actionIdentifiers = executor.subject.getOutFieldSchemaHelper("CDSRequestEvent","actionIdentifiers").createNewInstance();
+      actionIdentifiers.put("blueprintName", "sample-bp");
+      cdsRequestEventFields.put("actionIdentifiers", actionIdentifiers);
+      executor.addFieldsToOutput(cdsRequestEventFields);
+
+      var logEventFields = java.util.HashMap();
+      logEventFields.put("status", "FINAL_SUCCESS");
+      executor.addFieldsToOutput(logEventFields);
+
+.. container:: paragraph
+
+  With the above changes, the task populates the fields for both the expected events, and the corresponding state which
+  is *MakeCDSRequestState* outputs both *CDSRequestEvent* and *LogEvent*
 
 .. |APEX Policy Matrix| image:: images/apex-intro/ApexPolicyMatrix.png
 .. |APEX Policy Model for Execution| image:: images/apex-policy-model/UmlPolicyModels.png
