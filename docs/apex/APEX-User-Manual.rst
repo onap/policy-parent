@@ -5453,7 +5453,7 @@ Demo with VPN Policy Model
                in an editor (we need to send those events to APEX)
 
 A Websocket Configuration for the VPN Domain
-********************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
             .. container:: paragraph
 
@@ -5520,7 +5520,7 @@ A Websocket Configuration for the VPN Domain
                     }
 
 Start APEX Engine
-*****************
+^^^^^^^^^^^^^^^^^
 
    .. container:: paragraph
 
@@ -5571,7 +5571,7 @@ Start APEX Engine
    policy is triggered/executed.
 
 Run the Websocket Echo Client
-*****************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. container:: paragraph
 
@@ -5661,7 +5661,7 @@ Run the Websocket Echo Client
             ws-simple-echo: opened connection to APEX (Web Socket Protocol Handshake)
 
 Run the Websocket Console Client
-********************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. container:: paragraph
 
@@ -5752,7 +5752,7 @@ Run the Websocket Console Client
             ws-simple-console: opened connection to APEX (Web Socket Protocol Handshake)
 
 Send Events
-***********
+^^^^^^^^^^^
 
    .. container:: paragraph
 
