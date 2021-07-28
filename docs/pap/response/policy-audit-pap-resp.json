@@ -1,0 +1,26 @@
+[
+    {
+        "auditId": 123,
+        "pdpGroup": "defaultGroup",
+        "pdpType": "apex",
+        "policy": {
+            "name": "onap.policies.apex.Controlloop",
+            "version": "1.0.0"
+        },
+        "action": "DEPLOYMENT",
+        "timestamp": "2021-07-27T13:25:15Z",
+        "user": "test"
+    },
+    {
+        "auditId": 456,
+        "pdpGroup": "defaultGroup",
+        "pdpType": "drools",
+        "policy": {
+            "name": "operational.modifyconfig",
+            "version": "1.0.0"
+        },
+        "action": "UNDEPLOYMENT",
+        "timestamp": "2021-07-27T13:15:15Z",
+        "user": "test"
+    }
+]

@@ -120,6 +120,7 @@ PAP supports the operations listed in the following table, via its REST API:
    "Policy Status", "Queries the status of all policies"
    "Policy deployment status", "Queries the status of all deployed policies"
    "PDP statistics", "Queries the statistics of PDPs"
+   "Policy Audit", "Queries the audit records of policies"
 
 1.2 DMaaP API
 -------------
@@ -367,6 +368,19 @@ The result can be filtered based on PDP group, PDP subgroup & PDP instance.
 Here is a sample response:
 
 .. literalinclude:: response/pdp-statistics-pap-resp.json
+    :language: json
+    
+:download:`Download Policy Audit PAP API Swagger  <swagger/policy-audit-pap.json>`
+
+.. swaggerv2doc:: swagger/policy-audit-pap.json
+
+This operation allows the audit records of policies to be listed together.
+The result can be filtered based on pdp group name, policy name & version.
+Along with record count, from date & to date as query parameters.
+
+Here is a sample response:
+
+.. literalinclude:: response/policy-audit-pap-resp.json
     :language: json
 
 3 Configuration
