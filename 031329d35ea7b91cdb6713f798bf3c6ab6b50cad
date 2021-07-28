@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "c3a77e10_04565619",
+        "filename": "docs/apex/APEX-Policy-Guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-07-28T13:57:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff50d7d7_02a44f85",
+      "range": {
+        "startLine": 872,
+        "startChar": 230,
+        "endLine": 872,
+        "endChar": 239
+      },
+      "revId": "031329d35ea7b91cdb6713f798bf3c6ab6b50cad",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61cba42f_846fac13",
         "filename": "docs/apex/APEX-Policy-Guide.rst",
         "patchSetId": 2
