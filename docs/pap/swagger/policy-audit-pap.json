@@ -1,0 +1,489 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "The APIs listed here are used to fetch audit information for various actions taken on policies.",
+    "version": "v1"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Policy Audit"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json",
+    "application/yaml"
+  ],
+  "produces": [
+    "application/json",
+    "application/yaml"
+  ],
+  "paths": {
+    "/policy/pap/v1/policies/audit": {
+      "get": {
+        "tags": [
+          "Policy Administration (PAP) API"
+        ],
+        "summary": "Queries audit information for all the policies",
+        "description": "Queries audit information for all the policies, returning audit information for all the policies in the database",
+        "operationId": "getAllAuditRecords",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count between 1-100",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "From date in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "To date in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PolicyAudit"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/policy/pap/v1/policies/audit/{pdpGroupName}": {
+      "get": {
+        "tags": [
+          "Policy Administration (PAP) API"
+        ],
+        "summary": "Queries audit information for all the policies in a PdpGroup",
+        "description": "Queries audit information for all the policies in a PdpGroup, returning audit information for all the policies belonging to the PdpGroup",
+        "operationId": "getAuditRecordsByGroup",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count between 1-100",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "From date in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "To date in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "pdpGroupName",
+            "in": "path",
+            "description": "PDP Group Name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PolicyAudit"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/policy/pap/v1/policies/audit/{policyName}/{policyVersion}": {
+      "get": {
+        "tags": [
+          "Policy Administration (PAP) API"
+        ],
+        "summary": "Queries audit information for a specific version of a policy",
+        "description": "Queries audit information for a specific version of a policy, returning audit information for the policy",
+        "operationId": "getAuditRecordsOfPolicy",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count between 1-100",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "From date in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "To date in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "policyName",
+            "in": "path",
+            "description": "Policy Name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "policyVersion",
+            "in": "path",
+            "description": "Policy Version",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/PolicyAudit"
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/policy/pap/v1/policies/audit/{pdpGroupName}/{policyName}/{policyVersion}": {
+      "get": {
+        "tags": [
+          "Policy Administration (PAP) API"
+        ],
+        "summary": "Queries audit information for a specific version of a policy in a PdpGroup",
+        "description": "Queries audit information for a specific version of a policy in a PdpGroup, returning audit information for the policy belonging to the PdpGroup",
+        "operationId": "getAuditRecordsOfPolicy_1",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count between 1-100",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fromDate",
+            "in": "query",
+            "description": "From date in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "toDate",
+            "in": "query",
+            "description": "To date in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "pdpGroupName",
+            "in": "path",
+            "description": "PDP Group Name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "policyName",
+            "in": "path",
+            "description": "Policy Name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "policyVersion",
+            "in": "path",
+            "description": "Policy Version",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "X-MinorVersion": {
+                "type": "string",
+                "description": "Used to request or communicate a MINOR version back from the client to the server, and from the server back to the client"
+              },
+              "X-PatchVersion": {
+                "type": "string",
+                "description": "Used only to communicate a PATCH version in a response for troubleshooting purposes only, and will not be provided by the client on request"
+              },
+              "X-LatestVersion": {
+                "type": "string",
+                "description": "Used only to communicate an API's latest version"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Used to track REST transactions for logging purpose"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/PolicyAudit"
+            }
+          },
+          "401": {
+            "description": "Authentication Error"
+          },
+          "403": {
+            "description": "Authorization Error"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "description": "",
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "PolicyAudit": {
+      "type": "object",
+      "properties": {
+        "pdpGroup": {
+          "type": "string"
+        },
+        "pdpType": {
+          "type": "string"
+        },
+        "policy": {
+          "$ref": "#/definitions/ToscaConceptIdentifier"
+        },
+        "action": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        }
+      }
+    },
+    "ToscaConceptIdentifier": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
