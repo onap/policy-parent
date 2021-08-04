@@ -1,0 +1,4 @@
+distribution_type: 'maven'
+version: '3.3.2'
+project: 'policy-parent'
+log_dir: 'policy-parent-maven-stage-honolulu/148/'
