@@ -18,6 +18,55 @@ Policy Release Notes
 ..      * * *    HONOLULU    * * *
 ..      ==========================
 
+Version: 8.0.1
+--------------
+
+:Release Date: 2021-04-29 (Honolulu Maintenance Release #1)
+
+**Artifacts**
+
+Artifacts released:
+
+.. csv-table::
+   :header: "Repository", "Java Artifact", "Docker Image (if applicable)"
+   :widths: 15,10,10
+
+   "policy/parent", "3.3.2", ""
+   "policy/common", "1.8.2", ""
+   "policy/models", "2.4.4", ""
+   "policy/api", "2.4.4", "onap/policy-api:2.4.4"
+   "policy/pap", "2.4.5", "onap/policy-pap:2.4.5"
+   "policy/drools-pdp", "1.8.4", "onap/policy-drools:1.8.4"
+   "policy/apex-pdp", "2.5.4", "onap/policy-apex-pdp:2.5.4"
+   "policy/xacml-pdp", "2.4.4", "onap/policy-xacml-pdp:2.4.4"
+   "policy/drools-applications", "1.8.4", "onap/policy-pdpd-cl:1.8.4"
+   "policy/distribution", "2.5.4", "onap/policy-distribution:2.5.4"
+   "policy/docker", "2.2.1", "onap/policy-jdk-alpine:2.2.1, onap/policy-jre-alpine:2.2.1"
+
+
+**Bug Fixes and Necessary Enhancements**
+
+
+    * `[POLICY-3062] <https://jira.onap.org/browse/POLICY-3062>`_ - Update the ENTRYPOINT in APEX-PDP Dockerfile
+    * `[POLICY-3066] <https://jira.onap.org/browse/POLICY-3066>`_ - Stackoverflow error in APEX standalone after changing to onap java image
+    * `[POLICY-3078] <https://jira.onap.org/browse/POLICY-3078>`_ - Support SSL communication in Kafka IO plugin of Apex-PDP
+    * `[POLICY-3173] <https://jira.onap.org/browse/POLICY-3173>`_ - APEX-PDP incorrectly reports successful policy deployment to PAP
+    * `[POLICY-3202] <https://jira.onap.org/browse/POLICY-3202>`_ - PDP-D: no locking feature: service loader not locking the no-lock-manager
+    * `[POLICY-3227] <https://jira.onap.org/browse/POLICY-3227>`_ - Implementation of context album improvements in apex-pdp
+    * `[POLICY-3230] <https://jira.onap.org/browse/POLICY-3230>`_ - Make default PDP-D and PDP-D-APPS work out of the box
+    * `[POLICY-3248] <https://jira.onap.org/browse/POLICY-3248>`_ - PdpHeartbeats are not getting processed by PAP
+    * `[POLICY-3301] <https://jira.onap.org/browse/POLICY-3301>`_ - Apex Avro Event Schemas - Not support for colon ':' character in field names
+    * `[POLICY-3305] <https://jira.onap.org/browse/POLICY-3305>`_ - Ensure XACML PDP application/translator methods are extendable
+    * `[POLICY-3331] <https://jira.onap.org/browse/POLICY-3331>`_ - PAP: should allow for external configuration of groups other than defaultGroup
+    * `[POLICY-3338] <https://jira.onap.org/browse/POLICY-3338>`_ - Upgrade CDS dependency to the latest version
+    * `[POLICY-3366] <https://jira.onap.org/browse/POLICY-3366>`_ - PDP-D: support configuration of overarching DMAAP https flag
+    * `[POLICY-3450] <https://jira.onap.org/browse/POLICY-3450>`_ - PAP should support turning on/off via configuration storing PDP statistics
+    * `[POLICY-3454] <https://jira.onap.org/browse/POLICY-3454>`_ - PDP-D CL APPS: swagger mismatched libraries cause telemetry shell to fail
+    * `[POLICY-3485] <https://jira.onap.org/browse/POLICY-3485>`_ - Limit statistics record count
+    * `[POLICY-3507] <https://jira.onap.org/browse/POLICY-3507>`_ - CDS Operation Policy execution runtime error
+    * `[POLICY-3516] <https://jira.onap.org/browse/POLICY-3516>`_ - Upgrade CDS dependency to the 1.1.5 version
+
+
 Version: 8.0.0
 --------------
 
