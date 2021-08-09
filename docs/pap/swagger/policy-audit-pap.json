@@ -53,17 +53,17 @@
             "format": "int32"
           },
           {
-            "name": "fromDate",
+            "name": "startTime",
             "in": "query",
-            "description": "From date in epoch timestamp",
+            "description": "Start time in epoch timestamp",
             "required": false,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "toDate",
+            "name": "endTime",
             "in": "query",
-            "description": "To date in epoch timestamp",
+            "description": "End time in epoch timestamp",
             "required": false,
             "type": "integer",
             "format": "int64"
@@ -149,17 +149,17 @@
             "format": "int32"
           },
           {
-            "name": "fromDate",
+            "name": "startTime",
             "in": "query",
-            "description": "From date in epoch timestamp",
+            "description": "Start time in epoch timestamp",
             "required": false,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "toDate",
+            "name": "endTime",
             "in": "query",
-            "description": "To date in epoch timestamp",
+            "description": "End time in epoch timestamp",
             "required": false,
             "type": "integer",
             "format": "int64"
@@ -252,17 +252,17 @@
             "format": "int32"
           },
           {
-            "name": "fromDate",
+            "name": "startTime",
             "in": "query",
-            "description": "From date in epoch timestamp",
+            "description": "Start time in epoch timestamp",
             "required": false,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "toDate",
+            "name": "endTime",
             "in": "query",
-            "description": "To date in epoch timestamp",
+            "description": "End time in epoch timestamp",
             "required": false,
             "type": "integer",
             "format": "int64"
@@ -359,17 +359,17 @@
             "format": "int32"
           },
           {
-            "name": "fromDate",
+            "name": "startTime",
             "in": "query",
-            "description": "From date in epoch timestamp",
+            "description": "Start time in epoch timestamp",
             "required": false,
             "type": "integer",
             "format": "int64"
           },
           {
-            "name": "toDate",
+            "name": "endTime",
             "in": "query",
-            "description": "To date in epoch timestamp",
+            "description": "End time in epoch timestamp",
             "required": false,
             "type": "integer",
             "format": "int64"

@@ -39,6 +39,30 @@
             "required": false,
             "type": "string",
             "format": "uuid"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count between 1-100",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "Start time in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "End time in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
           }
         ],
         "responses": {
@@ -118,6 +142,30 @@
             "description": "PDP Group Name",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count between 1-100",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "Start time in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "End time in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
           }
         ],
         "responses": {
@@ -204,6 +252,30 @@
             "description": "PDP SubGroup type",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count between 1-100",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "Start time in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "End time in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
           }
         ],
         "responses": {
@@ -301,11 +373,26 @@
           {
             "name": "recordCount",
             "in": "query",
-            "description": "Record Count",
+            "description": "Record count between 1-100",
             "required": false,
             "type": "integer",
-            "default": 0,
             "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "Start time in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "End time in epoch timestamp",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
           }
         ],
         "responses": {

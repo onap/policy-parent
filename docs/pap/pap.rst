@@ -364,6 +364,7 @@ Here is a sample response:
 
 This operation allows the PDP statistics to be retrieved for all registered PDPs.
 The result can be filtered based on PDP group, PDP subgroup & PDP instance.
+Along with record count, start time & end time as query parameters.
 
 Here is a sample response:
 
@@ -376,7 +377,7 @@ Here is a sample response:
 
 This operation allows the audit records of policies to be listed together.
 The result can be filtered based on pdp group name, policy name & version.
-Along with record count, from date & to date as query parameters.
+Along with record count, start time & end time as query parameters.
 
 Here is a sample response:
 
