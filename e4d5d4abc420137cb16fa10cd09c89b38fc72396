@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e08cf94_a8e2231c",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-08-11T17:08:28Z",
+      "side": 1,
+      "message": "For the release date, I got feedback to use today or tomorrow as it is self-serve.",
+      "revId": "e4d5d4abc420137cb16fa10cd09c89b38fc72396",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
