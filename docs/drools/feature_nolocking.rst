@@ -19,6 +19,7 @@ In an official OOM installation, place a script with a .pre.sh suffix:
 
     .. code-block:: bash
        :caption: features.pre.sh
+
         #!/bin/sh
 
         sh -c "features disable distributed-locking"
@@ -28,6 +29,7 @@ In an official OOM installation, place a script with a .pre.sh suffix:
 under the directory:
 
     .. code-block:: bash
+
         oom/kubernetes/policy/components/policy-drools-pdp/resources/configmaps
 
 
