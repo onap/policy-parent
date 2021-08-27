@@ -49,7 +49,7 @@
         <version.swagger>1.6.2</version.swagger>
         <version.javax.bind>2.3.1</version.javax.bind>
         <version.javax.json>1.1.4</version.javax.json>
-        <version.netty>4.1.63.Final</version.netty>
+        <version.netty>4.1.67.Final</version.netty>
         <version.springboot>2.5.0</version.springboot>
         <version.eelf.core>1.0.0</version.eelf.core>
         <version.camel>3.7.3</version.camel>
