@@ -34,6 +34,24 @@
       "revId": "b9b2f95def2bca000d0f1e6e4c864d5a37d43642",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13e0b17c_1f2361f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-08-27T13:48:18Z",
+      "side": 1,
+      "message": "it often says that, only to change it\u0027s mind a week or two after you upgrade",
+      "parentUuid": "f1af2a04_f6f57369",
+      "revId": "b9b2f95def2bca000d0f1e6e4c864d5a37d43642",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
