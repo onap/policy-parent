@@ -16,6 +16,24 @@
       "revId": "b9b2f95def2bca000d0f1e6e4c864d5a37d43642",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1af2a04_f6f57369",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-08-27T13:41:37Z",
+      "side": 1,
+      "message": "According to the IQ server, version 4.1.67 is OK so let\u0027s hope it works.",
+      "parentUuid": "aea4398a_5b75c5fc",
+      "revId": "b9b2f95def2bca000d0f1e6e4c864d5a37d43642",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
