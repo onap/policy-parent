@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f529e285_10021424",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-08-27T14:24:47Z",
+      "side": 1,
+      "message": "Please see comments on https://gerrit.onap.org/r/c/policy/clamp/+/123647/1/runtime-controlloop/pom.xml#37\nBetter to change this to verison.io.micrometer. \nversion.io.prometheus if added should be 0.11.0",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "596bb92da12710ea9c98ef62bc76f042a22c3f77",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
