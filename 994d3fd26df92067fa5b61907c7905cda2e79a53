@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43314bbc_42a4a56e",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-08-27T17:26:02Z",
+      "side": 1,
+      "message": "is it better to use \"prometheus\" rather than micrometer as we do in common repo?",
+      "revId": "994d3fd26df92067fa5b61907c7905cda2e79a53",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
