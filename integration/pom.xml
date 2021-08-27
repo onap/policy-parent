@@ -58,6 +58,7 @@
         <version.immutable>2.8.8</version.immutable>
         <version.springfox>3.0.0</version.springfox>
         <version.jakarta-api>2.0.2</version.jakarta-api>
+        <version.io.prometheus>1.7.3</version.io.prometheus>
         <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
         <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
         <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
