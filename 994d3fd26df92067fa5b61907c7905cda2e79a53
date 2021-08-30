@@ -52,6 +52,24 @@
       "revId": "994d3fd26df92067fa5b61907c7905cda2e79a53",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4766ad9d_e17ebc55",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-08-30T09:08:43Z",
+      "side": 1,
+      "message": "Yes Jorge, this version 1.7.3 is actually micrometer version used by the clamp spring boot application (uses micrometer-prometheus client).\nPF is non spring boot and we are using io.prometheus artifacts, and not io.micrometer. So, better to avoid any confusion.",
+      "parentUuid": "daa383f7_c81f2853",
+      "revId": "994d3fd26df92067fa5b61907c7905cda2e79a53",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
