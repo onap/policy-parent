@@ -67,6 +67,16 @@ Artifacts released:
     * `[POLICY-3516] <https://jira.onap.org/browse/POLICY-3516>`_ - Upgrade CDS dependency to the 1.1.5 version
 
 
+Known Limitations
+=================
+
+The APIs provided by xacml-pdp (e.g., healthcheck, statistics, decision)
+are always active.  While PAP controls which policies are deployed to a
+xacml-pdp, it does not control whether or not the APIs are active.
+In other words, xacml-pdp will respond to decision requests, regardless
+of whether PAP has made it ACTIVE or PASSIVE.
+
+
 Version: 8.0.0
 --------------
 
