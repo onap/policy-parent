@@ -38,7 +38,7 @@ Artifacts released:
    "policy/pap", "2.4.5", "onap/policy-pap:2.4.5"
    "policy/drools-pdp", "1.8.4", "onap/policy-drools:1.8.4"
    "policy/apex-pdp", "2.5.4", "onap/policy-apex-pdp:2.5.4"
-   "policy/xacml-pdp", "2.4.4", "onap/policy-xacml-pdp:2.4.4"
+   "policy/xacml-pdp", "2.4.5", "onap/policy-xacml-pdp:2.4.5"
    "policy/drools-applications", "1.8.4", "onap/policy-pdpd-cl:1.8.4"
    "policy/distribution", "2.5.4", "onap/policy-distribution:2.5.4"
    "policy/docker", "2.2.1", "onap/policy-jdk-alpine:2.2.1, onap/policy-jre-alpine:2.2.1"
