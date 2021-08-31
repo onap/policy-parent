@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feab0c83_4e1b475b",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-08-31T21:41:37Z",
+      "side": 1,
+      "message": "Is this configurable? I mean how long the PDPs will remain in DB before they get removed, if the \"last-updated\" is not changing.",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 767,
+        "endChar": 17
+      },
+      "revId": "7e5517edf103cf331b76dbcea0f0df95b3091767",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
