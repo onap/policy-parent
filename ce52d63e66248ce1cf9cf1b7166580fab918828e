@@ -16,6 +16,24 @@
       "revId": "ce52d63e66248ce1cf9cf1b7166580fab918828e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b23404_2d74c1cc",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-08-31T17:09:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure of the right answer.  Since we have officially released this version, then it makes sense to me to update it, even if OOM hasn\u0027t been updated.  If not, then I should probably change the blurb I added about the REST service, because it doesn\u0027t apply to version 2.4.4 - that version still stops and starts the REST server.\n\none option would be to update OOM, too",
+      "parentUuid": "934a657a_ae9a5c39",
+      "revId": "ce52d63e66248ce1cf9cf1b7166580fab918828e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
