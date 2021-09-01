@@ -22,6 +22,30 @@
       "revId": "7e5517edf103cf331b76dbcea0f0df95b3091767",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16714221_ba2f9de1",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 811
+      },
+      "writtenOn": "2021-09-01T13:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feab0c83_4e1b475b",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 767,
+        "endChar": 17
+      },
+      "revId": "7e5517edf103cf331b76dbcea0f0df95b3091767",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
