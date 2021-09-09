@@ -22,6 +22,30 @@
       "revId": "12bb084aa1a7da1e5d10e76b6f1c57b1a0de2e00",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7704670d_01ad4cfb",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-09-09T12:13:56Z",
+      "side": 1,
+      "message": "That actually doesn\u0027t work because its in the same build hierarchy,if you use the project.version variable, it does not have any value.\n\nI went through this with Jim a few weeks ago and we couldn\u0027t see any other way of doing this.",
+      "parentUuid": "b6ffad6c_92e3b9dd",
+      "range": {
+        "startLine": 40,
+        "startChar": 34,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "12bb084aa1a7da1e5d10e76b6f1c57b1a0de2e00",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
