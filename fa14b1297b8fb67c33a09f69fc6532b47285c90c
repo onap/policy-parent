@@ -46,6 +46,30 @@
       "revId": "fa14b1297b8fb67c33a09f69fc6532b47285c90c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de8a2cc_d1716737",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-09-09T20:54:32Z",
+      "side": 1,
+      "message": "Sounds good to me.\nIn that case, may be we can change the NOTE written above it.",
+      "parentUuid": "1d3d486a_e99d9de2",
+      "range": {
+        "startLine": 40,
+        "startChar": 34,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "fa14b1297b8fb67c33a09f69fc6532b47285c90c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
