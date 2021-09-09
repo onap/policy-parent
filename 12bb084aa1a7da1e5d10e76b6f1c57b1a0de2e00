@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6ffad6c_92e3b9dd",
+        "filename": "integration/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-09-09T11:25:26Z",
+      "side": 1,
+      "message": "Shall we just keep it as ${project.version}? - so that that there is no need to update that specifically everytime if it is always going to be same as the project version as the comment states.\nOr could there be any problem with doing that during release!",
+      "range": {
+        "startLine": 40,
+        "startChar": 34,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "12bb084aa1a7da1e5d10e76b6f1c57b1a0de2e00",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
