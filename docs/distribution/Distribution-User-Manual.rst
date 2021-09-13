@@ -514,8 +514,8 @@ A configuration example
                                 ],
                                 "consumerGroup": "policy-group",
                                 "environmentName": "AUTO",
-                                "keystorePath": "null",
-                                "keystorePassword": "null",
+                                "keyStorePath": "null",
+                                "keyStorePassword": "null",
                                 "activeserverTlsAuth": false,
                                 "isFilterinEmptyResources": true,
                                 "isUseHttpsWithDmaap": true
@@ -536,18 +536,21 @@ A configuration example
                             "parameterClassName": "org.onap.policy.distribution.forwarding.lifecycle.api.LifecycleApiForwarderParameters",
                             "parameters": {
                                 "apiParameters": {
-                                    "hostName": "policy-api",
+                                    "clientName": "policy-api",
+                                    "hostname": "policy-api",
                                     "port": 6969,
+                                    "useHttps": true,
                                     "userName": "healthcheck",
                                     "password": "zb!XztG34"
                                 },
                                 "papParameters": {
-                                    "hostName": "policy-pap",
+                                    "clientName": "policy-pap",
+                                    "hostname": "policy-pap",
                                     "port": 6969,
+                                    "useHttps": true,
                                     "userName": "healthcheck",
                                     "password": "zb!XztG34"
                                 },
-                                "isHttps": true,
                                 "deployPolicies": true
                             }
                         }
