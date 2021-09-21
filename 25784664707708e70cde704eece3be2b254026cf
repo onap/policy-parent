@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f50e9505_7a861c44",
+        "filename": "docs/clamp/controlloop/controlloop.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2021-09-21T14:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf7b128a_45f39da6",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "25784664707708e70cde704eece3be2b254026cf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5730ccc_fae585ae",
         "filename": "docs/clamp/controlloop/controlloop.rst",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "72af8b15_cb7ae870",
+        "filename": "docs/clamp/controlloop/controlloop.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2021-09-21T14:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5730ccc_fae585ae",
+      "range": {
+        "startLine": 262,
+        "startChar": 33,
+        "endLine": 262,
+        "endChar": 34
+      },
+      "revId": "25784664707708e70cde704eece3be2b254026cf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd79f249_5057711a",
         "filename": "docs/clamp/controlloop/controlloop.rst",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "25784664707708e70cde704eece3be2b254026cf",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4d351a8_bf9fa9ed",
+        "filename": "docs/clamp/controlloop/controlloop.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2021-09-21T14:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd79f249_5057711a",
+      "range": {
+        "startLine": 272,
+        "startChar": 63,
+        "endLine": 272,
+        "endChar": 69
+      },
+      "revId": "25784664707708e70cde704eece3be2b254026cf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
