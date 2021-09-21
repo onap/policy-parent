@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf7b128a_45f39da6",
+        "filename": "docs/clamp/controlloop/controlloop.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-09-21T14:08:59Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "25784664707708e70cde704eece3be2b254026cf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5730ccc_fae585ae",
+        "filename": "docs/clamp/controlloop/controlloop.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-09-21T14:08:59Z",
+      "side": 1,
+      "message": "in?",
+      "range": {
+        "startLine": 262,
+        "startChar": 33,
+        "endLine": 262,
+        "endChar": 34
+      },
+      "revId": "25784664707708e70cde704eece3be2b254026cf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd79f249_5057711a",
+        "filename": "docs/clamp/controlloop/controlloop.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-09-21T14:08:59Z",
+      "side": 1,
+      "message": "manage",
+      "range": {
+        "startLine": 272,
+        "startChar": 63,
+        "endLine": 272,
+        "endChar": 69
+      },
+      "revId": "25784664707708e70cde704eece3be2b254026cf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
