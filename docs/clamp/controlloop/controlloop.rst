@@ -10,21 +10,23 @@ CLAMP Metadata Control Loop Automation Management using TOSCA
     :depth: 4
 
 The idea of using control loops to automatically (or autonomously) perform network management
-has been the subject of much research in the Network Management research community, see this
-paper for some background. However, it is only with the advent of ONAP that we have a platform
-that supports control loops for network management. Before ONAP, Control Loops have been
-implemented by hard-coding components together and hard coding logic into components. ONAP
-has taken a step forward towards automatic implementation of Control Loops by allowing
-parameterization of Control Loops that work on the premise that the Control Loops use a set
-of analytic, policy, and control components connected together in set ways.
+has been the subject of much research in the Network Management research community, see
+:download:`this paper <files/ControlLoops.pdf>` for some background. However, it is only with
+the advent of ONAP that we have a platform that supports control loops for network management.
+Before ONAP, Control Loops have been implemented by hard-coding components together and hard
+coding logic into components. ONAP has taken a step forward towards automatic implementation
+of Control Loops by allowing parameterization of Control Loops that work on the premise that
+the Control Loops use a set of analytic, policy, and control components connected together in
+set ways.
 
 The goal of the work is to extend and enhance the current ONAP Control Loop support to provide
 a complete open-source framework for Control Loops. This will enhance the current support to
 provide TOSCA based Control Loop definition and development, commissioning and run-time management.
 The participants that comprise a Control Loop and the metadata needed to link the participants
-together to create a Control Loop are specified in a standardized way using the OASIS TOSCA
-modelling language. The TOSCA description is then used to commission, instantiate, and manage
-the Control Loops in the run time system.
+together to create a Control Loop are specified in a standardized way using the `OASIS TOSCA
+modelling language <http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/>`_. The TOSCA
+description is then used to commission, instantiate, and manage the Control Loops in the run
+time system.
 
 .. image:: images/01-controlloop-overview.png
 
@@ -92,6 +94,7 @@ concepts are defined at design time and are passed to the runtime in a TOSCA doc
 concepts in the Control Loop Runtime are created by the runtime part of the system using the
 definitions created at design time.
 
+.. _controlloop-capabilities:
 
 2 Capabilities
 ==============
@@ -217,7 +220,7 @@ At Run Time, the following Control Loop Life Cycle management capabilities are s
 
 .. note::
     The system dialogues for run time capabilities are described in detail on the
-    System Level Dialogues page.
+    :ref:`System Level Dialogues <system-level-label>` page.
 
 
 2.1 Control Loop Instance States
@@ -293,7 +296,8 @@ A Participant runs Control Loop Elements and manages and reports on their life c
 following the instructions it gets from the CLAMP runtime in messages delivered over DMaaP.
 
 In the figure above, five participants are shown. A Configuration Persistence Participant
-manages Control Loop Elements that interact with the ONAP Configuration Persistence Service
+manages Control Loop Elements that interact with the `ONAP Configuration Persistence Service
+<https://docs.onap.org/projects/onap-cps/en/latest/overview.html>`_
 to store common data. The DCAE Participant runs Control Loop Elements that manage DCAE
 microservices. The Kubernetes Participant hosts the Control Loop Elements that are managing
 the life cycle of microservices in control loops that are in a Kubernetes ecosystem. The
@@ -315,33 +319,34 @@ In order to keep management of versions of the configuration of control loop ins
 straightforward and easy to implement, the following version management scheme using
 semantic versioning is implemented. Each configuration of a Control Loop Instance and
 configuration of a Control Loop Element has a semantic version with 3 digits indicating
-the major.minor.patch number of the version.
+the **major.minor.patch** number of the version.
 
-Note that a configuration means a full set of parameter values for a Control Loop Instance.
+.. note::
+    A **configuration** means a full set of parameter values for a Control Loop Instance.
 
 .. image:: images/05-upgrade-states.png
 
 Change constraints:
 
-A Control Loop or Control Loop Element in state **RUNNING** can be changed to a higher patch
-level or rolled back to a lower patch level. This means that hot changes that do not
-impact the structure of a Control Loop or its elements can be executed.
+#. A Control Loop or Control Loop Element in state **RUNNING** can be changed to a higher patch
+   level or rolled back to a lower patch level. This means that hot changes that do not
+   impact the structure of a Control Loop or its elements can be executed.
 
-A Control Loop or Control Loop Element in state **PASSIVE** can be changed to a higher
-minor/patch level or rolled back to a lower minor/patch level. This means that structural
-changes to Control Loop Elements that do not impact the Control Loop as a whole can be
-executed by taking the control loop to state **PASSIVE**.
+#. A Control Loop or Control Loop Element in state **PASSIVE** can be changed to a higher
+   minor/patch level or rolled back to a lower minor/patch level. This means that structural
+   changes to Control Loop Elements that do not impact the Control Loop as a whole can be
+   executed by taking the control loop to state **PASSIVE**.
 
-A Control Loop or Control Loop Element in state **UNINITIALIZED** can be changed to a higher
-major/minor/patch level or rolled back to a lower major/minor/patch level. This means
-that where the structure of the entire control loop is changed, the control loop must
-be uninitialized and reinitialized.
+#. A Control Loop or Control Loop Element in state **UNINITIALIZED** can be changed to a higher
+   major/minor/patch level or rolled back to a lower major/minor/patch level. This means
+   that where the structure of the entire control loop is changed, the control loop must
+   be uninitialized and reinitialized.
 
-If a Control Loop Element has a minor version change, then its Control Loop Instance must
-have at least a minor version change.
+#. If a Control Loop Element has a **minor** version change, then its Control Loop Instance
+   must have at least a **minor** version change.
 
-If a Control Loop Element has a major version change, then its Control Loop Instance must
-have a major version change.
+#. If a Control Loop Element has a **major** version change, then its Control Loop Instance
+   must have a **major** version change.
 
 4.2 Scalability
 ---------------
@@ -389,15 +394,18 @@ of many types across themselves using a mechanism such as a Kubernetes cluster.
 
 At runtime, interaction between ONAP platform services and application microservices are
 relatively unconstrained, so interactions between Control Loop Elements for a given Control
-Loop Instance remain relatively unconstrained. A proposal to support access-controlled access
-to and between ONAP services will improve this. This can be complemented by intercepting and
-controlling services accesses between Control Loop Elements for Control Loop Instances for
-some/all Control Loop types.
+Loop Instance remain relatively unconstrained. A
+`proposal to support access-controlled accessto and between ONAP services
+<https://wiki.onap.org/pages/viewpage.action?pageId=103417456>`_
+will improve this. This can be complemented by intercepting and controlling services
+accesses between Control Loop Elements for Control Loop Instances for some/all Control
+Loop types.
 
-API gateways such as Kong have emerged as a useful technology for exposing and controlling
-service endpoint access for applications and services. When a Control Loop Type is onboarded,
-or when Control Loop Instances are created in the Participants, CLAMP can configure service
-endpoints between Control Loop Elements to redirect through an API Gateway.
+API gateways such as `Kong <https://konghq.com/kong/>`_ have emerged as a useful technology
+for exposing and controlling service endpoint access for applications and services. When a
+Control Loop Type is onboarded, or when Control Loop Instances are created in the Participants,
+CLAMP can configure service endpoints between Control Loop Elements to redirect through an
+API Gateway.
 
 Authentication and access-control rules can then be dynamically configured at the API gateway
 to support constrained access between Control Loop Elements and Control Loop Instances.
@@ -440,7 +448,7 @@ in isolated namespaces or in dedicated workers/clusters; etc..
 
 The APIs and Protocols used by CLAMP for Control Loops are described on the pages below:
 
-#. System Level Dialogues
+#. :ref:`System Level Dialogues <system-level-label>`
 #. Defining Control Loops in TOSCA for CLAMP
 #. REST APIs for CLAMP Control Loops
 #. The CLAMP Control Loop Participant Protocol
@@ -456,3 +464,5 @@ The design and implementation of TOSCA Control Loops in CLAMP is described for e
 #. The CLAMP GUI
 #. Building and running CLAMP
 #. Testing CLAMP
+
+End of Document

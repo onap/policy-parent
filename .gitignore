@@ -14,3 +14,4 @@ docs/conf.pyc
 docs/html/
 docs/_static/
 docs/__pycache__/
+.vscode/

@@ -12,4 +12,5 @@ CLAMP handles control loops in two ways, either using built in ONAP Control Loop
 
    clamp/clamp
    controlloop/controlloop
+   controlloop/system-level-dialogues
 
