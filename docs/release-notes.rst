@@ -244,8 +244,6 @@ Key Updates
    - All components return with non-zero exit code in case of application failure
    - All components log to standard out (i.e., k8s logs) by default
    - Continue to write log files inside individual pods, as well
-* Multi-tenancy
-   - Basic initial support using the existing features
 * E2E Network Slicing
    - Added ModifyNSSI operation to SO actor
 * Consolidated health check
