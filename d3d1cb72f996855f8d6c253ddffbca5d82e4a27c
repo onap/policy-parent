@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9ca4ff3_275dc8ed",
+        "filename": "docs/clamp/controlloop/controlloop.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-09-23T10:55:28Z",
+      "side": 1,
+      "message": "access to\n\nYou can fix this in the next review if you like.",
+      "range": {
+        "startLine": 398,
+        "startChar": 39,
+        "endLine": 398,
+        "endChar": 48
+      },
+      "revId": "d3d1cb72f996855f8d6c253ddffbca5d82e4a27c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
