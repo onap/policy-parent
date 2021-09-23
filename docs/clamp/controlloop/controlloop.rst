@@ -222,6 +222,7 @@ At Run Time, the following Control Loop Life Cycle management capabilities are s
     The system dialogues for run time capabilities are described in detail on the
     :ref:`System Level Dialogues <system-level-label>` page.
 
+.. _controlloop-instance-states:
 
 2.1 Control Loop Instance States
 --------------------------------
@@ -312,6 +313,8 @@ partake in control loops.
 4. Other Considerations
 =======================
 
+.. _management-cl-instance-configs:
+
 4.1 Management of Control Loop Instance Configurations
 ------------------------------------------------------
 
@@ -395,7 +398,7 @@ of many types across themselves using a mechanism such as a Kubernetes cluster.
 At runtime, interaction between ONAP platform services and application microservices are
 relatively unconstrained, so interactions between Control Loop Elements for a given Control
 Loop Instance remain relatively unconstrained. A
-`proposal to support access-controlled accessto and between ONAP services
+`proposal to support access-controlled access to and between ONAP services
 <https://wiki.onap.org/pages/viewpage.action?pageId=103417456>`_
 will improve this. This can be complemented by intercepting and controlling services
 accesses between Control Loop Elements for Control Loop Instances for some/all Control
@@ -449,7 +452,7 @@ in isolated namespaces or in dedicated workers/clusters; etc..
 The APIs and Protocols used by CLAMP for Control Loops are described on the pages below:
 
 #. :ref:`System Level Dialogues <system-level-label>`
-#. Defining Control Loops in TOSCA for CLAMP
+#. :ref:`Defining Control Loops in TOSCA for CLAMP <defining-controlloops-label>`
 #. REST APIs for CLAMP Control Loops
 #. The CLAMP Control Loop Participant Protocol
 
