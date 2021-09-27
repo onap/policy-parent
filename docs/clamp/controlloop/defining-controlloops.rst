@@ -261,21 +261,16 @@ In the case of the Gentle Guidance control loop, we define a Control Loop Elemen
 for each part of the domain logic we are managing. We then define the Control Loop Node Template
 for the control loop itself.
 
-The code fragment below shows the TOSCA Topology Template for the Gentle Guidance domain when
-no parameters are defined. Please refer to the `No Properties yaml file in Github
+Please refer to the `No Properties yaml file in Github
 <https://github.com/onap/policy-clamp/blob/master/common/src/test/resources/gentleguidance/GentleGuidanceNoPropeties.yaml>`_
-for the definitive Yaml specification.
+for the definitive Yaml specification for the TOSCA Topology Template for the Gentle Guidance
+domain when no parameters are defined.
 
-.. literalinclude:: files/gentle-cl-definition-example.yaml
-    :language: yaml
-
-The code fragment below shows the TOSCA Topology Template for the Gentle Guidance domain when
-the default values of parameters are defined. Please refer to the `Default Properties yaml file in Github
+Please refer to the `Default Properties yaml file in Github
 <https://github.com/onap/policy-clamp/blob/master/common/src/test/resources/gentleguidance/GentleGuidanceDefaultPropeties.yaml>`_
-for the definitive Yaml specification.
+for the definitive Yaml specification for the TOSCA Topology Template for the Gentle Guidance
+domain when the default values of parameters are defined.
 
-.. literalinclude:: files/gentle-cl-definiftion-default-example.yaml
-    :language: yaml
 
 4 Creating Custom Control Loop Elements
 ========================================
