@@ -1,0 +1,34 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+topology_template:
+  node_templates:
+    org.onap.domain.gentleguidance.KubernetesControlLoopElementDefinition:
+      version: 1.0.0
+      type: org.onap.policy.clamp.controlloop.KubernetesControlLoopElement
+      type_version: 1.0.1
+      description: Control loop element for the Gentle Guidance Kubernetes Microservice
+    org.onap.domain.gentleguidance.RestControlLoopElementDefinition:
+      version: 1.0.0
+      type: org.onap.policy.clamp.controlloop.HttpControlLoopElement
+      type_version: 1.0.1
+      description: Control loop element for the Gentle Guidance Microservice REST configuration
+    org.onap.domain.gentleguidance.PolicyControlLoopElementDefinition:
+      version: 1.0.0
+      type: org.onap.policy.clamp.controlloop.PolicyControlLoopElement
+      type_version: 1.0.1
+      description: Control loop element for the Gentle Guidance Operational Policy
+    org.onap.domain.gentleguidance.CdsControlLoopElementDefinition:
+      version: 1.0.0
+      type: org.onap.policy.clamp.controlloop.CDSControlLoopElement
+      type_version: 1.0.1
+      description: Control loop element for the Gentle Guidance CDS blueprint
+    org.onap.domain.gentleguidance.ControlLoopDefinition:
+      version: 1.0.0
+      type: org.onap.policy.clamp.controlloop.ControlLoop
+      type_version: 1.0.1
+      description: Control loop definition for the Gentle Guidance domain
+      properties:
+        elements:
+        - org.onap.domain.gentleguidance.KubernetesControlLoopElementDefinition:1.0.0
+        - org.onap.domain.gentleguidance.RestControlLoopElementDefinition:1.0.0
+        - org.onap.domain.gentleguidance.PolicyControlLoopElementDefinition:1.0.0
+        - org.onap.domain.gentleguidance.CdsControlLoopElementDefinition:1.0.0
