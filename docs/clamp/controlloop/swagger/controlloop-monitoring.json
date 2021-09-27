@@ -1,0 +1,521 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "paths": {
+    "/onap/controlloop/v2/monitoring/clelement": {
+      "get": {
+        "tags": [
+          "Clamp Control Loop Monitoring API"
+        ],
+        "summary": "Query details of the requested cl element stats",
+        "description": "Queries details of the requested cl element stats, returning all clElement stats",
+        "operationId": "queryElementStatisticsUsingGET",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "end time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Control Loop element id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Participant name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "start time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Participant version",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ClElementStatisticsList",
+              "originalRef": "ClElementStatisticsList"
+            }
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/onap/controlloop/v2/monitoring/clelements/controlloop": {
+      "get": {
+        "tags": [
+          "Clamp Control Loop Monitoring API"
+        ],
+        "summary": "Query details of the requested cl element stats in a control loop",
+        "description": "Queries details of the requested cl element stats, returning all clElement stats",
+        "operationId": "queryElementStatisticsPerControlLoopUsingGET",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Control Loop name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Control Loop version",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ClElementStatisticsList",
+              "originalRef": "ClElementStatisticsList"
+            }
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/onap/controlloop/v2/monitoring/participant": {
+      "get": {
+        "tags": [
+          "Clamp Control Loop Monitoring API"
+        ],
+        "summary": "Query details of the requested participant stats",
+        "description": "Queries details of the requested participant stats, returning all participant stats",
+        "operationId": "queryParticipantStatisticsUsingGET",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "end time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Control Loop participant name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "start time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Control Loop participant version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ParticipantStatisticsList",
+              "originalRef": "ParticipantStatisticsList"
+            }
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/onap/controlloop/v2/monitoring/participants/controlloop": {
+      "get": {
+        "tags": [
+          "Clamp Control Loop Monitoring API"
+        ],
+        "summary": "Query details of all the participant stats in a control loop",
+        "description": "Queries details of the participant stats, returning all participant stats",
+        "operationId": "queryParticipantStatisticsPerControlLoopUsingGET",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Control Loop name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Control Loop version",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ParticipantStatisticsList",
+              "originalRef": "ParticipantStatisticsList"
+            }
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    }
+  }
+}

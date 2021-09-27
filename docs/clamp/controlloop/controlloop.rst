@@ -453,8 +453,8 @@ The APIs and Protocols used by CLAMP for Control Loops are described on the page
 
 #. :ref:`System Level Dialogues <system-level-label>`
 #. :ref:`Defining Control Loops in TOSCA for CLAMP <defining-controlloops-label>`
-#. REST APIs for CLAMP Control Loops
 #. :ref:`The CLAMP Control Loop Participant Protocol <controlloop-participant-protocol-label>`
+#. :ref:`REST APIs for CLAMP Control Loops <controlloop-rest-apis-label>`
 
 
 6 Design and Implementation

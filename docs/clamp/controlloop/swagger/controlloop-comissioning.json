@@ -1,0 +1,473 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "paths": {
+    "/onap/controlloop/v2/commission": {
+      "get": {
+        "tags": [
+          "Clamp Control Loop Commissioning API"
+        ],
+        "summary": "Query details of the requested commissioned control loop definitions",
+        "description": "Queries details of the requested commissioned control loop definitions, returning all control loop details",
+        "operationId": "queryUsingGET",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Control Loop definition name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Control Loop definition version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ToscaNodeTemplateRes",
+                "originalRef": "ToscaNodeTemplateRes"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      },
+      "post": {
+        "tags": [
+          "Clamp Control Loop Commissioning API"
+        ],
+        "summary": "Commissions control loop definitions",
+        "description": "Commissions control loop definitions, returning the commissioned control loop definition IDs",
+        "operationId": "createUsingPOST",
+        "consumes": [
+          "application/json",
+          "application/yaml"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Entity Body of Control Loop",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ToscaServiceTemplateReq",
+              "originalRef": "ToscaServiceTemplateReq"
+            }
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommissioningResponse",
+              "originalRef": "CommissioningResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      },
+      "delete": {
+        "tags": [
+          "Clamp Control Loop Commissioning API"
+        ],
+        "summary": "Delete a commissioned control loop",
+        "description": "Deletes a Commissioned Control Loop, returning optional error details",
+        "operationId": "deleteUsingDELETE",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Control Loop definition name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Control Loop definition version",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommissioningResponse",
+              "originalRef": "CommissioningResponse"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/onap/controlloop/v2/commission/elements": {
+      "get": {
+        "tags": [
+          "Clamp Control Loop Commissioning API"
+        ],
+        "summary": "Query details of the requested commissioned control loop element definitions",
+        "description": "Queries details of the requested commissioned control loop element definitions, returning all control loop elements' details",
+        "operationId": "queryElementsUsingGET",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Control Loop definition name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Control Loop definition version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ToscaNodeTemplateRes",
+                "originalRef": "ToscaNodeTemplateRes"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    }
+  }
+}
