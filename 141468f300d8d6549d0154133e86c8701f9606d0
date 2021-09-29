@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03988b38_d6eb1469",
+        "filename": "docs/clamp/controlloop/files/gentle-cl-definiftion-default-example.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-09-29T08:41:18Z",
+      "side": 1,
+      "message": "Rather than copying this file in, please link to the file in github",
+      "revId": "141468f300d8d6549d0154133e86c8701f9606d0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe8dcb60_5c5c5862",
+        "filename": "docs/clamp/controlloop/files/gentle-cl-definition-example.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-09-29T08:41:18Z",
+      "side": 1,
+      "message": "Rather than copying this file in, please link to the file in github",
+      "revId": "141468f300d8d6549d0154133e86c8701f9606d0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
