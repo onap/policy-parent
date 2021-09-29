@@ -9,6 +9,10 @@ The Decision API is used by ONAP components that enforce policies and need a dec
 specific situation. The Decision API mimics closely the XACML request standard in that it supports a subject, action
 and resource.
 
+ When the PAP enables an xacml-pdp, the decision API becomes available. Conversely, when the PAP disables an xacml-pdp, the
+ decision API is disabled. The decision API is enabled/disabled by the PDP-STATE-CHANGE messages from PAP. If a request is
+ to the decision API while it is disabled, a "404 - Not Found" error will be returned.
+
 .. csv-table::
    :header: "Field", "Required", "XACML equivalent", "Description"
 
