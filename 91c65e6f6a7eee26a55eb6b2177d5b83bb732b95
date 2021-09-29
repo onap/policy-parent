@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4f6e005_f090ad32",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-09-29T13:52:49Z",
+      "side": 1,
+      "message": "enables an -\u003e activates a",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "91c65e6f6a7eee26a55eb6b2177d5b83bb732b95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e13e51_c10c3bd9",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-09-29T13:52:49Z",
+      "side": 1,
+      "message": "disables an -\u003e deactivates a",
+      "range": {
+        "startLine": 12,
+        "startChar": 97,
+        "endLine": 12,
+        "endChar": 108
+      },
+      "revId": "91c65e6f6a7eee26a55eb6b2177d5b83bb732b95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df13de11_013cad5b",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-09-29T13:52:49Z",
+      "side": 1,
+      "message": "empty space at beginning",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "91c65e6f6a7eee26a55eb6b2177d5b83bb732b95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8f2680_ce7975a2",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-09-29T13:52:49Z",
+      "side": 1,
+      "message": "is -\u003e is made",
+      "range": {
+        "startLine": 13,
+        "startChar": 120,
+        "endLine": 13,
+        "endChar": 122
+      },
+      "revId": "91c65e6f6a7eee26a55eb6b2177d5b83bb732b95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
