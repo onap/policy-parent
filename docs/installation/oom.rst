@@ -50,6 +50,12 @@ The assumption is you have cloned the charts from the OOM repository into a loca
 
 From your local copy, edit any of the values.yaml files in the policy tree to make desired changes.
 
+The policy schema will be installed automatically as part of the database configuration using ``db-migrator``.
+By default the policy schema is upgraded to the latest version.
+For more information on how to change the ``db-migrator`` setup please see: `Using Policy DB Migrator`_.
+
+.. _Using Policy DB Migrator: ../db-migrator/policy-db-migrator.html
+
 **Step 2** Build the charts
 
 .. code-block:: bash
@@ -65,32 +71,11 @@ After undeploying policy, loop on monitoring the policy pods until they go away.
 
 .. code-block:: bash
 
-  helm del --purge dev-policy
+  helm undeploy dev-policy
   kubectl get pods -n onap | grep dev-policy
 
-**Step 4** Delete NFS persisted data for Policy
 
-.. code-block:: bash
-
-  rm -fr /dockerdata-nfs/dev/policy
-
-**Step 5** Make sure there is no orphan policy database persistent volume or claim.
-
-First, find if there is an orphan database PV or PVC with the following commands:
-
-.. code-block:: bash
-
-  kubectl get pvc -n onap | grep policy
-  kubectl get pv -n onap | grep policy
-
-If there are any orphan resources, delete them with
-
-.. code-block:: bash
-
-    kubectl delete pvc <orphan-policy-mariadb-resource>
-    kubectl delete pv <orphan-policy-mariadb-resource>
-
-**Step 6** Re-Deploy Policy pods
+**Step 4** Re-Deploy Policy pods
 
 After deploying policy, loop on monitoring the policy pods until they come up.
 
@@ -98,6 +83,33 @@ After deploying policy, loop on monitoring the policy pods until they come up.
 
   helm deploy dev-policy local/onap --namespace onap
   kubectl get pods -n onap | grep dev-policy
+
+.. note::
+   If you want to purge the existing data and start with a clean install,
+   please follow these steps after undeploying:
+
+   **Step 1** Delete NFS persisted data for Policy
+
+   .. code-block:: bash
+
+     rm -fr /dockerdata-nfs/dev/policy
+
+   **Step 2** Make sure there is no orphan policy database persistent volume or claim.
+
+   First, find if there is an orphan database PV or PVC with the following commands:
+
+   .. code-block:: bash
+
+     kubectl get pvc -n onap | grep policy
+     kubectl get pv -n onap | grep policy
+
+   If there are any orphan resources, delete them with
+
+   .. code-block:: bash
+
+       kubectl delete pvc <orphan-policy-mariadb-resource>
+       kubectl delete pv <orphan-policy-mariadb-resource>
+
 
 Restarting a faulty component
 *****************************
