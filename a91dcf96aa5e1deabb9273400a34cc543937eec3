@@ -22,6 +22,30 @@
       "revId": "a91dcf96aa5e1deabb9273400a34cc543937eec3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f5caee_11dc349e",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-09-30T14:45:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7695925b_cae549c1",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "a91dcf96aa5e1deabb9273400a34cc543937eec3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
