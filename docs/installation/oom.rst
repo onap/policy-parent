@@ -50,6 +50,10 @@ The assumption is you have cloned the charts from the OOM repository into a loca
 
 From your local copy, edit any of the values.yaml files in the policy tree to make desired changes.
 
+If a database upgrade or downgrade is required please see: `Using Policy DB Migrator`_.
+
+.. _Using Policy DB Migrator: ../db-migrator/policy-db-migrator.html 
+
 **Step 2** Build the charts
 
 .. code-block:: bash
