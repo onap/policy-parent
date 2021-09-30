@@ -71,6 +71,78 @@
     },
     {
       "key": {
+        "uuid": "1ef6e3b1_eb5534f0",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-09-30T12:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df13de11_013cad5b",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "91c65e6f6a7eee26a55eb6b2177d5b83bb732b95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05fab5b8_32d2f560",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-09-30T12:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8e13e51_c10c3bd9",
+      "range": {
+        "startLine": 12,
+        "startChar": 97,
+        "endLine": 12,
+        "endChar": 108
+      },
+      "revId": "91c65e6f6a7eee26a55eb6b2177d5b83bb732b95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2c9cc8_7349f03d",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-09-30T12:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f6e005_f090ad32",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "91c65e6f6a7eee26a55eb6b2177d5b83bb732b95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec8f2680_ce7975a2",
         "filename": "docs/xacml/decision-api.rst",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "91c65e6f6a7eee26a55eb6b2177d5b83bb732b95",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db27b451_dc168949",
+        "filename": "docs/xacml/decision-api.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-09-30T12:17:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8f2680_ce7975a2",
+      "range": {
+        "startLine": 13,
+        "startChar": 120,
+        "endLine": 13,
+        "endChar": 122
+      },
+      "revId": "91c65e6f6a7eee26a55eb6b2177d5b83bb732b95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
