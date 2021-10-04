@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b24bcf9_1b149590",
+        "filename": "docs/db-migrator/policy-db-migrator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-04T20:49:33Z",
+      "side": 1,
+      "message": "I think we need to update the existing installation/upgrade section \u0026 link this page to it - https://docs.onap.org/projects/onap-policy-parent/en/latest/installation/installation.html",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 24
+      },
+      "revId": "b0f156d19a952a3050173c003294f84caacd82b2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32589033_bfd2d523",
+        "filename": "docs/db-migrator/policy-db-migrator.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-04T20:49:33Z",
+      "side": 1,
+      "message": "Is it true for downgrade also?",
+      "range": {
+        "startLine": 129,
+        "startChar": 10,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "b0f156d19a952a3050173c003294f84caacd82b2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
