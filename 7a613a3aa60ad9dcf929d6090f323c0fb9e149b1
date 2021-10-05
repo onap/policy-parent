@@ -22,6 +22,30 @@
       "revId": "7a613a3aa60ad9dcf929d6090f323c0fb9e149b1",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e8ba90d_4a46f594",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7668
+      },
+      "writtenOn": "2021-10-05T17:12:54Z",
+      "side": 1,
+      "message": "Maybe the right thing to say is something like \"The policy schema will be installed automatically as part of the db setup - see Using Policy DB Migrator`_. for more information\"\nThis isn\u0027t such a big change as this used to be done in the java code in previous releases.\nWe have still been running steps 3 - 6 as part of our testing.\nI think it\u0027s OK to keep them if you want to start with a clean install.\nIf you want to upgrade and preserve you existing data then we\u0027ll need to make some changes here.",
+      "parentUuid": "b10325c5_3b4caa2a",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "7a613a3aa60ad9dcf929d6090f323c0fb9e149b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
