@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79a9cf73_991478e5",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-05T13:10:45Z",
+      "side": 1,
+      "message": "I think we need to add more details about how the db-migrator can be used from a deployment perspective.\nThe other file has the details about db-migrator itself. But how to use it is not captured.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 87
+      },
+      "revId": "d1eaa0b7d6aed07e4e54611347b58067c31000a8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "552af7a3_61d874dc",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-05T13:10:45Z",
+      "side": 1,
+      "message": "blank space",
+      "range": {
+        "startLine": 55,
+        "startChar": 68,
+        "endLine": 55,
+        "endChar": 69
+      },
+      "revId": "d1eaa0b7d6aed07e4e54611347b58067c31000a8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
