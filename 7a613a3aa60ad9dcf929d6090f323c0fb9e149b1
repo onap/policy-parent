@@ -46,6 +46,30 @@
       "revId": "7a613a3aa60ad9dcf929d6090f323c0fb9e149b1",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d2032d_33ae07bb",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-05T19:32:23Z",
+      "side": 1,
+      "message": "I don\u0027t think this page intends to bring up a test setup. Instead it is for an official deployment of policy framework. Moreover, no one will clean existing information to do an upgrade in realtime. And for fresh install there is nothing to clean 😊\nIf you still want to keep the steps, may be add it as a section/note at the bottom separately.",
+      "parentUuid": "0e8ba90d_4a46f594",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "7a613a3aa60ad9dcf929d6090f323c0fb9e149b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
