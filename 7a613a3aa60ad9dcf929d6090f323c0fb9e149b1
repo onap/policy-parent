@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b10325c5_3b4caa2a",
+        "filename": "docs/installation/oom.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-05T16:57:51Z",
+      "side": 1,
+      "message": "I don\u0027t think just mentioning this as an option is helpful. As we have db-migrator plugged into the oom installation already. So, it\u0027s no more a choice 😊\n\nAlso, step 3, 4, 5, 6 below are not valid anymore. We need to rewrite this section \"Installing or Upgrading Policy\" based on how the oom installation \u0026 upgrade flows are behaving in Istanbul with db-migrator.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "7a613a3aa60ad9dcf929d6090f323c0fb9e149b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
