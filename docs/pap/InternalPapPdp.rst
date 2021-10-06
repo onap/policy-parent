@@ -15,7 +15,7 @@ API <https://wiki.onap.org/display/DW/DMaaP+API>`__ messaging. The APIs in this 
 communication in the Policy Framework. The APIs are NOT supported for use by components outside the Policy Framework and
 are subject to revision and change at any time.
 
-There are four messages on the API:
+There are three messages on the API:
 
 1. PDP_STATUS: PDP→PAP, used by PDPs to report to the PAP
 
@@ -25,68 +25,68 @@ There are four messages on the API:
 3. PDP_STATE_CHANGE: PAP→PDP, used by the PAP to change the state of PDPs, triggers a PDP_STATUS message with the result
    of the PDP_STATE_CHANGE operation
 
-4. PDP_HEALTH_CHECK: PAP→PDP, used by the PAP to order a health check on PDPs, triggers a PDP_STATUS message with the
-   result of the PDP_HEALTH_CHECK operation
 
 The fields in the table below are valid on API calls:
 
-=============================== ======== ======== ======== ======= =====================================================
-**Field**                       **PDP    **PDP    **PDP    **PDP   **Comment**
-                                STATUS** UPDATE** STATE    HEALTH
-                                                  CHANGE** CHECK**
-=============================== ======== ======== ======== ======= =====================================================
-(message_name)                  M        M        M        M       pdp_status, pdp_update, pdp_state_change, or
-                                                                   pdp_health_check
-name                            M        M        C        C       The name of the PDP, for state changes and health
-                                                                   checks, the PDP group and subgroup can be used to
-                                                                   specify the scope of the operation
-version                         M        N/A      N/A      N/A     The version of the PDP
-pdp_type                        M        M        N/A      N/A     The type of the PDP, currently xacml, drools, or apex
-state                           M        N/A      M        N/A     The administrative state of the PDP group: PASSIVE,
-                                                                   SAFE, TEST, ACTIVE, or TERMINATED
-healthy                         M        N/A      N/A      N/A     The result of the latest health check on the PDP:
-                                                                   HEALTHY/NOT_HEALTHY/TEST_IN_PROGRESS
-description                     O        O        N/A      N/A     The description of the PDP
-pdp_group                       O        M        C        C       The PDP group to which the PDP belongs, the PDP group
-                                                                   and subgroup can be used to specify the scope of the
-                                                                   operation
-pdp_subgroup                    O        M        C        C       The PDP subgroup to which the PDP belongs, the PDP
-                                                                   group and subgroup can be used to specify the scope
-                                                                   of the operation
-supported_policy_types          M        N/A      N/A      N/A     A list of the policy types supported by the PDP
-policies                        M        N/A      N/A      N/A     The list of policies running on the PDP
-policiesToBeDeployed            N/A      M        N/A      N/A     The list of policies to be deployed on the PDP
-policiesToBeUndeployed          N/A      M        N/A      N/A     The list of policies to be undeployed from the PDP
-->(name)                        O        M        N/A      N/A     The name of a TOSCA policy running on the PDP
-->policy_type                   O        M        N/A      N/A     The TOSCA policy type of the policyWhen a PDP starts,
-                                                                   it commences periodic sending of *PDP_STATUS*
-                                                                   messages on DMaaP. The PAP receives these messages
-                                                                   and acts in whatever manner is appropriate.
-->policy_type_version           O        M        N/A      N/A     The version of the TOSCA policy type of the policy
-->properties                    O        M        N/A      N/A     The properties of the policy for the XACML, Drools,
-                                                                   or APEX PDP for details
-instance                        M        N/A      N/A      N/A     The instance ID of the PDP running in a Kuberenetes
-                                                                   Pod
-deployment_instance_info        M        N/A      N/A      N/A     Information on the node running the PDP
-properties                      O        O        N/A      N/A     Other properties specific to the PDP
-statistics                      M        N/A      N/A      N/A     Statistics on policy execution in the PDP
-->policy_download_count         M        N/A      N/A      N/A     The number of policies downloaded into the PDP
-->policy_download_success_count M        N/A      N/A      N/A     The number of policies successfully downloaded into
-                                                                   the PDP
-->policy_download_fail_count    M        N/A      N/A      N/A     The number of policies downloaded into the PDP where
-                                                                   the download failed
-->policy_executed_count         M        N/A      N/A      N/A     The number of policy executions on the PDP
-->policy_executed_success_count M        N/A      N/A      N/A     The number of policy executions on the PDP that
-                                                                   completed successfully
-->policy_executed_fail_count    M        N/A      N/A      N/A     The number of policy executions on the PDP that
-                                                                   failed
-response                        O        N/A      N/A      N/A     The response to the last operation that the PAP
-                                                                   executed on the PDP
-->response_to                   M        N/A      N/A      N/A     The PAP to PDP message to which this is a response
-->response_status               M        N/A      N/A      N/A     SUCCESS or FAIL
-->response_message              O        N/A      N/A      N/A     Message giving further information on the successful
-                                                                   or failed operation
-=============================== ======== ======== ======== ======= =====================================================
+=============================== ======== ======== ======== =====================================================
+**Field**                       **PDP    **PDP    **PDP    **Comment**
+                                STATUS** UPDATE** STATE
+                                                  CHANGE**
+=============================== ======== ======== ======== =====================================================
+(message_name)                  M        M        M        pdp_status, pdp_update, pdp_state_change, or
+                                                           pdp_health_check
+name                            M        M        M        The name of the PDP, for state changes and health
+                                                           checks, the PDP group and subgroup can be used to
+                                                           specify the scope of the operation
+pdpType                         M        N/A      N/A      The type of the PDP, currently xacml, drools, or apex
+state                           M        N/A      M        The administrative state of the PDP group: PASSIVE,
+                                                           SAFE, TEST, ACTIVE, or TERMINATED
+healthy                         M        N/A      N/A      The result of the latest health check on the PDP:
+                                                           HEALTHY/NOT_HEALTHY/TEST_IN_PROGRESS
+description                     O        O        N/A      The description of the PDP
+pdpGroup                        M        M        C        The PDP group to which the PDP belongs, the PDP group
+                                                           and subgroup can be used to specify the scope of the
+                                                           operation
+pdpSubgroup                     O        M        C        The PDP subgroup to which the PDP belongs, the PDP
+                                                           group and subgroup can be used to specify the scope
+                                                           of the operation
+source                          N/A      M        M        The source of the message
+policies                        M        N/A      N/A      The list of policies running on the PDP
+policiesToBeDeployed            N/A      M        N/A      The list of policies to be deployed on the PDP
+policiesToBeUndeployed          N/A      M        N/A      The list of policies to be undeployed from the PDP
+->(name)                        O        M        N/A      The name of a TOSCA policy running on the PDP
+->policy_type                   O        M        N/A      The TOSCA policy type of the policyWhen a PDP starts,
+                                                           it commences periodic sending of *PDP_STATUS*
+                                                           messages on DMaaP. The PAP receives these messages
+                                                           and acts in whatever manner is appropriate.
+->policy_type_version           O        M        N/A      The version of the TOSCA policy type of the policy
+->properties                    O        M        N/A      The properties of the policy for the XACML, Drools,
+                                                           or APEX PDP for details
+                                                           Pod
+properties                      O        N/A      N/A      Other properties specific to the PDP
+statistics                      M        N/A      N/A      Statistics on policy execution in the PDP
+->policyDeployCount             M        N/A      N/A      The number of policies deployed into the PDP
+->policyDeploySuccessCount      M        N/A      N/A      The number of policies successfully deployed into
+                                                           the PDP
+->policyDeployFailCount         M        N/A      N/A      The number of policies deployed into the PDP where
+                                                           the deployment failed
+->policyUndeployCount           M        N/A      N/A      The number of policies undeployed from the PDP
+->policyUndeploySuccessCount    M        N/A      N/A      The number of policies successfully undeployed from
+                                                           the PDP
+->policyUndeployFailCount       M        N/A      N/A      The number of policies undeployed from the PDP where
+                                                           the undeployment failed
+->policyExecutedCount           M        N/A      N/A      The number of policy executions on the PDP
+->policyExecutedSuccessCount    M        N/A      N/A      The number of policy executions on the PDP that
+                                                           completed successfully
+->policyExecutedFailCount       M        N/A      N/A      The number of policy executions on the PDP that
+                                                           failed
+response                        O        N/A      N/A      The response to the last operation that the PAP
+                                                           executed on the PDP
+->responseTo                    M        N/A      N/A      The PAP to PDP message to which this is a response
+->responseStatus                M        N/A      N/A      SUCCESS or FAIL
+->responseMessage               O        N/A      N/A      Message giving further information on the successful
+                                                           or failed operation
+=============================== ======== ======== ======== =====================================================
 
 YAML is used for illustrative purposes in the examples in this section. JSON (application/json) is used as the content
 type in the implementation of this API.
@@ -98,12 +98,12 @@ Administration. There is a single *PDP_STATUS* message on this API. PDPs send th
 *POLICY_PDP_PAP* DMaaP topic. The PAP listens on this topic for messages.
 
 When a PDP starts, it commences periodic sending of *PDP_STATUS* messages on DMaaP. The PAP receives these messages and
-acts in whatever manner is appropriate. *PDP_UPDATE*, *PDP_STATE_CHANGE*, and *PDP_HEALTH_CHECK* operations trigger a
+acts in whatever manner is appropriate. *PDP_UPDATE* and *PDP_STATE_CHANGE* operations trigger a
 *PDP_STATUS* message as a response.
 
 The *PDP_STATUS* message is used for PDP heartbeat monitoring. A PDP sends a *PDP_STATUS* message with a state of
 *TERMINATED* when it terminates normally. If a *PDP_STATUS* message is not received from a PDP periodically or in
-response to a pdp_update, pdp-state_change, or pdp_health_check message in a certain configurable time, then the PAP
+response to a pdp_update or pdp-state_change message in a certain configurable time, then the PAP
 assumes the PDP has failed.
 
 A PDP may be preconfigured with its PDP group, PDP subgroup, and policies. If the PDP group, subgroup, or any policy
@@ -114,170 +114,144 @@ sent to the PAP in a *PDP_STATUS* message is unknown to the PAP, the PAP locks t
   :linenos:
 
   pdp_status:
-    name: xacml_1
-    version: 1.2.3
-    pdp_type: xacml
-    state: active
-    healthy: true
+    pdpType: xacml
+    state: ACTIVE
+    healthy: HEALTHY
     description: XACML PDP running control loop policies
-    pdp_group: onap.pdpgroup.controlloop.operational
-    pdp_subgroup: xacml
-    supported_policy_types:
-      - onap.policies.controlloop.guard.FrequencyLimiter
-      - onap.policies.controlloop.guard.BlackList
-      - onap.policies.controlloop.guard.MinMax
     policies:
-      - onap.policies.controlloop.guard.frequencylimiter.EastRegion:
-          policy_type: onap.policies.controlloop.guard.FrequencyLimiter
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
-     - onap.policies.controlloop.guard.blacklist.eastRegion:
-          policy_type: onap.policies.controlloop.guard.BlackList
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
-      - onap.policies.controlloop.guard.minmax.eastRegion:
-          policy_type: onap.policies.controlloop.guard.MinMax
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
-    instance: xacml_1
-    deployment_instance_info:
-      node_address: xacml_1_pod
-      # Other deployment instance info
+      - name: SDNC_Policy.ONAP_NF_NAMING_TIMESTAMP
+        version: 1.0.0
+      - name: onap.policies.controlloop.guard.frequencylimiter.EastRegion
+        version: 1.0.0
+      - name: onap.policies.controlloop.guard.blacklist.eastRegion
+        version: 1.0.0
+      - name: .policies.controlloop.guard.minmax.eastRegion
+        version: 1.0.0
+    messageName: PDP_STATUS
+    requestId: 5551bd1b-4020-4fc5-95b7-b89c80a337b1
+    timestampMs: 1633534472002
+    name: xacml-23d33c2a-8715-43a8-ade5-5923fc0f185c
+    pdpGroup: defaultGroup
+    pdpSubgroup: xacml
     statistics:
-      policy_download_count: 0
-      policy_download_success_count: 0
-      policy_download_fail_count: 0
-      policy_executed_count: 123
-      policy_executed_success_count: 122
-      policy_executed_fail_count: 1
+      policyDeployCount: 0
+      policyDeploySuccessCount: 0
+      policyDeployFailCount: 0
+      policyExecutedCount: 123
+      policyExecutedSuccessCount: 122
+      policyExecutedFailCount: 1
+
 
 .. code-block:: yaml
   :caption: PDP_STATUS message from a Drools PDP running control loop policies
   :linenos:
 
   pdp_status:
-    name: drools_2
-    version: 2.3.4
-    pdp_type: drools
-    state: safe
-    healthy: true
+    pdpType: drools
+    state: ACTIVE
+    healthy: HEALTHY
     description: Drools PDP running control loop policies
-    pdp_group: onap.pdpgroup.controlloop.operational
-    pdp_subgroup: drools
-    supported_policy_types:
-      - onap.controllloop.operational.drools.vCPE
-      - onap.controllloop.operational.drools.vFW
     policies:
-      - onap.controllloop.operational.drools.vcpe.EastRegion:
-          policy_type: onap.controllloop.operational.drools.vCPE
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
-      - onap.controllloop.operational.drools.vfw.EastRegion:
-          policy_type: onap.controllloop.operational.drools.vFW
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
+      - name: onap.controllloop.operational.drools.vcpe.EastRegion
+        version: 1.0.0
+      - name: onap.controllloop.operational.drools.vfw.EastRegion
+        version: 1.0.0
     instance: drools_2
     deployment_instance_info:
       node_address: drools_2_pod
       # Other deployment instance info
     statistics:
-      policy_download_count: 3
-      policy_download_success_count: 3
-      policy_download_fail_count: 0
-      policy_executed_count: 123
-      policy_executed_success_count: 122
-      policy_executed_fail_count: 1
+      policyDeployCount: 3
+      policyDeploySuccessCount: 3
+      policyDeployFailCount: 0
+      policyExecutedCount: 123
+      policyExecutedSuccessCount: 122
+      policyExecutedFailCount: 1
+      policyUndeployCount: 0
+      policyUndeploySuccessCount: 0
+      policyUndeployFailCount: 0
     response:
-      response_to: PDP_HEALTH_CHECK
-      response_status: SUCCESS
+      responseTo: 52117e25-f416-45c7-a955-83ed929d557f
+      responseStatus: SUCCESSSS
+    messageName: PDP_STATUS
+    requestId: 52117e25-f416-45c7-a955-83ed929d557f
+    timestampMs: 1633355052181
+    name: drools-8819a672-57fd-4e74-ad89-aed1a64e1837
+    pdpGroup: defaultGroup
+    pdpSubgroup: drools
 
 .. code-block:: yaml
   :caption: PDP_STATUS message from an APEX PDP running control loop policies
   :linenos:
 
-  pdp_status:
-    name: apex_3
-    version: 2.3.4
-    pdp_type: apex
-    state: safe
-    healthy: true
-    description: APEX PDP running control loop policies
-    pdp_group: onap.pdpgroup.controlloop.operational
-    pdp_subgroup: apex
-    supported_policy_types:
-      - onap.controllloop.operational.apex.BBS
+    pdpType: apex
+    state: ACTIVE
+    healthy: HEALTHY
+    description: Pdp status response message for PdpUpdate
     policies:
-      - onap.controllloop.operational.apex.bbs.EastRegion:
-          policy_type: onap.controllloop.operational.apex.BBS
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
-      - onap.controllloop.operational.apex.bbs.WestRegion:
-          policy_type: onap.controllloop.operational.apex.BBS
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
-    instance: apex_3
-    deployment_instance_info:
-      node_address: apex_3_pod
-      # Other deployment instance info
+      - name: onap.controllloop.operational.apex.bbs.EastRegion
+        version: 1.0.0
     statistics:
-      policy_download_count: 3
-      policy_download_success_count: 3
-      policy_download_fail_count: 0
-      policy_executed_count: 123
-      policy_executed_success_count: 122
-      policy_executed_fail_count: 1
+      policyExecutedCount: 0
+      policyExecutedSuccessCount: 0
+      policyExecutedFailCount: 0
+      policyDeployCount: 1
+      policyDeploySuccessCount: 1
+      policyDeployFailCount: 0
+      policyUndeployCount: 0
+      policyUndeploySuccessCount: 0
+      policyUndeployFailCount: 0
     response:
-      response_to: PDP_HEALTH_CHECK
-      response_status: SUCCESS
+      responseTo: 679fad9b-abbf-4b9b-971c-96a8372ec8af
+      responseStatus: SUCCESS
+      responseMessage: >-
+        Apex engine started. Deployed policies are:
+        onap.policies.apex.sample.Salecheck:1.0.0
+    messageName: PDP_STATUS
+    requestId: 932c17b0-7ef9-44ec-be58-f17e104e7d5d
+    timestampMs: 1633435952217
+    name: apex-d0610cdc-381e-4aae-8e99-3f520c2a50db
+    pdpGroup: defaultGroup
+    pdpSubgroup: apex
+
 
 .. code-block:: yaml
   :caption: PDP_STATUS message from an XACML PDP running monitoring policies
   :linenos:
 
   pdp_status:
-    name: xacml_1
-    version: 1.2.3
-    pdp_type: xacml
-    state: active
-    healthy: true
-    description: XACML PDP running monitoring policies
-    pdp_group: onap.pdpgroup.Monitoring
-    pdp_subgroup: xacml
-    supported_policy_types:
-      - onap.monitoring.tcagen2
-     policies:
-      - onap.scaleout.tca:message
-          policy_type: onap.policies.monitoring.tcagen2
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
-    instance: xacml_1
-    deployment_instance_info:
-      node_address: xacml_1_pod
-      # Other deployment instance info
+    pdpType: xacml
+    state: ACTIVE
+    healthy: HEALTHY
+    description: XACML PDP running control loop policies
+    policies:
+      - name: SDNC_Policy.ONAP_NF_NAMING_TIMESTAMP
+        version: 1.0.0
+      - name: onap.scaleout.tca:message
+        version: 1.0.0
+    messageName: PDP_STATUS
+    requestId: 5551bd1b-4020-4fc5-95b7-b89c80a337b1
+    timestampMs: 1633534472002
+    name: xacml-23d33c2a-8715-43a8-ade5-5923fc0f185c
+    pdpGroup: onap.pdpgroup.Monitoring
+    pdpSubgroup: xacml
     statistics:
-      policy_download_count: 0
-      policy_download_success_count: 0
-      policy_download_fail_count: 0
-      policy_executed_count: 123
-      policy_executed_success_count: 122
-      policy_executed_fail_count: 1
+      policyDeployCount: 0
+      policyDeploySuccessCount: 0
+      policyDeployFailCount: 0
+      policyExecutedCount: 123
+      policyExecutedSuccessCount: 122
+      policyExecutedFailCount: 1
+
 
 2 PDP API for PAPs
 ==================
 
-The purpose of this API is for the PAP to load and update policies on PDPs and to change the state of PDPs. It also
-allows the PAP to order health checks to run on PDPs. The PAP sends *PDP_UPDATE*, *PDP_STATE_CHANGE*, and
-*PDP_HEALTH_CHECK* messages to PDPs using the *POLICY_PAP_PDP* DMaaP topic. PDPs listen on this topic for messages.
+The purpose of this API is for the PAP to load and update policies on PDPs and to change the state of PDPs.
+The PAP sends *PDP_UPDATE* and *PDP_STATE_CHANGE* messages to PDPs using the *POLICY_PAP_PDP* DMaaP topic.
+PDPs listen on this topic for messages.
 
-The PAP can set the scope of *PDP_STATE_CHANGE* and *PDP_HEALTH_CHECK* messages:
+The PAP can set the scope of *PDP_STATE_CHANGE* message:
 
 -  PDP Group: If a PDP group is specified in a message, then the PDPs in that PDP group respond to the message and all
    other PDPs ignore it.
@@ -288,13 +262,12 @@ The PAP can set the scope of *PDP_STATE_CHANGE* and *PDP_HEALTH_CHECK* messages:
 -  Single PDP: If the name of a PDP is specified in a message, then only that PDP responds to the message and all other
    PDPs ignore it.
 
-Note: *PDP_UPDATE* messages must be issued individually to PDPs because the *PDP_UPDATE* operation can change the PDP
-group to which a PDP belongs.
 
 2.1 PDP Update
 --------------
 
-The *PDP_UPDATE* operation allows the PAP to modify the PDP group to which a PDP belongs and the policies in a PDP.
+The *PDP_UPDATE* operation allows the PAP to modify the PDP with information such as policiesToBeDeployed/Undeployed,
+the interval to send heartbeats, subgroup etc.
 
 The following examples illustrate how the operation is used.
 
@@ -303,62 +276,76 @@ The following examples illustrate how the operation is used.
   :linenos:
 
   pdp_update:
-    name: xacml_1
-    pdp_type: xacml
-    description: XACML PDP running control loop policies, Upgraded
-    pdp_group: onap.pdpgroup.controlloop.operational
-    pdp_subgroup: xacml
+    source: pap-6e46095a-3e12-4838-912b-a8608fc93b51
+    pdpHeartbeatIntervalMs: 120000
     policiesToBeDeployed:
-      - onap.policies.controlloop.guard.frequencylimiter.EastRegion:
-          policy_type: onap.policies.controlloop.guard.FrequencyLimiter
-          policy_type_version: 1.0.1
-          properties:
-            # Omitted for brevity
-     - onap.policies.controlloop.guard.blackList.EastRegion:
-          policy_type: onap.policies.controlloop.guard.BlackList
-          policy_type_version: 1.0.1
-          properties:
-            # Omitted for brevity
-      - onap.policies.controlloop.guard.minmax.EastRegion:
-          policy_type: onap.policies.controlloop.guard.MinMax
-          policy_type_version: 1.0.1
-          properties:
-            # Omitted for brevity
+      - type: onap.policies.Naming
+        type_version: 1.0.0
+        properties:
+          # Omitted for brevity
+        name: onap.policies.controlloop.guard.frequencylimiter.EastRegion
+        version: 1.0.1
+        metadata:
+          policy-id: onap.policies.controlloop.guard.frequencylimiter.EastRegion
+          policy-version: 1.0.1
+    messageName: PDP_UPDATE
+    requestId: cbfb9781-da6c-462f-9601-8cf8ca959d2b
+    timestampMs: 1633466294898
+    name: xacml-23d33c2a-8715-43a8-ade5-5923fc0f185c
+	description: XACML PDP running control loop policies, Upgraded
+    pdpGroup: defaultGroup
+    pdpSubgroup: xacml
+
 
 .. code-block:: yaml
   :caption: PDP_UPDATE message to a Drools PDP to add an extra control loop policy
   :linenos:
 
   pdp_update:
-    name: drools_2
-    pdp_type: drools
-    description: Drools PDP running control loop policies, extra policy added
-    pdp_group: onap.pdpgroup.controlloop.operational
-    pdp_subgroup: drools
+    source: pap-0674bd0c-0862-4b72-abc7-74246fd11a79
+    pdpHeartbeatIntervalMs: 120000
     policiesToBeDeployed:
-      - onap.controllloop.operational.drools.vfw.WestRegion:
-          policy_type: onap.controllloop.operational.drools.vFW
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
+      - type: onap.controllloop.operational.drools.vFW
+        type_version: 1.0.0
+        properties:
+          # Omitted for brevity
+        name: onap.controllloop.operational.drools.vfw.WestRegion
+        version: 1.0.0
+        metadata:
+          policy-id: onap.controllloop.operational.drools.vfw.WestRegion
+          policy-version: 1.0.0
+    messageName: PDP_UPDATE
+    requestId: e91c4515-86db-4663-b68e-e5179d0b000e
+    timestampMs: 1633355039004
+    name: drools-8819a672-57fd-4e74-ad89-aed1a64e1837
+	description: Drools PDP running control loop policies, extra policy added
+    pdpGroup: defaultGroup
+    pdpSubgroup: drools
+
 
 .. code-block:: yaml
   :caption: PDP_UPDATE message to an APEX PDP to remove a control loop policy
   :linenos:
 
-    pdp_update:
-    name: apex_3
-    pdp_type: apex
-    description: APEX PDP updated to remove a control loop policy
-    pdp_group: onap.pdpgroup.controlloop.operational
-    pdp_subgroup: apex
-    policiesToBeDeployed: []
-    policiesToBeUndeployed:
-      - onap.controllloop.operational.apex.bbs.WestRegion:
-          policy_type: onap.controllloop.operational.apex.BBS
-          policy_type_version: 1.0.0
-          properties:
-            # Omitted for brevity
+  pdp_update:
+    source: pap-56c8531d-5376-4e53-a820-6973c62bfb9a
+    pdpHeartbeatIntervalMs: 120000
+    policiesToBeDeployed:
+      - type: onap.policies.native.Apex
+        type_version: 1.0.0
+		properties:
+          # Omitted for brevity
+        name: onap.controllloop.operational.apex.bbs.WestRegion
+        version: 1.0.0
+        metadata:
+          policy-id: onap.controllloop.operational.apex.bbs.WestRegion
+          policy-version: 1.0.0
+    messageName: PDP_UPDATE
+    requestId: 3534e54f-4432-4c68-81c8-a6af07e59fb2
+    timestampMs: 1632325037040
+    name: apex-45c6b266-a5fa-4534-b22c-33c2f9a45d02
+    pdpGroup: defaultGroup
+    pdpSubgroup: apex
 
 2.2 PDP State Change
 --------------------
@@ -367,54 +354,43 @@ The *PDP_STATE_CHANGE* operation allows the PAP to order state changes on PDPs i
 following examples illustrate how the operation is used.
 
 .. code-block:: yaml
-  :caption: Change the state of all control loop Drools PDPs to ACTIVE
+  :caption: Change the state of Drools PDP to ACTIVE
   :linenos:
 
   pdp_state_change:
-    state: active
-    pdp_group: onap.pdpgroup.controlloop.Operational
-    pdp_subgroup: drools
+    source: pap-6e46095a-3e12-4838-912b-a8608fc93b51
+    state: ACTIVE
+    messageName: PDP_STATE_CHANGE
+    requestId: 7d422be6-5baa-4316-9649-09e18301b5a8
+    timestampMs: 1633466294899
+    name: drools-23d33c2a-8715-43a8-ade5-5923fc0f185c
+    pdpGroup: defaultGroup
+    pdpSubgroup: drools
 
 .. code-block:: yaml
-  :caption: Change the state of all monitoring PDPs to SAFE
+  :caption: Change the state of all XACML PDPs to ACTIVE
   :linenos:
 
   pdp_state_change:
-    state: safe
-    pdp_group: onap.pdpgroup.Monitoring
+    source: pap-6e46095a-3e12-4838-912b-a8608fc93b51
+    state: ACTIVE
+    messageName: PDP_STATE_CHANGE
+    requestId: 7d422be6-5baa-4316-9649-09e18301b5a8
+    timestampMs: 1633466294899
+    name: xacml-23d33c2a-8715-43a8-ade5-5923fc0f185c
+    pdpGroup: defaultGroup
+    pdpSubgroup: xacml
 
 .. code-block:: yaml
-  :caption: Change the state of a single APEX PDP to TEST
+  :caption: Change the state of APEX PDP to passive
   :linenos:
 
   pdp_state_change:
-    state: test
-    name: apex_3
-
-2.3 PDP Health Check
---------------------
-
-The *PDP_HEALTH_CHECK* operation allows the PAP to order health checks on PDPs in PDP groups and subgroups. The
-following examples illustrate how the operation is used.
-
-.. code-block:: yaml
-  :caption: Perform a health check on all control loop Drools PDPs
-  :linenos:
-
-  pdp_health_check:
-    pdp_group: onap.pdpgroup.controlloop.Operational
-    pdp_subgroup: drools
-
-.. code-block:: yaml
-  :caption: perform a health check on all monitoring PDPs
-  :linenos:
-
-  pdp_health_check:
-    pdp_group: onap.pdpgroup.Monitoring
-
-.. code-block:: yaml
-  :caption: Perform a health check on a single APEX PDP
-  :linenos:
-
-  pdp_health_check:
-    name: apex_3
+    source: pap-e6272159-e1a3-4777-860a-19c47a14cc00
+    state: PASSIVE
+    messageName: PDP_STATE_CHANGE
+    requestId: 60d9a724-ebf3-4434-9da4-caac9c515a2c
+    timestampMs: 1633528747518
+    name: apex-a3c58a9e-af72-436c-b46f-0c6f31032ca5
+    pdpGroup: defaultGroup
+    pdpSubgroup: apex
