@@ -9,4 +9,5 @@ Policy Platform Development
    :maxdepth: 3
 
    devtools/devtools.rst
+   pdp/pdp-pap-interaction.rst
    actors/actors.rst
