@@ -11,6 +11,8 @@ CLAMP handles control loops in two ways, either using built in ONAP Control Loop
    :maxdepth: 1
 
    clamp/clamp
+   clamp/user-guide
+   clamp/architecture
    controlloop/controlloop
    controlloop/system-level-dialogues
    controlloop/defining-controlloops
