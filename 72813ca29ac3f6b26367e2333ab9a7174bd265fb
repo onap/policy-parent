@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4d60ca14_7d05bd85",
+        "filename": "docs/development/pdp/pdp-pap-interaction.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-07T10:08:54Z",
+      "side": 1,
+      "message": "Thanks Liam!",
+      "parentUuid": "bd445baa_f2628380",
+      "revId": "72813ca29ac3f6b26367e2333ab9a7174bd265fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edbf519e_bb087189",
         "filename": "docs/pap/InternalPapPdp.rst",
         "patchSetId": 2
