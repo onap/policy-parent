@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4aeef445_40d8ee57",
+        "filename": "docs/pap/InternalPapPdp.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-10-07T14:13:33Z",
+      "side": 1,
+      "message": "I think this is O (I think xacml doesn\u0027t send statistics and PAP works OK).",
+      "revId": "67777d47d73951a3191d093cb7cd7f89c5f6392b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
