@@ -2,8 +2,9 @@
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright (c) 2017-2021 AT&T Intellectual Property.  All rights reserved.
 
-Control loop in Policy/CLAMP
-----------------------------
+User Guide: Control loop in Policy/CLAMP
+========================================
+
 There are 2 control loop levels in Policy/CLAMP:
 
 - Control loop template: This is created from the DCAE blueprint (designed in the DCAE designer), and distributed by SDC to CLAMP.
