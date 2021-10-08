@@ -12,3 +12,11 @@ CLAMP handles control loops in two ways, either using built in ONAP Control Loop
 
    clamp/clamp
    controlloop/controlloop
+
+.. note:: Policy/CLAMP was merged into the Policy Framework in the Honolulu release of ONAP. Prior to that release, it was a separate project.
+          The release notes for CLAMP when it existed as a separate proejct are located below.
+
+.. toctree::
+   :maxdepth: 1
+
+   pre-migration-release-notes
