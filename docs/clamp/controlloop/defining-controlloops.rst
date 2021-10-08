@@ -193,7 +193,7 @@ Properties are instance specific by default, but can be identified by a special 
 in Control Loop and Control Loop Element definitions. For example, the chart parameter on a
 Kubernetes Control Loop Element has a different value for every instance of a Kubernetes Control
 Loop Element, so it can be defined as shown below in the :ref:`Kubernetes Control Loop Type definition
-<_kubernetes-cl-element>` yaml file.
+<kubernetes-cl-element>` yaml file.
 
 
 .. code-block:: yaml

@@ -19,7 +19,7 @@ reference to the Control Loop Type. The incoming TOSCA is verified and checked f
 referential integrity. On delete requests, a check is made to ensure that no Control
 Loop Instances exist for the Control Loop Type to be deleted.
 
-:download:`Download Policy Control Loop Commissioning API Swagger  <swagger/controlloop-comissioning.json.json>`
+:download:`Download Policy Control Loop Commissioning API Swagger  <swagger/controlloop-comissioning.json>`
 
 .. swaggerv2doc:: swagger/controlloop-comissioning.json
 

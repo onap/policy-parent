@@ -46,12 +46,12 @@ This dialogue corresponds to a "File → Import" menu on the CLAMP GUI. The docu
 future releases of the system will describe how the Design Time functionality interacts
 with the Runtime commissioning API.
 
-.. image:: images/system-dialogues/comissioning-clamp-gui.png
+.. image:: ../images/system-dialogues/comissioning-clamp-gui.png
 
 1.2 Commissioning a Control Loop Type Definition using SDC
 ----------------------------------------------------------
 
-.. image:: images/system-dialogues/comissioning-sdc.png
+.. image:: ../images/system-dialogues/comissioning-sdc.png
 
 1.3 Setting Common Properties for a Control Loop Type Definition
 ----------------------------------------------------------------
@@ -59,11 +59,11 @@ with the Runtime commissioning API.
 This dialogue sets the values of common properties. The values of the common properties
 may be set, updated, or deleted at will, as this dialogue saves the properties to the
 database but does not send the definitions or properties to the participants. However,
-once a Control Loop Type Definition and its properties are primed (See :ref:`Section 1.4
-<_priming-cl-label>`), the properties cannot be changed until the control loop type
+once a Control Loop Type Definition and its properties are primed
+(See :ref:`Section 1.4 <priming-cl-label>`), the properties cannot be changed until the control loop type
 definition is de-primed (See :ref:`Section 1.5 <depriming-cl-label>`).
 
-.. image:: images/system-dialogues/common-properties-type-definition.png
+.. image:: ../images/system-dialogues/common-properties-type-definition.png
 
 .. _priming-cl-label:
 
@@ -73,7 +73,7 @@ The Priming operation sends Control Loop Type definitions and common property va
 to participants. Once a Control Loop Type definition is primed, its property values
 can on longer be changed until it is de-primed.
 
-.. image:: images/system-dialogues/priming-cl-type-definition.png
+.. image:: ../images/system-dialogues/priming-cl-type-definition.png
 
 .. _depriming-cl-label:
 
@@ -83,17 +83,17 @@ can on longer be changed until it is de-primed.
 This dialogue allows a Control Loop Type Definition to be de-primed so that it can be
 deleted or its common parameter values can be altered.
 
-.. image:: images/system-dialogues/depriming-cl-type-definition.png
+.. image:: ../images/system-dialogues/depriming-cl-type-definition.png
 
 1.6 Decommissioning a Control Loop Type Definition in CLAMP
 -----------------------------------------------------------
 
-.. image:: images/system-dialogues/decommission-cl-type-definition.png
+.. image:: ../images/system-dialogues/decommission-cl-type-definition.png
 
 1.7 Reading Commissioned Control Loop Type Definitions
 ------------------------------------------------------
 
-.. image:: images/system-dialogues/read-commision-cl-type-definition.png
+.. image:: ../images/system-dialogues/read-commision-cl-type-definition.png
 
 
 2. Instantiation Dialogues
@@ -112,7 +112,7 @@ To get a Control Loop instance running one would, for example, execute dialogues
 2.1 Creating a Control Loop Instance
 ------------------------------------
 
-.. image:: images/system-dialogues/create-cl-instance.png
+.. image:: ../images/system-dialogues/create-cl-instance.png
 
 .. note::
     This dialogue creates the Control Loop Instance in the Instantiated Control Loop Inventory.
@@ -122,36 +122,36 @@ To get a Control Loop instance running one would, for example, execute dialogues
 2.2 Updating Instance Specific Parameters on a Control Loop Instance
 --------------------------------------------------------------------
 
-.. image:: images/system-dialogues/update-instance-params-cl.png
+.. image:: ../images/system-dialogues/update-instance-params-cl.png
 
 .. _updating-cl-instance-config:
 
 2.3 Updating a Control Loop Instance with a Configuration on Participants
 -------------------------------------------------------------------------
 
-.. image:: images/system-dialogues/update-cl-instance-config-participants.png
+.. image:: ../images/system-dialogues/update-cl-instance-config-participants.png
 
 .. _changing-cl-instance-state:
 
 2.4 Changing the state of a Control Loop Instance on Participants
 -----------------------------------------------------------------
 
-.. image:: images/system-dialogues/change-cl-instance-state-participants.png
+.. image:: ../images/system-dialogues/change-cl-instance-state-participants.png
 
 2.5 De-instantiating a Control Loop Instance from Participants
 --------------------------------------------------------------
 
-.. image:: images/system-dialogues/deinstantiate-cl-from-participants.png
+.. image:: ../images/system-dialogues/deinstantiate-cl-from-participants.png
 
 2.6 Deleting a Control Loop Instance
 ------------------------------------
 
-.. image:: images/system-dialogues/delete-cl-instance.png
+.. image:: ../images/system-dialogues/delete-cl-instance.png
 
 2.7 Reading Control Loop Instances
 ----------------------------------
 
-.. image:: images/system-dialogues/read-cl-instance.png
+.. image:: ../images/system-dialogues/read-cl-instance.png
 
 
 1. Monitoring Dialogues
@@ -162,22 +162,22 @@ Monitoring dialogues are used to monitor and to read statistics on Control Loop 
 3.1 Reporting of Monitoring Information and Statistics by Participants
 ----------------------------------------------------------------------
 
-.. image:: images/system-dialogues/monitoring-by-participants.png
+.. image:: ../images/system-dialogues/monitoring-by-participants.png
 
 3.2 Viewing of Monitoring Information
 -------------------------------------
 
-.. image:: images/system-dialogues/view-monitoring-info.png
+.. image:: ../images/system-dialogues/view-monitoring-info.png
 
 3.2 Viewing of Statistics
 -------------------------
 
-.. image:: images/system-dialogues/view-statistics.png
+.. image:: ../images/system-dialogues/view-statistics.png
 
 3.3 Statistics Housekeeping
 ---------------------------
 
-.. image:: images/system-dialogues/statistics-housekeeping.png
+.. image:: ../images/system-dialogues/statistics-housekeeping.png
 
 
 4. Supervision Dialogues
@@ -188,11 +188,11 @@ Supervision dialogues are used to check the state of Control Loop Instances and 
 4.1 Supervise Participants
 --------------------------
 
-.. image:: images/system-dialogues/supervise-participants.png
+.. image:: ../images/system-dialogues/supervise-participants.png
 
 4.2 Supervise Control Loops
 ---------------------------
 
-.. image:: images/system-dialogues/supervise-controlloops.png
+.. image:: ../images/system-dialogues/supervise-controlloops.png
 
 End of Document

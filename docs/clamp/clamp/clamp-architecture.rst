@@ -1,10 +1,12 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 .. Copyright (c) 2017-2021 AT&T Intellectual Property.  All rights reserved.
+
 .. _architecture:
 
-Policy/Clamp in ONAP Architecture
----------------------------------
+
+Policy/Clamp in the ONAP Architecture
+=====================================
 
 CLAMP platform has been integrated into the Policy framework project, starting as a POC during
 Honolulu release and as a official feature with Istanbul release. So CLAMP must be seen now

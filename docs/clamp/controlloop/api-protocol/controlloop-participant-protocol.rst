@@ -21,12 +21,12 @@ Participant Registration and De-Registration
 Registration when a participant comes up and update of participant with control loop type
 information and common parameter values for its control loop types.
 
-.. image:: images/clamp-cl-participants/participant-registering.png
+.. image:: ../images/clamp-cl-participants/participant-registering.png
 
 
 De-registration is executed as a participant goes down.
 
-.. image:: images/clamp-cl-participants/participant-deregistration.png
+.. image:: ../images/clamp-cl-participants/participant-deregistration.png
 
 
 Control Loop Priming and De-Priming
@@ -36,13 +36,13 @@ When a control loop is primed, the portion of the Control Loop Type Definition a
 Property values for the participants of each participant type mentioned in the Control Loop
 Definition are sent to the participants.
 
-.. image:: images/clamp-cl-participants/controlloop-priming.png
+.. image:: ../images/clamp-cl-participants/controlloop-priming.png
 
 When a control loop is de-primed, the portion of the Control Loop Type Definition and Common
 Property values for the participants of each participant type mentioned in the Control Loop
 Definition are deleted on participants.
 
-.. image:: images/clamp-cl-participants/controlloop-depriming.png
+.. image:: ../images/clamp-cl-participants/controlloop-depriming.png
 
 
 Control Loop Update
@@ -52,11 +52,11 @@ Control Loop Update handles creation, change, and deletion of control loops on p
 Change of control loops uses a semantic versioning approach and follow the semantics described
 on the page `4.1 Management of Control Loop Instance Configurations <management-cl-instance-configs>`.
 
-.. image:: images/clamp-cl-participants/controlloop-update.png
+.. image:: ../images/clamp-cl-participants/controlloop-update.png
 
 The handling of a ControlLoopUpdate message in each participant is as shown below.
 
-.. image:: images/clamp-cl-participants/controlloop-update-msg.png
+.. image:: ../images/clamp-cl-participants/controlloop-update-msg.png
 
 Control Loop State Change
 -------------------------
@@ -84,11 +84,11 @@ The Participant reads each State Change Message it sees on DMaaP. If the Start P
 Loop State Change message matches the Start Phase of the Control Loop Element, the participant processes
 the State Change message. Otherwise the participant ignores the message.
 
-.. image:: images/clamp-cl-participants/controlloop-state-change.png
+.. image:: ../images/clamp-cl-participants/controlloop-state-change.png
 
 The handling of a ControlLoopStateChange message in each participant is as shown below.
 
-.. image:: images/clamp-cl-participants/controlloop-state-change-msg.png
+.. image:: ../images/clamp-cl-participants/controlloop-state-change-msg.png
 
 Control Loop Monitoring and Reporting
 -------------------------------------
@@ -97,7 +97,7 @@ This dialogue is used as a heartbeat mechanism for participants, to monitor the 
 Elements, and to gather statistics on control loops. The ParticipantStatus message is sent periodically
 by each participant. The reporting interval for sending the message is configurable.
 
-.. image:: images/clamp-cl-participants/controlloop-monitoring.png
+.. image:: ../images/clamp-cl-participants/controlloop-monitoring.png
 
 
 Messages
