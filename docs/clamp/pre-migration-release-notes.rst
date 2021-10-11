@@ -188,14 +188,14 @@ The main goal of the El Alto release was to:
 *Known Vulnerabilities in Used Modules*
 
 CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
-The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_.
+The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in El Alto <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_.
 
 Quick Links:
  	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
- 	- `Project Vulnerability Review Table for CLAMP <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_
+ 	- `Project Vulnerability Review Table for CLAMP (El Alto) <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_
 
 **Upgrade Notes**
 
@@ -235,14 +235,14 @@ The main goal of the El Alto-Early Drop release was to:
 *Known Vulnerabilities in Used Modules*
 
 CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
-The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_.
+The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in El Alto Early Drop <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_.
 
 Quick Links:
  	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
- 	- `Project Vulnerability Review Table for CLAMP <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_
+ 	- `Project Vulnerability Review Table for CLAMP (El Alto Early Drop) <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_
 
 **Upgrade Notes**
 
@@ -261,7 +261,7 @@ The Dublin release is the fourth release of the Control Loop Automation Manageme
 
 The main goal of the Dublin release was to:
 
-    - Stabilize Platform maturity by stabilizing CLAMP maturity matrix see `Wiki <https://wiki.onap.org/display/DW/Dublin+Release+Platform+Maturity>`_.
+    - Stabilize Platform maturity by stabilizing CLAMP maturity matrix see `Wiki for Dublin <https://wiki.onap.org/display/DW/Dublin+Release+Platform+Maturity>`_.
     - CLAMP supports of Policy-model based Configuration Policy
     - CLAMP supports new Policy Engine direct Rest API (no longer based on jar provided by Policy Engine)
     - CLAMP main Core/UI have been reworked, removal of security issues reported by Nexus IQ.
@@ -288,14 +288,14 @@ The main goal of the Dublin release was to:
 *Known Vulnerabilities in Used Modules*
 
 CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
-The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project <https://wiki.onap.org/pages/viewpage.action?pageId=64003444>`_.
+The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in Dublin <https://wiki.onap.org/pages/viewpage.action?pageId=64003444>`_.
 
 Quick Links:
  	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
- 	- `Project Vulnerability Review Table for CLAMP <https://wiki.onap.org/pages/viewpage.action?pageId=64003444>`_
+ 	- `Project Vulnerability Review Table for CLAMP (Dublin) <https://wiki.onap.org/pages/viewpage.action?pageId=64003444>`_
 
 **Upgrade Notes**
 
@@ -315,6 +315,7 @@ none
 
 **Known Issues**
 CLAMP certificates have been renewed to extend their expiry dates
+
     - `CLAMP-335 <https://jira.onap.org/browse/CLAMP-335>`_ Update Certificates on Casablanca release.
 
 
@@ -331,6 +332,7 @@ none
 
 **Known Issues**
 one documentation issue was fixed, this issue does not require a new docker image:
+    
     - `CLAMP-257 <https://jira.onap.org/browse/CLAMP-257>`_ User Manual for CLAMP : nothing on readthedocs.
 
 Version: 3.0.3 (Casablanca)
@@ -344,7 +346,7 @@ The Casablanca release is the third release of the Control Loop Automation Manag
 
 The main goal of the Casablanca release was to:
 
-    - Enhance Platform maturity by improving CLAMP maturity matrix see `Wiki <https://wiki.onap.org/display/DW/Casablanca+Release+Platform+Maturity>`_.
+    - Enhance Platform maturity by improving CLAMP maturity matrix see `Wiki for Casablanca <https://wiki.onap.org/display/DW/Casablanca+Release+Platform+Maturity>`_.
     - CLAMP Dashboard improvements for the monitoring of active Closed Loops
     - CLAMP logs alignment on the ONAP platform.
     - CLAMP is now integrated with AAF for authentication and permissions retrieval (AAF server is pre-loaded by default with the required permissions)
@@ -364,14 +366,14 @@ The main goal of the Casablanca release was to:
 **Security Notes**
 
 CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
-The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project <https://wiki.onap.org/pages/viewpage.action?pageId=42598587>`_.
+The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in Casablanca <https://wiki.onap.org/pages/viewpage.action?pageId=42598587>`_.
 
 Quick Links:
  	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
- 	- `Project Vulnerability Review Table for CLAMP <https://wiki.onap.org/pages/viewpage.action?pageId=42598587>`_
+ 	- `Project Vulnerability Review Table for CLAMP in Casablanca <https://wiki.onap.org/pages/viewpage.action?pageId=42598587>`_
 
 **Upgrade Notes**
 
@@ -400,7 +402,7 @@ The Beijing release is the second release of the Control Loop Automation Managem
 
 The main goal of the Beijing release was to:
 
-    - Enhance Platform maturity by improving CLAMP maturity matrix see `Wiki <https://wiki.onap.org/display/DW/Beijing+Release+Platform+Maturity>`_.
+    - Enhance Platform maturity by improving CLAMP maturity matrix see `Wiki for Beijing <https://wiki.onap.org/display/DW/Beijing+Release+Platform+Maturity>`_.
     - Focus CLAMP on Closed loop runtime operations and control - this is reflected by the move of the design part to DCAE-D.
     - Introduce CLAMP Dashboard for monitoring of active Closed Loops.
     - CLAMP is integrated with MSB.
@@ -424,14 +426,14 @@ The main goal of the Beijing release was to:
 
 **Security Notes**
 
-CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and determined to be false positive. The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project <https://wiki.onap.org/pages/viewpage.action?pageId=25440749>`_.
+CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and determined to be false positive. The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in Beijing <https://wiki.onap.org/pages/viewpage.action?pageId=25440749>`_.
 
 Quick Links:
  	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
- 	- `Project Vulnerability Review Table for CLAMP <https://wiki.onap.org/pages/viewpage.action?pageId=25440749>`_
+ 	- `Project Vulnerability Review Table for CLAMP (Bejing) <https://wiki.onap.org/pages/viewpage.action?pageId=25440749>`_
 
 **Upgrade Notes**
 
