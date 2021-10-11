@@ -77,7 +77,7 @@ Currently, the CLAMP docker images can be deployed with small configuration need
 
 There are one datasource for Clamp. By default, it will try to connect to the localhost server using the credentials available in the example SQL files. If you need to change the default database host and/or credentials, you can do it by using the following json as SPRING_APPLICATION_JSON environment variable :
 
-.. code-block:: json
+.. code-block::
 
     {
         "spring.datasource.cldsdb.url": "jdbc:mariadb:sequential://clampdb.{{ include "common.namespace" . }}:3306/cldsdb4?autoReconnect=true&connectTimeout=10000&socketTimeout=10000&retriesAllDown=3",

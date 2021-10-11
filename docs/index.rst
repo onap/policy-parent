@@ -23,4 +23,5 @@ Policy Framework Architecture
    distribution/distribution
    clamp/clamp
    gui/Monitoring-GUI-Demo-Guide
+   system-attributes/system-attributes
    release-notes

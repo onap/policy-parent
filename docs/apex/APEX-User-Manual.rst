@@ -223,68 +223,67 @@ Build APEX
    installation. The following example show how to change to the target
    directory and how it should look like.
 
-+----------------------------------------------------------------------------------------------------------------+
-| Unix, Cygwin                                                                                                   |
-+================================================================================================================+
-| .. container:: content                                                                                         |
-|                                                                                                                |
-| .. container:: listingblock                                                                                    |
-|                                                                                                                |
-| .. container:: content                                                                                         |
-|                                                                                                                |
-| .. code::                                                                                                      |
-|                                                                                                                |
-| :number-lines:                                                                                                 |
-|                                                                                                                |
-| -rwxrwx---+ 1 esvevan Domain Users       772 Sep  3 11:55 apex-pdp-package-full_2.0.0~SNAPSHOT_all.changes*    |
-| -rwxrwx---+ 1 esvevan Domain Users 146328082 Sep  3 11:55 apex-pdp-package-full-2.0.0-SNAPSHOT.deb*            |
-| -rwxrwx---+ 1 esvevan Domain Users     15633 Sep  3 11:54 apex-pdp-package-full-2.0.0-SNAPSHOT.jar*            |
-| -rwxrwx---+ 1 esvevan Domain Users 146296819 Sep  3 11:55 apex-pdp-package-full-2.0.0-SNAPSHOT-tarball.tar.gz* |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 archive-tmp/                                         |
-| -rwxrwx---+ 1 esvevan Domain Users        89 Sep  3 11:54 checkstyle-cachefile*                                |
-| -rwxrwx---+ 1 esvevan Domain Users     10621 Sep  3 11:54 checkstyle-checker.xml*                              |
-| -rwxrwx---+ 1 esvevan Domain Users       584 Sep  3 11:54 checkstyle-header.txt*                               |
-| -rwxrwx---+ 1 esvevan Domain Users        86 Sep  3 11:54 checkstyle-result.xml*                               |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 classes/                                             |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 dependency-maven-plugin-markers/                     |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 etc/                                                 |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 examples/                                            |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:55 install_hierarchy/                                   |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 maven-archiver/                                      |
-+----------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------+
+| Unix, Cygwin                                                                                                        |
++=====================================================================================================================+
+| .. container:: content                                                                                              |
+|                                                                                                                     |
+|  .. container:: listingblock                                                                                        |
+|                                                                                                                     |
+|   .. container:: content                                                                                            |
+|                                                                                                                     |
+|    .. code::                                                                                                        |
+|     :number-lines:                                                                                                  |
+|                                                                                                                     |
+|      -rwxrwx---+ 1 esvevan Domain Users       772 Sep  3 11:55 apex-pdp-package-full_2.0.0~SNAPSHOT_all.changes*    |
+|      -rwxrwx---+ 1 esvevan Domain Users 146328082 Sep  3 11:55 apex-pdp-package-full-2.0.0-SNAPSHOT.deb*            |
+|      -rwxrwx---+ 1 esvevan Domain Users     15633 Sep  3 11:54 apex-pdp-package-full-2.0.0-SNAPSHOT.jar*            |
+|      -rwxrwx---+ 1 esvevan Domain Users 146296819 Sep  3 11:55 apex-pdp-package-full-2.0.0-SNAPSHOT-tarball.tar.gz* |
+|      drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 archive-tmp/                                         |
+|      -rwxrwx---+ 1 esvevan Domain Users        89 Sep  3 11:54 checkstyle-cachefile*                                |
+|      -rwxrwx---+ 1 esvevan Domain Users     10621 Sep  3 11:54 checkstyle-checker.xml*                              |
+|      -rwxrwx---+ 1 esvevan Domain Users       584 Sep  3 11:54 checkstyle-header.txt*                               |
+|      -rwxrwx---+ 1 esvevan Domain Users        86 Sep  3 11:54 checkstyle-result.xml*                               |
+|      drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 classes/                                             |
+|      drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 dependency-maven-plugin-markers/                     |
+|      drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 etc/                                                 |
+|      drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 examples/                                            |
+|      drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:55 install_hierarchy/                                   |
+|      drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 maven-archiver/                                      |
++---------------------------------------------------------------------------------------------------------------------+
 
-+-----------------------------------------------------------------------------------------+
-| Windows                                                                                 |
-+=========================================================================================+
-| .. container::                                                                          |
-|                                                                                         |
-| .. container:: listingblock                                                             |
-|                                                                                         |
-| .. container:: content                                                                  |
-|                                                                                         |
-| .. code::                                                                               |
-| :number-lines:                                                                          |
-|                                                                                         |
-| 03/09/2018  11:55    <DIR>          .                                                   |
-| 03/09/2018  11:55    <DIR>          ..                                                  |
-| 03/09/2018  11:55       146,296,819 apex-pdp-package-full-2.0.0-SNAPSHOT-tarball.tar.gz |
-| 03/09/2018  11:55       146,328,082 apex-pdp-package-full-2.0.0-SNAPSHOT.deb            |
-| 03/09/2018  11:54            15,633 apex-pdp-package-full-2.0.0-SNAPSHOT.jar            |
-| 03/09/2018  11:55               772 apex-pdp-package-full_2.0.0~SNAPSHOT_all.changes    |
-| 03/09/2018  11:54    <DIR>          archive-tmp                                         |
-| 03/09/2018  11:54                89 checkstyle-cachefile                                |
-| 03/09/2018  11:54            10,621 checkstyle-checker.xml                              |
-| 03/09/2018  11:54               584 checkstyle-header.txt                               |
-| 03/09/2018  11:54                86 checkstyle-result.xml                               |
-| 03/09/2018  11:54    <DIR>          classes                                             |
-| 03/09/2018  11:54    <DIR>          dependency-maven-plugin-markers                     |
-| 03/09/2018  11:54    <DIR>          etc                                                 |
-| 03/09/2018  11:54    <DIR>          examples                                            |
-| 03/09/2018  11:55    <DIR>          install_hierarchy                                   |
-| 03/09/2018  11:54    <DIR>          maven-archiver                                      |
-| 8 File(s)    292,652,686 bytes                                                          |
-| 9 Dir(s)  14,138,720,256 bytes free                                                     |
-+-----------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------+
+| Windows                                                                                      |
++==============================================================================================+
+| .. container::                                                                               |
+|                                                                                              |
+|  .. container:: listingblock                                                                 |
+|                                                                                              |
+|   .. container:: content                                                                     |
+|                                                                                              |
+|    .. code::                                                                                 |
+|     :number-lines:                                                                           |
+|                                                                                              |
+|      03/09/2018  11:55    <DIR>          .                                                   |
+|      03/09/2018  11:55    <DIR>          ..                                                  |
+|      03/09/2018  11:55       146,296,819 apex-pdp-package-full-2.0.0-SNAPSHOT-tarball.tar.gz |
+|      03/09/2018  11:55       146,328,082 apex-pdp-package-full-2.0.0-SNAPSHOT.deb            |
+|      03/09/2018  11:54            15,633 apex-pdp-package-full-2.0.0-SNAPSHOT.jar            |
+|      03/09/2018  11:55               772 apex-pdp-package-full_2.0.0~SNAPSHOT_all.changes    |
+|      03/09/2018  11:54    <DIR>          archive-tmp                                         |
+|      03/09/2018  11:54                89 checkstyle-cachefile                                |
+|      03/09/2018  11:54            10,621 checkstyle-checker.xml                              |
+|      03/09/2018  11:54               584 checkstyle-header.txt                               |
+|      03/09/2018  11:54                86 checkstyle-result.xml                               |
+|      03/09/2018  11:54    <DIR>          classes                                             |
+|      03/09/2018  11:54    <DIR>          dependency-maven-plugin-markers                     |
+|      03/09/2018  11:54    <DIR>          etc                                                 |
+|      03/09/2018  11:54    <DIR>          examples                                            |
+|      03/09/2018  11:55    <DIR>          install_hierarchy                                   |
+|      03/09/2018  11:54    <DIR>          maven-archiver                                      |
+|      8 File(s)    292,652,686 bytes                                                          |
+|      9 Dir(s)  14,138,720,256 bytes free                                                     |
++----------------------------------------------------------------------------------------------+
 
 Install APEX
 ------------
@@ -325,33 +324,33 @@ Install with DPKG
          the standard APEX start scripts to run APEX with this user’s
          permissions.
 
-+--------------------------------------------------------------------------+
-| DPKG Installation                                                        |
-+==========================================================================+
-| .. container::                                                           |
-|                                                                          |
-| .. container:: listingblock                                              |
-|                                                                          |
-| .. container:: content                                                   |
-|                                                                          |
-| .. code::                                                                |
-| :number-lines:                                                           |
-|                                                                          |
-| # sudo dpkg -i apex-pdp-package-full-2.0.0-SNAPSHOT.deb                  |
-| Selecting previously unselected package apex-uservice.                   |
-| (Reading database ... 288458 files and directories currently installed.) |
-| Preparing to unpack apex-pdp-package-full-2.0.0-SNAPSHOT.deb ...         |
-| ********************preinst*******************                           |
-| arguments install                                                        |
-| **********************************************                           |
-| creating group apexuser . . .                                            |
-| creating user apexuser . . .                                             |
-| Unpacking apex-uservice (2.0.0-SNAPSHOT) ...                             |
-| Setting up apex-uservice (2.0.0-SNAPSHOT) ...                            |
-| ********************postinst****************                             |
-| arguments configure                                                      |
-| ***********************************************                          |
-+--------------------------------------------------------------------------+
++-------------------------------------------------------------------------------+
+| DPKG Installation                                                             |
++===============================================================================+
+| .. container::                                                                |
+|                                                                               |
+|  .. container:: listingblock                                                  |
+|                                                                               |
+|   .. container:: content                                                      |
+|                                                                               |
+|    .. code::                                                                  |
+|     :number-lines:                                                            |
+|                                                                               |
+|      # sudo dpkg -i apex-pdp-package-full-2.0.0-SNAPSHOT.deb                  |
+|      Selecting previously unselected package apex-uservice.                   |
+|      (Reading database ... 288458 files and directories currently installed.) |
+|      Preparing to unpack apex-pdp-package-full-2.0.0-SNAPSHOT.deb ...         |
+|      ********************preinst*******************                           |
+|      arguments install                                                        |
+|      **********************************************                           |
+|      creating group apexuser . . .                                            |
+|      creating user apexuser . . .                                             |
+|      Unpacking apex-uservice (2.0.0-SNAPSHOT) ...                             |
+|      Setting up apex-uservice (2.0.0-SNAPSHOT) ...                            |
+|      ********************postinst****************                             |
+|      arguments configure                                                      |
+|      ***********************************************                          |
++-------------------------------------------------------------------------------+
 
 .. container:: paragraph
 
@@ -398,26 +397,8 @@ Install Manually from Archive (Windows, 7Zip, GUI)
       right click on the file and extract the ``tar`` archive. Note: the
       screenshots might show an older version than you have.
 
-   .. container:: imageblock
-
-      .. container:: content
-
-         |Extract the TAR archive|
-
-   .. container:: paragraph
-
-      The right-click on the new created TAR file and extract the actual
-      APEX distribution.
-
-   .. container:: imageblock
-
-      .. container:: content
-
-         |Extract the APEX distribution|
-
-   .. container:: paragraph
-
-      Inside the new APEX folder you see the main directories: ``bin``,
+      Now, right-click on the new created TAR file and extract the actual
+      APEX distribution. Inside the new APEX folder you will see the main directories: ``bin``,
       ``etc``, ``examples``, ``lib``, and ``war``
 
    .. container:: paragraph
@@ -539,67 +520,67 @@ Build and Install Manually (Unix, Windows, Cygwin)
    installation. The following example show how to change to the target
    directory and how it should look like.
 
-+----------------------------------------------------------------------------------------------------------------+
-| Unix, Cygwin                                                                                                   |
-+================================================================================================================+
-| .. container::                                                                                                 |
-|                                                                                                                |
-| .. container:: listingblock                                                                                    |
-|                                                                                                                |
-| .. code::                                                                                                      |
-| :number-lines:                                                                                                 |
-|                                                                                                                |
-| # cd packages/apex-pdp-package-full/target                                                                     |
-| # ls -l                                                                                                        |
-| -rwxrwx---+ 1 esvevan Domain Users       772 Sep  3 11:55 apex-pdp-package-full_2.0.0~SNAPSHOT_all.changes*    |
-| -rwxrwx---+ 1 esvevan Domain Users 146328082 Sep  3 11:55 apex-pdp-package-full-2.0.0-SNAPSHOT.deb*            |
-| -rwxrwx---+ 1 esvevan Domain Users     15633 Sep  3 11:54 apex-pdp-package-full-2.0.0-SNAPSHOT.jar*            |
-| -rwxrwx---+ 1 esvevan Domain Users 146296819 Sep  3 11:55 apex-pdp-package-full-2.0.0-SNAPSHOT-tarball.tar.gz* |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 archive-tmp/                                         |
-| -rwxrwx---+ 1 esvevan Domain Users        89 Sep  3 11:54 checkstyle-cachefile*                                |
-| -rwxrwx---+ 1 esvevan Domain Users     10621 Sep  3 11:54 checkstyle-checker.xml*                              |
-| -rwxrwx---+ 1 esvevan Domain Users       584 Sep  3 11:54 checkstyle-header.txt*                               |
-| -rwxrwx---+ 1 esvevan Domain Users        86 Sep  3 11:54 checkstyle-result.xml*                               |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 classes/                                             |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 dependency-maven-plugin-markers/                     |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 etc/                                                 |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 examples/                                            |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:55 install_hierarchy/                                   |
-| drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 maven-archiver/                                      |
-+----------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+| Unix, Cygwin                                                                                                       |
++====================================================================================================================+
+| .. container::                                                                                                     |
+|                                                                                                                    |
+|  .. container:: listingblock                                                                                       |
+|                                                                                                                    |
+|   .. code::                                                                                                        |
+|    :number-lines:                                                                                                  |
+|                                                                                                                    |
+|     # cd packages/apex-pdp-package-full/target                                                                     |
+|     # ls -l                                                                                                        |
+|     -rwxrwx---+ 1 esvevan Domain Users       772 Sep  3 11:55 apex-pdp-package-full_2.0.0~SNAPSHOT_all.changes*    |
+|     -rwxrwx---+ 1 esvevan Domain Users 146328082 Sep  3 11:55 apex-pdp-package-full-2.0.0-SNAPSHOT.deb*            |
+|     -rwxrwx---+ 1 esvevan Domain Users     15633 Sep  3 11:54 apex-pdp-package-full-2.0.0-SNAPSHOT.jar*            |
+|     -rwxrwx---+ 1 esvevan Domain Users 146296819 Sep  3 11:55 apex-pdp-package-full-2.0.0-SNAPSHOT-tarball.tar.gz* |
+|     drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 archive-tmp/                                         |
+|     -rwxrwx---+ 1 esvevan Domain Users        89 Sep  3 11:54 checkstyle-cachefile*                                |
+|     -rwxrwx---+ 1 esvevan Domain Users     10621 Sep  3 11:54 checkstyle-checker.xml*                              |
+|     -rwxrwx---+ 1 esvevan Domain Users       584 Sep  3 11:54 checkstyle-header.txt*                               |
+|     -rwxrwx---+ 1 esvevan Domain Users        86 Sep  3 11:54 checkstyle-result.xml*                               |
+|     drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 classes/                                             |
+|     drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 dependency-maven-plugin-markers/                     |
+|     drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 etc/                                                 |
+|     drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 examples/                                            |
+|     drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:55 install_hierarchy/                                   |
+|     drwxrwx---+ 1 esvevan Domain Users         0 Sep  3 11:54 maven-archiver/                                      |
++--------------------------------------------------------------------------------------------------------------------+
 
-+-----------------------------------------------------------------------------------------+
-| Windows                                                                                 |
-+=========================================================================================+
-| .. container::                                                                          |
-|                                                                                         |
-| .. container:: listingblock                                                             |
-|                                                                                         |
-| .. code::                                                                               |
-| :number-lines:                                                                          |
-|                                                                                         |
-| >cd packages\apex-pdp-package-full\target                                               |
-| >dir                                                                                    |
-| 03/09/2018  11:55    <DIR>          .                                                   |
-| 03/09/2018  11:55    <DIR>          ..                                                  |
-| 03/09/2018  11:55       146,296,819 apex-pdp-package-full-2.0.0-SNAPSHOT-tarball.tar.gz |
-| 03/09/2018  11:55       146,328,082 apex-pdp-package-full-2.0.0-SNAPSHOT.deb            |
-| 03/09/2018  11:54            15,633 apex-pdp-package-full-2.0.0-SNAPSHOT.jar            |
-| 03/09/2018  11:55               772 apex-pdp-package-full_2.0.0~SNAPSHOT_all.changes    |
-| 03/09/2018  11:54    <DIR>          archive-tmp                                         |
-| 03/09/2018  11:54                89 checkstyle-cachefile                                |
-| 03/09/2018  11:54            10,621 checkstyle-checker.xml                              |
-| 03/09/2018  11:54               584 checkstyle-header.txt                               |
-| 03/09/2018  11:54                86 checkstyle-result.xml                               |
-| 03/09/2018  11:54    <DIR>          classes                                             |
-| 03/09/2018  11:54    <DIR>          dependency-maven-plugin-markers                     |
-| 03/09/2018  11:54    <DIR>          etc                                                 |
-| 03/09/2018  11:54    <DIR>          examples                                            |
-| 03/09/2018  11:55    <DIR>          install_hierarchy                                   |
-| 03/09/2018  11:54    <DIR>          maven-archiver                                      |
-| 8 File(s)    292,652,686 bytes                                                          |
-| 9 Dir(s)  14,138,720,256 bytes free                                                     |
-+-----------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------+
+| Windows                                                                                     |
++=============================================================================================+
+| .. container::                                                                              |
+|                                                                                             |
+|  .. container:: listingblock                                                                |
+|                                                                                             |
+|   .. code::                                                                                 |
+|    :number-lines:                                                                           |
+|                                                                                             |
+|     >cd packages\apex-pdp-package-full\target                                               |
+|     >dir                                                                                    |
+|     03/09/2018  11:55    <DIR>          .                                                   |
+|     03/09/2018  11:55    <DIR>          ..                                                  |
+|     03/09/2018  11:55       146,296,819 apex-pdp-package-full-2.0.0-SNAPSHOT-tarball.tar.gz |
+|     03/09/2018  11:55       146,328,082 apex-pdp-package-full-2.0.0-SNAPSHOT.deb            |
+|     03/09/2018  11:54            15,633 apex-pdp-package-full-2.0.0-SNAPSHOT.jar            |
+|     03/09/2018  11:55               772 apex-pdp-package-full_2.0.0~SNAPSHOT_all.changes    |
+|     03/09/2018  11:54    <DIR>          archive-tmp                                         |
+|     03/09/2018  11:54                89 checkstyle-cachefile                                |
+|     03/09/2018  11:54            10,621 checkstyle-checker.xml                              |
+|     03/09/2018  11:54               584 checkstyle-header.txt                               |
+|     03/09/2018  11:54                86 checkstyle-result.xml                               |
+|     03/09/2018  11:54    <DIR>          classes                                             |
+|     03/09/2018  11:54    <DIR>          dependency-maven-plugin-markers                     |
+|     03/09/2018  11:54    <DIR>          etc                                                 |
+|     03/09/2018  11:54    <DIR>          examples                                            |
+|     03/09/2018  11:55    <DIR>          install_hierarchy                                   |
+|     03/09/2018  11:54    <DIR>          maven-archiver                                      |
+|     8 File(s)    292,652,686 bytes                                                          |
+|     9 Dir(s)  14,138,720,256 bytes free                                                     |
++---------------------------------------------------------------------------------------------+
 
 .. container:: paragraph
 
@@ -618,7 +599,7 @@ Installation Layout
 
       .. container:: content
 
-::
+       ::
 
             $APEX_HOME
                 ├───bin             (1)
@@ -1071,36 +1052,36 @@ Verify Installation - run an Example
    the console. Pasting the input event multiple times will produce
    output events with different values.
 
-+----------------------------------------------------+----------------------------------------------------+
-| Input Event                                        | Example Output Event                               |
-+====================================================+====================================================+
-| .. container::                                     | .. container::                                     |
-|                                                    |                                                    |
-| .. container:: content                             | .. container:: content                             |
-|                                                    |                                                    |
-| .. code::                                          | .. code::                                          |
-| :number-lines:                                     | :number-lines:                                     |
-|                                                    |                                                    |
-| {                                                  | {                                                  |
-| "nameSpace": "org.onap.policy.apex.sample.events", | "name": "Event0004",                               |
-| "name": "Event0000",                               | "version": "0.0.1",                                |
-| "version": "0.0.1",                                | "nameSpace": "org.onap.policy.apex.sample.events", |
-| "source": "test",                                  | "source": "Act",                                   |
-| "target": "apex",                                  | "target": "Outside",                               |
-| "TestSlogan": "Test slogan for External Event0",   | "TestActCaseSelected": 2,                          |
-| "TestMatchCase": 0,                                | "TestActStateTime": 1536157104627,                 |
-| "TestTimestamp": 1469781869269,                    | "TestDecideCaseSelected": 0,                       |
-| "TestTemperature": 9080.866                        | "TestDecideStateTime": 1536157104625,              |
-| }                                                  | "TestEstablishCaseSelected": 0,                    |
-|                                                    | "TestEstablishStateTime": 1536157104623,           |
-|                                                    | "TestMatchCase": 0,                                |
-|                                                    | "TestMatchCaseSelected": 1,                        |
-|                                                    | "TestMatchStateTime": 1536157104620,               |
-|                                                    | "TestSlogan": "Test slogan for External Event0",   |
-|                                                    | "TestTemperature": 9080.866,                       |
-|                                                    | "TestTimestamp": 1469781869269                     |
-|                                                    | }                                                  |
-+----------------------------------------------------+----------------------------------------------------+
++----------------------------------------------------------+----------------------------------------------------------+
+| Input Event                                              | Example Output Event                                     |
++==========================================================+==========================================================+
+| .. container::                                           | .. container::                                           |
+|                                                          |                                                          |
+|  .. container:: content                                  |  .. container:: content                                  |
+|                                                          |                                                          |
+|   .. code::                                              |   .. code::                                              |
+|    :number-lines:                                        |    :number-lines:                                        |
+|                                                          |                                                          |
+|     {                                                    |     {                                                    |
+|       "nameSpace": "org.onap.policy.apex.sample.events", |       "name": "Event0004",                               |
+|       "name": "Event0000",                               |       "version": "0.0.1",                                |
+|       "version": "0.0.1",                                |       "nameSpace": "org.onap.policy.apex.sample.events", |
+|       "source": "test",                                  |       "source": "Act",                                   |
+|       "target": "apex",                                  |       "target": "Outside",                               |
+|       "TestSlogan": "Test slogan for External Event0",   |       "TestActCaseSelected": 2,                          |
+|       "TestMatchCase": 0,                                |       "TestActStateTime": 1536157104627,                 |
+|       "TestTimestamp": 1469781869269,                    |       "TestDecideCaseSelected": 0,                       |
+|       "TestTemperature": 9080.866                        |       "TestDecideStateTime": 1536157104625,              |
+|     }                                                    |       "TestEstablishCaseSelected": 0,                    |
+|                                                          |       "TestEstablishStateTime": 1536157104623,           |
+|                                                          |       "TestMatchCase": 0,                                |
+|                                                          |       "TestMatchCaseSelected": 1,                        |
+|                                                          |       "TestMatchStateTime": 1536157104620,               |
+|                                                          |       "TestSlogan": "Test slogan for External Event0",   |
+|                                                          |       "TestTemperature": 9080.866,                       |
+|                                                          |       "TestTimestamp": 1469781869269                     |
+|                                                          |     }                                                    |
++----------------------------------------------------------+----------------------------------------------------------+
 
 .. container:: paragraph
 
@@ -1161,18 +1142,7 @@ Verify a Full Installation - REST Client
 
    Now open a browser (Firefox, Chrome, Opera, Internet Explorer) and
    use the URL ``http://localhost:18989/``. This will connect the
-   browser to the started REST client. Click on the "Policy Editor" button and the Policy Editor start screen should be as
-   follows.
-
-.. container:: imageblock
-
-   .. container:: content
-
-      |Policy Editor Start Screen|
-
-   .. container:: title
-
-      Figure 1. Policy Editor Start Screen
+   browser to the started REST client. Click on the "Policy Editor" button and the Policy Editor start screen should appear.
 
 .. container:: paragraph
 
@@ -1180,18 +1150,7 @@ Verify a Full Installation - REST Client
    ``Open``. In the opened dialog, go to the directory where APEX is
    installed, then ``examples``, ``models``, ``SampleDomain``, and there
    select the file ``SamplePolicyModelJAVA.json``. This will load the
-   policy model used to verify the policy engine (see above). Once
-   loaded, the screen should look as follows.
-
-.. container:: imageblock
-
-   .. container:: content
-
-      |Policy Editor with loaded SampleDomain Policy Model|
-
-   .. container:: title
-
-      Figure 2. Policy Editor with loaded SampleDomain Policy Model
+   policy model used to verify the policy engine (see above).
 
 .. container:: paragraph
 
@@ -1274,25 +1233,21 @@ Run in ONAP
          Running APEX from the ONAP docker repository only requires 2
          commands:
 
-      .. container:: olist arabic
+         1. Log into the ONAP docker repo
 
-         #. Log into the ONAP docker repo
+          .. container:: listingblock
 
-      .. container:: listingblock
+           .. container:: content
 
-         .. container:: content
-
-::
+            ::
 
                docker login -u docker -p docker nexus3.onap.org:10003
 
-      .. container:: olist arabic
+         2. Run the APEX docker image
 
-         #. Run the APEX docker image
+          .. container:: listingblock
 
-      .. container:: listingblock
-
-         .. container:: content
+           .. container:: content
 
             ::
 
@@ -1426,7 +1381,7 @@ Introduction to APEX Configuration
 
             .. container:: content
 
-               |APEX Configuration Matrix|
+              .. image:: images/apex-intro/ApexEngineConfig.png
 
             .. container:: title
 
@@ -2282,7 +2237,7 @@ Standard Input
 
                   .. container:: content
 
-::
+                    ::
 
                         "carrierTechnologyParameters" : {
                           "carrierTechnology" : "FILE", (1)
@@ -5892,9 +5847,3 @@ Send Events
    (APEX). This will also terminate the echo-client in Terminal 2. Then
    type ``exit<enter>`` in Terminal 3 (or ``CTRL+C``) to terminate the
    console-client.
-
-.. container::
-   :name: footer
-
-   .. container::
-      :name: footer-text
