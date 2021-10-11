@@ -42,6 +42,8 @@ Accessing the policy docker containers is the same as for any kubernetes contain
 
   kubectl -n onap exec -it dev-policy-policy-xacml-pdp-584844b8cf-9zptx bash
 
+.. _install-upgrade-policy-label:
+
 Installing or Upgrading Policy
 ******************************
 The assumption is you have cloned the charts from the OOM repository into a local directory.
@@ -165,7 +167,7 @@ The reader is refered to the AAF documentation when new AAF-compliant keystores 
 * `AAF Certificate Management for Dummies <https://wiki.onap.org/display/DW/AAF+Certificate+Management+for+Dummies>`_.
 * `Instructional Videos <https://wiki.onap.org/display/DW/Instructional+Videos>`_.
 
-After these changes, follow the procedures in the :ref:`Installing or Upgrading Policy` section to make usage of
+After these changes, follow the procedures in the :ref:`install-upgrade-policy-label` section to make usage of
 the new stores effective.
 
 Additional PDP-D Customizations
@@ -180,7 +182,7 @@ information is secured appropriately before using in production.
 Additional customization can be applied to the PDP-D.  Custom configuration goes under the
 "resources" directory of the drools subchart (oom/kubernetes/policy/charts/drools/resources).
 This requires rebuilding the policy subchart
-(see section :ref:`Installing or Upgrading Policy`).
+(see section :ref:`install-upgrade-policy-label`).
 
 Configuration is done by adding or modifying configmaps and/or secrets.
 Configmaps are placed under "drools/resources/configmaps", and
@@ -209,7 +211,7 @@ To *disable AAF*, simply override the "aaf.enabled" value when deploying the hel
 To *override the PDP-D keystore or trustore*, add a suitable replacement(s) under
 "drools/resources/secrets".  Modify the drools chart values.yaml with
 new credentials, and follow the procedures described at
-:ref:`Installing or Upgrading Policy` to redeploy the chart.
+:ref:`install-upgrade-policy-label` to redeploy the chart.
 
 To *disable https* for the DMaaP configuration topic, add a copy of
 `engine.properties <https://git.onap.org/policy/drools-pdp/tree/policy-management/src/main/server/config/engine.properties>`_
