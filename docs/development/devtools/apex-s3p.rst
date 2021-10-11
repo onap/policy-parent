@@ -64,7 +64,7 @@ HOSTNAME            Server IP address for making REST API calls
 ==================  ============================================================================  ============================
 
 
-Download and update the jmx file presented in the apex-pdp git repository - `jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/apex-pdp-stability/src/main/resources;h=99d373033a190a690d4e05012bc3a656cae7bc3f;hb=refs/heads/master>`_.
+Download and update the jmx file presented in the apex-pdp git repository - `stability jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/apex-pdp-stability/src/main/resources;h=99d373033a190a690d4e05012bc3a656cae7bc3f;hb=refs/heads/master>`_.
 
 - ThreadGroup.duration - Set the duration to 259200 seconds (72 hours)
 
@@ -112,7 +112,7 @@ Performance test plan will be the same as the stability test plan except for som
 - Increase the number of threads from 5 to 20.
 - Reduce test time to ninety minutes. (ThreadGroup.duration - Set the duration to 5400 seconds)
 
-Download and update the jmx file presented in the apex-pdp git repository - `jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/performance/performance-benchmark-test/src/main/resources;h=b0ed1058b11f82b42fb5be1a07009114e1e8b593;hb=refs/heads/master>`_.
+Download and update the jmx file presented in the apex-pdp git repository - `performance jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/performance/performance-benchmark-test/src/main/resources;h=b0ed1058b11f82b42fb5be1a07009114e1e8b593;hb=refs/heads/master>`_.
 
 
 Run Test
