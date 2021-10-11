@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "595a2abe_e6b31f44",
+        "filename": "docs/clamp/clamp/clamp-description.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-11T11:24:27Z",
+      "side": 1,
+      "message": "The Documentation compiler insists the the code block is valid (in it\u0027s opinion) JSON, so I just removed the JSON annotations.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "1388c80f555f163adcd358816ccd3544e7855874",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
