@@ -10,143 +10,200 @@
 Policy APEX PDP component
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Setting up Stability Tests in APEX
-++++++++++++++++++++++++++++++++++
+Both the Stability and the Performance tests were executed in a full ONAP OOM deployment in Nordix lab.
+
+
+Setup Details
++++++++++++++
+
+- APEX-PDP along with all policy components deployed as part of a full ONAP OOM deployment.
+- Policy-models-simulator is deployed to use CDS and DMaaP simulators during policy execution.
+    Simulator configurations used are available in apex-pdp repository:
+      testsuites/apex-pdp-stability/src/main/resources/simulatorConfig/
+- Two APEX policies are executed in the APEX-PDP engine, and are triggered by multiple threads during the tests.
+- Both tests were run via jMeter.
+
+    Stability test script is available in apex-pdp repository:
+      testsuites/apex-pdp-stability/src/main/resources/apexPdpStabilityTestPlan.jmx
+
+    Performance test script is available in apex-pdp repository:
+      testsuites/performance/performance-benchmark-test/src/main/resources/apexPdpPerformanceTestPlan.jmx
+
+.. Note::
+   Policy executions are validated in a more strict fashion during the tests.
+   There are test cases where upto 80 events are expected on the DMaaP topic.
+   DMaaP simulator is used to keep it simple and avoid any message pickup timing related issues.
+
+Stability Test of APEX-PDP
+++++++++++++++++++++++++++
+
+Test Plan
+---------
+
+The 72 hours stability test ran the following steps.
+
+Setup Phase
+"""""""""""
+
+Policies are created and deployed to APEX-PDP during this phase. Only one thread is in action and this step is done only once.
+
+- **Create Policy onap.policies.apex.Simplecontrolloop** - creates the first APEX policy using policy/api component.
+      This is a sample policy used for PNF testing.
+- **Create Policy onap.policies.apex.Example** - creates the second APEX policy using policy/api component.
+      This is a sample policy used for VNF testing.
+- **Deploy Policies** - Deploy both the policies created to APEX-PDP using policy/pap component
+
+Main Phase
+""""""""""
+
+Once the policies are created and deployed to APEX-PDP by the setup thread, five threads execute the below tests for 72 hours.
+
+- **Healthcheck** - checks the health status of APEX-PDP
+- **Prometheus Metrics** - checks that APEX-PDP is exposing prometheus metrics
+- **Test Simplecontrolloop policy success case** - Send a trigger event to *unauthenticated.DCAE_CL_OUTPUT* DMaaP topic.
+    If the policy execution is successful, 3 different notification events are sent to *APEX-CL-MGT* topic by each one of the 5 threads.
+    So, it is checked if 15 notification messages are received in total on *APEX-CL-MGT* topic with the relevant messages.
+- **Test Simplecontrolloop policy failure case** - Send a trigger event with invalid pnfName to *unauthenticated.DCAE_CL_OUTPUT* DMaaP topic.
+    The policy execution is expected to fail due to AAI failure response. 2 notification events are expected on *APEX-CL-MGT* topic by a thread in this case.
+    It is checked if 10 notification messages are received in total on *APEX-CL-MGT* topic with the relevant messages.
+- **Test Example policy success case** - Send a trigger event to *unauthenticated.DCAE_POLICY_EXAMPLE_OUTPUT* DMaaP topic.
+    If the policy execution is successful, 4 different notification events are sent to *APEX-CL-MGT* topic by each one of the 5 threads.
+    So, it is checked if 20 notification messages are received in total on *APEX-CL-MGT* topic with the relevant messages.
+- **Test Example policy failure case** - Send a trigger event with invalid vnfName to *unauthenticated.DCAE_POLICY_EXAMPLE_OUTPUT* DMaaP topic.
+    The policy execution is expected to fail due to AAI failure response. 2 notification events are expected on *APEX-CL-MGT* topic by a thread in this case.
+    So, it is checked if 10 notification messages are received in total on *APEX-CL-MGT* topic with the relevant messages.
+- **Clean up DMaaP notification topic** - DMaaP notification topic which is *APEX-CL-MGT* is cleaned up after each test to make sure that one failure doesn't lead to cascading errors.
+
+
+Teardown Phase
+""""""""""""""
+
+Policies are undeployed from APEX-PDP and deleted during this phase.
+Only one thread is in action and this step is done only once after the Main phase is complete.
+
+- **Undeploy Policies** - Undeploy both the policies from APEX-PDP using policy/pap component
+- **Delete Policy onap.policies.apex.Simplecontrolloop** - delete the first APEX policy using policy/api component.
+- **Delete Policy onap.policies.apex.Example** - delete the second APEX policy also using policy/api component.
+
+
+The following steps can be used to configure the parameters of test plan.
+
+- **HTTP Authorization Manager** - used to store user/password authentication details.
+- **HTTP Header Manager** - used to store headers which will be used for making HTTP requests.
+- **User Defined Variables** -  used to store following user defined parameters.
+
+===================  ===============================================================================
+ **Name**            **Description**
+===================  ===============================================================================
+ HOSTNAME            IP Address or host name to access the components
+ PAP_PORT            Port number of PAP for making REST API calls such as deploy/undeploy of policy
+ API_PORT            Port number of API for making REST API calls such as create/ delete of policy
+ APEX_PORT           Port number of APEX for making REST API calls such as healthcheck/metrics
+ wait                Wait time if required after a request (in milliseconds)
+ threads             Number of threads to run test cases in parallel
+ threadsTimeOutInMs  Synchronization timer for threads running in parallel (in milliseconds)
+===================  ================================================================================
+
+Run Test
+--------
+
+The test was run in the background via "nohup", to prevent it from being interrupted:
+
+.. code-block:: bash
+
+    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t apexPdpStabilityTestPlan.jmx -l stabilityTestResults.jtl
+
+Test Results
+------------
+
+**Summary**
+
+Stability test plan was triggered for 72 hours. There were no failures during the 72 hours test.
+
+
+**Test Statistics**
+
+=======================  =================  ==================  ==================================
+**Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
+=======================  =================  ==================  ==================================
+428661                    100 %             0.00 %              162 ms
+=======================  =================  ==================  ==================================
+
+.. Note::
+
+   There were no failures during the 72 hours test.
+
+**JMeter Screenshot**
+
+.. image:: apex-s3p-results/apex_stability_jmeter_results.JPG
+
+**Memory and CPU usage**
+
+The memory and CPU usage can be monitored by running "top" command in the APEX-PDP pod.
+A snapshot is taken before and after test execution to monitor the changes in resource utilization.
+Prometheus metrics is also collected before and after the test execution.
+
+Memory and CPU usage before test execution:
+
+.. image:: apex-s3p-results/apex_top_before_72h.JPG
+
+:download:`Prometheus metrics before 72h test  <apex-s3p-results/apex_metrics_before_72h.txt>`
+
+Memory and CPU usage after test execution:
+
+.. image:: apex-s3p-results/apex_top_after_72h.JPG
+
+:download:`Prometheus metrics after 72h test  <apex-s3p-results/apex_metrics_after_72h.txt>`
+
+Performance Test of APEX-PDP
+++++++++++++++++++++++++++++
 
 Introduction
 ------------
 
-The 72 hour Stability Test for apex-pdp has the goal of introducing a steady flow of transactions initiated from a test client server running JMeter. The pdp is configured to start a rest server inside it and take input from rest clients (JMeter) and send back output to the rest clients (JMeter).
+Performance test of APEX-PDP is done similar to the stability test, but in a more extreme manner using higher thread count.
 
-The input events will be submitted through rest interface of apex-pdp and the results are verified using the rest responses coming out from apex-pdp.
-
-The test will be performed in a multi-threaded environment where 5 threads running in JMeter will keep sending events to apex-pdp for the duration of 72 hours.
-
-Setup details
+Setup Details
 -------------
 
-Stability test is performed on VM's running in OpenStack cloud environment. APEX-PDP along with other components in Policy Framework is deployed in an OOM ONAP installation. JMeter runs on a separate VM to simulate a steady flow of transactions.
+The performance test is performed on a similar setup as Stability test.
 
 
 Test Plan
 ---------
 
-The 72 hours stability test will run the following steps in a 5 threaded loop.
+Performance test plan is the same as the stability test plan above except for the few differences listed below.
 
-Setup stage (these calls run only once - at the beginning)
-- **Create Policy** - creates a policy using the policy/api component
-- **Deploy Policy** - deploys the policy in the existing PdpGroup
-Test stage (these calls run over and over again)
-- **Check Health** - checks the health status of apex
-- **Send Input Event** - triggers 'unauthenticated.DCAE_CL_OUTPUT' event of DMaaP.
-- **Get Output Event Response** - checks for the triggered output event.
-Teardown stage (this calls run only once - at the end)
-- **Undeploy Policy** - undeploys the policy from PdpGroup
-- **Delete Policy** - deletes the policy using the policy/api component
-
-The following steps can be used to configure the parameters of the test plan.
-
-- **HTTP Header Manager** - used to store headers which will be used for making HTTP requests.
-- **HTTP Request Defaults** -  used to store HTTP request details like Server Name or IP, Port, Protocol etc.
-- **User Defined Variables** -  used to store the following user defined parameters:
-
-==================  ============================================================================  ============================
-**Name**            **Description**                                                               **Default Value**
-==================  ============================================================================  ============================
-wait                Wait time after each request (in milliseconds)                                10000
-threads             Number of threads to run test cases in parallel.                              5
-threadsTimeOutInMs  Synchronization timer for threads running in parallel (in milliseconds).      5000
-PAP_PORT            Port number of PAP for making REST API calls
-API_PORT            Port number of API for making REST API calls
-APEX_PORT           Port number of APEX for making REST API calls
-DMAAP_PORT          Port number of DMAAP for making REST API calls
-HOSTNAME            Server IP address for making REST API calls
-==================  ============================================================================  ============================
-
-
-Download and update the jmx file presented in the apex-pdp git repository - `jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/apex-pdp-stability/src/main/resources;h=99d373033a190a690d4e05012bc3a656cae7bc3f;hb=refs/heads/master>`_.
-
-- ThreadGroup.duration - Set the duration to 259200 seconds (72 hours)
-
-Use the CLI mode to start the test
-
-.. code-block:: bash
-
-    nohup ./jmeter.sh -n -t ~/apexPdpStabilityTestPlan.jmx -Jusers=1 -l ~/stability.log
-
-
-Stability Test Results
-----------------------
-
-The stability test plan was triggered for 72 hours, injecting input events to apex-pdp pod from 5 client threads running in JMeter.
-
-The stability tests were executed as part of a full ONAP OOM deployment in Nordix lab.
-
-Once the tests complete, we can generate an HTML test report via the command:
-
-.. code-block:: bash
-
-    ~/jMeter/apache-jmeter-5.2.1/bin/jmeter -g stability.log -o ./result/
-
-==============================================  ================================  =============  ============ ============================
-**Number of Client Threads running in JMeter**  **Total number of input events**  **Success %**  **Error %**  **Average Time per Request**
-==============================================  ================================  =============  ============ ============================
-5                                               129326                            100%           0%           6716.12
-==============================================  ================================  =============  ============ ============================
-
-
-**JMeter Screenshot**
-
-.. image:: images/apex_s3p_jm-1.png
-.. image:: images/apex_s3p_jm-2.png
-
-:download:`result.zip <apex-s3p-results/apex_s3p_results.zip>`
-
-Setting up Performance Tests in APEX
-++++++++++++++++++++++++++++++++++++
-
-The Performance test is performed on a similar setup to the Stability test. JMeter will send a large number of REST requests and will then retrieve those requests.
-
-Performance test plan will be the same as the stability test plan except for some differences listed below:
-
-- Increase the number of threads from 5 to 20.
-- Reduce test time to ninety minutes. (ThreadGroup.duration - Set the duration to 5400 seconds)
-
-Download and update the jmx file presented in the apex-pdp git repository - `jmx file path <https://gerrit.onap.org/r/gitweb?p=policy/apex-pdp.git;a=tree;f=testsuites/performance/performance-benchmark-test/src/main/resources;h=b0ed1058b11f82b42fb5be1a07009114e1e8b593;hb=refs/heads/master>`_.
-
+- Increase the number of threads used in the Main Phase from 5 to 20.
+- Reduce the test time to 2 hours.
 
 Run Test
 --------
 
-Running the performance test will be the same as the stability test. That is, launch JMeter pointing to corresponding *.jmx* test plan. The *API_HOST* , *API_PORT* , *PAP_HOST* , *PAP_PORT* are already set up in *.jmx*.
-
 .. code-block:: bash
 
-    nohup ./jmeter.sh -n -t ~/performance.jmx -Jusers=1 -l ~/perf.log
+    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t apexPdpPerformanceTestPlan.jmx -l perftestresults.jtl
 
-Once the tests have completed, run the following the gather results.
 
-.. code-block:: bash
+Test Results
+------------
 
-    ~/jMeter/apache-jmeter-5.2.1/bin/jmeter -g perf.log -o ./performance_result/
-
-Performance Test Result
------------------------
-
-**Summary**
-
-Performance test was triggered for 90 minutes. The results are shown below.
+Test results are shown as below.
 
 **Test Statistics**
 
-============================ =========== ========= ==================================
-**Total Number of Requests** **Success** **Error** **Average Time Taken per Request**
-============================ =========== ========= ==================================
-32304                        99,99 %     0.01 %    8746.50 ms
-============================ =========== ========= ==================================
+=======================  =================  ==================  ==================================
+**Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
+=======================  =================  ==================  ==================================
+46946                    100 %              0.00 %              198 ms
+=======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
 
-.. image:: images/apex_perf_jm_1.PNG
+.. image:: apex-s3p-results/apex_perf_jmeter_results.JPG
 
-.. image:: images/apex_perf_jm_2.PNG
+Summary
++++++++
+
+Multiple policies were executed in a multi threaded fashion for both stability and performance tests.
+Both tests ran smoothly without any issues.
