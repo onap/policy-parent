@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5403499a_fa10dd4c",
+        "filename": "docs/clamp/pre-migration-release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-11T11:48:41Z",
+      "side": 1,
+      "message": "Empty space.",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 4
+      },
+      "revId": "16ba85fc9525e723bcdfd16614c93046a3640303",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0100349b_06a826bb",
+        "filename": "docs/system-attributes/system-attributes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-11T11:48:41Z",
+      "side": 1,
+      "message": "Empty space.",
+      "range": {
+        "startLine": 5,
+        "startChar": 80,
+        "endLine": 5,
+        "endChar": 81
+      },
+      "revId": "16ba85fc9525e723bcdfd16614c93046a3640303",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
