@@ -337,7 +337,7 @@ E.g. For vFW usecase the policy-type is "onap.policies.controlloop.operational.c
 
 In the below rest endpoint, the hostname points to K8S service "policy-api" and internal port 6969.
 
-.. code-block:: bash
+.. code-block::
 
     curl POST 'https://{$POLICY_API_URL}:{$POLICY_API_SERVICE_PORT}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies/operational.modifyconfig/versions/1.0.0' \
     -H 'Accept: application/json' \

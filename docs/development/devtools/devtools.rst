@@ -267,6 +267,36 @@ An example of running the api using a docker compose script is located in the Po
 
 `Policy CSIT API Docker Compose <https://gerrit.onap.org/r/gitweb?p=integration/csit.git;a=blob;f=scripts/policy/docker-compose-api.yml;h=e32190f1e6cb6d9b64ddf53a2db2c746723a0c6a;hb=refs/heads/master>`_
 
+Running the Smoke Tests
+***********************
+
+The following links contain instructions on how to run the smoke tests. These may be helpful to developers to become
+familiar with the Policy Framework components and test any local changes.
+
+.. toctree::
+   :maxdepth: 1
+
+..
+   api-smoke.rst
+
+..
+   pap-smoke.rst
+
+..
+   apex-smoke.rst
+
+..
+   drools-smoke.rst
+
+..
+   xacml-smoke.rst
+
+..
+   distribution-smoke.rst
+
+..
+   clamp-smoke.rst
+
 Running the Stability/Performance Tests
 ***************************************
 
@@ -282,6 +312,37 @@ familiar with the Policy Framework components and test any local changes.
    drools-s3p.rst
    xacml-s3p.rst
    distribution-s3p.rst
+
+Running the Pairwise Tests
+***********************
+
+The following links contain instructions on how to run the pairwise tests. These may be helpful to developers check that
+the Policy Framework works in a full ONAP deployment.
+
+.. toctree::
+   :maxdepth: 1
+
+..
+   api-smoke.rst
+
+..
+   pap-smoke.rst
+
+..
+   apex-smoke.rst
+
+..
+   drools-smoke.rst
+
+..
+   xacml-smoke.rst
+
+..
+   distribution-smoke.rst
+
+..
+   clamp-smoke.rst
+
 
 Generating Swagger Documentation
 ********************************

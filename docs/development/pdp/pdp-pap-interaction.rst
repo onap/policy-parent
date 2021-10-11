@@ -37,7 +37,7 @@ Some of the information included in the message are:
 - *name* a name that is unique to the PDP instance.
 
 
-.. code-block:: json
+.. code-block::
   :caption: Sample PDP_STATUS Registration message (from APEX-PDP)
   :linenos:
 
@@ -86,7 +86,7 @@ If so, it updates itself with the information in PDP_UPDATE message from PAP suc
 *pdpHeartbeatIntervalMs* and *policiesToBeDeployed* (if any). After handling the PDP_UPDATE message, the PDP sends
 a response message back to PAP with the current status of the PDP along with the result of the PDP_UPDATE operation.
 
-.. code-block:: json
+.. code-block::
   :caption: Sample PDP_STATUS response message (from APEX-PDP)
   :linenos:
 
@@ -144,7 +144,7 @@ then it waits in ACTIVE state, ready to execute any policies as and when they ar
 to them from PAP. After handling the PDP_STATE_CHANGE message, the PDP sends a response message
 back to PAP with the current status of the PDP along with the result of the PDP_STATE_CHANGE operation.
 
-.. code-block:: json
+.. code-block::
   :caption: Sample PDP_STATUS response message (from APEX-PDP)
   :linenos:
 
@@ -178,7 +178,7 @@ with the data in the database, PAP sends out a PDP_UPDATE message to update the 
 PAP considers a PDP as expired if three consecutive heartbeats are missing from the PDP,
 and removes the PDP instance details from the database.
 
-.. code-block:: json
+.. code-block::
   :caption: Sample PDP_STATUS response message (from APEX-PDP)
   :linenos:
 
@@ -212,7 +212,7 @@ PAP sends a PDP_UPDATE message with information about policies to be deployed an
 undeployed. If there are some policies that are already deployed, then only the new ones
 are sent under the *policiesToBeDeployed* field.
 
-.. code-block:: json
+.. code-block::
   :caption: Sample PDP_STATUS response message (from APEX-PDP)
   :linenos:
 

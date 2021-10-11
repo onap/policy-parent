@@ -282,8 +282,8 @@ The easiest way to do this is to use the annotations feature from XACML PDP libr
 request. Then create an instance and simply populate it from an incoming ONAP Decision Request.
 
 .. code-block:: java
-  :caption: Final TutorialApplication Class
-  :linenos:
+ :caption: Final TutorialApplication Class
+
     import com.att.research.xacml.std.annotations.XACMLAction;
     import com.att.research.xacml.std.annotations.XACMLRequest;
     import com.att.research.xacml.std.annotations.XACMLResource;

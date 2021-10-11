@@ -133,8 +133,6 @@ The script will return either 1 or 0 depending on successful completion.
 Logging
 =======
 
-    .. container:: paragraph
-
 After every upgrade/downgrade ``db-migrator`` runs the report operation to show the
 contents of the db-migrator log table.
 
