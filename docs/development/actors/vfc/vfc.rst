@@ -16,10 +16,10 @@ Overview of VFC Actor
 ONAP Policy Framework enables VFC as one of the supported actors.
 
 .. note::
-There has not been any support given to the Policy Framework project for the VFC Actor
-in several releases. Thus, the code and information provided is to the best of the
-knowledge of the team. If there are any questions or problems, please consult the VFC
-Project to help provide guidance.
+  There has not been any support given to the Policy Framework project for the VFC Actor
+  in several releases. Thus, the code and information provided is to the best of the
+  knowledge of the team. If there are any questions or problems, please consult the VFC
+  Project to help provide guidance.
 
 VFC uses a REST-based
 interface.  However, as requests may not complete right away, a REST-based polling
