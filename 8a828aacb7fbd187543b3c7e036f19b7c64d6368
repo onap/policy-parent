@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8dcabb6_60ca47d4",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-12T12:17:10Z",
+      "side": 1,
+      "message": "So we can add these file later I guess.\nShould these file names be changed to *-pairwise from smoke? I am okay to do that later if needed when we actually work on it.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 18
+      },
+      "revId": "8a828aacb7fbd187543b3c7e036f19b7c64d6368",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
