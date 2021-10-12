@@ -13,3 +13,4 @@ CLAMP supports the definition, deployment, and life cycle management of control 
    clamp-architecture
    clamp-description
    user-guide
+   controlloop-s3p
