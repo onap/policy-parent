@@ -22,6 +22,30 @@
       "revId": "8a828aacb7fbd187543b3c7e036f19b7c64d6368",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c534ebcb_7bd36ff5",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-12T12:57:25Z",
+      "side": 1,
+      "message": "Yes, I think we should have these pages for smoke testing and for pairwise testing from now on. We can do them after the Istanbul release if we\u0027re not allowed to do them before, but they are really for the people doing the testing in the next release.",
+      "parentUuid": "c8dcabb6_60ca47d4",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 18
+      },
+      "revId": "8a828aacb7fbd187543b3c7e036f19b7c64d6368",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
