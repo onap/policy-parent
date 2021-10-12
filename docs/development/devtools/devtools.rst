@@ -312,6 +312,7 @@ familiar with the Policy Framework components and test any local changes.
    drools-s3p.rst
    xacml-s3p.rst
    distribution-s3p.rst
+   controlloop-s3p.rst
 
 Running the Pairwise Tests
 ***********************
