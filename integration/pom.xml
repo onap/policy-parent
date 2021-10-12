@@ -37,7 +37,7 @@
     <properties>
         <java.version>11</java.version>
         <!-- NOTE: For RELEASE/SNAPSHOT always set to the project version -->
-        <version.parent.resources>3.4.2</version.parent.resources>
+        <version.parent.resources>3.4.3</version.parent.resources>
         <version.logback>1.2.3</version.logback>
         <version.dmaap>1.1.12</version.dmaap>
         <version.powermock>2.0.9</version.powermock>
