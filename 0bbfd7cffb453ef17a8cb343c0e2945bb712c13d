@@ -46,6 +46,23 @@
       "revId": "0bbfd7cffb453ef17a8cb343c0e2945bb712c13d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b6837c0_e0363e96",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-10-13T15:13:25Z",
+      "side": 1,
+      "message": "I don\u0027t think this is supported.",
+      "revId": "0bbfd7cffb453ef17a8cb343c0e2945bb712c13d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
