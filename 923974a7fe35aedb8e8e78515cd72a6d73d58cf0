@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "906424bf_7e2fae4b",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-13T16:44:02Z",
+      "side": 1,
+      "message": "I think that\u0027s probably safer, I\u0027ll remove it.",
+      "parentUuid": "5b4a6e5b_0694ef75",
+      "revId": "923974a7fe35aedb8e8e78515cd72a6d73d58cf0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e48c446_31cae38a",
         "filename": "docs/release-notes.rst",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "923974a7fe35aedb8e8e78515cd72a6d73d58cf0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52d4e22b_95dd639d",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-13T16:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e48c446_31cae38a",
+      "revId": "923974a7fe35aedb8e8e78515cd72a6d73d58cf0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
