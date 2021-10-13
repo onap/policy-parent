@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "291734b5_6a9c3772",
+        "filename": "docs/development/devtools/controlloop-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7504
+      },
+      "writtenOn": "2021-10-13T11:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bab7ead_d1d0ef68",
+      "revId": "c97519e89598264c92e9ce394590988c5a82fb3d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99beb847_e3d2e67a",
         "filename": "docs/development/devtools/devtools.rst",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "c97519e89598264c92e9ce394590988c5a82fb3d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e720abdb_40d6d532",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 7504
+      },
+      "writtenOn": "2021-10-13T11:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99beb847_e3d2e67a",
+      "range": {
+        "startLine": 315,
+        "startChar": 3,
+        "endLine": 315,
+        "endChar": 14
+      },
+      "revId": "c97519e89598264c92e9ce394590988c5a82fb3d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
