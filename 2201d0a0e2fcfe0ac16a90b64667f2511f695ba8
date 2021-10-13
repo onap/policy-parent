@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e398bade_d0ea7aa7",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-13T13:44:36Z",
+      "side": 1,
+      "message": "Next time, it will be good idea to bring this to the Main Phase and verify deploy/undeploy over the 72 hours as well.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "2201d0a0e2fcfe0ac16a90b64667f2511f695ba8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f79c3d39_d9494a37",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-13T13:44:36Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "2201d0a0e2fcfe0ac16a90b64667f2511f695ba8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
