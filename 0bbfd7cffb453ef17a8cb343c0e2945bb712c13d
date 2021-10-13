@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59b13883_f002adeb",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-13T14:26:43Z",
+      "side": 1,
+      "message": "We updated the query parameter in Policy Statistics APIs instead - https://jira.onap.org/browse/POLICY-3511\nAnd added new APIs for Policy Audit capabilities in Istanbul - https://jira.onap.org/browse/POLICY-3340",
+      "range": {
+        "startLine": 125,
+        "startChar": 38,
+        "endLine": 125,
+        "endChar": 55
+      },
+      "revId": "0bbfd7cffb453ef17a8cb343c0e2945bb712c13d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
