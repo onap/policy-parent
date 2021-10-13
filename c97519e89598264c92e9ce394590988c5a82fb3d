@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bab7ead_d1d0ef68",
+        "filename": "docs/development/devtools/controlloop-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-13T10:28:30Z",
+      "side": 1,
+      "message": "let\u0027s call this file clamp-s3p.rst",
+      "revId": "c97519e89598264c92e9ce394590988c5a82fb3d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99beb847_e3d2e67a",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-13T10:28:30Z",
+      "side": 1,
+      "message": "clamp-s3p.rst",
+      "range": {
+        "startLine": 315,
+        "startChar": 3,
+        "endLine": 315,
+        "endChar": 14
+      },
+      "revId": "c97519e89598264c92e9ce394590988c5a82fb3d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
