@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecf52c6b_ac8fe8a8",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-13T10:24:34Z",
+      "side": 1,
+      "message": "I think this is 2.6.1",
+      "range": {
+        "startLine": 82,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 37
+      },
+      "revId": "82b483d9683b533d0704d515ec076ee42a4bfbf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d33eccf3_5009efb3",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-13T10:24:34Z",
+      "side": 1,
+      "message": "Maybe we could add one more point - \"Capability to send multiple output events from a state in APEX-PDP\"",
+      "revId": "82b483d9683b533d0704d515ec076ee42a4bfbf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
