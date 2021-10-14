@@ -5,8 +5,6 @@
 HTTP Participant
 ################
 
-.. warning:: To be completed
-
 The CLAMP HTTP participant receives configuration information from the CLAMP runtime,
 maps the configuration information to a REST URL, and makes a REST call on the URL.
 Typically the HTTP Participant is used with another participant such as the
@@ -16,7 +14,9 @@ participant can be used to configure the microservice over its REST interface.Of
 the HTTP participant works towards any REST service, it is not restricted to REST
 services started by participants.
 
+
 .. image:: ../../images/participants/http-participant.png
+
 
 The HTTP participant runs a Control Loop Element to handle the REST dialogues for a
 particular application domain. The REST dialogues are whatever REST calls that are
@@ -25,12 +25,6 @@ required to implement the functionality for the application domain.
 The HTTP participant allows the REST dialogues for a Control Loop to be managed. A
 particular Control Loop may require many *things* to be configured and managed and this
 may require many REST dialogues to achieve.
-
-A *Configuration Entity* describes a concept that is managed by the HTTP participant. A
-Configuration Entity can be created, Read, Updated, and Deleted (CRUD). The user defines
-the Configuration Entities that it wants its HTTP Control Loop Element to manage and
-provides a sequence of parameterized REST commands to Create, Read, Update, and Delete
-each Configuration Entity.
 
 When a control loop is initialized, the HTTP participant starts a HTTP Control Loop
 element for the control loop. It reads the configuration information sent from the
@@ -42,8 +36,15 @@ Control Loop B.
 
 Configuring a Control Loop Element on the HTTP participant for a Control Loop
 -----------------------------------------------------------------------------
+A *Configuration Entity* describes a concept that is managed by the HTTP participant. A
+Configuration Entity can be created, Read, Updated, and Deleted (CRUD). The user defines
+the Configuration Entities that it wants its HTTP Control Loop Element to manage and
+provides a sequence of parameterized REST commands to Create, Read, Update, and Delete
+each Configuration Entity.
 
-The user configures the following properties in the CLAMP GUI for the HTTP participant:
+Sample tosca template defining a http participant and a control loop element for a control loop. :download:`click here <tosca/tosca-http-participant.yml>`
+
+The user configures the following properties in the TOSCA for the HTTP participant:
 
 .. list-table::
    :widths: 15 10 50
@@ -93,11 +94,40 @@ The *RestRequest* type is described in the following table:
      - An enum for the HTTP method {GET, PUT, POST, DELETE}
    * - path
      - String
-     - The path of the REST endopint relative to the baseUrl
+     - The path of the REST endpoint relative to the baseUrl
    * - body
      - String
      - The body of the request for POST and PUT methods
    * - expectedResponse
      - HttpStatus
      - The expected HTTP response code fo the REST request
- 
+
+Http participant Interactions:
+------------------------------
+The http participant interacts with Control Loop Runtime on the northbound via DMaap. It interacts with any microservice on the southbound over http for configuration.
+
+The communication for the Control loop updates and state change requests are sent from the Control Loop Runtime to the participant via DMaap.
+The participant invokes the appropriate http endpoint of the microservice based on the received messages from the Control Loop Runtime.
+
+
+startPhase:
+-----------
+The http participant is often used along with :ref:`Kubernetes Participant <clamp-controlloop-k8s-participant>` to configure the microservice after the deployment.
+This requires the Control Loop Element of http participant to be started after the completion of deployment of the microservice. This can be achieved by adding the property `startPhase`
+in the Control Loop Element of http participant. Control Loop Runtime starts the elements based on the `startPhase` value defined in the Tosca. The default value of startPhase is taken as '0'
+which takes precedence over the Control Loop Elements with the startPhase value '1'. Http Control Loop Elements are defined with value '1' in order to start the Control Loop Element in the second phase.
+
+Http participant Workflow:
+--------------------------
+Once the participant is started, it sends a "REGISTER" event to the DMaap topic which is then consumed by the Control Loop Runtime to register this participant on the runtime database.
+The user can commission the tosca definitions from the Policy Gui to the Control Loop Runtime that further updates the participant with these definitions via DMaap.
+Once the control loop definitions are available in the runtime database, the Control Loop can be instantiated with the default state "UNINITIALISED" from the Policy Gui.
+
+When the state of the Control Loop is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui, the http participant receives the control loop state change event from the runtime and
+configures the microservice of the corresponding Control Loop Element over http.
+The configuration entity for a microservice is associated with each Control Loop Element for the http participant.
+The http participant holds the executed http requests information along with the responses received.
+
+The participant is used in a generic way to configure any entity over http and it does not hold the information about the microservice to unconfigure/revert the configurations when the
+state of Control Loop changes from "PASSIVE" to "UNINITIALISED".
+
