@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f15dca9a_48b4f24c",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-15T17:08:46Z",
+      "side": 1,
+      "message": "Same here, the average time taken has increased almost 3 times.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 71
+      },
+      "revId": "e4e7f623fbe2992aa6878970f466a304cb53b718",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc592322_598eb5e3",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-15T17:08:46Z",
+      "side": 1,
+      "message": "There is definitely a dip in performance, almost half the request \u0026 more than double time taken. Something to consider in Jakarta \u0026 target better numbers.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 71
+      },
+      "revId": "e4e7f623fbe2992aa6878970f466a304cb53b718",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
