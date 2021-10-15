@@ -35,12 +35,15 @@ The 72 hours stability test ran the following steps sequentially in a single thr
 - **Check PdpGroup Query** - makes a PdpGroup query request and verifies that PdpGroup is in the ACTIVE state.
 - **Deploy defaultDomain Policy** - deploys the policy defaultDomain in the existing PdpGroup
 - **Check status of defaultGroup** - checks the status of defaultGroup PdpGroup with the defaultDomain policy 1.0.0.
+- **Check PdpGroup Audit defaultGroup** - checks the audit information for the defaultGroup PdpGroup.
+- **Check PdpGroup Audit Policy (defaultGroup)** - checks the audit information for the defaultGroup PdpGroup with the defaultDomain policy 1.0.0.
 - **Create/Update PDP Group** - creates a new PDPGroup named sampleGroup.
 - **Check PdpGroup Query** - makes a PdpGroup query request and verifies that 2 PdpGroups are in the ACTIVE state and defaultGroup has a policy deployed on it.
 - **Deployment Update sampleDomain** - deploys the policy sampleDomain in sampleGroup PdpGroup using pap api
 - **Check status of sampleGroup** - checks the status of the sampleGroup PdpGroup.
 - **Check status of PdpGroups** - checks the status of both PdpGroups.
 - **Check PdpGroup Query** - makes a PdpGroup query request and verifies that the defaultGroup has a policy defaultDomain deployed on it and sampleGroup has policy sampleDomain deployed on it.
+- **Check Audit** - checks the audit information for all PdpGroups.
 - **Check Consolidated Health** - checks the consolidated health status of all policy components.
 - **Check Deployed Policies** - checks for all the deployed policies using pap api.
 - **Undeploy Policy sampleDomain** - undeploys the policy sampleDomain from sampleGroup PdpGroup using pap api
@@ -71,14 +74,14 @@ The test was run in the background via "nohup", to prevent it from being interru
 
 .. code-block:: bash
 
-    nohup ./jMeter/apache-jmeter-5.3/bin/jmeter.sh -n -t stabil.jmx -l testresults.jtl
+    nohup ./jMeter/apache-jmeter-5.3/bin/jmeter.sh -n -t stability.jmx -l testresults.jtl
 
 Test Results
 ------------
 
 **Summary**
 
-Stability test plan was triggered for 24 hours.
+Stability test plan was triggered for 72 hours.
 
 .. Note::
 
@@ -95,18 +98,24 @@ Stability test plan was triggered for 24 hours.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-11921                    100.00 %           0.00 %              382 ms
+34053                    99.14 %            0.86 %              1051 ms
 =======================  =================  ==================  ==================================
 
 .. Note::
 
               .. container:: paragraph
 
-                  There were no failures during the 24 hours test.
+                  There were some failures during the 72 hour stability tests. These tests were caused by the apex-pdp pods restarting
+                  intermitently due to limited resources in our testing environment. The second apex instance was configured as a
+                  replica of the apex-pdp pod and therefore, when it restarted, registered to the "defaultGroup" as the configuration 
+                  was taken from the original apex-pdp pod. This meant a manual change whenever the pods restarted to make apex-pdp-"2"
+                  register with the "sampleGroup".
+                  When both pods were running as expected, no errors relating to the pap functionality were observed. These errors are
+                  strictly caused by the environment setup and not by pap.
 
 **JMeter Screenshot**
 
-.. image:: images/pap-s3p-stability-result-jmeter.PNG
+.. image:: images/pap-s3p-stability-result-jmeter.png
 
 **Memory and CPU usage**
 
@@ -114,11 +123,11 @@ The memory and CPU usage can be monitored by running "top" command on the PAP po
 
 Memory and CPU usage before test execution:
 
-.. image:: images/pap-s3p-mem-bt.PNG
+.. image:: images/pap-s3p-mem-bt.png
 
 Memory and CPU usage after test execution:
 
-.. image:: images/pap-s3p-mem-at.PNG
+.. image:: images/pap-s3p-mem-at.png
 
 
 Performance Test of PAP
@@ -152,7 +161,7 @@ Running/Triggering the performance test will be the same as the stability test. 
 
 .. code-block:: bash
 
-    nohup ./jMeter/apache-jmeter-5.3/bin/jmeter.sh -n -t perf.jmx -l perftestresults.jtl
+    nohup ./jMeter/apache-jmeter-5.3/bin/jmeter.sh -n -t performance.jmx -l perftestresults.jtl
 
 Once the test execution is completed, execute the below script to get the statistics:
 
@@ -171,9 +180,9 @@ Test results are shown as below.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-46314                    100 %              0.00 %              1084 ms
+24092                    100 %              0.00 %              2467 ms
 =======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
 
-.. image:: images/pap-s3p-performance-result-jmeter.PNG
+.. image:: images/pap-s3p-performance-result-jmeter.png
