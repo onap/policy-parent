@@ -46,6 +46,30 @@
       "revId": "78bd4b469a3dd29829f8333946852dd62a4cd7a8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "667f18a4_dd682905",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-18T17:22:13Z",
+      "side": 1,
+      "message": "thanks Jorge!",
+      "parentUuid": "f1de5079_d2c89a14",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 10
+      },
+      "revId": "78bd4b469a3dd29829f8333946852dd62a4cd7a8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
