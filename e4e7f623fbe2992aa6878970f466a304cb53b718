@@ -45,6 +45,30 @@
       "revId": "e4e7f623fbe2992aa6878970f466a304cb53b718",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8ade80f_65802e51",
+        "filename": "docs/development/devtools/pap-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-18T08:57:37Z",
+      "side": 1,
+      "message": "Agree with Ram.",
+      "parentUuid": "fc592322_598eb5e3",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 71
+      },
+      "revId": "e4e7f623fbe2992aa6878970f466a304cb53b718",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
