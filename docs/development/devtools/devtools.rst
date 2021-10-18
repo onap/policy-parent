@@ -323,6 +323,10 @@ the Policy Framework works in a full ONAP deployment.
 .. toctree::
    :maxdepth: 1
 
+   clamp-policy.rst
+
+   clamp-dcae.rst
+
 ..
    api-pairwise.rst
 
@@ -340,9 +344,6 @@ the Policy Framework works in a full ONAP deployment.
 
 ..
    distribution-pairwise.rst
-
-..
-   clamp-pairwise.rst
 
 
 Generating Swagger Documentation
