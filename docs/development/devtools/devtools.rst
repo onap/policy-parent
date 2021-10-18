@@ -233,7 +233,7 @@ Developing and Debugging each Policy Component
 Running a MariaDb Instance
 ++++++++++++++++++++++++++
 
-The Policy Framework requires a MariaDb instance running. The easiest way to do this is to run a docker image locally. 
+The Policy Framework requires a MariaDb instance running. The easiest way to do this is to run a docker image locally.
 
 One example on how to do this is to use the scripts used by the policy/api S3P tests.
 
@@ -275,6 +275,8 @@ familiar with the Policy Framework components and test any local changes.
 
 .. toctree::
    :maxdepth: 1
+
+   policy-gui-controlloop-smoke.rst
 
 ..
    api-smoke.rst
