@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06b2c832_af07750e",
+        "filename": "docs/development/devtools/drools-s3p.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-18T14:06:42Z",
+      "side": 1,
+      "message": "Good that you pointed out the performance dip \u0026 did some analysis too. Overall, the performance for all policy components have gone down in Istanbul. Something to put under must do list in Jakarta.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 10
+      },
+      "revId": "78bd4b469a3dd29829f8333946852dd62a4cd7a8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
