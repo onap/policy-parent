@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aaf7b5b7_4a931489",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-19T13:53:51Z",
+      "side": 1,
+      "message": "Agreed!",
+      "parentUuid": "37e36cda_992a9cf9",
+      "range": {
+        "startLine": 123,
+        "startChar": 62,
+        "endLine": 123,
+        "endChar": 66
+      },
+      "revId": "67538f598f09ef524a1d284831360d67d3f6a4b8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bca3039_3b0d5b67",
         "filename": "docs/development/devtools/api-s3p.rst",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "It seems to match the summary report picture at least the max. time.   The max time is more or less expected after its counterpart with the stability run, in both cases, it is running over capacity I would say.",
       "parentUuid": "7bca3039_3b0d5b67",
+      "range": {
+        "startLine": 189,
+        "startChar": 62,
+        "endLine": 189,
+        "endChar": 67
+      },
+      "revId": "67538f598f09ef524a1d284831360d67d3f6a4b8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "512e900f_ec28b869",
+        "filename": "docs/development/devtools/api-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-19T13:53:51Z",
+      "side": 1,
+      "message": "The details captured here by Prakhar seems to be correct. I had a quick check in nordix also, and seeing similar results.\nThis definitely needs to be improved.",
+      "parentUuid": "e319edb7_c93cb648",
       "range": {
         "startLine": 189,
         "startChar": 62,
