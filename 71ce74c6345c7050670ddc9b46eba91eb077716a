@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6e980a27_23613513",
+        "filename": "docs/development/devtools/clamp-smoke.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 7565
+      },
+      "writtenOn": "2021-10-19T14:12:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3bdc663_e9aea10c",
+      "revId": "71ce74c6345c7050670ddc9b46eba91eb077716a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "091206f7_f7af2db7",
         "filename": "docs/development/devtools/clamp-smoke.rst",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "71ce74c6345c7050670ddc9b46eba91eb077716a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bcc6dc7_202e2075",
+        "filename": "docs/development/devtools/clamp-smoke.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 7565
+      },
+      "writtenOn": "2021-10-19T14:12:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "091206f7_f7af2db7",
+      "revId": "71ce74c6345c7050670ddc9b46eba91eb077716a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
