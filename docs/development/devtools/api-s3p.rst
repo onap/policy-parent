@@ -33,8 +33,9 @@ with the following command:
 
 .. code-block:: bash
 
-    jmeter.sh --nongui --testfile policy_api_stability.jmx --logfile result.jtl
+    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t policy_api_stability.jmx -l stabilityTestResultsPolicyApi.jtl
 
+The test was run in the background via “nohup”, to prevent it from being interrupted.
 
 Test Plan
 ---------
@@ -54,6 +55,7 @@ of each entity is set to the running thread number.
 
 **API Test Flow (5 threads running the same steps in the same loop)**
 
+- Get Policy Metrics
 - Create a new Monitoring Policy Type with Version 6.0.#
 - Create a new Monitoring Policy Type with Version 7.0.#
 - Create a new Optimization Policy Type with Version 6.0.#
@@ -118,18 +120,31 @@ The load was performed against a non-tweaked ONAP OOM installation.
 =======================  =============  ===========  ===============================  ===============================  ===============================
 **Total # of requests**  **Success %**    **TPS**    **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
 =======================  =============  ===========  ===============================  ===============================  ===============================
-    627746                    100%         2.42              2058 ms                               26 ms                          72809 ms
+    242277                    100%         0.935              5340 ms                               1 ms                          736976 ms
 =======================  =============  ===========  ===============================  ===============================  ===============================
 
-.. image:: images/api-s3p-jm-1_H.png
+.. image:: api-s3p-results/api-s3p-jm-1_I.png
 
 **JMeter Results**
 
 The following graphs show the response time distributions.   The "Get Policy Types" API calls are the most expensive calls that
-average a 10 seconds plus response time.
+average a 7 seconds plus response time.
 
-.. image:: images/api-response-time-distribution_H.png
-.. image:: images/api-response-time-overtime_H.png
+.. image:: api-s3p-results/api-response-time-distribution_I.png
+.. image:: api-s3p-results/api-response-time-overtime_I.png
+
+**Memory and CPU usage**
+
+The memory and CPU usage can be monitored by running "top" command in the policy-api pod.
+A snapshot is taken before and after test execution to monitor the changes in resource utilization.
+
+Memory and CPU usage before test execution:
+
+.. image:: api-s3p-results/api_top_before_72h.JPG
+
+Memory and CPU usage after test execution:
+
+.. image:: api-s3p-results/api_top_after_72h.JPG
 
 
 Performance Test of Policy API
@@ -151,8 +166,9 @@ with the following command:
 
 .. code-block:: bash
 
-    jmeter.sh --nongui --testfile policy_api_performance.jmx --logfile result.jtl
+    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t policy_api_performance.jmx -l performanceTestResultsPolicyApi.jtl
 
+The test was run in the background via “nohup”, to prevent it from being interrupted.
 
 Test Plan
 ---------
@@ -170,18 +186,18 @@ Running/Triggering performance test will be the same as stability test. That is,
 =======================  =============  ===========  ===============================  ===============================  ===============================
 **Total # of requests**  **Success %**    **TPS**    **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
 =======================  =============  ===========  ===============================  ===============================  ===============================
-    4082                     100%           0.45              1297 ms                              4 ms                          63612 ms
+    2822                     100%           0.31              63794 ms                              2 ms                          1183376 ms
 =======================  =============  ===========  ===============================  ===============================  ===============================
 
-.. image:: images/api-s3p-jm-2_H.png
+.. image:: api-s3p-results/api-s3p-jm-2_I.png
 
 Test Results
 ------------
 
 The following graphs show the response time distributions.
 
-.. image:: images/api-response-time-distribution_performance_H.png
-.. image:: images/api-response-time-overtime_performance_H.png
+.. image:: api-s3p-results/api-response-time-distribution_performance_I.png
+.. image:: api-s3p-results/api-response-time-overtime_performance_I.png
 
 
 
