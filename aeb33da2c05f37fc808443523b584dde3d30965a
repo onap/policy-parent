@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30424496_89d13235",
+        "filename": "docs/development/devtools/clamp-smoke.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-20T07:55:27Z",
+      "side": 1,
+      "message": "or",
+      "range": {
+        "startLine": 295,
+        "startChar": 12,
+        "endLine": 295,
+        "endChar": 13
+      },
+      "revId": "aeb33da2c05f37fc808443523b584dde3d30965a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
