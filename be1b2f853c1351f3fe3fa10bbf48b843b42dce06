@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44e8d3cb_c36a2701",
+        "filename": "docs/development/property-configuration.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-21T23:02:51Z",
+      "side": 1,
+      "message": "There\u0027s some trailing white space in this file.",
+      "revId": "be1b2f853c1351f3fe3fa10bbf48b843b42dce06",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
