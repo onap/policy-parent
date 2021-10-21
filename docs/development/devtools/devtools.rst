@@ -299,6 +299,9 @@ familiar with the Policy Framework components and test any local changes.
 ..
    clamp-smoke.rst
 
+..
+   clamp-cl-participant-protocol-smoke.rst
+
 Running the Stability/Performance Tests
 ***************************************
 
@@ -317,7 +320,7 @@ familiar with the Policy Framework components and test any local changes.
    clamp-s3p.rst
 
 Running the Pairwise Tests
-***********************
+**************************
 
 The following links contain instructions on how to run the pairwise tests. These may be helpful to developers check that
 the Policy Framework works in a full ONAP deployment.

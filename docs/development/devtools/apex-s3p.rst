@@ -102,7 +102,7 @@ The following steps can be used to configure the parameters of test plan.
  wait                Wait time if required after a request (in milliseconds)
  threads             Number of threads to run test cases in parallel
  threadsTimeOutInMs  Synchronization timer for threads running in parallel (in milliseconds)
-===================  ================================================================================
+===================  ===============================================================================
 
 Run Test
 --------

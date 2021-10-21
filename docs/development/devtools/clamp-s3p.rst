@@ -48,14 +48,14 @@ The following steps can be used to configure the parameters of test plan.
 - **HTTP Header Manager** - used to store headers which will be used for making HTTP requests.
 - **User Defined Variables** -  used to store following user defined parameters.
 
-===========   ===================================================================
- **Name**      **Description**
-===========   ===================================================================
- RUNTIME_HOST IP Address or host name of controlloop runtime component
- RUNTIME_PORT Port number of controlloop runtime components for making REST API calls
- POLICY_PARTICIPANT_HOST IP Address or host name of policy participant
- POLICY_PARTICIPANT_HOST_PORT Port number of policy participant
-===========   ===================================================================
+=============================  ========================================================================
+ **Name**                      **Description**
+=============================  ========================================================================
+ RUNTIME_HOST                  IP Address or host name of controlloop runtime component
+ RUNTIME_PORT                  Port number of controlloop runtime components for making REST API calls
+ POLICY_PARTICIPANT_HOST       IP Address or host name of policy participant
+ POLICY_PARTICIPANT_HOST_PORT  Port number of policy participant
+=============================  ========================================================================
 
 The test was run in the background via "nohup", to prevent it from being interrupted:
 
@@ -88,17 +88,17 @@ Stability test plan was triggered for 72 hours.
 
 **Controloop component Setup**
 
-================ =======================                            ==================                              ==========================
-**CONTAINER ID**  **IMAGE**                                             **PORTS**                                     **NAMES**
-================ =======================  ==================        ==================================              ==========================
- a9cb0cd103cf   onap/policy-clamp-cl-runtime:latest                     6969/tcp                                      policy-clamp-cl-runtime
- 886e572b8438   onap/policy-clamp-cl-pf-ppnt:latest                     6973/tcp                                      policy-clamp-cl-pf-ppnt
- 035707b1b95f   nexus3.onap.org:10001/onap/policy-api:latest            6969/tcp                                      policy-api
- d34204f95ff3   onap/policy-clamp-cl-http-ppnt:latest                   6971/tcp                                      policy-clamp-cl-http-ppnt
- 4470e608c9a8   onap/policy-clamp-cl-k8s-ppnt:latest                    6972/tcp, 8083/tcp                            policy-clamp-cl-k8s-ppnt
- 62229d46b79c   nexus3.onap.org:10001/onap/policy-models-simulator:latest 3905/tcp, 6666/tcp, 6668-6670/tcp, 6680/tcp simulator
- efaf0ca5e1f0   nexus3.onap.org:10001/mariadb:10.5.8                    3306/tcp                                      mariadb
-=======================  =================  ==================  ======================================              ===========================
+================  =========================================================  ===========================================  =========================
+**CONTAINER ID**  **IMAGE**                                                  **PORTS**                                    **NAMES**
+================  =========================================================  ===========================================  =========================
+ a9cb0cd103cf     onap/policy-clamp-cl-runtime:latest                        6969/tcp                                     policy-clamp-cl-runtime
+ 886e572b8438     onap/policy-clamp-cl-pf-ppnt:latest                        6973/tcp                                     policy-clamp-cl-pf-ppnt
+ 035707b1b95f     nexus3.onap.org:10001/onap/policy-api:latest               6969/tcp                                     policy-api
+ d34204f95ff3     onap/policy-clamp-cl-http-ppnt:latest                      6971/tcp                                     policy-clamp-cl-http-ppnt
+ 4470e608c9a8     onap/policy-clamp-cl-k8s-ppnt:latest                       6972/tcp, 8083/tcp                           policy-clamp-cl-k8s-ppnt
+ 62229d46b79c     nexus3.onap.org:10001/onap/policy-models-simulator:latest  3905/tcp, 6666/tcp, 6668-6670/tcp, 6680/tcp  simulator
+ efaf0ca5e1f0     nexus3.onap.org:10001/mariadb:10.5.8                       3306/tcp                                     mariadb
+================  =========================================================  ===========================================  =========================
 
 .. Note::
 
@@ -108,11 +108,11 @@ Stability test plan was triggered for 72 hours.
 
 **JMeter Screenshot**
 
-.. image:: clamp-s3p-results/controlloop_stability_jmeter.PNG
+.. image:: clamp-s3p-results/controlloop_stability_jmeter.png
 
 **JMeter Screenshot**
 
-.. image:: clamp-s3p-results/controlloop_stability_table.PNG
+.. image:: clamp-s3p-results/controlloop_stability_table.png
 
 **Memory and CPU usage**
 
@@ -120,11 +120,11 @@ The memory and CPU usage can be monitored by running "docker stats" command. A s
 
 Memory and CPU usage before test execution:
 
-.. image:: clamp-s3p-results/Stability_before_stats.PNG
+.. image:: clamp-s3p-results/Stability_before_stats.png
 
 Memory and CPU usage after test execution:
 
-.. image:: clamp-s3p-results/Stability_after_stats.PNG
+.. image:: clamp-s3p-results/Stability_after_stats.png
 
 
 Performance Test of Controlloop components
@@ -180,18 +180,18 @@ Test results are shown as below.
 
 **Controloop component Setup**
 
-================ =======================                            ==================                              ==========================
-**CONTAINER ID**  **IMAGE**                                             **PORTS**                                     **NAMES**
-================ =======================  ==================        ==================================              ==========================
- a9cb0cd103cf   onap/policy-clamp-cl-runtime:latest                     6969/tcp                                      policy-clamp-cl-runtime
- 886e572b8438   onap/policy-clamp-cl-pf-ppnt:latest                     6973/tcp                                      policy-clamp-cl-pf-ppnt
- 035707b1b95f   nexus3.onap.org:10001/onap/policy-api:latest            6969/tcp                                      policy-api
- d34204f95ff3   onap/policy-clamp-cl-http-ppnt:latest                   6971/tcp                                      policy-clamp-cl-http-ppnt
- 4470e608c9a8   onap/policy-clamp-cl-k8s-ppnt:latest                    6972/tcp, 8083/tcp                            policy-clamp-cl-k8s-ppnt
- 62229d46b79c   nexus3.onap.org:10001/onap/policy-models-simulator:latest 3905/tcp, 6666/tcp, 6668-6670/tcp, 6680/tcp simulator
- efaf0ca5e1f0   nexus3.onap.org:10001/mariadb:10.5.8                    3306/tcp                                      mariadb
-=======================  =================  ==================  ======================================              ===========================
+================  =========================================================  ===========================================  =========================
+**CONTAINER ID**  **IMAGE**                                                  **PORTS**                                    **NAMES**
+================  =========================================================  ===========================================  =========================
+ a9cb0cd103cf     onap/policy-clamp-cl-runtime:latest                        6969/tcp                                     policy-clamp-cl-runtime
+ 886e572b8438     onap/policy-clamp-cl-pf-ppnt:latest                        6973/tcp                                     policy-clamp-cl-pf-ppnt
+ 035707b1b95f     nexus3.onap.org:10001/onap/policy-api:latest               6969/tcp                                     policy-api
+ d34204f95ff3     onap/policy-clamp-cl-http-ppnt:latest                      6971/tcp                                     policy-clamp-cl-http-ppnt
+ 4470e608c9a8     onap/policy-clamp-cl-k8s-ppnt:latest                       6972/tcp, 8083/tcp                           policy-clamp-cl-k8s-ppnt
+ 62229d46b79c     nexus3.onap.org:10001/onap/policy-models-simulator:latest  3905/tcp, 6666/tcp, 6668-6670/tcp, 6680/tcp  simulator
+ efaf0ca5e1f0     nexus3.onap.org:10001/mariadb:10.5.8                       3306/tcp                                     mariadb
+================  =========================================================  ===========================================  =========================
 
 **JMeter Screenshot**
 
-.. image:: clamp-s3p-results/cl-s3p-performance-result-jmeter.PNG
+.. image:: clamp-s3p-results/cl-s3p-performance-result-jmeter.png
