@@ -276,12 +276,10 @@ familiar with the Policy Framework components and test any local changes.
 .. toctree::
    :maxdepth: 1
 
-<<<<<<< HEAD   (25d5a6 Merge "Refactor s3p documents" into istanbul)
-=======
    policy-gui-controlloop-smoke.rst
-
    db-migrator-smoke.rst
->>>>>>> CHANGE (33149a Added doc for smoke testing db-migrator)
+   cl-participants-smoke.rst
+
 ..
    api-smoke.rst
 
