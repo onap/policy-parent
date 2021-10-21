@@ -281,7 +281,12 @@ familiar with the Policy Framework components and test any local changes.
    policy-gui-controlloop-smoke.rst
 
    db-migrator-smoke.rst
+<<<<<<< HEAD   (afe2c9 Merge "Added documentation for Control Loop GUI" into istanb)
 >>>>>>> CHANGE (33149a Added doc for smoke testing db-migrator)
+=======
+
+   cl-participants-smoke.rst
+>>>>>>> CHANGE (bce3dd Add documentation for CL participants smoke testing)
 ..
    api-smoke.rst
 

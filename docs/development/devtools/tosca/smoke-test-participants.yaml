@@ -1,0 +1,260 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+data_types:
+  onap.datatypes.ToscaConceptIdentifier:
+    derived_from: tosca.datatypes.Root
+    properties:
+      name:
+        type: string
+        required: true
+      version:
+        type: string
+        required: true
+  org.onap.datatypes.policy.clamp.controlloop.httpControlLoopElement.RestRequest:
+    version: 1.0.0
+    derived_from: tosca.datatypes.Root
+    properties:
+      restRequestId:
+        type:  onap.datatypes.ToscaConceptIdentifier
+        typeVersion: 1.0.0
+        required: true
+        description: The name and version of a REST request to be sent to a REST endpoint
+      httpMethod:
+        type: string
+        required: true
+        constraints:
+          - valid_values: [POST, PUT, GET, DELETE]
+        description: The REST method to use
+      path:
+        type: string
+        required: true
+        description: The path of the REST request relative to the base URL
+      body:
+        type: string
+        required: false
+        description: The body of the REST request for PUT and POST requests
+      expectedResponse:
+        type: integer
+        required: true
+        constraints:
+          - in_range: [100, 599]
+        description: THe expected HTTP status code for the REST request
+    org.onap.datatypes.policy.clamp.controlloop.httpControlLoopElement.ConfigurationEntity:
+      version: 1.0.0
+      derived_from: tosca.datatypes.Root
+      properties:
+        configurationEntityId:
+          type:  onap.datatypes.ToscaConceptIdentifier
+          typeVersion: 1.0.0
+          required: true
+          description: The name and version of a Configuration Entity to be handled by the HTTP Control Loop Element
+        restSequence:
+          type: list
+          entry_schema:
+            type: org.onap.datatypes.policy.clamp.controlloop.httpControlLoopElement.RestRequest
+            typeVersion: 1.0.0
+          description: A sequence of REST commands to send to the REST endpoint
+node_types:
+  org.onap.policy.clamp.controlloop.Participant:
+    version: 1.0.1
+    derived_from: tosca.nodetypes.Root
+    properties:
+      provider:
+        type: string
+        required: false
+  org.onap.policy.clamp.controlloop.ControlLoopElement:
+    version: 1.0.1
+    derived_from: tosca.nodetypes.Root
+    properties:
+      provider:
+        type: string
+        requred: false
+      participant_id:
+        type: onap.datatypes.ToscaConceptIdentifier
+        requred: true
+      participantType:
+        type: onap.datatypes.ToscaConceptIdentifier
+        required: true
+        metadata:
+          common: true
+        description: The identity of the participant type that hosts this type of Control Loop Element
+      startPhase:
+        type: integer
+        required: false
+        constraints:
+          - greater_or_equal: 0
+        metadata:
+          common: true
+        description: A value indicating the start phase in which this control loop element will be started, the
+          first start phase is zero. Control Loop Elements are started in their start_phase order and stopped
+          in reverse start phase order. Control Loop Elements with the same start phase are started and
+          stopped simultaneously
+      uninitializedToPassiveTimeout:
+        type: integer
+        required: false
+        constraints:
+          - greater_or_equal: 0
+        default: 60
+        metadata:
+          common: true
+        description: The maximum time in seconds to wait for a state chage from uninitialized to passive
+      passiveToRunningTimeout:
+        type: integer
+        required: false
+        constraints:
+          - greater_or_equal: 0
+        default: 60
+        metadata:
+          common: true
+        description: The maximum time in seconds to wait for a state chage from passive to running
+      runningToPassiveTimeout:
+        type: integer
+        required: false
+        constraints:
+          - greater_or_equal: 0
+        default: 60
+        metadata:
+          common: true
+        description: The maximum time in seconds to wait for a state chage from running to passive
+      passiveToUninitializedTimeout:
+        type: integer
+        required: false
+        constraints:
+          - greater_or_equal: 0
+        default: 60
+        metadata:
+          common: true
+        description: The maximum time in seconds to wait for a state chage from passive to uninitialized
+  org.onap.policy.clamp.controlloop.ControlLoop:
+    version: 1.0.1
+    derived_from: tosca.nodetypes.Root
+    properties:
+      provider:
+        type: string
+        requred: false
+      elements:
+        type: list
+        required: true
+        entry_schema:
+          type: onap.datatypes.ToscaConceptIdentifier
+  org.onap.policy.clamp.controlloop.K8SMicroserviceControlLoopElement:
+    version: 1.0.1
+    derived_from: org.onap.policy.clamp.controlloop.ControlLoopElement
+    properties:
+      chart:
+        type: string
+        required: true
+      configs:
+        type: list
+        required: false
+      requirements:
+        type: string
+        requred: false
+      templates:
+        type: list
+        required: false
+        entry_schema:
+      values:
+        type: string
+        required: true
+  org.onap.policy.clamp.controlloop.HttpControlLoopElement:
+    version: 1.0.1
+    derived_from: org.onap.policy.clamp.controlloop.ControlLoopElement
+    properties:
+      baseUrl:
+        type: string
+        required: true
+        description: The base URL to be prepended to each path, identifies the host for the REST endpoints.
+      httpHeaders:
+        type: map
+        required: false
+        entry_schema:
+          type: string
+        description: HTTP headers to send on REST requests
+      configurationEntities:
+        type: map
+        required: true
+        entry_schema:
+          type: org.onap.datatypes.policy.clamp.controlloop.httpControlLoopElement.ConfigurationEntity
+          typeVersion: 1.0.0
+        description: The connfiguration entities the Control Loop Element is managing and their associated REST requests
+topology_template:
+  node_templates:
+    org.onap.k8s.controlloop.K8SControlLoopParticipant:
+      version: 2.3.4
+      type: org.onap.policy.clamp.controlloop.Participant
+      type_version: 1.0.1
+      description: Participant for K8S
+      properties:
+        provider: ONAP
+    org.onap.domain.database.Local_K8SMicroserviceControlLoopElement:
+      # Chart installation without passing repository info
+      version: 1.2.3
+      type: org.onap.policy.clamp.controlloop.K8SMicroserviceControlLoopElement
+      type_version: 1.0.0
+      description: Control loop element for the K8S microservice for local chart
+      properties:
+        provider: ONAP
+        participant_id:
+          name: K8sParticipant0
+          version: 1.0.0
+        participantType:
+          name: org.onap.k8s.controlloop.K8SControlLoopParticipant
+          version: 2.3.4
+        chart:
+          chartId:
+            name: nginx-ingress
+            version: 0.11.0
+          releaseName: nginxapp
+          namespace: onap
+    org.onap.controlloop.HttpControlLoopParticipant:
+      version: 2.3.4
+      type: org.onap.policy.clamp.controlloop.Participant
+      type_version: 1.0.1
+      description: Participant for Http requests
+      properties:
+        provider: ONAP
+
+    org.onap.domain.database.Http_MicroserviceControlLoopElement:
+      version: 1.2.3
+      type: org.onap.policy.clamp.controlloop.HttpControlLoopElement
+      type_version: 1.0.1
+      description: Control loop element for the http requests of PMSH microservice
+      properties:
+        provider: ONAP
+        participant_id:
+          name: HttpParticipant0
+          version: 1.0.0
+        participantType:
+          name: org.onap.k8s.controlloop.HttpControlLoopParticipant
+          version: 2.3.4
+        uninitializedToPassiveTimeout: 180
+        startPhase: 1
+        baseUrl: http://httpbin.org
+        httpHeaders:
+          Content-Type: application/json
+        configurationEntities:
+          - configurationEntityId:
+              name: entity1
+              version: 1.0.1
+            restSequence:
+              - restRequestId:
+                  name: request1
+                  version: 1.0.1
+                httpMethod: POST
+                path: post
+                body: 'Dummy data for smoke testing'
+                expectedResponse: 200
+
+
+    org.onap.domain.sample.GenericK8s_ControlLoopDefinition:
+      version: 1.2.3
+      type: org.onap.policy.clamp.controlloop.ControlLoop
+      type_version: 1.0.0
+      description: Control loop for Hello World
+      properties:
+        provider: ONAP
+        elements:
+        - name: org.onap.domain.database.Local_K8SMicroserviceControlLoopElement
+          version: 1.2.3
+        - name: org.onap.domain.database.Http_MicroserviceControlLoopElement
+          version: 1.2.3
