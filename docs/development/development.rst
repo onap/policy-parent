@@ -11,3 +11,4 @@ Policy Platform Development
    devtools/devtools.rst
    pdp/pdp-pap-interaction.rst
    actors/actors.rst
+   property-configuration.rst
