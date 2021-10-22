@@ -71,7 +71,7 @@ A Control Loop is created by commissioning a Tosca template with Control loop de
 
   Update instance properties of the Control Loop Elements if required.
 
-  .. image:: images/update-instance.PNG
+  .. image:: images/update-instance.png
 
   Verification: The control loop is created with default state "UNINITIALISED" without errors.
 
