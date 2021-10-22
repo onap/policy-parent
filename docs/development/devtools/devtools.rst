@@ -279,6 +279,8 @@ familiar with the Policy Framework components and test any local changes.
    policy-gui-controlloop-smoke.rst
 
    db-migrator-smoke.rst
+
+   cl-participants-smoke.rst
 ..
    api-smoke.rst
 

@@ -1,0 +1,53 @@
+{
+  "controlLoopList": [
+    {
+      "name": "K8SInstance0",
+      "version": "1.0.1",
+      "definition": {
+        "name": "org.onap.domain.sample.GenericK8s_ControlLoopDefinition",
+        "version": "1.2.3"
+      },
+      "state": "UNINITIALISED",
+      "orderedState": "UNINITIALISED",
+      "description": "K8s control loop instance 0",
+      "elements": {
+        "709c62b3-8918-41b9-a747-d21eb79c6c21": {
+          "id": "709c62b3-8918-41b9-a747-d21eb79c6c21",
+          "definition": {
+            "name": "org.onap.domain.database.Local_K8SMicroserviceControlLoopElement",
+            "version": "1.2.3"
+          },
+          "participantId": {
+            "name": "K8sParticipant0",
+            "version": "1.0.0"
+          },
+          "participantType": {
+            "name": "org.onap.k8s.controlloop.K8SControlLoopParticipant",
+            "version": "2.3.4"
+          },
+          "state": "UNINITIALISED",
+          "orderedState": "UNINITIALISED",
+          "description": "K8s Control Loop Element for the nginx-ingress microservice"
+        },
+        "709c62b3-8918-41b9-a747-d21eb79c6c22": {
+          "id": "709c62b3-8918-41b9-a747-d21eb79c6c22",
+          "definition": {
+            "name": "org.onap.domain.database.Http_MicroserviceControlLoopElement",
+            "version": "1.2.3"
+          },
+          "participantId": {
+            "name": "HttpParticipant0",
+            "version": "1.0.0"
+          },
+          "participantType": {
+            "name": "org.onap.k8s.controlloop.HttpControlLoopParticipant",
+            "version": "2.3.4"
+          },
+          "state": "UNINITIALISED",
+          "orderedState": "UNINITIALISED",
+          "description": "Http Control Loop Element"
+        }
+      }
+    }
+  ]
+}
