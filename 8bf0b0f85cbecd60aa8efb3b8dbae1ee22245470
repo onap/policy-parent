@@ -16,6 +16,24 @@
       "revId": "8bf0b0f85cbecd60aa8efb3b8dbae1ee22245470",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d23abae_61431c18",
+        "filename": "docs/development/devtools/xacml-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7668
+      },
+      "writtenOn": "2021-10-22T10:28:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "94815fc3_f7fcfcf4",
+      "revId": "8bf0b0f85cbecd60aa8efb3b8dbae1ee22245470",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
