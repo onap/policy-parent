@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94815fc3_f7fcfcf4",
+        "filename": "docs/development/devtools/xacml-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-22T10:24:10Z",
+      "side": 1,
+      "message": "Not great but probably adequate.",
+      "revId": "8bf0b0f85cbecd60aa8efb3b8dbae1ee22245470",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
