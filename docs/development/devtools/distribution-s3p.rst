@@ -304,13 +304,13 @@ Test Results
 
 **Test Statistics**
 
-.. image:: images/dist_stability_statistics.PNG
-.. image:: images/dist_stability_threshold.PNG
+.. image:: images/distribution/dist_stability_statistics.png
+.. image:: images/distribution/dist_stability_threshold.png
 
 **VisualVM Screenshots**
 
-.. image:: images/dist_stability_monitor.PNG
-.. image:: images/dist_stability_threads.PNG
+.. image:: images/distribution/dist_stability_monitor.png
+.. image:: images/distribution/dist_stability_threads.png
 
 
 Performance Test of Policy Distribution
