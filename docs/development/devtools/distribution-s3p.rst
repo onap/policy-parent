@@ -304,13 +304,23 @@ Test Results
 
 **Test Statistics**
 
+<<<<<<< HEAD   (d68ec8 Merge "Documentation for PAP S3P results" into istanbul)
 .. image:: images/dist_stability_statistics.PNG
 .. image:: images/dist_stability_threshold.PNG
+=======
+.. image:: images/distribution/dist_stability_statistics.png
+.. image:: images/distribution/dist_stability_threshold.png
+>>>>>>> CHANGE (614bec Fix build, rename clashing PNG/png files)
 
 **VisualVM Screenshots**
 
+<<<<<<< HEAD   (d68ec8 Merge "Documentation for PAP S3P results" into istanbul)
 .. image:: images/dist_stability_monitor.PNG
 .. image:: images/dist_stability_threads.PNG
+=======
+.. image:: images/distribution/dist_stability_monitor.png
+.. image:: images/distribution/dist_stability_threads.png
+>>>>>>> CHANGE (614bec Fix build, rename clashing PNG/png files)
 
 
 Performance Test of Policy Distribution
