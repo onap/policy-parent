@@ -13,7 +13,10 @@ Policy Distribution component
 VM Details
 ----------
 
-The stability and performance tests are performed on VM's running in the OpenStack cloud environment in the ONAP integration lab. There are two separate VMs, one for running backend policy services which policy distribution needs, and the other for the policy distribution service itself and Jmeter.
+The stability and performance tests are performed on VM's running in the OpenStack cloud
+environment in the ONAP integration lab. There are two separate VMs, one for running backend policy
+services which policy distribution needs, and the other for the policy distribution service itself
+and Jmeter.
 
 **OpenStack environment details**
 
@@ -28,20 +31,9 @@ The stability and performance tests are performed on VM's running in the OpenSta
 - Docker version 19.03.8, build afacb8b7f0
 - Java: openjdk 11.0.8 2020-07-14
 
-**JMeter and Distribution VM details (VM2)**
 
-- OS: Ubuntu 18.04.5 LTS
-- CPU: 8 core, Intel Xeon E3-12xx v2 (Ivy Bridge), 2693.668 MHz, 16384 kB cache
-- RAM: 32 GB
-- HardDisk: 200 GB
-- Docker version 19.03.8, build afacb8b7f0
-- Java: openjdk 11.0.8 2020-07-14
-- JMeter: 5.1.1
-
-
-VM1 & VM2: Common Setup
------------------------
-Make sure to execute below commands on both VM1 & VM2
+Common Setup
+------------
 
 Update the ubuntu software installer
 
@@ -64,20 +56,20 @@ Ensure that the Java version that is executing is OpenJDK version 11
     OpenJDK Runtime Environment (build 11.0.8+10-post-Ubuntu-0ubuntu118.04.1)
     OpenJDK 64-Bit Server VM (build 11.0.8+10-post-Ubuntu-0ubuntu118.04.1, mixed mode, sharing)
 
-Install Docker
+Install Docker and Docker Compose
 
 .. code-block:: bash
 
     # Add docker repository
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
     sudo apt update
 
-    # Check available docker versions (if necessary)
-    apt-cache policy docker-ce
-
     # Install docker
-    sudo apt install -y docker-ce=5:19.03.8~3-0~ubuntu-bionic docker-ce-cli=5:19.03.8~3-0~ubuntu-bionic containerd.io
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 Change the permissions of the Docker socket file
 
@@ -89,14 +81,25 @@ Check the status of the Docker service and ensure it is running correctly
 
 .. code-block:: bash
 
-    $ systemctl status --no-pager docker
+    systemctl status --no-pager docker
     docker.service - Docker Application Container Engine
        Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
        Active: active (running) since Wed 2020-10-14 13:59:40 UTC; 1 weeks 0 days ago
        # ... (truncated for brevity)
 
-    $ docker ps
+    docker ps
     CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+Install and verify docker-compose
+
+.. code-block:: bash
+
+    # Install compose
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+
+    # Check if install was successful
+    docker-compose --version
 
 Clone the policy-distribution repo to access the test scripts
 
@@ -104,66 +107,59 @@ Clone the policy-distribution repo to access the test scripts
 
     git clone https://gerrit.onap.org/r/policy/distribution
 
+.. _setup-distribution-s3p-components:
 
-VM1 Only: Install Simulators, Policy-PAP, Policy-API and MariaDB
-----------------------------------------------------------------
+Start services for MariaDB, Policy API, PAP and Distribution
+------------------------------------------------------------
 
-Modify the setup_components.sh script located at:
-
-- ~/distribution/testsuites/stability/src/main/resources/simulatorsetup/setup_components.sh
-
-Ensure the correct docker image versions are specified - e.g. for Guilin-RC0
-
-- nexus3.onap.org:10001/onap/policy-api:2.3.2
-- nexus3.onap.org:10001/onap/policy-pap:2.3.2
-
-Run the setup_components.sh script to start the test support components:
+Navigate to the main folder for scripts to setup services:
 
 .. code-block:: bash
 
-    ~/distribution/testsuites/stability/src/main/resources/simulatorsetup/setup_components.sh
+    cd ~/distribution/testsuites/stability/src/main/resources/setup
 
-After installation, ensure the following docker containers are up and running:
-
-.. code-block:: bash
-
-    $ docker ps
-    CONTAINER ID        IMAGE                                         COMMAND                  CREATED             STATUS              PORTS                    NAMES
-    a187cb0ff08a        nexus3.onap.org:10001/onap/policy-pap:2.3.2   "bash ./policy-pap.sh"   4 days ago          Up 4 days           0.0.0.0:7000->6969/tcp   policy-pap
-    2f7632fe90c3        nexus3.onap.org:10001/onap/policy-api:2.3.2   "bash ./policy-api.sh"   4 days ago          Up 4 days           0.0.0.0:6969->6969/tcp   policy-api
-    70fa27d6d992        pdp/simulator:latest                          "bash pdp-sim.sh"        4 days ago          Up 4 days                                    pdp-simulator
-    3c9ff28ba050        dmaap/simulator:latest                        "bash dmaap-sim.sh"      4 days ago          Up 4 days           0.0.0.0:3904->3904/tcp   message-router
-    60cfcf8cfe65        mariadb:10.2.14                               "docker-entrypoint.s…"   4 days ago          Up 4 days           0.0.0.0:3306->3306/tcp   mariadb
-
-
-VM2 Only: Install Distribution
-------------------------------
-
-Modify the setup_distribution.sh script located at:
-
-- ~/distribution/testsuites/stability/src/main/resources/distributionsetup/setup_distribution.sh
-
-Ensure the correct docker image version is specified - e.g. for Guilin-RC0:
-
-- nexus3.onap.org:10001/onap/policy-distribution:2.4.2
-
-Run the setup_distribution.sh script to install the distribution service, provide the IP of VM1 (twice) as the arguments to the script:
+Modify the versions.sh script to match all the versions being tested.
 
 .. code-block:: bash
 
-    ~/distribution/testsuites/stability/src/main/resources/distributionsetup/setup_distribution.sh <vm1-ipaddr> <vm1-ipaddr>
+    vi ~/distribution/testsuites/stability/src/main/resources/setup/versions.sh
 
-Ensure the distribution container is running.
+Ensure the correct docker image versions are specified - e.g. for Istanbul-M4
+
+- export POLICY_DIST_VERSION=2.6.1-SNAPSHOT
+
+Run the start.sh script to start the components. After installation, script will execute
+``docker ps`` and show the running containers.
 
 .. code-block:: bash
 
-    $ docker ps
-    CONTAINER ID        IMAGE                                                  COMMAND                  CREATED             STATUS              PORTS                                            NAMES
-    9a8db2bad156        nexus3.onap.org:10001/onap/policy-distribution:2.4.2   "bash ./policy-dist.…"   29 hours ago        Up 29 hours         0.0.0.0:6969->6969/tcp, 0.0.0.0:9090->9090/tcp   policy-distribution
+    ./start.sh
+
+    Creating network "setup_default" with the default driver
+    Creating policy-distribution ... done
+    Creating mariadb             ... done
+    Creating simulator           ... done
+    Creating policy-db-migrator  ... done
+    Creating policy-api          ... done
+    Creating policy-pap          ... done
+
+    CONTAINER ID   IMAGE                                                               COMMAND                  CREATED         STATUS                  PORTS                NAMES
+    f91be98ad1f4   nexus3.onap.org:10001/onap/policy-pap:2.5.1-SNAPSHOT                "/opt/app/policy/pap…"   1 second ago    Up Less than a second   6969/tcp             policy-pap
+    d92cdbe971d4   nexus3.onap.org:10001/onap/policy-api:2.5.1-SNAPSHOT                "/opt/app/policy/api…"   1 second ago    Up Less than a second   6969/tcp             policy-api
+    9a019f5d641e   nexus3.onap.org:10001/onap/policy-db-migrator:2.3.1-SNAPSHOT        "/opt/app/policy/bin…"   2 seconds ago   Up 1 second             6824/tcp             policy-db-migrator
+    108ba238edeb   nexus3.onap.org:10001/mariadb:10.5.8                                "docker-entrypoint.s…"   3 seconds ago   Up 1 second             3306/tcp             mariadb
+    bec9b223e79f   nexus3.onap.org:10001/onap/policy-models-simulator:2.5.1-SNAPSHOT   "simulators.sh"          3 seconds ago   Up 1 second             3905/tcp             simulator
+    74aa5abeeb08   nexus3.onap.org:10001/onap/policy-distribution:2.6.1-SNAPSHOT       "/opt/app/policy/bin…"   3 seconds ago   Up 1 second             6969/tcp, 9090/tcp   policy-distribution
 
 
-VM2 Only: Install JMeter
-------------------------
+.. note::
+    The containers on this docker-compose are running with HTTP configuration. For HTTPS, ports
+    and configurations will need to be changed, as well certificates and keys must be generated
+    for security.
+
+
+Install JMeter
+--------------
 
 Download and install JMeter
 
@@ -174,15 +170,17 @@ Download and install JMeter
 
     # Install JMeter
     mkdir -p jmeter
-    wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.1.1.zip
-    unzip -qd jmeter apache-jmeter-5.1.1.zip
-    rm apache-jmeter-5.1.1.zip
+    cd jmeter
+    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.1.zip
+    unzip -q apache-jmeter-5.4.1.zip
+    rm apache-jmeter-5.4.1.zip
 
 
-VM2 Only: Install & configure visualVM
+Install & configure visualVM
 --------------------------------------
 
-VisualVM needs to be installed in the virtual machine running Distribution (VM2). It will be used to monitor CPU, Memory and GC for Distribution while the stability tests are running.
+VisualVM needs to be installed in the virtual machine running Distribution. It will be used to
+monitor CPU, Memory and GC for Distribution while the stability tests are running.
 
 .. code-block:: bash
 
@@ -191,6 +189,9 @@ VisualVM needs to be installed in the virtual machine running Distribution (VM2)
 Run these commands to configure permissions
 
 .. code-block:: bash
+
+    # Set globally accessable permissions on policy file
+    sudo chmod 777 /usr/lib/jvm/java-11-openjdk-amd64/bin/visualvm.policy
 
     # Create Java security policy file for VisualVM
     sudo cat > /usr/lib/jvm/java-11-openjdk-amd64/bin/visualvm.policy << EOF
@@ -202,19 +203,20 @@ Run these commands to configure permissions
     };
     EOF
 
-    # Set globally accessable permissions on policy file
-    sudo chmod 777 /usr/lib/jvm/java-11-openjdk-amd64/bin/visualvm.policy
-
 Run the following command to start jstatd using port 1111
 
 .. code-block:: bash
 
     /usr/lib/jvm/java-11-openjdk-amd64/bin/jstatd -p 1111 -J-Djava.security.policy=/usr/lib/jvm/java-11-openjdk-amd64/bin/visualvm.policy &
 
-Run visualVM to connect to localhost:9090
+Run visualVM to connect to POLICY_DISTRIBUTION_IP:9090
 
 .. code-block:: bash
 
+    # Get the Policy Distribution container IP
+    echo $(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' policy-distribution)
+
+    # Start visual vm
     visualvm &
 
 This will load up the visualVM GUI
@@ -222,12 +224,13 @@ This will load up the visualVM GUI
 Connect to Distribution JMX Port.
 
     1. Right click on "Local" in the left panel of the screen and select "Add JMX Connection"
-    2. Enter the Port 9090. this is the JMX port exposed by the distribution container
+    2. Enter the Distribution container IP and Port 9090. This is the JMX port exposed by the
+       distribution container
     3. Double click on the newly added nodes under "Local" to start monitoring CPU, Memory & GC.
 
 Example Screenshot of visualVM
 
-.. image:: images/distribution-s3p-vvm-sample.png
+.. image:: images/distribution/distribution-s3p-vvm-sample.png
 
 
 Stability Test of Policy Distribution
@@ -236,9 +239,17 @@ Stability Test of Policy Distribution
 Introduction
 ------------
 
-The 72 hour Stability Test for policy distribution has the goal of introducing a steady flow of transactions initiated from a test client server running JMeter. The policy distribution is configured with a special FileSystemReception plugin to monitor a local directory for newly added csar files to be processed by itself. The input CSAR will be added/removed by the test client(JMeter) and the result will be pulled from the backend (PAP and PolicyAPI) by the test client (JMeter).
+The 72 hour Stability Test for policy distribution has the goal of introducing a steady flow of
+transactions initiated from a test client server running JMeter. The policy distribution is
+configured with a special FileSystemReception plugin to monitor a local directory for newly added
+csar files to be processed by itself. The input CSAR will be added/removed by the test client
+(JMeter) and the result will be pulled from the backend (PAP and PolicyAPI) by the test client
+(JMeter).
 
-The test will be performed in an environment where Jmeter will continuously add/remove a test csar into the special directory where policy distribution is monitoring and will then get the processed results from PAP and PolicyAPI to verify the successful deployment of the policy. The policy will then be undeployed and the test will loop continuously until 72 hours have elapsed.
+The test will be performed in an environment where Jmeter will continuously add/remove a test csar
+into the special directory where policy distribution is monitoring and will then get the processed
+results from PAP and PolicyAPI to verify the successful deployment of the policy. The policy will
+then be undeployed and the test will loop continuously until 72 hours have elapsed.
 
 
 Test Plan Sequence
@@ -274,24 +285,33 @@ The following steps can be used to configure the parameters of the test plan.
 
 Screenshot of Distribution stability test plan
 
-.. image:: images/distribution-s3p-testplan.png
+.. image:: images/distribution/distribution-s3p-testplan.png
 
 
 Running the Test Plan
 ---------------------
 
-Edit the /tmp folder permissions to allow the testplan to insert the CSAR into the /tmp/policydistribution/distributionmount folder
+Check if the /tmp/policydistribution/distributionmount exists as it was created during the start.sh
+script execution. If not, run the following commands to create folder and change folder permissions
+to allow the testplan to insert the CSAR into the /tmp/policydistribution/distributionmount folder.
 
 .. code-block:: bash
 
     sudo mkdir -p /tmp/policydistribution/distributionmount
     sudo chmod -R a+trwx /tmp
 
-From the apache JMeter folder run the test for 72h, pointing it towards the stability.jmx file inside the testplans folder and specifying a logfile to collect the results
+
+Navigate to the stability test folder.
 
 .. code-block:: bash
 
-    ~/jmeter/apache-jmeter-5.1.1/bin/jmeter -n -t ~/distribution/testsuites/stability/src/main/resources/testplans/stability.jmx -Jduration=259200 -l ~/distr-stability.jtl &
+    cd ~/distribution/testsuites/stability/src/main/resources/testplans/
+
+Execute the run_test.sh
+
+.. code-block:: bash
+
+    ./run_test.sh
 
 
 Test Results
@@ -304,13 +324,13 @@ Test Results
 
 **Test Statistics**
 
-.. image:: images/dist_stability_statistics.PNG
-.. image:: images/dist_stability_threshold.PNG
+.. image:: images/distribution/dist_stability_statistics.PNG
+.. image:: images/distribution/dist_stability_threshold.PNG
 
 **VisualVM Screenshots**
 
-.. image:: images/dist_stability_monitor.PNG
-.. image:: images/dist_stability_threads.PNG
+.. image:: images/distribution/dist_stability_monitor.PNG
+.. image:: images/distribution/dist_stability_threads.PNG
 
 
 Performance Test of Policy Distribution
@@ -319,9 +339,12 @@ Performance Test of Policy Distribution
 Introduction
 ------------
 
-The 4h Performance Test of Policy Distribution has the goal of testing the min/avg/max processing time and rest call throughput for all the requests when the number of requests are large enough to saturate the resource and find the bottleneck.
+The 4h Performance Test of Policy Distribution has the goal of testing the min/avg/max processing
+time and rest call throughput for all the requests when the number of requests are large enough to
+saturate the resource and find the bottleneck.
 
-It also tests that distribution can handle multiple policy CSARs and that these are deployed within 30 seconds consistently.
+It also tests that distribution can handle multiple policy CSARs and that these are deployed within
+30 seconds consistently.
 
 
 Setup Details
@@ -335,26 +358,33 @@ Test Plan Sequence
 
 Performance test plan is different from the stability test plan.
 
-- Instead of handling one policy csar at a time, multiple csar's are deployed within the watched folder at the exact same time.
+- Instead of handling one policy csar at a time, multiple csar's are deployed within the watched
+  folder at the exact same time.
 - We expect all policies from these csar's to be deployed within 30 seconds.
-- There are also multithreaded tests running towards the healthcheck and statistics endpoints of the distribution service.
+- There are also multithreaded tests running towards the healthcheck and statistics endpoints of
+  the distribution service.
 
 
 Running the Test Plan
 ---------------------
 
-Edit the /tmp folder permissions to allow the Testplan to insert the CSAR into the /tmp/policydistribution/distributionmount folder.
+Check if /tmp folder permissions to allow the Testplan to insert the CSAR into the
+/tmp/policydistribution/distributionmount folder.
+Clean up from previous run. If necessary, put containers down with script `down.sh` from setup
+folder mentioned on :ref:`Setup components <setup-distribution-s3p-components>`
 
 .. code-block:: bash
 
     sudo mkdir -p /tmp/policydistribution/distributionmount
     sudo chmod -R a+trwx /tmp
 
-From the apache JMeter folder run the test for 4h, pointing it towards the performance.jmx file inside the testplans folder and specifying a logfile to collect the results
+Navigate to the testplan folder and execute the test script:
 
 .. code-block:: bash
 
-    ~/jmeter/apache-jmeter-5.1.1/bin/jmeter -n -t ~/distribution/testsuites/performance/src/main/resources/testplans/performance.jmx -Jduration=14400 -l ~/distr-performance.jtl &
+    cd ~/distribution/testsuites/performance/src/main/resources/testplans/
+    ./run_test.sh
+    
 
 Test Results
 ------------
@@ -366,10 +396,10 @@ Test Results
 
 **Test Statistics**
 
-.. image:: images/dist_perf_statistics.PNG
-.. image:: images/dist_perf_threshold.PNG
+.. image:: images/distribution/performance-statistics.png
+.. image:: images/distribution/performance-threshold.png
 
 **VisualVM Screenshots**
 
-.. image:: images/20201020-1730-distr-performance-20201020T2025-monitor.png
-.. image:: images/20201020-1730-distr-performance-20201020T2025-threads.png
+.. image:: images/distribution/performance-monitor.png
+.. image:: images/distribution/performance-threads.png
