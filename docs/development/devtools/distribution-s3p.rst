@@ -230,7 +230,7 @@ Connect to Distribution JMX Port.
 
 Example Screenshot of visualVM
 
-.. image:: images/distribution/distribution-s3p-vvm-sample.png
+.. image:: distribution-s3p-results/distribution-s3p-vvm-sample.png
 
 
 Stability Test of Policy Distribution
@@ -285,7 +285,7 @@ The following steps can be used to configure the parameters of the test plan.
 
 Screenshot of Distribution stability test plan
 
-.. image:: images/distribution/distribution-s3p-testplan.png
+.. image:: distribution-s3p-results/distribution-s3p-testplan.png
 
 
 Running the Test Plan
@@ -324,13 +324,13 @@ Test Results
 
 **Test Statistics**
 
-.. image:: images/distribution/dist_stability_statistics.PNG
-.. image:: images/distribution/dist_stability_threshold.PNG
+.. image:: distribution-s3p-results/dist_stability_statistics.PNG
+.. image:: distribution-s3p-results/dist_stability_threshold.PNG
 
 **VisualVM Screenshots**
 
-.. image:: images/distribution/dist_stability_monitor.PNG
-.. image:: images/distribution/dist_stability_threads.PNG
+.. image:: distribution-s3p-results/dist_stability_monitor.PNG
+.. image:: distribution-s3p-results/dist_stability_threads.PNG
 
 
 Performance Test of Policy Distribution
@@ -396,10 +396,10 @@ Test Results
 
 **Test Statistics**
 
-.. image:: images/distribution/performance-statistics.png
-.. image:: images/distribution/performance-threshold.png
+.. image:: distribution-s3p-results/performance-statistics.png
+.. image:: distribution-s3p-results/performance-threshold.png
 
 **VisualVM Screenshots**
 
-.. image:: images/distribution/performance-monitor.png
-.. image:: images/distribution/performance-threads.png
+.. image:: distribution-s3p-results/performance-monitor.png
+.. image:: distribution-s3p-results/performance-threads.png
