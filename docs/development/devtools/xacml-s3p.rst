@@ -17,10 +17,11 @@ against the Policy RESTful APIs residing on the XACML PDP installed on a Cloud b
 
 VM Configuration:
 - 16GB RAM
-- 8 VCPU
-- 1TB Disk
+- 4 VCPU
+- 40GB Disk
 
-ONAP was deployed using a K8s Configuration on a separate VM.
+ONAP was deployed using a K8s Configuration on the same VM.
+Running jmeter and ONAP OOM on the same VM may adversely impact the performance of the XACML-PDP being tested.
 
 Summary
 =======
@@ -31,7 +32,7 @@ The Performance test was executed, and the result analyzed, via:
 
     jmeter -Jduration=1200 -Jusers=10 \
         -Jxacml_ip=$ip -Jpap_ip=$ip -Japi_ip=$ip \
-        -Jxacml_port=31104 -Jpap_port=32425 -Japi_port=30709 \
+        -Jxacml_port=30111 -Jpap_port=30197 -Japi_port=30664 \
         -n -t perf.jmx -l testresults.jtl
 
 Note: the ports listed above correspond to port 6969 of the respective components.
@@ -64,31 +65,33 @@ threads), with the following results:
 .. csv-table::
    :header: "Number of Users", "Throughput (requests/second)", "Average Latency (ms)"
 
-   10, 8929, 3.10
-   20, 10827, 5.05
-   40, 11800, 9.35
-   80, 11750, 18.62
+   10, 309.919, 5.83457
+   20, 2527.73, 22.2634
+   40, 3184.78, 35.1173
+   80, 3677.35, 60.2893
 
 
 Stability Test of Policy XACML PDP
 ************************************
 
 The stability test was executed by performing requests
-against the Policy RESTful APIs residing on the XACML PDP installed in the windriver
+against the Policy RESTful APIs residing on the XACML PDP installed in the citycloud
 lab.  This was running on a kubernetes pod having the following configuration:
 
 - 16GB RAM
-- 8 VCPU
-- 160GB Disk
+- 4 VCPU
+- 40GB Disk
 
-The test was run via jmeter, which was installed on a separate VM so-as not
-to impact the performance of the XACML-PDP being tested.
+The test was run via jmeter, which was installed on the same VM.
+Running jmeter and ONAP OOM on the same VM may adversely impact the performance of the XACML-PDP being tested.
+Due to the minimal nauture of this setup, the K8S cluster became overloaded on a couple of occasions during the test.
+This resulted in a small number of errors and a greater maximum transaction time than normal.
 
 Summary
 =======
 
-The stability test was performed on a default ONAP OOM installation in the Intel Wind River Lab environment.
-JMeter was installed on a separate VM to inject the traffic defined in the
+The stability test was performed on a default ONAP OOM installation in the city Cloud Lab environment.
+JMeter was installed on the same VM to inject the traffic defined in the
 `XACML PDP stability script
 <https://git.onap.org/policy/xacml-pdp/tree/testsuites/stability/src/main/resources/testplans/stability.jmx>`_
 with the following command:
@@ -96,14 +99,14 @@ with the following command:
 .. code-block:: bash
 
     jmeter.sh -Jduration=259200 -Jusers=2 -Jxacml_ip=$ip -Jpap_ip=$ip -Japi_ip=$ip \
-        -Jxacml_port=31104 -Jpap_port=32425 -Japi_port=30709 --nongui --testfile stability.jmx
+        -Jxacml_port=30111 -Jpap_port=30197 -Japi_port=30664 --nongui --testfile stability.jmx
 
 Note: the ports listed above correspond to port 6969 of the respective components.
 
 The default log level of the root and org.eclipse.jetty.server.RequestLog loggers in the logback.xml
 of the XACML PDP
 (om/kubernetes/policy/components/policy-xacml-pdp/resources/config/logback.xml)
-was set to ERROR since the OOM installation did not have log rotation enabled of the
+was set to WARN since the OOM installation did have log rotation enabled of the
 container logs in the kubernetes worker nodes.
 
 The stability test, stability.jmx, runs the following, all in parallel:
@@ -131,9 +134,9 @@ The stability summary results were reported by JMeter with the following summary
 
 .. code-block:: bash
 
-    summary =  207771010 in 72:00:01 =  801.6/s Avg:     6 Min:     0 Max:   411 Err:     0 (0.00%)
+    summary = 222450112 in 72:00:39 =  858.1/s Avg:     5 Min:     1 Max: 946942 Err:    17 (0.00%)
 
-The XACML PDP offered good performance with JMeter for the traffic mix described above, using 801 threads per second
-to inject the traffic load.   No errors were encountered, and no significant CPU spikes were noted.
-The average transaction time was 6ms. with a maximum of 411ms.
+The XACML PDP offered good performance with JMeter for the traffic mix described above, using 858 threads per second
+to inject the traffic load.   A small number of errors were encountered, and no significant CPU spikes were noted.
+The average transaction time was 5ms. with a maximum of 946942ms.
 
