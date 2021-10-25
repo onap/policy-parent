@@ -1377,22 +1377,22 @@ To take it down:
 Other examples
 ~~~~~~~~~~~~~~
 
-The reader can also look at the `integration/csit repository <https://git.onap.org/integration/csit>`__.
+The reader can also look at the `policy/docker repository <https://github.com/onap/policy-docker/tree/master/csit>`__.
 More specifically, these directories have examples of other PDP-D configurations:
 
-* `plans <https://git.onap.org/integration/csit/tree/plans/policy/drools-pdp>`__: startup scripts.
-* `scripts <https://git.onap.org/integration/csit/tree/scripts/policy/docker-compose-drools.yml>`__: docker-compose related files.
-* `plans <https://git.onap.org/integration/csit/tree/tests/policy/drools-pdp>`__: test plan.
+* `plans <https://github.com/onap/policy-docker/tree/master/csit/drools-pdp/plans>`__: startup & teardown scripts.
+* `scripts <https://github.com/onap/policy-docker/blob/master/csit/docker-compose-all.yml>`__: docker-compose file.
+* `tests <https://github.com/onap/policy-docker/tree/master/csit/drools-pdp/tests>`__: test plan.
 
 Configuring the PDP-D in an OOM Kubernetes installation
 =======================================================
 
-The `PDP-D OOM chart <https://git.onap.org/oom/tree/kubernetes/policy/charts/drools>`__ can be
+The `PDP-D OOM chart <https://github.com/onap/oom/tree/master/kubernetes/policy/components/policy-drools-pdp>`__ can be
 customized at the following locations:
 
-* `values.yaml <https://git.onap.org/oom/tree/kubernetes/policy/charts/drools/values.yaml>`__: custom values for your installation.
-* `configmaps <https://git.onap.org/oom/tree/kubernetes/policy/charts/drools/resources/configmaps>`__: place in this directory any configuration extensions or overrides to customize the PDP-D that does not contain sensitive information.
-* `secrets <https://git.onap.org/oom/tree/kubernetes/policy/charts/drools/resources/secrets>`__: place in this directory any configuration extensions or overrides to customize the PDP-D that does contain sensitive information.
+* `values.yaml <https://github.com/onap/oom/blob/master/kubernetes/policy/components/policy-drools-pdp/values.yaml>`__: custom values for your installation.
+* `configmaps <https://github.com/onap/oom/tree/master/kubernetes/policy/components/policy-drools-pdp/resources/configmaps>`__: place in this directory any configuration extensions or overrides to customize the PDP-D that does not contain sensitive information.
+* `secrets <https://github.com/onap/oom/tree/master/kubernetes/policy/components/policy-drools-pdp/resources/secrets>`__: place in this directory any configuration extensions or overrides to customize the PDP-D that does contain sensitive information.
 
 The same customization techniques described in the docker sections for PDP-D, fully apply here, by placing the corresponding
 files or scripts in these two directories.
