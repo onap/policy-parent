@@ -94,6 +94,30 @@
       "revId": "614becba1f30dd7ff21c1e3e71ee125997c7d313",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "404d626e_d1069655",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-25T14:22:26Z",
+      "side": 1,
+      "message": "Here is the review - https://gerrit.onap.org/r/c/policy/parent/+/125331",
+      "parentUuid": "6fd9e9f4_068d051f",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 57
+      },
+      "revId": "614becba1f30dd7ff21c1e3e71ee125997c7d313",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
