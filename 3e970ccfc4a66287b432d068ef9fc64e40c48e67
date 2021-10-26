@@ -22,6 +22,30 @@
       "revId": "3e970ccfc4a66287b432d068ef9fc64e40c48e67",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c33e8f9_cefabac0",
+        "filename": "docs/development/devtools/policy-participant-smoke.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2021-10-26T13:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c188660_da478251",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 36
+      },
+      "revId": "3e970ccfc4a66287b432d068ef9fc64e40c48e67",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
