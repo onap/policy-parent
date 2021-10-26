@@ -16,6 +16,24 @@
       "revId": "614fbab9f35bb91d21eaac557bdf2d77a362f757",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a859105_2c9b03ea",
+        "filename": "docs/development/devtools/tosca/instantiation_pptnt_smoke.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2021-10-26T07:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3fcb9c0_e07fd43d",
+      "revId": "614fbab9f35bb91d21eaac557bdf2d77a362f757",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
