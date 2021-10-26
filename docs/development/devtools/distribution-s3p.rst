@@ -14,22 +14,16 @@ VM Details
 ----------
 
 The stability and performance tests are performed on VM's running in the OpenStack cloud
-environment in the ONAP integration lab. There are two separate VMs, one for running backend policy
-services which policy distribution needs, and the other for the policy distribution service itself
-and Jmeter.
+environment in the ONAP integration lab.
 
-**OpenStack environment details**
+**Policy VM details**
 
-- Version: Windriver Titanium
-
-**Policy Backend VM details (VM1)**
-
-- OS: Ubuntu 18.04.5 LTS
-- CPU: 8 core, Intel Xeon E3-12xx v2 (Ivy Bridge), 2693.668 MHz, 16384 kB cache
-- RAM: 32 GB
-- HardDisk: 200 GB
-- Docker version 19.03.8, build afacb8b7f0
-- Java: openjdk 11.0.8 2020-07-14
+- OS: Ubuntu 18.04 LTS (GNU/Linux 4.15.0-151-generic x86_64)
+- CPU: 4 core
+- RAM: 15 GB
+- HardDisk: 39 GB
+- Docker version 20.10.7, build 20.10.7-0ubuntu1~18.04.2
+- Java: openjdk 11.0.11 2021-04-20
 
 
 Common Setup
@@ -52,9 +46,9 @@ Ensure that the Java version that is executing is OpenJDK version 11
 .. code-block:: bash
 
     $ java --version
-    openjdk 11.0.8 2020-07-14
-    OpenJDK Runtime Environment (build 11.0.8+10-post-Ubuntu-0ubuntu118.04.1)
-    OpenJDK 64-Bit Server VM (build 11.0.8+10-post-Ubuntu-0ubuntu118.04.1, mixed mode, sharing)
+    openjdk 11.0.11 2021-04-20
+    OpenJDK Runtime Environment (build 11.0.11+9-Ubuntu-0ubuntu2.18.04)
+    OpenJDK 64-Bit Server VM (build 11.0.11+9-Ubuntu-0ubuntu2.18.04, mixed mode)
 
 Install Docker and Docker Compose
 
@@ -223,14 +217,14 @@ This will load up the visualVM GUI
 
 Connect to Distribution JMX Port.
 
-    1. Right click on "Local" in the left panel of the screen and select "Add JMX Connection"
+    1. On the visualvm toolbar, click on "Add JMX Connection"
     2. Enter the Distribution container IP and Port 9090. This is the JMX port exposed by the
        distribution container
-    3. Double click on the newly added nodes under "Local" to start monitoring CPU, Memory & GC.
+    3. Double click on the newly added nodes under "Remotes" to start monitoring CPU, Memory & GC.
 
 Example Screenshot of visualVM
 
-.. image:: images/distribution/distribution-s3p-vvm-sample.png
+.. image:: distribution-s3p-results/distribution-visualvm-snapshot.png
 
 
 Stability Test of Policy Distribution
@@ -261,11 +255,10 @@ The 72h stability test will run the following steps sequentially in a single thr
 - **Add CSAR** - Adds CSAR to the directory that distribution is watching
 - **Get Healthcheck** - Ensures Healthcheck is returning 200 OK
 - **Get Statistics** - Ensures Statistics is returning 200 OK
-- **CheckPDPGroupQuery** - Checks that PDPGroupQuery contains the deployed policy
-- **CheckPolicyDeployed** - Checks that the policy is deployed
-- **Undeploy Policy** - Undeploys the policy
-- **Delete Policy** - Deletes the Policy for the next loop
-- **Check PDP Group for Deletion** - Ensures the policy has been removed and does not exist
+- **Assert PDP Group Query** - Checks that PDPGroupQuery contains the deployed policy
+- **Assert PoliciesDeployed** - Checks that the policy is deployed
+- **Undeploy/Delete Policy** - Undeploys and deletes the Policy for the next loop
+- **Assert PDP Group Query for Deleted Policy** - Ensures the policy has been removed and does not exist
 
 The following steps can be used to configure the parameters of the test plan.
 
@@ -285,7 +278,7 @@ The following steps can be used to configure the parameters of the test plan.
 
 Screenshot of Distribution stability test plan
 
-.. image:: images/distribution/distribution-s3p-testplan.png
+.. image:: distribution-s3p-results/distribution-jmeter-testcases.png
 
 
 Running the Test Plan
@@ -294,6 +287,11 @@ Running the Test Plan
 Check if the /tmp/policydistribution/distributionmount exists as it was created during the start.sh
 script execution. If not, run the following commands to create folder and change folder permissions
 to allow the testplan to insert the CSAR into the /tmp/policydistribution/distributionmount folder.
+
+.. note::
+    Make sure that only csar file is being loaded in the watched folder and log generation is in a
+    logs folder, as any sort of zip file can be understood by distribution as a policy file. A
+    logback.xml configuration file is available under setup/distribution folder.
 
 .. code-block:: bash
 
@@ -324,13 +322,13 @@ Test Results
 
 **Test Statistics**
 
-.. image:: images/distribution/dist_stability_statistics.PNG
-.. image:: images/distribution/dist_stability_threshold.PNG
+.. image:: distribution-s3p-results/stability-statistics.png
+.. image:: distribution-s3p-results/stability-threshold.png
 
 **VisualVM Screenshots**
 
-.. image:: images/distribution/dist_stability_monitor.PNG
-.. image:: images/distribution/dist_stability_threads.PNG
+.. image:: distribution-s3p-results/stability-monitor.png
+.. image:: distribution-s3p-results/stability-threads.png
 
 
 Performance Test of Policy Distribution
@@ -396,10 +394,10 @@ Test Results
 
 **Test Statistics**
 
-.. image:: images/distribution/performance-statistics.png
-.. image:: images/distribution/performance-threshold.png
+.. image:: distribution-s3p-results/performance-statistics.png
+.. image:: distribution-s3p-results/performance-threshold.png
 
 **VisualVM Screenshots**
 
-.. image:: images/distribution/performance-monitor.png
-.. image:: images/distribution/performance-threads.png
+.. image:: distribution-s3p-results/performance-monitor.png
+.. image:: distribution-s3p-results/performance-threads.png
