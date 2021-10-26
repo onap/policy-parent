@@ -34,6 +34,24 @@
       "revId": "3374c952c27450c2140af4c0bc4621edd95035dd",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf854581_fd7746c6",
+        "filename": "docs/development/devtools/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2021-10-26T13:16:28Z",
+      "side": 1,
+      "message": "I see Adheli is fixing it in another review - https://gerrit.onap.org/r/c/policy/parent/+/125371\n\nHence, we can go ahead with this.",
+      "parentUuid": "27ebbe99_4f448797",
+      "revId": "3374c952c27450c2140af4c0bc4621edd95035dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
