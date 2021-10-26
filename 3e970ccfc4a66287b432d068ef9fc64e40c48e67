@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c188660_da478251",
+        "filename": "docs/development/devtools/policy-participant-smoke.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2021-10-26T11:50:24Z",
+      "side": 1,
+      "message": "Usually I have seen an extra line break after these things, and I know in some cases it doesn\u0027t render properly without an empty line break. Please make sure this page is working ok, as I don\u0027t see any line break in this page.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 36
+      },
+      "revId": "3e970ccfc4a66287b432d068ef9fc64e40c48e67",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
