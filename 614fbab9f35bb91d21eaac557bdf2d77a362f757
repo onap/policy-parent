@@ -70,6 +70,24 @@
       "revId": "614fbab9f35bb91d21eaac557bdf2d77a362f757",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39af3cf0_147e1326",
+        "filename": "docs/development/devtools/tosca/instantiation_pptnt_smoke.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-26T11:46:54Z",
+      "side": 1,
+      "message": "Hi Wayne, my apologies...I must have still been looking at patch set 1.",
+      "parentUuid": "6f6cd528_537a2eae",
+      "revId": "614fbab9f35bb91d21eaac557bdf2d77a362f757",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
