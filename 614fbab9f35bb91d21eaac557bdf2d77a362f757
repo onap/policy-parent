@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3fcb9c0_e07fd43d",
+        "filename": "docs/development/devtools/tosca/instantiation_pptnt_smoke.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2021-10-26T07:35:26Z",
+      "side": 1,
+      "message": "Please remove tabs and trailing white space",
+      "revId": "614fbab9f35bb91d21eaac557bdf2d77a362f757",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
