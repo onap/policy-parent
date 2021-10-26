@@ -115,7 +115,7 @@ Stability test plan was triggered for 72 hours.
 
 **JMeter Screenshot**
 
-.. image:: images/pap-s3p-stability-result-jmeter.png
+.. image:: pap-s3p-results/pap-s3p-stability-result-jmeter.png
 
 **Memory and CPU usage**
 
@@ -123,11 +123,11 @@ The memory and CPU usage can be monitored by running "top" command on the PAP po
 
 Memory and CPU usage before test execution:
 
-.. image:: images/pap-s3p-mem-bt.png
+.. image:: pap-s3p-results/pap-s3p-mem-bt.png
 
 Memory and CPU usage after test execution:
 
-.. image:: images/pap-s3p-mem-at.png
+.. image:: pap-s3p-results/pap-s3p-mem-at.png
 
 
 Performance Test of PAP
@@ -185,4 +185,4 @@ Test results are shown as below.
 
 **JMeter Screenshot**
 
-.. image:: images/pap-s3p-performance-result-jmeter.png
+.. image:: pap-s3p-results/pap-s3p-performance-result-jmeter.png
