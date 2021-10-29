@@ -1,0 +1,1254 @@
+{
+    "info": {
+        "_postman_id": "82b9e85d-e9cd-4161-9b11-837465918e7c",
+        "name": "Drools-PDP VNF & PNF Testing",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Create VNF Policy",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"tosca_definitions_version\": \"tosca_simple_yaml_1_1_0\",\n    \"topology_template\": {\n        \"policies\": [\n            {\n                \"onap.policies.drools.vnf.Example\": {\n                    \"type\": \"onap.policies.controlloop.operational.common.Drools\",\n                    \"type_version\": \"1.0.0\",\n                    \"version\": \"1.0.0\",\n                    \"name\": \"onap.policies.drools.vnf.Example\",\n                    \"properties\": {\n                        \"id\": \"ControlLoop-vnf-d0a1dfc6-94f5-4fd4-a5b5-4630b438831b\",\n                        \"timeout\": 1200,\n                        \"abatement\": false,\n                        \"trigger\": \"vnf-modifyConfig\",\n                        \"operations\": [\n                            {\n                                \"id\": \"vnf-modifyConfig\",\n                                \"description\": \"Test policy for vnf modify config\",\n                                \"operation\": {\n                                    \"actor\": \"CDS\",\n                                    \"operation\": \"modify-config\",\n                                    \"target\": {\n                                        \"targetType\": \"VNF\",\n                                        \"entityIds\": {\n                                            \"resourceID\": \"vTEST_XYZ\"\n                                        }\n                                    },\n                                    \"payload\": {\n                                        \"artifact_name\": \"vnf-test-cba\",\n                                        \"artifact_version\": \"1.0.0\",\n                                        \"data\": \"{\\\"test\\\": \\\"test\\\"}\"\n                                    }\n                                },\n                                \"timeout\": 300,\n                                \"retries\": 0,\n                                \"success\": \"vnf-restart\",\n                                \"failure\": \"final_failure\",\n                                \"failure_timeout\": \"final_failure_timeout\",\n                                \"failure_retries\": \"final_failure_retries\",\n                                \"failure_exception\": \"final_failure_exception\",\n                                \"failure_guard\": \"final_failure_guard\"\n                            },\n                            {\n                                \"id\": \"vnf-restart\",\n                                \"description\": \"Test policy for vnf restart\",\n                                \"operation\": {\n                                    \"actor\": \"CDS\",\n                                    \"operation\": \"restart\",\n                                    \"target\": {\n                                        \"targetType\": \"VNF\",\n                                        \"entityIds\": {\n                                            \"resourceID\": \"vTEST_XYZ\"\n                                        }\n                                    },\n                                    \"payload\": {\n                                        \"artifact_name\": \"vnf-test-cba\",\n                                        \"artifact_version\": \"1.0.0\",\n                                        \"data\": \"{\\\"test\\\": \\\"test\\\"}\"\n                                    }\n                                },\n                                \"timeout\": 300,\n                                \"retries\": 0,\n                                \"success\": \"final_success\",\n                                \"failure\": \"final_failure\",\n                                \"failure_timeout\": \"final_failure_timeout\",\n                                \"failure_retries\": \"final_failure_retries\",\n                                \"failure_exception\": \"final_failure_exception\",\n                                \"failure_guard\": \"final_failure_guard\"\n                            }\n                        ],\n                        \"controllerName\": \"usecases\"\n                    }\n                }\n            }\n        ]\n    }\n}"
+                },
+                "url": {
+                    "raw": "{{POLICY-API-URL}}/policy/api/v1/policies",
+                    "host": [
+                        "{{POLICY-API-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "api",
+                        "v1",
+                        "policies"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Verify VNF Policy",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{POLICY-API-URL}}/policy/api/v1/policies/onap.policies.drools.vnf.Example/versions/1.0.0",
+                    "host": [
+                        "{{POLICY-API-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "api",
+                        "v1",
+                        "policies",
+                        "onap.policies.drools.vnf.Example",
+                        "versions",
+                        "1.0.0"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create PNF Policy",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"tosca_definitions_version\": \"tosca_simple_yaml_1_1_0\",\n    \"topology_template\": {\n        \"policies\": [\n            {\n                \"onap.policies.drools.pnf.Example\": {\n                    \"type\": \"onap.policies.controlloop.operational.common.Drools\",\n                    \"type_version\": \"1.0.0\",\n                    \"version\": \"1.0.0\",\n                    \"name\": \"onap.policies.drools.pnf.Example\",\n                    \"properties\": {\n                        \"id\": \"ControlLoop-pnf-d0a1dfc6-94f5-4fd4-a5b5-4630b438851b\",\n                        \"timeout\": 1200,\n                        \"abatement\": false,\n                        \"trigger\": \"pnf-updateConfig\",\n                        \"operations\": [\n                            {\n                                \"id\": \"pnf-updateConfig\",\n                                \"description\": \"Test the pnf update config\",\n                                \"operation\": {\n                                    \"actor\": \"CDS\",\n                                    \"operation\": \"update-config\",\n                                    \"target\": {\n                                        \"targetType\": \"PNF\"\n                                    },\n                                    \"payload\": {\n                                        \"artifact_name\": \"pnf-test-cba\",\n                                        \"artifact_version\": \"1.0.0\",\n                                        \"data\": \"test\"\n                                    }\n                                },\n                                \"timeout\": 300,\n                                \"retries\": 0,\n                                \"success\": \"final_success\",\n                                \"failure\": \"final_failure\",\n                                \"failure_timeout\": \"final_failure_timeout\",\n                                \"failure_retries\": \"final_failure_retries\",\n                                \"failure_exception\": \"final_failure_exception\",\n                                \"failure_guard\": \"final_failure_guard\"\n                            }\n                        ],\n                        \"controllerName\": \"usecases\"\n                    }\n                }\n            }\n        ]\n    }\n}"
+                },
+                "url": {
+                    "raw": "{{POLICY-API-URL}}/policy/api/v1/policies",
+                    "host": [
+                        "{{POLICY-API-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "api",
+                        "v1",
+                        "policies"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Verify PNF Policy",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{POLICY-API-URL}}/policy/api/v1/policies/onap.policies.drools.pnf.Example/versions/1.0.0",
+                    "host": [
+                        "{{POLICY-API-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "api",
+                        "v1",
+                        "policies",
+                        "onap.policies.drools.pnf.Example",
+                        "versions",
+                        "1.0.0"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "PDP Group Query",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"groups\": [\r\n        {\r\n            \"name\": \"defaultGroup\",\r\n            \"deploymentSubgroups\": [\r\n                {\r\n                    \"pdpType\": \"apex\",\r\n                    \"action\": \"POST\",\r\n                    \"policies\": [{\r\n                            \"name\": \"onap.policies.controlloop.operational.apex.Sampledomain\",\r\n                            \"version\": \"1.0.0\"\r\n                        }]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Deploy Policy",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"groups\": [\r\n        {\r\n            \"name\": \"defaultGroup\",\r\n            \"deploymentSubgroups\": [\r\n                {\r\n                    \"pdpType\": \"drools\",\r\n                    \"action\": \"POST\",\r\n                    \"policies\": [\r\n                        {\r\n                            \"name\": \"onap.policies.drools.vnf.Example\",\r\n                            \"version\": \"1.0.0\"\r\n                        },\r\n                        {\r\n                            \"name\": \"onap.policies.drools.pnf.Example\",\r\n                            \"version\": \"1.0.0\"\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/deployments/batch",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps",
+                        "deployments",
+                        "batch"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "PDP Group Query",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"groups\": [\r\n        {\r\n            \"name\": \"defaultGroup\",\r\n            \"deploymentSubgroups\": [\r\n                {\r\n                    \"pdpType\": \"apex\",\r\n                    \"action\": \"POST\",\r\n                    \"policies\": [{\r\n                            \"name\": \"onap.policies.controlloop.operational.apex.Sampledomain\",\r\n                            \"version\": \"1.0.0\"\r\n                        }]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "VNF Policy Status",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/policies/status/defaultGroup/onap.policies.drools.vnf.Example/1.0.0",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "policies",
+                        "status",
+                        "defaultGroup",
+                        "onap.policies.drools.vnf.Example",
+                        "1.0.0"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "PNF Policy Status",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/policies/status/defaultGroup/onap.policies.drools.pnf.Example/1.0.0",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "policies",
+                        "status",
+                        "defaultGroup",
+                        "onap.policies.drools.pnf.Example",
+                        "1.0.0"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "VNF Policy Audit",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/policies/audit/onap.policies.drools.vnf.Example/1.0.0?recordCount=5",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "policies",
+                        "audit",
+                        "onap.policies.drools.vnf.Example",
+                        "1.0.0"
+                    ],
+                    "query": [
+                        {
+                            "key": "recordCount",
+                            "value": "5"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "PNF Policy Audit",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/policies/audit/onap.policies.drools.pnf.Example/1.0.0?recordCount=5",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "policies",
+                        "audit",
+                        "onap.policies.drools.pnf.Example",
+                        "1.0.0"
+                    ],
+                    "query": [
+                        {
+                            "key": "recordCount",
+                            "value": "5"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Fetch PDP Statistics",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/statistics/defaultGroup/drools?recordCount=5",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps",
+                        "statistics",
+                        "defaultGroup",
+                        "drools"
+                    ],
+                    "query": [
+                        {
+                            "key": "recordCount",
+                            "value": "5"
+                        }
+                    ]
+                },
+                "description": "This is an API to fetch current statistics information for the specified PDP instance (example - \"fireantsdev-policy-apex-pdp-0\") of the specified PdpGroup (example - \"defaultGroup\") & PdpSubgroup (example - \"apex\"). You can filter by the number of entries using recordCount attribute"
+            },
+            "response": []
+        },
+        {
+            "name": "Send event to dmaap - VNF Success",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"closedLoopControlName\": \"ControlLoop-vnf-d0a1dfc6-94f5-4fd4-a5b5-4630b438831b\",\n    \"closedLoopAlarmStart\": 1463679805324,\n    \"closedLoopEventClient\": \"testClient\",\n    \"closedLoopEventStatus\": \"ONSET\",\n    \"requestID\": \"c7c6a4aa-bb61-4a15-b831-ba1472dd4a65\",\n    \"target_type\": \"VNF\",\n    \"target\": \"generic-vnf.vnf-id\",\n    \"AAI\": {\n        \"generic-vnf.vnf-id\": \"57b008b9-b367-4359-93fd-74d3ce0ee1a0\",\n        \"vserver.vserver-name\": \"viptela_scripts\"\n    },\n    \"from\": \"TEST\",\n    \"version\": \"1.0.2\",\n    \"additionalEventParams\": {\n        \"vfStatus\": \"Active\"\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{DMAAP-URL}}/events/unauthenticated.DCAE_CL_OUTPUT",
+                    "host": [
+                        "{{DMAAP-URL}}"
+                    ],
+                    "path": [
+                        "events",
+                        "unauthenticated.DCAE_CL_OUTPUT"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Read notifications from DMaaP",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application/json",
+                        "disabled": true
+                    }
+                ],
+                "url": {
+                    "raw": "{{DMAAP-URL}}/events/POLICY-CL-MGT/g1/c1?timeout=30000",
+                    "host": [
+                        "{{DMAAP-URL}}"
+                    ],
+                    "path": [
+                        "events",
+                        "POLICY-CL-MGT",
+                        "g1",
+                        "c1"
+                    ],
+                    "query": [
+                        {
+                            "key": "timeout",
+                            "value": "30000"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Fetch PDP Statistics",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/statistics/defaultGroup/drools?recordCount=5",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps",
+                        "statistics",
+                        "defaultGroup",
+                        "drools"
+                    ],
+                    "query": [
+                        {
+                            "key": "recordCount",
+                            "value": "5"
+                        }
+                    ]
+                },
+                "description": "This is an API to fetch current statistics information for the specified PDP instance (example - \"fireantsdev-policy-apex-pdp-0\") of the specified PdpGroup (example - \"defaultGroup\") & PdpSubgroup (example - \"apex\"). You can filter by the number of entries using recordCount attribute"
+            },
+            "response": []
+        },
+        {
+            "name": "Send event to dmaap - VNF Failure",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"closedLoopControlName\": \"ControlLoop-vnf-d0a1dfc6-94f5-4fd4-a5b5-4630b438831b\",\n    \"closedLoopAlarmStart\": 1463679805324,\n    \"closedLoopEventClient\": \"testClient\",\n    \"closedLoopEventStatus\": \"ONSET\",\n    \"requestID\": \"c7c6a4aa-bb61-4a15-b831-ba1472dd4a75\",\n    \"target_type\": \"VNF\",\n    \"target\": \"generic-vnf.vnf-id\",\n    \"AAI\": {\n        \"generic-vnf.vnf-id\": \"57b008b9-b367-4359-93fd-74d3ce0ee1a0\",\n        \"vserver.vserver-name\": \"viptela_scripts\"\n    },\n    \"from\": \"TEST\",\n    \"version\": \"1.0.2\",\n    \"additionalEventParams\": {\n        \"vfStatus\": \"InActive\"\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{DMAAP-URL}}/events/unauthenticated.DCAE_CL_OUTPUT",
+                    "host": [
+                        "{{DMAAP-URL}}"
+                    ],
+                    "path": [
+                        "events",
+                        "unauthenticated.DCAE_CL_OUTPUT"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Read notifications from DMaaP",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application/json",
+                        "disabled": true
+                    }
+                ],
+                "url": {
+                    "raw": "{{DMAAP-URL}}/events/POLICY-CL-MGT/g1/c1?timeout=30000",
+                    "host": [
+                        "{{DMAAP-URL}}"
+                    ],
+                    "path": [
+                        "events",
+                        "POLICY-CL-MGT",
+                        "g1",
+                        "c1"
+                    ],
+                    "query": [
+                        {
+                            "key": "timeout",
+                            "value": "30000"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Fetch PDP Statistics",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/statistics/defaultGroup/drools?recordCount=5",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps",
+                        "statistics",
+                        "defaultGroup",
+                        "drools"
+                    ],
+                    "query": [
+                        {
+                            "key": "recordCount",
+                            "value": "5"
+                        }
+                    ]
+                },
+                "description": "This is an API to fetch current statistics information for the specified PDP instance (example - \"fireantsdev-policy-apex-pdp-0\") of the specified PdpGroup (example - \"defaultGroup\") & PdpSubgroup (example - \"apex\"). You can filter by the number of entries using recordCount attribute"
+            },
+            "response": []
+        },
+        {
+            "name": "Send event to dmaap - PNF Success",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"closedLoopControlName\": \"ControlLoop-pnf-d0a1dfc6-94f5-4fd4-a5b5-4630b438851b\",\n    \"closedLoopAlarmStart\": 1463679805324,\n    \"closedLoopEventClient\": \"testClient\",\n    \"closedLoopEventStatus\": \"ONSET\",\n    \"requestID\": \"c7c6a4aa-bb61-4a15-b831-ba1472dd4a85\",\n    \"target_type\": \"PNF\",\n    \"target\": \"pnf.pnf-name\",\n    \"AAI\": {\n        \"pnf.pnf-name\": \"simple-cl-pnf\"\n    },\n    \"from\": \"TEST\",\n    \"version\": \"1.0.2\",\n    \"additionalEventParams\": {\n        \"hostname\": \"host\",\n        \"IP\": \"10.43.230.146\",\n        \"pnfName\": \"simple-cl-pnf\"\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{DMAAP-URL}}/events/unauthenticated.DCAE_CL_OUTPUT",
+                    "host": [
+                        "{{DMAAP-URL}}"
+                    ],
+                    "path": [
+                        "events",
+                        "unauthenticated.DCAE_CL_OUTPUT"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Read notifications from DMaaP",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application/json",
+                        "disabled": true
+                    }
+                ],
+                "url": {
+                    "raw": "{{DMAAP-URL}}/events/POLICY-CL-MGT/g1/c1?timeout=30000",
+                    "host": [
+                        "{{DMAAP-URL}}"
+                    ],
+                    "path": [
+                        "events",
+                        "POLICY-CL-MGT",
+                        "g1",
+                        "c1"
+                    ],
+                    "query": [
+                        {
+                            "key": "timeout",
+                            "value": "30000"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Fetch PDP Statistics",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/statistics/defaultGroup/drools?recordCount=5",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps",
+                        "statistics",
+                        "defaultGroup",
+                        "drools"
+                    ],
+                    "query": [
+                        {
+                            "key": "recordCount",
+                            "value": "5"
+                        }
+                    ]
+                },
+                "description": "This is an API to fetch current statistics information for the specified PDP instance (example - \"fireantsdev-policy-apex-pdp-0\") of the specified PdpGroup (example - \"defaultGroup\") & PdpSubgroup (example - \"apex\"). You can filter by the number of entries using recordCount attribute"
+            },
+            "response": []
+        },
+        {
+            "name": "Send event to dmaap - PNF Failure",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"closedLoopControlName\": \"ControlLoop-pnf-d0a1dfc6-94f5-4fd4-a5b5-4630b438851b\",\n    \"closedLoopAlarmStart\": 1463679805324,\n    \"closedLoopEventClient\": \"testClient\",\n    \"closedLoopEventStatus\": \"ONSET\",\n    \"requestID\": \"c7c6a4aa-bb61-4a15-b831-ba1472dd4a95\",\n    \"target_type\": \"PNF\",\n    \"target\": \"pnf.pnf-name\",\n    \"AAI\": {\n        \"pnf.pnf-name\": \"simple-cl-pnf-failure\"\n    },\n    \"from\": \"TEST\",\n    \"version\": \"1.0.2\",\n    \"additionalEventParams\": {\n        \"hostname\": \"host\",\n        \"IP\": \"10.43.230.146\",\n        \"pnfName\": \"simple-cl-pnf-failure\"\n    }\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{DMAAP-URL}}/events/unauthenticated.DCAE_CL_OUTPUT",
+                    "host": [
+                        "{{DMAAP-URL}}"
+                    ],
+                    "path": [
+                        "events",
+                        "unauthenticated.DCAE_CL_OUTPUT"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Read notifications from DMaaP",
+            "request": {
+                "auth": {
+                    "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "name": "Content-Type",
+                        "type": "text",
+                        "value": "application/json",
+                        "disabled": true
+                    }
+                ],
+                "url": {
+                    "raw": "{{DMAAP-URL}}/events/POLICY-CL-MGT/g1/c1?timeout=30000",
+                    "host": [
+                        "{{DMAAP-URL}}"
+                    ],
+                    "path": [
+                        "events",
+                        "POLICY-CL-MGT",
+                        "g1",
+                        "c1"
+                    ],
+                    "query": [
+                        {
+                            "key": "timeout",
+                            "value": "30000"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Fetch PDP Statistics",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/statistics/defaultGroup/drools?recordCount=5",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps",
+                        "statistics",
+                        "defaultGroup",
+                        "drools"
+                    ],
+                    "query": [
+                        {
+                            "key": "recordCount",
+                            "value": "5"
+                        }
+                    ]
+                },
+                "description": "This is an API to fetch current statistics information for the specified PDP instance (example - \"fireantsdev-policy-apex-pdp-0\") of the specified PdpGroup (example - \"defaultGroup\") & PdpSubgroup (example - \"apex\"). You can filter by the number of entries using recordCount attribute"
+            },
+            "response": []
+        },
+        {
+            "name": "Undeploy Policy",
+            "request": {
+                "auth": {
+                    "type": "basic",
+                    "basic": [
+                        {
+                            "key": "username",
+                            "value": "healthcheck",
+                            "type": "string"
+                        },
+                        {
+                            "key": "password",
+                            "value": "{{HEALTHCHECK-PASSWORD}}",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"groups\": [\n        {\n            \"name\": \"defaultGroup\",\n            \"deploymentSubgroups\": [\n                {\n                    \"pdpType\": \"drools\",\n                    \"action\": \"DELETE\",\n                    \"policies\": [\n                        {\n                            \"name\": \"onap.policies.drools.vnf.Example\",\n                            \"version\": \"1.0.0\"\n                        },\n                        {\n                            \"name\": \"onap.policies.drools.pnf.Example\",\n                            \"version\": \"1.0.0\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/deployments/batch",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps",
+                        "deployments",
+                        "batch"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "PDP Group Query",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"groups\": [\r\n        {\r\n            \"name\": \"defaultGroup\",\r\n            \"deploymentSubgroups\": [\r\n                {\r\n                    \"pdpType\": \"apex\",\r\n                    \"action\": \"POST\",\r\n                    \"policies\": [{\r\n                            \"name\": \"onap.policies.controlloop.operational.apex.Sampledomain\",\r\n                            \"version\": \"1.0.0\"\r\n                        }]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "VNF Policy Status",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/policies/status/defaultGroup/onap.policies.drools.vnf.Example/1.0.0",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "policies",
+                        "status",
+                        "defaultGroup",
+                        "onap.policies.drools.vnf.Example",
+                        "1.0.0"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "PNF Policy Status",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/policies/status/defaultGroup/onap.policies.drools.pnf.Example/1.0.0",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "policies",
+                        "status",
+                        "defaultGroup",
+                        "onap.policies.drools.pnf.Example",
+                        "1.0.0"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "VNF Policy Audit",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/policies/audit/onap.policies.drools.vnf.Example/1.0.0?recordCount=5",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "policies",
+                        "audit",
+                        "onap.policies.drools.vnf.Example",
+                        "1.0.0"
+                    ],
+                    "query": [
+                        {
+                            "key": "recordCount",
+                            "value": "5"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "PNF Policy Audit",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/policies/audit/onap.policies.drools.pnf.Example/1.0.0?recordCount=5",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "policies",
+                        "audit",
+                        "onap.policies.drools.pnf.Example",
+                        "1.0.0"
+                    ],
+                    "query": [
+                        {
+                            "key": "recordCount",
+                            "value": "5"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Fetch PDP Statistics",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "url": {
+                    "raw": "{{POLICY-PAP-URL}}/policy/pap/v1/pdps/statistics/defaultGroup/drools?recordCount=5",
+                    "host": [
+                        "{{POLICY-PAP-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "pap",
+                        "v1",
+                        "pdps",
+                        "statistics",
+                        "defaultGroup",
+                        "drools"
+                    ],
+                    "query": [
+                        {
+                            "key": "recordCount",
+                            "value": "5"
+                        }
+                    ]
+                },
+                "description": "This is an API to fetch current statistics information for the specified PDP instance (example - \"fireantsdev-policy-apex-pdp-0\") of the specified PdpGroup (example - \"defaultGroup\") & PdpSubgroup (example - \"apex\"). You can filter by the number of entries using recordCount attribute"
+            },
+            "response": []
+        },
+        {
+            "name": "Delete VNF Policy",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{POLICY-API-URL}}/policy/api/v1/policies/onap.policies.drools.vnf.Example/versions/1.0.0",
+                    "host": [
+                        "{{POLICY-API-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "api",
+                        "v1",
+                        "policies",
+                        "onap.policies.drools.vnf.Example",
+                        "versions",
+                        "1.0.0"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete PNF Policy",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{POLICY-API-URL}}/policy/api/v1/policies/onap.policies.drools.pnf.Example/versions/1.0.0",
+                    "host": [
+                        "{{POLICY-API-URL}}"
+                    ],
+                    "path": [
+                        "policy",
+                        "api",
+                        "v1",
+                        "policies",
+                        "onap.policies.drools.pnf.Example",
+                        "versions",
+                        "1.0.0"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "auth": {
+        "type": "basic",
+        "basic": [
+            {
+                "key": "password",
+                "value": "{{HEALTHCHECK-PASSWORD}}",
+                "type": "string"
+            },
+            {
+                "key": "username",
+                "value": "healthcheck",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ]
+}
