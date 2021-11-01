@@ -185,7 +185,7 @@ Global API Table
 API Swagger
 -----------
 
-It is worth noting that we use basic authorization for API access with username and password set to *healthcheck* and *zb!XztG34* respectively.
+It is worth noting that we use basic authorization for API access with username and password set to *policyadmin* and *zb!XztG34* respectively.
 Also, the new APIs support both *http* and *https*.
 
 For every API call, client is encouraged to insert an uuid-type requestID as parameter.
@@ -269,28 +269,28 @@ JSON payload for POST calls can be downloaded from policy table above.
 If you are accessing the api from the container, the default *ip* and *port* would be **https:/policy-api:6969/policy/api/v1/**.
 
 Create vFirewall Monitoring Policy::
-  curl --user 'healthcheck:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.tcagen2/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.monitoring.input.tosca.json
+  curl --user 'policyadmin:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.tcagen2/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.monitoring.input.tosca.json
 
 Get vFirewall Monitoring Policy::
-  curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.tcagen2/versions/1.0.0/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+  curl --user 'policyadmin:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.tcagen2/versions/1.0.0/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
 
 Delete vFirewall Monitoring Policy::
-  curl --user 'healthcheck:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.tcagen2/versions/1.0.0/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+  curl --user 'policyadmin:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.monitoring.tcagen2/versions/1.0.0/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
 
 Create vFirewall Operational Policy::
-  curl --user 'healthcheck:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.operational.input.tosca.json
+  curl --user 'policyadmin:zb!XztG34' -X POST "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies" -H "Accept: application/json" -H "Content-Type: application/json" -d @vFirewall.policy.operational.input.tosca.json
 
 Get vFirewall Operational Policy::
-  curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies/operational.modifyconfig/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+  curl --user 'policyadmin:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies/operational.modifyconfig/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
 
 Delete vFirewall Operational Policy::
-  curl --user 'healthcheck:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies/operational.modifyconfig/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+  curl --user 'policyadmin:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policytypes/onap.policies.controlloop.operational.common.Drools/versions/1.0.0/policies/operational.modifyconfig/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
 
 Get all available policies::
-  curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policies" -H "Accept: application/json" -H "Content-Type: application/json"
+  curl --user 'policyadmin:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policies" -H "Accept: application/json" -H "Content-Type: application/json"
 
 Get version 1.0.0 of vFirewall Monitoring Policy::
-  curl --user 'healthcheck:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+  curl --user 'policyadmin:zb!XztG34' -X GET "http://{ip}:{port}/policy/api/v1/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
 
 Delete version 1.0.0 of vFirewall Monitoring Policy::
-  curl --user 'healthcheck:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+  curl --user 'policyadmin:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
