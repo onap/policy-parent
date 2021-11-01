@@ -1,0 +1,478 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Api Documentation",
+        "version": "1.0",
+        "title": "Api Documentation",
+        "termsOfService": "urn:tos",
+        "contact": {},
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        }
+    },
+    "paths": {
+        "/onap/participantsim/v2/elements": {
+            "put": {
+                "tags": [
+                    "Clamp Control Loop Participant Simulator API"
+                ],
+                "summary": "Updates simulated control loop elements",
+                "description": "Updates simulated control loop elements, returning the updated control loop definition IDs",
+                "operationId": "updateUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/yaml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Body of a control loop element",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ControlLoopElementReq",
+                            "originalRef": "ControlLoopElementReq"
+                        }
+                    },
+                    {
+                        "name": "X-ONAP-RequestID",
+                        "in": "header",
+                        "description": "RequestID for http transaction",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/TypedSimpleResponse«ControlLoopElement»",
+                            "originalRef": "TypedSimpleResponse«ControlLoopElement»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Authentication Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Authorization Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "x-interface info": {
+                    "api-version": "1.0.0",
+                    "last-mod-release": "Dublin"
+                }
+            }
+        },
+        "/onap/participantsim/v2/elements/{name}/{version}": {
+            "get": {
+                "tags": [
+                    "Clamp Control Loop Participant Simulator API"
+                ],
+                "summary": "Query details of the requested simulated control loop elements",
+                "description": "Queries details of the requested simulated control loop elements, returning all control loop element details",
+                "operationId": "elementsUsingGET",
+                "produces": [
+                    "application/json",
+                    "application/yaml"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Control loop element name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "description": "Control loop element version",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-ONAP-RequestID",
+                        "in": "header",
+                        "description": "RequestID for http transaction",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "$ref": "#/definitions/ControlLoopElementRes",
+                                "originalRef": "ControlLoopElementRes"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Authorization Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "x-interface info": {
+                    "api-version": "1.0.0",
+                    "last-mod-release": "Dublin"
+                }
+            }
+        },
+        "/onap/participantsim/v2/participants": {
+            "put": {
+                "tags": [
+                    "Clamp Control Loop Participant Simulator API"
+                ],
+                "summary": "Updates simulated participants",
+                "description": "Updates simulated participants, returning the updated control loop definition IDs",
+                "operationId": "updateUsingPUT_1",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/yaml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Body of a participant",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ParticipantReq",
+                            "originalRef": "ParticipantReq"
+                        }
+                    },
+                    {
+                        "name": "X-ONAP-RequestID",
+                        "in": "header",
+                        "description": "RequestID for http transaction",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/TypedSimpleResponse«Participant»",
+                            "originalRef": "TypedSimpleResponse«Participant»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Authentication Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Authorization Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "x-interface info": {
+                    "api-version": "1.0.0",
+                    "last-mod-release": "Dublin"
+                }
+            }
+        },
+        "/onap/participantsim/v2/participants/{name}/{version}": {
+            "get": {
+                "tags": [
+                    "Clamp Control Loop Participant Simulator API"
+                ],
+                "summary": "Query details of the requested simulated participants",
+                "description": "Queries details of the requested simulated participants, returning all participant details",
+                "operationId": "participantsUsingGET",
+                "produces": [
+                    "application/json",
+                    "application/yaml"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Participant name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "description": "Participant version",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "X-ONAP-RequestID",
+                        "in": "header",
+                        "description": "RequestID for http transaction",
+                        "required": false,
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ParticipantRes",
+                                "originalRef": "ParticipantRes"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authentication Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Authorization Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "headers": {
+                            "X-LatestVersion": {
+                                "type": "string"
+                            },
+                            "X-PatchVersion": {
+                                "type": "string"
+                            },
+                            "X-MinorVersion": {
+                                "type": "string"
+                            },
+                            "X-ONAP-RequestID": {
+                                "type": "string",
+                                "format": "uuid"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "x-interface info": {
+                    "api-version": "1.0.0",
+                    "last-mod-release": "Dublin"
+                }
+            }
+        }
+    }
+}
