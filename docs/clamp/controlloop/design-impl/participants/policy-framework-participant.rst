@@ -42,7 +42,7 @@ The PDP Statistics API is used to get statistics for statistics report from the 
 Policy Type and Policy References
 +++++++++++++++++++++++++++++++++
 
-The Policy Framework uses the policyType and policyId properties defined in the Policy Control Loop Element type references to specify what policy type and policy should be used by a Policy Control Loop Element. 
+The Policy Framework uses the policyType and policyId properties defined in the Policy Control Loop Element type references to specify what policy type and policy should be used by a Policy Control Loop Element.
 
 The Policy Type and Policy specified in the policyType and policyId reference must of course be available in the Policy Framework in order for them to be used in Control Loop instances. In some cases, the Policy Type and/or the Policy may be already loaded in the Policy Framework. In other cases, the Policy Framework participant must load the Policy Type and/or policy.
 
@@ -51,19 +51,29 @@ Policy Type References
 
 The Policy Participant uses the following steps for Policy Type References:
 
-    1. The Policy Participant reads the Policy Type ID from the policyType property specified for the Control Loop Element
-    2. It checks if a Policy Type with that Policy Type ID has been specified in the ToscaServiceTemplateFragment field in the ControLoopElement definition in the 
-       ControlLoopUpdate message, see The CLAMP Control Loop Participant Protocol#Messages.
-        a. If the Policy Type has been specified, the Participant stores the Policy Type in the Policy framework. If the Policy Type is successfully stored, execution proceeds, otherwise an error is reported
-        b. If the Policy Type has not been specified, the Participant checks that the Policy Type is already in the Policy framework. If the Policy Type already exists, execution proceeds, otherwise an error is reported
+#. The Policy Participant reads the Policy Type ID from the policyType property specified for the Control Loop Element.
+
+#. It checks if a Policy Type with that Policy Type ID has been specified in the ToscaServiceTemplateFragment field in
+   the ControLoopElement definition in the ControlLoopUpdate message, see :ref:`controlloop-participant-protocol-label`.
+
+  #. If the Policy Type has been specified, the Participant stores the Policy Type in the Policy framework. If the
+     Policy Type is successfully stored, execution proceeds, otherwise an error is reported.
+
+  #. If the Policy Type has not been specified, the Participant checks that the Policy Type is already in the Policy
+     framework. If the Policy Type already exists, execution proceeds, otherwise an error is reported.
 
 Policy References
 *****************
 
 The Policy Participant uses the following steps for Policy References:
 
-    1. The Policy Participant reads the Policy ID from the policyId property specified for the Control Loop Element
-    2. It checks if a Policy with that Policy ID has been specified in the ToscaServiceTemplateFragment field in the ControLoopElement definition in the 
-       ControlLoopUpdate message, see The CLAMP Control Loop Participant Protocol#Messages.
-        a. If the Policy has been specified, the Participant stores the Policy in the Policy framework. If the Policy is successfully stored, execution proceeds, otherwise an error is reported
-        b. If the Policy has not been specified, the Participant checks that the Policy is already in the Policy framework. If the Policy already exists, execution proceeds, otherwise an error is reported
+#. The Policy Participant reads the Policy ID from the policyId property specified for the Control Loop Element.
+
+#. It checks if a Policy with that Policy ID has been specified in the ToscaServiceTemplateFragment field in the
+   ControLoopElement definition in the ControlLoopUpdate message, :ref:`controlloop-participant-protocol-label`.
+
+  #. If the Policy has been specified, the Participant stores the Policy in the Policy framework. If the Policy is
+     successfully stored, execution proceeds, otherwise an error is reported.
+
+  #. If the Policy has not been specified, the Participant checks that the Policy is already in the Policy framework. If
+     the Policy already exists, execution proceeds, otherwise an error is reported.

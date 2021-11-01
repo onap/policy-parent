@@ -58,7 +58,7 @@ ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the 
     policy/xacml-pdp \
     policy/distribution \
     policy/gui \
-    policy/engine "
+    policy/clamp "
 
     ##
     ## Help screen and exit condition (i.e. too few arguments)
@@ -152,7 +152,7 @@ Execution of the script above results in the following directory hierarchy in yo
     *  ~/git/onap/policy/docker
     *  ~/git/onap/policy/drools-applications
     *  ~/git/onap/policy/drools-pdp
-    *  ~/git/onap/policy/engine
+    *  ~/git/onap/policy/clamp
     *  ~/git/onap/policy/apex-pdp
     *  ~/git/onap/policy/xacml-pdp
     *  ~/git/onap/policy/distribution
@@ -198,10 +198,7 @@ Building ONAP Policy Framework Components
             <module>drools-applications</module>
             <module>distribution</module>
             <module>gui</module>
-            <!-- The engine repo is being deprecated,
-            and can be ommitted if not working with
-            legacy api and components. -->
-            <module>engine</module>
+            <module>clamp</module>
         </modules>
     </project>
 
@@ -277,12 +274,12 @@ familiar with the Policy Framework components and test any local changes.
    :maxdepth: 1
 
    policy-gui-controlloop-smoke.rst
-
+   db-migrator-smoke.rst
+   cl-participants-smoke.rst
+   clamp-smoke.rst
+   clamp-cl-participant-protocol-smoke.rst
    policy-participant-smoke.rst
 
-   db-migrator-smoke.rst
-
-   cl-participants-smoke.rst
 ..
    api-smoke.rst
 
@@ -301,11 +298,6 @@ familiar with the Policy Framework components and test any local changes.
 ..
    distribution-smoke.rst
 
-..
-   clamp-smoke.rst
-
-..
-   clamp-cl-participant-protocol-smoke.rst
 
 Running the Stability/Performance Tests
 ***************************************

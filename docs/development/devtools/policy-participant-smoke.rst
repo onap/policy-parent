@@ -4,16 +4,20 @@
 
 CLAMP Policy Participant Smoke Tests
 ------------------------------------
+
 1. Introduction
 ***************
+
 The Smoke testing of the policy participant is executed in a local CLAMP/Policy environment. The CLAMP-Controlloop interfaces interact with the Policy Framework to perform actions based on the state of the policy participant. The goal of the Smoke tests is the ensure that CLAMP Policy Participant and Policy Framework work together as expected.
 
 2. Setup Guide
 **************
+
 This section will show the developer how to set up their environment to start testing in GUI with some instruction on how to carry out the tests. There are a number of prerequisites. Note that this guide is written by a Linux user - although the majority of the steps show will be exactly the same in Windows or other systems.
 
 2.1 Prerequisites
 =================
+
 - Java 11
 - Maven 3
 - Git
@@ -34,6 +38,7 @@ The following repositories are required for development in this project. These r
 - policy/docker
 - policy/gui
 - policy/api
+
 In this setup guide, we will be setting up all the components technically required for a working convenient dev environment.
 
 2.3 Setting up the components
@@ -73,6 +78,7 @@ This will setup the two databases needed. The database will be exposed locally o
 
 2.3.2 DMAAP Simulator
 ^^^^^^^^^^^^^^^^^^^^^
+
 For convenience, a dmaap simulator has been provided in the policy/models repository. To start the simulator, you can do the following:
 1. Navigate to /models-sim/policy-models-simulators in the policy/models repository.
 2. Add a configuration file to src/test/resources with the following contents:
@@ -105,6 +111,7 @@ At this stage the dmaap simulator should be running on your local machine on por
 
 2.3.3 Policy API
 ^^^^^^^^^^^^^^^^
+
 In the policy-api repo, you should find the file "src/main/resources/etc/defaultConfig.json". This file must be altered slightly - as below with the restServerParameters and databaseProviderParameters shown. Note how the database parameters match-up with what you setup in Mariadb:
 
 .. code-block:: json
@@ -138,6 +145,7 @@ Next, navigate to the "/main" directory. You can then run the following command 
 
 2.3.4 Policy PAP
 ^^^^^^^^^^^^^^^^
+
 In the policy-pap repo, you should find the file 'main/src/test/resources/parameters/PapConfigParameters.json'. This file may need to be altered slightly as below:
 
 .. code-block:: json
@@ -215,6 +223,7 @@ Next, navigate to the "/main" directory. You can then run the following command 
 
 2.3.5 Controlloop Runtime
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To start the controlloop runtime we need to go the "runtime-controlloop" directory in the clamp repo. There is a config file that is used, by default, for the controlloop runtime. That config file is here: "src/main/resources/application.yaml". For development in your local environment, it shouldn't need any adjustment and we can just run the controlloop runtime with:
 
 .. code-block:: bash
@@ -223,6 +232,7 @@ To start the controlloop runtime we need to go the "runtime-controlloop" directo
 
 2.3.6 Controlloop Policy Participant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To start the policy participant we need to go to the "participant-impl/participant-impl-policy" directory in the clamp repo. There is a config file under "src/main/resources/config/application.yaml". For development in your local environment, we will need to adjust this file slightly:
 
 .. code-block:: yaml
@@ -284,6 +294,7 @@ Navigate to the participant-impl/particpant-impl-policy/main directory. We can t
 
 3.1 Testing Outline
 ^^^^^^^^^^^^^^^^^^^
+
 To perform the Smoke testing of the policy-participant we will be verifying the behaviours of the participant when the control loop changes state. The scenarios are:
 
 - UNINITIALISED to PASSIVE: participant creates policies and policyTypes specified in the ToscaServiceTemplate using policy-api
@@ -296,6 +307,7 @@ To perform the Smoke testing of the policy-participant we will be verifying the 
 
 Creation of Controlloop:
 ************************
+
 A Control Loop is created by commissioning a Tosca template with Control loop definitions and instantiating the Control Loop with the state "UNINITIALISED".
 Using postman, commision a TOSCA template and instantiate using the following template:
 
@@ -309,6 +321,7 @@ To verify this, we check that the Controlloop has been created and is in state U
 
 Creation of policies and policyTypes:
 *************************************
+
 The Controlloop STATE is changed from UNINITIALISED to PASSIVE using postman:
 
 .. code-block:: json
@@ -333,6 +346,7 @@ We can also check that the pm-control policy has been created.
 
 Deployment of policies:
 ***********************
+
 The Controlloop STATE is changed from PASSIVE to RUNNING using postman:
 
 .. code-block:: json
@@ -353,6 +367,7 @@ This state change will trigger the deployment of the policies specified in the T
 
 Undeployment of policies:
 *************************
+
 The Controlloop STATE is changed from RUNNING to PASSIVE using postman:
 
 .. code-block:: json
@@ -373,6 +388,7 @@ This state change will trigger the undeployment of the pmcontrol policy which wa
 
 Deletion of policies and policyTypes:
 *************************************
+
 The Controlloop STATE is changed from PASSIVE to UNINITIALISED using postman:
 
 .. code-block:: json
@@ -392,4 +408,3 @@ This state change will trigger the deletion of the previously created policies a
     .. image:: images/pol-part-controlloop-sirisha-nf.png
 
     .. image:: images/pol-part-controlloop-pmcontrol-nf.png
-
