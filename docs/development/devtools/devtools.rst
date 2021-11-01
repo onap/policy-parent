@@ -280,6 +280,8 @@ familiar with the Policy Framework components and test any local changes.
 =======
    policy-gui-controlloop-smoke.rst
 
+   policy-participant-smoke.rst
+
    db-migrator-smoke.rst
 >>>>>>> CHANGE (33149a Added doc for smoke testing db-migrator)
 ..
