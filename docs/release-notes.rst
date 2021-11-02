@@ -21,7 +21,7 @@ Policy Release Notes
 Version: 9.0.0
 --------------
 
-:Release Date: 2021-10-28 (Istanbul Release)
+:Release Date: 2021-11-04 (Istanbul Release)
 
 New features
 ============
