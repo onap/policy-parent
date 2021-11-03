@@ -148,7 +148,7 @@ Here is a sample notification:
 2 PAP REST API Swagger
 ======================
 
-It is worth noting that we use basic authorization for access with user name and password set to *healthcheck* and
+It is worth noting that we use basic authorization for access with user name and password set to *policyadmin* and
 *zb!XztG34*, respectively.
 
 For every call, the client is encouraged to insert a uuid-type *requestID* as parameter. It is helpful for tracking each
