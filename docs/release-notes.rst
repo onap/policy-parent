@@ -44,7 +44,7 @@ Artifacts released:
      - 2.3.1
      - | onap/policy-jdk-alpine:2.3.1
        | onap/policy-jre-alpine:2.3.1
-       | onap/onap/policy-db-migrator:2.3.1
+       | onap/policy-db-migrator:2.3.1
    * - policy/common
      - 1.9.1
      - N/A
