@@ -35,7 +35,8 @@ Prerequisites for using Kubernetes participant in Istanbul version:
 .. image:: ../../images/participants/k8s-participant.png
 
 Defining a TOSCA CL definition for kubernetes participant:
--------------------------------------------------------
+----------------------------------------------------------
+
 A *chart* parameter map describes the helm chart parameters in tosca template for a microservice that is used by the kubernetes participant for the deployment.
 A Control Loop element in TOSCA is mapped to the kubernetes participant and also holds the helm chart parameters for a microservice defined under the properties of the Control Loop Element.
 
