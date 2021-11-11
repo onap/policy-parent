@@ -175,126 +175,6 @@
             "response": []
         },
         {
-            "name": "Download CBA",
-            "protocolProfileBehavior": {
-                "disableBodyPruning": true
-            },
-            "request": {
-                "auth": {
-                    "type": "basic",
-                    "basic": [
-                        {
-                            "key": "password",
-                            "value": "ccsdkapps",
-                            "type": "string"
-                        },
-                        {
-                            "key": "username",
-                            "value": "ccsdkapps",
-                            "type": "string"
-                        }
-                    ]
-                },
-                "method": "GET",
-                "header": [
-                    {
-                        "key": "Accept",
-                        "type": "text",
-                        "value": "application/json"
-                    },
-                    {
-                        "key": "Content-Type",
-                        "type": "text",
-                        "value": "application/json"
-                    }
-                ],
-                "body": {
-                    "mode": "raw",
-                    "raw": "{\r\n    \"loadModelType\" : true,\r\n    \"loadResourceDictionary\" : true,\r\n    \"loadCBA\" : false\r\n}",
-                    "options": {
-                        "raw": {
-                            "language": "json"
-                        }
-                    }
-                },
-                "url": {
-                    "raw": "{{CDS-URL}}/api/v1/blueprint-model/download/by-name/controlloop-hostname-update-cba/version/1.0.0",
-                    "host": [
-                        "{{CDS-URL}}"
-                    ],
-                    "path": [
-                        "api",
-                        "v1",
-                        "blueprint-model",
-                        "download",
-                        "by-name",
-                        "controlloop-hostname-update-cba",
-                        "version",
-                        "1.0.0"
-                    ]
-                }
-            },
-            "response": []
-        },
-        {
-            "name": "Delete a specific CBA",
-            "request": {
-                "auth": {
-                    "type": "basic",
-                    "basic": [
-                        {
-                            "key": "password",
-                            "value": "ccsdkapps",
-                            "type": "string"
-                        },
-                        {
-                            "key": "username",
-                            "value": "ccsdkapps",
-                            "type": "string"
-                        }
-                    ]
-                },
-                "method": "DELETE",
-                "header": [
-                    {
-                        "key": "Accept",
-                        "type": "text",
-                        "value": "application/json"
-                    },
-                    {
-                        "key": "Content-Type",
-                        "type": "text",
-                        "value": "application/json"
-                    }
-                ],
-                "body": {
-                    "mode": "raw",
-                    "raw": "{\r\n    \"loadModelType\" : true,\r\n    \"loadResourceDictionary\" : true,\r\n    \"loadCBA\" : false\r\n}",
-                    "options": {
-                        "raw": {
-                            "language": "json"
-                        }
-                    }
-                },
-                "url": {
-                    "raw": "{{CDS-URL}}/api/v1/blueprint-model/name/pnf-test-cba/version/1.0.0",
-                    "host": [
-                        "{{CDS-URL}}"
-                    ],
-                    "path": [
-                        "api",
-                        "v1",
-                        "blueprint-model",
-                        "name",
-                        "pnf-test-cba",
-                        "version",
-                        "1.0.0"
-                    ]
-                }
-            },
-            "response": []
-        },
-        {
             "name": "Execute pnf-test-cba success",
             "request": {
                 "auth": {
@@ -589,6 +469,126 @@
                         "v1",
                         "execution-service",
                         "process"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Download CBA",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "auth": {
+                    "type": "basic",
+                    "basic": [
+                        {
+                            "key": "password",
+                            "value": "ccsdkapps",
+                            "type": "string"
+                        },
+                        {
+                            "key": "username",
+                            "value": "ccsdkapps",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"loadModelType\" : true,\r\n    \"loadResourceDictionary\" : true,\r\n    \"loadCBA\" : false\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{CDS-URL}}/api/v1/blueprint-model/download/by-name/controlloop-hostname-update-cba/version/1.0.0",
+                    "host": [
+                        "{{CDS-URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "blueprint-model",
+                        "download",
+                        "by-name",
+                        "controlloop-hostname-update-cba",
+                        "version",
+                        "1.0.0"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Delete a specific CBA",
+            "request": {
+                "auth": {
+                    "type": "basic",
+                    "basic": [
+                        {
+                            "key": "password",
+                            "value": "ccsdkapps",
+                            "type": "string"
+                        },
+                        {
+                            "key": "username",
+                            "value": "ccsdkapps",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "type": "text",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "type": "text",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"loadModelType\" : true,\r\n    \"loadResourceDictionary\" : true,\r\n    \"loadCBA\" : false\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{CDS-URL}}/api/v1/blueprint-model/name/pnf-test-cba/version/1.0.0",
+                    "host": [
+                        "{{CDS-URL}}"
+                    ],
+                    "path": [
+                        "api",
+                        "v1",
+                        "blueprint-model",
+                        "name",
+                        "pnf-test-cba",
+                        "version",
+                        "1.0.0"
                     ]
                 }
             },
