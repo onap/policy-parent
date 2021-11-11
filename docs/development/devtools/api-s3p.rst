@@ -140,11 +140,11 @@ A snapshot is taken before and after test execution to monitor the changes in re
 
 Memory and CPU usage before test execution:
 
-.. image:: api-s3p-results/api_top_before_72h.JPG
+.. image:: api-s3p-results/api_top_before_72h.jpg
 
 Memory and CPU usage after test execution:
 
-.. image:: api-s3p-results/api_top_after_72h.JPG
+.. image:: api-s3p-results/api_top_after_72h.jpg
 
 
 Performance Test of Policy API
