@@ -1306,9 +1306,6 @@ CLI Editor File
 
 .. |File > New to create a new Policy Model| image:: images/mfp/MyFirstPolicy_P1_newPolicyModel1.png
 .. |Create a new Policy Model| image:: images/mfp/MyFirstPolicy_P1_newPolicyModel2.png
-.. |ONAP| image:: ../../../images/logos.png
-   :class: builtBy
-   :target: http://www.onap.org/
 .. |Right click to create a new event| image:: images/mfp/MyFirstPolicy_P1_newEvent1.png
 .. |Fill in the necessary information for the 'SALE_INPUT' event and click 'Submit'| image:: images/mfp/MyFirstPolicy_P1_newEvent2.png
 .. |Right click to create a new Item Schema| image:: images/mfp/MyFirstPolicy_P1_newItemSchema1.png

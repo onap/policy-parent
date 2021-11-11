@@ -854,10 +854,6 @@ Mininet Topology
       Last updated 2020-04-03 16:04:24 IST
 
 
-.. |ONAP| image:: ../../../images/logos.png
-   :class: builtBy
-   :target: http://www.onap.org/
-
 .. |VPN SLA Architecture| image:: images/pcvs/vpnsla-arch.png
 
 .. |avroSchemaEdges_link| raw:: html
