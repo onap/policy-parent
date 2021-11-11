@@ -135,7 +135,7 @@ Stability test plan was triggered for 72 hours. There were no failures during th
 
 **JMeter Screenshot**
 
-.. image:: apex-s3p-results/apex_stability_jmeter_results.JPG
+.. image:: apex-s3p-results/apex_stability_jmeter_results.jpg
 
 **Memory and CPU usage**
 
@@ -145,13 +145,13 @@ Prometheus metrics is also collected before and after the test execution.
 
 Memory and CPU usage before test execution:
 
-.. image:: apex-s3p-results/apex_top_before_72h.JPG
+.. image:: apex-s3p-results/apex_top_before_72h.jpg
 
 :download:`Prometheus metrics before 72h test  <apex-s3p-results/apex_metrics_before_72h.txt>`
 
 Memory and CPU usage after test execution:
 
-.. image:: apex-s3p-results/apex_top_after_72h.JPG
+.. image:: apex-s3p-results/apex_top_after_72h.jpg
 
 :download:`Prometheus metrics after 72h test  <apex-s3p-results/apex_metrics_after_72h.txt>`
 
@@ -200,7 +200,7 @@ Test results are shown as below.
 
 **JMeter Screenshot**
 
-.. image:: apex-s3p-results/apex_perf_jmeter_results.JPG
+.. image:: apex-s3p-results/apex_perf_jmeter_results.jpg
 
 Summary
 +++++++
