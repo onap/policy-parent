@@ -279,8 +279,6 @@ familiar with the Policy Framework components and test any local changes.
    clamp-smoke.rst
    clamp-cl-participant-protocol-smoke.rst
    policy-participant-smoke.rst
-
-..
    api-smoke.rst
 
 ..
