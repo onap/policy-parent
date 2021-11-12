@@ -329,6 +329,8 @@ the Policy Framework works in a full ONAP deployment.
 
    clamp-dcae.rst
 
+   policy-cds.rst
+
 ..
    api-pairwise.rst
 
