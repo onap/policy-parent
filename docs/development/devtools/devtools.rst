@@ -281,8 +281,6 @@ familiar with the Policy Framework components and test any local changes.
    policy-participant-smoke.rst
    api-smoke.rst
    pap-smoke.rst
-
-..
    apex-smoke.rst
 
 ..
