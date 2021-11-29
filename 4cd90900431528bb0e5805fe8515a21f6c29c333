@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae898e9e_23c9af9f",
+        "filename": "integration/src/release_scripts/mkart.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-11-29T16:36:15Z",
+      "side": 1,
+      "message": "2021",
+      "revId": "4cd90900431528bb0e5805fe8515a21f6c29c333",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b0c2a17_6522d924",
+        "filename": "integration/src/release_scripts/mkdock.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2021-11-29T16:36:15Z",
+      "side": 1,
+      "message": "2021",
+      "revId": "4cd90900431528bb0e5805fe8515a21f6c29c333",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
