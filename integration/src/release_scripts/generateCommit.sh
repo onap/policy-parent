@@ -1,4 +1,4 @@
-SCRIPT_NAME=`basename $0`
+#!/bin/bash
 
 #
 # ============LICENSE_START================================================
@@ -20,6 +20,7 @@ SCRIPT_NAME=`basename $0`
 # ============LICENSE_END==================================================
 #
 
+SCRIPT_NAME=`basename $0`
 repo_location="./"
 
 usage()
