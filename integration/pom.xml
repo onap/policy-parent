@@ -52,7 +52,7 @@
         <version.netty>4.1.67.Final</version.netty>
         <version.springboot>2.5.0</version.springboot>
         <version.eelf.core>1.0.0</version.eelf.core>
-        <version.camel>3.13.0</version.camel>
+        <version.camel>3.7.3</version.camel>
         <version.tomcat>9.0.45</version.tomcat>
         <version.mockserver>5.11.2</version.mockserver>
         <version.immutable>2.8.8</version.immutable>
