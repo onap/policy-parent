@@ -4,7 +4,7 @@
 # ============LICENSE_START================================================
 # ONAP
 # =========================================================================
-# Copyright (C) 2021 Nordix Foundation.
+# Copyright (C) 2021-2022 Nordix Foundation.
 # =========================================================================
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@
 # limitations under the License.
 # ============LICENSE_END==================================================
 #
+
+set -e
 
 SCRIPT_NAME=`basename $0`
 repo_location="./"
