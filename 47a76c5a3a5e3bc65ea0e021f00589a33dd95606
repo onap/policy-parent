@@ -22,6 +22,30 @@
       "revId": "47a76c5a3a5e3bc65ea0e021f00589a33dd95606",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37b32a62_a31cf2aa",
+        "filename": "integration/src/release_scripts/updateRefs.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-01-04T12:11:00Z",
+      "side": 1,
+      "message": "They should all be bash, there are some bash extensions in some scripts. I\u0027ll fix them",
+      "parentUuid": "8551070d_0a45e549",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "47a76c5a3a5e3bc65ea0e021f00589a33dd95606",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
