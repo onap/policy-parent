@@ -2,7 +2,7 @@
   ============LICENSE_START=======================================================
    Copyright (C) 2018 Ericsson. All rights reserved.
    Modifications Copyright (C) 2018-2021 AT&T. All rights reserved.
-   Modifications Copyright (C) 2019-2021 Nordix Foundation.
+   Modifications Copyright (C) 2019-2022 Nordix Foundation.
    Modifications Copyright (C) 2020-2021 Bell Canada.
   ================================================================================
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -342,7 +342,7 @@
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
-                <version>2.16.0</version>
+                <version>2.17.1</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
