@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b869e1e8_07e80403",
+        "filename": "integration/src/release_scripts/bumpSnapshots.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-01-05T15:27:13Z",
+      "side": 1,
+      "message": "I think for new files, you\u0027ll just do 2022, the year when they are put under source control.\nThis is a general comment.",
+      "revId": "467326571decb2836d2cf73c92949de5b02e28c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e821753_53639ce6",
+        "filename": "integration/src/release_scripts/updateRefs.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-01-05T15:27:13Z",
+      "side": 1,
+      "message": "2022",
+      "revId": "467326571decb2836d2cf73c92949de5b02e28c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b4a964e_f4ef81a9",
+        "filename": "integration/src/release_scripts/updateRefs.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-01-05T15:27:13Z",
+      "side": 1,
+      "message": "add a \"set -e\" at the beginning of each script to abort the script if any error happens in any of the lines.\nthis is to prevent the script from keep doing stuff that perhaps should not be doing.\nIt perhaps should be added to each script.",
+      "revId": "467326571decb2836d2cf73c92949de5b02e28c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
