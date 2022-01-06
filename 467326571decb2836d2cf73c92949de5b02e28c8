@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a05161cd_f70957e7",
+        "filename": "integration/src/release_scripts/bumpSnapshots.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-01-06T11:30:17Z",
+      "side": 1,
+      "message": "I raised the base patch set on this review in December 2021 so maybe it should be 2021-2022?",
+      "parentUuid": "b869e1e8_07e80403",
+      "revId": "467326571decb2836d2cf73c92949de5b02e28c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e821753_53639ce6",
         "filename": "integration/src/release_scripts/updateRefs.sh",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "dbb82c07_65a84378",
+        "filename": "integration/src/release_scripts/updateRefs.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-01-06T11:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e821753_53639ce6",
+      "revId": "467326571decb2836d2cf73c92949de5b02e28c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b4a964e_f4ef81a9",
         "filename": "integration/src/release_scripts/updateRefs.sh",
         "patchSetId": 3
@@ -50,6 +86,24 @@
       "revId": "467326571decb2836d2cf73c92949de5b02e28c8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8e3a651_a2b1d7ee",
+        "filename": "integration/src/release_scripts/updateRefs.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-01-06T11:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b4a964e_f4ef81a9",
+      "revId": "467326571decb2836d2cf73c92949de5b02e28c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
