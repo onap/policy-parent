@@ -9,3 +9,4 @@ System Attributes: Handling, Integration, and Management of the Policy Framework
    :maxdepth: 1
 
    policy-db-migrator
+   release-scripts
