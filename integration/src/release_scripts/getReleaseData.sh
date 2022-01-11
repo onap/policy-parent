@@ -126,8 +126,8 @@ update_repos() {
 
 
 get_tags() {
-    echo "Last Tag version,Master Snapshot Version,Changed Files,Docker images"
-    echo "Last Tag version,Master Snapshot Version,Changed Files,Docker images" > $release_data_file
+    echo "Repo, Last Tag Version,Master Snapshot Version,Changed Files,Docker Images"
+    echo "repo, Last Tag Version,Master Snapshot Version,Changed Files,Docker Images" > $release_data_file
     for repo in "${pf_repos[@]}"
     do
         latest_released_tag=`git -C $repo_location/$repo tag | \

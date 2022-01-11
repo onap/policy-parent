@@ -154,7 +154,7 @@ do
         find $repo_location/oom/kubernetes/policy/components \
             -name values.yaml \
             -exec \
-                sed -i '' \
+                sed -i \
                 "s/^image:[ |\t]*onap\/$docker_image:[0-9]*\.[0-9]*\.[0-9]*$/image: onap\/$new_image/" {} \;
         echo "OOM image $docker_image:$latest_released_tag updated"
     done
