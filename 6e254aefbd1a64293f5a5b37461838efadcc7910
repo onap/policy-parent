@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bd94716_4d2e07fe",
+        "filename": "docs/system-attributes/release-scripts.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-01-11T22:27:03Z",
+      "side": 1,
+      "message": "seems not needed",
+      "range": {
+        "startLine": 11,
+        "startChar": 85,
+        "endLine": 11,
+        "endChar": 88
+      },
+      "revId": "6e254aefbd1a64293f5a5b37461838efadcc7910",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
