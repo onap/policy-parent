@@ -24,6 +24,14 @@ set -e
 
 SCRIPT_NAME=`basename $0`
 
+# Use the bash internal OSTYPE variable to check for MacOS
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+    SED="gsed"
+else
+    SED="sed"
+fi
+
 usage()
 {
     echo ""
@@ -99,9 +107,9 @@ then
     exit 1
 fi
 
-pom_lines=`wc -l $pom_file | sed 's/^[ \t]*//' | cut -f1 -d' '`
-parent_start_line=`grep -n '^[\t ]*<parent>[\t*]*$' $pom_file | cut -f1 -d':'`
-parent_end_line=`grep -n '^[\t ]*</parent>[\t*]*$' $pom_file | cut -f1 -d':'`
+pom_lines=`wc -l $pom_file | $SED 's/^[ \t]*//' | cut -f1 -d' '`
+parent_start_line=`grep -n '^[\t ]*<parent>[\t ]*$' $pom_file | cut -f1 -d':'`
+parent_end_line=`grep -n '^[\t ]*</parent>[\t ]*$' $pom_file | cut -f1 -d':'`
 
 pom_head_lines=$((parent_start_line-1))
 pom_tail_lines=$((pom_lines-parent_end_line))

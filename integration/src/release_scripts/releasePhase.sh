@@ -29,8 +29,8 @@ release_data_file="./pf_release_data.csv"
 usage()
 {
     echo ""
-    echo "$SCRIPT_NAME - release the docker images for the specified repository by generating the release yaml file and"
-    echo "               the release commit"
+    echo "$SCRIPT_NAME - execute a certain policy framework release phase"
+    echo ""
     echo "       usage:  $SCRIPT_NAME [-options]"
     echo ""
     echo "       options"
@@ -38,17 +38,17 @@ usage()
     echo "         -d data_file - the policy release data file to use, defaults to '$release_data_file'"
     echo "         -l location  - the location of the policy framework repos on the file system,"
     echo "                        defaults to '$repo_location'"
-    echo "         -r repo      - the policy repo to release"
     echo "         -i issue-id  - issue ID in the format POLICY-nnnn"
+    echo "         -p phase     - the release phase, a positive integer"
     echo ""
     echo " examples:"
-    echo "  $SCRIPT_NAME -l /home/user/onap -d /home/user/data/pf_release_data.csv -r policy/common -i POLICY-1234"
-    echo "    release the 'policy/common' repo at location '/home/user/onap' using the release data"
+    echo "  $SCRIPT_NAME -l /home/user/onap -d /home/user/data/pf_release_data.csv -i POLICY-1234 -p 3"
+    echo "    perform release phase 3 on the repos at location '/home/user/onap' using the release data"
     echo "    in the file '/home/user/data/pf_release_data.csv'"
     exit 255;
 }
 
-while getopts "hd:l:r:i:" opt
+while getopts "hd:l:i:p:" opt
 do
     case $opt in
     h)
@@ -60,11 +60,11 @@ do
     l)
         repo_location=$OPTARG
         ;;
-    r)
-        specified_repo=$OPTARG
-        ;;
     i)
         issue_id=$OPTARG
+        ;;
+    p)
+        release_phase=$OPTARG
         ;;
     \?)
         usage
@@ -103,12 +103,6 @@ then
     exit 1
 fi
 
-if [ -z "$specified_repo" ]
-then
-    echo "repo not specified on -r flag"
-    exit 1
-fi
-
 if [ -z "$issue_id" ]
 then
     echo "issue_id not specified on -i flag"
@@ -121,54 +115,79 @@ then
   exit 1
 fi
 
-read repo \
-    latest_released_tag \
-    latest_snapshot_tag \
-    changed_files \
-    docker_images \
-    <<< $( grep $specified_repo $release_data_file | tr ',' ' ' )
-
-if [ ! "$repo" = "$specified_repo" ]
+if [ -z "$release_phase" ]
 then
-    echo "repo '$specified_repo' not found in file 'pf_release_data.csv'"
+    echo "release_phase not specified on -p flag"
     exit 1
 fi
 
-next_release_version=${latest_snapshot_tag%-*}
+if ! [[ "$release_phase" =~ ^[0-9]+$ ]]
+then
+  echo "release_phase is invalid, it should be a positive integer"
+  exit 1
+fi
 
-while true
-do
-   read -p "have you run 'stage_release' on the '$repo' repo? " yes_no
-   case $yes_no in
-       [Yy]* ) break
-        ;;
+release_phase_1() {
+    echo "Updating parent references in the parent pom and generating commit . . ."
+    updateRefs.sh -d $release_data_file -l $repo_location -r policy/parent -p
+    generateCommit.sh \
+        -l $repo_location \
+        -r policy/parent \
+        -i $issue_id \
+        -e "update parent references in policy/parent pom" \
+        -m "updated the parent references in the policy/parent pom"
+    echo "Updated parent references in the parent pom and generated commit"
+}
 
-       [Nn]* ) exit
-        ;;
+release_phase_2() {
+    echo "Generating artifact release yaml file and commit for policy/parent . . ."
+    releaseRepo.sh -d $release_data_file -l $repo_location -r policy/parent -i $issue_id
+    echo "Generated artifact release yaml file and commit for policy/parent"
+}
 
-       * ) echo "Please answer 'yes' or 'no'"
+release_phase_3() {
+    echo "Updating snapshots for policy/parent, updating references on policy/docker and policy/common . . ."
+    bumpSnapshots.sh \
+        -d $release_data_file \
+        -l $repo_location \
+        -i $issue_id
+    updateRefs.sh \
+        -p \
+        -d $release_data_file \
+        -l $repo_location \
+        -r policy/docker
+    updateRefs.sh \
+        -p \
+        -d $release_data_file \
+        -l $repo_location \
+        -r policy/common
+    generateCommit.sh \
+        -l $repo_location \
+        -r policy/docker \
+        -i $issue_id \
+        -e "update parent references in policy/docker pom" \
+        -m "updated the parent references in the policy/docker pom"
+    generateCommit.sh \
+        -l $repo_location \
+        -r policy/common \
+        -i $issue_id \
+        -e "update parent references in policy/common pom" \
+        -m "updated the parent references in the policy/common pom"
+    echo "Updated snapshots for policy/parent, updating references on policy/docker and policy/common"
+}
+
+case "$release_phase" in
+
+1)  release_phase_1
     ;;
-   esac
-done
 
-if [ "$docker_images" != "" ]
-then
-    saved_current_dir=`pwd`
-    cd $repo_location/$repo
-    mkdock.sh `echo "$docker_images" | tr ':' " "`
-    cd $saved_current_dir
-else
-    echo "repo '$repo' does not have any docker images"
-    exit 1
-fi
+2)  release_phase_2
+    ;;
 
-echo "generating commit for $repo docker image release: $latest_released_tag-->$next_release_version . . ."
+3)  release_phase_3
+    ;;
 
-generateCommit.sh \
-    -l $repo_location \
-    -r $repo \
-    -i $issue_id \
-    -e "Release docker images for $repo: $next_release_version" \
-    -m "This commit releases docker images for repo $repo."
+*) echo "specified release phase '$release_phase' is invalid"
+   ;;
+esac
 
-echo "commit for $repo docker image release: $latest_released_tag-->$next_release_version generated"
