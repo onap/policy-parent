@@ -26,6 +26,13 @@ SCRIPT_NAME=`basename $0`
 repo_location="./"
 release_data_file="./pf_release_data.csv"
 
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+    SED="gsed"
+else
+    SED="sed"
+fi
+
 declare -a pf_repos=(
     "policy/parent"
     "policy/docker"
@@ -138,7 +145,7 @@ get_tags() {
         latest_snapshot_tag=`mvn -f $repo_location/$repo clean | \
             grep "SNAPSHOT" | \
             tail -1 | \
-            sed -r 's/^.* ([0-9]*\.[0-9]*\.[0-9]*-SNAPSHOT).*$/\1/'`
+            $SED -r 's/^.* ([0-9]*\.[0-9]*\.[0-9]*-SNAPSHOT).*$/\1/'`
 
         changed_files=`git -C $repo_location/$repo diff --name-only $latest_released_tag origin/master | \
             grep -v 'pom.xml$' | \
@@ -146,14 +153,14 @@ get_tags() {
             grep -v "^releases/$latest_released_tag.yaml$" | \
             grep -v "^releases/$latest_released_tag-container.yaml$" | \
             wc -l | \
-            sed 's/^[[:space:]]*//g'`
+            $SED 's/^[[:space:]]*//g'`
 
         if [ -f $repo_location/$repo/releases/$latest_released_tag-container.yaml ]
         then
             docker_images=`grep '\- name:' $repo_location/$repo/releases/$latest_released_tag-container.yaml | \
-            sed -e 's/\- //g' -e 's/\://g' -e "s/\'//g" -e 's/^[[:space:]]*//g' -e 's/^name //' | \
+            $SED -e 's/\- //g' -e 's/\://g' -e "s/\'//g" -e 's/^[[:space:]]*//g' -e 's/^name //' | \
             tr '\n' ':' | \
-            sed 's/:$//'`
+            $SED 's/:$//'`
         else
             docker_images=""
         fi

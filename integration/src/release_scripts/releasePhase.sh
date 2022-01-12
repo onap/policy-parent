@@ -26,51 +26,29 @@ SCRIPT_NAME=`basename $0`
 repo_location="./"
 release_data_file="./pf_release_data.csv"
 
-if [[ "$OSTYPE" == "darwin"* ]]
-then
-    SED="gsed"
-else
-    SED="sed"
-fi
-
-declare -a pf_repos=(
-        "policy/parent"
-        "policy/docker"
-        "policy/common"
-        "policy/models"
-        "policy/api"
-        "policy/pap"
-        "policy/drools-pdp"
-        "policy/apex-pdp"
-        "policy/xacml-pdp"
-        "policy/distribution"
-        "policy/gui"
-        "policy/clamp"
-        "policy/drools-applications"
-)
-
 usage()
 {
     echo ""
-    echo "$SCRIPT_NAME - generate an OOM commit to update the versions of Policy Framework images in values.yaml files"
+    echo "$SCRIPT_NAME - execute a certain policy framework release phase"
     echo ""
     echo "       usage:  $SCRIPT_NAME [-options]"
     echo ""
     echo "       options"
     echo "         -h           - this help message"
     echo "         -d data_file - the policy release data file to use, defaults to '$release_data_file'"
-    echo "         -l location  - the location of the OOM repo on the file system,"
+    echo "         -l location  - the location of the policy framework repos on the file system,"
     echo "                        defaults to '$repo_location'"
     echo "         -i issue-id  - issue ID in the format POLICY-nnnn"
+    echo "         -p phase     - the release phase, a positive integer"
     echo ""
     echo " examples:"
-    echo "  $SCRIPT_NAME -l /home/user/onap -d /home/user/data/pf_release_data.csv -i POLICY-1234"
-    echo "    update the version of policy framework images at location '/home/user/onap/oom' using the release data"
+    echo "  $SCRIPT_NAME -l /home/user/onap -d /home/user/data/pf_release_data.csv -i POLICY-1234 -p 3"
+    echo "    perform release phase 3 on the repos at location '/home/user/onap' using the release data"
     echo "    in the file '/home/user/data/pf_release_data.csv'"
     exit 255;
 }
 
-while getopts "hd:l:i:" opt
+while getopts "hd:l:i:p:" opt
 do
     case $opt in
     h)
@@ -84,6 +62,9 @@ do
         ;;
     i)
         issue_id=$OPTARG
+        ;;
+    p)
+        release_phase=$OPTARG
         ;;
     \?)
         usage
@@ -100,13 +81,13 @@ fi
 
 if [[ -z "$repo_location" ]]
 then
-    echo "OOM repo location not specified on -l flag"
+    echo "policy repo location not specified on -l flag"
     exit 1
 fi
 
 if ! [ -d "$repo_location" ]
 then
-    echo "OOM repo location '$repo_location' not found"
+    echo "policy repo location '$repo_location' not found"
     exit 1
 fi
 
@@ -134,48 +115,45 @@ then
   exit 1
 fi
 
-for specified_repo in "${pf_repos[@]}"
-do
-    read    repo \
-            latest_released_tag \
-            latest_snapshot_tag \
-            changed_files docker_images \
-        <<< $( grep $specified_repo $release_data_file | tr ',' ' ' )
+if [ -z "$release_phase" ]
+then
+    echo "release_phase not specified on -p flag"
+    exit 1
+fi
 
-    if [ ! "$repo" = "$specified_repo" ]
-    then
-        echo "repo '$specified_repo' not found in file 'pf_release_data.csv'"
-        continue
-    fi
+if ! [[ "$release_phase" =~ ^[0-9]+$ ]]
+then
+  echo "release_phase is invalid, it should be a positive integer"
+  exit 1
+fi
 
-    if [ "$docker_images" = "" ]
-    then
-        continue
-    fi
+release_phase_1() {
+    echo "Updating parent references in the parent pom and generating commit . . ."
+    updateRefs.sh -d $release_data_file -l $repo_location -r policy/parent -p
+    generateCommit.sh \
+        -l $repo_location \
+        -r policy/parent \
+        -i $issue_id \
+        -e "update parent references in parent pom" \
+        -m "updated the parent references in the parent pom"
+    echo "Updated parent references in the parent pom and generated commit"
+}
 
-    for docker_image in `echo $docker_images | tr ':' ' '`
-    do
-        new_image="$docker_image:$latest_released_tag"
+release_phase_2() {
+    echo "Generating artifact release yaml fine and commit for policy/parent . . ."
+    releaseRepo.sh -d $release_data_file -l $repo_location -r policy/parent -i $issue_id
+    echo "Generated artifact release yaml fine and commit for policy/parent . . ."
+}
 
-        echo "updating OOM image $new_image . . ."
-        find $repo_location/oom/kubernetes/policy/components \
-            -name values.yaml \
-            -exec \
-                $SED -i \
-                "s/^image:[ |\t]*onap\/$docker_image:[0-9]*\.[0-9]*\.[0-9]*$/image: onap\/$new_image/" {} \;
-        echo "OOM image $docker_image:$latest_released_tag updated"
-    done
-done
+case "$release_phase" in
 
+1)  release_phase_1
+    ;;
 
-echo "generating OOM commit to update policy framework docker image versions . . ."
+2)  release_phase_2
+    ;;
 
-generateCommit.sh \
-    -l $repo_location \
-    -r oom \
-    -i $issue_id \
-    -e "[POLICY] Update docker images to latest versions" \
-    -m "The image versions in policy values.yaml files have been updated"
-
-echo "OOM commit to update policy framework docker image versions generated"
+*) echo "specified release phase '$release_phase' is invalid"
+   ;;
+esac
 

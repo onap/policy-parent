@@ -26,6 +26,13 @@ SCRIPT_NAME=`basename $0`
 repo_location="./"
 release_data_file="./pf_release_data.csv"
 
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+    SED="gsed"
+else
+    SED="sed"
+fi
+
 declare -a pf_repos=(
         "policy/parent"
         "policy/docker"
@@ -146,9 +153,9 @@ do
 
     if [ "$latest_released_tag" = "$next_release_version" ]
     then
-        declare -i major_version=`echo $next_release_version | sed -E 's/^([0-9]*)\.[0-9]*\.[0-9]*$/\1/'`
-        declare -i minor_version=`echo $next_release_version | sed -E 's/^[0-9]*\.([0-9]*)\.[0-9]*$/\1/'`
-        declare -i patch_version=`echo $next_release_version | sed -E 's/^[0-9]*\.[0-9]*\.([0-9]*)$/\1/'`
+        declare -i major_version=`echo $next_release_version | $SED -E 's/^([0-9]*)\.[0-9]*\.[0-9]*$/\1/'`
+        declare -i minor_version=`echo $next_release_version | $SED -E 's/^[0-9]*\.([0-9]*)\.[0-9]*$/\1/'`
+        declare -i patch_version=`echo $next_release_version | $SED -E 's/^[0-9]*\.[0-9]*\.([0-9]*)$/\1/'`
         declare -i new_patch_version=$(($patch_version+1))
 
         new_snapshot_tag="$major_version"."$minor_version"."$new_patch_version"-SNAPSHOT
@@ -161,7 +168,7 @@ do
         temp_file=$(mktemp)
 
         echo updating snapshot version of repo $repo in $repo_location/$repo/version.properties
-        sed -e "s/patch=$patch_version/patch=$new_patch_version/" $repo_location/$repo/version.properties > $temp_file
+        $SED -e "s/patch=$patch_version/patch=$new_patch_version/" $repo_location/$repo/version.properties > $temp_file
         mv $temp_file $repo_location/$repo/version.properties
     fi
 

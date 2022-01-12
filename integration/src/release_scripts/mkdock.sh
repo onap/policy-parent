@@ -39,6 +39,13 @@
 
 set -e
 
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+    SED="gsed"
+else
+    SED="sed"
+fi
+
 if [ $# -lt 1 -o "$1" = "-?" ]
 then
     echo "arg(s): docker-container-name1 docker-container-name2 ..." >&2
@@ -59,20 +66,20 @@ fi
 echo Branch: ${BRANCH}
 
 PROJECT=$(awk -F= '$1 == "project" { print $2 }' "${TOPDIR}/.gitreview" |
-            sed 's/.git$//')
+            $SED 's/.git$//')
 if [ -z "${PROJECT}" ]; then
     echo "cannot extract project from ${TOPDIR}/.gitreview" >&2
     exit 1
 fi
 echo Project: ${PROJECT}
-TPROJ=$(echo ${PROJECT} | sed 's!/!%2F!')
-DPROJ=$(echo ${PROJECT} | sed 's!/!-!')
+TPROJ=$(echo ${PROJECT} | $SED 's!/!%2F!')
+DPROJ=$(echo ${PROJECT} | $SED 's!/!-!')
 
 RELEASE=$(
     xmllint --xpath \
         '/*[local-name()="project"]/*[local-name()="version"]/text()' \
         "${TOPDIR}/pom.xml" |
-    sed 's!-SNAPSHOT!!'
+    $SED 's!-SNAPSHOT!!'
     )
 if [ -z "${RELEASE}" ]; then
     echo "cannot extract release from ${TOPDIR}/pom.xml" >&2
@@ -91,7 +98,7 @@ prefix='https://jenkins.onap.org/view/policy/job/'
 STAGE_ID=$(
     curl --silent ${prefix}${DPROJ}-maven-docker-stage-${BRANCH}/ |
     grep "Last completed build" |
-    sed -e 's!.*Last completed build .#!!' -e 's!).*!!' |
+    $SED -e 's!.*Last completed build .#!!' -e 's!).*!!' |
     head -1
     )
 if [ -z "${STAGE_ID}" ]; then
@@ -129,7 +136,7 @@ do
             found == 1 && /Tag with/ { print }
         " |
         head -1 |
-        sed 's!.*Tag with!!' |
+        $SED 's!.*Tag with!!' |
         cut -d, -f2
         )
     if [ -z "${VERSION}" ]; then
