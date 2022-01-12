@@ -29,8 +29,8 @@ release_data_file="./pf_release_data.csv"
 usage()
 {
     echo ""
-    echo "$SCRIPT_NAME - release the specified repository by generating the release yaml file and the release commit"
-    echo ""
+    echo "$SCRIPT_NAME - release the docker images for the specified repository by generating the release yaml file and"
+    echo "               the release commit"
     echo "       usage:  $SCRIPT_NAME [-options]"
     echo ""
     echo "       options"
