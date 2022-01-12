@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb5d69c7_ffa46310",
+        "filename": "integration/src/release_scripts/bumpSnapshots.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-01-12T19:12:57Z",
+      "side": 1,
+      "message": "how do you set up $OSTYPE ?   Does it have to be set manually before running the script?    May be add a note somewhere if so ?",
+      "revId": "8cd32047ff6897363d9c8713bbce1d96e333a47e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
