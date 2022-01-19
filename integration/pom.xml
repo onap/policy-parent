@@ -60,6 +60,7 @@
         <version.jakarta-api>2.0.2</version.jakarta-api>
         <version.io.micrometer>1.7.3</version.io.micrometer>
         <version.io.prometheus>0.11.0</version.io.prometheus>
+        <version.postgres>42.3.1</version.postgres>
         <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
         <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
         <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
@@ -197,6 +198,13 @@
                 <groupId>org.mariadb.jdbc</groupId>
                 <artifactId>mariadb-java-client</artifactId>
                 <version>2.7.1</version>
+            </dependency>
+
+            <!-- Postgres -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${version.postgres}</version>
             </dependency>
 
             <!-- Prometheus Client Libraries -->
