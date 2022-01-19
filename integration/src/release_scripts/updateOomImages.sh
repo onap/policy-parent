@@ -26,6 +26,14 @@ SCRIPT_NAME=`basename $0`
 repo_location="./"
 release_data_file="./pf_release_data.csv"
 
+# Use the bash internal OSTYPE variable to check for MacOS
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+    SED="gsed"
+else
+    SED="sed"
+fi
+
 declare -a pf_repos=(
         "policy/parent"
         "policy/docker"
@@ -154,7 +162,7 @@ do
         find $repo_location/oom/kubernetes/policy/components \
             -name values.yaml \
             -exec \
-                sed -i \
+                $SED -i \
                 "s/^image:[ |\t]*onap\/$docker_image:[0-9]*\.[0-9]*\.[0-9]*$/image: onap\/$new_image/" {} \;
         echo "OOM image $docker_image:$latest_released_tag updated"
     done

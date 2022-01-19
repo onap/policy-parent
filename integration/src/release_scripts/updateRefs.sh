@@ -26,6 +26,14 @@ SCRIPT_NAME=`basename $0`
 repo_location="./"
 release_data_file="./pf_release_data.csv"
 
+# Use the bash internal OSTYPE variable to check for MacOS
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+    SED="gsed"
+else
+    SED="sed"
+fi
+
 usage()
 {
     echo ""
@@ -203,7 +211,7 @@ then
         if [ "$update_snapshot" = true ]
         then
             echo updating policy parent reference to $parent_latest_snapshot_tag on $repo_location/$target_repo . . .
-            sed -i \
+            $SED -i \
                 "s/<version.parent.resources>.*<\/version.parent.resources>/<version.parent.resources>$parent_latest_snapshot_tag<\/version.parent.resources>/" \
                  $repo_location/policy/parent/integration/pom.xml
             result_code=$?
@@ -211,10 +219,9 @@ then
             next_release_version=${parent_latest_snapshot_tag%-*}
 
             echo updating policy parent reference to $next_release_version on $repo_location/$target_repo . . .
-            echo sed -i \
+            $SED -i \
                 "s/<version.parent.resources>.*<\/version.parent.resources>/<version.parent.resources>$next_release_version<\/version.parent.resources>/" \
-                 $repo_location/policy/parent/integration/pom.xml
-            result_code=$?
+                $repo_location/policy/parent/integration/pom.xml
             result_code=$?
         fi
     else
@@ -251,14 +258,14 @@ then
     if [ "$update_snapshot" = true ]
     then
         echo updating policy common reference to $common_latest_snapshot_tag on $repo_location/$target_repo . . .
-        sed -i \
+        $SED -i \
             -e "s/<policy.common.version>.*<\/policy.common.version>/<policy.common.version>$common_latest_snapshot_tag<\/policy.common.version>/" \
             -e "s/<version.policy.common>.*<\/version.policy.common>/<version.policy.common>$common_latest_snapshot_tag<\/version.policy.common>/" \
             $repo_location/$target_repo/pom.xml
         result_code=$?
     else
         echo updating policy common reference to $common_latest_released_tag on $repo_location/$target_repo . . .
-        sed -i \
+        $SED -i \
             -e "s/<policy.common.version>.*<\/policy.common.version>/<policy.common.version>$common_latest_released_tag<\/policy.common.version>/" \
             -e "s/<version.policy.common>.*<\/version.policy.common>/<version.policy.common>$common_latest_released_tag<\/version.policy.common>/" \
             $repo_location/$target_repo/pom.xml
@@ -278,14 +285,14 @@ then
     if [ "$update_snapshot" = true ]
     then
         echo updating policy models reference to $models_latest_snapshot_tag on $repo_location/$target_repo . . .
-        sed -i \
+        $SED -i \
             -e "s/<policy.models.version>.*<\/policy.models.version>/<policy.models.version>$models_latest_snapshot_tag<\/policy.models.version>/" \
             -e "s/<version.policy.models>.*<\/version.policy.models>/<version.policy.models>$models_latest_snapshot_tag<\/version.policy.models>/" \
             $repo_location/$target_repo/pom.xml
         result_code=$?
     else
         echo updating policy models reference to $models_latest_released_tag on $repo_location/$target_repo . . .
-        sed -i \
+        $SED -i \
             -e "s/<policy.models.version>.*<\/policy.models.version>/<policy.models.version>$models_latest_released_tag<\/policy.models.version>/" \
             -e "s/<version.policy.models>.*<\/version.policy.models>/<version.policy.models>$models_latest_released_tag<\/version.policy.models>/" \
             $repo_location/$target_repo/pom.xml
@@ -305,14 +312,14 @@ then
     if [ "$update_snapshot" = true ]
     then
         echo updating policy drools-pdp reference to $drools_pdp_latest_snapshot_tag on $repo_location/$target_repo . . .
-        sed -i \
+        $SED -i \
             -e "s/<policy.drools-pdp.version>.*<\/policy.drools-pdp.version>/<policy.drools-pdp.version>$drools_pdp_latest_snapshot_tag<\/policy.drools-pdp.version>/" \
             -e "s/<version.policy.drools-pdp>.*<\/version.policy.drools-pdp>/<version.policy.drools-pdp>$drools_pdp_latest_snapshot_tag<\/version.policy.drools-pdp>/" \
             $repo_location/$target_repo/pom.xml
         result_code=$?
     else
         echo updating policy drools-pdp reference to $drools_pdp_latest_released_tag on $repo_location/$target_repo . . .
-        sed -i \
+        $SED -i \
             -e "s/<policy.drools-pdp.version>.*<\/policy.drools-pdp.version>/<policy.drools-pdp.version>$drools_pdp_latest_released_tag<\/policy.drools-pdp.version>/" \
             -e "s/<version.policy.drools-pdp>.*<\/version.policy.drools-pdp>/<version.policy.drools-pdp>$drools_pdp_latest_released_tag<\/version.policy.drools-pdp>/" \
             $repo_location/$target_repo/pom.xml
@@ -332,7 +339,7 @@ then
     echo updating docker base images to version $docker_latest_released_tag on repo $repo_location/$target_repo
     find $repo_location/$target_repo \
         -name '*Docker*' \
-        -exec sed -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)2.3.1$/\1$docker_latest_released_tag/" {} \;
+        -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)2.3.1$/\1$docker_latest_released_tag/" {} \;
     result_code=$?
     if [[ "$result_code" -eq 0 ]]
     then
