@@ -38,18 +38,18 @@
         <java.version>11</java.version>
         <!-- NOTE: For RELEASE/SNAPSHOT always set to the project version -->
         <version.parent.resources>3.4.3</version.parent.resources>
-        <version.logback>1.2.3</version.logback>
+        <version.logback>1.2.10</version.logback>
         <version.dmaap>1.1.12</version.dmaap>
         <version.powermock>2.0.9</version.powermock>
         <version.eclipselink>2.7.8</version.eclipselink>
         <version.drools>7.33.0.Final</version.drools>
-        <version.jersey>2.33</version.jersey>
+        <version.jersey>2.34</version.jersey>
         <version.jackson>2.12.3</version.jackson>
         <version.ccsdk>1.1.5</version.ccsdk>
         <version.swagger>1.6.2</version.swagger>
         <version.javax.bind>2.3.1</version.javax.bind>
         <version.javax.json>1.1.4</version.javax.json>
-        <version.netty>4.1.67.Final</version.netty>
+        <version.netty>4.1.70.Final</version.netty>
         <version.springboot>2.5.0</version.springboot>
         <version.eelf.core>1.0.0</version.eelf.core>
         <version.camel>3.7.3</version.camel>
@@ -270,7 +270,7 @@
             <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
-                <version>2.8.6</version>
+                <version>2.8.9</version>
             </dependency>
             <dependency>
                 <groupId>org.json</groupId>
