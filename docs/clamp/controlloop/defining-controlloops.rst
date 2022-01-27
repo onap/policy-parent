@@ -57,6 +57,7 @@ and is the canonical definition of the Control Loop concepts.
 TOSCA Standard Control Loop Elements
 
 .. image:: images/defining-controlloops/standard-cle.png
+  :width: 600
 
 1.2.1 Policy Control Loop Element
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,27 +95,6 @@ execute. The Yaml file that holds the
 and is the canonical definition of the Kubernetes Control Loop Element type. For a description
 of the Kubernetes Control Loop Element and Kubernetes Participant,please see
 `The CLAMP Kubernetes Participant <#>`_ page.
-
-1.2.4 CDS Control Loop Element
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The CDS Participant runs CDS Control Loop Elements. Each CDS Control Loop Element manages the
-deployment of the CDS blueprint specified in the CDS Control Loop Element definition. The Yaml
-file that holds the `CDS Control Loop Element Type definition is available in Github
-<https://github.com/onap/policy-clamp/blob/master/common/src/main/resources/tosca/CdsControlLoopElementType.yaml>`_
-and is the canonical definition of the CDS Control Loop Element type. For a description of the
-CDS Control Loop Element and CDS Participant, please see `The CLAMP CDS Participant page <#>`_.
-
-1.2.5 DCAE Participant
-~~~~~~~~~~~~~~~~~~~~~~
-
-The DCAE Participant runs DCAE Control Loop Elements. Each DCAE Control Loop Element manages
-a DCAE microservice on DCAE. The user defines the DCAE blueprint for the DCAE microservice as
-well as other properties that the microservice requires in order to execute. The Yaml file that
-holds the `DCAE Control Loop Type definition is available in Github
-<https://github.com/onap/policy-clamp/blob/master/common/src/main/resources/tosca/DcaeControlLoopElementType.yaml>`_
-and is the canonical definition of the DCAE Control Loop Element type. For a description of
-the DCAE Control Loop Element and DCAE Participant, please see `The CLAMP DCAE Participant <#>`_ page.
 
 
 2 Common and Instance Specific Properties
@@ -204,7 +184,7 @@ Loop Element, so it can be defined as shown below in the :ref:`Kubernetes Contro
       typeVersion: 1.0.0
       description: The helm chart for the microservice
       required: true
-    
+
     # Definition that specifies the common flag metadata
     chart:
       type: org.onap.datatypes.policy.clamp.controlloop.kubernetesControlLoopElement.Chart
@@ -227,6 +207,7 @@ itself, which contains TOSCA Node Templates for each Control Loop Element that m
 Control Loop.
 
 .. image:: images/defining-controlloops/controlloop-node-template.png
+  :width: 600
 
 To create a control loop, a user creates a TOSCA Topology Template. In the Topology Template,
 the user creates a TOSCA Node Template for each Control Loop Element that will be in the
@@ -241,13 +222,11 @@ The best way to explain how to create a Control Loop Definition is by example.
 
 .. image:: images/defining-controlloops/gentle-guidance-controlloop.png
 
-The example Gentle Guidance control loop is illustrated in the diagram above. The domain logic
-for the control loop is implemented in a microservice running in Kubernetes, a policy, a CDS
-blueprint, and some configuration that is passed to the microservice over a REST endpoint.
-We want to manage the life cycle of the domain logic for our Gentle Guidance control loop using
-our TOSCA based Control Loop Life Cycle Management approach. To do this we create four Control
-Loop Element definitions, one for the Kubernetes microservice, one for the policy, one for the
-CDS blueprint and one or the REST configuration.
+The example Gentle Guidance control loop is illustrated in the diagram above. The domain logic for the control loop is
+implemented in a microservice running in Kubernetes, a policy, and some configuration that is passed to the microservice
+over a REST endpoint. We want to manage the life cycle of the domain logic for our Gentle Guidance control loop using
+our TOSCA based Control Loop Life Cycle Management approach. To do this we create four Control Loop Element definitions,
+one for the Kubernetes microservice, one for the policy and one or the REST configuration.
 
 3.2 The TOSCA Control Loop Definition
 -------------------------------------
