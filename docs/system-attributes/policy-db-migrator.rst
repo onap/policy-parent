@@ -23,6 +23,7 @@ Policy DB Migrator is run as a docker container and consists of the following sc
     prepare_upgrade.sh
     prepare_downgrade.sh
     db-migrator
+    db-migrator-pg
 
 
 ``prepare_upgrade.sh`` is included as part of the docker image and is used
@@ -33,9 +34,10 @@ This script takes one parameter: <SCHEMA NAME>.
 to copy the downgrade sql files to the run directory.
 This script takes one parameter: <SCHEMA NAME>.
 
-``db-migrator`` is included as part of the docker image and is used
-to run either the upgrade or downgrade operation depending on user requirements.
-This script can take up to four parameters:
+``db-migrator`` and ``db-migrator-pg`` are included as part of the docker image
+and are used to run either the upgrade or downgrade operation for MariaDB or
+PostgresSQL depending on user requirements.
+These script can take up to four parameters:
 
 .. list-table::
    :widths: 20 20 20
@@ -79,6 +81,32 @@ to run and connect to the database.
      - policy_user
    * - POLICY_HOME
      - /opt/app/policy
+   * - SCRIPT_DIRECTORY
+     - sql
+
+The following environment variables need to be set to enable ``db-migrator-pg``
+to run and connect to the database.
+
+.. list-table::
+   :widths: 20 20
+   :header-rows: 1
+
+   * - Name
+     - Value (example)
+   * - SQL_HOST
+     - postgres
+   * - SQL_DB
+     - policyadmin
+   * - SQL_USER
+     - policy_user
+   * - SQL_PASSWORD
+     - policy_user
+   * - POLICY_HOME
+     - /opt/app/policy
+   * - SCRIPT_DIRECTORY
+     - postgres
+   * - PGPASSWORD
+     - ${SQL_PASSWORD}
 
 Prepare Upgrade
 ===============
@@ -89,7 +117,7 @@ Prior to upgrading the following script is run:
 
    /opt/app/policy/bin/prepare_upgrade.sh <SCHEMA NAME>
 
-This will copy the upgrade files from ``/home/policy/sql`` to ``$POLICY_HOME/etc/db/migration/<SCHEMA NAME>/sql/``
+This will copy the upgrade files from ``/home/policy/${SCRIPT_DIRECTORY}`` to ``$POLICY_HOME/etc/db/migration/<SCHEMA NAME>/${SCRIPT_DIRECTORY}/``
 
 Each individual sql file that makes up that release will be run as part of the upgrade.
 
@@ -102,7 +130,7 @@ Prior to downgrading the following script is run:
 
    /opt/app/policy/bin/prepare_downgrade.sh <SCHEMA NAME>
 
-This will copy the downgrade files from ``/home/policy/sql`` to ``$POLICY_HOME/etc/db/migration/<SCHEMA NAME>/sql/``
+This will copy the downgrade files from ``/home/policy/${SCRIPT_DIRECTORY}`` to ``$POLICY_HOME/etc/db/migration/<SCHEMA NAME>/${SCRIPT_DIRECTORY}/``
 
 Each individual sql file that makes up that release will be run as part of the downgrade.
 
@@ -112,6 +140,12 @@ Upgrade
 .. code::
 
    /opt/app/policy/bin/db-migrator -s <SCHEMA NAME> -o upgrade -f 0800 -t 0900
+
+OR
+
+.. code::
+
+   /opt/app/policy/bin/db-migrator-pg -s <SCHEMA NAME> -o upgrade -f 0800 -t 0900
 
 If the ``-f`` and ``-t`` flags are not specified, the script will attempt to run all available
 sql files greater than the current version.
@@ -125,6 +159,12 @@ Downgrade
 
    /opt/app/policy/bin/db-migrator -s <SCHEMA NAME> -o downgrade -f 0900 -t 0800
 
+OR
+
+.. code::
+
+   /opt/app/policy/bin/db-migrator-pg -s <SCHEMA NAME> -o downgrade -f 0900 -t 0800
+
 If the ``-f`` and ``-t`` flags are not specified, the script will attempt to run all available
 sql files less than the current version.
 
@@ -133,12 +173,16 @@ The script will return either 1 or 0 depending on successful completion.
 Logging
 =======
 
-After every upgrade/downgrade ``db-migrator`` runs the report operation to show the
-contents of the db-migrator log table.
+After every upgrade/downgrade ``db-migrator`` or ``db-migrator-pg`` runs the report operation
+to show the contents of the db-migrator log table.
 
 .. code::
 
    /opt/app/policy/bin/db-migrator -s <SCHEMA NAME> -o report
+
+.. code::
+
+   /opt/app/policy/bin/db-migrator-pg -s <SCHEMA NAME> -o report
 
 Console output will also show the sql script command as in the example below:
 
@@ -225,6 +269,14 @@ It is setup to run an upgrade by default.
    /opt/app/policy/bin/db-migrator -s ${SQL_DB} -o upgrade
    rc=$?
    /opt/app/policy/bin/db-migrator -s ${SQL_DB} -o report
+   exit $rc
+
+.. code::
+
+   /opt/app/policy/bin/prepare_upgrade.sh ${SQL_DB}
+   /opt/app/policy/bin/db-migrator-pg -s ${SQL_DB} -o upgrade
+   rc=$?
+   /opt/app/policy/bin/db-migrator-pg -s ${SQL_DB} -o report
    exit $rc
 
 The following table describes what each line does:
