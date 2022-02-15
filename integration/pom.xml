@@ -52,6 +52,7 @@
         <version.netty>4.1.70.Final</version.netty>
         <version.springboot>2.5.0</version.springboot>
         <version.springboot.actuator>2.5.4</version.springboot.actuator>
+        <version.hibernate.core>5.4.31.Final</version.hibernate.core>
         <version.eelf.core>1.0.0</version.eelf.core>
         <version.camel>3.7.3</version.camel>
         <version.tomcat>9.0.45</version.tomcat>
@@ -779,6 +780,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-security</artifactId>
                 <version>${version.springboot}</version>
+            </dependency>
+
+            <!--  Hibernate -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${version.hibernate.core}</version>
             </dependency>
         </dependencies>
 
