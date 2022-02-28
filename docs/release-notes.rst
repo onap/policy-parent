@@ -18,6 +18,74 @@ Policy Release Notes
 ..      * * *    ISTANBUL    * * *
 ..      ==========================
 
+Version: 9.0.1
+--------------
+
+:Release Date: 2022-02-17 (Istanbul Maintenance Release #1)
+
+**Artifacts**
+
+Artifacts released:
+
+.. list-table::
+   :widths: 15 10 10
+   :header-rows: 1
+
+   * - Repository
+     - Java Artifact
+     - Docker Image (if applicable)
+   * - policy/parent
+     - 3.4.4
+     - N/A
+   * - policy/docker
+     - 2.3.2
+     - | onap/policy-jdk-alpine:2.3.2
+       | onap/policy-jre-alpine:2.3.2
+       | onap/policy-db-migrator:2.3.2
+   * - policy/common
+     - 1.9.2
+     - N/A
+   * - policy/models
+     - 2.5.2
+     - N/A
+   * - policy/api
+     - 2.5.2
+     - onap/policy-api:2.5.2
+   * - policy/pap
+     - 2.5.2
+     - onap/policy-pap:2.5.2
+   * - policy/drools-pdp
+     - 1.9.2
+     - onap/policy-drools:1.9.2
+   * - policy/apex-pdp
+     - 2.6.2
+     - onap/policy-apex-pdp:2.6.2
+   * - policy/xacml-pdp
+     - 2.5.2
+     - onap/policy-xacml-pdp:2.5.2
+   * - policy/drools-applications
+     - 1.9.2
+     - onap/policy-pdpd-cl:1.9.2
+   * - policy/clamp
+     - 6.1.4
+     - | onap/policy-clamp-backend:6.1.4
+       | onap/policy-clamp-frontend:6.1.4
+       | onap/policy-clamp-cl-pf-ppnt:6.1.4
+       | onap/policy-clamp-cl-k8s-ppnt:6.1.4
+       | onap/policy-clamp-cl-http-ppnt:6.1.4
+       | onap/policy-clamp-cl-runtime:6.1.4
+   * - policy/gui
+     - 2.1.2
+     - onap/policy-gui:2.1.2
+   * - policy/distribution
+     - 2.6.2
+     - onap/policy-distribution:2.6.2
+
+**Bug Fixes and Necessary Enhancements**
+
+    * `[POLICY-3862] <https://jira.onap.org/browse/POLICY-3862>`_
+      - Check all code for Log4J before version 2.15.0 and upgrade if necessary
+
 Version: 9.0.0
 --------------
 
@@ -27,8 +95,6 @@ New features
 ============
 
 Artifacts released:
-
-
 
 .. list-table::
    :widths: 15 10 10
