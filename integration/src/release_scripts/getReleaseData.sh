@@ -22,9 +22,10 @@
 
 set -e
 
-SCRIPT_NAME=`basename $0`
+SCRIPT_NAME=$(basename "$0")
 repo_location="./"
 release_data_file="./pf_release_data.csv"
+branch="master"
 
 # Use the bash internal OSTYPE variable to check for MacOS
 if [[ "$OSTYPE" == "darwin"* ]]
@@ -59,17 +60,21 @@ usage()
     echo ""
     echo "       options"
     echo "         -h           - this help message"
+    echo "         -b branch    - the branch to release on, defaults to '$branch'"
     echo "         -d data_file - the policy release data file to create, defaults to '$release_data_file'"
     echo "         -l location  - the location of the policy framework repos on the file system,"
     echo "                        defaults to '$repo_location'"
     exit 255;
 }
 
-while getopts "hd:l:" opt
+while getopts "hb:d:l:" opt
 do
     case $opt in
     h)
         usage
+        ;;
+    b)
+        branch=$OPTARG
         ;;
     d)
         release_data_file=$OPTARG
@@ -84,15 +89,15 @@ do
     esac
 done
 
-if [ $OPTIND -eq 1 ]
-then
-    echo "no arguments were specified"
-    usage
-fi
-
 if [[ -z "$repo_location" ]]
 then
     echo "policy repo location not specified on -l flag"
+    exit 1
+fi
+
+if [[ -z "$branch" ]]
+then
+    echo "policy branch not specified on -b flag"
     exit 1
 fi
 
@@ -113,15 +118,16 @@ update_repos() {
 
     for repo in "${pf_repos[@]}"
     do
-        echo "updating data from repo $repo to data file '$release_data_file' . . ."
+        echo "updating data from repo $repo branch $branch to data file '$release_data_file' . . ."
 
-        if [ -d $repo_location/$repo ]
+        if [ -d "$repo_location/$repo" ]
         then
             echo "updating repository '$repo' . . ."
-            git -C $repo_location/$repo checkout master
-            git -C $repo_location/$repo pull
-            git -C $repo_location/$repo rebase
-            git -C $repo_location/$repo fetch --tags
+            git -C "$repo_location/$repo" checkout -- .
+            git -C "$repo_location/$repo" checkout "$branch"
+            git -C "$repo_location/$repo" pull
+            git -C "$repo_location/$repo" rebase
+            git -C "$repo_location/$repo" fetch --tags
         else
             echo "repo $repo does not exist"
             exit 1
@@ -132,45 +138,54 @@ update_repos() {
     echo "policy framework data from '$repo_location' updated to data file '$release_data_file' . . ."
 }
 
-
 get_tags() {
-    echo "Repo, Last Tag Version,Master Snapshot Version,Changed Files,Docker Images"
-    echo "repo, Last Tag Version,Master Snapshot Version,Changed Files,Docker Images" > $release_data_file
+    echo "Repo, Last Tag Version,Snapshot Version,Changed Files,Docker Images"
+    echo "repo, Last Tag Version,Snapshot Version,Changed Files,Docker Images" > "$release_data_file"
     for repo in "${pf_repos[@]}"
     do
-        latest_released_tag=`git -C $repo_location/$repo tag | \
-            grep '^[0-9]*\.[0-9]*\.[0-9]*$' | \
-            sort -V | \
-            tail -1`
-
-        latest_snapshot_tag=`mvn -f $repo_location/$repo clean | \
+        latest_snapshot_tag=$(mvn -f "$repo_location/$repo" clean | \
             grep "SNAPSHOT" | \
             tail -1 | \
-            $SED -r 's/^.* ([0-9]*\.[0-9]*\.[0-9]*-SNAPSHOT).*$/\1/'`
+            $SED -r 's/^.* ([0-9]*\.[0-9]*\.[0-9]*-SNAPSHOT).*$/\1/')
 
-        changed_files=`git -C $repo_location/$repo diff --name-only $latest_released_tag origin/master | \
+        if [[ $branch == *master ]]
+        then
+            latest_released_tag=$(git -C "$repo_location/$repo" tag | \
+                grep '^[0-9]*\.[0-9]*\.[0-9]*$' | \
+                sort -V | \
+                tail -1)
+        else
+            # shellcheck disable=SC2001
+            latest_snapshot_major_minor=$(echo "$latest_snapshot_tag" | sed 's/\.[0-9]*-SNAPSHOT$//')
+            latest_released_tag=$(git -C "$repo_location/$repo" tag | \
+                grep '^[0-9]*\.[0-9]*\.[0-9]*$' | \
+                grep "$latest_snapshot_major_minor" | \
+                sort -V | \
+                tail -1)
+        fi
+
+        changed_files=$(git -C "$repo_location/$repo" diff --name-only "$latest_released_tag" "$branch" | \
             grep -v 'pom.xml$' | \
             grep -v '^version.properties$' | \
             grep -v "^releases/$latest_released_tag.yaml$" | \
-            grep -v "^releases/$latest_released_tag-container.yaml$" | \
-            wc -l | \
-            $SED 's/^[[:space:]]*//g'`
+            grep -cv "^releases/$latest_released_tag-container.yaml$" | \
+            $SED 's/^[[:space:]]*//g')
 
-        if [ -f $repo_location/$repo/releases/$latest_released_tag-container.yaml ]
+        latest_container_yaml=$(find "$repo_location/$repo/releases" -name "*container.yaml" | sort | tail -1)
+        if [ "$latest_container_yaml" != "" ]
         then
-            docker_images=`grep '\- name:' $repo_location/$repo/releases/$latest_released_tag-container.yaml | \
+            docker_images=$(grep '\- name:' "$latest_container_yaml" | \
             $SED -e 's/\- //g' -e 's/\://g' -e "s/\'//g" -e 's/^[[:space:]]*//g' -e 's/^name //' | \
             tr '\n' ':' | \
-            $SED 's/:$//'`
+            $SED 's/:$//')
         else
             docker_images=""
         fi
 
         echo "$repo,$latest_released_tag,$latest_snapshot_tag,$changed_files,$docker_images"
-        echo "$repo,$latest_released_tag,$latest_snapshot_tag,$changed_files,$docker_images" >> $release_data_file
+        echo "$repo,$latest_released_tag,$latest_snapshot_tag,$changed_files,$docker_images" >> "$release_data_file"
     done
 }
 
 update_repos
 get_tags
-

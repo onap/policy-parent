@@ -22,7 +22,7 @@
 
 set -e
 
-SCRIPT_NAME=`basename $0`
+SCRIPT_NAME=$(basename "$0")
 repo_location="./"
 release_data_file="./pf_release_data.csv"
 
@@ -138,11 +138,14 @@ fi
 
 for specified_repo in "${pf_repos[@]}"
 do
-    read    repo \
+    # shellcheck disable=SC2034
+    # shellcheck disable=SC2046
+    read -r repo \
             latest_released_tag \
             latest_snapshot_tag \
-            changed_files docker_images \
-        <<< $( grep $specified_repo $release_data_file | tr ',' ' ' )
+            changed_files \
+            docker_images \
+        <<< $(grep "$specified_repo" "$release_data_file" | tr ',' ' ' )
 
     if [ ! "$repo" = "$specified_repo" ]
     then
@@ -154,28 +157,30 @@ do
 
     if [ "$latest_released_tag" = "$next_release_version" ]
     then
-        declare -i major_version=`echo $next_release_version | $SED -E 's/^([0-9]*)\.[0-9]*\.[0-9]*$/\1/'`
-        declare -i minor_version=`echo $next_release_version | $SED -E 's/^[0-9]*\.([0-9]*)\.[0-9]*$/\1/'`
-        declare -i patch_version=`echo $next_release_version | $SED -E 's/^[0-9]*\.[0-9]*\.([0-9]*)$/\1/'`
-        declare -i new_patch_version=$(($patch_version+1))
+        major_version=$(echo "$next_release_version" | $SED -E 's/^([0-9]*)\.[0-9]*\.[0-9]*$/\1/')
+        minor_version=$(echo "$next_release_version" | $SED -E 's/^[0-9]*\.([0-9]*)\.[0-9]*$/\1/')
+        patch_version=$(echo "$next_release_version" | $SED -E 's/^[0-9]*\.[0-9]*\.([0-9]*)$/\1/')
+        # shellcheck disable=SC2004
+        new_patch_version=$(($patch_version+1))
 
         new_snapshot_tag="$major_version"."$minor_version"."$new_patch_version"-SNAPSHOT
 
-        echo updating snapshot version and references of repo $repo to $new_snapshot_tag . . .
-        mvn -f $repo_location/$repo \
-            -DnewVersion=$new_snapshot_tag versions:set \
+        echo "updating snapshot version and references of repo $repo to $new_snapshot_tag . . ."
+        mvn -f "$repo_location/$repo" \
+            "-DnewVersion=$new_snapshot_tag" versions:set \
             versions:update-child-modules versions:commit
 
         temp_file=$(mktemp)
 
-        echo updating snapshot version of repo $repo in $repo_location/$repo/version.properties
-        $SED -e "s/patch=$patch_version/patch=$new_patch_version/" $repo_location/$repo/version.properties > $temp_file
-        mv $temp_file $repo_location/$repo/version.properties
+        echo "updating snapshot version of repo $repo in $repo_location/$repo/version.properties"
+        $SED -e "s/patch=$patch_version/patch=$new_patch_version/" \
+            "$repo_location/$repo/version.properties" > "$temp_file"
+        mv "$temp_file" "$repo_location/$repo/version.properties"
     fi
 
-    updateRefs.sh -pcmos -d $release_data_file -l $repo_location -r $repo
+    updateRefs.sh -pcmos -d "$release_data_file" -l "$repo_location" -r "$repo"
 
-    if [ "$(git -C $repo_location/$specified_repo status | grep '^[ \t]*modified:[ \t]*pom.xml' > /dev/null 2>&1)" = 0 ]
+    if [ "$(git -C "$repo_location/$specified_repo" status | grep '^[ \t]*modified:[ \t]*pom.xml' > /dev/null 2>&1)" = 0 ]
     then
         references_updated=0
     else
@@ -190,9 +195,9 @@ do
     echo "generating commit to update snapshot version and/or references of repo $repo . . ."
 
     generateCommit.sh \
-        -l $repo_location \
-        -r $repo \
-        -i $issue_id \
+        -l "$repo_location" \
+        -r "$repo" \
+        -i "$issue_id" \
         -e "Update snapshot and/or references of $repo to latest snapshots" \
         -m "$repo updated to its latest own and reference snapshots"
 

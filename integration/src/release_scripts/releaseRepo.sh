@@ -20,9 +20,7 @@
 # ============LICENSE_END==================================================
 #
 
-set -e
-
-SCRIPT_NAME=`basename $0`
+SCRIPT_NAME=$(basename "$0")
 repo_location="./"
 release_data_file="./pf_release_data.csv"
 
@@ -121,11 +119,14 @@ then
   exit 1
 fi
 
-read repo \
+# shellcheck disable=SC2034
+# shellcheck disable=SC2046
+read -r repo \
     latest_released_tag \
     latest_snapshot_tag \
-    changed_files docker_images \
-    <<< $( grep $specified_repo $release_data_file | tr ',' ' ' )
+    changed_files \
+    docker_images \
+    <<< $(grep "$specified_repo" "$release_data_file" | tr ',' ' ' )
 
 if [ ! "$repo" = "$specified_repo" ]
 then
@@ -137,7 +138,7 @@ next_release_version=${latest_snapshot_tag%-*}
 
 while true
 do
-   read -p "have you run 'stage_release' on the '$repo' repo? " yes_no
+   read -r -p "have you run 'stage_release' on the '$repo' repo? " yes_no
    case $yes_no in
        [Yy]* ) break
         ;;
@@ -150,22 +151,30 @@ do
    esac
 done
 
-saved_current_dir=`pwd`
-cd $repo_location/$repo
+saved_current_dir=$(pwd)
+cd "$repo_location/$repo" || exit 1
 if [ "$docker_images" != "" ]
 then
-    mkart.sh -d
+    mkart_flag="-d"
 else
-    mkart.sh
+    mkart_flag=""
 fi
-cd $saved_current_dir
+
+if ! mkart.sh "$mkart_flag"
+then
+    echo "generation of artifact release yaml file failed"
+    cd "$saved_current_dir" || exit 1
+    exit 1
+fi
+
+cd "$saved_current_dir" || exit 1
 
 echo "generating commit for $repo release: $latest_released_tag-->$next_release_version . . ."
 
 generateCommit.sh \
-    -l $repo_location \
-    -r $repo \
-    -i $issue_id \
+    -l "$repo_location" \
+    -r "$repo" \
+    -i "$issue_id" \
     -e "Release $repo: $next_release_version" \
     -m "This commit releases repo $repo."
 
