@@ -22,7 +22,7 @@
 
 set -e
 
-SCRIPT_NAME=`basename $0`
+SCRIPT_NAME=$(basename "$0")
 
 # Use the bash internal OSTYPE variable to check for MacOS
 if [[ "$OSTYPE" == "darwin"* ]]
@@ -107,22 +107,24 @@ then
     exit 1
 fi
 
-pom_lines=`wc -l $pom_file | $SED 's/^[ \t]*//' | cut -f1 -d' '`
-parent_start_line=`grep -n '^[\t ]*<parent>[\t ]*$' $pom_file | cut -f1 -d':'`
-parent_end_line=`grep -n '^[\t ]*</parent>[\t ]*$' $pom_file | cut -f1 -d':'`
+pom_lines=$(wc -l "$pom_file" | $SED 's/^[ \t]*//' | cut -f1 -d' ')
+parent_start_line=$(grep -n '^[\t ]*<parent>[\t ]*$' "$pom_file" | cut -f1 -d':')
+parent_end_line=$(grep -n '^[\t ]*</parent>[\t ]*$' "$pom_file" | cut -f1 -d':')
 
 pom_head_lines=$((parent_start_line-1))
 pom_tail_lines=$((pom_lines-parent_end_line))
 
 pom_temp_file=$(mktemp)
 
-head -$pom_head_lines $pom_file                      >  $pom_temp_file
-echo "    <parent>"                                  >> $pom_temp_file
-echo "        <groupId>$group_id</groupId>"          >> $pom_temp_file
-echo "        <artifactId>$artifact_id</artifactId>" >> $pom_temp_file
-echo "        <version>$version</version>"           >> $pom_temp_file
-echo "        <relativePath />"                      >> $pom_temp_file
-echo "    </parent>"                                 >> $pom_temp_file
-tail -$pom_tail_lines $pom_file                      >> $pom_temp_file
+{
+    head -$pom_head_lines "$pom_file"
+    echo "    <parent>"
+    echo "        <groupId>$group_id</groupId>"
+    echo "        <artifactId>$artifact_id</artifactId>"
+    echo "        <version>$version</version>"
+    echo "        <relativePath />"
+    echo "    </parent>"
+    tail -$pom_tail_lines "$pom_file"
+} > "$pom_temp_file"
 
-mv $pom_temp_file $pom_file
+mv "$pom_temp_file" "$pom_file"

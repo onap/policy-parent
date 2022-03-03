@@ -20,9 +20,7 @@
 # ============LICENSE_END==================================================
 #
 
-set -e
-
-SCRIPT_NAME=`basename $0`
+SCRIPT_NAME=$(basename "$0")
 repo_location="./"
 release_data_file="./pf_release_data.csv"
 
@@ -121,12 +119,13 @@ then
   exit 1
 fi
 
-read repo \
+# shellcheck disable=SC2034
+read -r repo \
     latest_released_tag \
     latest_snapshot_tag \
     changed_files \
     docker_images \
-    <<< $( grep $specified_repo $release_data_file | tr ',' ' ' )
+    <<< "$(grep "$specified_repo" "$release_data_file" | tr ',' ' ' )"
 
 if [ ! "$repo" = "$specified_repo" ]
 then
@@ -138,7 +137,7 @@ next_release_version=${latest_snapshot_tag%-*}
 
 while true
 do
-   read -p "have you run 'stage_release' on the '$repo' repo? " yes_no
+   read -r -p "have you run 'stage_release' on the '$repo' repo? " yes_no
    case $yes_no in
        [Yy]* ) break
         ;;
@@ -153,10 +152,16 @@ done
 
 if [ "$docker_images" != "" ]
 then
-    saved_current_dir=`pwd`
-    cd $repo_location/$repo
-    mkdock.sh `echo "$docker_images" | tr ':' " "`
-    cd $saved_current_dir
+    saved_current_dir=$(pwd)
+    cd "$repo_location/$repo" || exit 1
+    # shellcheck disable=SC2046
+    if ! mkdock.sh $(echo "$docker_images" | sed -e "s/'//g" -e "s/:/ /g")
+    then
+        echo "generation of docker image release container yaml file failed"
+        cd "$saved_current_dir" || exit 1
+        exit 1
+    fi
+    cd "$saved_current_dir" || exit 1
 else
     echo "repo '$repo' does not have any docker images"
     exit 1
@@ -165,9 +170,9 @@ fi
 echo "generating commit for $repo docker image release: $latest_released_tag-->$next_release_version . . ."
 
 generateCommit.sh \
-    -l $repo_location \
-    -r $repo \
-    -i $issue_id \
+    -l "$repo_location" \
+    -r "$repo" \
+    -i "$issue_id" \
     -e "Release docker images for $repo: $next_release_version" \
     -m "This commit releases docker images for repo $repo."
 

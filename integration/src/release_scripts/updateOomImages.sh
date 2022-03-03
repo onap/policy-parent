@@ -22,7 +22,7 @@
 
 set -e
 
-SCRIPT_NAME=`basename $0`
+SCRIPT_NAME=$(basename "$0")
 repo_location="./"
 release_data_file="./pf_release_data.csv"
 
@@ -137,11 +137,13 @@ fi
 
 for specified_repo in "${pf_repos[@]}"
 do
-    read    repo \
+    # shellcheck disable=SC2034
+    # shellcheck disable=SC2046
+    read -r repo \
             latest_released_tag \
             latest_snapshot_tag \
             changed_files docker_images \
-        <<< $( grep $specified_repo $release_data_file | tr ',' ' ' )
+        <<< $(grep "$specified_repo" "$release_data_file" | tr ',' ' ' )
 
     if [ ! "$repo" = "$specified_repo" ]
     then
@@ -154,12 +156,12 @@ do
         continue
     fi
 
-    for docker_image in `echo $docker_images | tr ':' ' '`
+    for docker_image in $(echo "$docker_images" | tr ':' ' ')
     do
         new_image="$docker_image:$latest_released_tag"
 
         echo "updating OOM image $new_image . . ."
-        find $repo_location/oom/kubernetes/policy/components \
+        find "$repo_location/oom/kubernetes/policy/components" \
             -name values.yaml \
             -exec \
                 $SED -i \
@@ -172,9 +174,9 @@ done
 echo "generating OOM commit to update policy framework docker image versions . . ."
 
 generateCommit.sh \
-    -l $repo_location \
+    -l "$repo_location" \
     -r oom \
-    -i $issue_id \
+    -i "$issue_id" \
     -e "[POLICY] Update docker images to latest versions" \
     -m "The image versions in policy values.yaml files have been updated"
 

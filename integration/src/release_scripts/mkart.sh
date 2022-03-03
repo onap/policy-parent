@@ -65,7 +65,7 @@ if [ -z "${BRANCH}" ]; then
     echo "cannot extract default branch from ${TOPDIR}/.gitreview" >&2
     exit 1
 fi
-echo Branch: ${BRANCH}
+echo Branch: "${BRANCH}"
 
 PROJECT=$(awk -F= '$1 == "project" { print $2 }' "${TOPDIR}/.gitreview" |
             $SED 's/.git$//')
@@ -73,9 +73,8 @@ if [ -z "${PROJECT}" ]; then
     echo "cannot extract project from ${TOPDIR}/.gitreview" >&2
     exit 1
 fi
-echo Project: ${PROJECT}
-TPROJ=$(echo ${PROJECT} | $SED 's!/!%2F!')
-DPROJ=$(echo ${PROJECT} | $SED 's!/!-!')
+echo Project: "${PROJECT}"
+DPROJ=$(echo "${PROJECT}" | $SED 's!/!-!')
 
 VERSION=$(
     xmllint --xpath \
@@ -87,11 +86,11 @@ if [ -z "${VERSION}" ]; then
     echo "cannot extract version from ${TOPDIR}/pom.xml" >&2
     exit 1
 fi
-echo Version: ${VERSION}
+echo "Version: ${VERSION}"
 
 prefix='https://jenkins.onap.org/view/policy/job/'
 STAGE_ID=$(
-    curl --silent ${prefix}${DPROJ}-maven-stage-${BRANCH}/ |
+    curl --silent "${prefix}${DPROJ}-maven-stage-${BRANCH}/" |
     grep "Last completed build" |
     $SED -e 's!.*Last completed build .#!!' -e 's!).*!!' |
     head -1
@@ -100,18 +99,19 @@ if [ -z "${STAGE_ID}" ]; then
     echo "cannot extract last maven stage ID from jenkins" >&2
     exit 1
 fi
-STAGE_ID=${DPROJ}-maven-stage-${BRANCH}/${STAGE_ID}/
-echo Stage ID: ${STAGE_ID}
+STAGE_ID="${DPROJ}-maven-stage-${BRANCH}/${STAGE_ID}/"
+echo Stage ID: "${STAGE_ID}"
 
 prefix='https://jenkins.onap.org/view/policy/job/'
-JOB_OUT=$(curl --silent ${prefix}${STAGE_ID}/console)
+JOB_OUT=$(curl --silent "${prefix}${STAGE_ID}/consoleFull")
 echo "${JOB_OUT}" | grep -q "Finished: SUCCESS"
+# shellcheck disable=SC2181
 if [ $? -ne 0 ]; then
     echo "last jenkins build has not completed successfully" >&2
     exit 1
 fi
 
-echo Creating ${TOPDIR}/releases/${VERSION}.yaml
+echo Creating "${TOPDIR}/releases/${VERSION}.yaml"
 
 echo "distribution_type: 'maven'"  > "${TOPDIR}/releases/${VERSION}.yaml"
 echo "version: '${VERSION}'"      >> "${TOPDIR}/releases/${VERSION}.yaml"

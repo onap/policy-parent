@@ -22,7 +22,7 @@
 
 set -e
 
-SCRIPT_NAME=`basename $0`
+SCRIPT_NAME=$(basename "$0")
 repo_location="./"
 release_data_file="./pf_release_data.csv"
 
@@ -150,47 +150,59 @@ then
     exit 1
 fi
 
-read parent_repo \
+# shellcheck disable=SC2034
+# shellcheck disable=SC2046
+read -r parent_repo \
      parent_latest_released_tag \
      parent_latest_snapshot_tag \
      parent_changed_files \
      parent_docker_images \
-    <<< $( grep policy/parent $release_data_file | tr ',' ' ' )
+    <<< $(grep policy/parent "$release_data_file" | tr ',' ' ' )
 
-read common_repo \
+# shellcheck disable=SC2034
+# shellcheck disable=SC2046
+read -r common_repo \
      common_latest_released_tag \
      common_latest_snapshot_tag \
      common_changed_files \
      common_docker_images \
-    <<< $( grep policy/common $release_data_file | tr ',' ' ' )
+    <<< $(grep policy/common "$release_data_file" | tr ',' ' ' )
 
-read docker_repo \
+# shellcheck disable=SC2034
+# shellcheck disable=SC2046
+read -r docker_repo \
      docker_latest_released_tag \
      docker_latest_snapshot_tag \
      docker_changed_files \
      docker_docker_images \
-    <<< $( grep policy/docker $release_data_file | tr ',' ' ' )
+    <<< $(grep policy/docker "$release_data_file" | tr ',' ' ' )
 
-read models_repo \
+# shellcheck disable=SC2034
+# shellcheck disable=SC2046
+read -r models_repo \
      models_latest_released_tag \
      models_latest_snapshot_tag \
      models_changed_files \
      models_docker_images \
-    <<< $( grep policy/models $release_data_file | tr ',' ' ' )
+    <<< $(grep policy/models "$release_data_file" | tr ',' ' ' )
 
-read drools_pdp_repo \
+# shellcheck disable=SC2034
+# shellcheck disable=SC2046
+read -r drools_pdp_repo \
      drools_pdp_latest_released_tag \
      drools_pdp_latest_snapshot_tag \
      drools_pdp_changed_files \
      drools_pdp_docker_images \
-    <<< $( grep policy/drools-pdp $release_data_file | tr ',' ' ' )
+    <<< $(grep policy/drools-pdp "$release_data_file" | tr ',' ' ' )
 
-read target_repo \
+# shellcheck disable=SC2034
+# shellcheck disable=SC2046
+read -r target_repo \
 	 target_latest_released_tag \
 	 target_latest_snapshot_tag \
 	 target_changed_files \
 	 target_docker_images \
-	<<< $( grep $specified_repo $release_data_file | tr ',' ' ' )
+	<<< $(grep "$specified_repo" "$release_data_file" | tr ',' ' ' )
 
 if [ -z "$target_repo" ]
 then
@@ -210,45 +222,52 @@ then
     then
         if [ "$update_snapshot" = true ]
         then
-            echo updating policy parent reference to $parent_latest_snapshot_tag on $repo_location/$target_repo . . .
+            major_version=$(echo "$parent_latest_released_tag" | $SED -E 's/^([0-9]*)\.[0-9]*\.[0-9]*$/\1/')
+            minor_version=$(echo "$parent_latest_released_tag" | $SED -E 's/^[0-9]*\.([0-9]*)\.[0-9]*$/\1/')
+            patch_version=$(echo "$parent_latest_released_tag" | $SED -E 's/^[0-9]*\.[0-9]*\.([0-9]*)$/\1/')
+            new_patch_version=$(("$patch_version"+1))
+
+            new_snapshot_tag="$major_version"."$minor_version"."$new_patch_version"-SNAPSHOT
+
+            echo updating policy parent reference to "$new_snapshot_tag" on "$repo_location/$target_repo" . . .
             $SED -i \
-                "s/<version.parent.resources>.*<\/version.parent.resources>/<version.parent.resources>$parent_latest_snapshot_tag<\/version.parent.resources>/" \
-                 $repo_location/policy/parent/integration/pom.xml
+                "s/<version.parent.resources>.*<\/version.parent.resources>/<version.parent.resources>$new_snapshot_tag<\/version.parent.resources>/" \
+                 "$repo_location/policy/parent/integration/pom.xml"
             result_code=$?
         else
             next_release_version=${parent_latest_snapshot_tag%-*}
 
-            echo updating policy parent reference to $next_release_version on $repo_location/$target_repo . . .
+            echo "updating policy parent reference to $next_release_version on $repo_location/$target_repo . . ."
             $SED -i \
                 "s/<version.parent.resources>.*<\/version.parent.resources>/<version.parent.resources>$next_release_version<\/version.parent.resources>/" \
-                $repo_location/policy/parent/integration/pom.xml
+                "$repo_location/policy/parent/integration/pom.xml"
             result_code=$?
         fi
     else
         if [ "$update_snapshot" = true ]
         then
-            echo updating policy parent reference to $parent_latest_snapshot_tag on $repo_location/$target_repo . . .
+            echo "updating policy parent reference to $parent_latest_snapshot_tag on $repo_location/$target_repo . . ."
             updateParentRef.sh \
-                -f $repo_location/$target_repo/pom.xml \
+                -f "$repo_location/$target_repo/pom.xml" \
                 -g org.onap.policy.parent \
                 -a integration \
-                -v $parent_latest_snapshot_tag
+                -v "$parent_latest_snapshot_tag"
             result_code=$?
         else
-            echo updating policy parent reference to $parent_latest_released_tag on $repo_location/$target_repo . . .
+            echo "updating policy parent reference to $parent_latest_released_tag on $repo_location/$target_repo . . ."
             updateParentRef.sh \
-                -f $repo_location/$target_repo/pom.xml \
+                -f "$repo_location/$target_repo/pom.xml" \
                 -g org.onap.policy.parent \
                 -a integration \
-                -v $parent_latest_released_tag
+                -v "$parent_latest_released_tag"
             result_code=$?
         fi
     fi
     if [[ "$result_code" -eq 0 ]]
     then
-        echo policy parent reference updated on $repo_location/$target_repo
+        echo "policy parent reference updated on $repo_location/$target_repo"
     else
-        echo policy parent reference update failed on $repo_location/$target_repo
+        echo "policy parent reference update failed on $repo_location/$target_repo"
         exit 1
     fi
 fi
@@ -257,25 +276,25 @@ if [ "$update_common" = true ]
 then
     if [ "$update_snapshot" = true ]
     then
-        echo updating policy common reference to $common_latest_snapshot_tag on $repo_location/$target_repo . . .
+        echo "updating policy common reference to $common_latest_snapshot_tag on $repo_location/$target_repo . . ."
         $SED -i \
             -e "s/<policy.common.version>.*<\/policy.common.version>/<policy.common.version>$common_latest_snapshot_tag<\/policy.common.version>/" \
             -e "s/<version.policy.common>.*<\/version.policy.common>/<version.policy.common>$common_latest_snapshot_tag<\/version.policy.common>/" \
-            $repo_location/$target_repo/pom.xml
+            "$repo_location/$target_repo/pom.xml"
         result_code=$?
     else
-        echo updating policy common reference to $common_latest_released_tag on $repo_location/$target_repo . . .
+        echo "updating policy common reference to $common_latest_released_tag on $repo_location/$target_repo . . ."
         $SED -i \
             -e "s/<policy.common.version>.*<\/policy.common.version>/<policy.common.version>$common_latest_released_tag<\/policy.common.version>/" \
             -e "s/<version.policy.common>.*<\/version.policy.common>/<version.policy.common>$common_latest_released_tag<\/version.policy.common>/" \
-            $repo_location/$target_repo/pom.xml
+            "$repo_location/$target_repo/pom.xml"
         result_code=$?
     fi
     if [[ "$result_code" -eq 0 ]]
     then
-        echo policy common reference updated on $repo_location/$target_repo
+        echo "policy common reference updated on $repo_location/$target_repo"
     else
-        echo policy common reference update failed on $repo_location/$target_repo
+        echo "policy common reference update failed on $repo_location/$target_repo"
         exit 1
     fi
 fi
@@ -284,25 +303,25 @@ if [ "$update_models" = true ]
 then
     if [ "$update_snapshot" = true ]
     then
-        echo updating policy models reference to $models_latest_snapshot_tag on $repo_location/$target_repo . . .
+        echo "updating policy models reference to $models_latest_snapshot_tag on $repo_location/$target_repo . . ."
         $SED -i \
             -e "s/<policy.models.version>.*<\/policy.models.version>/<policy.models.version>$models_latest_snapshot_tag<\/policy.models.version>/" \
             -e "s/<version.policy.models>.*<\/version.policy.models>/<version.policy.models>$models_latest_snapshot_tag<\/version.policy.models>/" \
-            $repo_location/$target_repo/pom.xml
+            "$repo_location/$target_repo/pom.xml"
         result_code=$?
     else
-        echo updating policy models reference to $models_latest_released_tag on $repo_location/$target_repo . . .
+        echo "updating policy models reference to $models_latest_released_tag on $repo_location/$target_repo . . ."
         $SED -i \
             -e "s/<policy.models.version>.*<\/policy.models.version>/<policy.models.version>$models_latest_released_tag<\/policy.models.version>/" \
             -e "s/<version.policy.models>.*<\/version.policy.models>/<version.policy.models>$models_latest_released_tag<\/version.policy.models>/" \
-            $repo_location/$target_repo/pom.xml
+            "$repo_location/$target_repo/pom.xml"
         result_code=$?
     fi
     if [[ "$result_code" -eq 0 ]]
     then
-        echo policy models reference updated on $repo_location/$target_repo
+        echo "policy models reference updated on $repo_location/$target_repo"
     else
-        echo policy models reference update failed on $repo_location/$target_repo
+        echo "policy models reference update failed on $repo_location/$target_repo"
         exit 1
     fi
 fi
@@ -311,41 +330,41 @@ if [ "$update_drools_pdp" = true ]
 then
     if [ "$update_snapshot" = true ]
     then
-        echo updating policy drools-pdp reference to $drools_pdp_latest_snapshot_tag on $repo_location/$target_repo . . .
+        echo "updating policy drools-pdp reference to $drools_pdp_latest_snapshot_tag on $repo_location/$target_repo . . ."
         $SED -i \
             -e "s/<policy.drools-pdp.version>.*<\/policy.drools-pdp.version>/<policy.drools-pdp.version>$drools_pdp_latest_snapshot_tag<\/policy.drools-pdp.version>/" \
             -e "s/<version.policy.drools-pdp>.*<\/version.policy.drools-pdp>/<version.policy.drools-pdp>$drools_pdp_latest_snapshot_tag<\/version.policy.drools-pdp>/" \
-            $repo_location/$target_repo/pom.xml
+            "$repo_location/$target_repo/pom.xml"
         result_code=$?
     else
-        echo updating policy drools-pdp reference to $drools_pdp_latest_released_tag on $repo_location/$target_repo . . .
+        echo "updating policy drools-pdp reference to $drools_pdp_latest_released_tag on $repo_location/$target_repo . . ."
         $SED -i \
             -e "s/<policy.drools-pdp.version>.*<\/policy.drools-pdp.version>/<policy.drools-pdp.version>$drools_pdp_latest_released_tag<\/policy.drools-pdp.version>/" \
             -e "s/<version.policy.drools-pdp>.*<\/version.policy.drools-pdp>/<version.policy.drools-pdp>$drools_pdp_latest_released_tag<\/version.policy.drools-pdp>/" \
-            $repo_location/$target_repo/pom.xml
+            "$repo_location/$target_repo/pom.xml"
         result_code=$?
     fi
     if [[ "$result_code" -eq 0 ]]
     then
-        echo policy drools-pdp reference updated on $repo_location/$target_repo
+        echo "policy drools-pdp reference updated on $repo_location/$target_repo"
     else
-        echo policy drools-pdp reference update failed on $repo_location/$target_repo
+        echo "policy drools-pdp reference update failed on $repo_location/$target_repo"
         exit 1
     fi
 fi
 
 if [ "$update_docker" = true ] && [ "$target_docker_images" != "" ]
 then
-    echo updating docker base images to version $docker_latest_released_tag on repo $repo_location/$target_repo
-    find $repo_location/$target_repo \
+    echo "updating docker base images to version $docker_latest_released_tag on repo $repo_location/$target_repo . . ."
+    find "$repo_location/$target_repo" \
         -name '*Docker*' \
         -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)2.3.1$/\1$docker_latest_released_tag/" {} \;
     result_code=$?
     if [[ "$result_code" -eq 0 ]]
     then
-        echo docker base images updated on $repo_location/$target_repo
+        echo "docker base images updated on $repo_location/$target_repo"
     else
-        echo docker base images update failed on $repo_location/$target_repo
+        echo "docker base images update failed on $repo_location/$target_repo"
         exit 1
     fi
 fi

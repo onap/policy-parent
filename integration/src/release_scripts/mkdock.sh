@@ -47,6 +47,7 @@ else
     SED="sed"
 fi
 
+# shellcheck disable=SC2166
 if [ $# -lt 1 -o "$1" = "-?" ]
 then
     echo "arg(s): docker-container-name1 docker-container-name2 ..." >&2
@@ -64,7 +65,7 @@ if [ -z "${BRANCH}" ]; then
     echo "cannot extract default branch from ${TOPDIR}/.gitreview" >&2
     exit 1
 fi
-echo Branch: ${BRANCH}
+echo "Branch: ${BRANCH}"
 
 PROJECT=$(awk -F= '$1 == "project" { print $2 }' "${TOPDIR}/.gitreview" |
             $SED 's/.git$//')
@@ -72,9 +73,8 @@ if [ -z "${PROJECT}" ]; then
     echo "cannot extract project from ${TOPDIR}/.gitreview" >&2
     exit 1
 fi
-echo Project: ${PROJECT}
-TPROJ=$(echo ${PROJECT} | $SED 's!/!%2F!')
-DPROJ=$(echo ${PROJECT} | $SED 's!/!-!')
+echo "Project: ${PROJECT}"
+DPROJ=$(echo "${PROJECT}" | $SED 's!/!-!')
 
 RELEASE=$(
     xmllint --xpath \
@@ -86,18 +86,18 @@ if [ -z "${RELEASE}" ]; then
     echo "cannot extract release from ${TOPDIR}/pom.xml" >&2
     exit 1
 fi
-echo Release: ${RELEASE}
+echo "Release: ${RELEASE}"
 
 REF_ID=$(git log | grep commit | head -1 | awk '{ print $2 }')
 if [ -z "${REF_ID}" ]; then
     echo "cannot extract ref from 'git log'" >&2
     exit 1
 fi
-echo Ref: ${REF_ID}
+echo "Ref: ${REF_ID}"
 
 prefix='https://jenkins.onap.org/view/policy/job/'
 STAGE_ID=$(
-    curl --silent ${prefix}${DPROJ}-maven-docker-stage-${BRANCH}/ |
+    curl --silent "${prefix}${DPROJ}-maven-docker-stage-${BRANCH}/" |
     grep "Last completed build" |
     $SED -e 's!.*Last completed build .#!!' -e 's!).*!!' |
     head -1
@@ -107,17 +107,18 @@ if [ -z "${STAGE_ID}" ]; then
     exit 1
 fi
 STAGE_ID=${DPROJ}-maven-docker-stage-${BRANCH}/${STAGE_ID}
-echo Stage ID: ${STAGE_ID}
+echo "Stage ID: ${STAGE_ID}"
 
 prefix='https://jenkins.onap.org/view/policy/job/'
-JOB_OUT=$(curl --silent ${prefix}${STAGE_ID}/console)
+JOB_OUT=$(curl --silent "${prefix}${STAGE_ID}/consoleFull")
 echo "${JOB_OUT}" | grep -q "Finished: SUCCESS"
+# shellcheck disable=SC2181
 if [ $? -ne 0 ]; then
     echo "last docker build has not completed successfully" >&2
     exit 1
 fi
 
-echo Creating ${TOPDIR}/releases/${RELEASE}-container.yaml
+echo "Creating ${TOPDIR}/releases/${RELEASE}-container.yaml"
 cat >"${TOPDIR}/releases/${RELEASE}-container.yaml" <<EOT
 distribution_type: 'container'
 container_release_tag: '${RELEASE}'
@@ -144,7 +145,7 @@ do
         echo "cannot extract ${CONT_NAME} version from jenkins build output" >&2
         exit 1
     fi
-    echo ${CONT_NAME} version: ${VERSION}
+    echo "${CONT_NAME} version: ${VERSION}"
 
     cat >>"${TOPDIR}/releases/${RELEASE}-container.yaml" <<EOT_LOOP
     - name: '${CONT_NAME}'
