@@ -225,6 +225,11 @@
                 <artifactId>simpleclient_servlet</artifactId>
                 <version>${version.io.prometheus}</version>
             </dependency>
+            <dependency>
+                <groupId>io.prometheus</groupId>
+                <artifactId>simpleclient_logback</artifactId>
+                <version>${version.io.prometheus}</version>
+            </dependency>
 
             <!-- Swagger Jersey2 JAXRS -->
             <dependency>
