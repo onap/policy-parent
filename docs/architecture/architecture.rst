@@ -3,7 +3,7 @@
 .. http://creativecommons.org/licenses/by/4.0
 
 .. DO NOT REMOVE THIS LABEL - EVEN IF IT GENERATES A WARNING
-.. _architecture:
+.. _pf_architecture:
 
 .. THIS IS USED INTERNALLY IN POLICY ONLY
 .. _architecture-label:
@@ -154,7 +154,7 @@ The diagram below shows the architecture of the ONAP Policy Framework at its hig
 
 .. image:: images/PFHighestLevel.svg
 
-The *PolicyDevelopment* component implements the functionality for development of policy types and policies.
+The *PolicyAPI* component implements the functionality for CRUD of policy types and policies.
 *PolicyAdministration* is responsible for the deployment life cycle of policies as well as interworking with the
 mechanisms required to orchestrate the nodes and containers on which policies run. *PolicyAdministration* is also
 responsible for the administration of policies at run time; ensuring that policies are available to users, that policies
@@ -162,10 +162,10 @@ are executing correctly, and that the state and status of policies is monitored.
 running in the ONAP system and is responsible for making policy decisions and for managing the administrative state of
 the PDPs as directed by \ *PolicyAdministration.*
 
-*PolicyDevelopment* provides APIs that allow creation of policy artifacts and supporting information in the policy
+*PolicyAPI* provides APIs that allow creation of policy artifacts and supporting information in the policy
 database. *PolicyAdministration* reads those artifacts and the supporting information from the policy database whilst
 deploying policy artifacts. Once the policy artifacts are deployed, *PolicyAdministration* handles the run-time
-management of the PDPs on which the policies are running. *PolicyDevelopment* interacts with the database, and has
+management of the PDPs on which the policies are running. *PolicyAPI* interacts with the database, and has
 no programmatic interface with *PolicyAdministration*, *PolicyExecution* or any other run-time ONAP components.
 
 The diagram below shows a more detailed view of the architecture, as inspired by
@@ -173,10 +173,10 @@ The diagram below shows a more detailed view of the architecture, as inspired by
 
 .. image:: images/PFDesignAndAdmin.svg
 
-*PolicyDevelopment* provides a `CRUD <https://en.wikipedia.org/wiki/Create,_read,_update_and_delete>`__ API for policy
+*PolicyAPI* provides a `CRUD <https://en.wikipedia.org/wiki/Create,_read,_update_and_delete>`__ API for policy
 types and policies. The policy types and policy artifacts and their metadata (information about policies, policy types,
 and their interrelations) are stored in the *PolicyDB*. The *PolicyDevGUI*, PolicyDistribution, and other applications
-such as *CLAMP* can use the *PolicyDevelopment* API to create, update, delete, and read policy types and policies.
+such as *CLAMP* can use the *PolicyAPI* API to create, update, delete, and read policy types and policies.
 
 *PolicyAdministration* has two important functions:
 
@@ -235,7 +235,7 @@ for :ref:`Policy Administration Point (PAP) Architecture <pap-label>`.
 ---------------------------------
 
 This section describes the structure of and relations between the main concepts in the Policy Framework. This model is
-implemented as a common model and is used by *PolicyDevelopment*, *PolicyDeployment,* and *PolicyExecution.*
+implemented as a common model and is used by *PolicyAPI*, *PolicyAdministration,* and *PolicyExecution.*
 
 .. image:: images/ClassStructure.svg
 
@@ -260,7 +260,7 @@ Policy Type Design is the task of creating policy types that capture the generic
 policy for a particular domain use case.
 
 All policy types are specified in TOSCA service templates. Once policy types are defined and created in the system,
-*PolicyDevelopment* manages them and uses them to allow policies to be created from these policy types in a uniform
+*PolicyAPI* manages them and uses them to allow policies to be created from these policy types in a uniform
 way regardless of the domain that the policy type is addressing or the PDP technology that will execute the policy.
 
 A *PolicyTypeImpl* is developed for a policy type for a certain type of PDP (for example XACML oriented for decision
@@ -281,7 +281,7 @@ as handling the sequencing of events for interactions of the policies with other
 *apex-pdp*, all unmarshaling, marshaling, and component interactions are captured in the state machine, logic, and
 configuraiton of the policy, a Java application is not used.
 
-*PolicyDevelopment* provides the RESTful :ref:`Policy Design API <design-label>`, which allows other components to query
+*PolicyAPI* provides the RESTful :ref:`Policy Design API <design-label>`, which allows other components to query
 policy types, Those components can then create policies that specify values for the properties, triggers, and targets
 specified in a policy type. This API is used by components such as *CLAMP* and *PolicyDistribution* to create policies
 from policy types.
@@ -322,15 +322,15 @@ programmers in their work
 2.2.2 Policy Design
 ^^^^^^^^^^^^^^^^^^^
 
-The *PolicyCreation* function of *PolicyDevelopment* creates policies from a policy type.  The information expressed
+The *PolicyCreation* function of *PolicyAPI* creates policies from a policy type.  The information expressed
 during policy type design is used to parameterize a policy type to create an executable policy. A service designer
 and/or operations team can use tooling that reads the TOSCA Policy Type specifications to express and capture a policy
 at its highest abstraction level. Alternatively, the parameter for the policy can be expressed in a raw JSON or YAML
 file and posted over the policy design API described on the :ref:`Policy Design and Development <design-label>` page.
 
-A number of mechanisms for policy creation are supported in ONAP. The process in *PolicyDevelopment* for creating a
+A number of mechanisms for policy creation are supported in ONAP. The process in *PolicyAPI* for creating a
 policy is the same for all mechanisms. The most general mechanism for creating a policy is using the RESTful
-*Policy Design API*, which provides a full interface to the policy creation support of *PolicyDevelopment*. This API may
+*Policy Design API*, which provides a full interface to the policy creation support of *PolicyAPI*. This API may
 be exercised directly using utilities such as *curl*.
 
 In future releases, the Policy Framework may provide a command line tool that will be a loose wrapper around the API. It
@@ -353,22 +353,22 @@ Framework.
 2.2.2.1 Policy Design in the ONAP Policy Framework
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-Policy creation in *PolicyDevelopment* follows the general sequence shown in the sequence diagram below. An *API_USER*
-is any component that wants to create a policy from a policy type. *PolicyDevelopment* supplies a REST interface that
+Policy creation in *PolicyAPI* follows the general sequence shown in the sequence diagram below. An *API_USER*
+is any component that wants to create a policy from a policy type. *PolicyAPI* supplies a REST interface that
 exposes the API and also provides a command line tool and general purpose client that wraps the API.
 
 .. image:: images/PolicyDesign.svg
 
 An *API_User* first gets a reference to and the metadata for the Policy type for the policy they want to work on from
-*PolicyDevelopment*. *PolicyDevelopment* reads the metadata and artifact for the policy type from the database. The
-*API_User* then asks for a reference and the metadata for the policy. *PolicyDevelopment* looks up the policy in the
-database. If the policy already exists, *PolicyDevelopment* reads the artifact and returns the reference of the existing
-policy to the *API_User* with the metadata for the existing policy. If the policy does not exist, *PolicyDevelopment*
+*PolicyAPI*. *PolicyAPI* reads the metadata and artifact for the policy type from the database. The
+*API_User* then asks for a reference and the metadata for the policy. *PolicyAPI* looks up the policy in the
+database. If the policy already exists, *PolicyAPI* reads the artifact and returns the reference of the existing
+policy to the *API_User* with the metadata for the existing policy. If the policy does not exist, *PolicyAPI*
 informs the *API_User*.
 
 The *API_User* may now proceed with a policy specification session, where the parameters are set for the policy using
 the policy type specification. Once the *API_User* is happy that the policy is completely and correctly specified, it
-requests *PolicyDevelopment* to create the policy. *PolicyDevelopment* creates the policy, stores the created policy
+requests *PolicyAPI* to create the policy. *PolicyAPI* creates the policy, stores the created policy
 artifact and its metadata in the database.
 
 2.2.2.2 Model Driven VF (Virtual Function) Policy Design via VNF SDK Packaging

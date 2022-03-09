@@ -140,7 +140,7 @@ update_repos() {
 
 get_tags() {
     echo "Repo, Last Tag Version,Snapshot Version,Changed Files,Docker Images"
-    echo "repo, Last Tag Version,Snapshot Version,Changed Files,Docker Images" > "$release_data_file"
+    echo "Repo, Last Tag Version,Snapshot Version,Changed Files,Docker Images" > "$release_data_file"
     for repo in "${pf_repos[@]}"
     do
         latest_snapshot_tag=$(mvn -f "$repo_location/$repo" clean | \
