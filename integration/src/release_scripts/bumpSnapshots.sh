@@ -178,7 +178,7 @@ do
         mv "$temp_file" "$repo_location/$repo/version.properties"
     fi
 
-    updateRefs.sh -pcmos -d "$release_data_file" -l "$repo_location" -r "$repo"
+    updateRefs.sh -pcmoxs -d "$release_data_file" -l "$repo_location" -r "$repo"
 
     if [ "$(git -C "$repo_location/$specified_repo" status | grep '^[ \t]*modified:[ \t]*pom.xml' > /dev/null 2>&1)" = 0 ]
     then

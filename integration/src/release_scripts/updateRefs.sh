@@ -52,6 +52,7 @@ usage()
     echo "         -c           - update policy/common references"
     echo "         -m           - update policy/model references"
     echo "         -o           - update policy/drools-pdp references"
+    echo "         -x           - update policy/apex-pdp references"
     echo "         -k           - update docker base images in Dockerfiles"
     echo "         -s           - update release references to snapshot references,"
     echo "                        if omitted, snapshot references are updated to release references"
@@ -71,10 +72,11 @@ update_parent=false
 update_common=false
 update_models=false
 update_drools_pdp=false
+update_apex_pdp=false
 update_snapshot=false
 update_docker=false
 
-while getopts "hd:l:r:pcmoks" opt
+while getopts "hd:l:r:pcmoxks" opt
 do
     case $opt in
     h)
@@ -100,6 +102,9 @@ do
         ;;
     o)
         update_drools_pdp=true
+        ;;
+    x)
+        update_apex_pdp=true
         ;;
     k)
         update_docker=true
@@ -194,6 +199,15 @@ read -r drools_pdp_repo \
      drools_pdp_changed_files \
      drools_pdp_docker_images \
     <<< $(grep policy/drools-pdp "$release_data_file" | tr ',' ' ' )
+
+# shellcheck disable=SC2034
+# shellcheck disable=SC2046
+read -r apex_pdp_repo \
+     apex_pdp_latest_released_tag \
+     apex_pdp_latest_snapshot_tag \
+     apex_pdp_changed_files \
+     apex_pdp_docker_images \
+    <<< $(grep policy/apex-pdp "$release_data_file" | tr ',' ' ' )
 
 # shellcheck disable=SC2034
 # shellcheck disable=SC2046
@@ -353,12 +367,41 @@ then
     fi
 fi
 
+if [ "$update_apex_pdp" = true ]
+then
+    if [ "$update_snapshot" = true ]
+    then
+        echo "updating policy apex-pdp reference to $apex_pdp_latest_snapshot_tag on $repo_location/$target_repo . . ."
+        $SED -i \
+            -e "s/<policy.apex-pdp.version>.*<\/policy.apex-pdp.version>/<policy.apex-pdp.version>$apex_pdp_latest_snapshot_tag<\/policy.apex-pdp.version>/" \
+            -e "s/<version.policy.apex-pdp>.*<\/version.policy.apex-pdp>/<version.policy.apex-pdp>$apex_pdp_latest_snapshot_tag<\/version.policy.apex-pdp>/" \
+            "$repo_location/$target_repo/pom.xml"
+        result_code=$?
+    else
+        echo "updating policy apex-pdp reference to $apex_pdp_latest_released_tag on $repo_location/$target_repo . . ."
+        $SED -i \
+            -e "s/<policy.apex-pdp.version>.*<\/policy.apex-pdp.version>/<policy.apex-pdp.version>$apex_pdp_latest_released_tag<\/policy.apex-pdp.version>/" \
+            -e "s/<version.policy.apex-pdp>.*<\/version.policy.apex-pdp>/<version.policy.apex-pdp>$apex_pdp_latest_released_tag<\/version.policy.apex-pdp>/" \
+            "$repo_location/$target_repo/pom.xml"
+        result_code=$?
+    fi
+    if [[ "$result_code" -eq 0 ]]
+    then
+        echo "policy apex-pdp reference updated on $repo_location/$target_repo"
+    else
+        echo "policy apex-pdp reference update failed on $repo_location/$target_repo"
+        exit 1
+    fi
+fi
+
 if [ "$update_docker" = true ] && [ "$target_docker_images" != "" ]
 then
     echo "updating docker base images to version $docker_latest_released_tag on repo $repo_location/$target_repo . . ."
     find "$repo_location/$target_repo" \
+        -name '*Docker*'
+    find "$repo_location/$target_repo" \
         -name '*Docker*' \
-        -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)2.3.1$/\1$docker_latest_released_tag/" {} \;
+        -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9]*$/\1$docker_latest_released_tag/" {} \;
     result_code=$?
     if [[ "$result_code" -eq 0 ]]
     then
