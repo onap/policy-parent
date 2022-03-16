@@ -4,14 +4,14 @@
 
 .. _policy-clamp-runtime-smoke-label:
 
-CLAMP control loop runtime Smoke Tests
-######################################
+CLAMP Automation Composition Smoke Tests
+########################################
 
 .. contents::
     :depth: 3
 
 
-This article explains how to build the CLAMP control loop runtime for development purposes and how to run smoke tests for control loop runtime. To start, the developer should consult the latest ONAP Wiki to familiarize themselves with developer best practices and how-tos to setup their environment, see `https://wiki.onap.org/display/DW/Developer+Best+Practices`.
+This article explains how to build the CLAMP automation composition for development purposes and how to run smoke tests for automation composition. To start, the developer should consult the latest ONAP Wiki to familiarize themselves with developer best practices and how-tos to setup their environment, see `https://wiki.onap.org/display/DW/Developer+Best+Practices`.
 
 
 This article assumes that:
@@ -24,10 +24,10 @@ This article assumes that:
 
 The procedure documented in this article has been verified using Unbuntu 20.04 LTS VM.
 
-Cloning CLAMP control loop runtime and all dependency
-*****************************************************
+Cloning CLAMP automation composition and all dependency
+*******************************************************
 
-Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/#/admin/projects/?filter=policy>`_. This script clones CLAMP control loop runtime and all dependency.
+Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/#/admin/projects/?filter=policy>`_. This script clones CLAMP automation composition and all dependency.
 
 ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the ONAP ECOMP SDK *ecompsdkos* module, and the A&AI Schema module.
 
@@ -142,8 +142,8 @@ Execution of the script above results in the following directory hierarchy in yo
     *  ~/git/onap/policy/docker
 
 
-Building CLAMP control loop runtime and all dependency
-******************************************************
+Building CLAMP automation composition and all dependency
+********************************************************
 
 **Step 1:** Optionally, for a completely clean build, remove the ONAP built modules from your local repository.
 
@@ -155,8 +155,8 @@ Building CLAMP control loop runtime and all dependency
 **Step 2:**  A pom such as the one below can be used to build the ONAP Policy Framework modules. Create the *pom.xml* file in the directory *~/git/onap/policy*.
 
 .. code-block:: xml
-   :caption: Typical pom.xml to build the ONAP Policy Framework
-   :linenos:
+  :caption: Typical pom.xml to build the ONAP Policy Framework
+  :linenos:
 
     <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <modelVersion>4.0.0</modelVersion>
@@ -181,14 +181,14 @@ Building CLAMP control loop runtime and all dependency
 
 **Step 3:** You can now build the Policy framework.
 
-Java artifacts only:
+Build java artifacts only:
 
     .. code-block:: bash
 
        cd ~/git/onap/policy
        mvn -pl '!org.onap.policy.clamp:policy-clamp-runtime' install
 
-With docker images:
+Build with docker images:
 
     .. code-block:: bash
 
@@ -201,16 +201,16 @@ Running MariaDb and DMaaP Simulator
 Running a MariaDb Instance
 ++++++++++++++++++++++++++
 
-Assuming you have successfully built the codebase using the instructions above. There are two requirements for the Clamp controlloop runtime component to run, one of them is a
+Assuming you have successfully built the codebase using the instructions above. There are two requirements for the Clamp automation composition component to run, one of them is a
 running MariaDb database instance. The easiest way to do this is to run the docker image locally.
 
 An sql such as the one below can be used to build the SQL initialization. Create the *mariadb.sql* file in the directory *~/git*.
 
     .. code-block:: SQL
 
-       create database controlloop;
+       create database clampacm;
        CREATE USER 'policy'@'%' IDENTIFIED BY 'P01icY';
-       GRANT ALL PRIVILEGES ON controlloop.* TO 'policy'@'%';
+       GRANT ALL PRIVILEGES ON clampacm.* TO 'policy'@'%';
 
 
 Execution of the command above results in the creation and start of the *mariadb-smoke-test* container.
@@ -227,7 +227,7 @@ Execution of the command above results in the creation and start of the *mariadb
 
 Running the DMaaP Simulator during Development
 ++++++++++++++++++++++++++++++++++++++++++++++
-The second requirement for the Clamp controlloop runtime component to run is to run the DMaaP simulator. You can run it from the command line using Maven.
+The second requirement for the Clamp automation composition component to run is to run the DMaaP simulator. You can run it from the command line using Maven.
 
 
 Change the local configuration file *src/test/resources/simParameters.json* using the below code:
@@ -258,8 +258,8 @@ Run the following commands:
       mvn exec:java  -Dexec.mainClass=org.onap.policy.models.simulators.Main -Dexec.args="src/test/resources/simParameters.json"
 
 
-Developing and Debugging CLAMP control loop runtime
-***************************************************
+Developing and Debugging CLAMP automation composition
+*****************************************************
 
 Running on the Command Line using Maven
 +++++++++++++++++++++++++++++++++++++++
@@ -268,7 +268,7 @@ Once the mariadb and DMaap simulator are up and running, run the following comma
 
    .. code-block:: bash
 
-      cd ~/git/onap/policy/clamp/runtime-controlloop
+      cd ~/git/onap/policy/clamp/runtime-acm
       mvn spring-boot:run
 
 
@@ -277,19 +277,19 @@ Running on the Command Line
 
    .. code-block:: bash
 
-      cd ~/git/onap/policy/clamp/runtime-controlloop
-      java -jar target/policy-clamp-runtime-controlloop-6.1.3-SNAPSHOT.jar
+      cd ~/git/onap/policy/clamp/runtime-acm
+      java -jar target/policy-clamp-runtime-acm-6.2.2-SNAPSHOT.jar
 
 
 Running in Eclipse
 ++++++++++++++++++
 
 1. Check out the policy models repository
-2. Go to the *policy-clamp-runtime-controlloop* module in the clamp repo
-3. Specify a run configuration using the class *org.onap.policy.clamp.controlloop.runtime.Application* as the main class
+2. Go to the *policy-clamp-runtime-acm* module in the clamp repo
+3. Specify a run configuration using the class *org.onap.policy.clamp.acm.runtime.Application* as the main class
 4. Run the configuration
 
-Swagger UI of Control loop runtime is available at *http://localhost:6969/onap/controlloop/swagger-ui/*, and swagger JSON at *http://localhost:6969/onap/controlloop/v2/api-docs/*
+Swagger UI of Automation composition is available at *http://localhost:6969/onap/policy/clamp/acm/swagger-ui/*, and swagger JSON at *http://localhost:6969/onap/policy/clamp/acm/v2/api-docs/*
 
 
 Running one or more participant simulators
@@ -301,24 +301,24 @@ Copy the file *src/main/resources/config/application.yaml* and paste into *src/t
    .. code-block:: yaml
 
       participantId:
-        name: org.onap.policy.controlloop.PolicyControlLoopParticipant
-        version: 2.3.1
-      participantType:
         name: org.onap.PM_Policy
         version: 1.0.0
+      participantType:
+        name: org.onap.policy.clamp.acm.PolicyParticipant
+        version: 2.3.1
 
 Run the following commands:
 
    .. code-block:: bash
 
       cd ~/git/onap/policy/clamp/participant/participant-impl/participant-impl-simulator
-       java -jar target/policy-clamp-participant-impl-simulator-6.1.3-SNAPSHOT.jar --spring.config.location=src/test/resources/application.yaml
+      java -jar target/policy-clamp-participant-impl-simulator-6.2.2-SNAPSHOT.jar --spring.config.location=src/main/resources/config/application.yaml
 
 
 Creating self-signed certificate
 ++++++++++++++++++++++++++++++++
 
-There is an additional requirement for the Clamp control loop runtime docker image to run, is creating the SSL self-signed certificate.
+There is an additional requirement for the Clamp automation composition docker image to run, is creating the SSL self-signed certificate.
 
 Run the following commands:
 
@@ -338,8 +338,8 @@ Execution of the commands above results additional files into the following dire
     *  ~/git/onap/policy/docker/csit/config/ks.jks
 
 
-Running the CLAMP control loop runtime docker image
-+++++++++++++++++++++++++++++++++++++++++++++++++++
+Running the CLAMP automation composition docker image
++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Run the following command:
 
@@ -350,8 +350,65 @@ Run the following command:
        -e mariadb.host=host.docker.internal \
        -e topicServer=host.docker.internal \
        --mount type=bind,source=~/git/onap/policy/docker/csit/config/ks.jks,target=/opt/app/policy/clamp/etc/ssl/policy-keystore  \
-       --mount type=bind,source=~/git/onap/policy/clamp/runtime-controlloop/src/main/resources/application.yaml,target=/opt/app/policy/clamp/etc/ClRuntimeParameters.yaml  \
-       onap/policy-clamp-cl-runtime
+       --mount type=bind,source=~/git/onap/policy/clamp/runtime-acm/src/main/resources/application.yaml,target=/opt/app/policy/clamp/etc/AcRuntimeParameters.yaml  \
+       onap/policy-clamp-runtime-acm
 
 
-Swagger UI of Control loop runtime is available at *https://localhost:6969/onap/controlloop/swagger-ui/*, and swagger JSON at *https://localhost:6969/onap/controlloop/v2/api-docs/*
+Swagger UI of automation composition is available at *https://localhost:6969/onap/policy/clamp/acm/swagger-ui/*, and swagger JSON at *https://localhost:6969/onap/policy/clamp/acm/v2/api-docs/*
+
+
+Using CLAMP runtime to connect to CLAMP automation composition
+**************************************************************
+
+Build CLAMP runtime image:
+
+    .. code-block:: bash
+
+       cd ~/git/onap/policy/clamp/runtime
+       mvn clean install -P docker -DskipTests
+
+
+Run the following docker composition:
+
+   .. code-block:: yaml
+
+      version: '3.1'
+
+      services:
+        db:
+          image: mariadb:10.5.8
+          volumes:
+             - "~/git/onap/policy/clamp/runtime/extra/sql/:/docker-entrypoint-initdb.d:rw"
+          environment:
+            - MYSQL_ROOT_PASSWORD=strong_pitchou
+          ports:
+            - "3306:3306"
+
+        policy-clamp-backend:
+          image: onap/policy-clamp-backend
+          depends_on:
+            - db
+            - third-party-proxy
+          environment:
+            - SPRING_DATASOURCE_URL=jdbc:mariadb:sequential://db:3306/cldsdb4?autoReconnect=true&connectTimeout=10000&socketTimeout=10000&retriesAllDown=3
+            - SPRING_PROFILES_ACTIVE=clamp-default,clamp-default-user,clamp-sdc-controller,clamp-ssl-config,clamp-policy-controller,default-dictionary-elements
+            - CLAMP_CONFIG_POLICY_API_URL=http://third-party-proxy:8085
+            - CLAMP_CONFIG_ACM_RUNTIME_URL=http://host.docker.internal:6969
+            - CLAMP_CONFIG_POLICY_PAP_URL=http://third-party-proxy:8085
+            - CLAMP_CONFIG_DCAE_INVENTORY_URL=http://third-party-proxy:8085
+            - CLAMP_CONFIG_DCAE_DEPLOYMENT_URL=http://third-party-proxy:8085
+            - SPRING_CONFIG_LOCATION=classpath:/application.properties
+          ports:
+            - "10443:8443"
+
+        third-party-proxy:
+          image: python:2-slim
+          volumes:
+            - "~/git/onap/policy/clamp/runtime/src/test/resources/http-cache/example/:/thirdparty:rw"
+            - "~/git/onap/policy/clamp/runtime/src/test/resources/http-cache/:/script/:ro"
+          ports:
+            - "8085:8085"
+          command: /bin/sh -c "pip install --no-cache-dir requests &&  pip install --no-cache-dir simplejson && python -u /script/third_party_proxy.py -v true --port 8085 --root /thirdparty --proxyaddress third-party-proxy:8085"
+
+
+Run DMaaP simulator, and than run CLAMP Acm using java.
