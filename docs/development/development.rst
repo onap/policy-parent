@@ -12,3 +12,4 @@ Policy Platform Development
    pdp/pdp-pap-interaction.rst
    actors/actors.rst
    property-configuration.rst
+   prometheus-metrics.rst
