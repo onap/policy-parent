@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d195664_2f404e40",
+        "filename": "integration/src/release_scripts/generateCommit.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-25T12:22:35Z",
+      "side": 0,
+      "message": "We need to return a value to calling scripts so that they can check if the commit was accepted or not.",
+      "revId": "794497a6f9c247cb016c776d4b4d7f805db5dadc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
