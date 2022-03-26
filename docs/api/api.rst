@@ -181,6 +181,7 @@ Global API Table
    "Statistics API", ":download:`link <swagger/statistics-api.json>`"
    "Tosca Policy Type API", ":download:`link <swagger/policytype-api.json>`"
    "Tosca Policy API", ":download:`link <swagger/policy-api.json>`"
+   "Tosca NodeTemplate API", ":download:`link <swagger/nodetemplates-api.json>`"
 
 API Swagger
 -----------
@@ -216,6 +217,35 @@ x-onap-requestid is used to track REST transactions for logging purpose, as desc
 .. swaggerv2doc:: swagger/policytype-api.json
 
 .. swaggerv2doc:: swagger/policy-api.json
+
+
+Creating MetadataSet for policy
+--------------------------------
+
+The policy type implementation in tosca policy can be independently persisted to the database as metadataSets via the Tosca node template Apis .
+The policy type implementation data can be excluded from the policy properties section of the tosca policy and the user can specify only the "metadataSetName" and "metadataSetVersion"
+fields under the policy "metadata" section to map a specific policy type implementation to the policy during the policy creation.
+
+The following sample tosca service template comprises a list of tosca node templates each containing a policy type implementation data in the form of metadataSet that can be persisted to the database independently using the policy node template Api.
+
+.. csv-table::
+   :header: "Tosca node template", "Payload"
+   :widths: 15,10
+
+   "sample.nodetemplates.metadatasets", `nodetemplates.metadatasets.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/nodetemplates/nodetemplates.metadatasets.input.tosca.yaml>`_  `nodetemplates.metadatasets.input.tosca.json <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/nodetemplates/nodetemplates.metadatasets.input.tosca.json>`_
+
+
+The following sample tosca policy shows the policy metadata section that maps to one of the metadataSets stored in the database prior to the policy creation.
+
+.. csv-table::
+   :header: "Tosca policy", "Payload"
+   :widths: 15,10
+
+   "apex.decisionmaker.policy", `apex.policy.decisionmaker.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/apex.policy.decisionmaker.input.tosca.yaml>`_
+
+The following node template Apis are introduced to handle the policy metadataSets as independent entities that can be later mapped to a tosca policy during policy creation.
+
+.. swaggerv2doc:: swagger/nodetemplates-api.json
 
 When making a POST policy API call, the client must not only provide well-formed JSON/YAML,
 but also must conform to the TOSCA specification. For example. the "type" field for a TOSCA
