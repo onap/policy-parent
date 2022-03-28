@@ -1,20 +1,20 @@
 {
-  "controlLoopList": [
+  "automationCompositionList ": [
     {
       "name": "K8SInstance0",
       "version": "1.0.1",
       "definition": {
-        "name": "org.onap.domain.sample.GenericK8s_ControlLoopDefinition",
+        "name": "org.onap.domain.sample.GenericK8s_AutomationCompositionDefinition",
         "version": "1.2.3"
       },
       "state": "UNINITIALISED",
       "orderedState": "UNINITIALISED",
-      "description": "K8s control loop instance 0",
+      "description": "K8s automation composition instance 0",
       "elements": {
         "709c62b3-8918-41b9-a747-d21eb79c6c21": {
           "id": "709c62b3-8918-41b9-a747-d21eb79c6c21",
           "definition": {
-            "name": "org.onap.domain.database.Local_K8SMicroserviceControlLoopElement",
+            "name": "org.onap.policy.clamp.Local_K8SMicroserviceAutomationCompositionElement",
             "version": "1.2.3"
           },
           "participantId": {
@@ -22,17 +22,17 @@
             "version": "1.0.0"
           },
           "participantType": {
-            "name": "org.onap.k8s.controlloop.K8SControlLoopParticipant",
+            "name": "org.onap.policy.clamp.acm.KubernetesParticipant",
             "version": "2.3.4"
           },
           "state": "UNINITIALISED",
           "orderedState": "UNINITIALISED",
-          "description": "K8s Control Loop Element for the nginx-ingress microservice"
+          "description": "K8s Automation composition Element for the nginx-ingress microservice"
         },
         "709c62b3-8918-41b9-a747-d21eb79c6c22": {
           "id": "709c62b3-8918-41b9-a747-d21eb79c6c22",
           "definition": {
-            "name": "org.onap.domain.database.Http_MicroserviceControlLoopElement",
+            "name": "org.onap.policy.clamp.Http_AutomationCompositionElement",
             "version": "1.2.3"
           },
           "participantId": {
@@ -40,12 +40,12 @@
             "version": "1.0.0"
           },
           "participantType": {
-            "name": "org.onap.k8s.controlloop.HttpControlLoopParticipant",
+            "name": "org.onap.policy.clamp.acm.HttpParticipant",
             "version": "2.3.4"
           },
           "state": "UNINITIALISED",
           "orderedState": "UNINITIALISED",
-          "description": "Http Control Loop Element"
+          "description": "Http Automation composition Element"
         }
       }
     }
