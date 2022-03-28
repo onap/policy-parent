@@ -1,6 +1,6 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
-.. _clamp-controlloop-participants-smoke-tests:
+.. _clamp-acm-participants-smoke-tests:
 
 CLAMP participants (kubernetes, http) Smoke Tests
 -------------------------------------------------
@@ -8,7 +8,7 @@ CLAMP participants (kubernetes, http) Smoke Tests
 ***************
 The CLAMP participants (kubernetes and http) are used to interact with the helm client in a kubernetes environment for the
 deployment of microservices via helm chart as well as to configure the microservices over REST endpoints. Both of these participants are
-often used together in the Control loop workflow.
+often used together in the Automation Composition Management workflow.
 
 This document will serve as a guide to do smoke tests on the different components that are involved when working with the participants and outline how they operate. It will also show a developer how to set up their environment for carrying out smoke tests on these participants.
 
@@ -53,19 +53,19 @@ In this setup guide, we will be setting up all the components technically requir
 
 2.3.1 MariaDB Setup
 ^^^^^^^^^^^^^^^^^^^
-We will be using Docker to run our mariadb instance. It will have the runtime-controlloop database running in it.
+We will be using Docker to run our mariadb instance. It will have the acm-runtime database running in it.
 
-- controlloop: the runtime-controlloop db
+- AutomationComposition: the runtime-acm db
 
 The easiest way to do this is to perform a small alteration on an SQL script provided by the clamp backend in the file "runtime/extra/sql/bulkload/create-db.sql"
 
 .. code-block:: mysql
 
-    CREATE DATABASE `controlloop`;
-    USE `controlloop`;
+    CREATE DATABASE `clampacm`;
+    USE `clampacm`;
     DROP USER 'policy';
     CREATE USER 'policy';
-    GRANT ALL on controlloop.* to 'policy' identified by 'P01icY' with GRANT OPTION;
+    GRANT ALL on clampacm.* to 'policy' identified by 'P01icY' with GRANT OPTION;
 
 Once this has been done, we can run the bash script provided here: "runtime/extra/bin-for-dev/start-db.sh"
 
@@ -73,7 +73,7 @@ Once this has been done, we can run the bash script provided here: "runtime/extr
 
     ./start-db.sh
 
-This will setup all the Control Loop runtime database. The database will be exposed locally on port 3306 and will be backed by an anonymous docker volume.
+This will setup all the automation composition runtime database. The database will be exposed locally on port 3306 and will be backed by an anonymous docker volume.
 
 2.3.2 DMAAP Simulator
 ^^^^^^^^^^^^^^^^^^^^^
@@ -109,9 +109,9 @@ For convenience, a dmaap simulator has been provided in the policy/models reposi
 At this stage the dmaap simulator should be running on your local machine on port 3904.
 
 
-2.3.3 Controlloop Runtime
-^^^^^^^^^^^^^^^^^^^^^^^^^
-To start the controlloop runtime service, we need to execute the following maven command from the "runtime-controlloop" directory in the clamp repo. Control Loop runtime uses the config file "src/main/resources/application.yaml" by default.
+2.3.3 Automation composition Runtime
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To start the automation composition runtime service, we need to execute the following maven command from the "runtime-acm" directory in the clamp repo. Automation composition runtime uses the config file "src/main/resources/application.yaml" by default.
 
 .. code-block:: bash
 
@@ -129,7 +129,7 @@ The following command can be used to add nginx repository to the helm client.
 2.3.5 Kubernetes and http participants
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The participants can be started from the clamp repository by executing the following maven command from the appropriate directories.
-The participants will be started and get registered to the Control Loop runtime.
+The participants will be started and get registered to the Automation composition runtime.
 
 Navigate to the directory "participant/participant-impl/participant-impl-kubernetes/" and start kubernetes participant.
 
@@ -143,16 +143,23 @@ Navigate to the directory "participant/participant-impl/participant-impl-http/" 
 
     mvn spring-boot:run
 
+For building docker images of runtime-acm and participants:
+
+.. code-block:: bash
+
+   cd ~/git/onap/policy/clamp/packages/
+   mvn clean install -P docker
+
 
 3. Running Tests
 ****************
-In this section, we will run through the sequence of steps in Control Loop workflow . The workflow can be triggered via Postman client.
+In this section, we will run through the sequence of steps in ACM workflow . The workflow can be triggered via Postman client.
 
 3.1 Commissioning
 =================
-Commission Control loop TOSCA definitions to Runtime.
+Commission Automation composition TOSCA definitions to Runtime.
 
-The Control Loop definitions are commissioned to CL runtime which populates the CL runtime database.
+The Automation composition definitions are commissioned to runtime-acm which populates the ACM runtime database.
 The following sample TOSCA template is commissioned to the runtime endpoint which contains definitions for kubernetes participant that deploys nginx ingress microservice
 helm chart and a http POST request for http participant.
 
@@ -162,41 +169,41 @@ Commissioning Endpoint:
 
 .. code-block:: bash
 
-   POST: https://<CL Runtime IP> : <Port> /onap/controlloop/v2/commission
+   POST: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/commission
 
 A successful commissioning gives 200 response in the postman client.
 
 
-3.2 Create New Instances of Control Loops
-=========================================
-Once the template is commissioned, we can instantiate Control Loop instances. This will create the instances with default state "UNINITIALISED".
+3.2 Create New Instances of Automation composition
+==================================================
+Once the template is commissioned, we can instantiate automation composition instances. This will create the instances with default state "UNINITIALISED".
 
 Instantiation Endpoint:
 
 .. code-block:: bash
 
-   POST: https://<CL Runtime IP> : <Port> /onap/controlloop/v2/instantiation
+   POST: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/instantiation
 
 Request body:
 
-:download:`Instantiation json <json/cl-instantiation.json>`
+:download:`Instantiation json <json/acm-instantiation.json>`
 
 3.3 Change the State of the Instance
 ====================================
-When the Control loop is updated with state “PASSIVE”, the Kubernetes participant fetches the node template for all control loop elements and deploys the helm chart of each CL element in to the cluster. The following sample json input is passed on the request body.
+When the automation composition is updated with state “PASSIVE”, the Kubernetes participant fetches the node template for all automation composition elements and deploys the helm chart of each AC element in to the cluster. The following sample json input is passed on the request body.
 
-Control Loop Update Endpoint:
+Automation Composition Update Endpoint:
 
 .. code-block:: bash
 
-   PUT: https://<CL Runtime IP> : <Port> /onap/controlloop/v2/instantiation/command
+   PUT: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/instantiation/command
 
    Request body:
 .. code-block:: bash
 
    {
      "orderedState": "PASSIVE",
-     "controlLoopIdentifierList": [
+     "automationCompositionIdentifierList": [
        {
          "name": "K8SInstance0",
          "version": "1.0.1"
@@ -214,31 +221,31 @@ The following command can be used to verify the pods deployed successfully by ku
    helm ls -n onap | grep nginx
    kubectl get po -n onap | grep nginx
 
-The overall state of the control loop should be "PASSIVE" to indicate both the participants has successfully completed the operations. This can be verified by the following rest endpoint.
+The overall state of the automation composition should be "PASSIVE" to indicate both the participants has successfully completed the operations. This can be verified by the following rest endpoint.
 
-Verify control loop state:
-
-.. code-block:: bash
-
-   GET: https://<CL Runtime IP> : <Port>/onap/controlloop/v2/instantiation
-
-
-3.4 Control Loop can be "UNINITIALISED" after deployment
-========================================================
-
-By changing the state to "UNINITIALISED", all the helm deployments under the corresponding control loop will be uninstalled from the cluster.
-Control Loop Update Endpoint:
+Verify automation composition state:
 
 .. code-block:: bash
 
-   PUT: https://<CL Runtime IP> : <Port> /onap/controlloop/v2/instantiation/command
+   GET: https://<Runtime ACM IP> : <Port>/onap/policy/clamp/acm/instantiation
+
+
+3.4 Automation Compositions can be "UNINITIALISED" after deployment
+===================================================================
+
+By changing the state to "UNINITIALISED", all the helm deployments under the corresponding automation composition will be uninstalled from the cluster.
+Automation Composition Update Endpoint:
+
+.. code-block:: bash
+
+   PUT: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/instantiation/command
 
    Request body:
 .. code-block:: bash
 
    {
      "orderedState": "UNINITIALISED",
-     "controlLoopIdentifierList": [
+     "automationCompositionIdentifierList": [
        {
          "name": "K8SInstance0",
          "version": "1.0.1"
