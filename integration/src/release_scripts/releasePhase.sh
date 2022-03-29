@@ -247,11 +247,6 @@ release_phase_7() {
         -pcmk \
         -d "$release_data_file" \
         -l "$repo_location" \
-        -r "policy/gui"
-    updateRefs.sh \
-        -pcmk \
-        -d "$release_data_file" \
-        -l "$repo_location" \
         -r "policy/pap"
     updateRefs.sh \
         -pcmk \
@@ -290,12 +285,6 @@ release_phase_7() {
         -m "updated references in the policy/drools-pdp pom"
     generateCommit.sh \
         -l "$repo_location" \
-        -r "policy/gui" \
-        -i "$issue_id" \
-        -e "update references in policy/gui pom" \
-        -m "updated references in the policy/gui pom"
-    generateCommit.sh \
-        -l "$repo_location" \
         -r "policy/pap" \
         -i "$issue_id" \
         -e "update references in policy/pap pom" \
@@ -316,7 +305,6 @@ release_phase_8() {
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/clamp -i "$issue_id"
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/distribution -i "$issue_id"
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/drools-pdp -i "$issue_id"
-    releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/gui -i "$issue_id"
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/pap -i "$issue_id"
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/xacml-pdp -i "$issue_id"
     echo "Generated artifact release yaml file and commit for repos"
@@ -329,14 +317,13 @@ release_phase_9() {
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/clamp -i "$issue_id"
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/distribution -i "$issue_id"
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/drools-pdp -i "$issue_id"
-    releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/gui -i "$issue_id"
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/pap -i "$issue_id"
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/xacml-pdp -i "$issue_id"
     echo "Generated docker release yaml file and commit for repos"
 }
 
 release_phase_10() {
-    echo "Updating snapshots for repos, updating references on policy/drools-applications . . ."
+    echo "Updating snapshots for repos, updating references on policy/drools-applications, policy/gui . . ."
     bumpSnapshots.sh \
         -d "$release_data_file" \
         -l "$repo_location" \
@@ -346,33 +333,47 @@ release_phase_10() {
         -d "$release_data_file" \
         -l "$repo_location" \
         -r "policy/drools-applications"
+    updateRefs.sh \
+        -pcmxk \
+        -d "$release_data_file" \
+        -l "$repo_location" \
+        -r "policy/gui"
     generateCommit.sh \
         -l "$repo_location" \
         -r "policy/drools-applications" \
         -i "$issue_id" \
         -e "update references in policy/drools-applications pom" \
         -m "updated references in the policy/drools-applications pom"
-    echo "Updated snapshots for repos, updated references on policy/drools-applications"
+    generateCommit.sh \
+        -l "$repo_location" \
+        -r "policy/gui" \
+        -i "$issue_id" \
+        -e "update references in policy/gui pom" \
+        -m "updated references in the policy/gui pom"
+    echo "Updated snapshots for repos, updated references on policy/drools-applications, policy/gui"
 }
 
 release_phase_11() {
     echo "Generating artifact release yaml file and commit for policy/drools-applications . . ."
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/drools-applications -i "$issue_id"
+    releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/gui -i "$issue_id"
     echo "Generated artifact release yaml file and commit for policy/drools-applications"
 }
 
 release_phase_12() {
     echo "Generating docker release yaml file and commit for policy/drools-applications . . ."
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/drools-applications -i "$issue_id"
+    releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/gui -i "$issue_id"
     echo "Generated docker release yaml file and commit for policy/drools-applications"
 }
 
 release_phase_13() {
-    echo "Updating snapshots on policy/drools-applications . . ."
+    echo "Updating snapshots on policy/drools-applications, policy/gui . . ."
     bumpSnapshots.sh \
         -d "$release_data_file" \
         -l "$repo_location" \
         -i "$issue_id"
+    echo "Updated snapshots on policy/drools-applications, policy/gui"
 }
 
 case "$release_phase" in

@@ -20,8 +20,6 @@
 # ============LICENSE_END==================================================
 #
 
-set -e
-
 SCRIPT_NAME=$(basename "$0")
 repo_location="./"
 
