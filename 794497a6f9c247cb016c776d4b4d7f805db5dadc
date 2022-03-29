@@ -16,6 +16,24 @@
       "revId": "794497a6f9c247cb016c776d4b4d7f805db5dadc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b32b2d9_58688a4e",
+        "filename": "integration/src/release_scripts/generateCommit.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-03-29T08:49:16Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "9d195664_2f404e40",
+      "revId": "794497a6f9c247cb016c776d4b4d7f805db5dadc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
