@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69eab366_9fd69baa",
+        "filename": "docs/development/devtools/policy-participant-smoke.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 7504
+      },
+      "writtenOn": "2022-03-29T12:36:53Z",
+      "side": 1,
+      "message": "DB name should be clampacm, I think",
+      "revId": "8b2b57ebd0416dc5601f80bb2aea50be416f791f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9526835_b31241c4",
+        "filename": "docs/development/devtools/policy-participant-smoke.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7504
+      },
+      "writtenOn": "2022-03-29T12:36:53Z",
+      "side": 1,
+      "message": "clampacm database name for below entries too",
+      "revId": "8b2b57ebd0416dc5601f80bb2aea50be416f791f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18200c65_8ab24afc",
+        "filename": "docs/development/devtools/policy-participant-smoke.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 7504
+      },
+      "writtenOn": "2022-03-29T12:36:53Z",
+      "side": 1,
+      "message": "Can you please rename sirisha to policyTest or something else please. Any other occurrences below too.",
+      "revId": "8b2b57ebd0416dc5601f80bb2aea50be416f791f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
