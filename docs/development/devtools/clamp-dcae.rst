@@ -11,8 +11,8 @@ CLAMP <-> Dcae
 ~~~~~~~~~~~~~~
 
 The pairwise testing is executed against a default ONAP installation in the OOM.
-CLAMP-Control loop interacts with DCAE to deploy dcaegen2 services like PMSH.
-This test verifies the interaction between DCAE and controlloop works as expected.
+CLAMP-Automation Composition interacts with DCAE to deploy dcaegen2 services like PMSH.
+This test verifies the interaction between DCAE and clamp-acm works as expected.
 
 General Setup
 *************
@@ -30,7 +30,7 @@ The ONAP components used during the pairwise tests are:
 - CLAMP control loop runtime, policy participant, kubernetes participant.
 - DCAE for running dcaegen2-service via kubernetes participant.
 - ChartMuseum service from platform, initialised with DCAE helm charts.
-- DMaaP for the communication between Control loop runtime and participants.
+- DMaaP for the communication between Automation Composition runtime and participants.
 - Policy Gui for instantiation and commissioning of control loops.
 
 
@@ -53,23 +53,23 @@ The test set focused on the following use cases:
 - Deployment and Configuration of DCAE microservice PMSH
 - Undeployment of PMSH
 
-Creation of the Control Loop:
+Creation of the Automation Composition:
 -----------------------------
-A Control Loop is created by commissioning a Tosca template with Control loop definitions and instantiating the Control Loop with the state "UNINITIALISED".
+A Automation Composition is created by commissioning a Tosca template with Automation Composition definitions and instantiating the Automation Composition with the state "UNINITIALISED".
 
 - Upload a TOSCA template from the POLICY GUI. The definitions includes a kubernetes participant and control loop elements that deploys and configures a microservice in the kubernetes cluster.
-  Control loop element for kubernetes participant includes a helm chart information of DCAE microservice and the element for Http Participant includes the configuration entity for the microservice.
+  Automation Composition element for kubernetes participant includes a helm chart information of DCAE microservice and the element for Http Participant includes the configuration entity for the microservice.
   :download:`Sample Tosca template <tosca/pairwise-testing.yml>`
 
   .. image:: images/cl-commission.png
 
   Verification: The template is commissioned successfully without errors.
 
-- Instantiate the commissioned Control loop definitions from the Policy Gui under 'Instantiation Management'.
+- Instantiate the commissioned Automation Composition definitions from the Policy Gui under 'Instantiation Management'.
 
   .. image:: images/create-instance.png
 
-  Update instance properties of the Control Loop Elements if required.
+  Update instance properties of the Automation Composition Elements if required.
 
   .. image:: images/update-instance.png
 
@@ -80,7 +80,7 @@ A Control Loop is created by commissioning a Tosca template with Control loop de
 
 Deployment and Configuration of DCAE microservice (PMSH):
 ---------------------------------------------------------
-The Control Loop state is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui. The kubernetes participant deploys the PMSH helm chart from the DCAE chartMuseum server.
+The Automation Composition state is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui. The kubernetes participant deploys the PMSH helm chart from the DCAE chartMuseum server.
 
 .. image:: images/cl-passive.png
 
@@ -92,14 +92,14 @@ Verification:
 
 - The subscription configuration for PMSH microservice from the TOSCA definitions are updated in the Consul server. The configuration can be verified on the Consul server UI `http://<CONSUL-SERVER_IP>/ui/#/dc1/kv/`
 
-- The overall state of the Control Loop is changed to "PASSIVE" in the Policy Gui.
+- The overall state of the Automation Composition is changed to "PASSIVE" in the Policy Gui.
 
 .. image:: images/cl-create.png
 
 
 Undeployment of DCAE microservice (PMSH):
 -----------------------------------------
-The Control Loop state is changed from "PASSIVE" to "UNINITIALISED" from the Policy Gui.
+The Automation Composition state is changed from "PASSIVE" to "UNINITIALISED" from the Policy Gui.
 
 .. image:: images/cl-uninitialise.png
 
@@ -107,7 +107,7 @@ Verification:
 
 - The kubernetes participant uninstall the DCAE PMSH helm chart from the kubernetes cluster. The pods are removed from the cluster.
 
-- The overall state of the Control Loop is changed to "UNINITIALISED" in the Policy Gui.
+- The overall state of the Automation Composition is changed to "UNINITIALISED" in the Policy Gui.
 
 .. image:: images/cl-uninitialised-state.png
 
