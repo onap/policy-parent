@@ -15,8 +15,10 @@ Check number of files in each release
 
     ls 0800/upgrade/*.sql | wc -l = 96
     ls 0900/upgrade/*.sql | wc -l = 13
+    ls 1000/upgrade/*.sql | wc -l = 9
     ls 0800/downgrade/*.sql | wc -l = 96
     ls 0900/downgrade/*.sql | wc -l = 13
+    ls 1000/downgrade/*.sql | wc -l = 9
 
 Upgrade scripts
 ===============
@@ -25,7 +27,9 @@ Upgrade scripts
   :number-lines:
 
     /opt/app/policy/bin/prepare_upgrade.sh policyadmin
-    /opt/app/policy/bin/db-migrator -s policyadmin -o upgrade
+    /opt/app/policy/bin/db-migrator -s policyadmin -o upgrade # upgrade to Jakarta version (latest)
+    /opt/app/policy/bin/db-migrator -s policyadmin -o upgrade -t 0900 # upgrade to Istanbul
+    /opt/app/policy/bin/db-migrator -s policyadmin -o upgrade -t 0800 # upgrade to Honolulu
 
 .. note::
    You can also run db-migrator upgrade with the -t and -f options
@@ -37,7 +41,9 @@ Downgrade scripts
   :number-lines:
 
     /opt/app/policy/bin/prepare_downgrade.sh policyadmin
-    /opt/app/policy/bin/db-migrator -s policyadmin -o downgrade -f 0900 -t 0800
+    /opt/app/policy/bin/db-migrator -s policyadmin -o downgrade -t 0900 # downgrade to Istanbul
+    /opt/app/policy/bin/db-migrator -s policyadmin -o downgrade -t 0800 # downgrade to Honolulu
+    /opt/app/policy/bin/db-migrator -s policyadmin -o downgrade -t 0 # delete all tables
 
 Db migrator initialization script
 =================================
@@ -56,18 +62,18 @@ Every time you modify db_migrator_policy_init.sh you will have to undeploy, make
    :header-rows: 0
 
    * - Number of files run
-     - 109
+     - 118
    * - Tables in policyadmin
-     - 75
+     - 70
    * - Records Added
-     - 109
+     - 118
    * - schema_version
-     - 0900
+     - 1000
 
 2. Downgrade to Honolulu (0800)
 *******************************
 
-Modify db_migrator_policy_init.sh - remove any lines referencing upgrade and add the 2 lines under "Downgrade scripts"
+Modify db_migrator_policy_init.sh - remove any lines referencing upgrade and add the 2 lines under "Downgrade scripts" tagged as Honolulu
 
 Make/Redeploy to run downgrade.
 
@@ -409,5 +415,8 @@ Check the pdp table to ensure the LASTUPDATE column has been added and the value
 
 .. note::
    The number of records added may vary depnding on the number of retries.
+
+With addition of Postgres support to db-migrator, these tests can be also performed on a Postgres version of database.
+In addition, scripts running the aforementioned scenarios can be found under `smoke-tests` folder on db-migrator code base.
 
 End of Document
