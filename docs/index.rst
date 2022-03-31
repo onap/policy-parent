@@ -22,6 +22,5 @@ Policy Framework Architecture
    apex/apex
    distribution/distribution
    clamp/clamp
-   gui/Monitoring-GUI-Demo-Guide
    system-attributes/system-attributes
    release-notes

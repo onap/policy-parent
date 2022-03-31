@@ -2,19 +2,23 @@
 
 .. _clamp-label:
 
-Policy/CLAMP - Control Loop Automation Management Platform
-##########################################################
+CLAMP Metadata Automation Composition Management using TOSCA
+#############################################################
 
-CLAMP handles control loops in two ways, either using built in ONAP Control Loop support or using Control Loops defined in metadata using TOSCA. The sections below describe both ways of managing control loops.
+CLAMP supports the definition, deployment, and life cycle management of automation compostion elements using Metadata
+described in TOSCA.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   clamp/clamp
-   controlloop/controlloop
+   acm/controlloop-architecture
+   acm/defining-controlloops
+   acm/api-protocol/api-protocol
+   acm/design-impl/design-impl
 
-.. note:: Policy/CLAMP was merged into the Policy Framework in the Honolulu release of ONAP. Prior to that release, it was a separate project.
-          The release notes for CLAMP when it existed as a separate proejct are located below.
+.. note::
+      Policy/CLAMP was merged into the Policy Framework in the Honolulu release of ONAP. Prior to that release, it was
+      a separate project. The release notes for CLAMP when it existed as a separate proejct are located below.
 
 .. toctree::
    :maxdepth: 1
