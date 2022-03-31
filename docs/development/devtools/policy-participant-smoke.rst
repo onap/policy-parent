@@ -8,7 +8,7 @@ CLAMP Policy Participant Smoke Tests
 1. Introduction
 ***************
 
-The Smoke testing of the policy participant is executed in a local CLAMP/Policy environment. The CLAMP-Controlloop interfaces interact with the Policy Framework to perform actions based on the state of the policy participant. The goal of the Smoke tests is the ensure that CLAMP Policy Participant and Policy Framework work together as expected.
+The Smoke testing of the policy participant is executed in a local CLAMP/Policy environment. The CLAMP-ACM interfaces interact with the Policy Framework to perform actions based on the state of the policy participant. The goal of the Smoke tests is the ensure that CLAMP Policy Participant and Policy Framework work together as expected.
 
 2. Setup Guide
 **************
@@ -49,23 +49,23 @@ In this setup guide, we will be setting up all the components technically requir
 
 We will be using Docker to run our mariadb instance. It will have a total of two databases running in it.
 
-- controlloop: the runtime-controlloop db
+- clampacm: the runtime-clampacm db
 - policyadmin: the policy-api db
 
 The easiest way to do this is to perform a small alteration on an SQL script provided by the clamp backend in the file "runtime/extra/sql/bulkload/create-db.sql"
 
 .. code-block:: mysql
 
-    CREATE DATABASE `controlloop`;
-    USE `controlloop`;
+    CREATE DATABASE `clampacm`;
+    USE `clampacm`;
     DROP USER 'policy';
     CREATE USER 'policy';
-    GRANT ALL on controlloop.* to 'policy' identified by 'P01icY' with GRANT OPTION;
+    GRANT ALL on clampacm.* to 'policy' identified by 'P01icY' with GRANT OPTION;
     CREATE DATABASE `policyadmin`;
     USE `policyadmin`;
     DROP USER 'policy_user';
     CREATE USER 'policy_user';
-    GRANT ALL on controlloop.* to 'policy_user' identified by 'policy_user' with GRANT OPTION;
+    GRANT ALL on clampacm.* to 'policy_user' identified by 'policy_user' with GRANT OPTION;
     FLUSH PRIVILEGES;
 
 Once this has been done, we can run the bash script provided here: "runtime/extra/bin-for-dev/start-db.sh"
@@ -114,28 +114,59 @@ At this stage the dmaap simulator should be running on your local machine on por
 
 In the policy-api repo, you should find the file "src/main/resources/etc/defaultConfig.json". This file must be altered slightly - as below with the restServerParameters and databaseProviderParameters shown. Note how the database parameters match-up with what you setup in Mariadb:
 
-.. code-block:: json
+.. code-block:: yaml
 
-    {
-        "restServerParameters": {
-            "host": "0.0.0.0",
-            "port": 6970,
-            "userName": "healthcheck",
-            "password": "zb!XztG34",
-            "prometheus": true,
-            "https": false,
-            "aaf": false
-        },
-        "databaseProviderParameters": {
-            "name": "PolicyProviderParameterGroup",
-            "implementation": "org.onap.policy.models.provider.impl.DatabasePolicyModelsProviderImpl",
-            "databaseDriver": "org.mariadb.jdbc.Driver",
-            "databaseUrl": "jdbc:mariadb://mariadb:3306/policyadmin",
-            "databaseUser": "policy_user",
-            "databasePassword": "policy_user",
-            "persistenceUnit": "PolicyMariaDb"
-        },
-    }
+    server:
+      port: 6969
+    spring:
+      security.user:
+        name: policyadmin
+        password: zb!XztG34
+      mvc.converters.preferred-json-mapper: gson
+      datasource:
+        url: jdbc:mariadb://mariadb:3306/policyadmin
+        driverClassName: org.mariadb.jdbc.Driver
+        username: policy_user
+        password: policy_user
+      jpa:
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MariaDB103Dialect
+        hibernate:
+          ddl-auto: none
+          naming:
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            implicit-strategy: org.onap.policy.common.spring.utils.CustomImplicitNamingStrategy
+    policy-api:
+      name: ApiGroup
+      aaf: false
+    database:
+      name: PolicyProviderParameterGroup
+      implementation: org.onap.policy.models.provider.impl.DatabasePolicyModelsProviderImpl
+      driver: org.mariadb.jdbc.Driver
+      url: jdbc:mariadb://mariadb:3306/policyadmin
+      user: policy_user
+      password: policy_user
+      persistenceUnit: PolicyDb
+    policy-preload:
+      policyTypes:
+        - policytypes/onap.policies.monitoring.tcagen2.yaml
+        - policytypes/onap.policies.monitoring.dcaegen2.collectors.datafile.datafile-app-server.yaml
+        - policytypes/onap.policies.monitoring.dcae-restconfcollector.yaml
+        - policytypes/onap.policies.monitoring.dcae-pm-subscription-handler.yaml
+        - policytypes/onap.policies.monitoring.dcae-pm-mapper.yaml
+        - policytypes/onap.policies.Optimization.yaml
+        - policytypes/onap.policies.optimization.Resource.yaml
+        - policytypes/onap.policies.controlloop.operational.common.Drools.yaml
+      policies:
+        - policies/sdnc.policy.naming.input.tosca.yaml
+    management:
+      endpoints:
+        web:
+          base-path: /
+          exposure:
+            include: health,metrics,prometheus
+          path-mapping.prometheus: metrics
 
 Next, navigate to the "/main" directory. You can then run the following command to start the policy api:
 
@@ -148,72 +179,38 @@ Next, navigate to the "/main" directory. You can then run the following command 
 
 In the policy-pap repo, you should find the file 'main/src/test/resources/parameters/PapConfigParameters.json'. This file may need to be altered slightly as below:
 
-.. code-block:: json
+.. code-block:: yaml
 
-    {
-        "name": "PapGroup",
-        "restServerParameters": {
-            "host": "0.0.0.0",
-            "port": 6968,
-            "userName": "healthcheck",
-            "password": "zb!XztG34",
-            "https": false
-        },
-        "pdpParameters": {
-            "heartBeatMs": 60000,
-            "updateParameters": {
-                "maxRetryCount": 1,
-                "maxWaitMs": 30000
-            },
-            "stateChangeParameters": {
-                "maxRetryCount": 1,
-                "maxWaitMs": 30000
-            }
-        },
-        "databaseProviderParameters": {
-            "name": "PolicyProviderParameterGroup",
-            "implementation": "org.onap.policy.models.provider.impl.DatabasePolicyModelsProviderImpl",
-            "databaseDriver": "org.mariadb.jdbc.Driver",
-            "databaseUrl": "jdbc:mariadb://localhost:3306/policyadmin",
-            "databaseUser": "policy_user",
-            "databasePassword": "policy_user",
-            "persistenceUnit": "PolicyMariaDb"
-        },
-        "topicParameterGroup": {
-            "topicSources" : [{
-                "topic" : "POLICY-PDP-PAP",
-                "servers" : [ "localhost:3904" ],
-                "topicCommInfrastructure" : "dmaap"
-            }],
-            "topicSinks" : [{
-                "topic" : "POLICY-PDP-PAP",
-                "servers" : [ "localhost:3904" ],
-                "topicCommInfrastructure" : "dmaap"
-            },{
-                "topic" : "POLICY-NOTIFICATION",
-                "servers" : [ "localhost:3904" ],
-                "topicCommInfrastructure" : "dmaap"
-            }]
-        },
-        "healthCheckRestClientParameters":[{
-            "clientName": "api",
-            "hostname": "policy-api",
-            "port": 6968,
-            "userName": "healthcheck",
-            "password": "zb!XztG34",
-            "useHttps": false,
-            "basePath": "policy/api/v1/healthcheck"
-        },
-        {
-            "clientName": "distribution",
-            "hostname": "policy-distribution",
-            "port": 6970,
-            "userName": "healthcheck",
-            "password": "zb!XztG34",
-            "useHttps": false,
-            "basePath": "healthcheck"
-        }]
-    }
+    spring:
+      security:
+        user:
+          name: policyadmin
+          password: zb!XztG34
+      http:
+        converters:
+          preferred-json-mapper: gson
+      datasource:
+        url: jdbc:mariadb://mariadb:3306/policyadmin
+        driverClassName: org.mariadb.jdbc.Driver
+        username: policy_user
+        password: policy_user
+      jpa:
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        hibernate:
+          ddl-auto: none
+          naming:
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            implicit-strategy: org.onap.policy.pap.main.CustomImplicitNamingStrategy
+    server:
+      port: 6969
+    pap:
+      name: PapGroup
+      pdpParameters:
+        heartBeatMs: 120000
+        updateParameters:
+          maxRetryCount: 1
 
 Next, navigate to the "/main" directory. You can then run the following command to start the policy pap
 
@@ -221,16 +218,16 @@ Next, navigate to the "/main" directory. You can then run the following command 
 
     mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.pap.main.startstop.Main" -Dexec.args="-c /src/test/resources/parameters/PapConfigParameters.json"
 
-2.3.5 Controlloop Runtime
+2.3.5 ACM Runtime
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To start the controlloop runtime we need to go the "runtime-controlloop" directory in the clamp repo. There is a config file that is used, by default, for the controlloop runtime. That config file is here: "src/main/resources/application.yaml". For development in your local environment, it shouldn't need any adjustment and we can just run the controlloop runtime with:
+To start the clampacm runtime we need to go the "runtime-clampacm" directory in the clamp repo. There is a config file that is used, by default, for the clampacm runtime. That config file is here: "src/main/resources/application.yaml". For development in your local environment, it shouldn't need any adjustment and we can just run the clampacm runtime with:
 
 .. code-block:: bash
 
     mvn spring-boot:run
 
-2.3.6 Controlloop Policy Participant
+2.3.6 ACM Policy Participant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To start the policy participant we need to go to the "participant-impl/participant-impl-policy" directory in the clamp repo. There is a config file under "src/main/resources/config/application.yaml". For development in your local environment, we will need to adjust this file slightly:
@@ -266,7 +263,7 @@ To start the policy participant we need to go to the "participant-impl/participa
           name: org.onap.PM_Policy
           version: 1.0.0
         participantType:
-          name: org.onap.policy.controlloop.PolicyControlLoopParticipant
+          name: org.onap.policy.clampacm.PolicyControlLoopParticipant
           version: 2.3.1
         clampControlLoopTopics:
           topicSources:
@@ -297,32 +294,32 @@ Navigate to the participant-impl/particpant-impl-policy/main directory. We can t
 
 To perform the Smoke testing of the policy-participant we will be verifying the behaviours of the participant when the control loop changes state. The scenarios are:
 
-- UNINITIALISED to PASSIVE: participant creates policies and policyTypes specified in the ToscaServiceTemplate using policy-api
-- PASSIVE to RUNNING: participant deploys created policies specified in the ToscaServiceTemplate
-- RUNNING to PASSIVE: participant undeploys policies which have been deployed
-- PASSIVE to UNINITIALISED: participant deletes policies and policyTypes which has been created
+- UNINITIALISED to PASSIVE: participant creates policies and policyTypes specified in the ToscaServiceTemplate using policy-api and deploys the policies using pap.
+- PASSIVE to RUNNING: participant changes state to RUNNING. No operation performed.
+- RUNNING to PASSIVE: participant changes state to PASSIVE. No operation performed.
+- PASSIVE to UNINITIALISED: participant undeploys deployed policies and deletes policies and policyTypes which have been created.
 
 3.2 Testing Steps
 ^^^^^^^^^^^^^^^^^
 
-Creation of Controlloop:
+Creation of ACM:
 ************************
 
-A Control Loop is created by commissioning a Tosca template with Control loop definitions and instantiating the Control Loop with the state "UNINITIALISED".
-Using postman, commision a TOSCA template and instantiate using the following template:
+A ACM is created by commissioning a Tosca template with ACM definitions and instantiating the ACM with the state "UNINITIALISED".
+Using postman, commission a TOSCA template and instantiate using the following template:
 
 :download:`Tosca Service Template <tosca/tosca_service_template_pptnt_smoke.yaml>`
 
-:download:`Instantiate Controlloop <tosca/instantiation_pptnt_smoke.json>`
+:download:`Instantiate ACM <tosca/instantiation_pptnt_smoke.json>`
 
-To verify this, we check that the Controlloop has been created and is in state UNINITIALISED.
+To verify this, we check that the ACM has been created and is in state UNINITIALISED.
 
-    .. image:: images/pol-part-controlloop-creation-ver.png
+    .. image:: images/pol-part-clampacm-creation-ver.png
 
 Creation of policies and policyTypes:
 *************************************
 
-The Controlloop STATE is changed from UNINITIALISED to PASSIVE using postman:
+The ACM STATE is changed from UNINITIALISED to PASSIVE using postman:
 
 .. code-block:: json
 
@@ -336,60 +333,27 @@ The Controlloop STATE is changed from UNINITIALISED to PASSIVE using postman:
         ]
     }
 
-This state change will trigger the creation of policies and policyTypes using the policy-api. To verify this we will check, using policy-api endpoints, that the "Sirisha" policyType, which is specified in the service template, has been created.
+This state change will trigger the creation of policies and policyTypes using the policy-api. To verify this we will check, using policy-api endpoints, that the "Test Policy" policyType, which is specified in the service template, has been created.
 
-    .. image:: images/pol-part-controlloop-sirisha-ver.png
+    .. image:: images/pol-part-clampacm-test-policy-ver.png
 
 We can also check that the pm-control policy has been created.
 
-    .. image:: images/pol-part-controlloop-pmcontrol-ver.png
+    .. image:: images/pol-part-clampacm-pmcontrol-ver.png
 
 Deployment of policies:
 ***********************
 
-The Controlloop STATE is changed from PASSIVE to RUNNING using postman:
-
-.. code-block:: json
-
-    {
-        "orderedState": "RUNNING",
-        "controlLoopIdentifierList": [
-            {
-                "name": "PMSHInstance0",
-                "version": "1.0.1"
-            }
-        ]
-    }
+The ACM STATE is changed from UNINITIALISED to PASSIVE using postman:
 
 This state change will trigger the deployment of the policies specified in the ToscaServiceTemplate. To verify this, we will check that the apex pmcontrol policy has been deployed to the defaultGroup. We check this using pap:
 
-    .. image:: images/pol-part-controlloop-pmcontrol-deploy-ver.png
+    .. image:: images/pol-part-clampacm-pmcontrol-deploy-ver.png
 
 Undeployment of policies:
 *************************
 
-The Controlloop STATE is changed from RUNNING to PASSIVE using postman:
-
-.. code-block:: json
-
-    {
-        "orderedState": "PASSIVE",
-        "controlLoopIdentifierList": [
-            {
-                "name": "PMSHInstance0",
-                "version": "1.0.1"
-            }
-        ]
-    }
-
-This state change will trigger the undeployment of the pmcontrol policy which was deployed previously. To verifiy this we do a PdpGroup Query as before and check that the pmcontrol policy has been undeployed and removed from the defaultGroup:
-
-    .. image:: images/pol-part-controlloop-pmcontrol-undep-ver.png
-
-Deletion of policies and policyTypes:
-*************************************
-
-The Controlloop STATE is changed from PASSIVE to UNINITIALISED using postman:
+The ACM STATE is changed from PASSIVE to UNINITIALISED using postman:
 
 .. code-block:: json
 
@@ -403,8 +367,17 @@ The Controlloop STATE is changed from PASSIVE to UNINITIALISED using postman:
         ]
     }
 
-This state change will trigger the deletion of the previously created policies and policyTypes. To verify this, as before, we can check that the Sirisha policyType is not found this time and likewise for the pmcontrol policy:
+This state change will trigger the undeployment of the pmcontrol policy which was deployed previously. To verify this we do a PdpGroup Query as before and check that the pmcontrol policy has been undeployed and removed from the defaultGroup:
 
-    .. image:: images/pol-part-controlloop-sirisha-nf.png
+    .. image:: images/pol-part-clampacm-pmcontrol-undep-ver.png
 
-    .. image:: images/pol-part-controlloop-pmcontrol-nf.png
+Deletion of policies and policyTypes:
+*************************************
+
+The ACM STATE is changed from PASSIVE to UNINITIALISED using postman:
+
+This state change will trigger the deletion of the previously created policies and policyTypes. To verify this, as before, we can check that the Test Policy policyType is not found this time and likewise for the pmcontrol policy:
+
+    .. image:: images/pol-part-clampacm-test-policy-nf.png
+
+    .. image:: images/pol-part-clampacm-pmcontrol-nf.png
