@@ -11,7 +11,7 @@ Policy <-> CDS
 ~~~~~~~~~~~~~~
 
 The pairwise testing is executed against a default ONAP installation as per OOM charts.
-Apex-PDP or Drools-PDP engine interacts with CDS to execute a control loop action.
+Apex-PDP or Drools-PDP engine interacts with CDS to execute an Automation Composition action.
 This test verifies the interaction between Policy and CDS to make sure the contract works as expected.
 
 General Setup
@@ -48,7 +48,7 @@ The test set is focused on the following use cases:
 Creation of VNF & PNF in AAI
 ----------------------------
 In order for PDP engines to fetch the resource details from AAI during runtime execution, we need to create dummy VNF & PNF entities in AAI.
-In a real control loop flow, the entities in AAI will be either created during orchestration phase or provisioned in AAI separately.
+In a real Automation Composition flow, the entities in AAI will be either created during orchestration phase or provisioned in AAI separately.
 
 Download & execute the steps in postman collection for creating the entities along with it's dependencies.
 The steps needs to be performed sequentially one after another. And no input is required from user.
