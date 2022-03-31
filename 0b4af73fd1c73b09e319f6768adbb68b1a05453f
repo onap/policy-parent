@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a7fe308_9d6a42c4",
+        "filename": "docs/development/devtools/distribution-smoke.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2022-03-31T14:04:02Z",
+      "side": 1,
+      "message": "Thank Fransesco.The documentation looks good. But I don\u0027t think we need to duplicate setup, docker-compose and teardown files for this too. It is better to just specify the existing scripts, and if specifying the original distribution component\u0027s csit, then just mention here to comment out the teardown part or something like that, or specify here what portion to comment out so that the robot scripts doesn\u0027t run and tests can be executed.\n\nBasically, my point is, we are now pushing too much duplication into the policy-docker csit which we should try to avoid. The setup for a component\u0027s smoke test need not always have to have its own docker-compose in policy-docker.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "0b4af73fd1c73b09e319f6768adbb68b1a05453f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
