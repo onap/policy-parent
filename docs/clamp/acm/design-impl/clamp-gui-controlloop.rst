@@ -12,7 +12,7 @@ The Policy GUI for Control Loops
 
 1. Introduction
 ###############
-The Policy GUI for Control Loops is designed to provide a user the ability to interact with the Control Loop Runtime to perform several actions. The actual technical design of the Control Loop Runtime is detailed in :ref:`clamp-controlloop-runtime`. All of the endpoints and the purpose for accessing those endpoints is discussed there. In the current release of the GUI, the main purposes are to perform the below:
+The Policy GUI for Control Loops is designed to provide a user the ability to interact with the Control Loop Runtime to perform several actions. The actual technical design of the Control Loop Runtime is detailed in :ref:`clamp-runtime-acm`. All of the endpoints and the purpose for accessing those endpoints is discussed there. In the current release of the GUI, the main purposes are to perform the below:
 
 - Commission new Tosca Service Templates.
 - Editing Common Properties.
@@ -111,7 +111,7 @@ The Runtime also communicates with the participants over DMAAP. Commissioning a 
 
 Using DMAAP, the Runtime can send; updates to the control loop definitions, change the state of control loops, receive information about participants, receive state information about control loops and effectively supervise the control loops. This data is then made available via Rest APIs that can be queried by the frontend. This is how the GUI can perform monitoring operations.
 
-More detail on the design of the Runtime ControlLoop can be found in :ref:`clamp-controlloop-runtime`.
+More detail on the design of the Runtime ControlLoop can be found in :ref:`clamp-runtime-acm`.
 
 2.4 DMAAP
 ---------

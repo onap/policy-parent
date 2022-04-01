@@ -461,7 +461,7 @@ The APIs and Protocols used by CLAMP for Control Loops are described on the page
 
 The design and implementation of TOSCA Control Loops in CLAMP is described for each executable entity on the pages below:
 
-#. :ref:`The CLAMP Control Loop Runtime Server <clamp-controlloop-runtime>`
+#. :ref:`The CLAMP Control Loop Runtime Server <clamp-runtime-acm>`
 #. :ref:`CLAMP Control Loop Participants <clamp-controlloop-participants>`
 #. :ref:`Managing Control Loops using The CLAMP GUI <clamp-gui-controlloop>`
 

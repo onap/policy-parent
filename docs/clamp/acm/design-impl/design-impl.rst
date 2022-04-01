@@ -10,6 +10,6 @@ The sections below describe the components that handle TOSCA Control Loops.
 .. toctree::
    :maxdepth: 1
 
-   clamp-controlloop-runtime
+   clamp-runtime-acm
    clamp-gui-controlloop
    participants/participants
