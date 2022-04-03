@@ -1,20 +1,20 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
-.. _clamp-gui-controlloop-smoke-tests:
+.. _clamp-gui-acm-smoke-tests:
 
 CLAMP GUI Smoke Tests
 ---------------------------
 1. Introduction
 ***************
-The CLAMP GUI for Control Loops is designed to provide a user the ability to interact
-with the Control Loop Runtime to perform several actions.
+The CLAMP GUI for Automation Compositions is designed to provide a user the ability to interact
+with the Automation Composition Runtime to perform several actions.
 
 - Commission new Tosca Service Templates.
 - Editing Common Properties.
 - Decommission existing Tosca Service Templates.
-- Create new instances of Control Loops.
-- Change the state of the Control Loops.
-- Delete Control Loops.
+- Create new instances of Automation Compositions.
+- Change the state of the Automation Compositions.
+- Delete Automation Compositions.
 
 This document will serve as a guide to do smoke tests on the different components that are involved when working with the GUI and outline how they operate. It will also show a developer how to set up their environment for carrying out smoke tests on the GUI.
 
@@ -56,7 +56,7 @@ In this setup guide, we will be setting up all the components technically requir
 ^^^^^^^^^^^^^^^^^^^
 We will be using Docker to run our mariadb instance. It will have a total of three databases running in it.
 
-- controlloop: the runtime-controlloop db
+- acm: the clampacm db
 - cldsdb4: the clamp backend db
 - policyadmin: the policy-api db
 
@@ -69,16 +69,16 @@ The easiest way to do this is to perform a small alteration on an SQL script pro
     DROP USER 'clds';
     CREATE USER 'clds';
     GRANT ALL on cldsdb4.* to 'clds' identified by 'sidnnd83K' with GRANT OPTION;
-    CREATE DATABASE `controlloop`;
-    USE `controlloop`;
+    CREATE DATABASE `clampacm`;
+    USE `clampacm`;
     DROP USER 'policy';
     CREATE USER 'policy';
-    GRANT ALL on controlloop.* to 'policy' identified by 'P01icY' with GRANT OPTION;
+    GRANT ALL on clampacm.* to 'policy' identified by 'P01icY' with GRANT OPTION;
     CREATE DATABASE `policyadmin`;
     USE `policyadmin`;
     DROP USER 'policy_user';
     CREATE USER 'policy_user';
-    GRANT ALL on controlloop.* to 'policy_user' identified by 'policy_user' with GRANT OPTION;
+    GRANT ALL on clampacm.* to 'policy_user' identified by 'policy_user' with GRANT OPTION;
     FLUSH PRIVILEGES;
 
 Once this has been done, we can run the bash script provided here: "runtime/extra/bin-for-dev/start-db.sh"
@@ -157,7 +157,7 @@ Next, navigate to the "/main" directory. You can then run the following command 
 
 2.3.6 Clamp Backend
 ^^^^^^^^^^^^^^^^^^^
-The Clamp Backend can potentially make calls to policy pap, policy api, cds, sdc and others. For controlloop development purposes, we only need to connect with the controlloop runtime api. For convenience, there has been an emulator provided to respond to requests from Clamp to all those services that we do not care about. This emulator can be run by running the following bash script "runtime/extra/bin-for-dev/start-emulator.sh"
+The Clamp Backend can potentially make calls to policy pap, policy api, cds, sdc and others. For acm development purposes, we only need to connect with the acm runtime api. For convenience, there has been an emulator provided to respond to requests from Clamp to all those services that we do not care about. This emulator can be run by running the following bash script "runtime/extra/bin-for-dev/start-emulator.sh"
 
 .. code-block:: bash
 
@@ -169,19 +169,19 @@ Once the emulator is running, we can then run the clamp backend. Before doing th
 
     ./start-backend.sh
 
-Once the clamp backend is running, we can start the controlloop runtime.
+Once the clamp backend is running, we can start the acm runtime.
 
-2.3.7 Controlloop Runtime
-^^^^^^^^^^^^^^^^^^^^^^^^^
-To start the controlloop runtime we need to go the "runtime-controlloop" directory in the clamp repo. There is a config file that is used, by default, for the controlloop runtime. That config file is here: "src/main/resources/application.yaml". For development in your local environment, it shouldn't need any adjustment and we can just run the controlloop runtime with:
+2.3.7 Automation Composition Runtime
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To start the acm runtime we need to go the "runtime-acm" directory in the clamp repo. There is a config file that is used, by default, for the acm runtime. That config file is here: "src/main/resources/application.yaml". For development in your local environment, it shouldn't need any adjustment and we can just run the acm runtime with:
 
 .. code-block:: bash
 
     mvn spring-boot:run
 
-2.3.8 Controlloop GUI
-^^^^^^^^^^^^^^^^^^^^^
-At this point, all of the components required to test out the controlloop gui are running.We can start to make changes, and have those changes reflected in the UI for immediate feedback on our changes. But first, we must run the GUI.
+2.3.8 Automation Composition GUI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+At this point, all of the components required to test out the acm gui are running.We can start to make changes, and have those changes reflected in the UI for immediate feedback on our changes. But first, we must run the GUI.
 
 Firstly, go to the GUI repo and navigate to "gui-clamp/ui-react". To setup for development, we must install the dependencies of the GUI. We can do this using the npm package manager. In the directory, simply run:
 
@@ -224,7 +224,7 @@ This confirms that commissioning has been complete.
 
 3.2 Edit Common Properties
 ==========================
-At this stage we can edit the common properties. These properties will be common to all instances of the control loop definitions we uploaded with the tosca service template. Once an instance is created, we will not be able to alter these common properties again. We can simply click on "Edit Common Properties" in the dropdown menu and we will be taken to the modal shown below.
+At this stage we can edit the common properties. These properties will be common to all instances of the automation composition definitions we uploaded with the tosca service template. Once an instance is created, we will not be able to alter these common properties again. We can simply click on "Edit Common Properties" in the dropdown menu and we will be taken to the modal shown below.
 
 .. image:: images/gui/CommonPropertiesModal.png
 
@@ -232,8 +232,8 @@ The arrows to the left of the modal can be used to expand and contract the eleme
 
 .. image:: images/gui/ViewEditedCommonProperties.png
 
-3.3 Create New Instances of Control Loops
-=========================================
+3.3 Create New Instances of Automation Compositions
+===================================================
 Once the template is commissioned, we can start to create instances. In the dropdown, click on "Instantiation Management". In the modal, you will see an empty table, as shown.
 
 .. image:: images/gui/ManageInstancesModal.png

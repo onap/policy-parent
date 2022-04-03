@@ -7,8 +7,8 @@ CLAMP Participant Protocol Smoke Tests
 1. Introduction
 ***************
 
-The CLAMP Control Loop Participant protocol is an asynchronous protocol that is used by the CLAMP runtime
-to coordinate life cycle management of Control Loop instances.
+The CLAMP Automation Composition Participant protocol is an asynchronous protocol that is used by the CLAMP runtime
+to coordinate life cycle management of Automation Composition instances.
 This document will serve as a guide to do smoke tests on the different usecases that are involved when
 working with the Participant protocol and outline how they operate.
 It will also show a developer how to set up their environment for carrying out smoke tests on the participants.
@@ -32,10 +32,10 @@ Linux user - although the majority of the steps show will be exactly the same in
 2.2 Setting up the components
 =============================
 
-- Controlloop runtime component docker image is started and running.
+- Automation Composition runtime component docker image is started and running.
 - Participant docker images policy-clamp-cl-pf-ppnt, policy-clamp-cl-http-ppnt, policy-clamp-cl-k8s-ppnt are started and running.
 - Dmaap simulator for communication between components.
-- mariadb docker container for policy and controlloop database.
+- mariadb docker container for policy and clampacm database.
 - policy-api for communication between policy participant and policy-framework
 
 In this setup guide, we will be setting up all the components technically required for a working convenient
@@ -47,7 +47,7 @@ example.
 
 We will be using Docker to run our mariadb instance. It will have a total of two databases running in it.
 
-- controlloop: the runtime-controlloop db
+- clampacm: the runtime-clampacm db
 - policyadmin: the policy-api db
 
 3. Running Tests of protocol dialogues
@@ -81,107 +81,107 @@ Test result:
 3.3 Participant Priming
 =======================
 
-When a control loop is primed, the portion of the Control Loop Type Definition and Common Property values for the participants
-of each participant type mentioned in the Control Loop Definition are sent to the participants.
-Action: Invoke a REST API to prime controlloop type definitions and set values of common properties
+When a automation composition is primed, the portion of the Automation Composition Type Definition and Common Property values for the participants
+of each participant type mentioned in the Automation Composition Definition are sent to the participants.
+Action: Invoke a REST API to prime acm type definitions and set values of common properties
 
 Test result:
 
-- Observe PARTICIPANT_UPDATE going from runtime to participant with controlloop type definitions and common property values for participant types
-- Observe that the controlloop type definitions and common property values for participant types are stored on ParticipantHandler
+- Observe PARTICIPANT_UPDATE going from runtime to participant with acm type definitions and common property values for participant types
+- Observe that the acm type definitions and common property values for participant types are stored on ParticipantHandler
 - Observe PARTICIPANT_UPDATE_ACK going from runtime to participant
 
 3.4 Participant DePriming
 =========================
 
-When a control loop is de-primed, the portion of the Control Loop Type Definition and Common Property values for the participants
-of each participant type mentioned in the Control Loop Definition are deleted on participants.
-Action: Invoke a REST API to deprime controlloop type definitions
+When a automation composition is de-primed, the portion of the Automation Composition Type Definition and Common Property values for the participants
+of each participant type mentioned in the Automation Composition Definition are deleted on participants.
+Action: Invoke a REST API to deprime acm type definitions
 
 Test result:
 
-- If controlloop instances exist in runtime database, return a response for the REST API with error response saying "Cannot decommission controlloop type definition"
-- If no controlloop instances exist in runtime database, Observe PARTICIPANT_UPDATE going from runtime to participant with definitions as null
-- Observe that the controlloop type definitions and common property values for participant types are removed on ParticipantHandler
+- If acm instances exist in runtime database, return a response for the REST API with error response saying "Cannot decommission acm type definition"
+- If no acm instances exist in runtime database, Observe PARTICIPANT_UPDATE going from runtime to participant with definitions as null
+- Observe that the acm type definitions and common property values for participant types are removed on ParticipantHandler
 - Observe PARTICIPANT_UPDATE_ACK going from runtime to participant
 
-3.5 Control Loop Update
-=======================
+3.5 Automation Composition Update
+=================================
 
-Control Loop Update handles creation, change, and deletion of control loops on participants.
-Action: Trigger controlloop instantiation from GUI
-
-Test result:
-
-- Observe CONTROL_LOOP_UPDATE going from runtime to participant
-- Observe that the controlloop type instances and respective property values for participant types are stored on ControlLoopHandler
-- Observe that the controlloop state is UNINITIALISED
-- Observe CONTROL_LOOP_UPDATE_ACK going from participant to runtime
-
-3.6 Control Loop state change to PASSIVE
-========================================
-
-Control Loop Update handles creation, change, and deletion of control loops on participants.
-Action: Change state of the controlloop to PASSIVE
+Automation Composition Update handles creation, change, and deletion of automation compositions on participants.
+Action: Trigger acm instantiation from GUI
 
 Test result:
 
-- Observe CONTROL_LOOP_STATE_CHANGE going from runtime to participant
-- Observe that the ControlLoopElements state is PASSIVE
-- Observe that the controlloop state is PASSIVE
-- Observe CONTROL_LOOP_STATE_CHANGE_ACK going from participant to runtime
+- Observe AUTOMATION_COMPOSITION_UPDATE going from runtime to participant
+- Observe that the acm type instances and respective property values for participant types are stored on AutomationCompositionHandler
+- Observe that the acm state is UNINITIALISED
+- Observe AUTOMATION_COMPOSITION_UPDATE_ACK going from participant to runtime
 
-3.7 Control Loop state change to RUNNING
-========================================
+3.6 Automation Composition state change to PASSIVE
+==================================================
 
-Control Loop Update handles creation, change, and deletion of control loops on participants.
-Action: Change state of the controlloop to RUNNING
-
-Test result:
-
-- Observe CONTROL_LOOP_STATE_CHANGE going from runtime to participant
-- Observe that the ControlLoopElements state is RUNNING
-- Observe that the controlloop state is RUNNING
-- Observe CONTROL_LOOP_STATE_CHANGE_ACK going from participant to runtime
-
-3.8 Control Loop state change to PASSIVE
-========================================
-
-Control Loop Update handles creation, change, and deletion of control loops on participants.
-Action: Change state of the controlloop to PASSIVE
+Automation Composition Update handles creation, change, and deletion of automation compositions on participants.
+Action: Change state of the acm to PASSIVE
 
 Test result:
 
-- Observe CONTROL_LOOP_STATE_CHANGE going from runtime to participant
-- Observe that the ControlLoopElements state is PASSIVE
-- Observe that the controlloop state is PASSIVE
-- Observe CONTROL_LOOP_STATE_CHANGE_ACK going from participant to runtime
+- Observe AUTOMATION_COMPOSITION_STATE_CHANGE going from runtime to participant
+- Observe that the AutomationCompositionElements state is PASSIVE
+- Observe that the acm state is PASSIVE
+- Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
 
-3.9 Control Loop state change to UNINITIALISED
-==============================================
+3.7 Automation Composition state change to RUNNING
+==================================================
 
-Control Loop Update handles creation, change, and deletion of control loops on participants.
-Action: Change state of the controlloop to UNINITIALISED
+Automation Composition Update handles creation, change, and deletion of automation compositions on participants.
+Action: Change state of the acm to RUNNING
 
 Test result:
 
-- Observe CONTROL_LOOP_STATE_CHANGE going from runtime to participant
-- Observe that the ControlLoopElements state is UNINITIALISED
-- Observe that the controlloop state is UNINITIALISED
-- Observe that the ControlLoopElements undeploy the instances from respective frameworks
-- Observe that the control loop instances are removed from participants
-- Observe CONTROL_LOOP_STATE_CHANGE_ACK going from participant to runtime
+- Observe AUTOMATION_COMPOSITION_STATE_CHANGE going from runtime to participant
+- Observe that the AutomationCompositionElements state is RUNNING
+- Observe that the acm state is RUNNING
+- Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
 
-3.10 Control Loop monitoring and reporting
-==========================================
+3.8 Automation Composition state change to PASSIVE
+==================================================
 
-This dialogue is used as a heartbeat mechanism for participants, to monitor the status of Control Loop Elements, and to gather statistics on control loops. The ParticipantStatus message is sent periodically by each participant. The reporting interval for sending the message is configurable
+Automation Composition Update handles creation, change, and deletion of automation compositions on participants.
+Action: Change state of the acm to PASSIVE
+
+Test result:
+
+- Observe AUTOMATION_COMPOSITION_STATE_CHANGE going from runtime to participant
+- Observe that the AutomationCompositionElements state is PASSIVE
+- Observe that the acm state is PASSIVE
+- Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
+
+3.9 Automation Composition state change to UNINITIALISED
+========================================================
+
+Automation Composition Update handles creation, change, and deletion of automation compositions on participants.
+Action: Change state of the acm to UNINITIALISED
+
+Test result:
+
+- Observe AUTOMATION_COMPOSITION_STATE_CHANGE going from runtime to participant
+- Observe that the AutomationCompositionElements state is UNINITIALISED
+- Observe that the acm state is UNINITIALISED
+- Observe that the AutomationCompositionElements undeploy the instances from respective frameworks
+- Observe that the automation composition instances are removed from participants
+- Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
+
+3.10 Automation Composition monitoring and reporting
+====================================================
+
+This dialogue is used as a heartbeat mechanism for participants, to monitor the status of Automation Composition Elements, and to gather statistics on automation compositions. The ParticipantStatus message is sent periodically by each participant. The reporting interval for sending the message is configurable
 Action: Bring up participant
 
 Test result:
 
 - Observe that PARTICIPANT_STATUS message is sent from participants to runtime in a regular interval
-- Trigger a PARTICIPANT_STATUS_REQ from runtime and observe a PARTICIPANT_STATUS message with tosca definitions of control loop type definitions sent
+- Trigger a PARTICIPANT_STATUS_REQ from runtime and observe a PARTICIPANT_STATUS message with tosca definitions of automation composition type definitions sent
   from all the participants to runtime
 
 This concluded the required smoke tests
