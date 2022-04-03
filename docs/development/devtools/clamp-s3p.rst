@@ -2,29 +2,29 @@
 .. Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
-.. _controlloop-s3p-label:
+.. _acm-s3p-label:
 
 .. toctree::
    :maxdepth: 2
 
-Policy Clamp Controlloop
-~~~~~~~~~~~~~~~~~~~~~~~~
+Policy Clamp Automation Composition
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Both the Performance and the Stability tests were executed by performing requests
-against controlloop components installed as docker images in local environment.
+against acm components installed as docker images in local environment.
 
 Setup Details
 +++++++++++++
 
-- Controlloop runtime component docker image is started and running.
+- acm runtime component docker image is started and running.
 - Participant docker images policy-clamp-cl-pf-ppnt, policy-clamp-cl-http-ppnt, policy-clamp-cl-k8s-ppnt are started and running.
 - Dmaap simulator for communication between components.
-- mariadb docker container for policy and controlloop database.
+- mariadb docker container for policy and clampacm database.
 - policy-api for communication between policy participant and policy-framework
 - Both tests were run via jMeter, which was installed on a separate VM.
 
-Stability Test of Controlloop components
-++++++++++++++++++++++++++++++++++++++++
+Stability Test of acm components
+++++++++++++++++++++++++++++++++
 
 Test Plan
 ---------
@@ -32,15 +32,15 @@ The 72 hours stability test ran the following steps sequentially in a single thr
 
 - **Create Policy defaultDomain** - creates an operational policy using policy/api component
 - **Delete Policy sampleDomain** - deletes the operational policy sampleDomain using policy/api component
-- **Commission Contorlloop definition** - commissions the controlloop definition in runtime
-- **Instantiate controlloop** - Instantiate the controlloop towards participants
-- **Check controlloop state** - check the current state of controlloop
-- **Change State to PASSIVE** - change the state of the controlloop to PASSIVE
-- **Check controlloop state** - check the current state of controlloop
-- **Change State to UNINITIALISED** - change the state of the controloop to UNINITIALISED
-- **Check controlloop state** - check the current state of controlloop
-- **Delete instantiated controlloop** - delete the instantiated controlloop from all participants
-- **Delete ControlLoop Definition** - delete the controlloop definition on runtime
+- **Commission Contorlloop definition** - commissions the acm definition in runtime
+- **Instantiate acm** - Instantiate the acm towards participants
+- **Check acm state** - check the current state of acm
+- **Change State to PASSIVE** - change the state of the acm to PASSIVE
+- **Check acm state** - check the current state of acm
+- **Change State to UNINITIALISED** - change the state of the ACM to UNINITIALISED
+- **Check acm state** - check the current state of acm
+- **Delete instantiated acm** - delete the instantiated acm from all participants
+- **Delete ACM Definition** - delete the acm definition on runtime
 
 The following steps can be used to configure the parameters of test plan.
 
@@ -51,8 +51,8 @@ The following steps can be used to configure the parameters of test plan.
 =============================  ========================================================================
  **Name**                      **Description**
 =============================  ========================================================================
- RUNTIME_HOST                  IP Address or host name of controlloop runtime component
- RUNTIME_PORT                  Port number of controlloop runtime components for making REST API calls
+ RUNTIME_HOST                  IP Address or host name of acm runtime component
+ RUNTIME_PORT                  Port number of acm runtime components for making REST API calls
  POLICY_PARTICIPANT_HOST       IP Address or host name of policy participant
  POLICY_PARTICIPANT_HOST_PORT  Port number of policy participant
 =============================  ========================================================================
@@ -74,7 +74,7 @@ Stability test plan was triggered for 72 hours.
 
               .. container:: paragraph
 
-                  The assertions of state changes are not completely taken care of, as the stability is ran with controlloop componenets
+                  The assertions of state changes are not completely taken care of, as the stability is ran with acm componenets
                   alone, and not including complete policy framework deployment, which makes it difficult for actual state changes from
                   PASSIVE to RUNNING etc to happen.
 
@@ -86,7 +86,7 @@ Stability test plan was triggered for 72 hours.
 99992                    100.00 %           0.00 %              192 ms
 =======================  =================  ==================  ==================================
 
-**Controloop component Setup**
+**ACM component Setup**
 
 ================  =========================================================  ===========================================  =========================
 **CONTAINER ID**  **IMAGE**                                                  **PORTS**                                    **NAMES**
@@ -108,11 +108,11 @@ Stability test plan was triggered for 72 hours.
 
 **JMeter Screenshot**
 
-.. image:: clamp-s3p-results/controlloop_stability_jmeter.png
+.. image:: clamp-s3p-results/acm_stability_jmeter.png
 
 **JMeter Screenshot**
 
-.. image:: clamp-s3p-results/controlloop_stability_table.png
+.. image:: clamp-s3p-results/acm_stability_table.png
 
 **Memory and CPU usage**
 
@@ -127,13 +127,13 @@ Memory and CPU usage after test execution:
 .. image:: clamp-s3p-results/Stability_after_stats.png
 
 
-Performance Test of Controlloop components
-++++++++++++++++++++++++++++++++++++++++++
+Performance Test of acm components
+++++++++++++++++++++++++++++++++++
 
 Introduction
 ------------
 
-Performance test of Controlloop components has the goal of testing the min/avg/max processing time and rest call throughput for all the requests with multiple requests at the same time.
+Performance test of acm components has the goal of testing the min/avg/max processing time and rest call throughput for all the requests with multiple requests at the same time.
 
 Setup Details
 -------------
@@ -178,7 +178,7 @@ Test results are shown as below.
 13809                    100 %              0.00 %              206 ms
 =======================  =================  ==================  ==================================
 
-**Controloop component Setup**
+**ACM component Setup**
 
 ================  =========================================================  ===========================================  =========================
 **CONTAINER ID**  **IMAGE**                                                  **PORTS**                                    **NAMES**
