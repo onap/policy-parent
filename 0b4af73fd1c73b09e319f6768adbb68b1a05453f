@@ -46,6 +46,30 @@
       "revId": "0b4af73fd1c73b09e319f6768adbb68b1a05453f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35203477_2f5367a6",
+        "filename": "docs/development/devtools/distribution-smoke.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7629
+      },
+      "writtenOn": "2022-04-04T08:17:08Z",
+      "side": 1,
+      "message": "Thank you Ajith and Jorge. I will update the review with a new patch to avoid duplication",
+      "parentUuid": "bcf649cd_8c65b372",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "0b4af73fd1c73b09e319f6768adbb68b1a05453f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
