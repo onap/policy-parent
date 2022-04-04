@@ -70,6 +70,30 @@
       "revId": "0b4af73fd1c73b09e319f6768adbb68b1a05453f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eef9fd8d_8bee0c7d",
+        "filename": "docs/development/devtools/distribution-smoke.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7629
+      },
+      "writtenOn": "2022-04-04T13:54:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35203477_2f5367a6",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "0b4af73fd1c73b09e319f6768adbb68b1a05453f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
