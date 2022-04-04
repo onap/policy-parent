@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e948d680_fa18d4ad",
+        "filename": "docs/clamp/acm/images/defining-acms/acm-node-template.png",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-04-04T15:01:38Z",
+      "side": 1,
+      "message": "Same comment",
+      "revId": "04a905806a25e06dae1c50286d81a419532bf991",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4537451_2b33cd92",
+        "filename": "docs/clamp/acm/images/defining-acms/fundamental-concepts.png",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-04-04T15:01:38Z",
+      "side": 1,
+      "message": "Same comment here",
+      "revId": "04a905806a25e06dae1c50286d81a419532bf991",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58d60ff3_87f17440",
+        "filename": "docs/clamp/acm/images/defining-acms/standard-acme.png",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-04-04T15:01:38Z",
+      "side": 1,
+      "message": "Change \"Control Loop\" references in picture to Automation Composition",
+      "revId": "04a905806a25e06dae1c50286d81a419532bf991",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
