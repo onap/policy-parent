@@ -13,7 +13,7 @@ described in TOSCA.
 
    acm/controlloop-architecture
    acm/defining-controlloops
-   acm/api-protocol/api-protocol
+   acm/api-protocol/api-protocol-tree
    acm/design-impl/design-impl
 
 .. note::

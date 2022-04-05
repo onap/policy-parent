@@ -1,9 +1,9 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
-.. _clamp-controlloop-api-protocol:
+.. _clamp-acm-api-protocol:
 
-CLAMP TOSCA Control Loop APIs and Protocols
-###########################################
+CLAMP TOSCA Automation Composition APIs and Protocols
+#####################################################
 
 The sections below describe the APIs and Protocols used in TOSCA Control Loops.
 
@@ -11,5 +11,5 @@ The sections below describe the APIs and Protocols used in TOSCA Control Loops.
    :maxdepth: 1
 
    system-level-dialogues
-   controlloop-participant-protocol
+   acm-participant-protocol
    controlloop-rest-apis
