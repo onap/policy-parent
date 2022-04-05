@@ -313,7 +313,7 @@ partake in automation compositions.
 4. Other Considerations
 =======================
 
-.. _management-cl-instance-configs:
+.. _management-acm-instance-configs:
 
 4.1 Management of Automation Composition Instance Configurations
 ----------------------------------------------------------------
@@ -461,7 +461,7 @@ The APIs and Protocols used by CLAMP for Automation Compositions are described o
 
 The design and implementation of TOSCA Automation Compositions in CLAMP is described for each executable entity on the pages below:
 
-#. :ref:`The CLAMP Automation Composition Runtime Server <clamp-acm-runtime>`
+#. :ref:`The CLAMP Automation Composition Runtime Server <clamp-runtime-acm>`
 #. :ref:`CLAMP Automation Composition Participants <clamp-acm-participants>`
 #. :ref:`Managing Automation Compositions using The CLAMP GUI <clamp-gui-acm>`
 

@@ -1,6 +1,6 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
-.. _clamp-clamp-acm-participant-intermediary:
+.. _clamp-acm-participant-intermediary:
 
 Participant Intermediary
 ########################
@@ -58,55 +58,55 @@ Design of a PARTICIPANT_DEREGISTER message
 - Participant is not monitored.
 
 Design of a creation of an Automation Composition Type
--------------------------------------------
+------------------------------------------------------
 - If there are participants registered with CL-runtime, it triggers the execution to send a broadcast PARTICIPANT_UPDATE message
 - the message is built by ParticipantUpdatePublisher using Tosca Service Template data (to fill the list of ParticipantDefinition)
 - Participant-intermediary will receive a PARTICIPANT_UDPATE message and stores the Tosca Service Template data on ParticipantHandler
 
 Design of a deletion of an Automation Composition Type
--------------------------------------------
+------------------------------------------------------
 - if there are participants registered, CL-runtime triggers the execution to send a broadcast PARTICIPANT_UPDATE message
 - the message is built by ParticipantUpdatePublisher with an empty list of ParticipantDefinition
 - It deletes the Automation Composition Type from DB
 - Participant-intermediary will receive a PARTICIPANT_UDPATE message and deletes the Tosca Service Template data on ParticipantHandler
 
 Design of a creation of an Automation Composition
---------------------------------------
+-------------------------------------------------
 - AUTOMATION_COMPOSITION_UPDATE message with instantiation details and UNINITIALISED state is sent to participants
 - Participant-intermediary validates the current state change
 - Participant-intermediary will recieve AUTOMATION_COMPOSITION_UPDATE message and sends the details of AutomationCompositionElements to participants
 - Each participant performs its designated job of deployment by interacting with respective frameworks
 
 Design of a deletion of an Automation Composition
---------------------------------------
+-------------------------------------------------
 - AUTOMATION_COMPOSITION_STATE_CHANGE message with UNINITIALISED state is sent to participants
 - Participant-intermediary validates the current state change
 - Participant-intermediary will recieve AUTOMATION_COMPOSITION_STATE_CHANGE message and sends the details of AutomationCompositionElements to participants
 - Each participant performs its designated job of undeployment by interacting with respective frameworks
 
 Design of "issues automation composition commands to automation compositions" - case UNINITIALISED to PASSIVE
------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
 - AUTOMATION_COMPOSITION_STATE_CHANGE message with state changed from UNINITIALISED to PASSIVE is sent to participants
 - Participant-intermediary validates the current state change
 - Participant-intermediary will recieve AUTOMATION_COMPOSITION_STATE_CHANGE message and sends the details of state change to participants
 - Each participant performs its designated job of state change by interacting with respective frameworks
 
 Design of "issues automation composition commands to automation compositions" - case PASSIVE to UNINITIALISED
------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
 - AUTOMATION_COMPOSITION_STATE_CHANGE message with state changed from PASSIVE to UNINITIALISED is sent to participants
 - Participant-intermediary validates the current state change
 - Participant-intermediary will recieve AUTOMATION_COMPOSITION_STATE_CHANGE message and sends the details of state change to participants
 - Each participant performs its designated job of state change by interacting with respective frameworks
 
 Design of "issues automation composition commands to automation compositions" - case PASSIVE to RUNNING
------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 - AUTOMATION_COMPOSITION_STATE_CHANGE message with state changed from PASSIVE to RUNNING is sent to participants
 - Participant-intermediary validates the current state change
 - Participant-intermediary will recieve AUTOMATION_COMPOSITION_STATE_CHANGE message and sends the details of state change to participants
 - Each participant performs its designated job of state change by interacting with respective frameworks
 
 Design of "issues automation composition commands to automation compositions" - case RUNNING to PASSIVE
------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 - AUTOMATION_COMPOSITION_STATE_CHANGE message with state changed from RUNNING to PASSIVE is sent to participants
 - Participant-intermediary validates the current state change
 - Participant-intermediary will recieve AUTOMATION_COMPOSITION_STATE_CHANGE message and sends the details of state change to participants
@@ -119,7 +119,7 @@ Design of a PARTICIPANT_STATUS message
 - PARTICIPANT_STATUS message holds a special attribute to return Tosca definitions, this attribute is populated only in response to PARTICIPANT_STATUS_REQ
 
 Design of a AUTOMATIONCOMPOSITION_UPDATE_ACK message
-------------------------------------------
+----------------------------------------------------
 - A participant sends AUTOMATIONCOMPOSITION_UPDATE_ACK message in response to a AUTOMATIONCOMPOSITION_UPDATE message.
 - For each CL-elements moved to the ordered state as indicated by the AUTOMATIONCOMPOSITION_UPDATE
 - AutomationCompositionUpdateAckListener in CL-runtime collects the messages from DMaap
