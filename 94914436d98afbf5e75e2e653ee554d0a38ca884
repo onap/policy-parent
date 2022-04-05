@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8fcdae97_cf43157a",
+        "filename": "docs/clamp/acm/defining-acms.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7660
+      },
+      "writtenOn": "2022-04-05T12:55:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4017b8cb_7313e1e2",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "94914436d98afbf5e75e2e653ee554d0a38ca884",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccf7c276_a52e1b7c",
         "filename": "docs/clamp/acm/images/defining-acms/acm-node-template.png",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "94914436d98afbf5e75e2e653ee554d0a38ca884",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2be4113_03be0a3a",
+        "filename": "docs/clamp/acm/images/defining-acms/acm-node-template.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7660
+      },
+      "writtenOn": "2022-04-05T12:55:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccf7c276_a52e1b7c",
+      "revId": "94914436d98afbf5e75e2e653ee554d0a38ca884",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
