@@ -1,14 +1,14 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
-.. _clamp-controlloop-participant-simulator:
+.. _clamp-acm-participant-simulator:
 
 Participant Simulator
 #####################
 
 This can be used for simulation testing purpose when there are no actual frameworks or a full deployment.
-Participant simulator can edit the states of ControlLoopElements and Participants for verification of other controlloop components
+Participant simulator can edit the states of AutomationCompositionElements and Participants for verification of other clamp-acm components
 for early testing.
-All controlloop components should be setup, except participant frameworks (for example, no policy framework components
+All clamp-acm components should be setup, except participant frameworks (for example, no policy framework components
 are needed) and participant simulator acts as respective participant framework, and state changes can be done with following REST APIs
 
 Participant Simulator API

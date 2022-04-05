@@ -1,6 +1,6 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
-.. _clamp-controlloop-k8s-participant:
+.. _clamp-acm-k8s-participant:
 
 Kubernetes Participant
 ######################
@@ -38,12 +38,12 @@ Defining a TOSCA CL definition for kubernetes participant:
 ----------------------------------------------------------
 
 A *chart* parameter map describes the helm chart parameters in tosca template for a microservice that is used by the kubernetes participant for the deployment.
-A Control Loop element in TOSCA is mapped to the kubernetes participant and also holds the helm chart parameters for a microservice defined under the properties of the Control Loop Element.
+A Automation Composition element in TOSCA is mapped to the kubernetes participant and also holds the helm chart parameters for a microservice defined under the properties of the Automation Composition Element.
 
-Sample tosca template defining a participant and a control loop element for a control loop. :download:`click here <tosca/tosca-k8s-participant.yml>`
+Sample tosca template defining a participant and a automation composition element for a automation composition. :download:`click here <tosca/tosca-k8s-participant.yml>`
 
 
-Configuring a Control Loop Element on the kubernetes participant for a Control Loop
+Configuring a Automation Composition Element on the kubernetes participant for a Automation Composition
 -----------------------------------------------------------------------------------
 
 The user configures the following properties in the TOSCA template for the kubernetes participant:
@@ -105,27 +105,27 @@ The *repository* type is described in the following table:
 
 Kubernetes participant Interactions:
 ------------------------------------
-The kubernetes participant interacts with Control Loop Runtime on the northbound via DMaap. It interacts with the helm client on the southbound for performing various helm operations to the k8s cluster.
+The kubernetes participant interacts with Automation Composition Runtime on the northbound via DMaap. It interacts with the helm client on the southbound for performing various helm operations to the k8s cluster.
 
-The communication for the Control loop updates and state change requests are sent from the Control Loop Runtime to the participant via DMaap.
-The participant performs appropriate operations on the k8s cluster via helm client based on the received messages from the Control Loop Runtime.
+The communication for the Automation Composition updates and state change requests are sent from the Automation Composition Runtime to the participant via DMaap.
+The participant performs appropriate operations on the k8s cluster via helm client based on the received messages from the Automation Composition Runtime.
 
 
 kubernetes participant Workflow:
 --------------------------------
-Once the participant is started, it sends a "REGISTER" event to the DMaap topic which is then consumed by the Control Loop Runtime to register this participant on the runtime database.
-The user can commission the tosca definitions from the Policy Gui to the Control Loop Runtime that further updates the participant with these definitions via DMaap.
-Once the control loop definitions are available in the runtime database, the Control Loop can be instantiated with the default state "UNINITIALISED" from the Policy Gui.
+Once the participant is started, it sends a "REGISTER" event to the DMaap topic which is then consumed by the Automation Composition Runtime to register this participant on the runtime database.
+The user can commission the tosca definitions from the Policy Gui to the Automation Composition Runtime that further updates the participant with these definitions via DMaap.
+Once the automation composition definitions are available in the runtime database, the Automation Composition can be instantiated with the default state "UNINITIALISED" from the Policy Gui.
 
-When the state of the Control Loop is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui, the kubernetes participant receives the control loop state change event from the runtime and
-deploys the helm charts associated with each Control Loop Elements by creating appropriate namespace on the cluster.
+When the state of the Automation Composition is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui, the kubernetes participant receives the automation composition state change event from the runtime and
+deploys the helm charts associated with each Automation Composition Elements by creating appropriate namespace on the cluster.
 If the repository of the helm chart is not passed via TOSCA, the participant looks for the helm chart in the configured helm repositories of helm client.
 It also performs a chart look up on the local chart database where the helm charts are onboarded via the participant's REST Api.
 
 The participant also monitors the deployed pods for the next 3 minutes until the pods comes to RUNNING state.
 It holds the deployment information of the pods including the current status of the pods after the deployment.
 
-When the state of the Control Loop is changed from "PASSIVE" to "UNINITIALISED" back, the participant also undeploys the helm charts from the cluster that are part of the Control Loop Element.
+When the state of the Automation Composition is changed from "PASSIVE" to "UNINITIALISED" back, the participant also undeploys the helm charts from the cluster that are part of the Automation Composition Element.
 
 REST APIs on Kubernetes participant
 -----------------------------------

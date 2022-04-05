@@ -1,6 +1,6 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
-.. _clamp-controlloop-participant-intermediary:
+.. _clamp-clamp-acm-participant-intermediary:
 
 Participant Intermediary
 ########################
@@ -8,7 +8,7 @@ Participant Intermediary
 The CLAMP Participant Intermediary is a common library in ONAP, which does common message and
 state handling for participant implementations. It provides a Java API, which participant
 implementations implement to receive and send messages to the CLAMP runtime and to handle
-Control Loop Element state.
+Automation Composition Element state.
 
 Terminology
 -----------
@@ -19,20 +19,20 @@ Terminology
 
 Inbound messages to participants
 --------------------------------
-- PARTICIPANT_REGISTER_ACK: received as a response from controlloop runtime server as an acknowledgement to ParticipantRegister message sent from a participant
-- PARTICIPANT_DEREGISTER_ACK: received as a response from controlloop runtime server as an acknowledgement to ParticipantDeregister message sent from a participant
-- CONTROL_LOOP_STATE_CHANGE: a message received from controlloop runtime server for a state change of controlloop
-- CONTROL_LOOP_UPDATE: a message received from controlloop runtime server for a controlloop update with controlloop instances
-- PARTICIPANT_UPDATE: a message received from controlloop runtime server for a participant update with tosca definitions of controlloop
-- PARTICIPANT_STATUS_REQ: A status request received from controlloop runtime server to send an immediate ParticipantStatus from all participants
+- PARTICIPANT_REGISTER_ACK: received as a response from clamp-acm runtime server as an acknowledgement to ParticipantRegister message sent from a participant
+- PARTICIPANT_DEREGISTER_ACK: received as a response from clamp-acm runtime server as an acknowledgement to ParticipantDeregister message sent from a participant
+- AUTOMATION_COMPOSITION_STATE_CHANGE: a message received from clamp-acm runtime server for a state change of clamp-acm
+- AUTOMATION_COMPOSITION_UPDATE: a message received from clamp-acm runtime server for a clamp-acm update with clamp-acm instances
+- PARTICIPANT_UPDATE: a message received from clamp-acm runtime server for a participant update with tosca definitions of clamp-acm
+- PARTICIPANT_STATUS_REQ: A status request received from clamp-acm runtime server to send an immediate ParticipantStatus from all participants
 
 Outbound messages
 -----------------
 - PARTICIPANT_REGISTER: is sent by a participant during startup
 - PARTICIPANT_DEREGISTER: is sent by a participant during shutdown
 - PARTICIPANT_STATUS: is sent by a participant as heartbeat with the status and health of a participant
-- CONTROLLOOP_STATECHANGE_ACK: is an acknowledgement sent by a participant as a response to ControlLoopStateChange
-- CONTROLLOOP_UPDATE_ACK: is an acknowledgement sent by a participant as a response to ControlLoopUpdate
+- AUTOMATIONCOMPOSITION_STATECHANGE_ACK: is an acknowledgement sent by a participant as a response to AutomationCompositionStateChange
+- AUTOMATIONCOMPOSITION_UPDATE_ACK: is an acknowledgement sent by a participant as a response to AutomationCompositionUpdate
 - PARTICIPANT_UPDATE_ACK: is an acknowledgement sent by a participant as a response to ParticipantUpdate
 
 Design of a PARTICIPANT_REGISTER message
@@ -57,59 +57,59 @@ Design of a PARTICIPANT_DEREGISTER message
 - It triggers the execution to send a PARTICIPANT_DEREGISTER_ACK message to the participant registered
 - Participant is not monitored.
 
-Design of a creation of a Control Loop Type
+Design of a creation of an Automation Composition Type
 -------------------------------------------
 - If there are participants registered with CL-runtime, it triggers the execution to send a broadcast PARTICIPANT_UPDATE message
 - the message is built by ParticipantUpdatePublisher using Tosca Service Template data (to fill the list of ParticipantDefinition)
 - Participant-intermediary will receive a PARTICIPANT_UDPATE message and stores the Tosca Service Template data on ParticipantHandler
 
-Design of a deletion of a Control Loop Type
+Design of a deletion of an Automation Composition Type
 -------------------------------------------
 - if there are participants registered, CL-runtime triggers the execution to send a broadcast PARTICIPANT_UPDATE message
 - the message is built by ParticipantUpdatePublisher with an empty list of ParticipantDefinition
-- It deletes the Control Loop Type from DB
+- It deletes the Automation Composition Type from DB
 - Participant-intermediary will receive a PARTICIPANT_UDPATE message and deletes the Tosca Service Template data on ParticipantHandler
 
-Design of a creation of a Control Loop
+Design of a creation of an Automation Composition
 --------------------------------------
-- CONTROL_LOOP_UPDATE message with instantiation details and UNINITIALISED state is sent to participants
+- AUTOMATION_COMPOSITION_UPDATE message with instantiation details and UNINITIALISED state is sent to participants
 - Participant-intermediary validates the current state change
-- Participant-intermediary will recieve CONTROL_LOOP_UPDATE message and sends the details of ControlLoopElements to participants
+- Participant-intermediary will recieve AUTOMATION_COMPOSITION_UPDATE message and sends the details of AutomationCompositionElements to participants
 - Each participant performs its designated job of deployment by interacting with respective frameworks
 
-Design of a deletion of a Control Loop
+Design of a deletion of an Automation Composition
 --------------------------------------
-- CONTROL_LOOP_STATE_CHANGE message with UNINITIALISED state is sent to participants
+- AUTOMATION_COMPOSITION_STATE_CHANGE message with UNINITIALISED state is sent to participants
 - Participant-intermediary validates the current state change
-- Participant-intermediary will recieve CONTROL_LOOP_STATE_CHANGE message and sends the details of ControlLoopElements to participants
+- Participant-intermediary will recieve AUTOMATION_COMPOSITION_STATE_CHANGE message and sends the details of AutomationCompositionElements to participants
 - Each participant performs its designated job of undeployment by interacting with respective frameworks
 
-Design of "issues control loop commands to control loops" - case UNINITIALISED to PASSIVE
+Design of "issues automation composition commands to automation compositions" - case UNINITIALISED to PASSIVE
 -----------------------------------------------------------------------------------------
-- CONTROL_LOOP_STATE_CHANGE message with state changed from UNINITIALISED to PASSIVE is sent to participants
+- AUTOMATION_COMPOSITION_STATE_CHANGE message with state changed from UNINITIALISED to PASSIVE is sent to participants
 - Participant-intermediary validates the current state change
-- Participant-intermediary will recieve CONTROL_LOOP_STATE_CHANGE message and sends the details of state change to participants
+- Participant-intermediary will recieve AUTOMATION_COMPOSITION_STATE_CHANGE message and sends the details of state change to participants
 - Each participant performs its designated job of state change by interacting with respective frameworks
 
-Design of "issues control loop commands to control loops" - case PASSIVE to UNINITIALISED
+Design of "issues automation composition commands to automation compositions" - case PASSIVE to UNINITIALISED
 -----------------------------------------------------------------------------------------
-- CONTROL_LOOP_STATE_CHANGE message with state changed from PASSIVE to UNINITIALISED is sent to participants
+- AUTOMATION_COMPOSITION_STATE_CHANGE message with state changed from PASSIVE to UNINITIALISED is sent to participants
 - Participant-intermediary validates the current state change
-- Participant-intermediary will recieve CONTROL_LOOP_STATE_CHANGE message and sends the details of state change to participants
+- Participant-intermediary will recieve AUTOMATION_COMPOSITION_STATE_CHANGE message and sends the details of state change to participants
 - Each participant performs its designated job of state change by interacting with respective frameworks
 
-Design of "issues control loop commands to control loops" - case PASSIVE to RUNNING
+Design of "issues automation composition commands to automation compositions" - case PASSIVE to RUNNING
 -----------------------------------------------------------------------------------
-- CONTROL_LOOP_STATE_CHANGE message with state changed from PASSIVE to RUNNING is sent to participants
+- AUTOMATION_COMPOSITION_STATE_CHANGE message with state changed from PASSIVE to RUNNING is sent to participants
 - Participant-intermediary validates the current state change
-- Participant-intermediary will recieve CONTROL_LOOP_STATE_CHANGE message and sends the details of state change to participants
+- Participant-intermediary will recieve AUTOMATION_COMPOSITION_STATE_CHANGE message and sends the details of state change to participants
 - Each participant performs its designated job of state change by interacting with respective frameworks
 
-Design of "issues control loop commands to control loops" - case RUNNING to PASSIVE
+Design of "issues automation composition commands to automation compositions" - case RUNNING to PASSIVE
 -----------------------------------------------------------------------------------
-- CONTROL_LOOP_STATE_CHANGE message with state changed from RUNNING to PASSIVE is sent to participants
+- AUTOMATION_COMPOSITION_STATE_CHANGE message with state changed from RUNNING to PASSIVE is sent to participants
 - Participant-intermediary validates the current state change
-- Participant-intermediary will recieve CONTROL_LOOP_STATE_CHANGE message and sends the details of state change to participants
+- Participant-intermediary will recieve AUTOMATION_COMPOSITION_STATE_CHANGE message and sends the details of state change to participants
 - Each participant performs its designated job of state change by interacting with respective frameworks
 
 Design of a PARTICIPANT_STATUS message
@@ -118,12 +118,12 @@ Design of a PARTICIPANT_STATUS message
 - This message will hold the state and healthStatus of all the participants running actively
 - PARTICIPANT_STATUS message holds a special attribute to return Tosca definitions, this attribute is populated only in response to PARTICIPANT_STATUS_REQ
 
-Design of a CONTROLLOOP_UPDATE_ACK message
+Design of a AUTOMATIONCOMPOSITION_UPDATE_ACK message
 ------------------------------------------
-- A participant sends CONTROLLOOP_UPDATE_ACK message in response to a CONTROLLOOP_UPDATE message.
-- For each CL-elements moved to the ordered state as indicated by the CONTROLLOOP_UPDATE
-- ControlLoopUpdateAckListener in CL-runtime collects the messages from DMaap
-- It checks the status of all control loop elements and checks if the control loop is primed
-- It updates the controlloop in DB accordingly
+- A participant sends AUTOMATIONCOMPOSITION_UPDATE_ACK message in response to a AUTOMATIONCOMPOSITION_UPDATE message.
+- For each CL-elements moved to the ordered state as indicated by the AUTOMATIONCOMPOSITION_UPDATE
+- AutomationCompositionUpdateAckListener in CL-runtime collects the messages from DMaap
+- It checks the status of all automation composition elements and checks if the automation composition is primed
+- It updates the clamp-acm in DB accordingly
 
-Design of a CONTROLLOOP_STATECHANGE_ACK is similar to the design for CONTROLLOOP_UPDATE_ACK
+Design of a AUTOMATIONCOMPOSITION_STATECHANGE_ACK is similar to the design for AUTOMATIONCOMPOSITION_UPDATE_ACK
