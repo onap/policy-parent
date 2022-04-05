@@ -16,6 +16,24 @@
       "revId": "78a82e61ac3ba4fd0cf4489f2db6b110e5cf4861",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55994057_219f8930",
+        "filename": "docs/clamp/acm/images/acm-participants-protocol/acm-depriming.png",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2022-04-05T14:03:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70b9d1bf_f553bf87",
+      "revId": "78a82e61ac3ba4fd0cf4489f2db6b110e5cf4861",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
