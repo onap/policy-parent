@@ -54,7 +54,7 @@ The Policy Participant uses the following steps for Policy Type References:
 #. The Policy Participant reads the Policy Type ID from the policyType property specified for the Automation Composition Element.
 
 #. It checks if a Policy Type with that Policy Type ID has been specified in the ToscaServiceTemplateFragment field in
-   the AutomationCompositionElement definition in the AutomationCompositionUpdate message, see :ref:`clampacm-participant-protocol-label`.
+   the AutomationCompositionElement definition in the AutomationCompositionUpdate message, see :ref:`acm-participant-protocol-label`.
 
   #. If the Policy Type has been specified, the Participant stores the Policy Type in the Policy framework. If the
      Policy Type is successfully stored, execution proceeds, otherwise an error is reported.
@@ -70,7 +70,7 @@ The Policy Participant uses the following steps for Policy References:
 #. The Policy Participant reads the Policy ID from the policyId property specified for the Automation Composition Element.
 
 #. It checks if a Policy with that Policy ID has been specified in the ToscaServiceTemplateFragment field in the
-   AutomationCompositionElement definition in the AutomationCompositionUpdate message, :ref:`clampacm-participant-protocol-label`.
+   AutomationCompositionElement definition in the AutomationCompositionUpdate message, :ref:`acm-participant-protocol-label`.
 
   #. If the Policy has been specified, the Participant stores the Policy in the Policy framework. If the Policy is
      successfully stored, execution proceeds, otherwise an error is reported.

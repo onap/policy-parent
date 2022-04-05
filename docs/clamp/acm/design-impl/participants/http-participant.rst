@@ -35,7 +35,7 @@ participant is running two HTTP Automation Composition Elements, one for Automat
 Automation Composition B.
 
 Configuring a Automation Composition Element on the HTTP participant for a Automation Composition
------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
 A *Configuration Entity* describes a concept that is managed by the HTTP participant. A
 Configuration Entity can be created, Read, Updated, and Deleted (CRUD). The user defines
 the Configuration Entities that it wants its HTTP Automation Composition Element to manage and

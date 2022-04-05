@@ -44,7 +44,7 @@ Sample tosca template defining a participant and a automation composition elemen
 
 
 Configuring a Automation Composition Element on the kubernetes participant for a Automation Composition
------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
 
 The user configures the following properties in the TOSCA template for the kubernetes participant:
 

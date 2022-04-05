@@ -1,9 +1,9 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
-.. _clamp-controlloop-participants:
+.. _clamp-acm-participants:
 
-Control Loop Participants
-#########################
+Automation Composition Participants
+###################################
 
 A Participant is a component that acts as a bridge between the CLAMP Automation Composition Management runtime and components such as
 the Policy Framework, DCAE, or a Kubernetes cluster that are taking part in automation composition management. It listens
