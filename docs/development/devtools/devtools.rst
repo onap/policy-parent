@@ -273,7 +273,7 @@ familiar with the Policy Framework components and test any local changes.
 .. toctree::
    :maxdepth: 1
 
-   policy-gui-controlloop-smoke.rst
+   policy-gui-acm-smoke.rst
    db-migrator-smoke.rst
    cl-participants-smoke.rst
    clamp-smoke.rst
