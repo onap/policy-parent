@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "3f624177_fcf45e1a",
+        "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 7629
+      },
+      "writtenOn": "2022-04-07T15:41:06Z",
+      "side": 1,
+      "message": "(This image is not showing)\n.. note::\n\tIf you get the following error\n\n.. image:: images/03-gui.png\n\nedit package.json",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "31d9f1cb919f5f0568542110179bfdb13f31abb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b75272e2_b833ddfd",
         "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
         "patchSetId": 3
