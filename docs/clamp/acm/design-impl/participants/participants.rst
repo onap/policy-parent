@@ -5,21 +5,21 @@
 Control Loop Participants
 #########################
 
-A Participant is a component that acts as a bridge between the CLAMP COntrol Loop runtime and components such as
-the Policy Framework, DCAE, or a Kubernetes cluster that are taking part in control loops. It listens
+A Participant is a component that acts as a bridge between the CLAMP Automation Composition Management runtime and components such as
+the Policy Framework, DCAE, or a Kubernetes cluster that are taking part in automation composition management. It listens
 to DMaaP to receive messages from the CLAMP runtime and performs operations towards components that
-are taking part in control loops. A participant has a Control Loop Element for each control loop in
+are taking part in acms. A participant has an Automation Composition Management Element for each automation composition in
 which it is taking part.
 
 The implementation of a participant may use a common
-:ref:`Participant Intermediary library <clamp-controlloop-participant-intermediary>`, which carries out common
-message and state handling for Control Loop Elements in participants. The *ParticipantImpelementation* is the
+:ref:`Participant Intermediary library <clamp-acm-participant-intermediary>`, which carries out common
+message and state handling for Automation Composition Elements in participants. The *ParticipantImpelementation* is the
 component specific implementation of a participant, which is specifically developed for each component that
-wishes to take part in control loops.
+wishes to take part in automation composition management.
 
 .. image:: ../../images/participants/participants.png
 
-The figure above shows participants for various components that may take part in control loops.
+The figure above shows participants for various components that may take part in automation composition management.
 
 .. note:: The figure above is for illustration. Not all the participants mentioned above
           have realizations in ONAP. Some of the participants in the figure above represent

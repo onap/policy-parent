@@ -1,6 +1,6 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
-.. _clamp-controlloop-http-participant:
+.. _clamp-acm-http-participant:
 
 HTTP Participant
 ################
@@ -8,7 +8,7 @@ HTTP Participant
 The CLAMP HTTP participant receives configuration information from the CLAMP runtime,
 maps the configuration information to a REST URL, and makes a REST call on the URL.
 Typically the HTTP Participant is used with another participant such as the
-:ref:`Kubernetes Participant <clamp-controlloop-k8s-participant>`, which brings up
+:ref:`Kubernetes Participant <clamp-acm-k8s-participant>`, which brings up
 the microservice that runs a REST server. Once the microservice is up, the HTTP
 participant can be used to configure the microservice over its REST interface.Of course,
 the HTTP participant works towards any REST service, it is not restricted to REST
@@ -18,31 +18,31 @@ services started by participants.
 .. image:: ../../images/participants/http-participant.png
 
 
-The HTTP participant runs a Control Loop Element to handle the REST dialogues for a
+The HTTP participant runs a Automation Composition Element to handle the REST dialogues for a
 particular application domain. The REST dialogues are whatever REST calls that are
 required to implement the functionality for the application domain.
 
-The HTTP participant allows the REST dialogues for a Control Loop to be managed. A
-particular Control Loop may require many *things* to be configured and managed and this
+The HTTP participant allows the REST dialogues for a Automation Composition to be managed. A
+particular Automation Composition may require many *things* to be configured and managed and this
 may require many REST dialogues to achieve.
 
-When a control loop is initialized, the HTTP participant starts a HTTP Control Loop
-element for the control loop. It reads the configuration information sent from the
-Control Loop Runtime runs a HTTP client to talk to the REST endpoint that is receiving
-the REST requests. A HTTP participant can simultaneously manage HTTP Control Loop
+When a automation composition is initialized, the HTTP participant starts a HTTP Automation Composition
+element for the automation composition. It reads the configuration information sent from the
+Automation Composition Runtime runs a HTTP client to talk to the REST endpoint that is receiving
+the REST requests. A HTTP participant can simultaneously manage HTTP Automation Composition
 Elements towards multiple REST endpoints, as shown in the diagram above where the HTTP
-participant is running two HTTP Control Loop Elements, one for Control Loop A and one for
-Control Loop B.
+participant is running two HTTP Automation Composition Elements, one for Automation Composition A and one for
+Automation Composition B.
 
-Configuring a Control Loop Element on the HTTP participant for a Control Loop
+Configuring a Automation Composition Element on the HTTP participant for a Automation Composition
 -----------------------------------------------------------------------------
 A *Configuration Entity* describes a concept that is managed by the HTTP participant. A
 Configuration Entity can be created, Read, Updated, and Deleted (CRUD). The user defines
-the Configuration Entities that it wants its HTTP Control Loop Element to manage and
+the Configuration Entities that it wants its HTTP Automation Composition Element to manage and
 provides a sequence of parameterized REST commands to Create, Read, Update, and Delete
 each Configuration Entity.
 
-Sample tosca template defining a http participant and a control loop element for a control loop. :download:`click here <tosca/tosca-http-participant.yml>`
+Sample tosca template defining a http participant and a automation composition element for a automation composition. :download:`click here <tosca/tosca-http-participant.yml>`
 
 The user configures the following properties in the TOSCA for the HTTP participant:
 
@@ -62,7 +62,7 @@ The user configures the following properties in the TOSCA for the HTTP participa
    * - configurationEntitiies
      - map
      - A map of *<String, ConfigurationEntity>* describing the names and definitions of
-       configuration entities that are managed by this HTTP Control Loop Element
+       configuration entities that are managed by this HTTP Automation Composition Element
 
 The *ConfigurationEntity* type is described in the following table:
 
@@ -104,30 +104,30 @@ The *RestRequest* type is described in the following table:
 
 Http participant Interactions:
 ------------------------------
-The http participant interacts with Control Loop Runtime on the northbound via DMaap. It interacts with any microservice on the southbound over http for configuration.
+The http participant interacts with Automation Composition Runtime on the northbound via DMaap. It interacts with any microservice on the southbound over http for configuration.
 
-The communication for the Control loop updates and state change requests are sent from the Control Loop Runtime to the participant via DMaap.
-The participant invokes the appropriate http endpoint of the microservice based on the received messages from the Control Loop Runtime.
+The communication for the Automation Composition updates and state change requests are sent from the Automation Composition Runtime to the participant via DMaap.
+The participant invokes the appropriate http endpoint of the microservice based on the received messages from the Automation Composition Runtime.
 
 
 startPhase:
 -----------
-The http participant is often used along with :ref:`Kubernetes Participant <clamp-controlloop-k8s-participant>` to configure the microservice after the deployment.
-This requires the Control Loop Element of http participant to be started after the completion of deployment of the microservice. This can be achieved by adding the property `startPhase`
-in the Control Loop Element of http participant. Control Loop Runtime starts the elements based on the `startPhase` value defined in the Tosca. The default value of startPhase is taken as '0'
-which takes precedence over the Control Loop Elements with the startPhase value '1'. Http Control Loop Elements are defined with value '1' in order to start the Control Loop Element in the second phase.
+The http participant is often used along with :ref:`Kubernetes Participant <clamp-acm-k8s-participant>` to configure the microservice after the deployment.
+This requires the Automation Composition Element of http participant to be started after the completion of deployment of the microservice. This can be achieved by adding the property `startPhase`
+in the Automation Composition Element of http participant. Automation Composition Runtime starts the elements based on the `startPhase` value defined in the Tosca. The default value of startPhase is taken as '0'
+which takes precedence over the Automation Composition Elements with the startPhase value '1'. Http Automation Composition Elements are defined with value '1' in order to start the Automation Composition Element in the second phase.
 
 Http participant Workflow:
 --------------------------
-Once the participant is started, it sends a "REGISTER" event to the DMaap topic which is then consumed by the Control Loop Runtime to register this participant on the runtime database.
-The user can commission the tosca definitions from the Policy Gui to the Control Loop Runtime that further updates the participant with these definitions via DMaap.
-Once the control loop definitions are available in the runtime database, the Control Loop can be instantiated with the default state "UNINITIALISED" from the Policy Gui.
+Once the participant is started, it sends a "REGISTER" event to the DMaap topic which is then consumed by the Automation Composition Runtime to register this participant on the runtime database.
+The user can commission the tosca definitions from the Policy Gui to the Automation Composition Runtime that further updates the participant with these definitions via DMaap.
+Once the automation composition definitions are available in the runtime database, the Automation Composition can be instantiated with the default state "UNINITIALISED" from the Policy Gui.
 
-When the state of the Control Loop is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui, the http participant receives the control loop state change event from the runtime and
-configures the microservice of the corresponding Control Loop Element over http.
-The configuration entity for a microservice is associated with each Control Loop Element for the http participant.
+When the state of the Automation Composition is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui, the http participant receives the automation composition state change event from the runtime and
+configures the microservice of the corresponding Automation Composition Element over http.
+The configuration entity for a microservice is associated with each Automation Composition Element for the http participant.
 The http participant holds the executed http requests information along with the responses received.
 
 The participant is used in a generic way to configure any entity over http and it does not hold the information about the microservice to unconfigure/revert the configurations when the
-state of Control Loop changes from "PASSIVE" to "UNINITIALISED".
+state of Automation Composition changes from "PASSIVE" to "UNINITIALISED".
 
