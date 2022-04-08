@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ca2f473_00bd6020",
+        "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7660
+      },
+      "writtenOn": "2022-04-08T14:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21d7f743_910e16a9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "31d9f1cb919f5f0568542110179bfdb13f31abb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49035d9c_3d2135f8",
         "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "31d9f1cb919f5f0568542110179bfdb13f31abb9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89678842_9e4b9ef8",
+        "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 7660
+      },
+      "writtenOn": "2022-04-08T14:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49035d9c_3d2135f8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 2
+      },
+      "revId": "31d9f1cb919f5f0568542110179bfdb13f31abb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ca74a07a_ff5d9e54",
+        "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7660
+      },
+      "writtenOn": "2022-04-08T14:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa60157_0be3c3a6",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "31d9f1cb919f5f0568542110179bfdb13f31abb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f624177_fcf45e1a",
         "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "31d9f1cb919f5f0568542110179bfdb13f31abb9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe342719_5f454445",
+        "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 7660
+      },
+      "writtenOn": "2022-04-08T14:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f624177_fcf45e1a",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "31d9f1cb919f5f0568542110179bfdb13f31abb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2c6a49d9_ed06d644",
+        "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 7660
+      },
+      "writtenOn": "2022-04-08T14:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75272e2_b833ddfd",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "31d9f1cb919f5f0568542110179bfdb13f31abb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e598d525_baeca7cc",
         "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "31d9f1cb919f5f0568542110179bfdb13f31abb9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1910c06_389a920b",
+        "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 7660
+      },
+      "writtenOn": "2022-04-08T14:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e598d525_baeca7cc",
+      "range": {
+        "startLine": 212,
+        "startChar": 25,
+        "endLine": 212,
+        "endChar": 27
+      },
+      "revId": "31d9f1cb919f5f0568542110179bfdb13f31abb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
