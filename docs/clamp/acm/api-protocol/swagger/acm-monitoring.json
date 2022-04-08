@@ -12,31 +12,61 @@
     }
   },
   "paths": {
-    "/onap/controlloop/v2/commission": {
+    "/onap/acm/v2/monitoring/clelement": {
       "get": {
         "tags": [
-          "Clamp Control Loop Commissioning API"
+          "Clamp Automation Composition Monitoring API"
         ],
-        "summary": "Query details of the requested commissioned control loop definitions",
-        "description": "Queries details of the requested commissioned control loop definitions, returning all control loop details",
-        "operationId": "queryUsingGET",
+        "summary": "Query details of the requested cl element stats",
+        "description": "Queries details of the requested cl element stats, returning all clElement stats",
+        "operationId": "queryElementStatisticsUsingGET",
         "produces": [
           "application/json",
           "application/yaml"
         ],
         "parameters": [
           {
+            "name": "endTime",
+            "in": "query",
+            "description": "end time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Automation Composition element id",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "name",
             "in": "query",
-            "description": "Control Loop definition name",
+            "description": "Participant name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "start time",
             "required": false,
             "type": "string"
           },
           {
             "name": "version",
             "in": "query",
-            "description": "Control Loop definition version",
-            "required": false,
+            "description": "Participant version",
+            "required": true,
             "type": "string"
           },
           {
@@ -52,11 +82,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/ToscaNodeTemplateRes",
-                "originalRef": "ToscaNodeTemplateRes"
-              }
+              "$ref": "#/definitions/ClElementStatisticsList",
+              "originalRef": "ClElementStatisticsList"
             }
           },
           "401": {
@@ -97,231 +124,6 @@
           },
           "404": {
             "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "headers": {
-              "X-LatestVersion": {
-                "type": "string"
-              },
-              "X-PatchVersion": {
-                "type": "string"
-              },
-              "X-MinorVersion": {
-                "type": "string"
-              },
-              "X-ONAP-RequestID": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "x-interface info": {
-          "api-version": "1.0.0",
-          "last-mod-release": "Dublin"
-        }
-      },
-      "post": {
-        "tags": [
-          "Clamp Control Loop Commissioning API"
-        ],
-        "summary": "Commissions control loop definitions",
-        "description": "Commissions control loop definitions, returning the commissioned control loop definition IDs",
-        "operationId": "createUsingPOST",
-        "consumes": [
-          "application/json",
-          "application/yaml"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Entity Body of Control Loop",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ToscaServiceTemplateReq",
-              "originalRef": "ToscaServiceTemplateReq"
-            }
-          },
-          {
-            "name": "X-ONAP-RequestID",
-            "in": "header",
-            "description": "RequestID for http transaction",
-            "required": false,
-            "type": "string",
-            "format": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/CommissioningResponse",
-              "originalRef": "CommissioningResponse"
-            }
-          },
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Authentication Error",
-            "headers": {
-              "X-LatestVersion": {
-                "type": "string"
-              },
-              "X-PatchVersion": {
-                "type": "string"
-              },
-              "X-MinorVersion": {
-                "type": "string"
-              },
-              "X-ONAP-RequestID": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          },
-          "403": {
-            "description": "Authorization Error",
-            "headers": {
-              "X-LatestVersion": {
-                "type": "string"
-              },
-              "X-PatchVersion": {
-                "type": "string"
-              },
-              "X-MinorVersion": {
-                "type": "string"
-              },
-              "X-ONAP-RequestID": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "headers": {
-              "X-LatestVersion": {
-                "type": "string"
-              },
-              "X-PatchVersion": {
-                "type": "string"
-              },
-              "X-MinorVersion": {
-                "type": "string"
-              },
-              "X-ONAP-RequestID": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "x-interface info": {
-          "api-version": "1.0.0",
-          "last-mod-release": "Dublin"
-        }
-      },
-      "delete": {
-        "tags": [
-          "Clamp Control Loop Commissioning API"
-        ],
-        "summary": "Delete a commissioned control loop",
-        "description": "Deletes a Commissioned Control Loop, returning optional error details",
-        "operationId": "deleteUsingDELETE",
-        "produces": [
-          "application/json",
-          "application/yaml"
-        ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "description": "Control Loop definition name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "version",
-            "in": "query",
-            "description": "Control Loop definition version",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "X-ONAP-RequestID",
-            "in": "header",
-            "description": "RequestID for http transaction",
-            "required": false,
-            "type": "string",
-            "format": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/CommissioningResponse",
-              "originalRef": "CommissioningResponse"
-            }
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "401": {
-            "description": "Authentication Error",
-            "headers": {
-              "X-LatestVersion": {
-                "type": "string"
-              },
-              "X-PatchVersion": {
-                "type": "string"
-              },
-              "X-MinorVersion": {
-                "type": "string"
-              },
-              "X-ONAP-RequestID": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          },
-          "403": {
-            "description": "Authorization Error",
-            "headers": {
-              "X-LatestVersion": {
-                "type": "string"
-              },
-              "X-PatchVersion": {
-                "type": "string"
-              },
-              "X-MinorVersion": {
-                "type": "string"
-              },
-              "X-ONAP-RequestID": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
           },
           "500": {
             "description": "Internal Server Error",
@@ -353,14 +155,14 @@
         }
       }
     },
-    "/onap/controlloop/v2/commission/elements": {
+    "/onap/acm/v2/monitoring/clelements/acm": {
       "get": {
         "tags": [
-          "Clamp Control Loop Commissioning API"
+          "Clamp Automation Composition Monitoring API"
         ],
-        "summary": "Query details of the requested commissioned control loop element definitions",
-        "description": "Queries details of the requested commissioned control loop element definitions, returning all control loop elements' details",
-        "operationId": "queryElementsUsingGET",
+        "summary": "Query details of the requested cl element stats in a automation composition",
+        "description": "Queries details of the requested cl element stats, returning all clElement stats",
+        "operationId": "queryElementStatisticsPerAcmsUsingGET",
         "produces": [
           "application/json",
           "application/yaml"
@@ -369,14 +171,150 @@
           {
             "name": "name",
             "in": "query",
-            "description": "Control Loop definition name",
+            "description": "Automation Composition name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Automation Composition version",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ClElementStatisticsList",
+              "originalRef": "ClElementStatisticsList"
+            }
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/onap/acm/v2/monitoring/participant": {
+      "get": {
+        "tags": [
+          "Clamp Automation Composition Monitoring API"
+        ],
+        "summary": "Query details of the requested participant stats",
+        "description": "Queries details of the requested participant stats, returning all participant stats",
+        "operationId": "queryParticipantStatisticsUsingGET",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "end time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Automation Composition participant name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "recordCount",
+            "in": "query",
+            "description": "Record count",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int32"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "start time",
             "required": false,
             "type": "string"
           },
           {
             "name": "version",
             "in": "query",
-            "description": "Control Loop definition version",
+            "description": "Automation Composition participant version",
             "required": false,
             "type": "string"
           },
@@ -393,11 +331,121 @@
           "200": {
             "description": "OK",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/ToscaNodeTemplateRes",
-                "originalRef": "ToscaNodeTemplateRes"
+              "$ref": "#/definitions/ParticipantStatisticsList",
+              "originalRef": "ParticipantStatisticsList"
+            }
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
               }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/onap/acm/v2/monitoring/participants/acm": {
+      "get": {
+        "tags": [
+          "Clamp Automation Composition Monitoring API"
+        ],
+        "summary": "Query details of all the participant stats in a automation composition",
+        "description": "Queries details of the participant stats, returning all participant stats",
+        "operationId": "queryParticipantStatisticsPerAcmsUsingGET",
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Automation Composition name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Automation Composition version",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ParticipantStatisticsList",
+              "originalRef": "ParticipantStatisticsList"
             }
           },
           "401": {

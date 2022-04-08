@@ -12,61 +12,31 @@
     }
   },
   "paths": {
-    "/onap/controlloop/v2/monitoring/clelement": {
+    "/onap/acm/v2/instantiation": {
       "get": {
         "tags": [
-          "Clamp Control Loop Monitoring API"
+          "Clamp Automation Composition Instantiation API"
         ],
-        "summary": "Query details of the requested cl element stats",
-        "description": "Queries details of the requested cl element stats, returning all clElement stats",
-        "operationId": "queryElementStatisticsUsingGET",
+        "summary": "Query details of the requested automation compositions",
+        "description": "Queries details of the requested automation compositions, returning all automation composition details",
+        "operationId": "queryUsingGET_1",
         "produces": [
           "application/json",
           "application/yaml"
         ],
         "parameters": [
           {
-            "name": "endTime",
-            "in": "query",
-            "description": "end time",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "id",
-            "in": "query",
-            "description": "Control Loop element id",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "name",
             "in": "query",
-            "description": "Participant name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "recordCount",
-            "in": "query",
-            "description": "Record count",
-            "required": false,
-            "type": "integer",
-            "default": 0,
-            "format": "int32"
-          },
-          {
-            "name": "startTime",
-            "in": "query",
-            "description": "start time",
+            "description": "Automation Composition definition name",
             "required": false,
             "type": "string"
           },
           {
             "name": "version",
             "in": "query",
-            "description": "Participant version",
-            "required": true,
+            "description": "Automation Composition definition version",
+            "required": false,
             "type": "string"
           },
           {
@@ -82,8 +52,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ClElementStatisticsList",
-              "originalRef": "ClElementStatisticsList"
+              "$ref": "#/definitions/AutomationCompositionsRes",
+              "originalRef": "AutomationCompositionsRes"
             }
           },
           "401": {
@@ -153,34 +123,32 @@
           "api-version": "1.0.0",
           "last-mod-release": "Dublin"
         }
-      }
-    },
-    "/onap/controlloop/v2/monitoring/clelements/controlloop": {
-      "get": {
+      },
+      "post": {
         "tags": [
-          "Clamp Control Loop Monitoring API"
+          "Clamp Automation Composition Instantiation API"
         ],
-        "summary": "Query details of the requested cl element stats in a control loop",
-        "description": "Queries details of the requested cl element stats, returning all clElement stats",
-        "operationId": "queryElementStatisticsPerControlLoopUsingGET",
+        "summary": "Commissions automation composition definitions",
+        "description": "Commissions automation composition definitions, returning the automation composition IDs",
+        "operationId": "createUsingPOST_1",
+        "consumes": [
+          "application/json",
+          "application/yaml"
+        ],
         "produces": [
           "application/json",
           "application/yaml"
         ],
         "parameters": [
           {
-            "name": "name",
-            "in": "query",
-            "description": "Control Loop name",
+            "in": "body",
+            "name": "acms",
+            "description": "Entity Body of Automation Composition",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "version",
-            "in": "query",
-            "description": "Control Loop version",
-            "required": true,
-            "type": "string"
+            "schema": {
+              "$ref": "#/definitions/AutomationCompositionsReq",
+              "originalRef": "AutomationCompositionsReq"
+            }
           },
           {
             "name": "X-ONAP-RequestID",
@@ -195,9 +163,12 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ClElementStatisticsList",
-              "originalRef": "ClElementStatisticsList"
+              "$ref": "#/definitions/InstantiationResponse",
+              "originalRef": "InstantiationResponse"
             }
+          },
+          "201": {
+            "description": "Created"
           },
           "401": {
             "description": "Authentication Error",
@@ -266,57 +237,32 @@
           "api-version": "1.0.0",
           "last-mod-release": "Dublin"
         }
-      }
-    },
-    "/onap/controlloop/v2/monitoring/participant": {
-      "get": {
+      },
+      "put": {
         "tags": [
-          "Clamp Control Loop Monitoring API"
+          "Clamp Automation Composition Instantiation API"
         ],
-        "summary": "Query details of the requested participant stats",
-        "description": "Queries details of the requested participant stats, returning all participant stats",
-        "operationId": "queryParticipantStatisticsUsingGET",
+        "summary": "Updates automation composition definitions",
+        "description": "Updates automation composition definitions, returning the updated automation composition definition IDs",
+        "operationId": "updateUsingPUT",
+        "consumes": [
+          "application/json",
+          "application/yaml"
+        ],
         "produces": [
           "application/json",
           "application/yaml"
         ],
         "parameters": [
           {
-            "name": "endTime",
-            "in": "query",
-            "description": "end time",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "Control Loop participant name",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "recordCount",
-            "in": "query",
-            "description": "Record count",
-            "required": false,
-            "type": "integer",
-            "default": 0,
-            "format": "int32"
-          },
-          {
-            "name": "startTime",
-            "in": "query",
-            "description": "start time",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "version",
-            "in": "query",
-            "description": "Control Loop participant version",
-            "required": false,
-            "type": "string"
+            "in": "body",
+            "name": "acms",
+            "description": "Entity Body of Automation Composition",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AutomationCompositionsReq",
+              "originalRef": "AutomationCompositionsReq"
+            }
           },
           {
             "name": "X-ONAP-RequestID",
@@ -331,9 +277,12 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ParticipantStatisticsList",
-              "originalRef": "ParticipantStatisticsList"
+              "$ref": "#/definitions/InstantiationResponse",
+              "originalRef": "InstantiationResponse"
             }
+          },
+          "201": {
+            "description": "Created"
           },
           "401": {
             "description": "Authentication Error",
@@ -402,16 +351,14 @@
           "api-version": "1.0.0",
           "last-mod-release": "Dublin"
         }
-      }
-    },
-    "/onap/controlloop/v2/monitoring/participants/controlloop": {
-      "get": {
+      },
+      "delete": {
         "tags": [
-          "Clamp Control Loop Monitoring API"
+          "Clamp Automation Composition Instantiation API"
         ],
-        "summary": "Query details of all the participant stats in a control loop",
-        "description": "Queries details of the participant stats, returning all participant stats",
-        "operationId": "queryParticipantStatisticsPerControlLoopUsingGET",
+        "summary": "Delete a automation composition",
+        "description": "Deletes a automation composition, returning optional error details",
+        "operationId": "deleteUsingDELETE_1",
         "produces": [
           "application/json",
           "application/yaml"
@@ -420,15 +367,15 @@
           {
             "name": "name",
             "in": "query",
-            "description": "Control Loop name",
+            "description": "Automation Composition definition name",
             "required": true,
             "type": "string"
           },
           {
             "name": "version",
             "in": "query",
-            "description": "Control Loop version",
-            "required": true,
+            "description": "Automation Composition definition version",
+            "required": false,
             "type": "string"
           },
           {
@@ -444,9 +391,125 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ParticipantStatisticsList",
-              "originalRef": "ParticipantStatisticsList"
+              "$ref": "#/definitions/InstantiationResponse",
+              "originalRef": "InstantiationResponse"
             }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Authentication Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "403": {
+            "description": "Authorization Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-LatestVersion": {
+                "type": "string"
+              },
+              "X-PatchVersion": {
+                "type": "string"
+              },
+              "X-MinorVersion": {
+                "type": "string"
+              },
+              "X-ONAP-RequestID": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "x-interface info": {
+          "api-version": "1.0.0",
+          "last-mod-release": "Dublin"
+        }
+      }
+    },
+    "/onap/acm/v2/instantiation/command": {
+      "put": {
+        "tags": [
+          "Clamp Automation Composition Instantiation API"
+        ],
+        "summary": "Issue a command to the requested automation compositions",
+        "description": "Issues a command to a automation composition, ordering a state change on the automation composition",
+        "operationId": "issueAutomationCompositionCommandUsingPUT",
+        "consumes": [
+          "application/json",
+          "application/yaml"
+        ],
+        "produces": [
+          "application/json",
+          "application/yaml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "command",
+            "description": "Entity Body of automation composition command",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InstantiationCommand",
+              "originalRef": "InstantiationCommand"
+            }
+          },
+          {
+            "name": "X-ONAP-RequestID",
+            "in": "header",
+            "description": "RequestID for http transaction",
+            "required": false,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InstantiationResponse",
+              "originalRef": "InstantiationResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
           },
           "401": {
             "description": "Authentication Error",

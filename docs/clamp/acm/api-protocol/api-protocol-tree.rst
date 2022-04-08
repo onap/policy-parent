@@ -5,11 +5,11 @@
 CLAMP TOSCA Automation Composition APIs and Protocols
 #####################################################
 
-The sections below describe the APIs and Protocols used in TOSCA Control Loops.
+The sections below describe the APIs and Protocols used in TOSCA Automation Compositions.
 
 .. toctree::
    :maxdepth: 1
 
    system-level-dialogues
    acm-participant-protocol
-   controlloop-rest-apis
+   acm-rest-apis

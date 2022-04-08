@@ -15,10 +15,10 @@
         "/onap/participantsim/v2/elements": {
             "put": {
                 "tags": [
-                    "Clamp Control Loop Participant Simulator API"
+                    "Clamp Automation Composition Participant Simulator API"
                 ],
-                "summary": "Updates simulated control loop elements",
-                "description": "Updates simulated control loop elements, returning the updated control loop definition IDs",
+                "summary": "Updates simulated automation composition elements",
+                "description": "Updates simulated automation composition elements, returning the updated automation composition definition IDs",
                 "operationId": "updateUsingPUT",
                 "consumes": [
                     "application/json"
@@ -31,11 +31,11 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "Body of a control loop element",
+                        "description": "Body of a automation composition element",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ControlLoopElementReq",
-                            "originalRef": "ControlLoopElementReq"
+                            "$ref": "#/definitions/AutomationCompositionElementReq",
+                            "originalRef": "AutomationCompositionElementReq"
                         }
                     },
                     {
@@ -51,8 +51,8 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/TypedSimpleResponse«ControlLoopElement»",
-                            "originalRef": "TypedSimpleResponse«ControlLoopElement»"
+                            "$ref": "#/definitions/TypedSimpleResponse«AutomationCompositionElement»",
+                            "originalRef": "TypedSimpleResponse«AutomationCompositionElement»"
                         }
                     },
                     "201": {
@@ -130,10 +130,10 @@
         "/onap/participantsim/v2/elements/{name}/{version}": {
             "get": {
                 "tags": [
-                    "Clamp Control Loop Participant Simulator API"
+                    "Clamp Automation Composition Participant Simulator API"
                 ],
-                "summary": "Query details of the requested simulated control loop elements",
-                "description": "Queries details of the requested simulated control loop elements, returning all control loop element details",
+                "summary": "Query details of the requested simulated automation composition elements",
+                "description": "Queries details of the requested simulated automation composition elements, returning all automation composition element details",
                 "operationId": "elementsUsingGET",
                 "produces": [
                     "application/json",
@@ -143,14 +143,14 @@
                     {
                         "name": "name",
                         "in": "path",
-                        "description": "Control loop element name",
+                        "description": "Automation Composition element name",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "version",
                         "in": "path",
-                        "description": "Control loop element version",
+                        "description": "Automation Composition element version",
                         "required": true,
                         "type": "string"
                     },
@@ -169,8 +169,8 @@
                         "schema": {
                             "type": "object",
                             "additionalProperties": {
-                                "$ref": "#/definitions/ControlLoopElementRes",
-                                "originalRef": "ControlLoopElementRes"
+                                "$ref": "#/definitions/AutomationCompositionElementRes",
+                                "originalRef": "AutomationCompositionElementRes"
                             }
                         }
                     },
@@ -246,10 +246,10 @@
         "/onap/participantsim/v2/participants": {
             "put": {
                 "tags": [
-                    "Clamp Control Loop Participant Simulator API"
+                    "Clamp Automation Composition Participant Simulator API"
                 ],
                 "summary": "Updates simulated participants",
-                "description": "Updates simulated participants, returning the updated control loop definition IDs",
+                "description": "Updates simulated participants, returning the updated automation composition definition IDs",
                 "operationId": "updateUsingPUT_1",
                 "consumes": [
                     "application/json"
@@ -361,7 +361,7 @@
         "/onap/participantsim/v2/participants/{name}/{version}": {
             "get": {
                 "tags": [
-                    "Clamp Control Loop Participant Simulator API"
+                    "Clamp Automation Composition Participant Simulator API"
                 ],
                 "summary": "Query details of the requested simulated participants",
                 "description": "Queries details of the requested simulated participants, returning all participant details",

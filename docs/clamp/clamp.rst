@@ -11,8 +11,8 @@ described in TOSCA.
 .. toctree::
    :maxdepth: 2
 
-   acm/controlloop-architecture
-   acm/defining-controlloops
+   acm/acm-architecture
+   acm/defining-acms
    acm/api-protocol/api-protocol-tree
    acm/design-impl/design-impl
 

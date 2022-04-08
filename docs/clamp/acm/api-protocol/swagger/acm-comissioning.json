@@ -12,14 +12,14 @@
     }
   },
   "paths": {
-    "/onap/controlloop/v2/instantiation": {
+    "/onap/acm/v2/commission": {
       "get": {
         "tags": [
-          "Clamp Control Loop Instantiation API"
+          "Clamp Automation Composition Commissioning API"
         ],
-        "summary": "Query details of the requested control loops",
-        "description": "Queries details of the requested control loops, returning all control loop details",
-        "operationId": "queryUsingGET_1",
+        "summary": "Query details of the requested commissioned automation composition definitions",
+        "description": "Queries details of the requested commissioned automation composition definitions, returning all automation composition details",
+        "operationId": "queryUsingGET",
         "produces": [
           "application/json",
           "application/yaml"
@@ -28,14 +28,14 @@
           {
             "name": "name",
             "in": "query",
-            "description": "Control Loop definition name",
+            "description": "Automation Composition definition name",
             "required": false,
             "type": "string"
           },
           {
             "name": "version",
             "in": "query",
-            "description": "Control Loop definition version",
+            "description": "Automation Composition definition version",
             "required": false,
             "type": "string"
           },
@@ -52,8 +52,11 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ControlLoopsRes",
-              "originalRef": "ControlLoopsRes"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ToscaNodeTemplateRes",
+                "originalRef": "ToscaNodeTemplateRes"
+              }
             }
           },
           "401": {
@@ -126,11 +129,11 @@
       },
       "post": {
         "tags": [
-          "Clamp Control Loop Instantiation API"
+          "Clamp Automation Composition Commissioning API"
         ],
-        "summary": "Commissions control loop definitions",
-        "description": "Commissions control loop definitions, returning the control loop IDs",
-        "operationId": "createUsingPOST_1",
+        "summary": "Commissions automation composition definitions",
+        "description": "Commissions automation composition definitions, returning the commissioned automation composition definition IDs",
+        "operationId": "createUsingPOST",
         "consumes": [
           "application/json",
           "application/yaml"
@@ -142,12 +145,12 @@
         "parameters": [
           {
             "in": "body",
-            "name": "controlLoops",
-            "description": "Entity Body of Control Loop",
+            "name": "body",
+            "description": "Entity Body of Automation Composition",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ControlLoopsReq",
-              "originalRef": "ControlLoopsReq"
+              "$ref": "#/definitions/ToscaServiceTemplateReq",
+              "originalRef": "ToscaServiceTemplateReq"
             }
           },
           {
@@ -163,122 +166,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/InstantiationResponse",
-              "originalRef": "InstantiationResponse"
-            }
-          },
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Authentication Error",
-            "headers": {
-              "X-LatestVersion": {
-                "type": "string"
-              },
-              "X-PatchVersion": {
-                "type": "string"
-              },
-              "X-MinorVersion": {
-                "type": "string"
-              },
-              "X-ONAP-RequestID": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          },
-          "403": {
-            "description": "Authorization Error",
-            "headers": {
-              "X-LatestVersion": {
-                "type": "string"
-              },
-              "X-PatchVersion": {
-                "type": "string"
-              },
-              "X-MinorVersion": {
-                "type": "string"
-              },
-              "X-ONAP-RequestID": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "headers": {
-              "X-LatestVersion": {
-                "type": "string"
-              },
-              "X-PatchVersion": {
-                "type": "string"
-              },
-              "X-MinorVersion": {
-                "type": "string"
-              },
-              "X-ONAP-RequestID": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "x-interface info": {
-          "api-version": "1.0.0",
-          "last-mod-release": "Dublin"
-        }
-      },
-      "put": {
-        "tags": [
-          "Clamp Control Loop Instantiation API"
-        ],
-        "summary": "Updates control loop definitions",
-        "description": "Updates control loop definitions, returning the updated control loop definition IDs",
-        "operationId": "updateUsingPUT",
-        "consumes": [
-          "application/json",
-          "application/yaml"
-        ],
-        "produces": [
-          "application/json",
-          "application/yaml"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "controlLoops",
-            "description": "Entity Body of Control Loop",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ControlLoopsReq",
-              "originalRef": "ControlLoopsReq"
-            }
-          },
-          {
-            "name": "X-ONAP-RequestID",
-            "in": "header",
-            "description": "RequestID for http transaction",
-            "required": false,
-            "type": "string",
-            "format": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/InstantiationResponse",
-              "originalRef": "InstantiationResponse"
+              "$ref": "#/definitions/CommissioningResponse",
+              "originalRef": "CommissioningResponse"
             }
           },
           "201": {
@@ -354,11 +243,11 @@
       },
       "delete": {
         "tags": [
-          "Clamp Control Loop Instantiation API"
+          "Clamp Automation Composition Commissioning API"
         ],
-        "summary": "Delete a control loop",
-        "description": "Deletes a control loop, returning optional error details",
-        "operationId": "deleteUsingDELETE_1",
+        "summary": "Delete a commissioned automation composition",
+        "description": "Deletes a Commissioned Automation Composition, returning optional error details",
+        "operationId": "deleteUsingDELETE",
         "produces": [
           "application/json",
           "application/yaml"
@@ -367,15 +256,15 @@
           {
             "name": "name",
             "in": "query",
-            "description": "Control Loop definition name",
+            "description": "Automation Composition definition name",
             "required": true,
             "type": "string"
           },
           {
             "name": "version",
             "in": "query",
-            "description": "Control Loop definition version",
-            "required": false,
+            "description": "Automation Composition definition version",
+            "required": true,
             "type": "string"
           },
           {
@@ -391,8 +280,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/InstantiationResponse",
-              "originalRef": "InstantiationResponse"
+              "$ref": "#/definitions/CommissioningResponse",
+              "originalRef": "CommissioningResponse"
             }
           },
           "204": {
@@ -464,32 +353,32 @@
         }
       }
     },
-    "/onap/controlloop/v2/instantiation/command": {
-      "put": {
+    "/onap/acm/v2/commission/elements": {
+      "get": {
         "tags": [
-          "Clamp Control Loop Instantiation API"
+          "Clamp Automation Composition Commissioning API"
         ],
-        "summary": "Issue a command to the requested control loops",
-        "description": "Issues a command to a control loop, ordering a state change on the control loop",
-        "operationId": "issueControlLoopCommandUsingPUT",
-        "consumes": [
-          "application/json",
-          "application/yaml"
-        ],
+        "summary": "Query details of the requested commissioned automation composition element definitions",
+        "description": "Queries details of the requested commissioned automation composition element definitions, returning all automation composition elements' details",
+        "operationId": "queryElementsUsingGET",
         "produces": [
           "application/json",
           "application/yaml"
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "command",
-            "description": "Entity Body of control loop command",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/InstantiationCommand",
-              "originalRef": "InstantiationCommand"
-            }
+            "name": "name",
+            "in": "query",
+            "description": "Automation Composition definition name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Automation Composition definition version",
+            "required": false,
+            "type": "string"
           },
           {
             "name": "X-ONAP-RequestID",
@@ -504,12 +393,12 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/InstantiationResponse",
-              "originalRef": "InstantiationResponse"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ToscaNodeTemplateRes",
+                "originalRef": "ToscaNodeTemplateRes"
+              }
             }
-          },
-          "201": {
-            "description": "Created"
           },
           "401": {
             "description": "Authentication Error",

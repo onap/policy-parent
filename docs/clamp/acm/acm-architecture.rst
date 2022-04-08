@@ -63,8 +63,8 @@ participants.
 1.2 Participant Terminology
 ---------------------------
 
-**Participant Type:** Definition of a type of system or framework that can take part in control
-loops and a definition of the capabilities of that participant type. A participant advertises
+**Participant Type:** Definition of a type of system or framework that can take part in automation
+compositions and a definition of the capabilities of that participant type. A participant advertises
 its type to the CLAMP Automation Composition Runtime.
 
 **Participant:** A system or framework that takes part in automation compositions by executing Automation Composition
@@ -176,8 +176,8 @@ At Run Time, the following Automation Composition Life Cycle management capabili
 
    #. **Automation Composition Instance Update on Participants:** Once the user is happy with the property
       values, the Automation Composition Instance is updated on participants and the Automation Composition Elements
-      for this Automation Composition Instance are initialized or updated by participants using the control
-      loop metadata. The post condition for an execution of this capability is that the Automation
+      for this Automation Composition Instance are initialized or updated by participants using the automation
+      composition metadata. The post condition for an execution of this capability is that the Automation
       Composition instance is updated on Participants.
 
    #. **Automation Composition State Change:** The user can now order the participants to change the state
@@ -228,8 +228,8 @@ At Run Time, the following Automation Composition Life Cycle management capabili
 ------------------------------------------
 
 When a automation composition definition has been commissioned, instances of the automation composition can be
-created, updated, and deleted. The system manages the lifecycle of automation compositions and control
-loop elements following the state transition diagram below.
+created, updated, and deleted. The system manages the lifecycle of automation compositions and automation
+composition elements following the state transition diagram below.
 
 .. image:: images/03-acm-instance-states.png
 
@@ -303,7 +303,7 @@ to store common data. The DCAE Participant runs Automation Composition Elements 
 microservices. The Kubernetes Participant hosts the Automation Composition Elements that are managing
 the life cycle of microservices in automation compositions that are in a Kubernetes ecosystem. The
 Policy Participant handles the Automation Composition Elements that interact with the Policy Framework
-to manage policies for automation compositions. A Automation Participant such as the CDS Participant
+to manage policies for automation compositions. A Controller Participant such as the CDS Participant
 runs Automation Composition Elements that load metadata and configure controllers so that they can
 partake in automation compositions. Any third party Existing System Participant can be developed to
 run Automation Composition Elements that interact with any existing system (such as an operator's
@@ -461,7 +461,7 @@ The APIs and Protocols used by CLAMP for Automation Compositions are described o
 
 The design and implementation of TOSCA Automation Compositions in CLAMP is described for each executable entity on the pages below:
 
-#. :ref:`The CLAMP Automation Composition Runtime Server <clamp-acm-runtime>`
+#. :ref:`The CLAMP Automation Composition Runtime Server <clamp-runtime-acm>`
 #. :ref:`CLAMP Automation Composition Participants <clamp-acm-participants>`
 #. :ref:`Managing Automation Compositions using The CLAMP GUI <clamp-gui-acm>`
 

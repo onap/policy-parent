@@ -9,9 +9,9 @@ data_types:
       version:
         type: string
         required: true
-  onap.datatype.controlloop.Target:
+  onap.datatype.acm.Target:
     derived_from: tosca.datatypes.Root
-    description: Definition for a entity in A&AI to perform a control loop operation on
+    description: Definition for a entity in A&AI to perform a automation composition operation on
     properties:
       targetType:
         type: string
@@ -33,7 +33,7 @@ data_types:
           clamp_possible_values: ClampExecution:CSAR_RESOURCES
         entry_schema:
           type: string
-  onap.datatype.controlloop.Actor:
+  onap.datatype.acm.Actor:
     derived_from: tosca.datatypes.Root
     description: An actor/operation/target definition
     properties:
@@ -50,7 +50,7 @@ data_types:
           clamp_possible_values: Dictionary:DefaultOperations,ClampExecution:CDS/operation
         required: true
       target:
-        type: onap.datatype.controlloop.Target
+        type: onap.datatype.acm.Target
         description: The resource the operation should be performed on.
         required: true
       payload:
@@ -61,7 +61,7 @@ data_types:
           clamp_possible_values: ClampExecution:CDS/payload
         entry_schema:
           type: string
-  onap.datatype.controlloop.Operation:
+  onap.datatype.acm.Operation:
     derived_from: tosca.datatypes.Root
     description: An operation supported by an actor
     properties:
@@ -74,7 +74,7 @@ data_types:
         description: A user-friendly description of the intent for the operation
         required: false
       operation:
-        type: onap.datatype.controlloop.Actor
+        type: onap.datatype.acm.Actor
         description: The definition of the operation to be performed.
         required: true
       timeout:
@@ -117,14 +117,14 @@ data_types:
         required: false
         default: final_failure_guard
 node_types:
-  org.onap.policy.clamp.controlloop.Participant:
+  org.onap.policy.clamp.acm.Participant:
     version: 1.0.1
     derived_from: tosca.nodetypes.Root
     properties:
       provider:
         type: string
         requred: false
-  org.onap.policy.clamp.controlloop.ControlLoopElement:
+  org.onap.policy.clamp.acm.AutomationCompositionElement:
     version: 1.0.1
     derived_from: tosca.nodetypes.Root
     properties:
@@ -133,7 +133,7 @@ node_types:
         required: false
         metadata:
           common: true
-        description: Specifies the organization that provides the control loop element
+        description: Specifies the organization that provides the automation composition element
       participant_id:
         type: onap.datatypes.ToscaConceptIdentifier
         requred: true
@@ -144,7 +144,7 @@ node_types:
         required: true
         metadata:
           common: true
-        description: The identity of the participant type that hosts this type of Control Loop Element
+        description: The identity of the participant type that hosts this type of Automation Composition Element
       startPhase:
         type: integer
         required: false
@@ -152,9 +152,9 @@ node_types:
           - greater_or_equal: 0
         metadata:
           common: true
-        description: A value indicating the start phase in which this control loop element will be started, the
-          first start phase is zero. Control Loop Elements are started in their start_phase order and stopped
-          in reverse start phase order. Control Loop Elements with the same start phase are started and
+        description: A value indicating the start phase in which this automation composition element will be started, the
+          first start phase is zero. Automation Composition Elements are started in their start_phase order and stopped
+          in reverse start phase order. Automation Composition Elements with the same start phase are started and
           stopped simultaneously
       uninitializedToPassiveTimeout:
         type: integer
@@ -192,7 +192,7 @@ node_types:
         metadata:
           common: true
         description: The maximum time in seconds to wait for a state chage from passive to uninitialized
-  org.onap.policy.clamp.controlloop.ControlLoop:
+  org.onap.policy.clamp.acm.AutomationComposition:
     version: 1.0.1
     derived_from: tosca.nodetypes.Root
     properties:
@@ -201,7 +201,7 @@ node_types:
         required: false
         metadata:
           common: true
-        description: Specifies the organization that provides the control loop element
+        description: Specifies the organization that provides the automation composition element
       elements:
         type: list
         required: true
@@ -209,10 +209,10 @@ node_types:
           common: true
         entry_schema:
           type: onap.datatypes.ToscaConceptIdentifier
-        description: Specifies a list of control loop element definitions that make up this control loop definition
-  org.onap.policy.clamp.controlloop.K8SMicroserviceControlLoopElement:
+        description: Specifies a list of automation composition element definitions that make up this automation composition definition
+  org.onap.policy.clamp.acm.K8SMicroserviceAutomationCompositionElement:
     version: 1.0.1
-    derived_from: org.onap.policy.clamp.controlloop.ControlLoopElement
+    derived_from: org.onap.policy.clamp.acm.AutomationCompositionElement
     properties:
       chart:
         type: string
@@ -233,26 +233,26 @@ node_types:
 
 topology_template:
   node_templates:
-    org.onap.k8s.controlloop.K8SControlLoopParticipant:
+    org.onap.k8s.acm.K8SAutomationCompositionParticipant:
       version: 2.3.4
-      type: org.onap.policy.clamp.controlloop.Participant
+      type: org.onap.policy.clamp.acm.Participant
       type_version: 1.0.1
       description: Participant for K8S
       properties:
         provider: ONAP
-    org.onap.domain.database.PMSH_K8SMicroserviceControlLoopElement:
+    org.onap.domain.database.PMSH_K8SMicroserviceAutomationCompositionElement:
       # Chart from new repository
       version: 1.2.3
-      type: org.onap.policy.clamp.controlloop.K8SMicroserviceControlLoopElement
+      type: org.onap.policy.clamp.acm.K8SMicroserviceAutomationCompositionElement
       type_version: 1.0.0
-      description: Control loop element for the K8S microservice for PMSH
+      description: Automation Composition element for the K8S microservice for PMSH
       properties:
         provider: ONAP
         participant_id:
           name: K8sParticipant0
           version: 1.0.0
         participantType:
-          name: org.onap.k8s.controlloop.K8SControlLoopParticipant
+          name: org.onap.k8s.acm.K8SAutomationCompositionParticipant
           version: 2.3.4
         chart:
           chartId:
@@ -270,19 +270,19 @@ topology_template:
           overrideParams:
             global.masterPassword: test
 
-    org.onap.domain.database.Local_K8SMicroserviceControlLoopElement:
+    org.onap.domain.database.Local_K8SMicroserviceAutomationCompositionElement:
       # Chart installation without passing repository info
       version: 1.2.3
-      type: org.onap.policy.clamp.controlloop.K8SMicroserviceControlLoopElement
+      type: org.onap.policy.clamp.acm.K8SMicroserviceAutomationCompositionElement
       type_version: 1.0.0
-      description: Control loop element for the K8S microservice for local chart
+      description: Automation Composition element for the K8S microservice for local chart
       properties:
         provider: ONAP
         participant_id:
           name: K8sParticipant0
           version: 1.0.0
         participantType:
-          name: org.onap.k8s.controlloop.K8SControlLoopParticipant
+          name: org.onap.k8s.acm.K8SAutomationCompositionParticipant
           version: 2.3.4
         chart:
           chartId:
@@ -290,15 +290,15 @@ topology_template:
             version: 0.9.1
           releaseName: nginxms
           namespace: test
-    org.onap.domain.sample.GenericK8s_ControlLoopDefinition:
+    org.onap.domain.sample.GenericK8s_AutomationCompositionDefinition:
       version: 1.2.3
-      type: org.onap.policy.clamp.controlloop.ControlLoop
+      type: org.onap.policy.clamp.acm.AutomationComposition
       type_version: 1.0.0
-      description: Control loop for Hello World
+      description: Automation Composition for Hello World
       properties:
         provider: ONAP
         elements:
-          - name: org.onap.domain.database.PMSH_K8SMicroserviceControlLoopElement
+          - name: org.onap.domain.database.PMSH_K8SMicroserviceAutomationCompositionElement
             version: 1.2.3
-          - name: org.onap.domain.database.Local_K8SMicroserviceControlLoopElement
+          - name: org.onap.domain.database.Local_K8SMicroserviceAutomationCompositionElement
             version: 1.2.3
