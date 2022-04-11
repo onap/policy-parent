@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "903c5240_723827e3",
+        "filename": "docs/clamp/acm/api-protocol/system-level-dialogues.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2022-04-11T19:01:56Z",
+      "side": 1,
+      "message": "Please fix!",
+      "range": {
+        "startLine": 13,
+        "startChar": 41,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "1ffec94d8cfecc8fef63e4a3ffd762b21046f28f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
