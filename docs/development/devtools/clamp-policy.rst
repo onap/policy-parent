@@ -44,7 +44,7 @@ The test set focused on the following use cases:
 - Deployment/Undeployment of policies
 
 Creation of the Automation Composition:
------------------------------
+---------------------------------------
 A Automation Composition is created by commissioning a Tosca template with Automation Composition definitions and instantiating the Automation Composition with the state "UNINITIALISED".
 
 - Upload a TOSCA template from the POLICY GUI. The definitions includes a policy participant and a Automation Composition element that creates and deploys required policies. :download:`Sample Tosca template <tosca/pairwise-testing.yml>`
@@ -67,7 +67,7 @@ A Automation Composition is created by commissioning a Tosca template with Autom
 
 
 Creation and deployment of policies:
----------------------
+------------------------------------
 The Automation Composition state is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui. Verify the POLICY API endpoint for the creation of policy types that are defined in the TOSCA template. Verify the PAP endpoint for the deployment of policies.
 
 .. image:: images/cl-passive.png
@@ -85,7 +85,7 @@ Verification:
 .. image:: images/cl-create.png
 
 Undeployment and deletion of Policies:
----------------------
+--------------------------------------
 The Automation Composition state is changed from "PASSIVE" to "UNINITIALISED" from the Policy Gui.
 
 Verification:

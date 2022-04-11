@@ -54,7 +54,7 @@ The test set focused on the following use cases:
 - Undeployment of PMSH
 
 Creation of the Automation Composition:
------------------------------
+---------------------------------------
 A Automation Composition is created by commissioning a Tosca template with Automation Composition definitions and instantiating the Automation Composition with the state "UNINITIALISED".
 
 - Upload a TOSCA template from the POLICY GUI. The definitions includes a kubernetes participant and control loop elements that deploys and configures a microservice in the kubernetes cluster.

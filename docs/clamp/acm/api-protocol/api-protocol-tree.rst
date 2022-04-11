@@ -12,4 +12,4 @@ The sections below describe the APIs and Protocols used in TOSCA Control Loops.
 
    system-level-dialogues
    acm-participant-protocol
-   controlloop-rest-apis
+   acm-rest-apis
