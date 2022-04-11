@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5c474a5_492ba74a",
+        "filename": "docs/development/prometheus-metrics.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-04-11T13:35:04Z",
+      "side": 1,
+      "message": "I think you can remove last sentence as the namespace is a coding convention when using the simple java client prometheus libraries.",
+      "revId": "005d78ed2cbebeef7763eb899fd1176037778304",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50fd5ab4_f23f226f",
+        "filename": "docs/development/prometheus-metrics.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-04-11T13:35:04Z",
+      "side": 1,
+      "message": "clarify here that these are labels and use the same name, I think these are lower case \"deploy\" and \"undeploy\".",
+      "revId": "005d78ed2cbebeef7763eb899fd1176037778304",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "797e3f5a_f77d0f71",
+        "filename": "docs/development/prometheus-metrics.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-04-11T13:35:04Z",
+      "side": 1,
+      "message": "same comment here clarifying these are accompanying companies for the counter with the actual values that shows in prometheus gui:  \"permit\", etc ..",
+      "revId": "005d78ed2cbebeef7763eb899fd1176037778304",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
