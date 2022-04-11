@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "521b0180_675c1ca8",
+        "filename": "docs/clamp/acm/api-protocol/acm-rest-apis.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2022-04-11T09:12:47Z",
+      "side": 1,
+      "message": "this whole section was done in a previous commit",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "3b4a3e4548f0f7feb95cb77b11e2c2cac98d2f31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71e8f648_f6cd11b3",
+        "filename": "docs/clamp/acm/api-protocol/system-level-dialogues.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2022-04-11T09:12:47Z",
+      "side": 1,
+      "message": "there\u0027s a review for this section and all the images related to the section related to this ticket https://jira.onap.org/browse/POLICY-4066",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "3b4a3e4548f0f7feb95cb77b11e2c2cac98d2f31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
