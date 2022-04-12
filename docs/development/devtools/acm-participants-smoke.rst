@@ -171,7 +171,7 @@ Commissioning Endpoint:
 
    POST: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/v2/commission
 
-A successful commissioning gives 200 response in the postman client.
+A successful commissioning gives 200 responses in the postman client.
 
 
 3.2 Create New Instances of Automation composition
@@ -190,7 +190,7 @@ Request body:
 
 3.3 Change the State of the Instance
 ====================================
-When the automation composition is updated with state “PASSIVE”, the Kubernetes participant fetches the node template for all automation composition elements and deploys the helm chart of each AC element in to the cluster. The following sample json input is passed on the request body.
+When the automation composition is updated with state “PASSIVE”, the Kubernetes participant fetches the node template for all automation composition elements and deploys the helm chart of each AC element into the cluster. The following sample json input is passed on the request body.
 
 Automation Composition Update Endpoint:
 

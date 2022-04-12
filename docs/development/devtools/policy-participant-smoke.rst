@@ -13,7 +13,7 @@ The Smoke testing of the policy participant is executed in a local CLAMP/Policy 
 2. Setup Guide
 **************
 
-This section will show the developer how to set up their environment to start testing in GUI with some instruction on how to carry out the tests. There are a number of prerequisites. Note that this guide is written by a Linux user - although the majority of the steps show will be exactly the same in Windows or other systems.
+This section will show the developer how to set up their environment to start testing in GUI with some instruction on how to carry out the tests. There are several prerequisites. Note that this guide is written by a Linux user - although the majority of the steps show will be exactly the same in Windows or other systems.
 
 2.1 Prerequisites
 =================
@@ -305,7 +305,7 @@ To perform the Smoke testing of the policy-participant we will be verifying the 
 Creation of ACM:
 ************************
 
-A ACM is created by commissioning a Tosca template with ACM definitions and instantiating the ACM with the state "UNINITIALISED".
+An ACM is created by commissioning a Tosca template with ACM definitions and instantiating the ACM with the state "UNINITIALISED".
 Using postman, commission a TOSCA template and instantiate using the following template:
 
 :download:`Tosca Service Template <tosca/tosca_service_template_pptnt_smoke.yaml>`

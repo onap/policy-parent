@@ -47,8 +47,8 @@ Creation of VNF & PNF in AAI
 In order for PDP engines to fetch the resource details from AAI during runtime execution, we need to create dummy VNF & PNF entities in AAI.
 In a real control loop flow, the entities in AAI will be either created during orchestration phase or provisioned in AAI separately.
 
-Download & execute the steps in postman collection for creating the entities along with it's dependencies.
-The steps needs to be performed sequentially one after another. And no input is required from user.
+Download & execute the steps in postman collection for creating the entities along with its dependencies.
+The steps need to be performed sequentially one after another. And no input is required from user.
 
 :download:`Create VNF & PNF in AAI <postman/create-vnf-pnf-aai.postman_collection.json>`
 
@@ -91,7 +91,7 @@ List of steps covered in the postman collection:
 - Delete both VNF & PNF policies at the end.
 
 Download & execute the steps in postman collection.
-The steps needs to be performed sequentially one after another. And no input is required from user.
+The steps need to be performed sequentially one after another. And no input is required from user.
 
 :download:`Apex-PDP VNF & PNF Testing <postman/apex-pdp-vnf-pnf-testing.postman_collection.json>`
 

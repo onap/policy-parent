@@ -19,7 +19,7 @@ Introduction
 
 The 72 hour stability test of policy API has the goal of verifying the stability of running policy design API REST
 service by ingesting a steady flow of transactions in a multi-threaded fashion to
-simulate multiple clients' behaviors.
+simulate multiple clients' behaviours.
 All the transaction flows are initiated from a test client server running JMeter for the duration of 72 hours.
 
 Setup Details
@@ -42,7 +42,7 @@ Test Plan
 
 The 72+ hours stability test will be running the following steps sequentially
 in multi-threaded loops. Thread number is set to 5 to simulate 5 API clients'
-behaviors (they can be calling the same policy CRUD API simultaneously).
+behaviours (they can be calling the same policy CRUD API simultaneously).
 Each thread creates a different version of the policy types and policies to not
 interfere with one another while operating simultaneously.  The point version
 of each entity is set to the running thread number.
@@ -66,7 +66,7 @@ of each entity is set to the running thread number.
 - Get All Policy Types
 - Get All Versions of the new Monitoring Policy Type
 - Get Version 6.0.# of the new Monitoring Policy Type
-- Get Version 6.0.# of the new Optimzation Policy Type
+- Get Version 6.0.# of the new Optimization Policy Type
 - Get Version 6.0.# of the new Guard Policy Type
 - Get Version 6.0.# of the new Native APEX Policy Type
 - Get Version 6.0.# of the new Native Drools Policy Type
@@ -80,7 +80,7 @@ of each entity is set to the running thread number.
 - Create Native Drools Policy Ver 6.0.# w/Native Drools Policy Type Ver 6.0.#
 - Create Native XACML Policy Ver 6.0.# w/Native XACML Policy Type Ver 6.0.#
 - Get Version 6.0.# of the new Monitoring Policy
-- Get Version 6.0.# of the new Optimzation Policy
+- Get Version 6.0.# of the new Optimization Policy
 - Get Version 6.0.# of the new Guard Policy
 - Get Version 6.0.# of the new Native APEX Policy
 - Get Version 6.0.# of the new Native Drools Policy
@@ -88,7 +88,7 @@ of each entity is set to the running thread number.
 - Get the Latest Version of the new Monitoring Policy
 - Delete Version 6.0.# of the new Monitoring Policy
 - Delete Version 7.0.# of the new Monitoring Policy
-- Delete Version 6.0.# of the new Optimzation Policy
+- Delete Version 6.0.# of the new OptimizationPolicy
 - Delete Version 6.0.# of the new Guard Policy
 - Delete Version 6.0.# of the new Native APEX Policy
 - Delete Version 6.0.# of the new Native Drools Policy
@@ -160,7 +160,7 @@ Setup Details
 
 The performance test was performed on a default ONAP OOM installation in the Intel Wind River Lab environment.
 JMeter was installed on a separate VM to inject the traffic defined in the
-`API performace script
+`API performance script
 <https://git.onap.org/policy/api/tree/testsuites/performance/src/main/resources/testplans/policy_api_performance.jmx>`_
 with the following command:
 
@@ -174,7 +174,7 @@ Test Plan
 ---------
 
 Performance test plan is the same as stability test plan above.
-Only differences are, in performance test, we increase the number of threads up to 20 (simulating 20 users' behaviors at the same time) whereas reducing the test time down to 2.5 hours.
+Only differences are, in performance test, we increase the number of threads up to 20 (simulating 20 users' behaviours at the same time) whereas reducing the test time down to 2.5 hours.
 
 Run Test
 --------

@@ -45,9 +45,9 @@ The test set focused on the following use cases:
 
 Creation of the Automation Composition:
 ---------------------------------------
-A Automation Composition is created by commissioning a Tosca template with Automation Composition definitions and instantiating the Automation Composition with the state "UNINITIALISED".
+An Automation Composition is created by commissioning a Tosca template with Automation Composition definitions and instantiating the Automation Composition with the state "UNINITIALISED".
 
-- Upload a TOSCA template from the POLICY GUI. The definitions includes a policy participant and a Automation Composition element that creates and deploys required policies. :download:`Sample Tosca template <tosca/pairwise-testing.yml>`
+- Upload a TOSCA template from the POLICY GUI. The definitions include a policy participant and an Automation Composition element that creates and deploys required policies. :download:`Sample Tosca template <tosca/pairwise-testing.yml>`
 
   .. image:: images/cl-commission.png
 

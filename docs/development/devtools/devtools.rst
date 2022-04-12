@@ -22,7 +22,7 @@ This article assumes that:
 * You have copied the settings.xml from oparent to *~/.m2/* directory
 * You have added settings to access the ONAP Nexus to your M2 configuration, see `Maven Settings Example <https://wiki.onap.org/display/DW/Setting+Up+Your+Development+Environment>`_ (bottom of the linked page)
 
-The procedure documented in this article has been verified to work on a MacBook laptop running macOS Mojave Version 10.14.6 and an Unbuntu 18.06 VM.
+The procedure documented in this article has been verified to work on a MacBook laptop running macOS Mojave Version 10.14.6 and an Ubuntu 18.06 VM.
 
 Cloning All The Policy Repositories
 ***********************************
@@ -348,8 +348,8 @@ the Policy Framework works in a full ONAP deployment.
 Generating Swagger Documentation
 ********************************
 The `Policy Parent Integration POM <https://github.com/onap/policy-parent/blob/master/integration/pom.xml>`_ contains a *generateSwaggerDocs* profile. This
-profile can be activated on any module that has a Swagger endopint. When active, this profile creates a tarball in Nexus with the name
-*<project-artifactId>-swagger-docs.tar.gz*. The tarball contains the fillowing files:
+profile can be activated on any module that has a Swagger endpoint. When active, this profile creates a tarball in Nexus with the name
+*<project-artifactId>-swagger-docs.tar.gz*. The tarball contains the following files:
 
 .. code-block:: bash
 
@@ -368,7 +368,7 @@ The profile is activated when:
 
     See the `CLAMP runtime POM <https://github.com/onap/policy-clamp/blob/master/runtime/pom.xml>`_ for an example of the usage of this property.
 
-2. Unit tests are being executed in the build, in other wirds when the *skipTests* flag is *false*.
+2. Unit tests are being executed in the build, in other words when the *skipTests* flag is *false*.
 
 You **must** create a unit test in your module that generates the following file:
 
@@ -419,7 +419,7 @@ Running in Eclipse
 Specifying a local configuration file
 +++++++++++++++++++++++++++++++++++++
 
-You may specify a local configuration file instead of *src/test/resources/simParameters.json* on the command line or as an arument in the run configuration in eclipse:
+You may specify a local configuration file instead of *src/test/resources/simParameters.json* on the command line or as an argument in the run configuration in eclipse:
 
 .. code-block:: json
 

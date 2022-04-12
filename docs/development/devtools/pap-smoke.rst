@@ -47,7 +47,7 @@ Create policies using policy-api
 In order to test policy-pap, we need to use policy-api component to create the policies.
 
 Download & execute the steps in postman collection for creating policies.
-The steps needs to be performed sequentially one after another. And no input is required from user.
+The steps need to be performed sequentially one after another. And no input is required from user.
 
 `Policy Framework Lifecycle API <https://github.com/onap/policy-api/blob/master/postman/lifecycle-api-collection.json>`_
 
@@ -57,7 +57,7 @@ Make sure to skip the delete policy steps.
 Execute policy-pap testing
 --------------------------
 Download & execute the steps in postman collection for verifying policy-pap component.
-The steps needs to be performed sequentially one after another. And no input is required from user.
+The steps need to be performed sequentially one after another. And no input is required from user.
 
 `Policy Framework Administration API <https://github.com/onap/policy-pap/blob/master/postman/pap-api-collection.json>`_
 

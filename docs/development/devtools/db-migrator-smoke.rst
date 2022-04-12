@@ -1,4 +1,4 @@
-.. This work is licensed under a  Creative Commons Attribution
+.. This work is licensed under a Creative Commons Attribution
 .. 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
@@ -317,7 +317,7 @@ Modify db_migrator_policy_init.sh - remove any lines referencing upgrade and add
 
 Make/Redeploy to run downgrade
 
-Check the tables to ensure the number  records is the same.
+Check the tables to ensure the number of records is the same.
 
 .. code::
   :number-lines:
@@ -374,7 +374,7 @@ Modify db_migrator_policy_init.sh - remove any lines referencing downgrade and a
 
 Make/Redeploy to run upgrade
 
-Check the tables to ensure the number  records is the same.
+Check the tables to ensure the number of records is the same.
 
 .. code::
   :number-lines:
@@ -414,7 +414,7 @@ Check the pdp table to ensure the LASTUPDATE column has been added and the value
      - 0900
 
 .. note::
-   The number of records added may vary depnding on the number of retries.
+   The number of records added may vary depending on the number of retries.
 
 With addition of Postgres support to db-migrator, these tests can be also performed on a Postgres version of database.
 In addition, scripts running the aforementioned scenarios can be found under `smoke-tests` folder on db-migrator code base.

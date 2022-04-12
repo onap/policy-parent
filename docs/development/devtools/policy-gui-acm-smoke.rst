@@ -20,7 +20,7 @@ This document will serve as a guide to do smoke tests on the different component
 
 2. Setup Guide
 **************
-This section will show the developer how to set up their environment to start testing in GUI with some instruction on how to carry out the tests. There are a number of prerequisites. Note that this guide is written by a Linux user - although the majority of the steps show will be exactly the same in Windows or other systems. The IDE used in the examples here is Intellij but most or all of what is described should be the same across IDEs.
+This section will show the developer how to set up their environment to start testing in GUI with some instruction on how to carry out the tests. There are several prerequisites. Note that this guide is written by a Linux user - although the majority of the steps show will be exactly the same in Windows or other systems. The IDE used in the examples here is Intellij but most or all of what is described should be the same across IDEs.
 
 2.1 Prerequisites
 =================
@@ -181,7 +181,7 @@ To start the acm runtime we need to go the "runtime-acm" directory in the clamp 
 
 2.3.8 Automation Composition GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-At this point, all of the components required to test out the acm gui are running.We can start to make changes, and have those changes reflected in the UI for immediate feedback on our changes. But first, we must run the GUI.
+At this point, all of the components required to test out the acm gui are running. We can start to make changes, and have those changes reflected in the UI for immediate feedback on our changes. But first, we must run the GUI.
 
 Firstly, go to the GUI repo and navigate to "gui-clamp/ui-react". To setup for development, we must install the dependencies of the GUI. We can do this using the npm package manager. In the directory, simply run:
 
@@ -264,7 +264,7 @@ and
 
 .. image:: images/gui/PolicySuccess.png
 
-Following the same procedure as changeing the state to PASSIVE, we can then change to UNINITIALISED. This deletes the policies and policy types through the policy api and changes the overall state of the loop. we can then delete it from the Manage Instances table by clicking on Delete.
+Following the same procedure as changing the state to PASSIVE, we can then change to UNINITIALISED. This deletes the policies and policy types through the policy api and changes the overall state of the loop. we can then delete it from the Manage Instances table by clicking on Delete.
 
 Decommissioning
 ===============
