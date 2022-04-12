@@ -5,7 +5,7 @@
 CLAMP Metadata Automation Composition Management using TOSCA
 #############################################################
 
-CLAMP supports the definition, deployment, and life cycle management of automation compostion elements using Metadata
+CLAMP supports the definition, deployment, and life cycle management of automation composition elements using Metadata
 described in TOSCA.
 
 .. toctree::
@@ -14,6 +14,7 @@ described in TOSCA.
    acm/acm-architecture
    acm/defining-acms
    acm/api-protocol/api-protocol-tree
+   acm/clamp-gui/policy-gui
    acm/design-impl/design-impl
 
 .. note::
