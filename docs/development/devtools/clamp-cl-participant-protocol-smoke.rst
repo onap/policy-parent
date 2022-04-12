@@ -9,7 +9,7 @@ CLAMP Participant Protocol Smoke Tests
 
 The CLAMP Automation Composition Participant protocol is an asynchronous protocol that is used by the CLAMP runtime
 to coordinate life cycle management of Automation Composition instances.
-This document will serve as a guide to do smoke tests on the different usecases that are involved when
+This document will serve as a guide to do smoke tests on the different use cases that are involved when
 working with the Participant protocol and outline how they operate.
 It will also show a developer how to set up their environment for carrying out smoke tests on the participants.
 
@@ -17,7 +17,7 @@ It will also show a developer how to set up their environment for carrying out s
 **************
 
 This section will show the developer how to set up their environment to start testing participants with some
-instructions on how to carry out the tests. There are a number of prerequisites. Note that this guide is written by a
+instructions on how to carry out the tests. There are several prerequisites. Note that this guide is written by a
 Linux user - although the majority of the steps show will be exactly the same in Windows or other systems.
 
 2.1 Prerequisites
@@ -39,7 +39,7 @@ Linux user - although the majority of the steps show will be exactly the same in
 - policy-api for communication between policy participant and policy-framework
 
 In this setup guide, we will be setting up all the components technically required for a working convenient
-dev environment. We will not be setting up all of the participants - we will setup only the policy participant as an
+dev environment. We will not be setting up all the participants - we will setup only the policy participant as an
 example.
 
 2.2.1 MariaDB Setup
@@ -81,7 +81,7 @@ Test result:
 3.3 Participant Priming
 =======================
 
-When a automation composition is primed, the portion of the Automation Composition Type Definition and Common Property values for the participants
+When an automation composition is primed, the portion of the Automation Composition Type Definition and Common Property values for the participants
 of each participant type mentioned in the Automation Composition Definition are sent to the participants.
 Action: Invoke a REST API to prime acm type definitions and set values of common properties
 
@@ -94,7 +94,7 @@ Test result:
 3.4 Participant DePriming
 =========================
 
-When a automation composition is de-primed, the portion of the Automation Composition Type Definition and Common Property values for the participants
+When an automation composition is de-primed, the portion of the Automation Composition Type Definition and Common Property values for the participants
 of each participant type mentioned in the Automation Composition Definition are deleted on participants.
 Action: Invoke a REST API to deprime acm type definitions
 

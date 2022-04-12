@@ -26,7 +26,7 @@ Running jmeter and ONAP OOM on the same VM may adversely impact the performance 
 Summary
 =======
 
-The Performance test was executed, and the result analyzed, via:
+The Performance test was executed, and the result analysed, via:
 
 .. code-block:: bash
 
@@ -84,7 +84,7 @@ lab.  This was running on a kubernetes pod having the following configuration:
 
 The test was run via jmeter, which was installed on the same VM.
 Running jmeter and ONAP OOM on the same VM may adversely impact the performance of the XACML-PDP being tested.
-Due to the minimal nauture of this setup, the K8S cluster became overloaded on a couple of occasions during the test.
+Due to the minimal nature of this setup, the K8S cluster became overloaded on a couple of occasions during the test.
 This resulted in a small number of errors and a greater maximum transaction time than normal.
 
 Summary

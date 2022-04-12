@@ -73,8 +73,8 @@ Stability test plan was triggered for 72 hours.
 .. Note::
 
               .. container:: paragraph
-
-                  The assertions of state changes are not completely taken care of, as the stability is ran with acm componenets
+			  
+                  The assertions of state changes are not completely taken care of, as the stability is ran with acm components
                   alone, and not including complete policy framework deployment, which makes it difficult for actual state changes from
                   PASSIVE to RUNNING etc to happen.
 

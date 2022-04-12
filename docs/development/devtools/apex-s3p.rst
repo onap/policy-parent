@@ -30,8 +30,8 @@ Setup Details
       testsuites/performance/performance-benchmark-test/src/main/resources/apexPdpPerformanceTestPlan.jmx
 
 .. Note::
-   Policy executions are validated in a more strict fashion during the tests.
-   There are test cases where upto 80 events are expected on the DMaaP topic.
+   Policy executions are validated in a stricter fashion during the tests.
+   There are test cases where up to 80 events are expected on the DMaaP topic.
    DMaaP simulator is used to keep it simple and avoid any message pickup timing related issues.
 
 Stability Test of APEX-PDP
@@ -90,7 +90,7 @@ The following steps can be used to configure the parameters of test plan.
 
 - **HTTP Authorization Manager** - used to store user/password authentication details.
 - **HTTP Header Manager** - used to store headers which will be used for making HTTP requests.
-- **User Defined Variables** -  used to store following user defined parameters.
+- **User Defined Variables** - used to store following user defined parameters.
 
 ===================  ===============================================================================
  **Name**            **Description**
@@ -205,5 +205,5 @@ Test results are shown as below.
 Summary
 +++++++
 
-Multiple policies were executed in a multi threaded fashion for both stability and performance tests.
+Multiple policies were executed in a multi-threaded fashion for both stability and performance tests.
 Both tests ran smoothly without any issues.
