@@ -40,7 +40,7 @@ The test set is focused on the following use cases:
 Execute policy-api testing
 --------------------------
 Download & execute the steps in postman collection for verifying policy-api component.
-The steps needs to be performed sequentially one after another. And no input is required from user.
+The steps need to be performed sequentially one after another. And no input is required from user.
 
 `Policy Framework Lifecycle API <https://github.com/onap/policy-api/blob/master/postman/lifecycle-api-collection.json>`_
 

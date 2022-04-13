@@ -22,7 +22,7 @@ This article assumes that:
 * You have copied the settings.xml from oparent to *~/.m2/* directory
 * You have added settings to access the ONAP Nexus to your M2 configuration, see `Maven Settings Example <https://wiki.onap.org/display/DW/Setting+Up+Your+Development+Environment>`_ (bottom of the linked page)
 
-The procedure documented in this article has been verified using Unbuntu 20.04 LTS VM.
+The procedure documented in this article has been verified using Ubuntu 20.04 LTS VM.
 
 Cloning CLAMP automation composition and all dependency
 *******************************************************
@@ -204,7 +204,7 @@ Running a MariaDb Instance
 Assuming you have successfully built the codebase using the instructions above. There are two requirements for the Clamp automation composition component to run, one of them is a
 running MariaDb database instance. The easiest way to do this is to run the docker image locally.
 
-An sql such as the one below can be used to build the SQL initialization. Create the *mariadb.sql* file in the directory *~/git*.
+A sql such as the one below can be used to build the SQL initialization. Create the *mariadb.sql* file in the directory *~/git*.
 
     .. code-block:: SQL
 
@@ -411,4 +411,4 @@ Run the following docker composition:
           command: /bin/sh -c "pip install --no-cache-dir requests &&  pip install --no-cache-dir simplejson && python -u /script/third_party_proxy.py -v true --port 8085 --root /thirdparty --proxyaddress third-party-proxy:8085"
 
 
-Run DMaaP simulator, and than run CLAMP Acm using java.
+Run DMaaP simulator, and then run CLAMP Acm using java.

@@ -7,7 +7,8 @@
 Policy Distribution Smoke Test
 ################################
 
-The policy-distribution smoke testing is executed against a custom ONAP docker installation as defined in the "policy/docker/csit/docker-compose-distribution-smoke.yml"
+The policy-distribution smoke testing is executed against a custom ONAP docker installation as defined in the docker compose file in "policy/docker/csit/".
+The policy-distribution configuration file is located in "docker/csit/config/distribution/".
 This test verifies the execution of the REST api's exposed by the component to make sure the CSAR Decoding and Forwarding works as expected.
 
 General Setup
@@ -28,9 +29,9 @@ This script will compose the ONAP components used during the smoke tests are:
 - Policy Drools-PDP to deploy & undeploy policies. And send heartbeats to PAP.
 - Policy Xacml-PDP to deploy & undeploy policies. And send heartbeats to PAP.
 
-- Policy Distribution to test the Decoding and Farwarding functions.
+- Policy Distribution to test the Decoding and Forwarding functions.
 
-Use this script to easly bring down the containers :
+Use this script to easily bring down the containers :
 
 .. code-block:: bash
 
@@ -129,7 +130,7 @@ Expected success-count result
 	[{"policy-type":"onap.policies.native.Apex","policy-type-version":"1.0.0","policy-id":"operational.apex.sampledomain","policy-version":"1.0.0","success-count":1,"failure-count":0,"incomplete-count":0},{"policy-type":"onap.policies.Naming","policy-type-version":"1.0.0","policy-id":"SDNC_Policy.ONAP_NF_NAMING_TIMESTAMP","policy-version":"1.0.0","success-count":1,"failure-count":0,"incomplete-count":0}]
 
 Or download & execute the steps in postman collection for verifying policy-pap component.
-The steps needs to be performed sequentially one after another. And no input is required from user.
+The steps need to be performed sequentially one after another. And no input is required from user.
 
 `Policy Framework Administration API <https://github.com/onap/policy-pap/blob/master/postman/pap-api-collection.json>`_
 

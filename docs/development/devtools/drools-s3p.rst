@@ -84,7 +84,7 @@ For 72 hours the following 5 scenarios ran in parallel:
 - vCPE success scenario
 - vCPE failure scenario (failure returned by simulated APPC recipient through DMaaP).
 - vDNS success scenario.
-- vDNS failure scenario (failure by introducing in the DCAE ONSET a non-existant vserver-name reference).
+- vDNS failure scenario (failure by introducing in the DCAE ONSET a non-existent vserver-name reference).
 - vFirewall success scenario.
 
 Five threads ran in parallel, one for each scenario, back to back with no pauses.   The transactions were initiated

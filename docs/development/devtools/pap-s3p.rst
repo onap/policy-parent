@@ -17,7 +17,7 @@ Setup Details
 +++++++++++++
 
 - Policy-PAP along with all policy components deployed as part of a full ONAP OOM deployment.
-- A second instance of APEX-PDP is spun up in the setup. Update the configuration file(OnapPfConfig.json) such that the PDP can register to the new group created by PAP in the tests.
+- A second instance of APEX-PDP is spun up in the setup. Update the configuration file (OnapPfConfig.json) such that the PDP can register to the new group created by PAP in the tests.
 - Both tests were run via jMeter, which was installed on a separate VM.
 
 Stability Test of PAP
@@ -90,7 +90,7 @@ Stability test plan was triggered for 72 hours.
                   As part of the OOM deployment, another APEX-PDP pod is spun up with the pdpGroup name specified as 'sampleGroup'.
                   After creating the new group called 'sampleGroup' as part of the test, a time delay of 2 minutes is added,
                   so that the pdp is registered to the newly created group.
-                  This has  resulted in a spike in the Average time taken per request. But, this is required to make proper assertions,
+                  This has resulted in a spike in the Average time taken per request. But this is required to make proper assertions,
                   and also for the consolidated health check.
 
 **Test Statistics**

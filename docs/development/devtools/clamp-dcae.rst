@@ -55,9 +55,9 @@ The test set focused on the following use cases:
 
 Creation of the Automation Composition:
 ---------------------------------------
-A Automation Composition is created by commissioning a Tosca template with Automation Composition definitions and instantiating the Automation Composition with the state "UNINITIALISED".
+An Automation Composition is created by commissioning a Tosca template with Automation Composition definitions and instantiating the Automation Composition with the state "UNINITIALISED".
 
-- Upload a TOSCA template from the POLICY GUI. The definitions includes a kubernetes participant and control loop elements that deploys and configures a microservice in the kubernetes cluster.
+- Upload a TOSCA template from the POLICY GUI. The definitions include a kubernetes participant and control loop elements that deploys and configures a microservice in the kubernetes cluster.
   Automation Composition element for kubernetes participant includes a helm chart information of DCAE microservice and the element for Http Participant includes the configuration entity for the microservice.
   :download:`Sample Tosca template <tosca/pairwise-testing.yml>`
 
@@ -88,7 +88,7 @@ Verification:
 
 - DCAE service PMSH is deployed in to the kubernetes cluster. PMSH pods are in RUNNING state.
   `helm ls -n <namespace>` - The helm deployment of dcaegen2 service PMSH is listed.
-  `kubectl get pod -n <namespace>` - The PMSH pods are deployed, up and Running.
+  `kubectl get pod -n <namespace>` - The PMSH pods are deployed, up and running.
 
 - The subscription configuration for PMSH microservice from the TOSCA definitions are updated in the Consul server. The configuration can be verified on the Consul server UI `http://<CONSUL-SERVER_IP>/ui/#/dc1/kv/`
 
