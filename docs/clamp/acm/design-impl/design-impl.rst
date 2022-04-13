@@ -1,15 +1,15 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 
-.. _clamp-controlloop-design-impl:
+.. _clamp-acm-design-impl:
 
-CLAMP TOSCA Control Loop Components: Design and Implementaiton
-##############################################################
+CLAMP TOSCA Automation Composition Components: Design and Implementation
+########################################################################
 
-The sections below describe the components that handle TOSCA Control Loops.
+The sections below describe the components that handle TOSCA Automation Compositions.
 
 .. toctree::
    :maxdepth: 1
 
    clamp-runtime-acm
-   clamp-gui-controlloop
+   clamp-gui-acm
    participants/participants
