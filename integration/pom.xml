@@ -51,6 +51,7 @@
         <version.javax.bind>2.3.1</version.javax.bind>
         <version.javax.json>1.1.4</version.javax.json>
         <version.netty>4.1.70.Final</version.netty>
+        <version.spring>5.3.19</version.spring>
         <version.springboot>2.5.0</version.springboot>
         <version.springboot.actuator>2.5.4</version.springboot.actuator>
         <version.hibernate.core>5.4.31.Final</version.hibernate.core>
@@ -857,6 +858,23 @@
                 <artifactId>docker-java</artifactId>
                 <version>3.2.7</version>
                 <scope>test</scope>
+            </dependency>
+
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${version.spring}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${version.spring}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${version.spring}</version>
             </dependency>
 
             <!--  Springboot -->

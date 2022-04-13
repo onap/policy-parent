@@ -138,7 +138,7 @@ next_release_version=${latest_snapshot_tag%-*}
 
 while true
 do
-   read -r -p "have you run 'stage_release' on the '$repo' repo? " yes_no
+   read -r -p "have you run 'stage-release' on the '$repo' repo? " yes_no
    case $yes_no in
        [Yy]* ) break
         ;;
