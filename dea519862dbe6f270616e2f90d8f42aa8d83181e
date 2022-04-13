@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "492e3844_58c247e9",
+        "filename": "docs/development/prometheus-metrics.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-04-13T15:59:24Z",
+      "side": 1,
+      "message": "could say something like:\n\nThe following counters are present in the current release:\n- pdpx_policy_deployments_total counts the total number of deployment operations.\n- pdpx_policy_decisions_total counts the total number of decisions.",
+      "revId": "dea519862dbe6f270616e2f90d8f42aa8d83181e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c44694cf_b6762429",
+        "filename": "docs/development/prometheus-metrics.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-04-13T15:59:24Z",
+      "side": 1,
+      "message": "Add:\n\nThis counter supports the following labels:",
+      "revId": "dea519862dbe6f270616e2f90d8f42aa8d83181e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f059971_743ca2ee",
+        "filename": "docs/development/prometheus-metrics.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-04-13T15:59:24Z",
+      "side": 1,
+      "message": "Add:\n\nThis counter supports the following labels:",
+      "revId": "dea519862dbe6f270616e2f90d8f42aa8d83181e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
