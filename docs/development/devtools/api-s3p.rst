@@ -25,7 +25,7 @@ All the transaction flows are initiated from a test client server running JMeter
 Setup Details
 -------------
 
-The stability test was performed on a default ONAP OOM installation in the Intel Wind River Lab environment.
+The stability test was performed on a default ONAP OOM installation in the University of New Hampshire (UNH) Lab environment.
 JMeter was installed on a separate VM to inject the traffic defined in the
 `API stability script
 <https://git.onap.org/policy/api/tree/testsuites/stability/src/main/resources/testplans/policy_api_stability.jmx>`_
@@ -55,7 +55,6 @@ of each entity is set to the running thread number.
 
 **API Test Flow (5 threads running the same steps in the same loop)**
 
-- Get Policy Metrics
 - Create a new Monitoring Policy Type with Version 6.0.#
 - Create a new Monitoring Policy Type with Version 7.0.#
 - Create a new Optimization Policy Type with Version 6.0.#
@@ -72,6 +71,7 @@ of each entity is set to the running thread number.
 - Get Version 6.0.# of the new Native Drools Policy Type
 - Get Version 6.0.# of the new Native XACML Policy Type
 - Get the Latest Version of the New Monitoring Policy Type
+- Create Version 6.0.# of Node Template
 - Create Monitoring Policy Ver 6.0.# w/Monitoring Policy Type Ver 6.0.#
 - Create Monitoring Policy Ver 7.0.# w/Monitoring Policy Type Ver 7.0.#
 - Create Optimization Policy Ver 6.0.# w/Optimization Policy Type Ver 6.0.#
@@ -79,6 +79,10 @@ of each entity is set to the running thread number.
 - Create Native APEX Policy Ver 6.0.# w/Native APEX Policy Type Ver 6.0.#
 - Create Native Drools Policy Ver 6.0.# w/Native Drools Policy Type Ver 6.0.#
 - Create Native XACML Policy Ver 6.0.# w/Native XACML Policy Type Ver 6.0.#
+- Create Version 6.0.# of PNF Example Policy with Metadata
+- Get Node Template
+- Get All TCA Policies
+- Get All Versions of Monitoring Policy Type
 - Get Version 6.0.# of the new Monitoring Policy
 - Get Version 6.0.# of the new Optimization Policy
 - Get Version 6.0.# of the new Guard Policy
@@ -91,6 +95,7 @@ of each entity is set to the running thread number.
 - Delete Version 6.0.# of the new OptimizationPolicy
 - Delete Version 6.0.# of the new Guard Policy
 - Delete Version 6.0.# of the new Native APEX Policy
+- Delete Version 6.0.# of PNF Example Policy having Metadata
 - Delete Version 6.0.# of the new Native Drools Policy
 - Delete Version 6.0.# of the new Native XACML Policy
 - Delete Monitoring Policy Type with Version 6.0.#
@@ -100,6 +105,8 @@ of each entity is set to the running thread number.
 - Delete Native APEX Policy Type with Version 6.0.#
 - Delete Native Drools Policy Type with Version 6.0.#
 - Delete Native XACML Policy Type with Version 6.0.#
+- Delete Node Template
+- Get Policy Metrics
 
 **TearDown Thread (will only be running after API Test Flow is completed)**
 
@@ -120,18 +127,18 @@ The load was performed against a non-tweaked ONAP OOM installation.
 =======================  =============  ===========  ===============================  ===============================  ===============================
 **Total # of requests**  **Success %**    **TPS**    **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
 =======================  =============  ===========  ===============================  ===============================  ===============================
-    242277                    100%         0.935              5340 ms                               1 ms                          736976 ms
+    914881                    100%         3.5              1413 ms                               100 ms                          22201 ms
 =======================  =============  ===========  ===============================  ===============================  ===============================
 
-.. image:: api-s3p-results/api-s3p-jm-1_I.png
+.. image:: api-s3p-results/api-s3p-jm-1_J.png
 
 **JMeter Results**
 
 The following graphs show the response time distributions.   The "Get Policy Types" API calls are the most expensive calls that
-average a 7 seconds plus response time.
+average a 13 seconds plus response time.
 
-.. image:: api-s3p-results/api-response-time-distribution_I.png
-.. image:: api-s3p-results/api-response-time-overtime_I.png
+.. image:: api-s3p-results/api-response-time-distribution_J.png
+.. image:: api-s3p-results/api-response-time-overtime_J.png
 
 **Memory and CPU usage**
 
@@ -158,7 +165,7 @@ Performance test of policy-api has the goal of testing the min/avg/max processin
 Setup Details
 -------------
 
-The performance test was performed on a default ONAP OOM installation in the Intel Wind River Lab environment.
+The performance test was performed on a default ONAP OOM installation in the University of New Hampshire (UNH) Lab environment.
 JMeter was installed on a separate VM to inject the traffic defined in the
 `API performance script
 <https://git.onap.org/policy/api/tree/testsuites/performance/src/main/resources/testplans/policy_api_performance.jmx>`_
@@ -186,18 +193,18 @@ Running/Triggering performance test will be the same as stability test. That is,
 =======================  =============  ===========  ===============================  ===============================  ===============================
 **Total # of requests**  **Success %**    **TPS**    **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
 =======================  =============  ===========  ===============================  ===============================  ===============================
-    2822                     100%           0.31              63794 ms                              2 ms                          1183376 ms
+    10417                     100%           1.1              17340 ms                              100 ms                          365982 ms
 =======================  =============  ===========  ===============================  ===============================  ===============================
 
-.. image:: api-s3p-results/api-s3p-jm-2_I.png
+.. image:: api-s3p-results/api-s3p-jm-2_J.png
 
 Test Results
 ------------
 
 The following graphs show the response time distributions.
 
-.. image:: api-s3p-results/api-response-time-distribution_performance_I.png
-.. image:: api-s3p-results/api-response-time-overtime_performance_I.png
+.. image:: api-s3p-results/api-response-time-distribution_performance_J.png
+.. image:: api-s3p-results/api-response-time-overtime_performance_J.png
 
 
 
