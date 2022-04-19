@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a059e2fc_c535dae2",
+        "filename": "docs/development/prometheus-metrics.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2022-04-19T09:57:28Z",
+      "side": 1,
+      "message": "I think there should be a line break after line 37. same comment for lines 44, 48 etc.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "07ceca93fafd09b18b09c836a317f79a8e710e6d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
