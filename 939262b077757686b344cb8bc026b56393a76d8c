@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8af9743_bfad230a",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 57
+      },
+      "writtenOn": "2022-04-20T13:54:12Z",
+      "side": 1,
+      "message": "is that misspelled? recall also that this is set to point to oparent 3.2.1. Properties defined in oparent do not make their way to this build. So this value may be blank. I know I tried initially to use oparent properties in our and maven would not bring those in. Because its not compiling that repo.",
+      "range": {
+        "startLine": 648,
+        "startChar": 34,
+        "endLine": 648,
+        "endChar": 40
+      },
+      "revId": "939262b077757686b344cb8bc026b56393a76d8c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
