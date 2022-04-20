@@ -18,7 +18,7 @@ Setup Details
 
 - Policy-PAP along with all policy components deployed as part of a full ONAP OOM deployment.
 - A second instance of APEX-PDP is spun up in the setup. Update the configuration file (OnapPfConfig.json) such that the PDP can register to the new group created by PAP in the tests.
-- Both tests were run via jMeter, which was installed on a separate VM.
+- Both tests were run via jMeter.
 
 Stability Test of PAP
 +++++++++++++++++++++
@@ -27,33 +27,58 @@ Test Plan
 ---------
 The 72 hours stability test ran the following steps sequentially in a single threaded loop.
 
-- **Create Policy defaultDomain** - creates an operational policy using policy/api component
-- **Create Policy sampleDomain** - creates an operational policy using policy/api component
+Setup Phase (steps running only once)
+"""""""""""""""""""""""""""""""""""""
+
+- **Create Policy for defaultGroup** - creates an operational policy using policy/api component
+- **Create NodeTemplate metadata for sampleGroup policy** - creates a node template containing metadata using policy/api component
+- **Create Policy for sampleGroup** - creates an operational policy that refers to the metadata created above using policy/api component
+- **Change defaultGroup state to ACTIVE** - changes the state of defaultGroup PdpGroup to ACTIVE
+- **Create/Update PDP Group** - creates a new PDPGroup named sampleGroup.
+      A second instance of the PDP that is already spun up gets registered to this new group
+- **Check PdpGroup Query** - makes a PdpGroup query request and verifies that both PdpGroups are in ACTIVE state.
+
+PAP Test Flow (steps running in a loop for 72 hours)
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 - **Check Health** - checks the health status of pap
-- **Check Statistics** - checks the statistics of pap
-- **Change state to ACTIVE** - changes the state of defaultGroup PdpGroup to ACTIVE
-- **Check PdpGroup Query** - makes a PdpGroup query request and verifies that PdpGroup is in the ACTIVE state.
-- **Deploy defaultDomain Policy** - deploys the policy defaultDomain in the existing PdpGroup
-- **Check status of defaultGroup** - checks the status of defaultGroup PdpGroup with the defaultDomain policy 1.0.0.
+- **PAP Metrics** - Fetch prometheus metrics before the deployment/undeployment cycle
+      Save different counters such as deploy/undeploy-success/failure counters at API and engine level.
+- **Check PdpGroup Query** - makes a PdpGroup query request and verifies that both PdpGroups are in the ACTIVE state.
+- **Deploy Policy for defaultGroup** - deploys the policy defaultDomain to defaultGroup
+- **Check status of defaultGroup policy** - checks the status of defaultGroup PdpGroup with the defaultDomain policy 1.0.0.
 - **Check PdpGroup Audit defaultGroup** - checks the audit information for the defaultGroup PdpGroup.
 - **Check PdpGroup Audit Policy (defaultGroup)** - checks the audit information for the defaultGroup PdpGroup with the defaultDomain policy 1.0.0.
-- **Create/Update PDP Group** - creates a new PDPGroup named sampleGroup.
 - **Check PdpGroup Query** - makes a PdpGroup query request and verifies that 2 PdpGroups are in the ACTIVE state and defaultGroup has a policy deployed on it.
-- **Deployment Update sampleDomain** - deploys the policy sampleDomain in sampleGroup PdpGroup using pap api
+- **Deployment Update for sampleGroup policy** - deploys the policy sampleDomain in sampleGroup PdpGroup using pap api
 - **Check status of sampleGroup** - checks the status of the sampleGroup PdpGroup.
 - **Check status of PdpGroups** - checks the status of both PdpGroups.
 - **Check PdpGroup Query** - makes a PdpGroup query request and verifies that the defaultGroup has a policy defaultDomain deployed on it and sampleGroup has policy sampleDomain deployed on it.
 - **Check Audit** - checks the audit information for all PdpGroups.
 - **Check Consolidated Health** - checks the consolidated health status of all policy components.
 - **Check Deployed Policies** - checks for all the deployed policies using pap api.
-- **Undeploy Policy sampleDomain** - undeploys the policy sampleDomain from sampleGroup PdpGroup using pap api
-- **Undeploy Default Policy** - undeploys the policy defaultDomain from PdpGroup
-- **Change state to PASSIVE(sampleGroup)** - changes the state of sampleGroup PdpGroup to PASSIVE
-- **Delete PdpGroup SampleGroup** - delete the sampleGroup PdpGroup using pap api
-- **Change State to PASSIVE(defaultGroup)** - changes the state of defaultGroup PdpGroup to PASSIVE
+- **Undeploy policy in sampleGroup** - undeploys the policy sampleDomain from sampleGroup PdpGroup using pap api
+- **Undeploy policy in defaultGroup** - undeploys the policy defaultDomain from PdpGroup
+- **Check status of policies** - checks the status of all policies and make sure both the policies are undeployed
 - **Check PdpGroup Query** - makes a PdpGroup query request and verifies that PdpGroup is in the PASSIVE state.
-- **Delete Policy defaultDomain** - deletes the operational policy defaultDomain using policy/api component
-- **Delete Policy sampleDomain** - deletes the operational policy sampleDomain using policy/api component
+- **PAP Metrics after deployments** - Fetch prometheus metrics after the deployment/undeployment cycle
+      Save the new counter values such as deploy/undeploy-success/failure counters at API and engine level, and check that the deploySuccess and undeploySuccess counters are increased by 2.
+
+.. Note::
+   To avoid putting a large Constant Timer value after every deployment/undeployment, the status API is polled until the deployment/undeployment
+   is successfully completed, or until a timeout. This is to make sure that the operation is completed successfully and the PDPs gets enough time to respond back.
+   Otherwise, before the deployment is marked successful by PAP, an undeployment could be triggered as part of other tests,
+   and the operation's corresponding prometheus counter at engine level will not get updated.
+
+Teardown Phase (steps running only once after PAP Test Flow is completed)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+- **Change state to PASSIVE(sampleGroup)** - changes the state of sampleGroup PdpGroup to PASSIVE
+- **Delete PdpGroup sampleGroup** - delete the sampleGroup PdpGroup using pap api
+- **Change State to PASSIVE(defaultGroup)** - changes the state of defaultGroup PdpGroup to PASSIVE
+- **Delete policy created for defaultGroup** - deletes the operational policy defaultDomain using policy/api component
+- **Delete Policy created for sampleGroup** - deletes the operational policy sampleDomain using policy/api component
+- **Delete Nodetemplate metadata for sampleGroup policy** - deleted the nodetemplate containing metadata for sampleGroup policy
 
 The following steps can be used to configure the parameters of test plan.
 
@@ -74,61 +99,49 @@ The test was run in the background via "nohup", to prevent it from being interru
 
 .. code-block:: bash
 
-    nohup ./jMeter/apache-jmeter-5.3/bin/jmeter.sh -n -t stability.jmx -l testresults.jtl
+    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t stability.jmx -l stabilityTestResults.jtl
 
 Test Results
 ------------
 
 **Summary**
 
-Stability test plan was triggered for 72 hours.
+Stability test plan was triggered for 72 hours. There were no failures during the 72 hours test.
 
-.. Note::
-
-              .. container:: paragraph
-
-                  As part of the OOM deployment, another APEX-PDP pod is spun up with the pdpGroup name specified as 'sampleGroup'.
-                  After creating the new group called 'sampleGroup' as part of the test, a time delay of 2 minutes is added,
-                  so that the pdp is registered to the newly created group.
-                  This has resulted in a spike in the Average time taken per request. But this is required to make proper assertions,
-                  and also for the consolidated health check.
 
 **Test Statistics**
 
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-34053                    99.14 %            0.86 %              1051 ms
+140980                    100 %             0.00 %              717 ms
 =======================  =================  ==================  ==================================
 
 .. Note::
 
-              .. container:: paragraph
-
-                  There were some failures during the 72 hour stability tests. These tests were caused by the apex-pdp pods restarting
-                  intermitently due to limited resources in our testing environment. The second apex instance was configured as a
-                  replica of the apex-pdp pod and therefore, when it restarted, registered to the "defaultGroup" as the configuration 
-                  was taken from the original apex-pdp pod. This meant a manual change whenever the pods restarted to make apex-pdp-"2"
-                  register with the "sampleGroup".
-                  When both pods were running as expected, no errors relating to the pap functionality were observed. These errors are
-                  strictly caused by the environment setup and not by pap.
+   There were no failures during the 72 hours test.
 
 **JMeter Screenshot**
 
-.. image:: pap-s3p-results/pap-s3p-stability-result-jmeter.png
+.. image:: pap-s3p-results/pap_stability_jmeter_results.jpg
 
 **Memory and CPU usage**
 
-The memory and CPU usage can be monitored by running "top" command on the PAP pod. A snapshot is taken before and after test execution to monitor the changes in resource utilization.
+The memory and CPU usage can be monitored by running "top" command in the PAP pod.
+A snapshot is taken before and after test execution to monitor the changes in resource utilization.
+Prometheus metrics is also collected before and after the test execution.
 
 Memory and CPU usage before test execution:
 
-.. image:: pap-s3p-results/pap-s3p-mem-bt.png
+.. image:: pap-s3p-results/pap_top_before_72h.jpg
+
+:download:`Prometheus metrics before 72h test  <pap-s3p-results/pap_metrics_before_72h.txt>`
 
 Memory and CPU usage after test execution:
 
-.. image:: pap-s3p-results/pap-s3p-mem-at.png
+.. image:: pap-s3p-results/pap_top_after_72h.jpg
 
+:download:`Prometheus metrics after 72h test  <pap-s3p-results/pap_metrics_after_72h.txt>`
 
 Performance Test of PAP
 ++++++++++++++++++++++++
@@ -149,10 +162,13 @@ Test Plan
 
 Performance test plan is the same as the stability test plan above except for the few differences listed below.
 
-- Increase the number of threads up to 5 (simulating 5 users' behaviours at the same time).
+- Increase the number of threads up to 10 (simulating 10 users' behaviours at the same time).
 - Reduce the test time to 2 hours.
-- Usage of counters to create different groups by the 'Create/Update PDP Group' test case.
-- Removed the delay to wait for the new PDP to be registered. Also removed the corresponding assertions where the Pdp instance registration to the newly created group is validated.
+- Usage of counters (simulating each user) to create different pdpGroups, update their state and later delete them.
+- Removed the tests to deploy policies to newly created groups as this will need a larger setup with multiple pdps registered to each group, which will also slow down the performance test with the time needed for registration process etc.
+- Usage of counters (simulating each user) to create different drools policies and deploy them to defaultGroup.
+      In the test, a thread count of 10 is used resulting in 10 different drools policies getting deployed and undeployed continuously for 2 hours.
+      Other standard operations like checking the deployment status of policies, checking the metrics, health etc remains.
 
 Run Test
 --------
@@ -161,14 +177,7 @@ Running/Triggering the performance test will be the same as the stability test. 
 
 .. code-block:: bash
 
-    nohup ./jMeter/apache-jmeter-5.3/bin/jmeter.sh -n -t performance.jmx -l perftestresults.jtl
-
-Once the test execution is completed, execute the below script to get the statistics:
-
-.. code-block:: bash
-
-    $ cd /home/ubuntu/pap/testsuites/performance/src/main/resources/testplans
-    $ ./results.sh /home/ubuntu/pap_perf/resultTree.log
+    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t performance.jmx -l performanceTestResults.jtl
 
 Test Results
 ------------
@@ -180,9 +189,9 @@ Test results are shown as below.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-24092                    100 %              0.00 %              2467 ms
+24276                    100 %              0.00 %              2556 ms
 =======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
 
-.. image:: pap-s3p-results/pap-s3p-performance-result-jmeter.png
+.. image:: pap-s3p-results/pap_performance_jmeter_results.jpg
