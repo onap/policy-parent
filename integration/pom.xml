@@ -371,13 +371,6 @@
                 <version>4.0.1</version>
             </dependency>
 
-            <!-- HttpComponents Client -->
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>4.5.13</version>
-            </dependency>
-
             <!-- HttpComponents Core (blocking I/O) -->
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
@@ -669,13 +662,6 @@
                 <version>3.0.8</version>
             </dependency>
 
-            <!-- Tomcat -->
-            <dependency>
-                <groupId>org.apache.tomcat.embed</groupId>
-                <artifactId>tomcat-embed-core</artifactId>
-                <version>${version.tomcat}</version>
-            </dependency>
-
             <!-- jaxws -->
             <dependency>
                 <groupId>javax.xml.ws</groupId>
@@ -886,6 +872,21 @@
                 <artifactId>spring-boot-starter-security</artifactId>
                 <version>${version.springboot}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${version.springboot}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+                <version>${version.springboot}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${version.springboot}</version>
+            </dependency>
 
             <!--  Hibernate -->
             <dependency>
@@ -893,10 +894,34 @@
                 <artifactId>hibernate-core</artifactId>
                 <version>${version.hibernate.core}</version>
             </dependency>
+
+            <!-- Github -->
+            <dependency>
+                <groupId>io.github.classgraph</groupId>
+                <artifactId>classgraph</artifactId>
+                <version>4.8.146</version>
+            </dependency>
+
+            <!-- Tomcat -->
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-annotations-api</artifactId>
+                <version>${version.tomcat}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-el</artifactId>
+                <version>${version.tomcat}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-websocket</artifactId>
+                <version>${version.tomcat}</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>
-
 
     <scm>
         <connection>scm:git:ssh://git.onap.org:29418/${project.groupId}</connection>
