@@ -98,8 +98,6 @@ see `Clamp ACM Smoke Tests <https://docs.onap.org/projects/onap-policy-parent/en
 2 - Checking out and building the UI
 ====================================
 
-.. _Building UI
-
 **Step 1:** Checkout the UI from the repo
 
 .. code-block:: bash
@@ -124,28 +122,25 @@ see `Clamp ACM Smoke Tests <https://docs.onap.org/projects/onap-policy-parent/en
 
     npm start --scripts-prepend-node-path
 
-** If you get the following error
+*If you get the following error*
 
 .. image:: images/03-gui.png
 
-    gedit package.json
+.. code-block:: bash
+
+   gedit package.json
+
+Then change ``"version": "${project.version}",`` to ``"version": "2.1.1",``
+
+Save and close, then delete the node_modules directory
 
 .. code-block:: bash
 
-   change the following
-   "version": "${project.version}",
-
-   to
-
-   "version": "2.1.1",
-
-    save and close
-
-    then delete the node_modules directory
-
     rm -rf node_modules/
 
-    then run again
+Then run again
+
+.. code-block:: bash
 
     npm install
 
@@ -165,7 +160,7 @@ This section describes how to commission and decommission the Tosca Service Temp
 
 ** Prerequisite:
 
-see clamp-policy-gui-label_
+See :ref:`Policy GUI Prerequisites<clamp-policy-gui-label>`
 
 **Step 1:** From the Main Menu Click on TOSCA Automation Composition Dropdown
 
@@ -315,3 +310,5 @@ see building-ui-label_
 .. image:: images/23-gui.png
 
 * NOTE: Can't change from Passive to Running in a local developer machine, can only change in the production environment
+
+End of document
