@@ -641,6 +641,19 @@
                 <version>${version.immutable}</version>
             </dependency>
 
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.vesion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.vesion}</version>
+            </dependency>
+
             <!-- Springfox -->
             <dependency>
                 <groupId>io.springfox</groupId>
