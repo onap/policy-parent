@@ -10,22 +10,6 @@ Policy Distribution component
 72h Stability and 4h Performance Tests of Distribution
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-VM Details
-----------
-
-The stability and performance tests are performed on VM's running in the OpenStack cloud
-environment in the ONAP integration lab.
-
-**Policy VM details**
-
-- OS: Ubuntu 18.04 LTS (GNU/Linux 4.15.0-151-generic x86_64)
-- CPU: 4 core
-- RAM: 15 GB
-- HardDisk: 39 GB
-- Docker version 20.10.7, build 20.10.7-0ubuntu1~18.04.2
-- Java: openjdk 11.0.11 2021-04-20
-
-
 Common Setup
 ------------
 
@@ -88,7 +72,7 @@ Install and verify docker-compose
 
 .. code-block:: bash
 
-    # Install compose
+    # Install compose (check if version is still available or update as necessary)
     sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 
@@ -118,9 +102,9 @@ Modify the versions.sh script to match all the versions being tested.
 
     vi ~/distribution/testsuites/stability/src/main/resources/setup/versions.sh
 
-Ensure the correct docker image versions are specified - e.g. for Istanbul-M4
+Ensure the correct docker image versions are specified - e.g. for Jakarta-M4
 
-- export POLICY_DIST_VERSION=2.6.1-SNAPSHOT
+- export POLICY_DIST_VERSION=2.7-SNAPSHOT
 
 Run the start.sh script to start the components. After installation, script will execute
 ``docker ps`` and show the running containers.
@@ -137,14 +121,13 @@ Run the start.sh script to start the components. After installation, script will
     Creating policy-api          ... done
     Creating policy-pap          ... done
 
-    CONTAINER ID   IMAGE                                                               COMMAND                  CREATED         STATUS                  PORTS                NAMES
-    f91be98ad1f4   nexus3.onap.org:10001/onap/policy-pap:2.5.1-SNAPSHOT                "/opt/app/policy/pap…"   1 second ago    Up Less than a second   6969/tcp             policy-pap
-    d92cdbe971d4   nexus3.onap.org:10001/onap/policy-api:2.5.1-SNAPSHOT                "/opt/app/policy/api…"   1 second ago    Up Less than a second   6969/tcp             policy-api
-    9a019f5d641e   nexus3.onap.org:10001/onap/policy-db-migrator:2.3.1-SNAPSHOT        "/opt/app/policy/bin…"   2 seconds ago   Up 1 second             6824/tcp             policy-db-migrator
-    108ba238edeb   nexus3.onap.org:10001/mariadb:10.5.8                                "docker-entrypoint.s…"   3 seconds ago   Up 1 second             3306/tcp             mariadb
-    bec9b223e79f   nexus3.onap.org:10001/onap/policy-models-simulator:2.5.1-SNAPSHOT   "simulators.sh"          3 seconds ago   Up 1 second             3905/tcp             simulator
-    74aa5abeeb08   nexus3.onap.org:10001/onap/policy-distribution:2.6.1-SNAPSHOT       "/opt/app/policy/bin…"   3 seconds ago   Up 1 second             6969/tcp, 9090/tcp   policy-distribution
-
+    fa4e9bd26e60   nexus3.onap.org:10001/onap/policy-pap:2.6-SNAPSHOT-latest                "/opt/app/policy/pap…"   1 second ago    Up Less than a second   6969/tcp             policy-pap
+    efb65dd95020   nexus3.onap.org:10001/onap/policy-api:2.6-SNAPSHOT-latest                "/opt/app/policy/api…"   1 second ago    Up Less than a second   6969/tcp             policy-api
+    cf602c2770ba   nexus3.onap.org:10001/onap/policy-db-migrator:2.4-SNAPSHOT-latest        "/opt/app/policy/bin…"   2 seconds ago   Up 1 second             6824/tcp             policy-db-migrator
+    99383d2fecf4   pdp/simulator                                                            "sh /opt/app/policy/…"   2 seconds ago   Up 1 second                                  pdp-simulator
+    3c0e205c5f47   nexus3.onap.org:10001/onap/policy-models-simulator:2.6-SNAPSHOT-latest   "simulators.sh"          3 seconds ago   Up 2 seconds            3904/tcp             simulator
+    3ad00d90d6a3   nexus3.onap.org:10001/onap/policy-distribution:2.7-SNAPSHOT-latest       "/opt/app/policy/bin…"   3 seconds ago   Up 2 seconds            6969/tcp, 9090/tcp   policy-distribution
+    bb0b915cdecc   nexus3.onap.org:10001/mariadb:10.5.8                                     "docker-entrypoint.s…"   3 seconds ago   Up 2 seconds            3306/tcp             mariadb
 
 .. note::
     The containers on this docker-compose are running with HTTP configuration. For HTTPS, ports
@@ -165,7 +148,7 @@ Download and install JMeter
     # Install JMeter
     mkdir -p jmeter
     cd jmeter
-    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.1.zip
+    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.1.zip # check if valid version
     unzip -q apache-jmeter-5.4.1.zip
     rm apache-jmeter-5.4.1.zip
 
@@ -180,7 +163,7 @@ monitor CPU, Memory and GC for Distribution while the stability tests are runnin
 
     sudo apt install -y visualvm
 
-Run these commands to configure permissions
+Run these commands to configure permissions (if permission errors happens, use ``sudo su``)
 
 .. code-block:: bash
 
@@ -255,6 +238,7 @@ The 72h stability test will run the following steps sequentially in a single thr
 - **Add CSAR** - Adds CSAR to the directory that distribution is watching
 - **Get Healthcheck** - Ensures Healthcheck is returning 200 OK
 - **Get Statistics** - Ensures Statistics is returning 200 OK
+- **Get Metrics** - Ensures Metrics is returning 200 OK
 - **Assert PDP Group Query** - Checks that PDPGroupQuery contains the deployed policy
 - **Assert PoliciesDeployed** - Checks that the policy is deployed
 - **Undeploy/Delete Policy** - Undeploys and deletes the Policy for the next loop
@@ -342,7 +326,7 @@ time and rest call throughput for all the requests when the number of requests a
 saturate the resource and find the bottleneck.
 
 It also tests that distribution can handle multiple policy CSARs and that these are deployed within
-30 seconds consistently.
+60 seconds consistently.
 
 
 Setup Details
@@ -358,7 +342,7 @@ Performance test plan is different from the stability test plan.
 
 - Instead of handling one policy csar at a time, multiple csar's are deployed within the watched
   folder at the exact same time.
-- We expect all policies from these csar's to be deployed within 30 seconds.
+- We expect all policies from these csar's to be deployed within 60 seconds.
 - There are also multithreaded tests running towards the healthcheck and statistics endpoints of
   the distribution service.
 
@@ -368,7 +352,7 @@ Running the Test Plan
 
 Check if /tmp folder permissions to allow the Testplan to insert the CSAR into the
 /tmp/policydistribution/distributionmount folder.
-Clean up from previous run. If necessary, put containers down with script `down.sh` from setup
+Clean up from previous run. If necessary, put containers down with script ``down.sh`` from setup
 folder mentioned on :ref:`Setup components <setup-distribution-s3p-components>`
 
 .. code-block:: bash
@@ -401,3 +385,5 @@ Test Results
 
 .. image:: distribution-s3p-results/performance-monitor.png
 .. image:: distribution-s3p-results/performance-threads.png
+
+End of document
