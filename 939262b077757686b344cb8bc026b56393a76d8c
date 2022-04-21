@@ -22,6 +22,30 @@
       "revId": "939262b077757686b344cb8bc026b56393a76d8c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7341f034_a976a915",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-04-21T17:03:59Z",
+      "side": 1,
+      "message": "Yes, it\u0027s misspelt but when I fixed it and tried to run everything it didn\u0027t work anyhow.",
+      "parentUuid": "d8af9743_bfad230a",
+      "range": {
+        "startLine": 648,
+        "startChar": 34,
+        "endLine": 648,
+        "endChar": 40
+      },
+      "revId": "939262b077757686b344cb8bc026b56393a76d8c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
