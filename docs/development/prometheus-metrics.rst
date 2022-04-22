@@ -118,9 +118,9 @@ Key metrics for APEX-PDP
 +=============================================+=====================================================================================+======================================================================================================================+
 | process_start_time_seconds                  | Uptime of apex-pdp application in seconds                                           |                                                                                                                      |
 +---------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
-| pdpa_policy_deployments_total               | Number of TOSCA policy deploy/undeploy operations                                   | "operation": Possibles values are deploy, undeploy; "status": Deploy/Undeploy status values - SUCCESS, FAILURE, TOTAL   |
+| pdpa_policy_deployments_total               | Number of TOSCA policy deploy/undeploy operations                                   | "operation": Possibles values are deploy, undeploy; "status": Deploy/Undeploy status values - SUCCESS, FAILURE, TOTAL|
 +---------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
-| pdpa_policy_executions_total                | Number of TOSCA policy executions                                                   | "status": Execution status values - SUCCESS, FAILURE, TOTAL"                                                            |
+| pdpa_policy_executions_total                | Number of TOSCA policy executions                                                   | "status": Execution status values - SUCCESS, FAILURE, TOTAL"                                                         |
 +---------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
 | pdpa_engine_state                           | State of APEX engine                                                                | "engine_instance_id": ID of the engine thread                                                                        |
 +---------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
@@ -150,6 +150,23 @@ Key metrics for XACML PDP
 
 Key metrics for Policy Distribution
 -----------------------------------
+
++------------------------------------+-------------------------------------------------------+
+| Metric name                        | Metric description                                    |
++====================================+=======================================================+
+| total_distribution_received_count  | Total number of distribution received                 |
++------------------------------------+-------------------------------------------------------+
+| distribution_success_count         | Total number of distribution successfully processed   |
++------------------------------------+-------------------------------------------------------+
+| distribution_failure_count         | Total number of distribution failures                 |
++------------------------------------+-------------------------------------------------------+
+| total_download_received_count      | Total number of download received                     |
++------------------------------------+-------------------------------------------------------+
+| download_success_count             | Total number of download successfully processed       |
++------------------------------------+-------------------------------------------------------+
+| download_failure_count             | Total number of download failures                     |
++------------------------------------+-------------------------------------------------------+
+
 
 3. OOM changes to enable prometheus monitoring for Policy Framework
 ===================================================================
