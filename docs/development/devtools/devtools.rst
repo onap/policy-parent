@@ -253,9 +253,10 @@ running MariaDb database instance. The easiest way to do this is to run the dock
 information on doing so. Once the mariadb is up and running, a configuration file must be provided to the api in order for it to know how to
 connect to the mariadb. You can locate the default configuration file in the packaging of the api component:
 
-`Default API Configuration <https://gerrit.onap.org/r/gitweb?p=policy/api.git;a=blob;f=packages/policy-api-tarball/src/main/resources/etc/defaultConfig.json;h=042fb9d54c79ce4dad517e2564636632a8ecc550;hb=refs/heads/master>`_
+`Default Policy API Configuration <https://gerrit.onap.org/r/gitweb?p=policy/api.git;a=blob;f=packages/policy-api-tarball/src/main/resources/etc/apiParameters.yaml;h=2c19199a8a889cb0ab203334182662fe15e1635e;hb=refs/heads/master>`_
 
-You will want to change the fields pertaining to "host", "port" and "databaseUrl" to your local environment settings.
+You will want to change the fields pertaining to "host", "port" and "databaseUrl" to your local environment settings and start the
+policy-api springboot application either using your IDE of choice or using the run goal from Spring Boot Maven plugin: *mvn spring-boot:run*.
 
 Running the API component using Docker Compose
 ++++++++++++++++++++++++++++++++++++++++++++++
@@ -347,6 +348,10 @@ the Policy Framework works in a full ONAP deployment.
 
 Generating Swagger Documentation
 ********************************
+
+1. Using Swagger2Markup maven plugin from Policy Parent Integration POM
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 The `Policy Parent Integration POM <https://github.com/onap/policy-parent/blob/master/integration/pom.xml>`_ contains a *generateSwaggerDocs* profile. This
 profile can be activated on any module that has a Swagger endpoint. When active, this profile creates a tarball in Nexus with the name
 *<project-artifactId>-swagger-docs.tar.gz*. The tarball contains the following files:
@@ -393,6 +398,16 @@ of such a test case.
 
 See `this unit test case <https://github.com/onap/policy-clamp/blob/master/runtime/src/test/java/org/onap/policy/clamp/clds/it/HttpsItCase.java>`_
 for the full example.
+
+2. Accessing Swagger documentation for springboot based policy applications
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Springfox Swagger2 maven dependency aids with auto-generation of Swagger documentation.
+
+Using the Swagger-UI maven dependency Swagger HTML documentation can be accessed at the root url.
+
+- The generated swagger.json can be accessed at: *https://service_IP:service_port/v2/api-docs*
+- Swagger UI can be accessed at: *https://service_IP:service_port/swagger-ui/index.html*
 
 Running the DMaaP Simulator during Development
 **********************************************
