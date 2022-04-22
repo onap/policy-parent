@@ -5,8 +5,11 @@
 .. THIS IS USED INTERNALLY IN POLICY ONLY
 .. _api-label:
 
-Policy Life Cycle API
-#####################
+1. Policy Life Cycle API
+########################
+
+1.1 Overview
+------------
 
 .. contents::
     :depth: 2
@@ -105,6 +108,8 @@ triggers     R       O        N/A        Specification of policy triggers, not c
   The group types of targets in TOSCA are groups of TOSCA nodes, not PDP groups; the *target* concept in TOSCA is
   equivalent to the Policy Enforcement Point (PEP) concept
 
+1.2 Preloaded policy types and policies
+---------------------------------------
 
 To ease policy creation, we preload several widely used policy types in policy database. Below is a table listing the preloaded policy types.
 
@@ -169,10 +174,14 @@ Below is a table containing sample well-formed TOSCA compliant policies.
    "vFirewallCDS.Operational.Tosca", `vFirewallCDS.policy.operational.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/vFirewallCDS.policy.operational.input.tosca.yaml>`_
 
 
+2. APIs exposed
+###############
+
+2.1 Global API Table
+--------------------
+
 Below is a global API table from where swagger JSON for different types of policy design API can be downloaded.
 
-Global API Table
-----------------
 .. csv-table::
    :header: "API name", "Swagger JSON"
    :widths: 10,5
@@ -183,8 +192,8 @@ Global API Table
    "Tosca Policy API", ":download:`link <swagger/policy-api.json>`"
    "Tosca NodeTemplate API", ":download:`link <swagger/nodetemplates-api.json>`"
 
-API Swagger
------------
+2.2 API Swagger
+---------------
 
 It is worth noting that we use basic authorization for API access with username and password set to *policyadmin* and *zb!XztG34* respectively.
 Also, the new APIs support both *http* and *https*.
@@ -219,8 +228,8 @@ x-onap-requestid is used to track REST transactions for logging purpose, as desc
 .. swaggerv2doc:: swagger/policy-api.json
 
 
-Creating MetadataSet for policy
---------------------------------
+2.3 Creating MetadataSet for policy
+-----------------------------------
 
 The policy type implementation in tosca policy can be independently persisted to the database as metadataSets via the Tosca node template Apis .
 The policy type implementation data can be excluded from the policy properties section of the tosca policy and the user can specify only the "metadataSetName" and "metadataSetVersion"
@@ -289,8 +298,8 @@ Regarding DELETE APIs for TOSCA compliant policies, we only expose API to delete
 or policy type at a time for safety purpose. If client has the need to delete multiple or a group of policies or policy types,
 they will need to delete them one by one.
 
-Sample API Curl Commands
--------------------------
+2.4 Sample API Curl Commands
+----------------------------
 
 From an API client perspective, using *http* or *https* does not make much difference to the curl command.
 Here we list some sample curl commands (using *http*) for POST, GET and DELETE monitoring and operational policies that are used in vFirewall use case.
@@ -324,3 +333,11 @@ Get version 1.0.0 of vFirewall Monitoring Policy::
 
 Delete version 1.0.0 of vFirewall Monitoring Policy::
   curl --user 'policyadmin:zb!XztG34' -X DELETE "http://{ip}:{port}/policy/api/v1/policies/onap.vfirewall.tca/versions/1.0.0" -H "Accept: application/json" -H "Content-Type: application/json"
+
+
+3. Policy API application configuration
+#######################################
+
+Starting from Jakarta Release policy-api is a Springboot based microservice.
+
+The policy-api application configuration is packaged as a K8S ConfigMap object via `Policy-API OOM charts <https://gerrit.onap.org/r/gitweb?p=oom.git;a=blob;f=kubernetes/policy/components/policy-api/resources/config/apiParameters.yaml;h=c08b035d53f299fe0e08b45bd95a760283acce66;hb=refs/heads/master>`_
