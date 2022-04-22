@@ -265,6 +265,20 @@ An example of running the api using a docker compose script is located in the Po
 
 `Policy CSIT API Docker Compose <https://gerrit.onap.org/r/gitweb?p=integration/csit.git;a=blob;f=scripts/policy/docker-compose-api.yml;h=e32190f1e6cb6d9b64ddf53a2db2c746723a0c6a;hb=refs/heads/master>`_
 
+Running the PAP component standalone
++++++++++++++++++++++++++++++++++++++
+
+Once you have successfully built the PAP codebase, a running MariaDb database and DMaaP instance will also be required to start up the application.
+For MariaDb instance, the easiest way is to run the docker image, please see the mariadb documentation for the latest
+information on doing so. For DMaaP, the easiest way during development is to run the DMaaP simulator which is explained in the below sections.
+Once the mariadb and DMaaP are running, a configuration file must be provided to the PAP component in order for it to know how to
+connect to the mariadb and DMaaP along with other relevant configuration details. You can locate the default configuration file in the packaging of the PAP component:
+
+`Default PAP Configuration <https://gerrit.onap.org/r/gitweb?p=policy/pap.git;a=blob;f=packages/policy-pap-tarball/src/main/resources/etc/papParameters.yaml;h=06dd45f4946fd0a11ed8ef859f8fc5bcf409a3f0;hb=HEAD>`_
+
+Update the fields related to MariaDB, DMaaP and the RestServer for the application as per your local environment settings.
+Then to start the application, just run the Spring Boot application using IDE or command line.
+
 Running the Smoke Tests
 ***********************
 
