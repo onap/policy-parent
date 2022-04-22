@@ -387,14 +387,17 @@ Here is a sample response:
 3 Configuration
 =================
 
+The *PolicyAdministration* component (PAP) is initialized using a configuration file: `papParameters.yaml
+<https://github.com/onap/policy-pap/blob/master/packages/policy-pap-tarball/src/main/resources/etc/papParameters.yaml>`_
+
+The configuration file is a YAML file containing the relevant fields for configuring the REST server, Database and DMaaP connectivity and so on.
+
 3.1 Disable collection of PDP Statistics
 ========================================
 
 This configuration is to inform PAP to not save the PDP statistics in the database.
 
-In `config.json
-<https://github.com/onap/policy-pap/blob/master/packages/policy-pap-tarball/src/main/resources/etc/defaultConfig.json>`_,
-add or change the property savePdpStatisticsInDb to false.
+In *papParameters.yaml*, add or change the property savePdpStatisticsInDb to false.
 
 .. note::
   By default, if the property is not present, it will be considered as false and
