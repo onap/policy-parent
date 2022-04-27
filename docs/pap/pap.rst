@@ -403,15 +403,4 @@ In *papParameters.yaml*, add or change the property savePdpStatisticsInDb to fal
   By default, if the property is not present, it will be considered as false and
   PDP statistics will not be saved in the database.
 
-
-4 Future Features
-=================
-
-4.1 Disable policies in PDP
-===========================
-
-This operation will allow disabling individual policies running in PDP engine. It is mainly beneficial
-in scenarios where network operators/administrators want to disable a particular policy in PDP engine
-for a period of time due to a failure in the system or for scheduled maintenance.
-
 End of Document
