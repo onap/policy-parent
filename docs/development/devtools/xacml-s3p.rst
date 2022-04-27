@@ -13,15 +13,14 @@ Performance Test of Policy XACML PDP
 ************************************
 
 The Performance test was executed by performing requests
-against the Policy RESTful APIs residing on the XACML PDP installed on a Cloud based Virtual Machine.
+against the Policy RESTful APIs.
 
-VM Configuration:
+A default ONAP installation in the Policy tenant in UNH was used to run the tests.
+
+The Agent VMs in this lab have the following configuration:
+
 - 16GB RAM
-- 4 VCPU
-- 40GB Disk
-
-ONAP was deployed using a K8s Configuration on the same VM.
-Running jmeter and ONAP OOM on the same VM may adversely impact the performance of the XACML-PDP being tested.
+- 8 VCPU
 
 Summary
 =======
@@ -37,7 +36,7 @@ The Performance test was executed, and the result analysed, via:
 
 Note: the ports listed above correspond to port 6969 of the respective components.
 
-The performance test, perf.jmx, runs the following, all in parallel:
+The performance tests runs the following, all in parallel:
 
 - Healthcheck, 10 simultaneous threads
 - Statistics, 10 simultaneous threads
@@ -59,39 +58,26 @@ the policies that it previously created.
 Results
 =======
 
-The test was run for 20 minutes at a time, for different numbers of users (i.e.,
-threads), with the following results:
+The test was run for 20 minutes with 10 users (i.e., threads), with the following results:
 
 .. csv-table::
    :header: "Number of Users", "Throughput (requests/second)", "Average Latency (ms)"
 
-   10, 309.919, 5.83457
-   20, 2527.73, 22.2634
-   40, 3184.78, 35.1173
-   80, 3677.35, 60.2893
+   10, 4603, 2
+
+.. image:: images/s3p-perf-xacml.png
 
 
 Stability Test of Policy XACML PDP
 ************************************
 
-The stability test was executed by performing requests
-against the Policy RESTful APIs residing on the XACML PDP installed in the citycloud
-lab.  This was running on a kubernetes pod having the following configuration:
-
-- 16GB RAM
-- 4 VCPU
-- 40GB Disk
-
-The test was run via jmeter, which was installed on the same VM.
-Running jmeter and ONAP OOM on the same VM may adversely impact the performance of the XACML-PDP being tested.
-Due to the minimal nature of this setup, the K8S cluster became overloaded on a couple of occasions during the test.
-This resulted in a small number of errors and a greater maximum transaction time than normal.
+The stability test were executed in the same lab.   The test was run via jmeter.
 
 Summary
 =======
 
-The stability test was performed on a default ONAP OOM installation in the city Cloud Lab environment.
-JMeter was installed on the same VM to inject the traffic defined in the
+The stability test was performed on a default ONAP OOM installation in the Policy tenant of the UNH lab.
+JMeter injected the traffic defined in the
 `XACML PDP stability script
 <https://git.onap.org/policy/xacml-pdp/tree/testsuites/stability/src/main/resources/testplans/stability.jmx>`_
 with the following command:
@@ -134,9 +120,9 @@ The stability summary results were reported by JMeter with the following summary
 
 .. code-block:: bash
 
-    summary = 222450112 in 72:00:39 =  858.1/s Avg:     5 Min:     1 Max: 946942 Err:    17 (0.00%)
+    summary = 997436933 in 71:59:45 = 3848.4/s Avg:     0 Min:     0 Max:  1480 Err:     0 (0.00%)
 
-The XACML PDP offered good performance with JMeter for the traffic mix described above, using 858 threads per second
-to inject the traffic load.   A small number of errors were encountered, and no significant CPU spikes were noted.
-The average transaction time was 5ms. with a maximum of 946942ms.
+The XACML PDP offered very good performance with JMeter for the traffic mix described above, using 3848 threads per second
+to inject the traffic load.   The average transaction time is insignificant.   The maximum transaction time of 1480ms.
+occured in the beginning of the run while the JVM was warming up.
 
