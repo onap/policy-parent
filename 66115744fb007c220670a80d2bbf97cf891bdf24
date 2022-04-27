@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "59eb6adf_8aaebaf9",
+        "filename": "docs/development/prometheus-metrics.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-04-27T12:22:08Z",
+      "side": 1,
+      "message": "drools",
+      "range": {
+        "startLine": 155,
+        "startChar": 67,
+        "endLine": 155,
+        "endChar": 72
+      },
+      "revId": "66115744fb007c220670a80d2bbf97cf891bdf24",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c58bf102_d7ca9bf3",
         "filename": "docs/development/prometheus-metrics.rst",
         "patchSetId": 1
