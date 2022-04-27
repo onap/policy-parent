@@ -297,15 +297,8 @@ familiar with the Policy Framework components and test any local changes.
    api-smoke.rst
    pap-smoke.rst
    apex-smoke.rst
-   distribution-smoke.rst
-
-..
    drools-smoke.rst
-
-..
    xacml-smoke.rst
-
-..
    distribution-smoke.rst
 
 
