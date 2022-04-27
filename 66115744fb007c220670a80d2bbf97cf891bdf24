@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1fed5b62_7f70b83d",
+        "filename": "docs/development/prometheus-metrics.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-04-27T13:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59eb6adf_8aaebaf9",
+      "range": {
+        "startLine": 155,
+        "startChar": 67,
+        "endLine": 155,
+        "endChar": 72
+      },
+      "revId": "66115744fb007c220670a80d2bbf97cf891bdf24",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c58bf102_d7ca9bf3",
         "filename": "docs/development/prometheus-metrics.rst",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "66115744fb007c220670a80d2bbf97cf891bdf24",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f77466b0_e2ca9e42",
+        "filename": "docs/development/prometheus-metrics.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-04-27T13:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c58bf102_d7ca9bf3",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 6
+      },
+      "revId": "66115744fb007c220670a80d2bbf97cf891bdf24",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
