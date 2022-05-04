@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc88ac55_ec639ccb",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-05-04T13:13:52Z",
+      "side": 1,
+      "message": "Not sure if this will be valid for long here, as the IP/Port can change, and which setup is this? UNH, Nordix, etc.",
+      "range": {
+        "startLine": 34,
+        "startChar": 34,
+        "endLine": 34,
+        "endChar": 58
+      },
+      "revId": "917d45841add1664bc1eb7f81871806cba665d31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dce4f6af_f689d27c",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-05-04T13:13:52Z",
+      "side": 1,
+      "message": "Didn\u0027t we added new test cases to validate prometheus metrics exposed by apex-pdp during runtime execution of policies?\nSame question for Setup and Teardown phases.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 10
+      },
+      "revId": "917d45841add1664bc1eb7f81871806cba665d31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
