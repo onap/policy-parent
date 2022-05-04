@@ -12,16 +12,58 @@ Policy APEX PDP component
 
 Both the Stability and the Performance tests were executed in a full ONAP OOM deployment in Nordix lab.
 
-
 Setup Details
 +++++++++++++
 
-- APEX-PDP along with all policy components deployed as part of a full ONAP OOM deployment.
-- Policy-models-simulator is deployed to use CDS and DMaaP simulators during policy execution.
+Deploying ONAP using OOM
+------------------------
+
+APEX-PDP along with all policy components are deployed as part of a full ONAP OOM deployment.
+At a minimum, the following ONAP components are needed: policy, mariadb-galera, aai, cassandra, aaf, and dmaap.
+
+Before deploying, the values.yaml files are changed to use NodePort instead of ClusterIP for policy-api,
+policy-pap, and policy-apex-pdp, so that they are accessible from jmeter::
+
+  policy-apex-pdp              NodePort    10.43.70.176    <none>        6969:30237/TCP
+  policy-api                   NodePort    10.43.2.99      <none>        6969:30240/TCP
+  policy-pap                   NodePort    10.43.203.178   <none>        6969:30442/TCP
+
+The node ports (30237, 30240 and 30442 above) are used in JMeter. The HOSTNAME for JMeter is set to the IP returned by running kubectl cluster-info.
+
+Set up policy-models-simulator
+------------------------------
+
+Policy-models-simulator is deployed to use CDS and DMaaP simulators during policy execution.
     Simulator configurations used are available in apex-pdp repository:
       testsuites/apex-pdp-stability/src/main/resources/simulatorConfig/
-- Two APEX policies are executed in the APEX-PDP engine, and are triggered by multiple threads during the tests.
-- Both tests were run via jMeter.
+
+It is run as a docker image from a node accessible to the kubernetes cluster::
+
+  docker run -d --rm --publish 6680:6680 --publish 31054:3905 \
+    --volume "apex-pdp/testsuites/apex-pdp-stability/src/main/resources/simulatorConfig:/opt/app/policy/simulators/etc/mounted" \
+    nexus3.onap.org:10001/onap/policy-models-simulator:2.6-SNAPSHOT-latest
+
+The published ports 6680 and 31054 are used in JMeter for CDS and DMaaP simulators.
+
+Creation of VNF & PNF in AAI
+----------------------------
+
+In order for APEX-PDP engine to fetch the resource details from AAI during runtime execution, we need to create dummy
+VNF & PNF entities in AAI. In a real control loop flow, the entities in AAI will be either created during orchestration
+phase or provisioned in AAI separately.
+
+Download & execute the steps in postman collection for creating the entities along with it’s dependencies.
+The steps needs to be performed sequentially one after another. And no input is required from user.
+
+:download:`Create VNF & PNF in AAI for Apex S3P  <postman/create-vnf-pnf-aai-for-apex-s3p.postman_collection.json>`
+
+Make sure to skip the delete VNF & PNF steps.
+
+JMeter Tests
+------------
+
+Two APEX policies are executed in the APEX-PDP engine, and are triggered by multiple threads during the tests.
+Both tests were run via jMeter.
 
     Stability test script is available in apex-pdp repository:
       testsuites/apex-pdp-stability/src/main/resources/apexPdpStabilityTestPlan.jmx
@@ -85,6 +127,8 @@ Only one thread is in action and this step is done only once after the Main phas
 - **Delete Policy onap.policies.apex.Simplecontrolloop** - delete the first APEX policy using policy/api component.
 - **Delete Policy onap.policies.apex.Example** - delete the second APEX policy also using policy/api component.
 
+Test Configuration
+------------------
 
 The following steps can be used to configure the parameters of test plan.
 
@@ -97,8 +141,11 @@ The following steps can be used to configure the parameters of test plan.
 ===================  ===============================================================================
  HOSTNAME            IP Address or host name to access the components
  PAP_PORT            Port number of PAP for making REST API calls such as deploy/undeploy of policy
- API_PORT            Port number of API for making REST API calls such as create/ delete of policy
+ API_PORT            Port number of API for making REST API calls such as create/delete of policy
  APEX_PORT           Port number of APEX for making REST API calls such as healthcheck/metrics
+ SIM_HOST            IP Address or hostname running policy-models-simulator
+ DMAAP_PORT          Port number of DMaaP simulator for making REST API calls such as reading notification events
+ CDS_PORT            Port number of CDS simulator
  wait                Wait time if required after a request (in milliseconds)
  threads             Number of threads to run test cases in parallel
  threadsTimeOutInMs  Synchronization timer for threads running in parallel (in milliseconds)
@@ -111,7 +158,7 @@ The test was run in the background via "nohup", to prevent it from being interru
 
 .. code-block:: bash
 
-    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t apexPdpStabilityTestPlan.jmx -l stabilityTestResults.jtl
+    nohup ./apache-jmeter-5.4.3/bin/jmeter.sh -n -t apexPdpStabilityTestPlan.jmx -l stabilityTestResults.jtl
 
 Test Results
 ------------
@@ -126,7 +173,7 @@ Stability test plan was triggered for 72 hours. There were no failures during th
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-428661                    100 %             0.00 %              162 ms
+430331                    100 %             0.00 %              152 ms
 =======================  =================  ==================  ==================================
 
 .. Note::
@@ -135,7 +182,7 @@ Stability test plan was triggered for 72 hours. There were no failures during th
 
 **JMeter Screenshot**
 
-.. image:: apex-s3p-results/apex_stability_jmeter_results.jpg
+.. image:: apex-s3p-results/apex_stability_jmeter_results.png
 
 **Memory and CPU usage**
 
@@ -145,13 +192,13 @@ Prometheus metrics is also collected before and after the test execution.
 
 Memory and CPU usage before test execution:
 
-.. image:: apex-s3p-results/apex_top_before_72h.jpg
+.. image:: apex-s3p-results/apex_top_before_72h.png
 
 :download:`Prometheus metrics before 72h test  <apex-s3p-results/apex_metrics_before_72h.txt>`
 
 Memory and CPU usage after test execution:
 
-.. image:: apex-s3p-results/apex_top_after_72h.jpg
+.. image:: apex-s3p-results/apex_top_after_72h.png
 
 :download:`Prometheus metrics after 72h test  <apex-s3p-results/apex_metrics_after_72h.txt>`
 
@@ -182,7 +229,7 @@ Run Test
 
 .. code-block:: bash
 
-    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t apexPdpPerformanceTestPlan.jmx -l perftestresults.jtl
+    nohup ./apache-jmeter-5.4.3/bin/jmeter.sh -n -t apexPdpPerformanceTestPlan.jmx -l perftestresults.jtl
 
 
 Test Results
@@ -195,12 +242,12 @@ Test results are shown as below.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-46946                    100 %              0.00 %              198 ms
+47586                    100 %              0.00 %              163 ms
 =======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
 
-.. image:: apex-s3p-results/apex_perf_jmeter_results.jpg
+.. image:: apex-s3p-results/apex_perf_jmeter_results.png
 
 Summary
 +++++++
