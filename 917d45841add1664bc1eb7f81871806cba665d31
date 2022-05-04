@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c78efd10_c43d2657",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-05-04T14:44:05Z",
+      "side": 1,
+      "message": "This is a cherry picked review from Master, can we raise another review on Master to fix these issues?",
+      "parentUuid": "fc88ac55_ec639ccb",
+      "range": {
+        "startLine": 34,
+        "startChar": 34,
+        "endLine": 34,
+        "endChar": 58
+      },
+      "revId": "917d45841add1664bc1eb7f81871806cba665d31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dce4f6af_f689d27c",
         "filename": "docs/development/devtools/apex-s3p.rst",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2022-05-04T13:13:52Z",
       "side": 1,
       "message": "Didn\u0027t we added new test cases to validate prometheus metrics exposed by apex-pdp during runtime execution of policies?\nSame question for Setup and Teardown phases.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 10
+      },
+      "revId": "917d45841add1664bc1eb7f81871806cba665d31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "727d60fa_22913aa9",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-05-04T14:44:05Z",
+      "side": 1,
+      "message": "This is a cherry picked review from Master, can we raise another review on Master to fix these issues?",
+      "parentUuid": "dce4f6af_f689d27c",
       "range": {
         "startLine": 101,
         "startChar": 0,
