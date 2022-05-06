@@ -213,6 +213,30 @@
       "revId": "917d45841add1664bc1eb7f81871806cba665d31",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "008c81a0_f94ef415",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-05-06T14:24:54Z",
+      "side": 1,
+      "message": "https://jira.onap.org/browse/POLICY-4111 created.",
+      "parentUuid": "47a91226_b071d8b7",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 10
+      },
+      "revId": "917d45841add1664bc1eb7f81871806cba665d31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
