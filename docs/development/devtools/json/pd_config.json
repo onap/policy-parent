@@ -1,0 +1,145 @@
+{{/*
+#  ============LICENSE_START=======================================================
+#   Copyright (C) 2018 Ericsson. All rights reserved.
+#   Modifications Copyright (C) 2020 AT&T Intellectual Property.
+#   Modifications Copyright (C) 2021 Bell Canada. All rights reserved.
+#  ================================================================================
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+#  SPDX-License-Identifier: Apache-2.0
+#  ============LICENSE_END=========================================================
+*/}}
+{
+    "name":"SDCDistributionGroup",
+    "restServerParameters":{
+        "host":"0.0.0.0",
+        "port":6969,
+        "userName":"${RESTSERVER_USER}",
+        "password":"${RESTSERVER_PASSWORD}",
+        "https":true,
+        "prometheus": true
+    },
+    "receptionHandlerParameters":{
+        "SDCReceptionHandler":{
+            "receptionHandlerType":"SDC",
+            "receptionHandlerClassName":"org.onap.policy.distribution.reception.handling.sdc.SdcReceptionHandler",
+            "receptionHandlerConfigurationName":"sdcConfiguration",
+            "pluginHandlerParameters":{
+                "policyDecoders":{
+                    "ToscaPolicyDecoder":{
+                        "decoderType":"ToscaPolicyDecoder",
+                        "decoderClassName":"org.onap.policy.distribution.reception.decoding.policy.file.PolicyDecoderFileInCsarToPolicy",
+                        "decoderConfigurationName": "toscaPolicyDecoderConfiguration"
+                    },
+		    "ToscaAutomationCompositionDecoder": {
+                        "decoderType": "ToscaAutomationCompositionDecoder",
+                        "decoderClassName": "org.onap.policy.distribution.reception.decoding.policy.file.AutomationCompositionDecoderFileInCsar",
+                        "decoderConfigurationName": "toscaAutomationCompositionDecoderConfiguration"
+                    }
+                },
+                "policyForwarders":{
+                    "LifeCycleApiForwarder":{
+                        "forwarderType":"LifeCycleAPI",
+                        "forwarderClassName":"org.onap.policy.distribution.forwarding.lifecycle.api.LifecycleApiPolicyForwarder",
+                        "forwarderConfigurationName": "lifecycleApiConfiguration"
+                    },
+		    "LifeCycleApiAutomationCompositionForwarder": {
+                        "forwarderType": "LifeCycleAutomationCompositionAPI",
+                        "forwarderClassName": "org.onap.policy.distribution.forwarding.lifecycle.api.LifecycleApiAutomationCompositionForwarder",
+                        "forwarderConfigurationName": "lifecycleApiAutomationCompositionConfiguration"
+                    }
+                }
+            }
+        }
+    },
+    "receptionHandlerConfigurationParameters":{
+        "sdcConfiguration":{
+            "parameterClassName":"org.onap.policy.distribution.reception.handling.sdc.SdcReceptionHandlerConfigurationParameterGroup",
+            "parameters":{
+                "asdcAddress": "sdc-be:8443",
+                "messageBusAddress": [
+                    "message-router.{{ include "common.namespace" . }}"
+                 ],
+                "user": "${SDCBE_USER}",
+                "password": "${SDCBE_PASSWORD}",
+                "pollingInterval":20,
+                "pollingTimeout":30,
+                "consumerId": "policy-id",
+                "artifactTypes": [
+                    "TOSCA_CSAR",
+                    "HEAT"
+                ],
+                "consumerGroup": "policy-group",
+                "environmentName": "AUTO",
+                "keyStorePath": "null",
+                "keyStorePassword": "null",
+                "activeserverTlsAuth": false,
+                "isFilterinEmptyResources": true,
+                "isUseHttpsWithDmaap": true
+            }
+        }
+    },
+    "policyDecoderConfigurationParameters":{
+        "toscaPolicyDecoderConfiguration":{
+            "parameterClassName":"org.onap.policy.distribution.reception.decoding.policy.file.PolicyDecoderFileInCsarToPolicyParameterGroup",
+            "parameters":{
+                "policyFileName": "tosca_policy",
+                "policyTypeFileName": "tosca_policy_type"
+            }
+        },
+	"toscaAutomationCompositionDecoderConfiguration": {
+            "parameterClassName": "org.onap.policy.distribution.reception.decoding.policy.file.AutomationCompositionDecoderFileInCsarParameterGroup",
+            "parameters": {
+                "automationCompositionType": "acm"
+            }
+        }
+    },
+    "policyForwarderConfigurationParameters":{
+        "lifecycleApiConfiguration":{
+            "parameterClassName":"org.onap.policy.distribution.forwarding.lifecycle.api.LifecycleApiForwarderParameters",
+            "parameters":{
+                "apiParameters": {
+                    "clientName": "policy-api",
+                    "hostname": "policy-api",
+                    "port": 6969,
+                    "userName": "${API_USER}",
+                    "password": "${API_PASSWORD}",
+                    "useHttps": true
+                },
+                "papParameters": {
+                    "clientName": "policy-pap",
+                    "hostname": "policy-pap",
+                    "port": 6969,
+                    "userName": "${PAP_USER}",
+                    "password": "${PAP_PASSWORD}",
+                    "useHttps": true
+                },
+                "deployPolicies": true
+             }
+        },
+	,
+        "lifecycleApiAutomationCompositionConfiguration": {
+            "parameterClassName": "org.onap.policy.distribution.forwarding.lifecycle.api.LifecycleApiAutomationCompositionForwarderParameters",
+            "parameters": {
+                "automationCompositionRuntimeParameters": {
+                    "clientName": "policy-clamp-runtime-acm",
+                    "hostname": "policy-clamp-runtime-acm",
+                    "port": 6969,
+                    "useHttps": true,
+                    "userName": "runtimeUser",
+                    "password": "zb!XztG34"
+                }
+            }
+        }
+    }
+}
