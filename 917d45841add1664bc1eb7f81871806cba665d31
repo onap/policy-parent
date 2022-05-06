@@ -189,6 +189,30 @@
       "revId": "917d45841add1664bc1eb7f81871806cba665d31",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47a91226_b071d8b7",
+        "filename": "docs/development/devtools/apex-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-05-06T13:58:47Z",
+      "side": 1,
+      "message": "Ideally we should have done it in Jakarta as the feature is already getting released. And our stability \u0026 performance tests should pass through the released features.\nBut looking at the timelines, we can create an item for Kohn.",
+      "parentUuid": "726668f3_dd2903c5",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 10
+      },
+      "revId": "917d45841add1664bc1eb7f81871806cba665d31",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
