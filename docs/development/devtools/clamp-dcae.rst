@@ -27,7 +27,7 @@ The worker VM hosting the policy components has the following spec:
 
 The ONAP components used during the pairwise tests are:
 
-- CLAMP control loop runtime, policy participant, kubernetes participant.
+- CLAMP acm runtime, policy participant, kubernetes participant.
 - DCAE for running dcaegen2-service via kubernetes participant.
 - ChartMuseum service from platform, initialised with DCAE helm charts.
 - DMaaP for the communication between Automation Composition runtime and participants.
@@ -57,11 +57,13 @@ Creation of the Automation Composition:
 ---------------------------------------
 An Automation Composition is created by commissioning a Tosca template with Automation Composition definitions and instantiating the Automation Composition with the state "UNINITIALISED".
 
-- Upload a TOSCA template from the POLICY GUI. The definitions include a kubernetes participant and control loop elements that deploys and configures a microservice in the kubernetes cluster.
+- Upload a TOSCA template from the POLICY GUI. The definitions include a kubernetes participant and automation composition elements that deploys and configures a microservice in the kubernetes cluster.
   Automation Composition element for kubernetes participant includes a helm chart information of DCAE microservice and the element for Http Participant includes the configuration entity for the microservice.
   :download:`Sample Tosca template <tosca/pairwise-testing.yml>`
 
-  .. image:: images/cl-commission.png
+  .. image:: images/ac-commission.png
+
+  .. image:: images/ac-upload.png
 
   Verification: The template is commissioned successfully without errors.
 
@@ -73,16 +75,16 @@ An Automation Composition is created by commissioning a Tosca template with Auto
 
   .. image:: images/update-instance.png
 
-  Verification: The control loop is created with default state "UNINITIALISED" without errors.
+  Verification: The Automation composition is created with default state "UNINITIALISED" without errors.
 
-  .. image:: images/cl-instantiation.png
+  .. image:: images/ac-instantiation.png
 
 
 Deployment and Configuration of DCAE microservice (PMSH):
 ---------------------------------------------------------
 The Automation Composition state is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui. The kubernetes participant deploys the PMSH helm chart from the DCAE chartMuseum server.
 
-.. image:: images/cl-passive.png
+.. image:: images/ac-passive.png
 
 Verification:
 
@@ -94,14 +96,14 @@ Verification:
 
 - The overall state of the Automation Composition is changed to "PASSIVE" in the Policy Gui.
 
-.. image:: images/cl-create.png
+.. image:: images/ac-create.png
 
 
 Undeployment of DCAE microservice (PMSH):
 -----------------------------------------
 The Automation Composition state is changed from "PASSIVE" to "UNINITIALISED" from the Policy Gui.
 
-.. image:: images/cl-uninitialise.png
+.. image:: images/ac-uninitialise.png
 
 Verification:
 
@@ -109,7 +111,7 @@ Verification:
 
 - The overall state of the Automation Composition is changed to "UNINITIALISED" in the Policy Gui.
 
-.. image:: images/cl-uninitialised-state.png
+.. image:: images/ac-uninitialised-state.png
 
 
 
