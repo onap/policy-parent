@@ -15,6 +15,272 @@ Policy Release Notes
 ..      * one section describing the purpose of this new release.
 
 ..      ==========================
+..      * * *    JAKARTA     * * *
+..      ==========================
+
+Version: 10.0.0
+---------------
+
+:Release Date: 2022-05-12 (jakarta Release)
+
+Artifacts released:
+
+.. list-table::
+   :widths: 15 10 10
+   :header-rows: 1
+
+   * - Repository
+     - Java Artifact
+     - Docker Image (if applicable)
+   * - policy/parent
+     - 3.5.3
+     - N/A
+   * - policy/docker
+     - 2.4.3
+     - | policy-jre-alpine
+       | policy-jdk-alpine
+       | policy-db-migrator
+   * - policy/common
+     - 1.10.3
+     - N/A
+   * - policy/models
+     - 2.6.3
+     - N/A
+   * - policy/api
+     - 2.6.3
+     - policy-api
+   * - policy/pap
+     - 2.6.3
+     - policy-pap
+   * - policy/apex-pdp
+     - 2.7.3
+     - policy-apex-pdp
+   * - policy/drools-pdp
+     - 1.10.3
+     - policy-drools
+   * - policy/xacml-pdp
+     - 2.6.3
+     - policy-xacml-pdp
+   * - policy/distribution
+     - 2.7.3
+     - policy-distribution
+   * - policy/clamp
+     - 6.2.3
+     - | policy-clamp-backend
+       | policy-clamp-ac-pf-ppnt
+       | policy-clamp-ac-k8s-ppnt
+       | policy-clamp-ac-http-ppnt
+       | policy-clamp-runtime-acm'
+   * - policy/gui
+     - 2.2.3
+     - policy-gui
+   * - policy/drools-applications
+     - 1.10.3
+     - policy-pdpd-cl
+
+Key Updates
+===========
+
+* `REQ-994 <https://jira.onap.org/browse/REQ-994>`_ - Control Loop in TOSCA LCM Improvement
+  CLAMP (Control Loop Automation Management Platform) functionalities, moved to the Policy project in the Istanbul
+  release, provides a Control Loop Lifecycle management architecture. A control Loop is a key concept for Automation
+  and Assurance Use Cases and remains a top priority for ONAP as an automation platform butit is not the only possible
+  composition of components that is possible to combine to deliver functionality.
+
+  This work evolves the Control Loop LCM architecture to provide abstract Automation Composition
+  Management (ACM) logic with a generic Automation Composition definition, isolating Composition logic logic from ONAP
+  component logic. It elaborates APIs that allow integrate with other design systems as well as 3PP component integration.
+
+  The current PMSH and TCS control loops are migrated to use an Automation Composition approach. Support for Automation
+  Compositions in SDC is also introduced.
+
+* Metadata Sets for Policy Types
+
+  A Metadata set allows a global set of metadata containing rules or global parameters that all instances of a certain
+  policy type can use. Metadta sets are introduced in the Policy Framework in the Jakarta release. This means that
+  different rule set implementations can be associated with a policy type, which can be used in appropriate situations.
+
+* Introduction of Prometheus for monitoring Policy components so that necessary alerts can be easily triggered and
+  possible outages can be avoided in production systems.
+
+  * Expose application level metrics in policy components. An end user can plug in a prometheus instance and start
+    listening to the metrics exposed by policy components and either raise alerts or show them on a Grafana dashboard
+    for operations team to keep monitoring the health of the system.
+
+  * Improve the policy/api and policy/pap readiness probes to handle database failures so that the policy/api and
+    policy/pap kubernetes pods are marked ready only if the policy database pod is ready.
+
+  * Provide sample Grafana dashboards for policy metrics
+
+* Migration of Policy Framework components to Springboot to support easier handling, configuration and maintenance.
+  The migrated components are policy/api, policy/pap, policy/clamp, and policy/gui
+
+* Policy Framework Database Configurability. The Policy Framework can be configured to use any JDBC-compliant RDBMS and
+  configuraiton files are supplied for the Postgres RDBMS. MariaDB remains the default RDBMS for the Policy Framework
+  in ONAP
+
+* Policy Framework Database Configurability. The Policy Framework can be configured to use any JDBC-compliant RDBMS and
+  configuration files are supplied for the Postgres RDBMS. MariaDB remains the default RDBMS for the Policy Framework
+  in ONAP
+
+* System Attribute Improvements
+    - Transaction boundaries on REST calls are implemented per REST call
+    - JDBC backend uses Spring and Hibernate rather than Eclipselink
+    - All GUIs are now included in the policy/gui microservice
+    - Documentation is retionalized and cleaned up, testing documentation is now complete
+    - Scripts are added to make release of the Policy Framework easier
+
+Known Limitations, Issues and Workarounds
+=========================================
+
+System Limitations
+~~~~~~~~~~~~~~~~~~
+N/A
+
+Known Vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~
+N/A
+
+Workarounds
+~~~~~~~~~~~
+N/A
+
+Security Notes
+==============
+
+| `POLICY-2744 <https://jira.onap.org/browse/POLICY-2744>`_ - Use an account other than healthcheck in API and PAP components for provisioning of policies
+| `POLICY-3559 <https://jira.onap.org/browse/POLICY-3559>`_ - PDP-D: create global HTTPS client configuration via HTTP_CLIENT_HTTPS environment variable
+| `POLICY-3815 <https://jira.onap.org/browse/POLICY-3815>`_ - Use an account other than healthcheck in API and PAP components for provisioning of policies - OOM Charts
+| `POLICY-3862 <https://jira.onap.org/browse/POLICY-3862>`_ - Check all code for Log4J before version 2.15.0 and upgrade if necessary
+| `POLICY-4085 <https://jira.onap.org/browse/POLICY-4085>`_ - Remove usage of jackson libraries from clamp runtime
+
+
+Functional Improvements
+=======================
+| `POLICY-1837 <https://jira.onap.org/browse/POLICY-1837>`_ - Review transaction boundaries of models
+| `POLICY-2715 <https://jira.onap.org/browse/POLICY-2715>`_ - Allow underlying database to be configured: MariaDB or Postgres
+| `POLICY-2952 <https://jira.onap.org/browse/POLICY-2952>`_ - R10: TOSCA Control Loop Design Time
+| `POLICY-2973 <https://jira.onap.org/browse/POLICY-2973>`_ - Build interaction between SDC and Design Time Catalogue
+| `POLICY-3034 <https://jira.onap.org/browse/POLICY-3034>`_ - Support statistics in PDP-X
+| `POLICY-3213 <https://jira.onap.org/browse/POLICY-3213>`_ - Persistence Policy Models using JPA/JDBC/Hibernate/MariaDB
+| `POLICY-3498 <https://jira.onap.org/browse/POLICY-3498>`_ - Provide API to retrieve policies deployed since a given time
+| `POLICY-3579 <https://jira.onap.org/browse/POLICY-3579>`_ - End to End Demo of PMSH usecase
+| `POLICY-3582 <https://jira.onap.org/browse/POLICY-3582>`_ - Uber Story: Cover the full scope of LCM for Control Loops: Server Side
+| `POLICY-3638 <https://jira.onap.org/browse/POLICY-3638>`_ - Change policy-gui so that all GUIs work in the same jar/JVM
+| `POLICY-3745 <https://jira.onap.org/browse/POLICY-3745>`_ - PDP-D: Upgrade drools to the latest 7.x release
+| `POLICY-3747 <https://jira.onap.org/browse/POLICY-3747>`_ - Support Readiness and Liveness probes on Control loop helm charts
+| `POLICY-3748 <https://jira.onap.org/browse/POLICY-3748>`_ - Enable cluster admin role for k8s participant helm chart in OOM
+| `POLICY-3750 <https://jira.onap.org/browse/POLICY-3750>`_ - R10: Improve runtime monitoring capabilities in policy components
+| `POLICY-3753 <https://jira.onap.org/browse/POLICY-3753>`_ - Migrate policy-api component to spring boot
+| `POLICY-3754 <https://jira.onap.org/browse/POLICY-3754>`_ - Migrate policy-pap component to spring boot
+| `POLICY-3755 <https://jira.onap.org/browse/POLICY-3755>`_ - Create a list of application metrics to be exposed in policy framework components
+| `POLICY-3756 <https://jira.onap.org/browse/POLICY-3756>`_ - Expose application level metrics in policy-api
+| `POLICY-3757 <https://jira.onap.org/browse/POLICY-3757>`_ - Expose application level metrics in policy-pap
+| `POLICY-3759 <https://jira.onap.org/browse/POLICY-3759>`_ - Expose application level metrics in policy-distribution
+| `POLICY-3760 <https://jira.onap.org/browse/POLICY-3760>`_ - Expose application level metrics in apex-pdp
+| `POLICY-3761 <https://jira.onap.org/browse/POLICY-3761>`_ - Expose application level metrics in drools-pdp
+| `POLICY-3763 <https://jira.onap.org/browse/POLICY-3763>`_ - Improve policy-api & policy-pap readiness probes to handle db failures
+| `POLICY-3777 <https://jira.onap.org/browse/POLICY-3777>`_ - R10: Control Loop in TOSCA LCM improvement 
+| `POLICY-3781 <https://jira.onap.org/browse/POLICY-3781>`_ - R10: Policy Framework Database Configurability
+| `POLICY-3808 <https://jira.onap.org/browse/POLICY-3808>`_ - Commission a Control Loop Type from a Control Loop Type package/service
+| `POLICY-3816 <https://jira.onap.org/browse/POLICY-3816>`_ - Support Policy Type Metadata Sets in Policy Framework
+| `POLICY-3823 <https://jira.onap.org/browse/POLICY-3823>`_ - Proof of concept of Controlloop design time with SDC
+| `POLICY-3835 <https://jira.onap.org/browse/POLICY-3835>`_ - Write scripts to make release of the Policy Framework easier
+| `POLICY-3839 <https://jira.onap.org/browse/POLICY-3839>`_ - Migrate controlloop runtime from Eclipselink to Hibernate
+| `POLICY-3865 <https://jira.onap.org/browse/POLICY-3865>`_ - PDP-D APPS: extend CDS actor VNF operations support
+| `POLICY-3870 <https://jira.onap.org/browse/POLICY-3870>`_ - Add Controlloop design-time components to SDC
+| `POLICY-3886 <https://jira.onap.org/browse/POLICY-3886>`_ - Create basic installation & setup for prometheus & grafana
+| `POLICY-3889 <https://jira.onap.org/browse/POLICY-3889>`_ - Implement TCS Control Loops using a TOSCA appraoch
+| `POLICY-3892 <https://jira.onap.org/browse/POLICY-3892>`_ - Create basic grafana dashboards for monitoring policy framework components
+| `POLICY-3896 <https://jira.onap.org/browse/POLICY-3896>`_ - Change Apex Editor to use Spring Boot
+| `POLICY-3902 <https://jira.onap.org/browse/POLICY-3902>`_ - Extend PDP-X statistics endpoint to support per application metrics
+| `POLICY-3921 <https://jira.onap.org/browse/POLICY-3921>`_ - Align TOSCA Control Loop with Automation Composition
+| `POLICY-3938 <https://jira.onap.org/browse/POLICY-3938>`_ - Rename CLAMP "TOSCA Control Loop" feature to CLAMP "Automation Composition Management"
+| `POLICY-4040 <https://jira.onap.org/browse/POLICY-4040>`_ - Enable prometheus monitoring on drools-pdp charts
+
+Necessary Improvements and Bug Fixes
+====================================
+
+Necessary Improvements
+~~~~~~~~~~~~~~~~~~~~~~
+| `POLICY-1820 <https://jira.onap.org/browse/POLICY-1820>`_ - Transfer APEX model to use policy-models
+| `POLICY-2086 <https://jira.onap.org/browse/POLICY-2086>`_ - Remove references to mariadb from resource files
+| `POLICY-2587 <https://jira.onap.org/browse/POLICY-2587>`_ - CLC target locking behavior needs to be by-passed for CLC to be effective
+| `POLICY-2588 <https://jira.onap.org/browse/POLICY-2588>`_ - Target Locking Implementations should be configurable
+| `POLICY-2683 <https://jira.onap.org/browse/POLICY-2683>`_ - REQ-443  improve its CII Badging score by improving input validation and documenting it in their CII Badging site.
+| `POLICY-3076 <https://jira.onap.org/browse/POLICY-3076>`_ - Improve code coverage in policy framework repos
+| `POLICY-3259 <https://jira.onap.org/browse/POLICY-3259>`_ - Components should not crash at start-up due to dmaap issues
+| `POLICY-3269 <https://jira.onap.org/browse/POLICY-3269>`_ - Allow policy to disable guard check in drools-apps
+| `POLICY-3358 <https://jira.onap.org/browse/POLICY-3358>`_ - Remove Clamp GUI from Clamp Repo
+| `POLICY-3380 <https://jira.onap.org/browse/POLICY-3380>`_ - Archive onap/clamp and remove any jenkins jobs
+| `POLICY-3386 <https://jira.onap.org/browse/POLICY-3386>`_ - PDP-D: better liveness checks to recover from stuck sessions
+| `POLICY-3540 <https://jira.onap.org/browse/POLICY-3540>`_ - Refactor Participant Interfaces and Tests
+| `POLICY-3708 <https://jira.onap.org/browse/POLICY-3708>`_ - Improve Documentation for Jakarta Release
+| `POLICY-3710 <https://jira.onap.org/browse/POLICY-3710>`_ - Tidy up the Policy Framework documentation
+| `POLICY-3791 <https://jira.onap.org/browse/POLICY-3791>`_ - sphinx-build warnings in policy parent docs
+| `POLICY-3804 <https://jira.onap.org/browse/POLICY-3804>`_ - Add gui-clamp coverage info to sonar
+| `POLICY-3866 <https://jira.onap.org/browse/POLICY-3866>`_ - Tidy up Policy Framework Documentation
+| `POLICY-3885 <https://jira.onap.org/browse/POLICY-3885>`_ - Document metadataSet usage in policy documentation
+| `POLICY-3895 <https://jira.onap.org/browse/POLICY-3895>`_ - Improve drools pdp and drools apps logging
+| `POLICY-3920 <https://jira.onap.org/browse/POLICY-3920>`_ - Write a User Guide for TOSCA Control Loops in CLAMP
+| `POLICY-3927 <https://jira.onap.org/browse/POLICY-3927>`_ - Remove Unused maven dependencies in apex-editor
+| `POLICY-3928 <https://jira.onap.org/browse/POLICY-3928>`_ - Remove Unused test resources in apex-editor
+| `POLICY-3977 <https://jira.onap.org/browse/POLICY-3977>`_ - PDP-D: enhanced healthchecks for monitoring subcomponents
+| `POLICY-3979 <https://jira.onap.org/browse/POLICY-3979>`_ - PDP-D + APPS: investigate configuration to use MySql instead of MariaDB
+
+Bug Fixes
+~~~~~~~~~
+| `POLICY-3153 <https://jira.onap.org/browse/POLICY-3153>`_ - Fix Db connection issues in TOSCA control loop
+| `POLICY-3589 <https://jira.onap.org/browse/POLICY-3589>`_ - Http participant unable to resolve Intermediary config during startup
+| `POLICY-3743 <https://jira.onap.org/browse/POLICY-3743>`_ - APEX-PDP RestClient reports failure when response code!=200
+| `POLICY-3749 <https://jira.onap.org/browse/POLICY-3749>`_ - Drools CSITs failing due to version related problem
+| `POLICY-3780 <https://jira.onap.org/browse/POLICY-3780>`_ - Update endpoints in xacml-pdp jmx files
+| `POLICY-3794 <https://jira.onap.org/browse/POLICY-3794>`_ - Cannot create a new APEX policy on Policy Editor
+| `POLICY-3831 <https://jira.onap.org/browse/POLICY-3831>`_ - Camel Integration Tests Failing
+| `POLICY-3871 <https://jira.onap.org/browse/POLICY-3871>`_ - Fix issues in existing entity classes in policy-models
+| `POLICY-3893 <https://jira.onap.org/browse/POLICY-3893>`_ - apex-pdp intermittent error in build
+| `POLICY-3897 <https://jira.onap.org/browse/POLICY-3897>`_ - Fix issue with usage of GeneratedValue in PfGeneratedIdKey 
+| `POLICY-3905 <https://jira.onap.org/browse/POLICY-3905>`_ - drools pdp merge job failing
+| `POLICY-3913 <https://jira.onap.org/browse/POLICY-3913>`_ - Fix issue where some metrics are lost in spring boot
+| `POLICY-3914 <https://jira.onap.org/browse/POLICY-3914>`_ - Fix spring configuration for pap csit
+| `POLICY-3929 <https://jira.onap.org/browse/POLICY-3929>`_ - Race condition in apex-editor model upload
+| `POLICY-3933 <https://jira.onap.org/browse/POLICY-3933>`_ - CLAMP CSIT failing with HTTP 401 unauthorized for URL error
+| `POLICY-3978 <https://jira.onap.org/browse/POLICY-3978>`_ - Changing default append on instance name
+| `POLICY-3983 <https://jira.onap.org/browse/POLICY-3983>`_ - Policy-API is not using the mounted logback.xml file
+| `POLICY-4030 <https://jira.onap.org/browse/POLICY-4030>`_ - PAP/API healthcheck response code not in line with the actual health report
+| `POLICY-4039 <https://jira.onap.org/browse/POLICY-4039>`_ - Fix configuration issues causing automation composition issues
+| `POLICY-4041 <https://jira.onap.org/browse/POLICY-4041>`_ - Duplicate log entries in policy-gui
+| `POLICY-4043 <https://jira.onap.org/browse/POLICY-4043>`_ - Batch deploy/undeploy operations incrementing corresponding apex counter by only 1
+| `POLICY-4044 <https://jira.onap.org/browse/POLICY-4044>`_ - APEX-PDP engine metrics remain 0 even after execution of events
+| `POLICY-4068 <https://jira.onap.org/browse/POLICY-4068>`_ - PAP consolidated healthcheck returning report with empty url for PAP
+| `POLICY-4087 <https://jira.onap.org/browse/POLICY-4087>`_ - Inconsistent behaviour in APEX when PDP STATE changed to PASSIVE and then ACTIVE
+| `POLICY-4088 <https://jira.onap.org/browse/POLICY-4088>`_ - PAP shows incorrect deployments counter on parallel deploy/undeploy
+| `POLICY-4092 <https://jira.onap.org/browse/POLICY-4092>`_ - Modify Nssi Closed Loop Error
+| `POLICY-4095 <https://jira.onap.org/browse/POLICY-4095>`_ - Failures on Daily Master tests onap-policy-clamp-runtime-acm
+| `POLICY-4096 <https://jira.onap.org/browse/POLICY-4096>`_ - Policy deployment fails if prometheus operator is not installed
+| `POLICY-4104 <https://jira.onap.org/browse/POLICY-4104>`_ - Issue when serialization into JSON Object which brings allot of garbage
+| `POLICY-4106 <https://jira.onap.org/browse/POLICY-4106>`_ - PDP-D APPS: Network Slicing: incorrect SO operation
+
+References
+==========
+
+For more information on the ONAP Jakarta release, please see:
+
+#. `ONAP Home Page`_
+#. `ONAP Documentation`_
+#. `ONAP Release Downloads`_
+#. `ONAP Wiki Page`_
+
+.. _`ONAP Home Page`: https://www.onap.org
+.. _`ONAP Wiki Page`: https://wiki.onap.org
+.. _`ONAP Documentation`: https://docs.onap.org
+.. _`ONAP Release Downloads`: https://git.onap.org
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+
+..      ==========================
 ..      * * *    ISTANBUL    * * *
 ..      ==========================
 
