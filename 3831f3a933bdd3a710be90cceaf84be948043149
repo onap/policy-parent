@@ -16,6 +16,176 @@
       "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0961287_0901aded",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-05-10T15:07:42Z",
+      "side": 1,
+      "message": "If indented, should it use \"-\" as in line 123?",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "916aa866_c185bc6b",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-05-10T15:07:42Z",
+      "side": 1,
+      "message": "This does not fall into the prometheus category, move it out of indented section",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31304c9a_43bd881c",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-05-10T15:07:42Z",
+      "side": 1,
+      "message": "If indented, should it use \"-\" as in line 123?",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8122b04a_4eedc90d",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-05-10T15:07:42Z",
+      "side": 1,
+      "message": "Add the following items:\n\n* Enhanced healthchecks on drools pdp to report on stuck applications.  This together with enhanced liveness probes self-heals the unresponsive pod in such condition by restarting it.\n\n* Drools PDP has been upgraded to the latest available stable version: 7.68.0.Final.\n\n* Extend CDS actor model to decouple VNF handling from the vFirewall use case.",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "850d0468_aa305823",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-05-10T15:07:42Z",
+      "side": 1,
+      "message": "This does not apply to all components, at least xacml and drools will not work with postgress.    I am not sure how much testing has been done in the Postgress area for the components that could support it.",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8530f7d_968e935e",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-05-10T15:07:42Z",
+      "side": 1,
+      "message": "this is only for migrated spring applications, api, and pap.",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65eaab9d_f1477cde",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-05-10T15:07:42Z",
+      "side": 1,
+      "message": "It would be good to know if we can migrate existing lab in istanbul release to jakarta automatically.  If not, we should document it here to make users aware of the need to reinstall.\n\nif we have an alternative method with backup and restore since there was some investigation in that area, should we document it?   Not sure if we arrived to some recommendations in that area?",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82af9044_c44f7e40",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-05-10T15:07:42Z",
+      "side": 1,
+      "message": "remove this one, this was closed - won\u0027t do, and not strictly related to security.",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22913e62_80fe1737",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-05-10T15:07:42Z",
+      "side": 1,
+      "message": "Move this one to functional improvements",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30032442_364cc3d0",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-05-10T15:07:42Z",
+      "side": 1,
+      "message": "Move this one to functional improvements",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
