@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "d518ae9c_02677be2",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-05-10T18:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "916aa866_c185bc6b",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31304c9a_43bd881c",
         "filename": "docs/release-notes.rst",
         "patchSetId": 1
@@ -87,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "55ac2ca1_172404f6",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-05-10T18:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8122b04a_4eedc90d",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "850d0468_aa305823",
         "filename": "docs/release-notes.rst",
         "patchSetId": 1
@@ -98,6 +134,24 @@
       "writtenOn": "2022-05-10T15:07:42Z",
       "side": 1,
       "message": "This does not apply to all components, at least xacml and drools will not work with postgress.    I am not sure how much testing has been done in the Postgress area for the components that could support it.",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12fd397_5ef34bd2",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-05-10T18:50:41Z",
+      "side": 1,
+      "message": "I have qualified this statement by saying that only some components have been updated and that further testing will be carried out.",
+      "parentUuid": "850d0468_aa305823",
       "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
@@ -138,6 +192,24 @@
     },
     {
       "key": {
+        "uuid": "1985c04b_6334a152",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-05-10T18:50:41Z",
+      "side": 1,
+      "message": "We are testing that at the moment. I guess we can change the release notes when we know if this works.",
+      "parentUuid": "65eaab9d_f1477cde",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82af9044_c44f7e40",
         "filename": "docs/release-notes.rst",
         "patchSetId": 1
@@ -152,6 +224,24 @@
       "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4efa7238_5fd6c5c4",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-05-10T18:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82af9044_c44f7e40",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -172,6 +262,24 @@
     },
     {
       "key": {
+        "uuid": "bc625188_fffe5b65",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-05-10T18:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22913e62_80fe1737",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30032442_364cc3d0",
         "filename": "docs/release-notes.rst",
         "patchSetId": 1
@@ -186,6 +294,24 @@
       "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ce7f2d_84ace8b9",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-05-10T18:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30032442_364cc3d0",
+      "revId": "3831f3a933bdd3a710be90cceaf84be948043149",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
