@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5d4014c_0b7b2fcf",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 4903
+      },
+      "writtenOn": "2022-05-10T09:12:15Z",
+      "side": 1,
+      "message": "Repetition.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 9
+      },
+      "revId": "ebc6f14c5bc1a14427a3bffac1624ab8d0d2d990",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
