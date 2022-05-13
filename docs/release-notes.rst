@@ -94,7 +94,7 @@ Key Updates
   The current PMSH and TCS control loops are migrated to use an Automation Composition approach. Support for Automation
   Compositions in SDC is also introduced.
 
-* Metadata Sets for Policy Types
+* Metadata Sets for Policy Types.
 
   A Metadata set allows a global set of metadata containing rules or global parameters that all instances of a certain
   policy type can use. Metadta sets are introduced in the Policy Framework in the Jakarta release. This means that
@@ -107,20 +107,29 @@ Key Updates
     listening to the metrics exposed by policy components and either raise alerts or show them on a Grafana dashboard
     for operations team to keep monitoring the health of the system.
 
-  * Improve the policy/api and policy/pap readiness probes to handle database failures so that the policy/api and
-    policy/pap kubernetes pods are marked ready only if the policy database pod is ready.
+  * Provide sample Grafana dashboards for policy metrics.
 
-  * Provide sample Grafana dashboards for policy metrics
+* Improve the policy/api and policy/pap readiness probes to handle database failures so that the policy/api and
+  policy/pap kubernetes pods are marked ready only if the policy database pod is ready.
 
 * Migration of Policy Framework components to Springboot to support easier handling, configuration and maintenance.
-  The migrated components are policy/api, policy/pap, policy/clamp, and policy/gui
+  The migrated components are policy/api, policy/pap, policy/clamp, and policy/gui.
 
-* Policy Framework Database Configurability. The Policy Framework can be configured to use any JDBC-compliant RDBMS and
-  configuraiton files are supplied for the Postgres RDBMS. MariaDB remains the default RDBMS for the Policy Framework
-  in ONAP
+* Enhanced healthchecks on drools pdp to report on stuck applications.  This together with enhanced liveness probes
+  self-heals the unresponsive pod in such condition by restarting it.
+
+* Drools PDP has been upgraded to the latest available stable version: 7.68.0.Final.
+
+* Extend CDS actor model to decouple VNF handling from the vFirewall use case.
+
+* Policy Framework Database Configurability. Some of the components in the Policy Framework can be configured to use
+  any JDBC-compliant RDBMS and configuraiton files are supplied for the Postgres RDBMS. MariaDB remains the default
+  RDBMS for the Policy Framework in ONAP. Further testing will be carried out using Postgres in Kohn and future
+  releases.
 
 * System Attribute Improvements
-    - Transaction boundaries on REST calls are implemented per REST call
+    - Transaction boundaries on REST calls are implemented per REST call on applications migrated to Spring (policy/api,
+      policy/pap, and policy/clamp)
     - JDBC backend uses Spring and Hibernate rather than Eclipselink
     - All GUIs are now included in the policy/gui microservice
     - Documentation is retionalized and cleaned up, testing documentation is now complete
@@ -145,7 +154,6 @@ Security Notes
 ==============
 
 | `POLICY-2744 <https://jira.onap.org/browse/POLICY-2744>`_ - Use an account other than healthcheck in API and PAP components for provisioning of policies
-| `POLICY-3559 <https://jira.onap.org/browse/POLICY-3559>`_ - PDP-D: create global HTTPS client configuration via HTTP_CLIENT_HTTPS environment variable
 | `POLICY-3815 <https://jira.onap.org/browse/POLICY-3815>`_ - Use an account other than healthcheck in API and PAP components for provisioning of policies - OOM Charts
 | `POLICY-3862 <https://jira.onap.org/browse/POLICY-3862>`_ - Check all code for Log4J before version 2.15.0 and upgrade if necessary
 | `POLICY-4085 <https://jira.onap.org/browse/POLICY-4085>`_ - Remove usage of jackson libraries from clamp runtime
