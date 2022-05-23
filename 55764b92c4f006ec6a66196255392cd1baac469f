@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef581530_21e18d9b",
+        "filename": "docs/clamp/acm/policy-upgrade/collections/Automation Composition Jackarta.postman_collection.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2022-05-23T13:36:58Z",
+      "side": 1,
+      "message": "Jakarta",
+      "range": {
+        "startLine": 4,
+        "startChar": 34,
+        "endLine": 4,
+        "endChar": 42
+      },
+      "revId": "55764b92c4f006ec6a66196255392cd1baac469f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30755b58_c0c0360e",
+        "filename": "docs/clamp/acm/policy-upgrade/policy-upgrade.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2022-05-23T13:36:58Z",
+      "side": 1,
+      "message": "Jakarta",
+      "range": {
+        "startLine": 309,
+        "startChar": 4,
+        "endLine": 309,
+        "endChar": 12
+      },
+      "revId": "55764b92c4f006ec6a66196255392cd1baac469f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08794316_df56e88b",
+        "filename": "docs/clamp/acm/policy-upgrade/policy-upgrade.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2022-05-23T13:36:58Z",
+      "side": 1,
+      "message": "Jakarta",
+      "range": {
+        "startLine": 319,
+        "startChar": 36,
+        "endLine": 319,
+        "endChar": 44
+      },
+      "revId": "55764b92c4f006ec6a66196255392cd1baac469f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d2169e9_ee538ae8",
+        "filename": "docs/clamp/acm/policy-upgrade/policy-upgrade.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2022-05-23T13:36:58Z",
+      "side": 1,
+      "message": "jakarta",
+      "range": {
+        "startLine": 323,
+        "startChar": 27,
+        "endLine": 323,
+        "endChar": 35
+      },
+      "revId": "55764b92c4f006ec6a66196255392cd1baac469f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d12bb0f6_30fe7cd5",
+        "filename": "docs/clamp/acm/policy-upgrade/policy-upgrade.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2022-05-23T13:36:58Z",
+      "side": 1,
+      "message": "Jakarta",
+      "range": {
+        "startLine": 353,
+        "startChar": 54,
+        "endLine": 353,
+        "endChar": 62
+      },
+      "revId": "55764b92c4f006ec6a66196255392cd1baac469f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41763855_a898853b",
+        "filename": "docs/clamp/acm/policy-upgrade/policy-upgrade.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2022-05-23T13:36:58Z",
+      "side": 1,
+      "message": "Jakarta",
+      "range": {
+        "startLine": 521,
+        "startChar": 67,
+        "endLine": 521,
+        "endChar": 75
+      },
+      "revId": "55764b92c4f006ec6a66196255392cd1baac469f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
