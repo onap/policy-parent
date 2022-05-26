@@ -355,6 +355,57 @@ the Policy Framework works in a full ONAP deployment.
    distribution-pairwise.rst
 
 
+Testing OpenSuse docker images
+******************************
+
+Policy Framework offers docker images in two flavors: Alpine and OpenSuse.
+Alpine images are used in OOM for ONAP deployments.
+The OpenSuse images are built manually if needed, by running Maven with the -Pdockersuse profile.
+To test these images, CSITs will be run.
+
+1. Build the OpenSuse image you want by running Maven with -Pdockersuse:
+
+    .. code-block:: bash
+
+        cd policy/apex-pdp
+        mvn clean install -Pdockersuse
+
+    The image onap/policy-apex-pdp:latest will be produced.
+
+2. To avoid ambiguity, tag the image as opensuse:
+
+    .. code-block:: bash
+
+        docker tag onap/policy-apex-pdp:latest onap/policy-apex-pdp:opensuse
+
+3. Clone policy/docker repo.
+
+4. Modify docker/csit/docker-compose-all.yml to use the tagged OpenSuse image.
+
+    Replace:
+
+    .. code-block:: yaml
+
+        apex-pdp:
+          image: nexus3.onap.org:10001/onap/policy-apex-pdp:${POLICY_APEX_PDP_VERSION}
+
+    with:
+
+    .. code-block:: yaml
+
+        apex-pdp:
+          image: onap/policy-apex-pdp:opensuse
+
+5. Run the project CSIT. For apex-pdp:
+
+    .. code-block:: bash
+
+        cd docker/csit
+        ./run-project-csit.sh apex-pdp
+
+    Automated tests will be run, and log files displayed.
+
+
 Generating Swagger Documentation
 ********************************
 
