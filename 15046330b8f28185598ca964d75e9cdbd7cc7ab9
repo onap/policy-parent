@@ -16,6 +16,24 @@
       "revId": "15046330b8f28185598ca964d75e9cdbd7cc7ab9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c404305_a6b6089a",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 6742
+      },
+      "writtenOn": "2022-05-27T17:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a024c895_a08dac6f",
+      "revId": "15046330b8f28185598ca964d75e9cdbd7cc7ab9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
