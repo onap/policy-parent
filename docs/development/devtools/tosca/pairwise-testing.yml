@@ -130,7 +130,7 @@ data_types:
     properties:
       restRequestId:
         type: onap.datatypes.ToscaConceptIdentifier
-        typeVersion: 1.0.0
+        type_version: 0.0.0
         required: true
         description: The name and version of a REST request to be sent to a REST endpoint
       httpMethod:
@@ -156,13 +156,13 @@ data_types:
         required: true
         constraints: []
         description: THe expected HTTP status code for the REST request
-  org.onap.datatypes.policy.clamp.acm.httpControlLoopElement.ConfigurationEntity:
+  org.onap.datatypes.policy.clamp.acm.httpAutomationCompositionElement.ConfigurationEntity:
     version: 1.0.0
     derived_from: tosca.datatypes.Root
     properties:
       configurationEntityId:
         type: onap.datatypes.ToscaConceptIdentifier
-        typeVersion: 1.0.0
+        type_version: 0.0.0
         required: true
         description: The name and version of a Configuration Entity to be handled
           by the HTTP Automation Composition Element
@@ -170,7 +170,7 @@ data_types:
         type: list
         entry_schema:
           type: org.onap.datatypes.policy.clamp.acm.httpControlLoopElement.RestRequest
-          typeVersion: 1.0.0
+          type_version: 1.0.0
         description: A sequence of REST commands to send to the REST endpoint
 policy_types:
   onap.policies.Monitoring:
@@ -250,7 +250,7 @@ node_types:
     properties:
       provider:
         type: string
-        requred: false
+        required: false
   org.onap.policy.clamp.acm.AutomationCompositionElement:
     version: 1.0.1
     derived_from: tosca.nodetypes.Root
@@ -263,7 +263,7 @@ node_types:
         description: Specifies the organization that provides the automation composition element
       participant_id:
         type: onap.datatypes.ToscaConceptIdentifier
-        requred: true
+        required: true
         metadata:
           common: true
       participantType:
@@ -343,17 +343,17 @@ node_types:
     properties:
       policy_type_id:
         type: onap.datatypes.ToscaConceptIdentifier
-        requred: true
+        required: true
       policy_id:
         type: onap.datatypes.ToscaConceptIdentifier
-        requred: false
+        required: false
   org.onap.policy.clamp.acm.CDSAutomationCompositionElement:
     version: 1.0.1
     derived_from: org.onap.policy.clamp.acm.AutomationCompositionElement
     properties:
       cds_blueprint_id:
         type: onap.datatypes.ToscaConceptIdentifier
-        requred: true
+        required: true
   org.onap.policy.clamp.acm.K8SMicroserviceAutomationCompositionElement:
     version: 1.0.1
     derived_from: org.onap.policy.clamp.acm.AutomationCompositionElement
@@ -366,14 +366,14 @@ node_types:
         required: false
       requirements:
         type: string
-        requred: false
+        required: false
       templates:
         type: list
         required: false
         entry_schema:
       values:
         type: string
-        requred: true
+        required: true
   org.onap.policy.clamp.acm.HttpAutomationCompositionElement:
     version: 1.0.1
     derived_from: org.onap.policy.clamp.acm.AutomationCompositionElement
@@ -393,7 +393,7 @@ node_types:
         required: true
         entry_schema:
           type: org.onap.datatypes.policy.clamp.acm.httpAutomationCompositionElement.ConfigurationEntity
-          typeVersion: 1.0.0
+          type_version: 1.0.0
         description: The connfiguration entities the Automation Composition Element is managing and their associated REST requests
 
 topology_template:
@@ -415,7 +415,7 @@ topology_template:
     org.onap.domain.pmsh.PMSH_OperationalPolicyAutomationCompositionElement:
       version: 1.2.3
       type: org.onap.policy.clamp.acm.PolicyAutomationCompositionElement
-      type_version: 1.0.0
+      type_version: 1.0.1
       description: Automation composition element for the operational policy for Performance Management Subscription Handling
       properties:
         provider: Ericsson
@@ -443,7 +443,7 @@ topology_template:
       # Chart from new repository
       version: 1.2.3
       type: org.onap.policy.clamp.acm.K8SMicroserviceAutomationCompositionElement
-      type_version: 1.0.0
+      type_version: 1.0.1
       description: Automation composition element for the K8S microservice for PMSH
       properties:
         provider: ONAP
@@ -561,7 +561,7 @@ topology_template:
     org.onap.domain.sample.GenericK8s_AutomationCompositionDefinition:
       version: 1.2.3
       type: org.onap.policy.clamp.acm.AutomationComposition
-      type_version: 1.0.0
+      type_version: 1.0.1
       description: Automation composition for Hello World
       properties:
         provider: ONAP
