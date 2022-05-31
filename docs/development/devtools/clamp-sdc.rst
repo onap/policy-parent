@@ -60,12 +60,12 @@ Configuration changes
 
 Following are certain configuration changes required/cross-checked
 1. policy-distribution configuration should include toscaAutomationCompositionDecoderConfiguration
-   File: kubernetes/policy/components/policy-distribution/resources/config/config.json
+File: kubernetes/policy/components/policy-distribution/resources/config/config.json
 
    - Automation composition decoders and forwards should be present. Reference: `Sample Configuration <json/pd_config.json>`
 
 Design of participants and automation composition elements:
-----------------------------------------------------------
+-----------------------------------------------------------
 Different participants and automation composition elements are created in SDC dashboard with the models available for automation composition.
 
 SDC provides a graphical interface for onboarding/designing resources (such as VNFs, PNFs, CNFs) and designing services composed of such resources
