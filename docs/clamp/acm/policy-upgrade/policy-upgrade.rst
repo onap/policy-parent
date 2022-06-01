@@ -6,10 +6,13 @@ TOSCA Policy Testing Upgrade
 ############################
 
 .. contents::
-    :depth: 4
+    :depth: 3
 
-1 - Istanbul
-============
+Automation Composition
+**********************
+
+Istanbul
+++++++++
 
 
 **Step 1:** Clone Policy Clamp
@@ -50,7 +53,7 @@ TOSCA Policy Testing Upgrade
 
 **Step 6:** Open up Postman and import the following collections
 
-    `Download <collections/Control Loop Istanbul.postman_collection.json>`_
+    `Download Istanbul Postman Collections <collections/Control Loop Istanbul.postman_collection.json>`_
 
 **Step 7:** Open up the folder Control Loop Istanbul/Commissioning
 
@@ -306,8 +309,8 @@ TOSCA Policy Testing Upgrade
 
 **Step 13:** For monitoring endpoints go to Control Loop Istanbul/Monitoring folder
 
-2 - Jakarta
-===========
+Jakarta
++++++++
 
 
 **Step 1:** Clone Policy Clamp
@@ -348,7 +351,7 @@ TOSCA Policy Testing Upgrade
 
 **Step 6:** Open up Postman and import the following collections
 
-    `Download <collections/Automation Composition Jakarta.postman_collection.json>`_
+    `Download Jakarta Postman Collections <collections/Automation Composition Jakarta.postman_collection.json>`_
 
 **Step 7:** Open up the folder Automation Composition Jakarta/Commissioning
 
@@ -520,3 +523,217 @@ TOSCA Policy Testing Upgrade
 
 **Step 13:** For monitoring endpoints go to Automation Composition Jakarta/Monitoring folder
 
+PAP & API
+*********
+
+Istanbul
+++++++++
+
+**Step 1:** Clone Policy Docker
+
+.. code-block:: bash
+
+    git clone "https://gerrit.onap.org/r/policy/docker"
+
+**Step 2:** Go to the CSIT directory
+
+.. code-block:: bash
+
+    cd docker/csit
+
+**Step 3:** Run prepare csit script
+
+.. code-block:: bash
+
+    ./prepare-csit.sh
+
+**Step 4:** Modify the compose-grafana.yml file
+
+remove everything from xacml-pdp downwards to grafana
+
+add the following in api after the keyword expose
+
+.. code-block:: bash
+
+    ports:
+       - "6970:6969"
+
+add the following in pap after the keyword expose
+
+.. code-block:: bash
+
+   ports:
+      - "6971:6969"
+
+**Step 5:** Run start grafana script
+
+.. code-block:: bash
+
+    ./start-grafana.sh
+
+**Step 6:** Once api and pap has started check run the postman script Policy Framework Lifecycle API/Lifecycle Api Healthcheck at port 6970
+
+.. image:: images/01-api-pap-upgrade.png
+
+**Step 7:** Log into mariadb container
+
+.. code-block:: bash
+
+    docker exec -it mariadb sh
+
+**Step 8:** Log into mariadb container
+
+.. code-block:: bash
+
+    docker exec -it mariadb sh
+
+
+**Step 9:** Connect to mariadb
+
+.. code-block:: bash
+
+    mysql -u policy_user -p
+
+**Step 10:** Enter mariadb password
+
+.. image:: images/02-api-pap-upgrade.png
+
+**password:** policy_user
+
+**Step 11:** View all schemas
+
+.. code-block:: bash
+
+    show schemas;
+
+.. image:: images/03-api-pap-upgrade.png
+
+**Step 12:** Select policyadmin schema
+
+.. code-block:: bash
+
+    use policyadmin;
+
+**Step 13:** View all tables
+
+.. code-block:: bash
+
+    show tables;
+
+.. image:: images/04-api-pap-upgrade.png
+
+**Step 14:** Change schema to migration
+
+.. code-block:: bash
+
+    use migration;
+
+**Step 15:** View migration tables
+
+.. code-block:: bash
+
+    show tables;
+
+.. image:: images/05-api-pap-upgrade.png
+
+**Step 16:** Select tables from schema_versions
+
+.. code-block:: bash
+
+    select * from schema_versions;
+
+.. image:: images/06-api-pap-upgrade.png
+
+'*' Notice the version 1000 is the latest
+
+**Step 17:** Go inside the db-migrator container
+
+.. code-block:: bash
+
+    docker exec -it policy-db-migrator sh
+
+**Step 18:** See what environment variables is set on the container
+
+.. code-block:: bash
+
+    printenv
+
+**Step 19:** If SQL_HOST, SQL_DB, SQL_USER, SQL_PASSWORD & SCRIPT_DIRECTORY is not set do the following
+
+.. code-block:: bash
+    :linenos:
+
+    export SQL_HOST=mariadb
+    export SQL_DB=policyadmin
+    export SQL_USER=policy_user
+    export SQL_PASSWORD=policy_user
+    export SCRIPT_DIRECTORY=sql
+
+**Step 20:** To downgrade to Istanbul go to the following directory /opt/app/policy/bin and use the following script
+
+.. code-block:: bash
+
+    ./prepare_downgrade policyadmin
+
+**Step 21:** To downgrade to Istanbul go to the following directory /opt/app/policy/bin and use the following script
+
+.. code-block:: bash
+
+    ./db-migrator -s policyadmin -o downgrade -f 1000 -t 0800
+
+**Step 22:** Go back to the mariaddb container
+
+.. code-block:: bash
+
+    docker exec -it mariadb sh
+
+**Step 23:** Log back into mariadb
+
+.. code-block:: bash
+
+    mysql -u policy_user -p
+
+**Step 24:** See if the downgrade has been successfully
+
+.. code-block:: bash
+    :linenos:
+
+    use migration;
+    select * from policyadmin_schema_changelog;
+    select * from schema_versions;
+
+.. image:: images/07-api-pap-upgrade.png
+
+*
+
+.. image:: images/08-api-pap-upgrade.png
+
+*
+
+.. image:: images/01-api-pap-upgrade.png
+
+**Step 25:** To upgrade to Jakarta repeat steps 17, 18 & 19
+
+**Step 26:** Got to the following directory /opt/app/policy/bin and use the following script
+
+.. code-block:: bash
+
+    ./prepare_upgrade.sh policyadmin
+
+**Step 27:** Got to the following directory /opt/app/policy/bin and use the following script
+
+.. code-block:: bash
+
+    ./db-migrator -s policyadmin -o upgrade -f 0800 -t 0900
+
+**Step 28:** Repeat steps 22, 23 & 24
+
+.. image:: images/09-api-pap-upgrade.png
+
+*
+
+.. image:: images/10-api-pap-upgrade.png
+
+*
+
+.. image:: images/01-api-pap-upgrade.png
