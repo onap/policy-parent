@@ -105,7 +105,7 @@ SDC provides a graphical interface for onboarding/designing resources (such as V
   .. image:: images/sdc_distribute.png
 
 - An Automation Composition is created by commissioning a Tosca template with Automation Composition definitions.
-This commissioned tosca service template can be further used from Policy-GUI for instantiating the Automation Composition with the state "UNINITIALISED".
+    This commissioned tosca service template can be further used from Policy-GUI for instantiating the Automation Composition with the state "UNINITIALISED".
 
 - Instantiate the commissioned Automation Composition definitions from the Policy Gui under 'Instantiation Management'.
 
@@ -113,5 +113,5 @@ This commissioned tosca service template can be further used from Policy-GUI for
 
 -  Verification: The automation composition is created with default state "UNINITIALISED" without errors.
 
-  .. image:: images/cl-instantiation.png
+  .. image:: images/ac-instantiation.png
 
