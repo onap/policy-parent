@@ -123,7 +123,7 @@ node_types:
     properties:
       provider:
         type: string
-        requred: false
+        required: false
   org.onap.policy.clamp.acm.AutomationCompositionElement:
     version: 1.0.1
     derived_from: tosca.nodetypes.Root
@@ -136,7 +136,7 @@ node_types:
         description: Specifies the organization that provides the automation composition element
       participant_id:
         type: onap.datatypes.ToscaConceptIdentifier
-        requred: true
+        required: true
         metadata:
           common: true
       participantType:
@@ -222,7 +222,7 @@ node_types:
         required: false
       requirements:
         type: string
-        requred: false
+        required: false
       templates:
         type: list
         required: false

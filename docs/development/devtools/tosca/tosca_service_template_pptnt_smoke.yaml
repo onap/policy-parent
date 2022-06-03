@@ -17,13 +17,13 @@ data_types:
       consulUrl:
         name: consulUrl
         type: string
-        typeVersion: 0.0.0
+        type_version: 0.0.0
         description: Consul url for this entry
         required: true
       consul_body:
         name: consulBody
         type: string
-        typeVersion: 0.0.0
+        type_version: 0.0.0
         description: Body of Consul entry
         required: true
   onap.datatype.controlloop.Target:
@@ -363,11 +363,11 @@ topology_template:
       description: Participant for DCAE microservices
       properties:
         provider: ONAP
-    
+
     org.onap.domain.pmsh.PMSH_MonitoringPolicyControlLoopElement:
       version: 1.2.3
       type: org.onap.policy.clamp.controlloop.PolicyControlLoopElement
-      type_version: 1.0.0
+      type_version: 1.0.1
       description: Control loop element for the monitoring policy for Performance Management Subscription Handling
       properties:
         provider: Ericsson
@@ -382,7 +382,7 @@ topology_template:
     org.onap.domain.pmsh.PMSH_OperationalPolicyControlLoopElement:
       version: 1.2.3
       type: org.onap.policy.clamp.controlloop.PolicyControlLoopElement
-      type_version: 1.0.0
+      type_version: 1.0.1
       description: Control loop element for the operational policy for Performance Management Subscription Handling
       properties:
         provider: Ericsson
@@ -397,7 +397,7 @@ topology_template:
     org.onap.domain.pmsh.PMSHControlLoopDefinition:
       version: 1.2.3
       type: org.onap.policy.clamp.controlloop.ControlLoop
-      type_version: 1.0.0
+      type_version: 1.0.1
       description: Control loop for Performance Management Subscription Handling
       properties:
         provider: Ericsson
