@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51b06340_40b9a245",
+        "filename": "integration/src/main/resources/release/pf_release_data.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-06-17T11:58:46Z",
+      "side": 1,
+      "message": "Does changed files need to be computed a priori and placed here, or is this generated?",
+      "revId": "cd44921c7e00e699b27697d3e5be4fc3433b81a2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
