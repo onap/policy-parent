@@ -16,6 +16,24 @@
       "revId": "cd44921c7e00e699b27697d3e5be4fc3433b81a2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "338867c8_993e738c",
+        "filename": "integration/src/main/resources/release/pf_release_data.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-06-17T19:51:35Z",
+      "side": 1,
+      "message": "I\u0027m going to generate it using the release scripts, I\u0027m going to add an action to the last phase to automatically generate the file.\n\nIt has to be done in the very last phase because everything needs to be at their latest correct revisions so that the CSITs will use the correct versions of everything.\n\nI tried to do this by reading information from Gerrit/Nexus/Github but it\u0027s very complex to do it that way.",
+      "parentUuid": "51b06340_40b9a245",
+      "revId": "cd44921c7e00e699b27697d3e5be4fc3433b81a2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
