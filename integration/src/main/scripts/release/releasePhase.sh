@@ -213,6 +213,12 @@ release_phase_6() {
 }
 
 release_phase_7() {
+    echo "Generating docker release yaml file and commit for policy/models . . ."
+    releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/models -i "$issue_id"
+    echo "Generated docker release yaml file and commit for policy/models"
+}
+
+release_phase_8() {
     echo "Updating snapshots for policy/models, updating references on other repos . . ."
     bumpSnapshots.sh \
         -d "$release_data_file" \
@@ -298,7 +304,7 @@ release_phase_7() {
     echo "Updated snapshots for policy/models, updated references on other repos"
 }
 
-release_phase_8() {
+release_phase_9() {
     echo "Generating artifact release yaml file and commit for repos . . ."
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/apex-pdp -i "$issue_id"
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/api -i "$issue_id"
@@ -310,7 +316,7 @@ release_phase_8() {
     echo "Generated artifact release yaml file and commit for repos"
 }
 
-release_phase_9() {
+release_phase_10() {
     echo "Generating docker release yaml file and commit for repos . . ."
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/apex-pdp -i "$issue_id"
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/api -i "$issue_id"
@@ -322,7 +328,7 @@ release_phase_9() {
     echo "Generated docker release yaml file and commit for repos"
 }
 
-release_phase_10() {
+release_phase_11() {
     echo "Updating snapshots for repos, updating references on policy/drools-applications, policy/gui . . ."
     bumpSnapshots.sh \
         -d "$release_data_file" \
@@ -353,21 +359,21 @@ release_phase_10() {
     echo "Updated snapshots for repos, updated references on policy/drools-applications, policy/gui"
 }
 
-release_phase_11() {
+release_phase_12() {
     echo "Generating artifact release yaml file and commit for policy/drools-applications . . ."
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/drools-applications -i "$issue_id"
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/gui -i "$issue_id"
     echo "Generated artifact release yaml file and commit for policy/drools-applications"
 }
 
-release_phase_12() {
+release_phase_13() {
     echo "Generating docker release yaml file and commit for policy/drools-applications . . ."
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/drools-applications -i "$issue_id"
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/gui -i "$issue_id"
     echo "Generated docker release yaml file and commit for policy/drools-applications"
 }
 
-release_phase_13() {
+release_phase_14() {
     echo "Updating snapshots on policy/drools-applications, policy/gui . . ."
     bumpSnapshots.sh \
         -d "$release_data_file" \
@@ -415,6 +421,9 @@ case "$release_phase" in
     ;;
 
 13)  release_phase_13
+    ;;
+
+14)  release_phase_14
     ;;
 
 *) echo "specified release phase '$release_phase' is invalid"
