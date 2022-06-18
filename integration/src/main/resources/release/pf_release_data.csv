@@ -1,0 +1,13 @@
+Repo, Last Tag Version,Snapshot Version,Changed Files,Docker Images
+policy/parent,3.3.2,3.3.3-SNAPSHOT,1,
+policy/docker,2.2.1,2.2.2-SNAPSHOT,60,'policy-jre-alpine':'policy-jdk-alpine'
+policy/common,1.8.2,1.8.3-SNAPSHOT,0,
+policy/models,2.4.4,2.4.5-SNAPSHOT,0,
+policy/api,2.4.4,2.4.5-SNAPSHOT,0,'policy-api'
+policy/pap,2.4.5,2.4.6-SNAPSHOT,0,'policy-pap'
+policy/apex-pdp,2.5.4,2.5.5-SNAPSHOT,0,'policy-apex-pdp'
+policy/drools-pdp,1.8.4,1.8.5-SNAPSHOT,0,'policy-drools'
+policy/xacml-pdp,2.4.5,2.4.6-SNAPSHOT,0,'policy-xacml-pdp'
+policy/distribution,2.5.4,2.5.5-SNAPSHOT,5,'policy-distribution'
+policy/clamp,6.0.2,6.0.3-SNAPSHOT,5,'policy-clamp-backend':'policy-clamp-frontend'
+policy/drools-applications,1.8.4,1.8.5-SNAPSHOT,0,'policy-pdpd-cl'
