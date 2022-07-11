@@ -1,13 +1,13 @@
 Repo, Last Tag Version,Snapshot Version,Changed Files,Docker Images
-policy/parent,3.4.4,3.4.5-SNAPSHOT,4,
-policy/docker,2.3.2,2.3.3-SNAPSHOT,0,'policy-jre-alpine':'policy-jdk-alpine':'policy-db-migrator'
+policy/parent,3.4.4,3.4.5-SNAPSHOT,5,
+policy/docker,2.3.2,2.3.3-SNAPSHOT,5,'policy-jre-alpine':'policy-jdk-alpine':'policy-db-migrator'
 policy/common,1.9.2,1.9.3-SNAPSHOT,0,
-policy/models,2.5.2,2.5.3-SNAPSHOT,0,
+policy/models,2.5.3,2.5.4-SNAPSHOT,1,'policy-models-simulator'
 policy/api,2.5.2,2.5.3-SNAPSHOT,0,'policy-api'
 policy/pap,2.5.2,2.5.3-SNAPSHOT,0,'policy-pap'
 policy/apex-pdp,2.6.2,2.6.3-SNAPSHOT,0,'policy-apex-pdp'
 policy/drools-pdp,1.9.2,1.9.3-SNAPSHOT,0,'policy-drools'
-policy/xacml-pdp,2.5.2,2.5.3-SNAPSHOT,0,'policy-xacml-pdp'
+policy/xacml-pdp,2.5.2,2.5.3-SNAPSHOT,3,'policy-xacml-pdp'
 policy/distribution,2.6.2,2.6.3-SNAPSHOT,0,'policy-distribution'
 policy/clamp,6.1.4,6.1.5-SNAPSHOT,0,'policy-clamp-backend':'policy-clamp-frontend':'policy-clamp-cl-pf-ppnt':'policy-clamp-cl-k8s-ppnt':'policy-clamp-cl-http-ppnt':'policy-clamp-cl-runtime'
 policy/gui,2.2.1,2.1.3-SNAPSHOT,771,'policy-gui'
