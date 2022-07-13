@@ -374,12 +374,23 @@ release_phase_13() {
 }
 
 release_phase_14() {
-    echo "Updating snapshots on policy/drools-applications, policy/gui . . ."
+    echo "Updating snapshots on policy/drools-applications, policy/gui and updating release data file . . ."
     bumpSnapshots.sh \
         -d "$release_data_file" \
         -l "$repo_location" \
         -i "$issue_id"
-    echo "Updated snapshots on policy/drools-applications, policy/gui"
+    updateRefs.sh \
+        -f \
+        -d "$release_data_file" \
+        -l "$repo_location" \
+        -r "policy/parent"
+    generateCommit.sh \
+        -l "$repo_location" \
+        -r "policy/parent" \
+        -i "$issue_id" \
+        -e "update relase data in policy/parent" \
+        -m "updated reelase data in policy/parent"
+    echo "Updated snapshots on policy/drools-applications, policy/gui and updated release data file"
 }
 
 case "$release_phase" in

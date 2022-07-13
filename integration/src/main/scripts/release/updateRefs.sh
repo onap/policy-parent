@@ -54,6 +54,7 @@ usage()
     echo "         -o           - update policy/drools-pdp references"
     echo "         -x           - update policy/apex-pdp references"
     echo "         -k           - update docker base images in Dockerfiles"
+    echo "         -f           - update release data in policy parent"
     echo "         -s           - update release references to snapshot references,"
     echo "                        if omitted, snapshot references are updated to release references"
     echo ""
@@ -75,8 +76,9 @@ update_drools_pdp=false
 update_apex_pdp=false
 update_snapshot=false
 update_docker=false
+update_file=false
 
-while getopts "hd:l:r:pcmoxks" opt
+while getopts "hd:l:r:pcmoxkfs" opt
 do
     case $opt in
     h)
@@ -108,6 +110,9 @@ do
         ;;
     k)
         update_docker=true
+        ;;
+    f)
+        update_file=true
         ;;
     s)
         update_snapshot=true
@@ -410,4 +415,17 @@ then
         echo "docker base images update failed on $repo_location/$target_repo"
         exit 1
     fi
+fi
+
+if [ "$update_file" = true ]
+then
+    if [ ! "$target_repo" = "policy/parent" ]
+    then
+        echo "update of data file can only be done on the policy/parent repo"
+        exit 1
+    fi
+
+    echo "updating release data at $repo_location/$target_repo/integration/src/main/resources/release . . ."
+    cp "$release_data_file" "$repo_location/$target_repo"/integration/src/main/resources/release
+    echo "updated release data at $repo_location/$target_repo/integration/src/main/resources/release"
 fi
