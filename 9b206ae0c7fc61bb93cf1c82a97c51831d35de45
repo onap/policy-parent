@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e28c8715_7e863559",
+        "filename": "integration/src/main/scripts/release/releasePhase.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-07-13T12:00:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0836e60_3ac1aab4",
+      "range": {
+        "startLine": 391,
+        "startChar": 19,
+        "endLine": 391,
+        "endChar": 25
+      },
+      "revId": "9b206ae0c7fc61bb93cf1c82a97c51831d35de45",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1048fe56_bc7fc199",
         "filename": "integration/src/main/scripts/release/releasePhase.sh",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "9b206ae0c7fc61bb93cf1c82a97c51831d35de45",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9186bc_df957989",
+        "filename": "integration/src/main/scripts/release/releasePhase.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-07-13T12:00:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1048fe56_bc7fc199",
+      "range": {
+        "startLine": 392,
+        "startChar": 20,
+        "endLine": 392,
+        "endChar": 27
+      },
+      "revId": "9b206ae0c7fc61bb93cf1c82a97c51831d35de45",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
