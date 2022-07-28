@@ -64,6 +64,7 @@
         <version.io.micrometer>1.7.3</version.io.micrometer>
         <version.io.prometheus>0.11.0</version.io.prometheus>
         <version.postgres>42.3.3</version.postgres>
+        <version.kafka>3.0.0</version.kafka>
         <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
         <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
         <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
@@ -293,6 +294,20 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${version.postgres}</version>
+            </dependency>
+
+            <!-- Kafka -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${version.kafka}</version>
+                <exclusions>
+                    <!-- The default Zookeeper version in Kafka has vulnerabilities -->
+                    <exclusion>
+                        <groupId>org.apache.zookeeper</groupId>
+                        <artifactId>zookeeper</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- Prometheus Client Libraries -->
