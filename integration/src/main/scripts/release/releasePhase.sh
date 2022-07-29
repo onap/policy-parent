@@ -152,7 +152,7 @@ release_phase_3() {
         -l "$repo_location" \
         -i "$issue_id"
     updateRefs.sh \
-        -p \
+        -pk \
         -d "$release_data_file" \
         -l "$repo_location" \
         -r "policy/docker"
