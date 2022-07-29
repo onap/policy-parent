@@ -404,10 +404,20 @@ then
     echo "updating docker base images to version $docker_latest_released_tag on repo $repo_location/$target_repo . . ."
     find "$repo_location/$target_repo" \
         -name '*Docker*'
-    find "$repo_location/$target_repo" \
-        -name '*Docker*' \
-        -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9]*$/\1$docker_latest_released_tag/" {} \;
-    result_code=$?
+
+    if [ "$update_snapshot" == true ]
+    then
+        find "$repo_location/$target_repo" \
+            -name '*Docker*' \
+            -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9]*$/\1$docker_latest_snapshot_tag/" {} \;
+        result_code=$?
+    else
+        find "$repo_location/$target_repo" \
+            -name '*Docker*' \
+            -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9]*$/\1$docker_latest_released_tag/" {} \;
+        result_code=$?
+    fi
+
     if [[ "$result_code" -eq 0 ]]
     then
         echo "docker base images updated on $repo_location/$target_repo"

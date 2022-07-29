@@ -178,9 +178,14 @@ do
         mv "$temp_file" "$repo_location/$repo/version.properties"
     fi
 
-    updateRefs.sh -pcmoxs -d "$release_data_file" -l "$repo_location" -r "$repo"
+    updateRefs.sh -pcmokxs -d "$release_data_file" -l "$repo_location" -r "$repo"
 
-    if [ "$(git -C "$repo_location/$specified_repo" status | grep '^[ \t]*modified:[ \t]*pom.xml' > /dev/null 2>&1)" = 0 ]
+    if [ "$(git -C "$repo_location/$specified_repo" status |
+        grep \
+            -e '^\s*modified:\s*pom.xml$' \
+            -e '^\s*modified:\s*.*Dockerfile$' \
+            > /dev/null 2>&1)" \
+        = 1 ]
     then
         references_updated=0
     else
