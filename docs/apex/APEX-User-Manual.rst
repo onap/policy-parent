@@ -2036,10 +2036,36 @@ Context Handlers
 
             APEX provides plugins for each of the main areas.
 
-Configure AVRO Schema Handler
-#############################
+Configure Context Schema Handler
+################################
 
             .. container:: paragraph
+
+               There are 2 choices available for defining schema: JSON & AVRO.
+               JSON based schemas are recommended because of the flexibility, better tooling & easier integration.
+
+               The JSON schema handler is added to the configuration as
+               follows:
+
+            .. container:: listingblock
+
+               .. container:: content
+
+                  .. code::
+
+                     "engineServiceParameters":{
+                       "engineParameters":{
+                         "contextParameters":{
+                           "parameterClassName" : "org.onap.policy.apex.context.parameters.ContextParameters",
+                           "schemaParameters":{
+                             "Json":{
+                               "parameterClassName" :
+                                 "org.onap.policy.apex.plugins.context.schema.json.JsonSchemaHelperParameters"
+                             }
+                           }
+                         }
+                       }
+                     }
 
                The AVRO schema handler is added to the configuration as
                follows:
