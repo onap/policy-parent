@@ -63,7 +63,7 @@
         <version.jakarta-api>2.0.2</version.jakarta-api>
         <version.io.micrometer>1.7.3</version.io.micrometer>
         <version.io.prometheus>0.11.0</version.io.prometheus>
-        <version.postgres>42.3.3</version.postgres>
+        <version.postgres>42.5.0</version.postgres>
         <version.kafka>3.0.0</version.kafka>
         <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
         <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
