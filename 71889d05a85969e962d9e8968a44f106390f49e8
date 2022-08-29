@@ -22,6 +22,30 @@
       "revId": "71889d05a85969e962d9e8968a44f106390f49e8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "450913e2_db568da0",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-08-29T13:43:08Z",
+      "side": 1,
+      "message": "Oops missed that. Updated it and added a cmment above.",
+      "parentUuid": "dbe91c46_eb0d8b90",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "71889d05a85969e962d9e8968a44f106390f49e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
