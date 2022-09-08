@@ -244,8 +244,8 @@ then
             major_version=$(echo "$parent_latest_released_tag" | $SED -E 's/^([0-9]*)\.[0-9]*\.[0-9]*$/\1/')
             minor_version=$(echo "$parent_latest_released_tag" | $SED -E 's/^[0-9]*\.([0-9]*)\.[0-9]*$/\1/')
             patch_version=$(echo "$parent_latest_released_tag" | $SED -E 's/^[0-9]*\.[0-9]*\.([0-9]*)$/\1/')
-            new_patch_version=$(("$patch_version"+1))
 
+            new_patch_version=$((patch_version+1))
             new_snapshot_tag="$major_version"."$minor_version"."$new_patch_version"-SNAPSHOT
 
             echo updating policy parent reference to "$new_snapshot_tag" on "$repo_location/$target_repo" . . .
@@ -401,20 +401,18 @@ fi
 
 if [ "$update_docker" = true ] && [ "$target_docker_images" != "" ]
 then
-    echo "updating docker base images to version $docker_latest_released_tag on repo $repo_location/$target_repo . . ."
-    find "$repo_location/$target_repo" \
-        -name '*Docker*'
-
     if [ "$update_snapshot" == true ]
     then
+        echo "updating docker base images to version $docker_latest_snapshot_tag on repo $repo_location/$target_repo . . ."
         find "$repo_location/$target_repo" \
             -name '*Docker*' \
-            -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9]*$/\1$docker_latest_snapshot_tag/" {} \;
+            -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9].*$/\1$docker_latest_snapshot_tag/" {} \;
         result_code=$?
     else
+        echo "updating docker base images to version $docker_latest_released_tag on repo $repo_location/$target_repo . . ."
         find "$repo_location/$target_repo" \
             -name '*Docker*' \
-            -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9]*$/\1$docker_latest_released_tag/" {} \;
+            -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9].*$/\1$docker_latest_released_tag/" {} \;
         result_code=$?
     fi
 

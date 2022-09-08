@@ -193,7 +193,7 @@ release_phase_5() {
         -l "$repo_location" \
         -i "$issue_id"
     updateRefs.sh \
-        -pc \
+        -pck \
         -d "$release_data_file" \
         -l "$repo_location" \
         -r "policy/models"
@@ -374,11 +374,17 @@ release_phase_13() {
 }
 
 release_phase_14() {
-    echo "Updating snapshots on policy/drools-applications, policy/gui and updating release data file . . ."
+    echo "Updating snapshots on policy/drools-applications and policy/gui . . ."
     bumpSnapshots.sh \
         -d "$release_data_file" \
         -l "$repo_location" \
         -i "$issue_id"
+    echo "Updated snapshots on policy/drools-applications and policy/gui"
+}
+
+
+release_phase_15() {
+    echo "Updating release data file . . ."
     updateRefs.sh \
         -f \
         -d "$release_data_file" \
@@ -390,7 +396,7 @@ release_phase_14() {
         -i "$issue_id" \
         -e "update release data in policy/parent" \
         -m "updated release data in policy/parent"
-    echo "Updated snapshots on policy/drools-applications, policy/gui and updated release data file"
+    echo "Updated release data file"
 }
 
 case "$release_phase" in
@@ -435,6 +441,9 @@ case "$release_phase" in
     ;;
 
 14)  release_phase_14
+    ;;
+
+15)  release_phase_15
     ;;
 
 *) echo "specified release phase '$release_phase' is invalid"

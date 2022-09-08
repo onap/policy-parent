@@ -118,6 +118,7 @@ update_repos() {
 
     for repo in "${pf_repos[@]}"
     do
+        echo ""
         echo "updating data from repo $repo branch $branch to data file '$release_data_file' . . ."
 
         if [ -d "$repo_location/$repo" ]
