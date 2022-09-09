@@ -46,11 +46,6 @@ committers:
       company: 'Bell Canada'
       id: 'ramverma'
       timezone: 'America/Montreal'
-    - name: 'Ajith Sreekumar'
-      email: 'ajith.sreekumar@bell.ca'
-      company: 'Bell Canada'
-      id: 'a.sreekumar'
-      timezone: 'Europe/Ireland'
     - name: 'Ramesh Murugan Iyer'
       email: 'ramesh.murugan.iyer@est.tech'
       company: 'Ericsson'
@@ -83,3 +78,7 @@ tsc:
         - type: 'Addition'
           name: 'Ramesh Murugan Iyer'
           link: https://lists.onap.org/g/onap-tsc/message/8689
+          # Stepped Down
+          link: https://lists.onap.org/g/onap-tsc/message/8878
+        - type: 'Removal'
+          name: 'Ajith Sreekumar'
