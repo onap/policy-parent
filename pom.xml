@@ -52,7 +52,7 @@
 
                 Be sure to override ${project.parent.basedir} in order to find the XML file
 
-                mvn formatter:format spotless:apply process-sources -Dproject.parent.basedir=TODO
+                mvn formatter:format spotless:apply process-sources -Dproject.parent.basedir=<basedir>
                 -->
                 <plugin>
                     <groupId>net.revelc.code.formatter</groupId>
