@@ -45,6 +45,8 @@ The ONAP components used during the pairwise tests are:
 - DMaaP for the communication between Automation Composition runtime and participants.
 - Policy Framework components for instantiation and commissioning of automation compositions.
 
+Helpful instruction page on bringing SDC and PORTAL setup on an OOM deployment https://wiki.onap.org/display/DW/Deploy+OOM+and+SDC+%28or+ONAP%29+on+a+single+VM+with+microk8s+-+Honolulu+Setup
+
 Testing procedure
 *****************
 
