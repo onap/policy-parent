@@ -513,3 +513,15 @@ You may specify a local configuration file instead of *src/test/resources/simPar
        }
      ]
    }
+
+Bringing up Strimzi-Kafka Deploment with Policy Framework
+*********************************************************
+
+This page will explain how to setup a local Kubernetes cluster and minimal helm setup to run and deploy Policy Framework on a single host.
+
+This is meant for a development purpose only as we are going to use microk8s in this page
+
+.. toctree::
+   :maxdepth: 1
+
+   strimzi-policy.rst
