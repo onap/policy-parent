@@ -156,7 +156,7 @@ do
         continue
     fi
 
-    for docker_image in $(echo "$docker_images" | tr ':' ' ')
+    for docker_image in $(echo "$docker_images" | sed -e "s/'//g" -e "s/:/ /g")
     do
         new_image="$docker_image:$latest_released_tag"
 
@@ -169,7 +169,6 @@ do
         echo "OOM image $docker_image:$latest_released_tag updated"
     done
 done
-
 
 echo "generating OOM commit to update policy framework docker image versions . . ."
 

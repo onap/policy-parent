@@ -24,7 +24,8 @@ set -e
 
 SCRIPT_NAME=$(basename "$0")
 repo_location="./"
-release_data_file="./pf_release_data.csv"
+release_data_file="pf_release_data.csv"
+release_data_file_tag=""
 
 usage()
 {
@@ -40,6 +41,7 @@ usage()
     echo "                        defaults to '$repo_location'"
     echo "         -i issue-id  - issue ID in the format POLICY-nnnn"
     echo "         -p phase     - the release phase, a positive integer"
+    echo "         -t tag       - tag the release data file with the given tag"
     echo ""
     echo " examples:"
     echo "  $SCRIPT_NAME -l /home/user/onap -d /home/user/data/pf_release_data.csv -i POLICY-1234 -p 3"
@@ -48,7 +50,7 @@ usage()
     exit 255;
 }
 
-while getopts "hd:l:i:p:" opt
+while getopts "hd:l:i:p:t:" opt
 do
     case $opt in
     h)
@@ -65,6 +67,9 @@ do
         ;;
     p)
         release_phase=$OPTARG
+        ;;
+    t)
+        release_data_file_tag="$OPTARG"
         ;;
     \?)
         usage
@@ -389,7 +394,8 @@ release_phase_15() {
         -f \
         -d "$release_data_file" \
         -l "$repo_location" \
-        -r "policy/parent"
+        -r "policy/parent" \
+        -t "$release_data_file_tag"
     generateCommit.sh \
         -l "$repo_location" \
         -r "policy/parent" \

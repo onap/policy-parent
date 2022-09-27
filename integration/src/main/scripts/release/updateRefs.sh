@@ -24,7 +24,8 @@ set -e
 
 SCRIPT_NAME=$(basename "$0")
 repo_location="./"
-release_data_file="./pf_release_data.csv"
+release_data_file="pf_release_data.csv"
+release_data_file_tag=""
 
 # Use the bash internal OSTYPE variable to check for MacOS
 if [[ "$OSTYPE" == "darwin"* ]]
@@ -55,6 +56,7 @@ usage()
     echo "         -x           - update policy/apex-pdp references"
     echo "         -k           - update docker base images in Dockerfiles"
     echo "         -f           - update release data in policy parent"
+    echo "         -t tag       - tag the release data file with the given tag"
     echo "         -s           - update release references to snapshot references,"
     echo "                        if omitted, snapshot references are updated to release references"
     echo ""
@@ -78,7 +80,7 @@ update_snapshot=false
 update_docker=false
 update_file=false
 
-while getopts "hd:l:r:pcmoxkfs" opt
+while getopts "hd:l:r:pcmoxkft:s" opt
 do
     case $opt in
     h)
@@ -113,6 +115,9 @@ do
         ;;
     f)
         update_file=true
+        ;;
+    t)
+        release_data_file_tag="$OPTARG"_
         ;;
     s)
         update_snapshot=true
@@ -433,7 +438,15 @@ then
         exit 1
     fi
 
-    echo "updating release data at $repo_location/$target_repo/integration/src/main/resources/release . . ."
-    cp "$release_data_file" "$repo_location/$target_repo"/integration/src/main/resources/release
-    echo "updated release data at $repo_location/$target_repo/integration/src/main/resources/release"
+    release_data_file_name="$release_data_file_tag$release_data_file"
+
+    echo \
+        "updating release data at" \
+        "$repo_location/$target_repo/integration/src/main/resources/release/$release_data_file_name"
+    cp \
+        "$release_data_file" \
+        "$repo_location/$target_repo/integration/src/main/resources/release/$release_data_file_name"
+    echo \
+        "updated release data at" \
+        "$repo_location/$target_repo/integration/src/main/resources/release/$release_data_file_name"
 fi
