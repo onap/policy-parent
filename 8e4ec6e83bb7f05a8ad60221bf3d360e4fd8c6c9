@@ -344,6 +344,782 @@
       "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49d6b03d_ecc13a7a",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "Add link",
+      "range": {
+        "startLine": 84,
+        "startChar": 157,
+        "endLine": 84,
+        "endChar": 170
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d7064d0_593589e9",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": ". It\u0027s best",
+      "range": {
+        "startLine": 84,
+        "startChar": 88,
+        "endLine": 84,
+        "endChar": 101
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "780e19ec_ba9391fa",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 96,
+        "startChar": 165,
+        "endLine": 96,
+        "endChar": 168
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a078f37_6cc223d2",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "tweaks below",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 16
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3c439c_aef1bce1",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": ". I",
+      "range": {
+        "startLine": 112,
+        "startChar": 150,
+        "endLine": 112,
+        "endChar": 153
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc7cd81a_2d90cd5b",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "rephrase",
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a97ec573_72712ee7",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "longer",
+      "range": {
+        "startLine": 215,
+        "startChar": 66,
+        "endLine": 215,
+        "endChar": 70
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5840491f_00948283",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "return",
+      "range": {
+        "startLine": 249,
+        "startChar": 77,
+        "endLine": 249,
+        "endChar": 85
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a49b2bd0_b7394bfc",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "messages",
+      "range": {
+        "startLine": 305,
+        "startChar": 26,
+        "endLine": 305,
+        "endChar": 33
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae3d7878_e9df9d9c",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "white space",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 2
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87521a12_1c3d5c04",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "white space",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 2
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae6bc30_dc6303ae",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "brought",
+      "range": {
+        "startLine": 354,
+        "startChar": 56,
+        "endLine": 354,
+        "endChar": 61
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1a79bc_3e50217f",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "being",
+      "range": {
+        "startLine": 354,
+        "startChar": 29,
+        "endLine": 354,
+        "endChar": 38
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d537294_5437b296",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "white space",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 1
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "198ada9f_21fb19b4",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "bringing up",
+      "range": {
+        "startLine": 361,
+        "startChar": 26,
+        "endLine": 361,
+        "endChar": 37
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69a37ead_8d81170b",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "white space",
+      "range": {
+        "startLine": 367,
+        "startChar": 103,
+        "endLine": 367,
+        "endChar": 105
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7ebf484_96296151",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "it",
+      "range": {
+        "startLine": 394,
+        "startChar": 153,
+        "endLine": 394,
+        "endChar": 155
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7bbc776_cd554319",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "do not",
+      "range": {
+        "startLine": 401,
+        "startChar": 87,
+        "endLine": 401,
+        "endChar": 92
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51a5e64a_88eed641",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "A custom",
+      "range": {
+        "startLine": 403,
+        "startChar": 124,
+        "endLine": 403,
+        "endChar": 130
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bffa885c_ab391994",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "The following",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 9
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cba1a38_7e69a993",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 403,
+        "startChar": 89,
+        "endLine": 403,
+        "endChar": 90
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7491989f_9a32bd82",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 409,
+        "startChar": 10,
+        "endLine": 409,
+        "endChar": 11
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08c0aca_1c18f797",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 440,
+        "startChar": 18,
+        "endLine": 440,
+        "endChar": 19
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6ba0931_e6ae98cb",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 443,
+        "startChar": 2,
+        "endLine": 443,
+        "endChar": 3
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9710b92_6bce5562",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "the command below or",
+      "range": {
+        "startLine": 443,
+        "startChar": 82,
+        "endLine": 443,
+        "endChar": 99
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5202a7e8_c8bcdb00",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "the commands below",
+      "range": {
+        "startLine": 536,
+        "startChar": 72,
+        "endLine": 536,
+        "endChar": 86
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95ab2fb8_70b6d85e",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "The following",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 9
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a434074_48455d49",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 567,
+        "startChar": 107,
+        "endLine": 567,
+        "endChar": 108
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff4f657_c3e8eb87",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "execute",
+      "range": {
+        "startLine": 567,
+        "startChar": 24,
+        "endLine": 567,
+        "endChar": 30
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5163d6ac_808f92da",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "if",
+      "range": {
+        "startLine": 567,
+        "startChar": 51,
+        "endLine": 567,
+        "endChar": 53
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c4488e_fda167d6",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "scripts provided",
+      "range": {
+        "startLine": 578,
+        "startChar": 108,
+        "endLine": 578,
+        "endChar": 124
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452446d7_033fdff4",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "or",
+      "range": {
+        "startLine": 578,
+        "startChar": 35,
+        "endLine": 578,
+        "endChar": 37
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d25510_cf0b7c8a",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "results.",
+      "range": {
+        "startLine": 580,
+        "startChar": 103,
+        "endLine": 580,
+        "endChar": 110
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f95d0fb5_0c7ca2ea",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T15:21:30Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 580,
+        "startChar": 91,
+        "endLine": 580,
+        "endChar": 92
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
