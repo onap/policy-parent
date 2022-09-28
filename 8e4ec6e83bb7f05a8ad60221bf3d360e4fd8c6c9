@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "235b5aec_bb3c5351",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "Make \"microk8s\" a hyper link to the microk8s page.",
+      "range": {
+        "startLine": 522,
+        "startChar": 68,
+        "endLine": 522,
+        "endChar": 76
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe1d129_95bda940",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "These instructions are for development purposes only. We are using the lightweight microk8s as our Kubernetes environment.",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 89
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac352477_bfc89593",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "set up",
+      "range": {
+        "startLine": 13,
+        "startChar": 30,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4160849c_b17131ff",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 14,
+        "startChar": 125,
+        "endLine": 14,
+        "endChar": 126
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e85557ac_66ebdd0b",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "Copy in the text from my comment on the previous page and make the word microk8s a hyperlink.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7ae9c7e_1b4fbd76",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 18,
+        "startChar": 20,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bf5f735_3b9ab48c",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "OOM",
+      "range": {
+        "startLine": 23,
+        "startChar": 120,
+        "endLine": 23,
+        "endChar": 123
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1724558f_25b459a4",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "RAM,",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ae60f7_ed1a9663",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "requires AAF, Policy, and Strimzi-Kafka.",
+      "range": {
+        "startLine": 26,
+        "startChar": 65,
+        "endLine": 26,
+        "endChar": 75
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92120564_7f9ebd92",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "OOM",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4ec41bd_4c62dd65",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "required",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a87b62c_e1a2438a",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "OOM",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f01a5b04_e703a258",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "of being",
+      "range": {
+        "startLine": 48,
+        "startChar": 102,
+        "endLine": 48,
+        "endChar": 107
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f737138_b6180f61",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": "about",
+      "range": {
+        "startLine": 52,
+        "startChar": 27,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17053dd4_d8a39109",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-09-28T08:30:02Z",
+      "side": 1,
+      "message": ". It\u0027s",
+      "range": {
+        "startLine": 56,
+        "startChar": 73,
+        "endLine": 56,
+        "endChar": 76
+      },
+      "revId": "8e4ec6e83bb7f05a8ad60221bf3d360e4fd8c6c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
