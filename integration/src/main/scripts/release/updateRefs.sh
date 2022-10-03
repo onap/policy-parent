@@ -406,19 +406,46 @@ fi
 
 if [ "$update_docker" = true ] && [ "$target_docker_images" != "" ]
 then
-    if [ "$update_snapshot" == true ]
+    if [ "$specified_repo" = "policy/docker" ]
     then
-        echo "updating docker base images to version $docker_latest_snapshot_tag on repo $repo_location/$target_repo . . ."
-        find "$repo_location/$target_repo" \
-            -name '*Docker*' \
-            -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9].*$/\1$docker_latest_snapshot_tag/" {} \;
-        result_code=$?
+        if [ "$update_snapshot" = true ]
+        then
+            major_version=$(echo "$docker_latest_released_tag" | $SED -E 's/^([0-9]*)\.[0-9]*\.[0-9]*$/\1/')
+            minor_version=$(echo "$docker_latest_released_tag" | $SED -E 's/^[0-9]*\.([0-9]*)\.[0-9]*$/\1/')
+            patch_version=$(echo "$docker_latest_released_tag" | $SED -E 's/^[0-9]*\.[0-9]*\.([0-9]*)$/\1/')
+
+            new_patch_version=$((patch_version+1))
+            new_snapshot_tag="$major_version"."$minor_version"."$new_patch_version"-SNAPSHOT
+
+            echo "updating docker base images to version $new_snapshot_tag on repo $repo_location/$target_repo . . ."
+            find "$repo_location/$target_repo" \
+                -name '*Docker*' \
+                -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9].*$/\1$new_snapshot_tag/" {} \;
+            result_code=$?
+        else
+            next_release_version=${docker_latest_snapshot_tag%-*}
+
+            echo "updating docker base images to version $next_release_version on repo $repo_location/$target_repo . . ."
+            find "$repo_location/$target_repo" \
+                -name '*Docker*' \
+                -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9].*$/\1$next_release_version/" {} \;
+            result_code=$?
+        fi
     else
-        echo "updating docker base images to version $docker_latest_released_tag on repo $repo_location/$target_repo . . ."
-        find "$repo_location/$target_repo" \
-            -name '*Docker*' \
-            -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9].*$/\1$docker_latest_released_tag/" {} \;
-        result_code=$?
+        if [ "$update_snapshot" == true ]
+        then
+            echo "updating docker base images to version $docker_latest_snapshot_tag on repo $repo_location/$target_repo . . ."
+            find "$repo_location/$target_repo" \
+                -name '*Docker*' \
+                -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9].*$/\1$docker_latest_snapshot_tag/" {} \;
+            result_code=$?
+        else
+            echo "updating docker base images to version $docker_latest_released_tag on repo $repo_location/$target_repo . . ."
+            find "$repo_location/$target_repo" \
+                -name '*Docker*' \
+                -exec $SED -r -i "s/^(FROM onap\/policy-j[d|r][k|e]-alpine:)[0-9]*.[0-9]*.[0-9].*$/\1$docker_latest_released_tag/" {} \;
+            result_code=$?
+        fi
     fi
 
     if [[ "$result_code" -eq 0 ]]
