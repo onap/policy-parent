@@ -36,4 +36,3 @@ The detailed implementation of the CLAMP Participant ecosystem is described on t
    http-participant
    k8s-participant
    policy-framework-participant
-   participant-simulator

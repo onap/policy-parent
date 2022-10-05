@@ -12,7 +12,7 @@
         }
     },
     "paths": {
-        "/onap/automationcomposition/v2/commission": {
+        "/onap/policy/clamp/acm/v2/commission": {
             "get": {
                 "tags": [
                     "Clamp Automation Composition Commissioning API"
@@ -353,7 +353,7 @@
                 }
             }
         },
-        "/onap/automationcomposition/v2/commission/elements": {
+        "/onap/policy/clamp/acm/v2/commission/elements": {
             "get": {
                 "tags": [
                     "Clamp Automation Composition Commissioning API"
@@ -469,7 +469,7 @@
                 }
             }
         },
-        "/onap/automationcomposition/v2/commission/getCommonOrInstanceProperties": {
+        "/onap/policy/clamp/acm/v2/commission/getCommonOrInstanceProperties": {
             "get": {
                 "tags": [
                     "Clamp Automation Composition Commissioning API"
@@ -593,113 +593,7 @@
                 }
             }
         },
-        "/onap/automationcomposition/v2/commission/toscaServiceTemplateSchema": {
-            "get": {
-                "tags": [
-                    "Clamp Automation Composition Commissioning API"
-                ],
-                "summary": "Query details of the requested tosca service template json schema",
-                "description": "Queries details of the requested commissioned tosca service template json schema, returning all tosca service template json schema details",
-                "operationId": "queryToscaServiceTemplateJsonSchemaUsingGET",
-                "produces": [
-                    "application/json",
-                    "application/yaml"
-                ],
-                "parameters": [
-                    {
-                        "name": "section",
-                        "in": "query",
-                        "description": "Section of Template schema is desired for",
-                        "required": false,
-                        "type": "string",
-                        "default": "all"
-                    },
-                    {
-                        "name": "X-ONAP-RequestID",
-                        "in": "header",
-                        "description": "RequestID for http transaction",
-                        "required": false,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "401": {
-                        "description": "Authentication Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Authorization Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "basicAuth": []
-                    }
-                ],
-                "x-interface info": {
-                    "api-version": "1.0.0",
-                    "last-mod-release": "Istanbul"
-                }
-            }
-        },
-        "/onap/automationcomposition/v2/commission/toscaservicetemplate": {
+        "/onap/policy/clamp/acm/v2/commission/toscaservicetemplate": {
             "get": {
                 "tags": [
                     "Clamp Automation Composition Commissioning API"

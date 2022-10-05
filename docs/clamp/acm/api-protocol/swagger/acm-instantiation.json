@@ -12,7 +12,7 @@
         }
     },
     "paths": {
-        "/onap/automationcomposition/v2/instantiation": {
+        "/onap/policy/clamp/acm/v2/instantiation": {
             "get": {
                 "tags": [
                     "Clamp Automation Composition Instantiation API"
@@ -464,7 +464,7 @@
                 }
             }
         },
-        "/onap/automationcomposition/v2/instantiation/command": {
+        "/onap/policy/clamp/acm/v2/instantiation/command": {
             "put": {
                 "tags": [
                     "Clamp Automation Composition Instantiation API"
@@ -577,6 +577,933 @@
                 "x-interface info": {
                     "api-version": "1.0.0",
                     "last-mod-release": "Istanbul"
+                }
+            }
+        },
+        "/onap/policy/clamp/acm/v2/instantiationState":{
+            "get":{
+                "tags":[
+                    "Clamp Automation Composition Instantiation API"
+                ],
+                "summary":"Query details of the requested automation compositions",
+                "description":"Queries details of requested automation compositions, returning all automation composition details",
+                "operationId":"getInstantiationOrderStateUsingGET",
+                "produces":[
+                    "application/json",
+                    "application/yaml"
+                ],
+                "parameters":[
+                    {
+                        "name":"name",
+                        "in":"query",
+                        "description":"Automation composition  name",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"version",
+                        "in":"query",
+                        "description":"Automation composition  version",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"X-ONAP-RequestID",
+                        "in":"header",
+                        "description":"RequestID for http transaction",
+                        "required":false,
+                        "type":"string",
+                        "format":"uuid"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/AutomationCompositionOrderStateResponse",
+                            "originalRef":"AutomationCompositionOrderStateResponse"
+                        }
+                    },
+                    "401":{
+                        "description":"Authentication Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"Authorization Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"Not Found"
+                    },
+                    "500":{
+                        "description":"Internal Server Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    }
+                },
+                "responsesObject":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/AutomationCompositionOrderStateResponse",
+                            "originalRef":"AutomationCompositionOrderStateResponse"
+                        }
+                    },
+                    "401":{
+                        "description":"Authentication Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"Authorization Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"Not Found"
+                    },
+                    "500":{
+                        "description":"Internal Server Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "basicAuth":[
+
+                        ]
+                    }
+                ],
+                "x-interface info":{
+                    "api-version":"1.0.0",
+                    "last-mod-release":"Istanbul"
+                }
+            }
+        },
+        "/onap/policy/clamp/acm/v2/instanceProperties":{
+            "post":{
+                "tags":[
+                    "Clamp Automation Composition Instantiation API"
+                ],
+                "summary":"Saves instance properties",
+                "description":"Saves instance properties, returning the saved instances properties and it's version",
+                "operationId":"createInstancePropertiesUsingPOST",
+                "consumes":[
+                    "application/json",
+                    "application/yaml"
+                ],
+                "produces":[
+                    "application/json",
+                    "application/yaml"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"Body of instance properties",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/ToscaServiceTemplateReq",
+                            "originalRef":"ToscaServiceTemplateReq"
+                        }
+                    },
+                    {
+                        "name":"X-ONAP-RequestID",
+                        "in":"header",
+                        "description":"RequestID for http transaction",
+                        "required":false,
+                        "type":"string",
+                        "format":"uuid"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/InstancePropertiesResponse",
+                            "originalRef":"InstancePropertiesResponse"
+                        }
+                    },
+                    "201":{
+                        "description":"Created"
+                    },
+                    "401":{
+                        "description":"Authentication Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"Authorization Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"Not Found"
+                    },
+                    "500":{
+                        "description":"Internal Server Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    }
+                },
+                "responsesObject":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/InstancePropertiesResponse",
+                            "originalRef":"InstancePropertiesResponse"
+                        }
+                    },
+                    "201":{
+                        "description":"Created"
+                    },
+                    "401":{
+                        "description":"Authentication Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"Authorization Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"Not Found"
+                    },
+                    "500":{
+                        "description":"Internal Server Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "basicAuth":[
+
+                        ]
+                    }
+                ],
+                "x-interface info":{
+                    "api-version":"1.0.0",
+                    "last-mod-release":"Istanbul"
+                }
+            },
+            "put":{
+                "tags":[
+                    "Clamp Automation Composition Instantiation API"
+                ],
+                "summary":"Updates instance properties",
+                "description":"Updates instance properties, returning the saved instances properties and it's version",
+                "operationId":"updatesInstancePropertiesUsingPUT",
+                "consumes":[
+                    "application/json",
+                    "application/yaml"
+                ],
+                "produces":[
+                    "application/json",
+                    "application/yaml"
+                ],
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"Body of instance properties",
+                        "required":true,
+                        "schema":{
+                            "$ref":"#/definitions/ToscaServiceTemplateReq",
+                            "originalRef":"ToscaServiceTemplateReq"
+                        }
+                    },
+                    {
+                        "name":"name",
+                        "in":"query",
+                        "description":"Automation composition definition name",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"version",
+                        "in":"query",
+                        "description":"Automation composition definition version",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"X-ONAP-RequestID",
+                        "in":"header",
+                        "description":"RequestID for http transaction",
+                        "required":false,
+                        "type":"string",
+                        "format":"uuid"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/InstancePropertiesResponse",
+                            "originalRef":"InstancePropertiesResponse"
+                        }
+                    },
+                    "201":{
+                        "description":"Created"
+                    },
+                    "401":{
+                        "description":"Authentication Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"Authorization Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"Not Found"
+                    },
+                    "500":{
+                        "description":"Internal Server Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    }
+                },
+                "responsesObject":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/InstancePropertiesResponse",
+                            "originalRef":"InstancePropertiesResponse"
+                        }
+                    },
+                    "201":{
+                        "description":"Created"
+                    },
+                    "401":{
+                        "description":"Authentication Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"Authorization Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"Not Found"
+                    },
+                    "500":{
+                        "description":"Internal Server Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "basicAuth":[
+
+                        ]
+                    }
+                ],
+                "x-interface info":{
+                    "api-version":"1.0.0",
+                    "last-mod-release":"Istanbul"
+                }
+            },
+            "delete":{
+                "tags":[
+                    "Clamp Automation Composition Instantiation API"
+                ],
+                "summary":"Delete a automation composition and instance properties",
+                "description":"Deletes a automation composition and instance properties, returning optional error details",
+                "operationId":"deleteInstancePropertiesUsingDELETE",
+                "produces":[
+                    "application/json",
+                    "application/yaml"
+                ],
+                "parameters":[
+                    {
+                        "name":"name",
+                        "in":"query",
+                        "description":"Automation composition definition name",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"version",
+                        "in":"query",
+                        "description":"Automation composition definition version",
+                        "required":true,
+                        "type":"string"
+                    },
+                    {
+                        "name":"X-ONAP-RequestID",
+                        "in":"header",
+                        "description":"RequestID for http transaction",
+                        "required":false,
+                        "type":"string",
+                        "format":"uuid"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/InstantiationResponse",
+                            "originalRef":"InstantiationResponse"
+                        }
+                    },
+                    "204":{
+                        "description":"No Content"
+                    },
+                    "401":{
+                        "description":"Authentication Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"Authorization Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "500":{
+                        "description":"Internal Server Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    }
+                },
+                "responsesObject":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/InstantiationResponse",
+                            "originalRef":"InstantiationResponse"
+                        }
+                    },
+                    "204":{
+                        "description":"No Content"
+                    },
+                    "401":{
+                        "description":"Authentication Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"Authorization Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "500":{
+                        "description":"Internal Server Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "basicAuth":[
+
+                        ]
+                    }
+                ],
+                "x-interface info":{
+                    "api-version":"1.0.0",
+                    "last-mod-release":"Istanbul"
+                }
+            }
+        },
+        "/onap/policy/clamp/acm/v2/automationCompositionPriming":{
+            "get":{
+                "tags":[
+                    "Clamp Automation Composition Instantiation API"
+                ],
+                "summary":"Query priming details of the requested automation compositions",
+                "description":"Queries priming details of requested automation compositions, returning primed/deprimed compositions",
+                "operationId":"getAutomationCompositionPrimingUsingGET",
+                "produces":[
+                    "application/json",
+                    "application/yaml"
+                ],
+                "parameters":[
+                    {
+                        "name":"name",
+                        "in":"query",
+                        "description":"Automation composition  definition name",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"version",
+                        "in":"query",
+                        "description":"Automation composition  definition version",
+                        "required":false,
+                        "type":"string"
+                    },
+                    {
+                        "name":"X-ONAP-RequestID",
+                        "in":"header",
+                        "description":"RequestID for http transaction",
+                        "required":false,
+                        "type":"string",
+                        "format":"uuid"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/AutomationCompositionPrimedResponse",
+                            "originalRef":"AutomationCompositionPrimedResponse"
+                        }
+                    },
+                    "401":{
+                        "description":"Authentication Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"Authorization Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"Not Found"
+                    },
+                    "500":{
+                        "description":"Internal Server Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    }
+                },
+                "responsesObject":{
+                    "200":{
+                        "description":"OK",
+                        "schema":{
+                            "$ref":"#/definitions/AutomationCompositionPrimedResponse",
+                            "originalRef":"AutomationCompositionPrimedResponse"
+                        }
+                    },
+                    "401":{
+                        "description":"Authentication Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "403":{
+                        "description":"Authorization Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"Not Found"
+                    },
+                    "500":{
+                        "description":"Internal Server Error",
+                        "headers":{
+                            "X-LatestVersion":{
+                                "type":"string"
+                            },
+                            "X-PatchVersion":{
+                                "type":"string"
+                            },
+                            "X-MinorVersion":{
+                                "type":"string"
+                            },
+                            "X-ONAP-RequestID":{
+                                "type":"string",
+                                "format":"uuid"
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "basicAuth":[
+
+                        ]
+                    }
+                ],
+                "x-interface info":{
+                    "api-version":"1.0.0",
+                    "last-mod-release":"Istanbul"
                 }
             }
         }

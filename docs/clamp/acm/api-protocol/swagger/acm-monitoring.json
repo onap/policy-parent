@@ -12,7 +12,7 @@
     }
   },
   "paths": {
-    "/onap/automationcomposition/v2/monitoring/acelement": {
+    "/onap/policy/clamp/acm/v2/monitoring/acelement": {
       "get": {
         "tags": [
           "Clamp Automation Composition Monitoring API"
@@ -155,7 +155,7 @@
         }
       }
     },
-    "/onap/automationcomposition/v2/monitoring/acelements/automationcomposition": {
+    "/onap/policy/clamp/acm/v2/monitoring/acelements/automationcomposition": {
       "get": {
         "tags": [
           "Clamp Automation Composition Monitoring API"
@@ -268,7 +268,7 @@
         }
       }
     },
-    "/onap/automationcomposition/v2/monitoring/participant": {
+    "/onap/policy/clamp/acm/v2/monitoring/participant": {
       "get": {
         "tags": [
           "Clamp Automation Composition Monitoring API"
@@ -404,7 +404,7 @@
         }
       }
     },
-    "/onap/automationcomposition/v2/monitoring/participants/automationcomposition": {
+    "/onap/policy/clamp/acm/v2/monitoring/participants/automationcomposition": {
       "get": {
         "tags": [
           "Clamp Automation Composition Monitoring API"

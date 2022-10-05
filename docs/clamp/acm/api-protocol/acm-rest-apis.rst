@@ -103,28 +103,4 @@ Composition.
    The Swagger for the Pass Through API will appear here.
 
 
-Participant Standalone API
-==========================
-
-This API allows a Participant to run in standalone mode and to run standalone Automation
-Composition Elements.
-
-Kubernetes participant can also be deployed as a standalone application and provides REST endpoints
-for onboarding helm charts to its local chart storage, installing and uninstalling of helm charts
-to a Kubernetes cluster. It also allows to configure a remote repository in Kubernetes participant
-for installing helm charts. User can onboard a helm chart along with the overrides YAML file, the
-chart gets stored in the local chart directory of Kubernetes participants. The onboarded charts can
-be installed and uninstalled. The GET API fetches all the available helm charts from the chart
-storage.
-
-.. swaggerv2doc:: swagger/k8sparticipant.json
-
-
-Participant Simulator API
-=========================
-
-This API allows a Participant Simulator to be started and run for test purposes.
-
-.. swaggerv2doc:: swagger/participant-sim.json
-
 End of Document

@@ -13,10 +13,9 @@ resources in the k8s cluster.
 The kubernetes participant also exposes REST endpoints for onboarding, installing and uninstalling of helm charts from the
 local chart database which facilitates the user to also use this component as a standalone application for helm operations.
 
-In Istanbul version, the kubernetes participant supports the following methods of installation of helm charts.
+In Kohn version, the kubernetes participant supports the following methods of installation of helm charts.
 
 - Installation of helm charts from configured helm repositories and remote repositories passed via TOSCA in CLAMP.
-- Installation of helm charts from the local chart database via the participant's REST Api.
 
 Prerequisites for using Kubernetes participant in Istanbul version:
 -------------------------------------------------------------------
@@ -86,15 +85,9 @@ The *repository* type is described in the following table:
    * - repoName
      - String
      - The name of the helm repository that needs to be configured on the helm client
-   * - protocol
-     - String
-     - Specifies http/https protocols to connect with repository url
    * - address
      - String
-     - Specifies the ip address or the host name
-   * - port (optional)
-     - String
-     - Specifies the port where the repository service is running
+     - Specifies the url of the hem repository
    * - userName (optional)
      - String
      - The username to login the helm repository
@@ -120,20 +113,8 @@ Once the automation composition definitions are available in the runtime databas
 When the state of the Automation Composition is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui, the kubernetes participant receives the automation composition state change event from the runtime and
 deploys the helm charts associated with each Automation Composition Elements by creating appropriate namespace on the cluster.
 If the repository of the helm chart is not passed via TOSCA, the participant looks for the helm chart in the configured helm repositories of helm client.
-It also performs a chart look up on the local chart database where the helm charts are onboarded via the participant's REST Api.
 
-The participant also monitors the deployed pods for the next 3 minutes until the pods comes to RUNNING state.
+The participant also monitors the deployed pods for the configured time until the pods comes to RUNNING state.
 It holds the deployment information of the pods including the current status of the pods after the deployment.
 
 When the state of the Automation Composition is changed from "PASSIVE" to "UNINITIALISED" back, the participant also undeploys the helm charts from the cluster that are part of the Automation Composition Element.
-
-REST APIs on Kubernetes participant
------------------------------------
-
-Kubernetes participant can also be installed as a standalone application which exposes REST endpoints for onboarding,
-installing, uninstalling helm charts from local chart database.
-
-
-.. image:: ../../images/participants/k8s-rest.png
-
-:download:`Download Kubernetes participant API Swagger <swagger/k8s-participant-swagger.json>`
