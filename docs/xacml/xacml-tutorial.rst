@@ -377,25 +377,6 @@ Build the code and run the JUnit test. Its easiest to run it via a terminal comm
 
    > mvn clean install
 
-Building Docker Image
-*********************
-To build a docker image that incorporates your application with the XACML PDP Engine. The XACML PDP Engine
-must be able to *find* your Java.Service in the classpath. This is easy to do, just create a jar file for your application
-and copy into the same directory used to startup the XACML PDP.
-
-Here is a Dockerfile as an example:
-
-.. code-block:: bash
-  :caption: Dockerfile
-  :linenos:
-
-    FROM onap/policy-xacml-pdp
-
-    ADD maven/${project.build.finalName}.jar /opt/app/policy/pdpx/lib/${project.build.finalName}.jar
-
-    RUN mkdir -p /opt/app/policy/pdpx/apps/tutorial
-
-    COPY --chown=policy:policy xacml.properties /opt/app/policy/pdpx/apps/tutorial
 
 Download Tutorial Application Example
 *************************************
@@ -404,9 +385,9 @@ If you clone the XACML-PDP repo, the tutorial is included for local testing with
 
 `Tutorial code located in xacml-pdp repo <https://github.com/onap/policy-xacml-pdp/tree/master/tutorials/tutorial-xacml-application>`_
 
-There is an example Docker compose script that you can use to run the Policy Framework components locally and test the tutorial out.
+There are instructions on the repo to run the Policy Framework components locally and test the tutorial out using Docker.
 
-`Docker compose script <https://github.com/onap/policy-xacml-pdp/blob/master/tutorials/tutorial-xacml-application/src/main/docker/docker-compose.yml>`_
+`Docker Instructions <https://github.com/onap/policy-xacml-pdp/tree/master/tutorials/tutorial-xacml-application/src/main/docker>`_
 
 In addition, there is a POSTMAN collection available for setting up and running tests against a
 running instance of ONAP Policy Components (api, pap, dmaap-simulator, tutorial-xacml-pdp).
