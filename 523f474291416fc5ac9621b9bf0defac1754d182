@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2129325_ba8969c3",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-10-11T19:36:10Z",
+      "side": 1,
+      "message": "If we step the minor version, Swagger 2.0 breaks. To go to 2.7.x, we will have to go to OpenAPI (Swagger 3.0) and change the annotations.",
+      "range": {
+        "startLine": 53,
+        "startChar": 28,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "523f474291416fc5ac9621b9bf0defac1754d182",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
