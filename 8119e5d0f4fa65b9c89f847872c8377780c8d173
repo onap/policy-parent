@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d132c20_dbe36f65",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-10-13T15:05:02Z",
+      "side": 1,
+      "message": "Are we are planning to add exclusions for the CDS dragged versions of these? If yes, then it may create runtime conflicts.",
+      "range": {
+        "startLine": 708,
+        "startChar": 12,
+        "endLine": 708,
+        "endChar": 51
+      },
+      "revId": "8119e5d0f4fa65b9c89f847872c8377780c8d173",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
