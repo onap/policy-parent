@@ -22,6 +22,30 @@
       "revId": "8119e5d0f4fa65b9c89f847872c8377780c8d173",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cae70c6_f934811d",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-10-14T08:27:02Z",
+      "side": 1,
+      "message": "I did a local build of everything and all the unit tests pass on all repos.",
+      "parentUuid": "2d132c20_dbe36f65",
+      "range": {
+        "startLine": 708,
+        "startChar": 12,
+        "endLine": 708,
+        "endChar": 51
+      },
+      "revId": "8119e5d0f4fa65b9c89f847872c8377780c8d173",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
