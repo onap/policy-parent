@@ -46,6 +46,30 @@
       "revId": "8119e5d0f4fa65b9c89f847872c8377780c8d173",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d309ac19_c471d822",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-10-14T13:22:15Z",
+      "side": 1,
+      "message": "Thanks Liam for checking unit tests, but the actual gRPC communication between policy-cds is verified at runtime. May be we can merge this change, and then do the pairwise tests to confirm. What do you say?",
+      "parentUuid": "6cae70c6_f934811d",
+      "range": {
+        "startLine": 708,
+        "startChar": 12,
+        "endLine": 708,
+        "endChar": 51
+      },
+      "revId": "8119e5d0f4fa65b9c89f847872c8377780c8d173",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
