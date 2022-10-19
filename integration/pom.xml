@@ -333,6 +333,10 @@
                         <groupId>org.glassfish.jersey.containers</groupId>
                         <artifactId>jersey-container-servlet-core</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>javax.validation</groupId>
+                        <artifactId>validation-api</artifactId>
+                    </exclusion>
                 </exclusions>
             </dependency>
 
@@ -844,7 +848,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>3.11</version>
+                <version>3.12.0</version>
             </dependency>
 
             <!-- Commons IO -->
