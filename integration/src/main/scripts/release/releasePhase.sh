@@ -391,11 +391,10 @@ release_phase_14() {
 release_phase_15() {
     echo "Updating release data file . . ."
     updateRefs.sh \
-        -f \
+        -t "$release_data_file_tag" \
         -d "$release_data_file" \
         -l "$repo_location" \
-        -r "policy/parent" \
-        -t "$release_data_file_tag"
+        -r "policy/parent"
     generateCommit.sh \
         -l "$repo_location" \
         -r "policy/parent" \
