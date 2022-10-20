@@ -55,8 +55,8 @@ usage()
     echo "         -o           - update policy/drools-pdp references"
     echo "         -x           - update policy/apex-pdp references"
     echo "         -k           - update docker base images in Dockerfiles"
-    echo "         -f           - update release data in policy parent"
-    echo "         -t tag       - tag the release data file with the given tag"
+    echo "         -t tag       - update release data in policy parent and"
+    echo "                        tag the release data file with the given tag"
     echo "         -s           - update release references to snapshot references,"
     echo "                        if omitted, snapshot references are updated to release references"
     echo ""
@@ -78,9 +78,9 @@ update_drools_pdp=false
 update_apex_pdp=false
 update_snapshot=false
 update_docker=false
-update_file=false
+update_release_file=false
 
-while getopts "hd:l:r:pcmoxkft:s" opt
+while getopts "hd:l:r:pcmoxkt:s" opt
 do
     case $opt in
     h)
@@ -113,11 +113,9 @@ do
     k)
         update_docker=true
         ;;
-    f)
-        update_file=true
-        ;;
     t)
-        release_data_file_tag="$OPTARG"_
+        update_release_file=true
+        release_data_file_tag="$OPTARG"
         ;;
     s)
         update_snapshot=true
@@ -162,6 +160,12 @@ fi
 if [ -z "$specified_repo" ]
 then
     echo "repo not specified on -r flag"
+    exit 1
+fi
+
+if [ "$update_release_file" = true ] && [ -z "$release_data_file_tag" ]
+then
+    echo "tag not specified on -t flag"
     exit 1
 fi
 
@@ -457,7 +461,7 @@ then
     fi
 fi
 
-if [ "$update_file" = true ]
+if [ "$update_release_file" = true ]
 then
     if [ ! "$target_repo" = "policy/parent" ]
     then
@@ -465,7 +469,7 @@ then
         exit 1
     fi
 
-    release_data_file_name="$release_data_file_tag$release_data_file"
+    release_data_file_name="$release_data_file_tag"_"$release_data_file"
 
     echo \
         "updating release data at" \
