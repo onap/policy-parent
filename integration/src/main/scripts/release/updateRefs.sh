@@ -474,6 +474,11 @@ then
     echo \
         "updating release data at" \
         "$repo_location/$target_repo/integration/src/main/resources/release/$release_data_file_name"
+    # Update the latest release file
+    cp \
+        "$release_data_file" \
+        "$repo_location/$target_repo/integration/src/main/resources/release/$release_data_file"
+    # Update the tagged release file
     cp \
         "$release_data_file" \
         "$repo_location/$target_repo/integration/src/main/resources/release/$release_data_file_name"
