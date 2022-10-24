@@ -15,6 +15,10 @@ Policy Release Notes
 ..      * one section describing the purpose of this new release.
 
 ..      ==========================
+..      * * *     KOHN       * * *
+..      ==========================
+
+..      ==========================
 ..      * * *    JAKARTA     * * *
 ..      ==========================
 
