@@ -25,7 +25,7 @@ All the transaction flows are initiated from a test client server running JMeter
 Setup Details
 -------------
 
-The stability test was performed on a default ONAP OOM installation in the University of New Hampshire (UNH) Lab environment.
+The stability test was performed on a default ONAP OOM installation in the Nordix Lab environment.
 JMeter was installed on a separate VM to inject the traffic defined in the
 `API stability script
 <https://git.onap.org/policy/api/tree/testsuites/stability/src/main/resources/testplans/policy_api_stability.jmx>`_
@@ -33,9 +33,9 @@ with the following command:
 
 .. code-block:: bash
 
-    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t policy_api_stability.jmx -l stabilityTestResultsPolicyApi.jtl
+    nohup apache-jmeter-5.5/bin/jmeter -n -t policy_api_stability.jmx -l stabilityTestResultsPolicyApi.jtl &
 
-The test was run in the background via “nohup”, to prevent it from being interrupted.
+The test was run in the background via “nohup” and “&”, to prevent it from being interrupted.
 
 Test Plan
 ---------
@@ -127,7 +127,7 @@ The load was performed against a non-tweaked ONAP OOM installation.
 =======================  =============  ===========  ===============================  ===============================  ===============================
 **Total # of requests**  **Success %**    **TPS**    **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
 =======================  =============  ===========  ===============================  ===============================  ===============================
-    914881                    100%         3.5              1413 ms                               100 ms                          22201 ms
+    950839                    100%         3.67              1351 ms                               126 ms                          16324 ms
 =======================  =============  ===========  ===============================  ===============================  ===============================
 
 .. image:: api-s3p-results/api-s3p-jm-1_J.png
@@ -147,11 +147,11 @@ A snapshot is taken before and after test execution to monitor the changes in re
 
 Memory and CPU usage before test execution:
 
-.. image:: api-s3p-results/api_top_before_72h.jpg
+.. image:: api-s3p-results/api_top_before_72h.png
 
 Memory and CPU usage after test execution:
 
-.. image:: api-s3p-results/api_top_after_72h.jpg
+.. image:: api-s3p-results/api_top_after_72h.png
 
 
 Performance Test of Policy API
@@ -165,7 +165,7 @@ Performance test of policy-api has the goal of testing the min/avg/max processin
 Setup Details
 -------------
 
-The performance test was performed on a default ONAP OOM installation in the University of New Hampshire (UNH) Lab environment.
+The performance test was performed on a default ONAP OOM installation in the Nordix Lab environment.
 JMeter was installed on a separate VM to inject the traffic defined in the
 `API performance script
 <https://git.onap.org/policy/api/tree/testsuites/performance/src/main/resources/testplans/policy_api_performance.jmx>`_
@@ -173,9 +173,9 @@ with the following command:
 
 .. code-block:: bash
 
-    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t policy_api_performance.jmx -l performanceTestResultsPolicyApi.jtl
+    nohup apache-jmeter-5.5/bin/jmeter -n -t policy_api_performance.jmx -l performanceTestResultsPolicyApi.jtl &
 
-The test was run in the background via “nohup”, to prevent it from being interrupted.
+The test was run in the background via “nohup” and “&”, to prevent it from being interrupted.
 
 Test Plan
 ---------
@@ -193,7 +193,7 @@ Running/Triggering performance test will be the same as stability test. That is,
 =======================  =============  ===========  ===============================  ===============================  ===============================
 **Total # of requests**  **Success %**    **TPS**    **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
 =======================  =============  ===========  ===============================  ===============================  ===============================
-    10417                     100%           1.1              17340 ms                              100 ms                          365982 ms
+    16212                     100%           1.8              11109 ms                              162 ms                          237265 ms
 =======================  =============  ===========  ===============================  ===============================  ===============================
 
 .. image:: api-s3p-results/api-s3p-jm-2_J.png
