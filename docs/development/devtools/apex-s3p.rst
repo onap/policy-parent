@@ -24,11 +24,13 @@ At a minimum, the following ONAP components are needed: policy, mariadb-galera, 
 Before deploying, the values.yaml files are changed to use NodePort instead of ClusterIP for policy-api,
 policy-pap, and policy-apex-pdp, so that they are accessible from jmeter::
 
-  policy-apex-pdp              NodePort    10.43.70.176    <none>        6969:30237/TCP
-  policy-api                   NodePort    10.43.2.99      <none>        6969:30240/TCP
-  policy-pap                   NodePort    10.43.203.178   <none>        6969:30442/TCP
+  policy-apex-pdp              NodePort    10.43.131.43    <none>        6969:31739/TCP
+  policy-api                   NodePort    10.43.67.153    <none>        6969:30430/TCP
+  policy-pap                   NodePort    10.43.200.57    <none>        6969:30585/TCP
 
-The node ports (30237, 30240 and 30442 above) are used in JMeter. The HOSTNAME for JMeter is set to the IP returned by running kubectl cluster-info.
+The node ports (31739, 30430 and 30585 above) are used in JMeter.
+The HOSTNAMEs for JMeter are set to the IPs returned by running "kubectl get node -o wide"
+and to find the applications for each node by running "kubectl describe node <node-name>".
 
 Set up policy-models-simulator
 ------------------------------
@@ -41,7 +43,7 @@ It is run as a docker image from a node accessible to the kubernetes cluster::
 
   docker run -d --rm --publish 6680:6680 --publish 31054:3905 \
     --volume "apex-pdp/testsuites/apex-pdp-stability/src/main/resources/simulatorConfig:/opt/app/policy/simulators/etc/mounted" \
-    nexus3.onap.org:10001/onap/policy-models-simulator:2.6-SNAPSHOT-latest
+    nexus3.onap.org:10001/onap/policy-models-simulator:2.7-SNAPSHOT-latest
 
 The published ports 6680 and 31054 are used in JMeter for CDS and DMaaP simulators.
 
@@ -173,7 +175,7 @@ Stability test plan was triggered for 72 hours. There were no failures during th
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-430331                    100 %             0.00 %              152 ms
+430397                    100 %             0.00 %              151.694 ms
 =======================  =================  ==================  ==================================
 
 .. Note::
@@ -242,7 +244,7 @@ Test results are shown as below.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-47586                    100 %              0.00 %              163 ms
+47567                    100 %              0.00 %              163.841 ms
 =======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
