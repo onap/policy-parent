@@ -99,7 +99,7 @@ The test was run in the background via "nohup", to prevent it from being interru
 
 .. code-block:: bash
 
-    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t stability.jmx -l stabilityTestResults.jtl
+    nohup apache-jmeter-5.5/bin/jmeter -n -t stability.jmx -l stabilityTestResults.jtl &
 
 Test Results
 ------------
@@ -114,16 +114,16 @@ Stability test plan was triggered for 72 hours. There were no failures during th
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-140980                    100 %             0.00 %              717 ms
+    102290                    100 %             0.15 %              782 ms
 =======================  =================  ==================  ==================================
 
 .. Note::
 
-   There were no failures during the 72 hours test.
+   There were 0.15% failures during the 72 hours test, due tue the timing between the metric "undeploySuccessCount" and the Undeploy.
 
 **JMeter Screenshot**
 
-.. image:: pap-s3p-results/pap_stability_jmeter_results.jpg
+.. image:: pap-s3p-results/pap_stability_jmeter_results.png
 
 **Memory and CPU usage**
 
@@ -133,13 +133,13 @@ Prometheus metrics is also collected before and after the test execution.
 
 Memory and CPU usage before test execution:
 
-.. image:: pap-s3p-results/pap_top_before_72h.jpg
+.. image:: pap-s3p-results/pap_top_before_72h.png
 
 :download:`Prometheus metrics before 72h test  <pap-s3p-results/pap_metrics_before_72h.txt>`
 
 Memory and CPU usage after test execution:
 
-.. image:: pap-s3p-results/pap_top_after_72h.jpg
+.. image:: pap-s3p-results/pap_top_after_72h.png
 
 :download:`Prometheus metrics after 72h test  <pap-s3p-results/pap_metrics_after_72h.txt>`
 
@@ -177,7 +177,7 @@ Running/Triggering the performance test will be the same as the stability test. 
 
 .. code-block:: bash
 
-    nohup ./apache-jmeter-5.4.1/bin/jmeter.sh -n -t performance.jmx -l performanceTestResults.jtl
+    nohup apache-jmeter-5.5/bin/jmeter -n -t performance.jmx -l performanceTestResults.jtl &
 
 Test Results
 ------------
@@ -189,9 +189,9 @@ Test results are shown as below.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-24276                    100 %              0.00 %              2556 ms
+19886                    100 %              0.00 %              3107 ms
 =======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
 
-.. image:: pap-s3p-results/pap_performance_jmeter_results.jpg
+.. image:: pap-s3p-results/pap_performance_jmeter_results.png
