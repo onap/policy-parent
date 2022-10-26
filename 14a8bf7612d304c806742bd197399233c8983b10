@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97425682_51eadd8e",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-10-26T17:58:27Z",
+      "side": 1,
+      "message": "I think this one was also closed as won\u0027t do.",
+      "range": {
+        "startLine": 317,
+        "startChar": 3,
+        "endLine": 317,
+        "endChar": 100
+      },
+      "revId": "14a8bf7612d304c806742bd197399233c8983b10",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
