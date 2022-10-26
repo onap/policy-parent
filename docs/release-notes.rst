@@ -18,6 +18,418 @@ Policy Release Notes
 ..      * * *     KOHN       * * *
 ..      ==========================
 
+<<<<<<< HEAD   (47f662 Merge "PAP S3P documentation" into kohn)
+=======
+Version: 11.0.0
+---------------
+
+:Release Date: 2022-11-20 (Kohn Release)
+
+Artifacts released:
+
+.. list-table::
+   :widths: 15 10 10
+   :header-rows: 1
+
+   * - Repository
+     - Java Artifact
+     - Docker Image (if applicable)
+   * - policy/parent
+     - 3.6.1
+     - N/A
+   * - policy/docker
+     - 2.5.1
+     - | policy-jre-alpine
+       | policy-jdk-alpine
+       | policy-db-migrator
+   * - policy/common
+     - 1.11.1
+     - N/A
+   * - policy/models
+     - 2.7.1
+     - N/A
+   * - policy/api
+     - 2.7.1
+     - policy-api
+   * - policy/pap
+     - 2.7.1
+     - policy-pap
+   * - policy/apex-pdp
+     - 2.8.1
+     - policy-apex-pdp
+   * - policy/drools-pdp
+     - 1.11.1
+     - policy-drools
+   * - policy/xacml-pdp
+     - 2.7.1
+     - policy-xacml-pdp
+   * - policy/distribution
+     - 2.8.1
+     - policy-distribution
+   * - policy/clamp
+     - 6.3.1
+     - | policy-clamp-ac-pf-ppnt
+       | policy-clamp-ac-k8s-ppnt
+       | policy-clamp-ac-http-ppnt
+       | policy-clamp-runtime-acm'
+   * - policy/gui
+     - 2.3.1
+     - policy-gui
+   * - policy/drools-applications
+     - 1.11.1
+     - policy-pdpd-cl
+
+Key Updates
+===========
+
+* Support for O1 and A1 Policy Payloads in the 5G SON use Case
+
+  The 5G SON policy is updated to allow O1 and A1 Policy payloads to be passed to SDN-R. Now, policies can pass O1 and
+  A1 Policy payloads.
+
+  See:
+   - `REQ-1212 <https://jira.onap.org/browse/REQ-1212>`_ - 5G SON use case enhancements for Kohn release
+   - `POLICY-4108 <https://jira.onap.org/browse/POLICY-4108>`_ Control Loop Policy for A1-based action for SON
+     Use Case
+
+
+* Native Kafka messaging bewtween Policy Framework components
+
+  The Policy Framework can now be configured to use Kafka for asynchronous communication between PAP and PDPs and
+  between CLAMP ACM Runtime and Participants. Kafka messaging is an alternative to using DMaaP MR for asynchronous
+  messaging. The Policy Framework components are configured to use either DMaaP or Kafka messaging, with DMaaP
+  being the default. This change is supported by APEX-PDP in this release and will be supported DROOLS-PDP and XACML-PDP
+  in future releases.
+
+  See:
+   - `POLICY-4121  <https://jira.onap.org/browse/POLICY-4121>`_ - R11: DMaaP and Kafka updates
+
+* Support for Secured Database Communication
+
+  Database communiction with MariaDB, MySql, or PostgreSQL can be configured to be secure. Secure database communication
+  is introduced for API, PAP, DROOLS-PDP and XACML-PDP. Support for secure database communication will be introduced in
+  CLAMP ACM in a future release.
+
+  See:
+   - `POLICY-4176  <https://jira.onap.org/browse/POLICY-4176>`_ - Support Secured Database Connections
+
+* Support for MySql 8
+
+  The Policy Framework can use MySql 8 for persistence in addition to MariaDb and Postgres. Interoperability with MySql
+  8 has been added for DB-MIGRATOR, API, PAP, DROOLS-PDP, XACML-PDP, and CLAM ACM.
+
+  See:
+   - `POLICY-4314  <https://jira.onap.org/browse/POLICY-4314>`_ - Support for MySql 8.x DB client interfaces
+
+* Support for Service Mesh
+
+  All Policy Framework components and images support service mesh and are service mesh compatible. The OOM charts for
+  all Policy Framework components have been updated to supprot configuration for Service Mesh. In addition, some minor
+  bugs in startup scripts were fixed to allow HTTP or HTTPS to be configured on components.
+
+* XACML-PDP improvements
+
+  - Support for XACML 3.1 introduced
+  - Exposure of application level metrics
+  - Support for Postgres database as well as MariaDB
+  - Support for DCAE TCAGEN2 monitoring app changes
+  - Logging to standard output
+  - XACML tutorial updated and improved
+
+  See:
+   - `POLICY-4049  <https://jira.onap.org/browse/POLICY-4049>`_ - R11: Improvements specific to xacml-pdp
+
+* DROOLS-PDP and DROOLS-Applications improvements
+
+  - Latest Drools libraries supported
+  - JDBC pooling libraries upgraded
+
+  See:
+   - `POLICY-4050  <https://jira.onap.org/browse/POLICY-4050>`_ - R11: Improvements specific to drools-pdp and drools-applications
+
+* APEX-PDP Improvements
+
+   - Support for event definitions in JSON as well as AVRO is added
+   - Support for Metadata Set generation from the APEX CLI editor
+   - Support for deserialization of messages encoded in Avro carried over Kafka
+
+  See:
+   - `POLICY-4048  <https://jira.onap.org/browse/POLICY-4048>`_ - R11: Improvements specific to apex-pdp
+
+* Policy-Distribution Improvements
+
+   - Configuration added to allow distribution of CLAMP ACM compositions
+   - Policy distribution re-synchs if SDC is reinstalled
+
+   See:
+    - `POLICY-4052  <https://jira.onap.org/browse/POLICY-4052>`_ - R11: Improvements to distribution
+
+* CLAMP Improvements
+
+   - Instance properties can be edited
+   - Helm repository can be configured in the Kubernetes participant
+
+  See:
+   - `POLICY-4053  <https://jira.onap.org/browse/POLICY-4053>`_ - R11: Improvements specific to clamp
+
+* System Attribute Improvements
+    - Demo Grafana dashboards available for policy framework components
+    - All parameters in Helm Charts have default values
+    - Springboot dependency handling improved in policy-parent
+    - CSITs amended to use HTTP rather than HTTPS and to use released image versions from Nexus when snapshot image
+      versions are not available
+    - Updates to database drivers to latest versions
+
+Known Limitations, Issues and Workarounds
+=========================================
+
+System Limitations
+~~~~~~~~~~~~~~~~~~
+N/A
+
+Known Vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~
+.. list-table::
+   :widths: 8 3 5 15
+   :header-rows: 1
+
+   * - Dependency
+     - Security Threat Level
+     - Policy Framework Components
+     - Comment
+   * - io.grpc:grpc-core:1.25.0
+     - 6
+     - | policy/models
+       | policy/apex-pdp
+     - Transitive dependency pulled in by the CDS project
+   * - io.springfox:springfox-swagger-ui:3.0.0
+     - 6
+     - | policy/api
+       | policy/pap
+       | policy/clamp
+     - Dependency used to generate Swagger files from annotations
+   * - io.springfox:springfox-swagger2:3.0.0
+     - 6
+     - | policy/api
+       | policy/pap
+       | policy/clamp
+     - Dependency used to generate Swagger files from annotations
+   * - io.projectreactor.netty:reactor-netty-core:1.0.19
+     - 6
+     - | policy/clamp
+     - TBC
+   * - io.projectreactor.netty:reactor-netty-http:1.0.19
+     - 6
+     - | policy/clamp
+     - TBC
+   * - org.webjars jquery-ui 1.12.1
+     - 6
+     - | policy/gui
+     - TBC
+   * - com.thoughtworks.xstream:xstream:1.4.17
+     - 10
+     - | policy/drools-pdp
+     - Pulled in by the Drools rule engine
+   * - org.apache.maven:maven-compat:3.3.9
+     - 10
+     - | policy/drools-pdp
+     - Pulled in by the Drools rule engine
+   * - org.apache.maven:maven-core:3.3.9
+     - 10
+     - | policy/drools-pdp
+     - Pulled in by the Drools rule engine
+   * - org.apache.maven:maven-settings:3.3.9
+     - 10
+     - | policy/drools-pdp
+     - Pulled in by the Drools rule engine
+   * - org.jsoup:jsoup:1.7.2
+     - 10
+     - | policy/drools-pdp
+     - Pulled in by the Drools rule engine
+
+Workarounds
+~~~~~~~~~~~
+N/A
+
+Security Notes
+==============
+.. list-table::
+   :widths: 8 3 5 15
+   :header-rows: 1
+
+   * - Dependency
+     - Security Threat Level
+     - Policy Framework Components
+     - Comment
+   * - org.springframework:spring-web:5.3.22
+     - 10
+     - | policy/common
+       | policy/api
+       | policy/pap
+       | policy/clamp
+       | policy/gui
+     - Threat only applies when serialising and deserialising Java Objects, which the Policy Framework does not do
+
+Functional Improvements
+=======================
+| `POLICY-4108  <https://jira.onap.org/browse/POLICY-4108>`_ - Control Loop Policy for A1-based action for SON Use Case
+|  `POLICY-4356  <https://jira.onap.org/browse/POLICY-4356>`_ - 5g son policy models changes
+|  `POLICY-4357  <https://jira.onap.org/browse/POLICY-4357>`_ - 5g son policy drools apps changes
+
+| `POLICY-4121  <https://jira.onap.org/browse/POLICY-4121>`_ - R11: DMaaP and Kafka updates
+|  `POLICY-4131  <https://jira.onap.org/browse/POLICY-4131>`_ - Update the DMaaP client in the Policy Framework common utility library.
+|  `POLICY-4132  <https://jira.onap.org/browse/POLICY-4132>`_ - Check that all asynchronous messaging continues to work with updated DMaaP client
+|  `POLICY-4133  <https://jira.onap.org/browse/POLICY-4133>`_ - Add a Kafka client in the Policy Framework common utility library.
+|  `POLICY-4134  <https://jira.onap.org/browse/POLICY-4134>`_ - Configure the Policy Framework components to use Kafka along with DMaaP
+|  `POLICY-4135  <https://jira.onap.org/browse/POLICY-4135>`_ - Check that all asynchronous messaging continues to work with Kafka messaging
+|  `POLICY-4313  <https://jira.onap.org/browse/POLICY-4313>`_ - Move kafka version management to policy/parent/integration
+|  `POLICY-4204  <https://jira.onap.org/browse/POLICY-4204>`_ - OOM experimentation using strimzi
+|  `POLICY-4146  <https://jira.onap.org/browse/POLICY-4146>`_ - Add Prometheus counters for measuring SLAs on ACM REST endpoints
+|  `POLICY-4163  <https://jira.onap.org/browse/POLICY-4163>`_ - SLAs on REST Interfaces
+|  `POLICY-4166  <https://jira.onap.org/browse/POLICY-4166>`_ - Spike to understand metrics to measure SLAs
+|  `POLICY-4220  <https://jira.onap.org/browse/POLICY-4220>`_ - CSIT does not display logs for some containers
+|  `POLICY-4086  <https://jira.onap.org/browse/POLICY-4086>`_ - Improve CSIT to use proper currentInstanceCount value in PdpGroups
+|  `POLICY-4338  <https://jira.onap.org/browse/POLICY-4338>`_ - Convert CSITs to use HTTP rather than HTTPS
+|  `POLICY-4167  <https://jira.onap.org/browse/POLICY-4167>`_ - Add build instruction in readme
+
+| `POLICY-4120  <https://jira.onap.org/browse/POLICY-4120>`_ - R11: SUSE flavoured images in the Policy Framework
+|  `POLICY-4128  <https://jira.onap.org/browse/POLICY-4128>`_ - Create an OpenSuse docker file equivalent to the existing Alpine docker file for each image in the Policy Framework
+|  `POLICY-4129  <https://jira.onap.org/browse/POLICY-4129>`_ - Add a build profile to each repo build to trigger generation of Suse flavoured images
+|  `POLICY-4130  <https://jira.onap.org/browse/POLICY-4130>`_ - Add OCI Image spec labels to both Alpine and OpenSuse docker files
+|  `POLICY-4208  <https://jira.onap.org/browse/POLICY-4208>`_ - Reduce size of docker images
+|  `POLICY-4278  <https://jira.onap.org/browse/POLICY-4278>`_ - Upgrade OpenSuse to version 15.4
+|  `POLICY-4334  <https://jira.onap.org/browse/POLICY-4334>`_ - Allow setting external dockerfile
+
+| `POLICY-3642  <https://jira.onap.org/browse/POLICY-3642>`_ - R11: Database and TOSCA related issues
+|  `POLICY-1749  <https://jira.onap.org/browse/POLICY-1749>`_ - Resolve specification of policy type versions in policies in TOSCA
+|  `POLICY-2540  <https://jira.onap.org/browse/POLICY-2540>`_ - Proper handling of data types in policy-models and policy-api
+|  `POLICY-3236  <https://jira.onap.org/browse/POLICY-3236>`_ - Adjust flexibility of Tosca Service Template Handling
+|  `POLICY-4067  <https://jira.onap.org/browse/POLICY-4067>`_ - Fetch all versions of a policyType API returning only the latest version
+|  `POLICY-4176  <https://jira.onap.org/browse/POLICY-4176>`_ - Support Secured Database Connections
+|  `POLICY-4314  <https://jira.onap.org/browse/POLICY-4314>`_ - Support for MySql 8.x DB client interfaces
+|  `POLICY-3489  <https://jira.onap.org/browse/POLICY-3489>`_ - Add script to load default data into tables using db-migrator
+|  `POLICY-3585  <https://jira.onap.org/browse/POLICY-3585>`_ - TOSCA Handling issues
+|  `POLICY-4097  <https://jira.onap.org/browse/POLICY-4097>`_ - Validate policy-api redundancy with at least 2 pods using J release
+|  `POLICY-4098  <https://jira.onap.org/browse/POLICY-4098>`_ - Validate policy-pap redundancy with at least 2 pods using J release
+|  `POLICY-4099  <https://jira.onap.org/browse/POLICY-4099>`_ - Spike to determine the work in apex-pdp for redundancy support
+|  `POLICY-4100  <https://jira.onap.org/browse/POLICY-4100>`_ - Spike to determine the work in drools-pdp for redundancy support
+
+| `POLICY-4048  <https://jira.onap.org/browse/POLICY-4048>`_ - R11: Improvements specific to apex-pdp
+|  `POLICY-4290  <https://jira.onap.org/browse/POLICY-4290>`_ - Support JSON based event schema in apex-pdp
+|  `POLICY-3446  <https://jira.onap.org/browse/POLICY-3446>`_ - Change apex-pdp to use BeanValidator
+|  `POLICY-3810  <https://jira.onap.org/browse/POLICY-3810>`_ - Fix sonar issues in apex-pdp
+|  `POLICY-4084  <https://jira.onap.org/browse/POLICY-4084>`_ - Apex cli editor should generate policies with metadataSet
+|  `POLICY-4285  <https://jira.onap.org/browse/POLICY-4285>`_ - Remove debian packaging from apex-pdp build
+|  `POLICY-4324  <https://jira.onap.org/browse/POLICY-4324>`_ - Fix Docker File for Apex MyFirstExample
+|  `POLICY-4369  <https://jira.onap.org/browse/POLICY-4369>`_ - Support KafkaAvroDeserializer in KafkaConsumer plugin of apex-pdp
+
+| `POLICY-4049  <https://jira.onap.org/browse/POLICY-4049>`_ - R11: Improvements specific to xacml-pdp
+|  `POLICY-3762  <https://jira.onap.org/browse/POLICY-3762>`_ - Expose application level metrics in xacml-pdp
+|  `POLICY-4187  <https://jira.onap.org/browse/POLICY-4187>`_ - Support postgresql in Xacml PDP
+|  `POLICY-4317  <https://jira.onap.org/browse/POLICY-4317>`_ - PAP, PDP-X: Support DCAE tcagen2 monitoring app changes
+|  `POLICY-3495  <https://jira.onap.org/browse/POLICY-3495>`_ - Xacml-pdp should log to stdout
+|  `POLICY-4171  <https://jira.onap.org/browse/POLICY-4171>`_ - Update Docker Tag related configurations in XACML Tutorial code
+|  `POLICY-4275  <https://jira.onap.org/browse/POLICY-4275>`_ - Upgrade XACML PDP to use XACML 3.1 release
+
+| `POLICY-4050  <https://jira.onap.org/browse/POLICY-4050>`_ - R11: Improvements specific to drools-pdp and drools-applications
+|  `POLICY-3960  <https://jira.onap.org/browse/POLICY-3960>`_ - Add/update documents for application metrics support in drools-pdp
+|  `POLICY-4177  <https://jira.onap.org/browse/POLICY-4177>`_ - Support secured DB communications for PDP-D Core
+|  `POLICY-4197  <https://jira.onap.org/browse/POLICY-4197>`_ - PDP-D: thread dump upon detection of application stuck session
+|  `POLICY-4213  <https://jira.onap.org/browse/POLICY-4213>`_ - PDP-D APPS: Jenkins jobs started to fail basic builds
+|  `POLICY-4281  <https://jira.onap.org/browse/POLICY-4281>`_ - Upgrade JDBC pooling libraries in drools
+|  `POLICY-4335  <https://jira.onap.org/browse/POLICY-4335>`_ - PDP-D: Upgrade to the latest version of drools libraries
+
+| `POLICY-4051  <https://jira.onap.org/browse/POLICY-4051>`_ - R11: Improvements to api, pap and policy handling
+|  `POLICY-3887  <https://jira.onap.org/browse/POLICY-3887>`_ - Enhancement in enhanced policy health check
+|  `POLICY-2874  <https://jira.onap.org/browse/POLICY-2874>`_ - Investigate Policy-API S3P stability test results
+|  `POLICY-4288  <https://jira.onap.org/browse/POLICY-4288>`_ - Check PAP CSIT Undeploy test timeout
+
+| `POLICY-4052  <https://jira.onap.org/browse/POLICY-4052>`_ - R11: Improvements to distribution
+|  `POLICY-4110  <https://jira.onap.org/browse/POLICY-4110>`_ - Update configuration changes for distribution of ACM
+|  `POLICY-2103  <https://jira.onap.org/browse/POLICY-2103>`_ - policy/distribution may need to re-synch if SDC gets reinstalled
+
+| `POLICY-4053  <https://jira.onap.org/browse/POLICY-4053>`_ - R11: Improvements specific to clamp
+|  `POLICY-4078  <https://jira.onap.org/browse/POLICY-4078>`_ - Investigation of DB issue within Policy Clamp runtime
+|  `POLICY-4341  <https://jira.onap.org/browse/POLICY-4341>`_ - ACM Runtime pod fails to come-up referencing to wrong filepath
+|  `POLICY-4365  <https://jira.onap.org/browse/POLICY-4365>`_ - Increase code coverage in clamp
+|  `POLICY-4094  <https://jira.onap.org/browse/POLICY-4094>`_ - Add Edit functionality for instance properties in Policy GUI
+|  `POLICY-4105  <https://jira.onap.org/browse/POLICY-4105>`_ - Remove usage of jackson libraries from clamp runtime acm
+|  `POLICY-4113  <https://jira.onap.org/browse/POLICY-4113>`_ - Make the permitted helm repository protocol a configurable parameter in k8s participant
+|  `POLICY-4224  <https://jira.onap.org/browse/POLICY-4224>`_ - Clean up CLAMP Docker handling
+|  `POLICY-4225  <https://jira.onap.org/browse/POLICY-4225>`_ - Fix type version in all tosca_service_template
+|  `POLICY-4229  <https://jira.onap.org/browse/POLICY-4229>`_ - Fix type version in all tosca_service_template in parent documetation
+|  `POLICY-4237  <https://jira.onap.org/browse/POLICY-4237>`_ - Add override parameters for enabling protocol in k8s-ppnt helm chart
+|  `POLICY-4240  <https://jira.onap.org/browse/POLICY-4240>`_ - Update PMSH service template for ACM
+|  `POLICY-4286  <https://jira.onap.org/browse/POLICY-4286>`_ - Junk output in the docker build for kubernetes participant
+|  `POLICY-4289  <https://jira.onap.org/browse/POLICY-4289>`_ - Refactoring redundant spring libraries defined in clamp pom files
+|  `POLICY-4371  <https://jira.onap.org/browse/POLICY-4371>`_ - Remove policy-clamp-be from OOM deployment for Service Mesh
+|  `POLICY-4382  <https://jira.onap.org/browse/POLICY-4382>`_ - Update ACM document in ONAP doc for Kohn release
+
+Necessary Improvements and Bug Fixes
+====================================
+
+Necessary Improvements
+~~~~~~~~~~~~~~~~~~~~~~
+| `POLICY-4045  <https://jira.onap.org/browse/POLICY-4045>`_ - R11: Software (non functional) improvements
+|  `POLICY-3967  <https://jira.onap.org/browse/POLICY-3967>`_ - Create detailed grafana dashboards for each policy framework component
+|  `POLICY-4168  <https://jira.onap.org/browse/POLICY-4168>`_ - Security vulnerability when unzipping csar on distribution
+|  `POLICY-4169  <https://jira.onap.org/browse/POLICY-4169>`_ - Ensure all parameters in Helm Charts have default values
+|  `POLICY-3860  <https://jira.onap.org/browse/POLICY-3860>`_ - Analyze and improve spring boot dependencies management in PF components
+|  `POLICY-4207  <https://jira.onap.org/browse/POLICY-4207>`_ - Remove Jenkins jobs on Guilin branches
+|  `POLICY-4228  <https://jira.onap.org/browse/POLICY-4228>`_ - Add Ramesh Murugan Iyer as a committer
+|  `POLICY-4230  <https://jira.onap.org/browse/POLICY-4230>`_ - Update Weekly Meetings with status from daily scrums
+|  `POLICY-4234  <https://jira.onap.org/browse/POLICY-4234>`_ - Fix CSITs on Honolulu/Istanbul/Jakarta branches
+|  `POLICY-4242  <https://jira.onap.org/browse/POLICY-4242>`_ - PACKAGES UPGRADES IN DIRECT DEPENDENCIES FOR KOHN
+|  `POLICY-4280  <https://jira.onap.org/browse/POLICY-4280>`_ - Upgrade mariadb driver to latest 2.x version in PDP-D, and APPS
+|  `POLICY-4287  <https://jira.onap.org/browse/POLICY-4287>`_ - Update Docker Builds to allow for multiple architecture Docker Fille generation
+|  `POLICY-4308  <https://jira.onap.org/browse/POLICY-4308>`_ - Unmaintained Repos
+|  `POLICY-4354  <https://jira.onap.org/browse/POLICY-4354>`_ - Update INFO.yaml fine on all repos
+|  `POLICY-4393  <https://jira.onap.org/browse/POLICY-4393>`_ - Update dependencies to remove security vulnerabilities
+
+| `POLICY-4046  <https://jira.onap.org/browse/POLICY-4046>`_ - R11: Address technical debt left over from Previous Release
+|  `POLICY-4093  <https://jira.onap.org/browse/POLICY-4093>`_ - Update spring vesion in oparent and remove override in policy/parent
+
+Bug Fixes
+~~~~~~~~~
+| `POLICY-4170  <https://jira.onap.org/browse/POLICY-4170>`_ - Fix k8s-ppnt cluster role binding name in OOM
+| `POLICY-4186  <https://jira.onap.org/browse/POLICY-4186>`_ - Wrong versions of policy related jar in policy-xacml-pdp latest image
+| `POLICY-4226  <https://jira.onap.org/browse/POLICY-4226>`_ - policy distribution cannot disable https to SDC
+| `POLICY-4236  <https://jira.onap.org/browse/POLICY-4236>`_ - K8s participant marks the deployment failed if the deployment is initiated with a delay
+| `POLICY-4238  <https://jira.onap.org/browse/POLICY-4238>`_ - CLAMP ACM docker image Java logging does not work
+| `POLICY-4239  <https://jira.onap.org/browse/POLICY-4239>`_ - ACM commissioning fails with 404 error when deployed in CSIT docker
+| `POLICY-4241  <https://jira.onap.org/browse/POLICY-4241>`_ - Participant update list in ACM is not populated with multiple AC elements
+| `POLICY-4268  <https://jira.onap.org/browse/POLICY-4268>`_ - Logging directory mismatch for policy OOM components
+| `POLICY-4269  <https://jira.onap.org/browse/POLICY-4269>`_ - Clamp Backend fails without AAF in Service Mesh
+| `POLICY-4270  <https://jira.onap.org/browse/POLICY-4270>`_ - CSIT fails while executing CLAMP ACM test cases
+| `POLICY-4274  <https://jira.onap.org/browse/POLICY-4274>`_ - XACML-PDP raw decision API serialization is incorrect
+| `POLICY-4326  <https://jira.onap.org/browse/POLICY-4326>`_ - Look into Policy-Distribution grafana chart for negative heap memory
+| `POLICY-4331  <https://jira.onap.org/browse/POLICY-4331>`_ - Policy-GUI Apex Broken Tests
+| `POLICY-4339  <https://jira.onap.org/browse/POLICY-4339>`_ - Clamp build fails in policy participant module while processing policies without topology template
+| `POLICY-4351  <https://jira.onap.org/browse/POLICY-4351>`_ - log of Element container is not visible at Standard Output
+| `POLICY-4352  <https://jira.onap.org/browse/POLICY-4352>`_ - Lob type from jpa entities casting wrongly on postgres
+| `POLICY-4353  <https://jira.onap.org/browse/POLICY-4353>`_ - JSON schema plugin is not working with multiple events mentioned in apex config with | separator
+| `POLICY-4355  <https://jira.onap.org/browse/POLICY-4355>`_ - PodStatus Validator is failing to check if the pod is running in K8sParticipant
+
+References
+==========
+
+For more information on the ONAP Kohn release, please see:
+
+#. `ONAP Home Page`_
+#. `ONAP Documentation`_
+#. `ONAP Release Downloads`_
+#. `ONAP Wiki Page`_
+
+.. _`ONAP Home Page`: https://www.onap.org
+.. _`ONAP Wiki Page`: https://wiki.onap.org
+.. _`ONAP Documentation`: https://docs.onap.org
+.. _`ONAP Release Downloads`: https://git.onap.org
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+
+>>>>>>> CHANGE (b0f136 Add release notes for Kohn Release)
 ..      ==========================
 ..      * * *    JAKARTA     * * *
 ..      ==========================
@@ -25,7 +437,7 @@ Policy Release Notes
 Version: 10.0.0
 ---------------
 
-:Release Date: 2022-05-12 (jakarta Release)
+:Release Date: 2022-05-12 (Jakarta Release)
 
 Artifacts released:
 
@@ -188,7 +600,7 @@ Functional Improvements
 | `POLICY-3760 <https://jira.onap.org/browse/POLICY-3760>`_ - Expose application level metrics in apex-pdp
 | `POLICY-3761 <https://jira.onap.org/browse/POLICY-3761>`_ - Expose application level metrics in drools-pdp
 | `POLICY-3763 <https://jira.onap.org/browse/POLICY-3763>`_ - Improve policy-api & policy-pap readiness probes to handle db failures
-| `POLICY-3777 <https://jira.onap.org/browse/POLICY-3777>`_ - R10: Control Loop in TOSCA LCM improvement 
+| `POLICY-3777 <https://jira.onap.org/browse/POLICY-3777>`_ - R10: Control Loop in TOSCA LCM improvement
 | `POLICY-3781 <https://jira.onap.org/browse/POLICY-3781>`_ - R10: Policy Framework Database Configurability
 | `POLICY-3808 <https://jira.onap.org/browse/POLICY-3808>`_ - Commission a Control Loop Type from a Control Loop Type package/service
 | `POLICY-3816 <https://jira.onap.org/browse/POLICY-3816>`_ - Support Policy Type Metadata Sets in Policy Framework
@@ -247,7 +659,7 @@ Bug Fixes
 | `POLICY-3831 <https://jira.onap.org/browse/POLICY-3831>`_ - Camel Integration Tests Failing
 | `POLICY-3871 <https://jira.onap.org/browse/POLICY-3871>`_ - Fix issues in existing entity classes in policy-models
 | `POLICY-3893 <https://jira.onap.org/browse/POLICY-3893>`_ - apex-pdp intermittent error in build
-| `POLICY-3897 <https://jira.onap.org/browse/POLICY-3897>`_ - Fix issue with usage of GeneratedValue in PfGeneratedIdKey 
+| `POLICY-3897 <https://jira.onap.org/browse/POLICY-3897>`_ - Fix issue with usage of GeneratedValue in PfGeneratedIdKey
 | `POLICY-3905 <https://jira.onap.org/browse/POLICY-3905>`_ - drools pdp merge job failing
 | `POLICY-3913 <https://jira.onap.org/browse/POLICY-3913>`_ - Fix issue where some metrics are lost in spring boot
 | `POLICY-3914 <https://jira.onap.org/browse/POLICY-3914>`_ - Fix spring configuration for pap csit
