@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3416d2b0_a112ce1c",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-10-26T13:55:33Z",
+      "side": 1,
+      "message": "AFAIR this was closed as won\u0027t do. Probably we can remove this from release note. What do you say?",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 41
+      },
+      "revId": "7dc4b9e19958413c4e66b25ea204ada8a89e9b27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad93156_da21289d",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-10-26T13:55:33Z",
+      "side": 1,
+      "message": "Please also add the support for KafkaAvroSerializer - https://jira.onap.org/browse/POLICY-4369",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 23
+      },
+      "revId": "7dc4b9e19958413c4e66b25ea204ada8a89e9b27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4887af89_b9fb0bf0",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-10-26T13:55:33Z",
+      "side": 1,
+      "message": "Missing the epic link here - https://jira.onap.org/browse/POLICY-4052",
+      "range": {
+        "startLine": 155,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 34
+      },
+      "revId": "7dc4b9e19958413c4e66b25ea204ada8a89e9b27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313b1998_f4394fbd",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2022-10-26T13:55:33Z",
+      "side": 1,
+      "message": "we can remove this as this was closed as won\u0027t do",
+      "range": {
+        "startLine": 335,
+        "startChar": 3,
+        "endLine": 335,
+        "endChar": 116
+      },
+      "revId": "7dc4b9e19958413c4e66b25ea204ada8a89e9b27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
