@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "8932c680_7b591e09",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-10-26T14:59:09Z",
+      "side": 1,
+      "message": "mention 01 as well like \"O1 and A1 policies\".",
+      "revId": "7dc4b9e19958413c4e66b25ea204ada8a89e9b27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c56183bf_cdc84831",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-10-26T14:59:09Z",
+      "side": 1,
+      "message": "\"comunication\" , add \"MySql\".",
+      "revId": "7dc4b9e19958413c4e66b25ea204ada8a89e9b27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "355f7d80_0b889682",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 477
+      },
+      "writtenOn": "2022-10-26T14:59:09Z",
+      "side": 1,
+      "message": "Add another item for support for MySql, something like:\n\n* Support for MySql 8:\n\nEnsure interoperability of DB-MIGRATOR, API, PAP, DROOLS-PDP and XACML-PDP with MySql 8.",
+      "revId": "7dc4b9e19958413c4e66b25ea204ada8a89e9b27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3416d2b0_a112ce1c",
         "filename": "docs/release-notes.rst",
         "patchSetId": 1
