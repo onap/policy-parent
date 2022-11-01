@@ -54,9 +54,8 @@ From your local copy, edit any of the values.yaml files in the policy tree to ma
 
 The policy schema will be installed automatically as part of the database configuration using ``db-migrator``.
 By default the policy schema is upgraded to the latest version.
-For more information on how to change the ``db-migrator`` setup please see: `Using Policy DB Migrator`_.
-
-.. _Using Policy DB Migrator: ../db-migrator/policy-db-migrator.html
+For more information on how to change the ``db-migrator`` setup please see
+:ref:`Using Policy DB Migrator <policy-db-migrator-label>`.
 
 **Step 2** Build the charts
 
@@ -130,7 +129,7 @@ For security reasons, the ports for the policy containers are configured as Clus
   kubectl -n onap expose service policy-api --port=7171 --target-port=6969 --name=api-public --type=NodePort
 
 Overriding certificate stores
-*******************************
+*****************************
 Policy components package default key and trust stores that support https based communication with other
 AAF-enabled ONAP components.  Each store can be overridden at installation.
 
