@@ -53,7 +53,7 @@ Istanbul
 
 **Step 6:** Open up Postman and import the following collections
 
-    `Download Istanbul Postman Collections <collections/Control Loop Istanbul.postman_collection.json>`_
+    `Download Istanbul Postman Collections <https://github.com/onap/policy-parent/blob/master/docs/clamp/acm/policy-upgrade/collections/ControlLoopIstanbul.postman_collection.json>`_
 
 **Step 7:** Open up the folder Control Loop Istanbul/Commissioning
 
@@ -351,7 +351,7 @@ Jakarta
 
 **Step 6:** Open up Postman and import the following collections
 
-    `Download Jakarta Postman Collections <collections/Automation Composition Jakarta.postman_collection.json>`_
+    `Download Jakarta Postman Collections <https://github.com/onap/policy-parent/blob/master/docs/clamp/acm/policy-upgrade/collections/AutomationCompositionJakarta.postman_collection.json>`_
 
 **Step 7:** Open up the folder Automation Composition Jakarta/Commissioning
 
