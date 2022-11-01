@@ -3,7 +3,7 @@
 
 
 A short Introduction to APEX
-*****************************
+****************************
 
 .. contents::
     :depth: 3
@@ -65,7 +65,7 @@ Introduction to APEX
             being fed by the state before. The simplest policy can have
             just one state. We provide specific support for the
             four-state `MEDA (Match Establish Decide
-            Act) <https://www.researchgate.net/publication/303564082_Apex_An_Engine_for_Dynamic_Adaptive_Policy_Execution>`__
+            Act) <https://ieeexplore.ieee.org/document/7502880>`__
             policy state model and the three-state `ECA (Event Condition
             Action) <https://en.wikipedia.org/wiki/Event_condition_action>`__
             policy state model. APEX is fully distributed. You can
@@ -514,17 +514,14 @@ Resources
          .. container:: ulist
 
             -  APEX Documentation hosted on Github:
-               https://ericsson.github.io/apex-docs
+               https://docs.onap.org/projects/onap-policy-parent/en/latest/apex/apex.html
 
             -  APEX source code repository hosted by ONAP:
-               https://gerrit.onap.org/r/#/admin/projects/policy/apex-pdp
+               https://github.com/onap/policy-apex-pdp
 
             -  Issue Management (source and documentation, ONAP JIRA,
                requires a Linux Foundation ID):
                https://jira.onap.org/projects/POLICY/issues
-
-            -  List of APEX publications:
-               https://ericsson.github.io/apex-docs/apex-publications.html
 
 .. container::
    :name: footer

@@ -27,7 +27,7 @@ The procedure documented in this article has been verified using Ubuntu 20.04 LT
 Cloning CLAMP automation composition and all dependency
 *******************************************************
 
-Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/#/admin/projects/?filter=policy>`_. This script clones CLAMP automation composition and all dependency.
+Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/admin/repos/q/filter:policy>`_. This script clones CLAMP automation composition and all dependency.
 
 ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the ONAP ECOMP SDK *ecompsdkos* module, and the A&AI Schema module.
 

@@ -218,7 +218,7 @@ Install Ubuntu Server and SW
 
 
 VPN SLA Demo
-^^^^^^^^^^^^^
+^^^^^^^^^^^^
 
           .. container:: sect1
 
@@ -525,14 +525,6 @@ VPN SLA Demo
                         ``http://localhost:8080/ui/pages/index.html``
                         should work on the same host
 
-                     -  APEX please see the APEX documentation for
-                        `Monitoring
-                        Client <https://ericsson.github.io/apex-docs/user-manual/engine-apps/um-engapps-eng-monitoring.html>`__
-                        or `Full
-                        Client <https://ericsson.github.io/apex-docs/user-manual/engine-apps/um-engapps-full-client.html>`__
-                        for details on how to monitor APEX.
-
-
 VPN SLA Policy
 ^^^^^^^^^^^^^^
 
@@ -609,7 +601,7 @@ Trigger Schemas
 
 
 Context Logic Nodes
---------------------
+-------------------
 
          .. container:: sect1
 
@@ -622,7 +614,7 @@ Context Logic Nodes
                   context topology (|cntxtNodes_link|).
 
 Context Logic Edges
---------------------
+-------------------
 
          .. container:: sect1
 
@@ -722,7 +714,7 @@ Logic: Policy Decide State
 
 
 Logic: Policy Act State
-------------------------
+-----------------------
 
          .. container:: sect1
 

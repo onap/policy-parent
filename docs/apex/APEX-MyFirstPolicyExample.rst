@@ -1198,8 +1198,7 @@ Extend Policy Model
             .. container:: paragraph
 
                The exported policy model is then available in the
-               directory you selected, as
-               `MyFirstPolicyModel_0.0.1.json <files/mfp-files/2/MyFirstPolicyModel_0.0.1.json>`__.
+               directory you selected, as **MyFirstPolicyModel_0.0.1.json**.
                The exported policy can now be loaded into the APEX
                Policy Engine, or can be re-loaded and edited by the APEX
                Policy Editor.

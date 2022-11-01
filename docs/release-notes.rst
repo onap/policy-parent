@@ -3,8 +3,8 @@
 .. DO NOT CHANGE THIS LABEL FOR RELEASE NOTES - EVEN THOUGH IT GIVES A WARNING
 .. _release_notes:
 
-Policy Release Notes
-####################
+Policy Framework Release Notes
+##############################
 
 .. note
 ..      * This Release Notes must be updated each time the team decides to Release new artifacts.
@@ -18,8 +18,6 @@ Policy Release Notes
 ..      * * *     KOHN       * * *
 ..      ==========================
 
-<<<<<<< HEAD   (47f662 Merge "PAP S3P documentation" into kohn)
-=======
 Version: 11.0.0
 ---------------
 
@@ -429,7 +427,6 @@ Quick Links:
     - `POLICY project page`_
     - `Passing Badge information for POLICY`_
 
->>>>>>> CHANGE (b0f136 Add release notes for Kohn Release)
 ..      ==========================
 ..      * * *    JAKARTA     * * *
 ..      ==========================
@@ -849,7 +846,7 @@ Database
     - consolidate the UI (Control loop UI and policy)
     - enables code sharing and common handling for REST and TOSCA
     - introduces the Spring Framework into the Policy Framework
-    - see `the CLAMP documentation <https://docs.onap.org/projects/onap-policy-parent/en/latest/clamp/clamp/clamp.html>`_
+    - see `the CLAMP documentation <https://docs.onap.org/projects/onap-policy-parent/en/latest/clamp/clamp.html>`_
 
 * `REQ-716 <https://jira.onap.org/browse/REQ-716>`_ - Control Loop in TOSCA LCM
    - Allows Control Loops to be defined and described in Metadata using TOSCA
@@ -857,7 +854,7 @@ Database
    - Control Loops can be commissioned into Policy/CLAMP, they can be parameterized, initiated on arbitrary
      participants, activated and monitored
    - See `the CLAMP TOSCA Control Loop documentation
-     <https://docs.onap.org/projects/onap-policy-parent/en/latest/clamp/controlloop/controlloop.html>`_
+     <https://docs.onap.org/projects/onap-policy-parent/en/latest/clamp/clamp.html>`_
 
 * CLAMP Client Policy and TOSCA Handling
     - Push existing policy(tree) into pdp
@@ -1377,7 +1374,7 @@ System Limitations
 The policy API component requires a fresh new database when migrating to the guilin release.
 Therefore, upgrades require a fresh new database installation.
 Please see the
-`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/guilin/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
+`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/latest/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
 
 Known Vulnerabilities
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1550,7 +1547,7 @@ POLICY-PAP
    - All PDPs send statistics data as part of the heartbeat. PAP reads this and saves this data to the database, and this statistics data can be accessed from the monitoring GUI.
 
 * PAP API for Create or Update PdpGroups
-   - A new API is now available just for creating/updating PDP Groups. Policies cannot be added/updated during PDP Group create/update operations. There is another API for this. So, if provided in the create/update group request, they are ignored. Supported policy types are defined during PDP Group creation. They cannot be updated once they are created. Refer to this for details: https://github.com/onap/policy-parent/blob/master/docs/pap/pap.rst#id8
+   - A new API is now available just for creating/updating PDP Groups. Policies cannot be added/updated during PDP Group create/update operations. There is another API for this. So, if provided in the create/update group request, they are ignored. Supported policy types are defined during PDP Group creation. They cannot be updated once they are created. Refer to this for details: https://github.com/onap/policy-parent/blob/master/docs/pap/pap.rst
 
 * PAP API to deploy policies to PdpGroups
    - A new API is introduced to deploy policies on specific PDPGroups. Each subgroup includes an "action" property, which is used to indicate that the policies are being added (POST) to the subgroup, deleted (DELETE) from the subgroup, or that the subgroup's entire set of policies is being replaced (PATCH) by a new set of policies.
@@ -1628,14 +1625,14 @@ POLICY-APEX-PDP
 * Passing parameters from ApexConfig to policy logic.
    - TaskParameters can be used to pass parameters from ApexConfig to the policy logic. Consider a scenario where from CLAMP, serviceId or closedLoopId has to be passed to the policy, and this should be available to perform some logic or action within the policy. In the CLAMP UI, while configuring the APEX Policy, specifying taskParameters with these will enable this.
 
-   - More information about the usage of Task Parameters can be found here: https://docs.onap.org/projects/onap-policy-parent/en/frankfurt/apex/APEX-User-Manual.html#configure-task-parameters
+   - More information about the usage of Task Parameters can be found here: https://docs.onap.org/projects/onap-policy-parent/en/latest/apex/APEX-User-Manual.html#configure-task-parameters
 
    - In the taskLogic, taskParameters can be accessed as  executor.parameters.get("ParameterKey1"))
 
-   - More information can be found here: https://docs.onap.org/projects/onap-policy-parent/en/frankfurt/apex/APEX-Policy-Guide.html#accessing-taskparameters
+   - More information can be found here: https://docs.onap.org/projects/onap-policy-parent/en/latest/apex/APEX-Policy-Guide.html#accessing-taskparameters
 
 * GRPC support for APEX-CDS interaction.
-   - APEX-PDP now supports interaction with CDS over gRPC. Up through El Alto, CDS interaction was possible over REST only. A new plugin was developed in APEX for this feature. Refer the link for more details. https://docs.onap.org/projects/onap-policy-parent/en/frankfurt/apex/APEX-User-Manual.html#grpc-io
+   - APEX-PDP now supports interaction with CDS over gRPC. Up through El Alto, CDS interaction was possible over REST only. A new plugin was developed in APEX for this feature. Refer the link for more details. https://docs.onap.org/projects/onap-policy-parent/en/latest/apex/APEX-User-Manual.html#grpc-io
 
 POLICY-XACML-PDP
 ================
@@ -1682,7 +1679,7 @@ System Limitations
 The policy API component requires a fresh new database when migrating to the frankfurt release.
 Therefore, upgrades require a fresh new database installation.
 Please see the
-`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/frankfurt/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
+`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/latest/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
 
 Known Vulnerabilities
 ~~~~~~~~~~~~~~~~~~~~~
@@ -2111,7 +2108,8 @@ The following known issue will be addressed in a future release.
 
     * `[POLICY-1650] <https://jira.onap.org/browse/POLICY-1277>`_ - Policy UI doesn't show left menu or any content
 
-A workaround for this issue consists in bypassing the Portal UI when accessing the Policy UI.   See `PAP recipes <https://docs.onap.org/en/casablanca/submodules/policy/engine.git/docs/platform/cookbook.html?highlight=policy%20cookbook#id23>`_ for the specific procedure.
+A workaround for this issue consists in bypassing the Portal UI when accessing the Policy UI. See the **PAP recipes**
+documentation for the specific procedure.
 
 
 Version: 3.0.1

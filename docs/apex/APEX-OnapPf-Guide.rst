@@ -12,11 +12,12 @@ Installation
 ^^^^^^^^^^^^
 
 Build and Install
--------------------
+-----------------
 
    .. container:: paragraph
 
-      Refer `Apex User Manual <https://docs.onap.org/en/casablanca/submodules/policy/apex-pdp.git/docs/APEX-User-Manual.html>`_ to find details on the build and installation of the APEX component. Information on the requirements and system configuration can also be found here.
+      Refer to
+      :ref:`Apex User Manual <apex-user-manual-label>` to find details on the build and installation of the APEX component. Information on the requirements and system configuration can also be found here.
 
 Installation Layout
 -------------------
@@ -300,7 +301,7 @@ Build a Docker Image
 
 
 APEXOnapPf Configuration File Explained
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
          .. container:: paragraph
 
