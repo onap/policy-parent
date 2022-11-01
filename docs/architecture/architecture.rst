@@ -476,20 +476,20 @@ The following services will be required for the ONAP Policy Framework:
 ================ ============================== =======================================================================
 **Service**      **Endpoint**                   **Description**
 ================ ============================== =======================================================================
-PAP              https://policy-pap             The PAP service, used for policy administration and deployment. See
+PAP              policy-pap                     The PAP service, used for policy administration and deployment. See
                                                 :ref:`Policy Design and Development <design-label>` for details of the
                                                 API for this service
-PDP-X-\ *domain* https://policy-pdpx-\ *domain* A PDP service is defined for each PDP group. A PDP group is identified
+PDP-X-\ *domain* policy-pdpx-\ *domain*         A PDP service is defined for each PDP group. A PDP group is identified
                                                 by the domain on which it operates.
 
                                                 For example, there could be two PDP-X domains, one for admission
                                                 policies for ONAP proper and another for admission policies for VNFs of
                                                 operator *Supacom*. Two PDP-X services are defined:
 
-                                                | https://policy-pdpx-onap
-                                                | https://policy-pdpx-\ *supacom*
-PDP-D-\ *domain* https://policy-pdpd-\ *domain*
-PDP-A-\ *domain* https://policy-pdpa-\ *domain*
+                                                | policy-pdpx-onap
+                                                | policy-pdpx-\ *supacom*
+PDP-D-\ *domain* policy-pdpd-\ *domain*
+PDP-A-\ *domain* policy-pdpa-\ *domain*
 ================ ============================== =======================================================================
 
 There is one and only one PAP service, which handles policy deployment, administration, and monitoring for all policies

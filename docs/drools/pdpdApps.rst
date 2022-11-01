@@ -52,7 +52,7 @@ The *onap/policy-pdpd-cl* image extends the *onap/policy-drools* image with
 the *usecases* controller that realizes the *control loop* application.
 
 Usecases Controller
-====================
+===================
 
 The `usecases <https://git.onap.org/policy/drools-applications/tree/controlloop/common/controller-usecases>`__
 controller is the *control loop* application in ONAP.
@@ -140,14 +140,14 @@ telemetry API extensions.   *Actor* configurations are packaged in this
 feature.
 
 Usecases Controller (controlloop-usecases)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is the *guilin* release implementation of the ONAP use cases.
 It relies on the new *Actor* model framework to carry out a policy's
 execution.
 
 TDJAM Controller (controlloop-tdjam)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is an experimental, java-only controller that will be deprecated after the
 guilin release.
@@ -734,7 +734,7 @@ Verify in *$POLICY_LOGS/network.log* that a *FINAL: SUCCESS* notification is sen
 and an entry is added to the *$POLICY_LOGS/audit.log* indicating successful completion.
 
 vFirewall use case testing
-===========================
+==========================
 
 First step is to create the *operational.modifyconfig* policy.
 
@@ -803,7 +803,7 @@ Verify that the policy shows with the telemetry tools:
 
 
 dcae.vfw.onset.json
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
@@ -885,6 +885,6 @@ Additional information
 ======================
 
 For additional information, please see the
-`Drools PDP Development and Testing (In Depth) <https://wiki.onap.org/display/DW/2020+Frankfurt+Tutorials>`__ page.
+`Drools PDP Development and Testing (In Depth) <https://wiki.onap.org/display/DW/2020-08+Frankfurt+Tutorials>`__ page.
 
 

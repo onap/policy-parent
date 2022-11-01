@@ -54,9 +54,8 @@ From your local copy, edit any of the values.yaml files in the policy tree to ma
 
 The policy schema will be installed automatically as part of the database configuration using ``db-migrator``.
 By default the policy schema is upgraded to the latest version.
-For more information on how to change the ``db-migrator`` setup please see: `Using Policy DB Migrator`_.
-
-.. _Using Policy DB Migrator: ../db-migrator/policy-db-migrator.html
+For more information on how to change the ``db-migrator`` setup please see
+:ref:`Using Policy DB Migrator <policy-db-migrator-label>`.
 
 **Step 2** Build the charts
 
@@ -130,7 +129,7 @@ For security reasons, the ports for the policy containers are configured as Clus
   kubectl -n onap expose service policy-api --port=7171 --target-port=6969 --name=api-public --type=NodePort
 
 Overriding certificate stores
-*******************************
+*****************************
 Policy components package default key and trust stores that support https based communication with other
 AAF-enabled ONAP components.  Each store can be overridden at installation.
 
@@ -163,7 +162,7 @@ When the keystore passwords are changed, the corresponding component configurati
 This procedure is applicable to an installation that requires either AAF or non-AAF derived certificates.
 The reader is refered to the AAF documentation when new AAF-compliant keystores are desired:
 
-* `AAF automated configuration and Certificates <https://docs.onap.org/projects/onap-aaf-authz/en/latest/sections/configuration/AAF_4.1_config.html#typical-onap-entity-info-in-aaf>`_.
+* `AAF automated configuration and Certificates <https://wiki.onap.org/display/DW/Application+Authorization+Framework+%28AAF%29+Documentation>`_.
 * `AAF Certificate Management for Dummies <https://wiki.onap.org/display/DW/AAF+Certificate+Management+for+Dummies>`_.
 * `Instructional Videos <https://wiki.onap.org/display/DW/Instructional+Videos>`_.
 
