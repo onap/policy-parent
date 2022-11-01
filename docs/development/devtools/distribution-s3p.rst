@@ -102,9 +102,9 @@ Modify the versions.sh script to match all the versions being tested.
 
     vi ~/distribution/testsuites/stability/src/main/resources/setup/versions.sh
 
-Ensure the correct docker image versions are specified - e.g. for Jakarta-M4
+Ensure the correct docker image versions are specified - e.g. for Kohn-M4
 
-- export POLICY_DIST_VERSION=2.7-SNAPSHOT
+- export POLICY_DIST_VERSION=2.8-SNAPSHOT
 
 Run the start.sh script to start the components. After installation, script will execute
 ``docker ps`` and show the running containers.
@@ -121,12 +121,12 @@ Run the start.sh script to start the components. After installation, script will
     Creating policy-api          ... done
     Creating policy-pap          ... done
 
-    fa4e9bd26e60   nexus3.onap.org:10001/onap/policy-pap:2.6-SNAPSHOT-latest                "/opt/app/policy/pap…"   1 second ago    Up Less than a second   6969/tcp             policy-pap
-    efb65dd95020   nexus3.onap.org:10001/onap/policy-api:2.6-SNAPSHOT-latest                "/opt/app/policy/api…"   1 second ago    Up Less than a second   6969/tcp             policy-api
-    cf602c2770ba   nexus3.onap.org:10001/onap/policy-db-migrator:2.4-SNAPSHOT-latest        "/opt/app/policy/bin…"   2 seconds ago   Up 1 second             6824/tcp             policy-db-migrator
+    fa4e9bd26e60   nexus3.onap.org:10001/onap/policy-pap:2.7-SNAPSHOT-latest                "/opt/app/policy/pap…"   1 second ago    Up Less than a second   6969/tcp             policy-pap
+    efb65dd95020   nexus3.onap.org:10001/onap/policy-api:2.7-SNAPSHOT-latest                "/opt/app/policy/api…"   1 second ago    Up Less than a second   6969/tcp             policy-api
+    cf602c2770ba   nexus3.onap.org:10001/onap/policy-db-migrator:2.5-SNAPSHOT-latest        "/opt/app/policy/bin…"   2 seconds ago   Up 1 second             6824/tcp             policy-db-migrator
     99383d2fecf4   pdp/simulator                                                            "sh /opt/app/policy/…"   2 seconds ago   Up 1 second                                  pdp-simulator
-    3c0e205c5f47   nexus3.onap.org:10001/onap/policy-models-simulator:2.6-SNAPSHOT-latest   "simulators.sh"          3 seconds ago   Up 2 seconds            3904/tcp             simulator
-    3ad00d90d6a3   nexus3.onap.org:10001/onap/policy-distribution:2.7-SNAPSHOT-latest       "/opt/app/policy/bin…"   3 seconds ago   Up 2 seconds            6969/tcp, 9090/tcp   policy-distribution
+    3c0e205c5f47   nexus3.onap.org:10001/onap/policy-models-simulator:2.7-SNAPSHOT-latest   "simulators.sh"          3 seconds ago   Up 2 seconds            3904/tcp             simulator
+    3ad00d90d6a3   nexus3.onap.org:10001/onap/policy-distribution:2.8-SNAPSHOT-latest       "/opt/app/policy/bin…"   3 seconds ago   Up 2 seconds            6969/tcp, 9090/tcp   policy-distribution
     bb0b915cdecc   nexus3.onap.org:10001/mariadb:10.5.8                                     "docker-entrypoint.s…"   3 seconds ago   Up 2 seconds            3306/tcp             mariadb
 
 .. note::
@@ -148,9 +148,9 @@ Download and install JMeter
     # Install JMeter
     mkdir -p jmeter
     cd jmeter
-    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.1.zip # check if valid version
-    unzip -q apache-jmeter-5.4.1.zip
-    rm apache-jmeter-5.4.1.zip
+    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.zip # check if valid version
+    unzip -q apache-jmeter-5.5.zip
+    rm apache-jmeter-5.5.zip
 
 
 Install & configure visualVM
