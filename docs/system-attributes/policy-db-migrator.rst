@@ -2,6 +2,8 @@
 .. 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
+.. _policy-db-migrator-label:
+
 Using Policy DB Migrator
 ########################
 
