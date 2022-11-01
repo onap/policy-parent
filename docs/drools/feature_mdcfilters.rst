@@ -2,6 +2,8 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
+.. _feature_mdcfilters-label:
+
 ********************
 Feature: MDC Filters
 ********************
@@ -108,9 +110,8 @@ Once the feature and logback.xml is configured to the user's desired settings, s
 
        [2019-03-22T16:38:23.884+00:00] [IN|DMAAP|DCAE-CL|664be3d2-6c12-4f4b-a3e7-c349acced200|ControlLoop-vCPE-48f0c2c3-a172-4192-9ae3-052274181b6e]
 
-The message has now been filtered to display the network infrastructure information and the extracted data from the JSON message based on the feature properties. In order to view the entire message received from a topic, a complementary feature was developed to display the entire message on a per controller basis while preserving the compact network log.  Refer to the `Feature Controller Logging <feature_controllerlogging.html>`_ documentation for details.
-
-
+The message has now been filtered to display the network infrastructure information and the extracted data from the JSON message based on the feature properties. In order to view the entire message received from a topic, a complementary feature was developed to display the entire message on a per controller basis while preserving the compact network log.  Refer to the
+:ref:`Feature Controller Logging <feature_controllerlogging-label>` documentation for details.
 
 End of Document
 

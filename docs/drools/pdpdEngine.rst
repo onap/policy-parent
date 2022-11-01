@@ -473,7 +473,7 @@ commit to execute policies against these policy types if a supporting controller
     </kmodule>
 
 Software Architecture
-======================
+=====================
 
 PDP-D is divided into 2 layers:
 
@@ -872,7 +872,7 @@ The drools libraries in the PDP-D uses maven to fetch rules artifacts and softwa
 The default *settings.xml* file specifies the repositories to search.   This configuration
 can be overriden with a custom copy that would sit in a mounted configuration
 directory.  See an example of the OOM override
-`settings.xml <https://git.onap.org/oom/tree/kubernetes/policy/charts/drools/resources/configmaps/settings.xml>`__.
+`settings.xml <https://github.com/onap/oom/blob/master/kubernetes/policy/components/policy-drools-pdp/resources/configmaps/settings.xml>`_.
 
 The default ONAP installation of the *control loop* child image *onap/policy-pdpd-cl:1.6.4* is *OFFLINE*.
 In this configuration, the *rules* artifact and the *dependencies* retrieves all the artifacts from the local
@@ -883,7 +883,7 @@ An offline configuration requires two items:
 
 - *OFFLINE* environment variable set to true.
 - override *settings.xml* customization, see
-  `settings.xml <https://git.onap.org/oom/tree/kubernetes/policy/charts/drools/resources/configmaps/settings.xml>`__.
+  `settings.xml <https://github.com/onap/oom/blob/master/kubernetes/policy/components/policy-drools-pdp/resources/configmaps/settings.xml>`_.
 
 The default mode in the *onap/policy-drools:1.6.3* is ONLINE instead.
 
@@ -1357,7 +1357,7 @@ A post-start script *config/active.post.sh* can place PDP-D in *active* mode at 
 
     .. code-block:: bash
 
-    bash -c "http --verify=no -a ${TELEMETRY_USER}:${TELEMETRY_PASSWORD} PUT https://localhost:9696/policy/pdp/engine/lifecycle/state/ACTIVE"
+    bash -c "http --verify=no -a ${TELEMETRY_USER}:${TELEMETRY_PASSWORD} PUT <http|https>://localhost:9696/policy/pdp/engine/lifecycle/state/ACTIVE"
 
 Bring up the PDP-D, nexus, and mariadb
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1401,4 +1401,4 @@ Additional information
 ======================
 
 For additional information, please see the
-`Drools PDP Development and Testing (In Depth) <https://wiki.onap.org/display/DW/2020+Frankfurt+Tutorials>`__ page.
+`Drools PDP Development and Testing (In Depth) <https://wiki.onap.org/display/DW/2020-08+Frankfurt+Tutorials>`__ page.

@@ -2,6 +2,8 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
+.. _feature_controllerlogging-label:
+
 ***************************
 Feature: Controller Logging
 ***************************
@@ -37,7 +39,8 @@ Once a logger for the controller is configured, start the drools-pdp and navigat
 
     .. image:: ctrlog_view.png
 
-The original network log remains and will append traffic information from all topics regardless of which controller it is for. To abbreviate and customize messages for the network log, refer to the `Feature MDC Filters <feature_mdcfilters.html>`_ documentation.
+The original network log remains and will append traffic information from all topics regardless of which controller it is for. To abbreviate and customize messages for the network log, refer to the
+:ref:`Feature MDC Filters <feature_mdcfilters-label>` documentation.
 
 
 End of Document
