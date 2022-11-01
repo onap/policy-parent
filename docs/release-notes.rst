@@ -3,8 +3,8 @@
 .. DO NOT CHANGE THIS LABEL FOR RELEASE NOTES - EVEN THOUGH IT GIVES A WARNING
 .. _release_notes:
 
-Policy Release Notes
-####################
+Policy Framework Release Notes
+##############################
 
 .. note
 ..      * This Release Notes must be updated each time the team decides to Release new artifacts.
