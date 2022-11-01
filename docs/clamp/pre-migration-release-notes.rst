@@ -10,7 +10,7 @@ Pre Migration (Guilin and earlier) Release Notes for CLAMP
              releases, please see the policy-clamp related release notes in the :ref:`POLICY Framework Release Notes<release_notes>`
 
 Version: 5.1.0 (Guilin)
---------------------------
+-----------------------
 
 :Release Date: 2020-11-19
 
@@ -169,7 +169,7 @@ The main goal of the El Alto release was to:
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `El Alto CLAMP user stories done <https://wiki.onap.org/display/DW/El+Alto+CLAMP+user+stories+done>`_
+	- The full list of implemented user stories and epics is available
 	  This includes the list of bugs that were fixed during the course of this release.
 
 **Known Issues**
