@@ -3,7 +3,7 @@
 .. _clamp-gui-acm-smoke-tests:
 
 CLAMP GUI Smoke Tests
----------------------------
+---------------------
 1. Introduction
 ***************
 The CLAMP GUI for Automation Compositions is designed to provide a user the ability to interact
@@ -195,7 +195,7 @@ This will trigger installation of the required packages. The application is conf
 
     npm start
 
-This uses nodes internal test dev web server to server the GUI. Once started, you can navigate to the server at "https://localhost:3000" and login with "admin/password".
+This uses nodes internal test dev web server to server the GUI. Once started, you can navigate to the server at "localhost:3000" and login with "admin/password".
 
 That completes the development setup of the environment.
 

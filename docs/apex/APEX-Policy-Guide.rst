@@ -497,7 +497,7 @@ Concept: Policy
 .. container:: ulist
 
   -  The *MEDA* flavor supports policies written to the
-     `MEDA policy pattern <https://www.researchgate.net/publication/282576518_Dynamically_Adaptive_Policies_for_Dynamically_Adaptive_Telecommunications_Networks>`__
+     `MEDA policy pattern <https://ieeexplore.ieee.org/document/7367357>`__
      and require a sequence of four states: namely *Match*, *Establish*, *Decide* and *Act*.
 
   -  The *OODA* flavor supports policies written to the
@@ -1450,8 +1450,7 @@ Create a instance of an Outfield using Schemas
 
   If an outfield is not an atomic type (string, integer, etc.) but uses a complex schema (with a Java or
   Avro backend), APEX can help to create new instances. The ``executor`` provides a field called ``subject``,
-  which provides a schem helper with an API for this. The complete API of the schema helper is documented here:
-  `API Doc: SchemaHelper <https://ericsson.github.io/apex-docs/javadocs/index.html>`__.
+  which provides a schem helper with an API for this.
 
 .. container:: paragraph
 
@@ -1518,8 +1517,7 @@ Create a instance of an Context Album entry using Schemas
 .. container:: paragraph
 
   Context album instances can be created using very similar to the outfields. Here, the schema helper
-  comes from the context album directly. The API of the schema helper is the same as for outfields, see
-  `API Doc: SchemaHelper <https://ericsson.github.io/apex-docs/javadocs/index.html>`__.
+  comes from the context album directly. The API of the schema helper is the same as for outfields.
 
 .. container:: paragraph
 

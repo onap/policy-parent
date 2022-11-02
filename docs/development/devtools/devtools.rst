@@ -27,7 +27,7 @@ The procedure documented in this article has been verified to work on a MacBook 
 Cloning All The Policy Repositories
 ***********************************
 
-Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/#/admin/projects/?filter=policy>`_. This script clones all the ONAP Policy Framework repositories.
+Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/admin/repos/q/filter:policy>`_. This script clones all the ONAP Policy Framework repositories.
 
 ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the ONAP ECOMP SDK *ecompsdkos* module, and the A&AI Schema module.
 
@@ -246,7 +246,7 @@ Another example on how to run the MariaDb is using the docker compose file used 
 `Example Compose Script to run MariaDB <https://gerrit.onap.org/r/gitweb?p=integration/csit.git;a=blob;f=scripts/policy/docker-compose-api.yml;h=e32190f1e6cb6d9b64ddf53a2db2c746723a0c6a;hb=refs/heads/master>`_
 
 Running the API component standalone
-+++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++
 
 Assuming you have successfully built the codebase using the instructions above. The only requirement for the API component to run is a
 running MariaDb database instance. The easiest way to do this is to run the docker image, please see the mariadb documentation for the latest
@@ -266,7 +266,7 @@ An example of running the api using a docker compose script is located in the Po
 `Policy CSIT API Docker Compose <https://gerrit.onap.org/r/gitweb?p=integration/csit.git;a=blob;f=scripts/policy/docker-compose-api.yml;h=e32190f1e6cb6d9b64ddf53a2db2c746723a0c6a;hb=refs/heads/master>`_
 
 Running the PAP component standalone
-+++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++
 
 Once you have successfully built the PAP codebase, a running MariaDb database and DMaaP instance will also be required to start up the application.
 For MariaDb instance, the easiest way is to run the docker image, please see the mariadb documentation for the latest
@@ -455,9 +455,6 @@ of such a test case.
        FileUtils.writeStringToFile(new File("target/swagger/swagger.json"), httpsEntity.getBody(),
                Charset.defaultCharset());
    }
-
-See `this unit test case <https://github.com/onap/policy-clamp/blob/master/runtime/src/test/java/org/onap/policy/clamp/clds/it/HttpsItCase.java>`_
-for the full example.
 
 2. Accessing Swagger documentation for springboot based policy applications
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

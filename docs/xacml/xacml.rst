@@ -8,7 +8,7 @@ Policy XACML PDP Engine
 .. toctree::
    :maxdepth: 2
 
-The ONAP XACML Policy PDP Engine uses an `open source implementation <https://github.com/att/XACML>`__ of the `OASIS XACML 3.0 Standard <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml>`__ to support fine-grained policy decisions in the ONAP. The XACML 3.0 Standard is a language for both policies and requests/responses for access control decisions. The ONAP XACML PDP translates TOSCA Compliant Policies into the XACML policy language, loads the policies into the XACML engine and exposes a Decision API which uses the XACML request/response language to render decisions for ONAP components.
+The ONAP XACML Policy PDP Engine uses an `open source implementation <https://github.com/att/xacml-3.0>`__ of the `OASIS XACML 3.0 Standard <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xacml>`__ to support fine-grained policy decisions in the ONAP. The XACML 3.0 Standard is a language for both policies and requests/responses for access control decisions. The ONAP XACML PDP translates TOSCA Compliant Policies into the XACML policy language, loads the policies into the XACML engine and exposes a Decision API which uses the XACML request/response language to render decisions for ONAP components.
 
 ONAP XACML PDP Supported Policy Types
 *************************************
@@ -67,7 +67,7 @@ These two translators are used by the Guard application and are very specific to
 `Implementation of Coordination Translator <https://github.com/onap/policy-xacml-pdp/blob/master/applications/guard/src/main/java/org/onap/policy/xacml/pdp/application/guard/CoordinationGuardTranslator.java>`_
 
 Native XACML OAISIS 3.0 XML Policy Translator
------------------------------------------------
+---------------------------------------------
 
 This translator pulls a URL encoded XML XACML policy from a TOSCA Policy and loads it into a XACML Engine. This allows native XACML policies to be used to support complex use cases in which a translation from TOSCA to XACML is too difficult.
 
