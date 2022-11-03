@@ -75,9 +75,9 @@ echo "health checks"
 echo "-------------"
 
 health_check onap-daily-dt-oom-master
+health_check onap-daily-dt-oom-kohn
 health_check onap-daily-dt-oom-jakarta
 health_check onap-daily-dt-oom-istanbul
-health_check onap_daily_pod4_master
 
 jenkins_report_temp_file=$(mktemp)
 
