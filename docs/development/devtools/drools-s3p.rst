@@ -32,12 +32,11 @@ Other ONAP components exercised during the stability tests were:
 - Policy API to create (and delete at the end of the tests) policies for each
   scenario under test.
 - Policy PAP to deploy (and undeploy at the end of the tests) policies for each scenario under test.
+- XACML PDP Stability test was running at the same time.
 
 The following components are simulated during the tests.
 
-- SO actor for the vDNS use case.
-- APPC responses for the vCPE and vFW use cases.
-- AAI to answer queries for the use cases under test.
+- SDNR.
 
 Stability Test of Policy PDP-D
 ******************************
@@ -45,30 +44,21 @@ Stability Test of Policy PDP-D
 PDP-D performance
 =================
 
-The tests focused on the following use cases:
+The tests focused on the following use cases running in parallel:
 
 - vCPE
-- vDNS
-- vFirewall
+- SON O1
+- SON A1
 
-For 72 hours the following 5 scenarios ran in parallel:
-
-- vCPE success scenario
-- vDNS success scenario.
-- vFirewall success scenario.
-- vCPE failure scenario (simulates a failure scenario returned by simulated APPC recipient through DMaaP).
-- vDNS failure scenario (simulates a failure by introducing in the DCAE ONSET a non-existent vserver-name reference).
-
-Five threads ran in parallel, one for each scenario, back to back with no pauses.   The transactions were initiated
-by each jmeter thread group.   Each thread initiated a transaction, monitored the transaction, and
-as soon as the transaction ending was detected, it initiated the next one.
+Three threads ran in parallel, one for each scenario.  The transactions were initiated
+by each jmeter thread group.  Each thread initiated a transaction, monitored the transaction, and
+started the next one 250 ms. later.
 
 The results are illustrated on the following graphs:
 
 .. image:: images/s3p-drools-1.png
 .. image:: images/s3p-drools-2.png
 .. image:: images/s3p-drools-3.png
-.. image:: images/s3p-drools-4.png
 
 
 Commentary
@@ -79,13 +69,6 @@ final output of jmeter:
 
 .. code-block:: bash
 
-    summary = 37705505 in 72:00:56 =  145.4/s Avg:    30 Min:     0 Max: 20345 Err: 360852 (0.96%)
+    summary = 4751546 in 72:00:37 =   18.3/s Avg:   150 Min:     0 Max: 15087 Err: 47891 (1.01%)
 
-The 1% errors were found to be related to the nature of the run, where each one of the 5 use case
-threads run without pauses starting one after the other a new round of their assigned control loop.
-It has been found that at times, the release time of the lock (which requires DB operations) outruns
-the initiation of the next control loop (using the same resource), therefore the newly initiated control
-loop fails.  In reality, this scenario with the same resource being used back to back in consecutive control
-loop rounds will be unlikely.
-
-
+Sporadic database errors have been observed and seem related to the 1% failure percentage rate.

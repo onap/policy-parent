@@ -9,8 +9,8 @@
 
 ##########################
 
-Performance Test of Policy XACML PDP
-************************************
+Performance Test of Policy XACML PDP (Jakarta)
+**********************************************
 
 The Performance test was executed by performing requests
 against the Policy RESTful APIs.
@@ -69,9 +69,15 @@ The test was run for 20 minutes with 10 users (i.e., threads), with the followin
 
 
 Stability Test of Policy XACML PDP
-************************************
+**********************************
 
-The stability test were executed in the same lab.   The test was run via jmeter.
+This test was run using jmeter on a default
+ONAP installation in the Policy tenant in UNH.
+
+The Agent VMs in this lab have the following configuration:
+
+- 16GB RAM
+- 8 VCPU
 
 Summary
 =======
@@ -120,9 +126,9 @@ The stability summary results were reported by JMeter with the following summary
 
 .. code-block:: bash
 
-    summary = 997436933 in 71:59:45 = 3848.4/s Avg:     0 Min:     0 Max:  1480 Err:     0 (0.00%)
+    summary = 941639699 in 71:59:36 = 3633.2/s Avg:     1 Min:     0 Max:   842 Err:     0 (0.00%)
 
-The XACML PDP offered very good performance with JMeter for the traffic mix described above, using 3848 threads per second
-to inject the traffic load.   The average transaction time is insignificant.   The maximum transaction time of 1480ms.
-occured in the beginning of the run while the JVM was warming up.
+The XACML PDP offered very good performance with JMeter for the traffic mix described above.
+The average transaction time is insignificant.  The maximum transaction time of 842 ms.
+There was a Drools stability test running in parallel, hence the actual load was higher.
 
