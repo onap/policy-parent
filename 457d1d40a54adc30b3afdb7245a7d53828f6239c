@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71e4bb92_20bcf300",
+        "filename": "docs/development/devtools/drools-smoke.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-11-09T18:05:45Z",
+      "side": 0,
+      "message": "This link no longer exists.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 99
+      },
+      "revId": "457d1d40a54adc30b3afdb7245a7d53828f6239c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aea13e5c_b84dc01d",
+        "filename": "docs/development/devtools/strimzi-policy.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-11-09T18:05:45Z",
+      "side": 0,
+      "message": "This link no longer exists.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 3
+      },
+      "revId": "457d1d40a54adc30b3afdb7245a7d53828f6239c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1540ca96_8e094044",
+        "filename": "docs/development/devtools/xacml-smoke.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2022-11-09T18:05:45Z",
+      "side": 0,
+      "message": "This link no longer exists.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 5
+      },
+      "revId": "457d1d40a54adc30b3afdb7245a7d53828f6239c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
