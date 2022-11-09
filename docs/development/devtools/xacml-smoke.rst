@@ -21,7 +21,7 @@ ONAP OOM kubernetes
 
 For installation instructions, please refer to the following documentation:
 
-`OOM Quick Start Guide <https://docs.onap.org/projects/onap-oom/en/latest/oom_quickstart_guide.html>`_
+`OOM Documentation <https://docs.onap.org/projects/onap-oom/en/latest/>`_
 
 At a minimum policy needs the following components installed:
 

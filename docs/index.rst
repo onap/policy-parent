@@ -22,5 +22,6 @@ Policy Framework Architecture
    apex/apex
    distribution/distribution
    clamp/clamp
+   ui/ui
    system-attributes/system-attributes
    release-notes

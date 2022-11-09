@@ -1,6 +1,8 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
 
+.. _apex-policy-examples-label:
+
 Policy Examples
 ***************
 
@@ -15,7 +17,7 @@ Policy Examples
     :depth: 3
 
 Sample APEX Policy in TOSCA format
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
          .. container:: paragraph
 
@@ -40,7 +42,7 @@ My First Policy
 
          .. container:: ulist
 
-            -  :ref:`My-First-Policy on the APEX site <apex-myFirstExample>`
+            -  :ref:`My-First-Policy Example <apex-myFirstExample>`
 
 VPN SLA
 ^^^^^^^
