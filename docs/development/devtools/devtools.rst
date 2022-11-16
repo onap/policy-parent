@@ -13,7 +13,6 @@ Policy Platform Development Tools
 
 This article explains how to build the ONAP Policy Framework for development purposes and how to run stability/performance tests for a variety of components. To start, the developer should consult the latest ONAP Wiki to familiarize themselves with developer best practices and how-tos to setup their environment, see `https://wiki.onap.org/display/DW/Developer+Best+Practices`.
 
-
 This article assumes that:
 
 * You are using a *\*nix* operating system such as linux or macOS.
@@ -409,54 +408,7 @@ To test these images, CSITs will be run.
 Generating Swagger Documentation
 ********************************
 
-1. Using Swagger2Markup maven plugin from Policy Parent Integration POM
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-The `Policy Parent Integration POM <https://github.com/onap/policy-parent/blob/master/integration/pom.xml>`_ contains a *generateSwaggerDocs* profile. This
-profile can be activated on any module that has a Swagger endpoint. When active, this profile creates a tarball in Nexus with the name
-*<project-artifactId>-swagger-docs.tar.gz*. The tarball contains the following files:
-
-.. code-block:: bash
-
-    swagger/swagger.html
-    swagger/swagger.json
-    swagger/swagger.pdf
-
-The profile is activated when:
-
-1. The following property is defined at the top of the *pom.xml* file for a module
-
-    .. code-block:: bash
-
-        <!--  This property triggers generation of the Swagger documents -->
-        <swagger.generation.phase>post-integration-test</swagger.generation.phase>
-
-    See the `CLAMP runtime POM <https://github.com/onap/policy-clamp/blob/master/runtime/pom.xml>`_ for an example of the usage of this property.
-
-2. Unit tests are being executed in the build, in other words when the *skipTests* flag is *false*.
-
-You **must** create a unit test in your module that generates the following file:
-
-.. code-block:: bash
-
-    src/test/resources/swagger/swagger.json
-
-Typically, you do this by starting your REST endpoint in a unit test, issuing a REST call to get the Swagger API documentation. The test case below is an example
-of such a test case.
-
-.. code-block:: java
-
-   @Test
-   public void testSwaggerJson() throws Exception {
-       ResponseEntity<String> httpsEntity = getRestTemplate()
-               .getForEntity("https://localhost:" + this.httpsPort + "/restservices/clds/api-doc", String.class);
-       assertThat(httpsEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-       assertThat(httpsEntity.getBody()).contains("swagger");
-       FileUtils.writeStringToFile(new File("target/swagger/swagger.json"), httpsEntity.getBody(),
-               Charset.defaultCharset());
-   }
-
-2. Accessing Swagger documentation for springboot based policy applications
+1. Accessing Swagger documentation for springboot based policy applications
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Springfox Swagger2 maven dependency aids with auto-generation of Swagger documentation.
