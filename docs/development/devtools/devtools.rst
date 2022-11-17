@@ -431,8 +431,6 @@ The profile is activated when:
         <!--  This property triggers generation of the Swagger documents -->
         <swagger.generation.phase>post-integration-test</swagger.generation.phase>
 
-    See the `CLAMP runtime POM <https://github.com/onap/policy-clamp/blob/master/runtime/pom.xml>`_ for an example of the usage of this property.
-
 2. Unit tests are being executed in the build, in other words when the *skipTests* flag is *false*.
 
 You **must** create a unit test in your module that generates the following file:

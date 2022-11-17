@@ -194,7 +194,7 @@ Download OOM repo
 The Policy kubernetes chart is located in the `OOM repository <https://github.com/onap/oom/tree/master/kubernetes/policy>`_.
 This chart includes different policy components referred as <policy-component-name>.
 
-Please refer to the `OOM documentation <https://docs.onap.org/projects/onap-oom/en/latest/oom_user_guide.html>`_ on how to install and deploy ONAP.
+Please refer to the `OOM documentation <https://docs.onap.org/projects/onap-oom/en/latest/sections/guides/user_guides/oom_user_guide.html>`_ on how to install and deploy ONAP.
     .. code-block:: bash
 
        cd
