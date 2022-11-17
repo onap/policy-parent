@@ -2626,6 +2626,31 @@ Kafka Input
                   Kindly note that the above Kafka properties is just a reference,
                   and the actual properties required depends on the Kafka server installation.
 
+                  In cases where the message produced in Kafka topic has been serialized using KafkaAvroSerializer,
+                  then the following parameters needs to be additionally added to `KafkaProperties` for the consumer
+                  to have the capability of deserializing the message properly while consuming.
+
+               .. container:: listingblock
+
+                  .. container:: content
+
+                     .. code::
+
+                        [
+                          "value.deserializer",
+                          "io.confluent.kafka.serializers.KafkaAvroDeserializer"
+                        ],
+                        [
+                          "schema.registry.url",
+                          "<url of the schema registry configured in Kafka cluster for registering Avro schemas>"
+                        ]
+
+               .. container:: paragraph
+
+                  For more details on how to setup schema registry for Kafka cluster,
+                  kindly take a look `here <https://github.com/confluentinc/schema-registry/blob/master/README.md>`__.
+
+
 Kafka Output
 ============
                .. container:: paragraph
