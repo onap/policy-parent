@@ -499,10 +499,7 @@ A configuration example
                         "sdcConfiguration":{
                             "parameterClassName":"org.onap.policy.distribution.reception.handling.sdc.SdcReceptionHandlerConfigurationParameterGroup",
                             "parameters":{
-                                "asdcAddress": "sdc-be.onap:8443",
-                                "messageBusAddress": [
-                                "message-router.onap"
-                                 ],
+                                "sdcAddress": "sdc-be.onap:8443",
                                 "user": "policy",
                                 "password": "Kp8bJ4SXszM0WXlhak3eHlcse2gAw84vaoGGmJvUy2U",
                                 "pollingInterval":20,
@@ -518,7 +515,11 @@ A configuration example
                                 "keyStorePassword": "null",
                                 "activeserverTlsAuth": false,
                                 "isFilterinEmptyResources": true,
-                                "isUseHttpsWithDmaap": true
+                                "isUseHttpsWithSdc": true,
+                                "httpsProxyHost": ,
+                                "httpProxyHost": ,
+                                "httpsProxyPort": 0,
+                                "httpProxyPort": 0
                             }
                         }
                     },
