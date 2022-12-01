@@ -44,37 +44,37 @@ Artifacts released:
      - 1.11.1
      - N/A
    * - policy/models
-     - 2.7.1
+     - 2.7.2
      - N/A
    * - policy/api
-     - 2.7.1
+     - 2.7.2
      - policy-api
    * - policy/pap
-     - 2.7.1
+     - 2.7.2
      - policy-pap
    * - policy/apex-pdp
-     - 2.8.1
+     - 2.8.2
      - policy-apex-pdp
    * - policy/drools-pdp
-     - 1.11.1
+     - 1.11.2
      - policy-drools
    * - policy/xacml-pdp
-     - 2.7.1
+     - 2.7.2
      - policy-xacml-pdp
    * - policy/distribution
-     - 2.8.1
+     - 2.8.2
      - policy-distribution
    * - policy/clamp
-     - 6.3.1
+     - 6.3.2
      - | policy-clamp-ac-pf-ppnt
        | policy-clamp-ac-k8s-ppnt
        | policy-clamp-ac-http-ppnt
        | policy-clamp-runtime-acm'
    * - policy/gui
-     - 2.3.1
+     - 2.3.2
      - policy-gui
    * - policy/drools-applications
-     - 1.11.1
+     - 1.11.2
      - policy-pdpd-cl
 
 Key Updates
