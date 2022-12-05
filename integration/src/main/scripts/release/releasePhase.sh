@@ -387,7 +387,6 @@ release_phase_14() {
     echo "Updated snapshots on policy/drools-applications and policy/gui"
 }
 
-
 release_phase_15() {
     echo "Updating release data file . . ."
     updateRefs.sh \
