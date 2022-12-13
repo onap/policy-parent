@@ -25,7 +25,7 @@
         <groupId>org.onap.oparent</groupId>
         <artifactId>oparent</artifactId>
         <!-- When changing, also change the oparent.version property -->
-        <version>3.3.2</version>
+        <version>3.3.3-SNAPSHOT</version>
         <relativePath />
     </parent>
     <groupId>org.onap.policy.parent</groupId>
@@ -34,7 +34,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <oparent.version>3.3.2</oparent.version>
+        <oparent.version>3.3.3-SNAPSHOT</oparent.version>
     </properties>
 
     <modules>
