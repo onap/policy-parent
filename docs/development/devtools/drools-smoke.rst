@@ -31,7 +31,7 @@ At a minimum policy needs the following components installed:
 
 AAI, SO and other components can be simulated by installing the simulator charts:
 
-`Policy Simulator Helm Chart <https://git.onap.org/policy/docker/tree/helm/policy-models-simulator>`_
+`Policy Simulator Helm Chart <https://git.onap.org/policy/docker/tree/helm/policy/components/policy-models-simulator>`_
 
 docker-compose based
 --------------------

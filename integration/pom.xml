@@ -54,7 +54,7 @@
         <version.cucumber>7.9.0</version.cucumber>
         <version.dmaap>1.1.12</version.dmaap>
         <version.docker-java>3.2.14</version.docker-java>
-        <version.drools>7.73.0.Final</version.drools>
+        <version.drools>8.32.0.Final</version.drools>
         <version.eclipselink>2.7.8</version.eclipselink>
         <!--version.eclipselink>4.0.0</version.eclipselink-->
         <version.google-re2j>1.7</version.google-re2j>
