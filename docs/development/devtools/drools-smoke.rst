@@ -31,14 +31,14 @@ At a minimum policy needs the following components installed:
 
 AAI, SO and other components can be simulated by installing the simulator charts:
 
-`Policy Simulator Helm Chart <https://git.onap.org/policy/docker/tree/helm/policy-models-simulator>`_
+`Policy Simulator Helm Chart <https://github.com/onap/policy-docker/tree/master/helm/policy/components/policy-models-simulator>`_
 
 docker-compose based
 --------------------
 
 A smaller testing environment can be put together by replicating the CSIT test environment:
 
-`Policy CSIT Test infrastructure <https://git.onap.org/policy/docker/tree/csit>`_
+`Policy CSIT Test infrastructure <https://github.com/onap/policy-docker/tree/master/csit>`_
 
 Testing procedures
 ******************
@@ -57,6 +57,6 @@ and dependent components.   The following scenarios should be considered:
 
 The following testsuites contain everything necessary for the previous verifications:
 
-- `CSIT Robot framework <https://git.onap.org/policy/docker/tree/csit/drools-applications/tests/drools-applications-test.robot>`_
-- `JMeter S3P <https://git.onap.org/policy/drools-applications/tree/testsuites/stability/src/main/resources/s3p.jmx>`_
+- `CSIT Robot framework <https://github.com/onap/policy-docker/blob/master/csit/drools-applications/tests/drools-applications-test.robot>`_
+- `JMeter S3P <https://github.com/onap/policy-drools-applications/blob/master/testsuites/stability/src/main/resources/s3p.jmx>`_
 
