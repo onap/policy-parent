@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68457f19_cdfe5126",
+        "filename": "docs/development/devtools/drools-smoke.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2787
+      },
+      "writtenOn": "2023-01-23T13:29:58Z",
+      "side": 1,
+      "message": "These links were updated as the original links were reported as missing by the RTD job.",
+      "revId": "2c137f0da6d6cd90cf258b04d3e9b6d9ebf70a41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
