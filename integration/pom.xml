@@ -1,7 +1,7 @@
 <!--
   ============LICENSE_START=======================================================
    Copyright (C) 2018 Ericsson. All rights reserved.
-   Modifications Copyright (C) 2018-2022 AT&T. All rights reserved.
+   Modifications Copyright (C) 2018-2023 AT&T. All rights reserved.
    Modifications Copyright (C) 2019-2022 Nordix Foundation.
    Modifications Copyright (C) 2020-2022 Bell Canada.
   ================================================================================
@@ -54,7 +54,7 @@
         <version.cucumber>7.9.0</version.cucumber>
         <version.dmaap>1.1.12</version.dmaap>
         <version.docker-java>3.2.14</version.docker-java>
-        <version.drools>7.73.0.Final</version.drools>
+        <version.drools>8.32.0.Final</version.drools>
         <version.eclipselink>2.7.8</version.eclipselink>
         <!--version.eclipselink>4.0.0</version.eclipselink-->
         <version.google-re2j>1.7</version.google-re2j>
@@ -568,6 +568,16 @@
             <dependency>
                 <groupId>org.drools</groupId>
                 <artifactId>drools-core</artifactId>
+                <version>${version.drools}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-engine</artifactId>
+                <version>${version.drools}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-xml-support</artifactId>
                 <version>${version.drools}</version>
             </dependency>
             <dependency>
