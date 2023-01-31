@@ -2,7 +2,7 @@
   ============LICENSE_START=======================================================
    Copyright (C) 2018 Ericsson. All rights reserved.
    Modifications Copyright (C) 2018-2023 AT&T. All rights reserved.
-   Modifications Copyright (C) 2019-2022 Nordix Foundation.
+   Modifications Copyright (C) 2019-2023 Nordix Foundation.
    Modifications Copyright (C) 2020-2022 Bell Canada.
   ================================================================================
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -60,8 +60,7 @@
         <version.google-re2j>1.7</version.google-re2j>
         <version.gson>2.10</version.gson>
         <version.h2>2.1.214</version.h2>
-        <version.hibernate.core>5.4.31.Final</version.hibernate.core>
-        <!--version.hibernate.core>6.1.5.Final</version.hibernate.core-->
+        <version.hibernate.core>5.6.14.Final</version.hibernate.core>
         <version.httpcore>4.4.16</version.httpcore>
         <version.immutables>2.9.2</version.immutables>
         <version.io.micrometer>1.10.2</version.io.micrometer>
@@ -88,25 +87,22 @@
         <version.mariadb>3.1.0</version.mariadb>
         <version.medeia>1.1.1</version.medeia>
         <version.mockito-all>1.10.19</version.mockito-all>
-        <version.mockito-core>3.7.7</version.mockito-core>
-        <!--version.mockito-core>4.9.0</version.mockito-core-->
-        <version.mockserver>5.14.0</version.mockserver>
+        <version.mockito-core>5.1.0</version.mockito-core>
+        <version.mockserver>5.15.0</version.mockserver>
         <version.netty>4.1.85.Final</version.netty>
         <version.nsa-cambria>1.2.1-oss</version.nsa-cambria>
         <version.nsa-sa-client>1.3.0-oss</version.nsa-sa-client>
         <version.openpojo>0.9.1</version.openpojo>
         <version.plexus>3.5.0</version.plexus>
         <version.postgresql>42.5.1</version.postgresql>
-        <version.powermock>2.0.9</version.powermock>
         <version.sdc>2.0.0</version.sdc>
         <version.servlet>4.0.1</version.servlet>
         <version.slf4j>1.7.30</version.slf4j>
         <!--version.slf4j>2.0.5</version.slf4j-->
         <version.snakeyaml>1.33</version.snakeyaml>
-        <version.spring>5.3.22</version.spring>
-        <!--version.spring>6.0.2</version.spring-->
+        <version.spring>5.3.25</version.spring>
+        <version.spring-security>5.8.1</version.spring-security>
         <version.springboot>2.7.8</version.springboot>
-        <!--version.springboot>3.0.0</version.springboot-->
         <version.springdoc>1.6.13</version.springdoc>
         <version.swagger.codegen.v3>3.0.36</version.swagger.codegen.v3>
         <version.swagger.core.v3>2.2.7</version.swagger.core.v3>
@@ -713,24 +709,6 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-core</artifactId>
-                <version>${version.powermock}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-api-mockito2</artifactId>
-                <version>${version.powermock}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-module-junit4</artifactId>
-                <version>${version.powermock}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <version>${version.mockito-core}</version>
@@ -834,6 +812,18 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webflux</artifactId>
                 <version>${version.spring}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${version.spring}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-test</artifactId>
+                <version>${version.spring-security}</version>
+                <scope>test</scope>
             </dependency>
             <!--  Springboot -->
             <dependency>
