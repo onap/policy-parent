@@ -55,12 +55,11 @@
         <version.dmaap>1.1.12</version.dmaap>
         <version.docker-java>3.2.14</version.docker-java>
         <version.drools>8.32.0.Final</version.drools>
-        <version.eclipselink>2.7.8</version.eclipselink>
-        <!--version.eclipselink>4.0.0</version.eclipselink-->
         <version.google-re2j>1.7</version.google-re2j>
         <version.gson>2.10</version.gson>
         <version.h2>2.1.214</version.h2>
-        <version.hibernate.core>5.6.14.Final</version.hibernate.core>
+        <version.hibernate>5.6.14.Final</version.hibernate>
+        <version.hibernate.persistence>1.0.2.Final</version.hibernate.persistence>
         <version.httpcore>4.4.16</version.httpcore>
         <version.immutables>2.9.2</version.immutables>
         <version.io.micrometer>1.10.2</version.io.micrometer>
@@ -84,7 +83,7 @@
         <version.logback>1.2.11</version.logback>
         <!--version.logback>1.4.5</version.logback-->
         <version.lombok>1.18.24</version.lombok>
-        <version.mariadb>3.1.0</version.mariadb>
+        <version.mariadb>3.1.2</version.mariadb>
         <version.medeia>1.1.1</version.medeia>
         <version.mockito-all>1.10.19</version.mockito-all>
         <version.mockito-core>5.1.0</version.mockito-core>
@@ -354,27 +353,6 @@
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
                 <version>${version.commons-codec}</version>
-            </dependency>
-            <!-- Eclipselink -->
-            <dependency>
-                <groupId>org.eclipse.persistence</groupId>
-                <artifactId>org.eclipse.persistence.jpa</artifactId>
-                <version>${version.eclipselink}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.persistence</groupId>
-                <artifactId>eclipselink</artifactId>
-                <version>${version.eclipselink}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.persistence</groupId>
-                <artifactId>org.eclipse.persistence.core</artifactId>
-                <version>${version.eclipselink}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.persistence</groupId>
-                <artifactId>org.eclipse.persistence.oracle</artifactId>
-                <version>${version.eclipselink}</version>
             </dependency>
             <!-- Java Servlet API -->
             <dependency>
@@ -881,7 +859,17 @@
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
-                <version>${version.hibernate.core}</version>
+                <version>${version.hibernate}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${version.hibernate}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>${version.hibernate.persistence}</version>
             </dependency>
             <!-- Tomcat -->
             <dependency>
