@@ -56,7 +56,6 @@ and dependent components.   The following scenarios should be considered:
 - Verify vCPE, vDNS, and vFirewall use cases and recorded metrics.
 
 The following testsuites contain everything necessary for the previous verifications:
-
-- `CSIT Robot framework <https://github.com/onap/policy-docker/blob/master/csit/drools-applications/tests/drools-applications-test.robot>`_
+- `CSIT Robot framework <https://github.com/onap/policy-docker/blob/master/csit/resources/tests/drools-applications-test.robot>`_
 - `JMeter S3P <https://github.com/onap/policy-drools-applications/blob/master/testsuites/stability/src/main/resources/s3p.jmx>`_
 

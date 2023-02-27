@@ -55,6 +55,6 @@ PDP and dependent components.   The following scenarios should be considered:
 
 The following testsuites contain everything necessary for the previous verifications:
 
-- `CSIT Robot framework <https://git.onap.org/policy/docker/tree/csit/xacml-pdp/tests/xacml-pdp-test.robot>`_
-- `JMeter S3P <https://git.onap.org/policy/xacml-pdp/tree/testsuites/stability/src/main/resources/testplans/stability.jmx>`_
+- `CSIT Robot framework <https://github.com/onap/policy-docker/blob/master/csit/resources/tests/xacml-pdp-test.robot>`_
+- `JMeter S3P <https://github.com/onap/policy-xacml-pdp/blob/master/testsuites/stability/src/main/resources/testplans/stability.jmx>`_
 
