@@ -310,6 +310,7 @@ familiar with the Policy Framework components and test any local changes.
 .. toctree::
    :maxdepth: 1
 
+   run-s3p.rst
    api-s3p.rst
    pap-s3p.rst
    apex-s3p.rst
