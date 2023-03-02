@@ -161,11 +161,11 @@ do
         new_image="$docker_image:$latest_released_tag"
 
         echo "updating OOM image $new_image . . ."
-        find "$repo_location/oom/kubernetes/policy/components" \
+        find "$repo_location/oom/kubernetes/policy" \
             -name values.yaml \
             -exec \
                 $SED -i \
-                "s/^image:[ |\t]*onap\/$docker_image:[0-9]*\.[0-9]*\.[0-9]*$/image: onap\/$new_image/" {} \;
+                "s/image:[ |\t]*onap\/$docker_image:[0-9]*\.[0-9]*\.[0-9]*$/image: onap\/$new_image/" {} \;
         echo "OOM image $docker_image:$latest_released_tag updated"
     done
 done
