@@ -74,9 +74,9 @@
         <version.javax.bind-jaxb-api>2.3.1</version.javax.bind-jaxb-api>
         <version.javax.servlet-api>4.0.1</version.javax.servlet-api>
         <version.javax.ws.rs-api>2.1.1</version.javax.ws.rs-api>
-        <version.jboss-jaxrs-api>1.0.1-Final</version.jboss-jaxrs-api>
-        <version.jersey>2.37</version.jersey>
-        <version.jetty>9.4.48.v20220622</version.jetty> <!-- Downgrade from oparent -->
+        <version.jboss-jaxrs-api>2.0.2-Final</version.jboss-jaxrs-api>
+        <version.jersey>2.39</version.jersey>
+        <version.jetty>10.0.13</version.jetty> <!-- Downgrade from oparent -->
         <version.json>20220924</version.json> <!-- Keep this until Cambria Client is removed-->
         <version.junit>4.13.2</version.junit>
         <version.junit.jupiter>5.9.2</version.junit.jupiter>
