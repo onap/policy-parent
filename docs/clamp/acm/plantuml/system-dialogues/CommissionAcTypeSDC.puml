@@ -1,0 +1,11 @@
+@startuml
+participant SDC
+participant Policy_Distribution
+participant ACM_Runtime
+
+SDC -> Policy_Distribution: [ASYNC] CSAR containing Automation Composition Type Definition
+Policy_Distribution -> ACM_Runtime: Commission Automation Composition Type\n(See Commissioning Sequence Diagram)
+Policy_Distribution <- ACM_Runtime: Result of Commissioning
+Policy_Distribution -> SDC: [ASYNC] Return result of Deployment
+
+@enduml

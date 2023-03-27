@@ -1,0 +1,22 @@
+@startuml
+participant REST
+participant ACM_Runtime
+participant Participants
+database ACM_Database
+
+REST -> ACM_Runtime: Lock Automation Composition Instance
+ACM_Runtime -> ACM_Database: Read Automation Composition Instance Information
+
+alt Automation Composition Instance exists
+ alt Automation Composition Instance administrative state is UNLOCKED
+  ACM_Runtime -> Participants: [ASYNC] Lock AC Element Instances for this AC Instance
+  ACM_Runtime -> ACM_Database: Mark AC Instance and its AC Element Instances as Locking
+  ACM_Runtime -> REST: Locking of Automation Composition Instance has been requested
+ else
+  ACM_Runtime -> REST: Automation Composition instance is not unlocked
+ end
+else
+  ACM_Runtime -> REST: Automation Composition instance does not exist
+end
+
+@enduml

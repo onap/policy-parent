@@ -1,0 +1,12 @@
+@startuml
+
+[*] --> COMMISSIONED: Commission
+COMMISSIONED --> [*]: Decommission
+COMMISSIONED --> PRIMING: Prime
+PRIMED --> PRIMING: Prime
+PRIMING --> PRIMED: AC Element Types\nall PRIMED
+PRIMING --> DEPRIMING: Deprime
+PRIMED --> DEPRIMING: Deprime
+DEPRIMING --> COMMISSIONED: AC Element Types\nall DEPRIMED
+
+@enduml

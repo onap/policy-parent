@@ -1,0 +1,10 @@
+@startuml
+participant REST
+participant ACM_Runtime
+database ACM_Database
+
+REST -> ACM_Runtime: Get Automation Composition Type Information
+ACM_Runtime -> ACM_Database: Read Automation Composition Type Information
+ACM_Runtime -> REST: Respond with Automation Composition Type information\nincluding ACM Element Type information and Priming Status
+
+@enduml

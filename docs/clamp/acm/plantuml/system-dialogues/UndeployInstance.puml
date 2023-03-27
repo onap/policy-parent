@@ -1,0 +1,22 @@
+@startuml
+participant REST
+participant ACM_Runtime
+participant Participants
+database ACM_Database
+
+REST -> ACM_Runtime: Undeploy Automation Composition Instance
+ACM_Runtime -> ACM_Database: Read Automation Composition Instance Information
+
+alt Automation Composition Instance exists
+ alt Automation Composition Instance administrative state is not LOCKED
+  ACM_Runtime -> REST: Automation Composition instance exists and is not LOCKED
+ else
+  ACM_Runtime -> REST: Automation Composition instance does not exist
+ end
+else
+ ACM_Runtime -> Participants: [ASYNC] Undeploy AC Element Instances for this AC Instance
+ ACM_Runtime -> ACM_Database: Mark this AC Instance and its AC Element Instances as UNDEPLOYING
+ ACM_Runtime -> REST: Undeployment of Automation Composition Instance has been requested
+end
+
+@enduml

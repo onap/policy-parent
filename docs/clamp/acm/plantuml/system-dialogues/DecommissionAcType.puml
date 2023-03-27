@@ -1,0 +1,14 @@
+@startuml
+participant REST
+participant ACM_Runtime
+database ACM_Database
+
+REST -> ACM_Runtime: Decommission Automation Composition Type
+alt Automation Composition Type is not in state COMMISSIONED
+  ACM_Runtime -> REST: Automation Composition Type Decommissioning Failed
+else
+ ACM_Runtime -> ACM_Database: Delete Automation Composition Type
+ ACM_Runtime -> REST: Automation Composition Type Decommissioned
+end
+
+@enduml

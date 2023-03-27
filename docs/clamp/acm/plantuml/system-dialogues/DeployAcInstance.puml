@@ -1,0 +1,22 @@
+@startuml
+participant REST
+participant ACM_Runtime
+participant Participants
+database ACM_Database
+
+REST -> ACM_Runtime: Deploy Automation Composition Instance
+ACM_Runtime -> ACM_Database: Read Automation Composition Instance Information
+
+alt Automation Composition Instance exists
+ alt Automation Composition Instance is deployed
+  ACM_Runtime -> REST: Automation Composition instance is already deployed
+ else
+  ACM_Runtime -> Participants: [ASYNC] Deploy AC Element Instances for this AC Instance
+  ACM_Runtime -> ACM_Database: Set AC Instance and its AC Element Instances to state DEPLOYING
+  ACM_Runtime -> REST: Deployment of Automation Composition Instance has been requested
+ end
+else
+  ACM_Runtime -> REST: Automation Composition instance does not exist
+end
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+participant ACM_Runtime
+participant Participant
+participant Participant_API
+
+ACM_Runtime -> Participant: [ASYNC] Deploy AC Element Instances for this AC Instance
+
+loop over AC Element Instances in AC Instance
+ alt Does the primed Participant ID on this AC Element Instance\nmatch my Participant ID?
+  alt Is this AC Element Instance already deployed
+   ACM_Runtime <- Participant: [ASYNC] WARN: AC Element is already deployed
+  else
+   Participant -> Participant_API: Deploy AC Element Instance
+   activate Participant_API
+   Participant <- Participant_API: AC Element Instance Deploy Response
+   deactivate Participant_API
+   alt AC Element deployed successfully
+    Participant -> Participant: Set AC Element Instance administrative state to LOCKED
+    ACM_Runtime <- Participant: [ASYNC] INFO: AC Element has been deployed
+   else
+    ACM_Runtime <- Participant: [ASYNC] ERROR: AC Element was not deployed
+   end
+  end
+ else
+  note left of Participant
+   Ignore this AC Element instance as its for another participant
+  end note
+ end
+end
+
+@enduml

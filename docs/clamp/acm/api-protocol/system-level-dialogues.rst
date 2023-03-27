@@ -2,200 +2,206 @@
 
 .. _system-level-label:
 
-System Level Dialogues
-######################
+ACM System Level Dialogues
+##########################
+Priming The CLAMP Automation Composition Runtime Lifecycle Management uses the following system-level dialogues. These dialogues enable the CLAMP runtime capabilities described in Section 2 of TOSCA Defined Automation Compositions: Architecture and Design. Design Time dialogues will be described in future releases of the system.
 
 
 .. contents::
     :depth: 4
 
 
-The CLAMP Automation Composition Runtime Lifecycle Management uses the following system level
-dialogues. These dialogues enable the CLAMP runtime capabilities described in
-:ref:`Section 2 of TOSCA Defined Automation Compositions: Architecture and Design <acm-capabilities>`.
-Design Time dialogues will be described in future releases of the system.
-
-
-1 Commissioning Dialogues
-=========================
-
-Commissioning dialogues are used to commission and decommission Automation Composition Type
-definitions and to set the values of Common Parameters.
-
-Commissioning an Automation Composition Type is a three-step process:
-
-#. The Automation Composition Type must be created, that is the Automation Composition Type
-   definition must be loaded and stored in the database. This step may be carried out over the
-   REST interface or using SDC distribution.
-
-#. The Common Properties of the Automation Composition type must be assigned values and those
-   values must be stored in the database. This step is optional only if all mandatory common
-   properties have default values. The Common Property values may be set and amended over and
-   over again in multiple sessions until the Automation Composition Type is primed.
-
-#. The Automation Composition Type Definition and the Common Property values must be primed,
-   which is sent to the concerned participants. Once an Automation Composition Type is primed,
-   its Common Property values can no longer be changed. To change Common Properties on a primed
-   Automation Composition Type, all instances of the Automation Composition Type must be removed
-   and the Automation Composition Type must be de-primed.
-
-1.1 Commissioning an Automation Composition Type Definition using the CLAMP GUI
--------------------------------------------------------------------------------
-
-This dialogue corresponds to a "File → Import" menu on the CLAMP GUI. The documentation of
-future releases of the system will describe how the Design Time functionality interacts
-with the Runtime commissioning API.
-
-.. image:: ../images/system-dialogues/comissioning-clamp-gui.png
-
-1.2 Commissioning an Automation Composition Type Definition using SDC
----------------------------------------------------------------------
-
-.. image:: ../images/system-dialogues/comissioning-sdc.png
-
-1.3 Setting Common Properties for an Automation Composition Type Definition
----------------------------------------------------------------------------
-
-This dialogue sets the values of common properties. The values of the common properties
-may be set, updated, or deleted at will, as this dialogue saves the properties to the
-database but does not send the definitions or properties to the participants. However,
-once an Automation Composition Type Definition and its properties are primed
-(See :ref:`Section 1.4 <priming-acm-label>`), the properties cannot be changed until the
-Automation Composition type definition is de-primed (See
-:ref:`Section 1.5 <depriming-acm-label>`).
-
-.. image:: ../images/system-dialogues/common-properties-type-definition.png
-
-.. _priming-acm-label:
-
-1.4 Priming an Automation Composition Type Definition on Participants
----------------------------------------------------------------------
-The Priming operation sends Automation Composition Type definitions and common property values
-to participants. Once an Automation Composition Type definition is primed, its property values
-can on longer be changed until it is de-primed.
-
-.. image:: ../images/system-dialogues/priming-acm-type-definition.png
-
-.. _depriming-acm-label:
-
-1.5 De-Prime an Automation Composition Type Definition on Participants
-----------------------------------------------------------------------
-
-This dialogue allows an Automation Composition Type Definition to be de-primed so that it can be
-deleted or its common parameter values can be altered.
-
-.. image:: ../images/system-dialogues/depriming-acm-type-definition.png
-
-1.6 Decommissioning an Automation Composition Type Definition in CLAMP
-----------------------------------------------------------------------
-
-.. image:: ../images/system-dialogues/decommission-acm-type-definition.png
-
-1.7 Reading Commissioned Automation Composition Type Definitions
-----------------------------------------------------------------
-
-.. image:: ../images/system-dialogues/read-commision-acm-type-definition.png
-
-
-2. Instantiation Dialogues
-==========================
-
-Instantiation dialogues are used to create, set parameters on, instantiate, update,
-and remove Automation Composition instances.
-
-Assume a suitable Automation Composition Definition exists in the Commissioned Automation
-Composition Inventory.
-To get an Automation Composition instance running one would, for example, execute dialogues
-:ref:`2.1 <creating-acm-instance>`, :ref:`2.3 <updating-acm-instance-config>`, and
-:ref:`2.4 <changing-acm-instance-state>`.
-
-.. _creating-acm-instance:
-
-2.1 Creating an Automation Composition Instance
------------------------------------------------
-
-.. image:: ../images/system-dialogues/create-acm-instance.png
-
-.. note::
-    This dialogue creates the Automation Composition Instance in the Instantiated Automation
-    Composition Inventory. The instance is sent to the participants using the process described
-    in the dialogue in :ref:`Section 2.3 <updating-acm-instance-config>`.
-
-2.2 Updating Instance Specific Parameters on an Automation Composition Instance
--------------------------------------------------------------------------------
-
-.. image:: ../images/system-dialogues/update-instance-params-acm.png
-
-.. _updating-acm-instance-config:
-
-2.3 Updating an Automation Composition Instance with a Configuration on Participants
-------------------------------------------------------------------------------------
-
-.. image:: ../images/system-dialogues/update-acm-instance-config-participants.png
-
-.. _changing-acm-instance-state:
-
-2.4 Changing the state of an Automation Composition Instance on Participants
-----------------------------------------------------------------------------
-
-.. image:: ../images/system-dialogues/change-acm-instance-state-participants.png
-
-2.5 De-instantiating an Automation Composition Instance from Participants
--------------------------------------------------------------------------
-
-.. image:: ../images/system-dialogues/deinstantiate-acm-from-participants.png
-
-2.6 Deleting an Automation Composition Instance
------------------------------------------------
-
-.. image:: ../images/system-dialogues/delete-acm-instance.png
-
-2.7 Reading Automation Composition Instances
---------------------------------------------
-
-.. image:: ../images/system-dialogues/read-acm-instance.png
-
-
-3. Monitoring Dialogues
-=======================
-
-Monitoring dialogues are used to monitor and to read statistics on Automation Composition Instances.
-
-3.1 Reporting of Monitoring Information and Statistics by Participants
-----------------------------------------------------------------------
-
-.. image:: ../images/system-dialogues/monitoring-by-participants.png
-
-3.2 Viewing of Monitoring Information
--------------------------------------
-
-.. image:: ../images/system-dialogues/view-monitoring-info.png
-
-3.2 Viewing of Statistics
--------------------------
-
-.. image:: ../images/system-dialogues/view-statistics.png
-
-3.3 Statistics Housekeeping
----------------------------
-
-.. image:: ../images/system-dialogues/statistics-housekeeping.png
-
-
-4. Supervision Dialogues
-========================
-
-Supervision dialogues are used to check the state of Automation Composition Instances and
-Participants.
-
-4.1 Supervise Participants
+1 Dialogues on Participants
+===========================
+1.1 Register a Participant
 --------------------------
 
-.. image:: ../images/system-dialogues/supervise-participants.png
+Participant Registration is performed by a Participant when it starts up. It registers its ID and the ACM Element Types it supports with the ACM runtime.
 
-4.2 Supervise Automation Compositions
--------------------------------------
+.. image:: ../images/system-dialogues/RegisterParticipant.png
 
-.. image:: ../images/system-dialogues/supervise-acms.png
+1.2 Deregister a Participant
+----------------------------
+Participant Deregistration is performed by a Participant when it shuts down. It deregisters its ID and type with the ACM runtime. The participant should already have cleared down all its ACM Element instances and set their states to "Not In Service".
+
+.. image:: ../images/system-dialogues/DeregisterParticipant.png
+
+1.3 Supervise Participants
+--------------------------
+Participant Supervision is performed periodically between participants and the ACM runtime server to ensure that registered participants are available over time. Participants send a heartbeat message to the ACM runtime at a configured interval. The heartbeat message contains updated status information for each AC Element Instance that has changed status since the last Heartbeat message sent by the participant.
+
+.. image:: ../images/system-dialogues/SuperviseParticipantsStatusUpdate.png
+
+The ACM runtime regularly checks the heartbeat reports from participants and takes action if participants time out. If a heartbeat message is not received for a participant in the Timeout Interval, the participant is marked as timed out and its ACM element instances are informed.
+
+.. image:: ../images/system-dialogues/SuperviseParticipantsTimeout.png
+
+1.4 Get Participant Information
+-------------------------------
+The information on participants is available over a REST endpoint.
+
+.. image:: ../images/system-dialogues/GetParticipantInformation.png
+
+1.5 Order Full Participant Report
+---------------------------------
+
+.. image:: ../images/system-dialogues/FullParticipantReport.png
+
+2 Dialogues on Automation Composition Types
+===========================================
+Commissioning dialogues are used to commission and decommission Automation Composition Types and to set the values of Common Parameters. The values of common parameters are included in the TOSCA YAML file that defines the full Automation Composition Type.
+
+2.1 Commission or Update an Automation Composition Type
+-------------------------------------------------------
+Create on a POST and update on a PUT.
+
+.. image:: ../images/system-dialogues/CommissionUpdateAcType.png
+
+2.2 Commission an Automation Composition Type using SDC
+-------------------------------------------------------
+
+.. image:: ../images/system-dialogues/CommissionAcTypeSDC.png
+
+2.3 Decommission an Automation Composition Type
+-----------------------------------------------
+
+.. image:: ../images/system-dialogues/DecommissionAcType.png
+
+2.4 Prime an Automation Composition Type on Participants
+--------------------------------------------------------
+The Priming operation sends Automation Composition Types and common property values to participants for each Automation Composition Element Type in the Automation Composition Type.
+
+.. image:: ../images/system-dialogues/PrimeAcTypeOnPpnts.png
+
+A participant should respond for each Automation Composition Element Type, thus causing the full Automation Composition Type to become primed. Note that if more than one participant can support an Automation Composition Element Type the ACM Runtime uses the participant in the first response it receives for that Automation Composition Element Type.
+
+.. image:: ../images/system-dialogues/PrimeAcTypeMultiplePpnts.png
+
+The ACM Runtime updates the priming information in the database.
+
+.. image:: ../images/system-dialogues/PrimeInfoUpdatedInDb.png
+
+2.5 Deprime an Automation Composition Type on Participants
+----------------------------------------------------------
+The Depriming operation removes Automation Composition Types and common property values on participants for each Automation Composition Element Type in the Automation Composition Type.
+
+.. image:: ../images/system-dialogues/DeprimeOnParticipants.png
+
+A participant should respond for each Automation Composition Element Type, thus causing the full Automation Composition Type to become deprimed.
+
+.. image:: ../images/system-dialogues/DeprimeElements.png
+
+The ACM Runtime updates the priming information in the database.
+
+.. image:: ../images/system-dialogues/UpdateDeprimeInDb.png
+
+2.6 Get Automation Composition Types
+------------------------------------
+This dialogue allows an Automation Composition Type to be read.
+
+.. image:: ../images/system-dialogues/GetAcTypes.png
+
+3. Instantiation Dialogues
+==========================
+Instantiation dialogues are used to create, set parameters on, instantiate, update, and remove Automation Composition instances.
+
+3.1 Create an Automation Composition Instance
+---------------------------------------------
+
+.. image:: ../images/system-dialogues/CreateAcInstance.png
+
+Note that this dialogue creates the Automation Composition Instance in the ACM database. The instance is sent to the participants using the process described in the dialogue in Section 3.3.
+
+3.2 Delete an Automation Composition Instance
+---------------------------------------------
+
+.. image:: ../images/system-dialogues/DeleteAcInstance.png
+
+3.3 Deploy Automation Composition Instance
+------------------------------------------
+The user requests the AC Instance to be deployed using a REST endpoint. The ACM Runtime orders the AC Instance to be deployed to Participants.
+
+.. image:: ../images/system-dialogues/DeployAcInstance.png
+
+Each participant deploys its AC Element Instances from the AC Instance.
+
+.. image:: ../images/system-dialogues/DeployAcInstanceElements.png
+
+The ACM Runtime receives and stores the responses.
+
+.. image:: ../images/system-dialogues/DeployResponseStored.png
+
+3.4 Undeploy Automation Composition Instance
+--------------------------------------------
+The user requests the AC Instance to be undeployed using a REST endpoint. The ACM Runtime orders the AC Instance to be undeployed.
+
+.. image:: ../images/system-dialogues/UndeployInstance.png
+
+Each participant undeploys its AC Element Instances from the AC Instance
+
+.. image:: ../images/system-dialogues/UndeployInstanceElements.png
+
+The ACM Runtime receives and stores the responses.
+
+.. image:: ../images/system-dialogues/UndeployResponseStored.png
+
+3.5 Read Automation Composition Instances
+-----------------------------------------
+
+.. image:: ../images/system-dialogues/ReadAcInstances.png
+
+3.6 Unlock Automation Composition Instance
+------------------------------------------
+The user requests the AC Instance to be unlocked using a REST endpoint. The ACM Runtime orders the AC Instance to be unlocked on Participants.
+
+.. image:: ../images/system-dialogues/OrderInstanceUnlock.png
+
+Each participant unlocks its AC Element Instances from the AC Instance.
+
+.. image:: ../images/system-dialogues/UnlockInstanceElements.png
+
+The ACM Runtime receives and stores the responses.
+
+.. image:: ../images/system-dialogues/UnlockResponseStored.png
+
+3.7 Lock Automation Composition Instance
+----------------------------------------
+The user requests the AC Instance to be locked using a REST endpoint. The ACM Runtime orders the AC Instance to be locked on Participants.
+
+.. image:: ../images/system-dialogues/LockAcInstance.png
+
+Each participant locks its AC Element Instances from the AC Instance.
+
+.. image:: ../images/system-dialogues/LockAcInstanceElements.png
+
+The ACM Runtime receives and stores the responses.
+
+.. image:: ../images/system-dialogues/LockResponseStored.png
+
+3.8 Update Operational State on Automation Composition Instance
+---------------------------------------------------------------
+
+.. image:: ../images/system-dialogues/UpdateOperationalState.png
+
+3.9 Update Usage State on Automation Composition Instance
+---------------------------------------------------------
+
+.. image:: ../images/system-dialogues/UpdateUsageState.png
 
 End of Document
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

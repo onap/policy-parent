@@ -1,0 +1,22 @@
+@startuml
+
+[*] --> UNDEPLOYED: Create
+UNDEPLOYED --> [*]: Delete
+UNDEPLOYED --> DEPLOYING: Deploy
+DEPLOYING --> DEPLOYED: AC Element\nInstance DEPLOYED
+DEPLOYING --> UNDEPLOYING: Undeploy
+DEPLOYED --> UNDEPLOYING: Undeploy
+UNDEPLOYING --> UNDEPLOYED: AC Element\nInstance UNDEPLOYED
+
+
+state DEPLOYED {
+ [*] --> LOCKED: Deploy
+ LOCKED --> [*]: Undeploy
+ LOCKED --> UNLOCKING: Unlock
+ UNLOCKING --> UNLOCKED: AC Element\nInstance UNLOCKED
+ UNLOCKED --> LOCKING: Lock
+ UNLOCKING --> LOCKING: Lock
+ LOCKING --> LOCKED: AC Element\nInstance LOCKED
+}
+
+@enduml

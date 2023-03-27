@@ -1,0 +1,7 @@
+@startuml
+
+[*] --> PRIMED: Prime from\nACM Runtime
+PRIMED --> PRIMED: Prime from ACM Runtime
+PRIMED --> [*]: Deprime from\nACM Runtime
+
+@enduml

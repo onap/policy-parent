@@ -1,0 +1,32 @@
+@startuml
+participant ACM_Runtime
+participant Participant
+participant Participant_API
+
+ACM_Runtime -> Participant: [ASYNC] Lock AC Element Instances for this AC Instance
+
+loop over AC Element Instances in AC Instance
+ alt Does the primed Participant ID on this AC Element Instance\nmatch my Participant ID?
+  alt Is this AC Element Instance administrative state not UNLOCKED
+   ACM_Runtime <- Participant: [ASYNC] WARN: AC Element is not UNLOCKED
+  else
+   Participant -> Participant: Set AC Element Instance administrative state to SHUTTING_DOWN
+   Participant -> Participant_API: Lock AC Element Instance
+   activate Participant_API
+   Participant <- Participant_API: Lock AC Element Instance Response
+   deactivate Participant_API
+   alt AC Element locked successfully
+    Participant -> Participant: Set AC Element Instance administrative state to LOCKED
+    ACM_Runtime <- Participant: [ASYNC] INFO: AC Element has been locked
+   else
+    ACM_Runtime <- Participant: [ASYNC] ERROR: AC Element was not locked
+   end
+  end
+ else
+  note left of participant
+   Ignore this AC Element instance as its for another participant
+  end note
+ end
+end
+
+@enduml

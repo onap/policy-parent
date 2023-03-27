@@ -1,0 +1,17 @@
+@startuml
+
+participant ACM_Runtime
+participant Participant
+database ACM_Database
+
+ACM_Runtime <- Participant: [ASYNC] Deploy Automation Composition Element Instance Response
+ACM_Runtime -> ACM_Database: Store Automation Composition Element Instance Response Information
+
+alt Is AC Element Instance Deployed?
+ ACM_Runtime -> ACM_Database: Set AC Element Instance State as DEPLOYED
+ alt Are all the other AC Element Instances in this AC Instance in state DEPLOYED?
+  ACM_Runtime -> ACM_Runtime: Set AC Instance state as DEPLOYED
+ end
+end
+
+@enduml

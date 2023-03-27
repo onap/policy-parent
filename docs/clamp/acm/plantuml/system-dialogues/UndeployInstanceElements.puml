@@ -1,0 +1,31 @@
+@startuml
+participant ACM_Runtime
+participant Participant
+participant Participant_API
+
+ACM_Runtime -> Participant: [ASYNC] Undeploy AC Element Instances for this AC Instance
+
+loop over AC Element Instances in AC Instance
+ alt Does the primed Participant ID on this AC Element Instance\nmatch my Participant ID?
+  alt Does this AC Element Instance exist?
+   ACM_Runtime <- Participant: [ASYNC] WARN: AC Element does not exist
+  else Is this administrative state of this AC Element Instance LOCKED
+   Participant -> Participant_API: Undeploy AC Element Instance
+   activate Participant_API
+   Participant <- Participant_API: Undeploy AC Element Instance Response
+   deactivate Participant_API
+   ACM_Runtime <- Participant: [ASYNC] INFO: AC Element undeployed successfully
+   note left of Participant
+    Undeploy always returns success
+   end note
+  else
+    ACM_Runtime <- Participant: [ASYNC] WARN: AC Element is already undeployed
+  end
+ else
+  note left of Participant
+   Ignore this AC Element instance as its for another participant
+  end note
+ end
+end
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+
+participant ACM_Runtime
+participant Participant
+database ACM_Database
+
+ACM_Runtime <- Participant: [ASYNC] Unlock Automation Composition Element Instance Response
+ACM_Runtime -> ACM_Database: Store Automation Composition Element Instance Response Information
+
+alt Is AC Element Instance Unlocked?
+ ACM_Runtime -> ACM_Database: Set AC Element Instance administrative state as UNLOCKED
+ alt Have all the other AC Element Instances in this AC Instance been UNLOCKED?
+  ACM_Runtime -> ACM_Runtime: Set AC Instance administrative state as UNLOCKED
+  end
+end
+
+@enduml
