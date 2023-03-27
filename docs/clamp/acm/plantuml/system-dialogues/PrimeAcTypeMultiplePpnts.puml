@@ -1,0 +1,28 @@
+@startuml
+participant ACM_Runtime
+participant Participant
+
+ACM_Runtime -> Participant: [ASYNC] Prime AC Element Types for this AC Type
+
+loop over AC Element Types in AC Type
+ alt Does the primed Participant ID on this AC Element Type\nmatch my Participant ID
+  alt Does this AC Element Type already exist
+   ACM_Runtime <- Participant: [ASYNC] WARN: AC Element Type already exists
+  else
+   Participant -> Participant: Create AC Element Type
+   activate Participant
+   deactivate Participant
+   alt AC Element successfully created
+    ACM_Runtime <- Participant: [ASYNC] INFO: AC Element successfully primed
+   else
+    ACM_Runtime <- Participant: [ASYNC] ERROR: AC Element priming failed
+   end
+  end
+ else
+  note left of participant
+   ignore this AC Element Type as its for another participant
+  end note
+ end
+end
+
+@enduml

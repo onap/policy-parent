@@ -1,0 +1,15 @@
+@startuml
+participant ACM_Runtime
+participant Participant
+database ACM_Database
+
+ACM_Runtime <- Participant: [ASYNC] Result of Depriming of AC Element Type
+ACM_Runtime -> ACM_Database: Record result of AC Element Type Depriming
+
+alt Is AC Element Type Deprimed?
+ alt Have all the other AC Element Types in this AC Type been Deprimed?
+  ACM_Runtime -> ACM_Runtime: Set AC Type state as COMMISSIONED
+ end
+end
+
+@enduml

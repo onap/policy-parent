@@ -1,0 +1,15 @@
+@startuml
+participant REST
+participant ACM_Runtime
+database ACM_Database
+
+REST -> ACM_Runtime: Commission Automation Composition Type
+alt Automation Composition Type exists and has Instances
+  ACM_Runtime -> REST: Automation Composition Type Commissioning Failed
+else
+ ACM_Runtime -> ACM_Database: Create and Store Automation Composition Type
+ ACM_Runtime -> ACM_Database: Set Automation Composition Type State to COMMISSIONED
+ ACM_Runtime -> REST: Automation Composition Type Commissioned
+end
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+
+participant ACM_Runtime
+participant Participant
+database ACM_Database
+
+ACM_Runtime <- Participant: [ASYNC] Lock Automation Composition Element Instance Response
+ACM_Runtime -> ACM_Database: Store Automation Composition Element Instance Response Information
+
+alt Is AC Element Instance Locked?
+ ACM_Runtime -> ACM_Database: Set AC Element Instance administrative state as LOCKED
+ alt Have all the other AC Element Instances in this AC Instance been LOCKED?
+  ACM_Runtime -> ACM_Runtime: Set AC Instance administrative state as LOCKED
+  end
+end
+
+@enduml

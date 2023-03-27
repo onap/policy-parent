@@ -1,0 +1,10 @@
+@startuml
+
+[*] --> ONLINE: Register
+ONLINE --> ONLINE: Heartbeat
+ONLINE --> OFFLINE: Timeout
+OFFLINE --> ONLINE: Heartbeat
+ONLINE --> [*]: Deregister
+OFFLINE --> [*]: Deregister
+
+@enduml

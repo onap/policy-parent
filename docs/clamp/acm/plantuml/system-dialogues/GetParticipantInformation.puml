@@ -1,0 +1,11 @@
+@startuml
+
+participant REST
+participant ACM_Runtime
+database ACM_Database
+
+REST -> ACM_Runtime: Get Participant Information
+ACM_Runtime -> ACM_Database: Read Participant Data
+REST <- ACM_Runtime: Return Participant Information including\nsupported AC Element Types,\nAC Element Instances and their states\nand Heartbeat Information
+
+@enduml

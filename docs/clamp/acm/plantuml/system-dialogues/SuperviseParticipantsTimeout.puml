@@ -1,0 +1,18 @@
+@startuml
+
+participant ACM_Runtime
+database ACM_Database
+
+loop Every ACM_Runtime Supervision Interval
+  loop Over all Participants
+    ACM_Runtime -> Database: Read Participant Heartbeat Information
+    alt Participant Heartbeat not received in Timeout Interval
+      ACM_Runtime -> ACM_Database: Set Participant State as OFFLINE
+      ACM_Runtime -> ACM_Runtime: Mark all ACM Element Instances\nrunning on Participant as OFFLINE
+      activate ACM_Runtime
+      deactivate ACM_Runtime
+    end
+  end
+end
+
+@enduml

@@ -12,6 +12,7 @@ described in TOSCA.
    :maxdepth: 2
 
    acm/acm-architecture
+   acm/acm-states
    acm/defining-acms
    acm/api-protocol/api-protocol-tree
    acm/clamp-gui/policy-gui

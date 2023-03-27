@@ -1,0 +1,14 @@
+@startuml
+
+[*] --> DEPLOYED: Deploy from ACM Runtime
+DEPLOYED --> [*]: Undeploy from ACM Runtime
+
+
+state DEPLOYED {
+ [*] --> LOCKED: Deploy
+ LOCKED --> [*]: Undeploy from\nACM Runtime
+ LOCKED --> UNLOCKED: Unlock from\nACM Runtime
+ UNLOCKED --> LOCKED: Lock from\nACM Runtime
+}
+
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+
+participant REST
+participant ACM_Runtime
+participant Participants
+
+REST -> ACM_Runtime: Order Participant Information
+ACM_Runtime -> Participants: Issue immediate Heartbeat Report\n(See §1.3)
+REST <- ACM_Runtime: Participant Information Ordered
+
+@enduml

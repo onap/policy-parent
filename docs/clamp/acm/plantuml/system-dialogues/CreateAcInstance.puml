@@ -1,0 +1,30 @@
+@startuml
+participant REST
+participant ACM_Runtime
+database ACM_Database
+
+REST -> ACM_Runtime: Create Automation Composition Instance for\nspecified Automation Composition Type with\nspecified parameter values
+
+alt Automation Composition Instance exists
+ alt Automation Composition Instance is not in state UNDEPLOYED
+  ACM_Runtime -> REST: Automation Composition instance exists and is already deployed
+ else
+  note right of REST
+   Updates on "Not In Service" Automation Composition Instances are allowed
+  end note
+ end
+end
+
+alt Specified Automation Composition Type Exists
+ alt Specified Automation Composition Type is in state PRIMED
+  ACM_Runtime -> ACM_Database: Store Automation Composition Instance
+  ACM_Runtime -> ACM_Database: Set Automation Composition Instance State to UNDEPLOYED
+  ACM_Runtime -> REST: Automation Composition Instance Created
+ else
+  ACM_Runtime -> REST: Automation Composition Type is not in state PRIMED
+ end
+else
+  ACM_Runtime -> REST: Automation Composition Type is not found
+end
+
+@enduml

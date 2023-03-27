@@ -1,0 +1,10 @@
+@startuml
+participant REST
+participant ACM_Runtime
+database ACM_Database
+
+REST -> ACM_Runtime: Get Automation Composition Instance Information
+ACM_Runtime -> ACM_Database: Read Automation Composition Instance Information
+ACM_Runtime -> REST: Respond with Automation Composition Instance information\nincluding ACM Element Instance information\nand admin, operational, and usage state
+
+@enduml

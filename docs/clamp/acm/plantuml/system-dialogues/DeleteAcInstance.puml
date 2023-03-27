@@ -1,0 +1,19 @@
+@startuml
+participant REST
+participant ACM_Runtime
+database ACM_Database
+
+REST -> ACM_Runtime: Delete Automation Composition Instance
+
+alt Automation Composition Instance exists
+ alt Automation Composition Instance is not in state UNDEPLOYED
+  ACM_Runtime -> REST: Automation Composition instance exists and is deployed
+ else
+  ACM_Runtime -> REST: Automation Composition instance does not exist
+ end
+else
+ ACM_Runtime -> ACM_Database: Delete Automation Composition Instance
+ ACM_Runtime -> REST: Automation Composition Instance Deleted
+end
+
+@enduml

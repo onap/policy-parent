@@ -1,0 +1,12 @@
+@startuml
+
+[*] --> COMMISSIONED: Commission
+COMMISSIONED --> [*]: Decommission
+COMMISSIONED --> PRIMING: Prime
+PRIMED --> PRIMING: Prime
+PRIMING --> PRIMED: AC Element Type Primed\nresponse from Participant
+PRIMING --> DEPRIMING: Deprime
+PRIMED --> DEPRIMING: Deprime
+DEPRIMING --> COMMISSIONED: AC Element Type Deprimed\nresponse from Participant
+
+@enduml

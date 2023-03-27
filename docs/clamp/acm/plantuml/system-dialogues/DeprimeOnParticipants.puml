@@ -1,0 +1,21 @@
+@startuml
+participant REST
+participant ACM_Runtime
+participant Participant
+database ACM_Database
+
+alt Automation Composition Type has Instances
+  REST <- ACM_Runtime: Depriming of Automation Composition Type Failed
+else AC Type State is PRIMED or PRIMING
+ REST -> ACM_Runtime: Deprime Automation Composition Type
+
+ ACM_Runtime -> ACM_Database: Read Automation Composition Type
+ ACM_Runtime -> Participant: [ASYNC] Send Depriming Request to all Participants\nwith Automation Composition Type Definition
+ ACM_Runtime -> ACM_Database: Set Automation Composition Type State to DEPRIMING
+
+ REST <- ACM_Runtime: Depriming of Automation Composition Type Ordered
+else
+ REST <- ACM_Runtime: Depriming of Automation Composition Type Failed, invalid state
+end
+
+@enduml

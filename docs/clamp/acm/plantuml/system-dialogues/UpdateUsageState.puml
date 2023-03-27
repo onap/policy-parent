@@ -1,0 +1,16 @@
+@startuml
+participant Participant_API
+participant Participant
+participant ACM_Runtime
+
+Participant_API -> Participant_API: Perform Operation that Updates Usage State
+activate Participant_API
+deactivate Participant_API
+
+Participant_API -> Participant: Usage State has been updated
+Participant -> Participant: Update Usage State in ACM Element Instance
+
+== Periodically with Heartbeat ==
+Participant -> ACM_Runtime: [ASYNC] Heartbeat message including\nstatus and states of AC Element Instances on Participant
+
+@enduml

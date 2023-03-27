@@ -1,0 +1,17 @@
+@startuml
+
+participant ACM_Runtime
+participant Participant
+database ACM_Database
+
+ACM_Runtime <- Participant: [ASYNC] Undeploy Automation Composition Element Instance Response
+ACM_Runtime -> ACM_Database: Store Automation Composition Element Instance Response Information
+
+alt Is AC Element Instance undeployed?
+ ACM_Runtime -> ACM_Database: Mark AC Element Instance as UNDEPLOYED
+  alt Are all the other AC Element Instances in this AC Instance in state UNDEPLOYED?
+   ACM_Runtime -> ACM_Runtime: Set AC Instance state as UNDEPLOYED
+  end
+end
+
+@enduml
