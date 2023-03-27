@@ -3,14 +3,17 @@
 
 .. _pap-label:
 
-Policy Administration Point (PAP) Architecture
-##############################################
+Policy Administration Point API
+###############################
 
 .. contents::
     :depth: 3
 
 .. toctree::
    InternalPapPdp.rst
+
+Policy Administration Point (PAP) Architecture
+==============================================
 
 The Policy Administration Point (PAP) keeps track of PDPs, supporting the deployment of PDP groups and the deployment
 of policies across those PDP groups. Policies are created using the Policy API, but are deployed via the PAP.
@@ -169,9 +172,11 @@ are added in the response to each call:
    "x-patchversion", "0", "PATCH version of the API"
    "x-onap-requestid", "e1763e61-9eef-4911-b952-1be1edd9812b", "described above; used for logging purposes"
 
-:download:`Download Health Check PAP API Swagger <swagger/health-check-pap.json>`
+.. csv-table::
+   :header: "/healthcheck"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/health-check-pap.json
+   `Health Check PAP Swagger <./swagger/swagger.html#tag/HealthCheckRestControllerV1>`_
 
 This operation performs a health check on the PAP.
 
@@ -180,9 +185,11 @@ Here is a sample response:
 .. literalinclude:: response/health-check-pap-resp.json
     :language: json
 
-:download:`Download Consolidated Health Check PAP API Swagger <swagger/consolidated-healthcheck-pap.json>`
+.. csv-table::
+   :header: "/pdps/healthcheck"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/consolidated-healthcheck-pap.json
+   `Consolidated Health Check PAP Swagger <./swagger/swagger.html#tag/PolicyComponentsHealthCheckControllerV1>`_
 
 This operation performs a health check of all policy components. The response
 contains the health check result of each component. The consolidated health check
@@ -194,9 +201,11 @@ Here is a sample response:
 .. literalinclude:: response/consolidated-healthcheck-pap-resp.json
     :language: json
 
-:download:`Download Statistics PAP API Swagger <swagger/statistics-pap.json>`
+.. csv-table::
+   :header: "/statistics"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/statistics-pap.json
+   `Statistics PAP Swagger <./swagger/swagger.html#tag/StatisticsRestControllerV1>`_
 
 This operation allows statistics for PDP groups, PDP subgroups, and individual PDPs to be retrieved.
 
@@ -209,16 +218,20 @@ Here is a sample response:
 .. literalinclude:: response/statistics-pap-resp.json
     :language: json
 
-:download:`Download State Change PAP Swagger <swagger/state-change-pap.json>`
+.. csv-table::
+   :header: "/pdps/groups/{name}"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/state-change-pap.json
+   `PDP State Change PAP Swagger <./swagger/swagger.html#tag/PdpGroupStateChangeControllerV1>`_
 
 The state of PDP groups is managed by this operation. PDP groups can be in states PASSIVE, TEST, SAFE, or ACTIVE. For a full
 description of PDP group states, see the :ref:`ONAP Policy Framework Architecture <architecture-label>` page.
 
-:download:`Download Group Batch PAP API Swagger <swagger/groups-batch-pap.json>`
+.. csv-table::
+   :header: "/pdps/groups/batch"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/groups-batch-pap.json
+   `Group Batch PAP Swagger <./swagger/swagger.html#tag/PdpGroupCreateOrUpdateControllerV1>`_
 
 This operation allows the PDP groups and subgroups to be created and updated. Many PDP groups can be created or updated
 in a single POST operation by specifying more than one PDP group in the POST operation body.
@@ -249,15 +262,19 @@ Here is a sample request:
 .. literalinclude:: request/groups-batch-pap-req.json
     :language: json
 
-:download:`Download Group Delete PAP API Swagger  <swagger/group-delete-pap.json>`
+.. csv-table::
+   :header: "/pdps/groups/{name}"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/group-delete-pap.json
+   `PdpGroup Delete PAP Swagger <./swagger/swagger.html#tag/PdpGroupDeleteControllerV1>`_
 
 The API also allows PDP groups to be deleted. DELETE operations are only permitted on PDP groups in PASSIVE state.
 
-:download:`Download Group Query PAP API Swagger  <swagger/group-query-pap.json>`
+.. csv-table::
+   :header: "/pdps"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/group-query-pap.json
+   `PdpGroup Query PAP Swagger <./swagger/swagger.html#tag/PdpGroupQueryControllerV1>`_
 
 This operation allows the PDP groups and subgroups to be listed as well as the policies that are deployed on each PDP
 group and subgroup.
@@ -267,9 +284,11 @@ Here is a sample response:
 .. literalinclude:: response/group-query-pap-resp.json
     :language: json
 
-:download:`Download Deployments Batch PAP API Swagger  <swagger/deployments-batch-pap.json>`
+.. csv-table::
+   :header: "/pdps/deployments/batch"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/deployments-batch-pap.json
+   `Deployments Update PAP Swagger <./swagger/swagger.html#tag/PdpGroupDeployControllerV1>`_
 
 This operation allows policies to be deployed on specific PDP groups.
 Each subgroup includes an "action" property, which is used to indicate
@@ -289,9 +308,11 @@ Here is a sample response:
 .. literalinclude:: response/deployment-pap-resp.json
     :language: json
 
-:download:`Download Deploy PAP API Swagger  <swagger/policy-deploy-pap.json>`
+.. csv-table::
+   :header: "/pdps/policies"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/policy-deploy-pap.json
+   `Deploy PAP Swagger <./swagger/swagger.html#operation/deployPolicies>`_
 
 This operation allows policies to be deployed across all relevant PDP groups.
 PAP will deploy the specified policies to all relevant subgroups.  Only the
@@ -313,9 +334,11 @@ Here is a sample response:
 .. literalinclude:: response/deployment-pap-resp.json
     :language: json
 
-:download:`Download Undeploy PAP API Swagger  <swagger/policy-undeploy-pap.json>`
+.. csv-table::
+   :header: "/pdps/policies/{name}"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/policy-undeploy-pap.json
+   `Undeploy PAP Swagger <./swagger/swagger.html#operation/deletePolicy>`_
 
 This operation allows policies to be undeployed from PDP groups.
 
@@ -331,9 +354,12 @@ Here is a sample response:
 .. literalinclude:: response/deployment-pap-resp.json
     :language: json
 
-:download:`Download Policy Status PAP API Swagger  <swagger/policy-status-pap.json>`
+.. csv-table::
+   :header: "/policies/status"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/policy-status-pap.json
+   `All Policy Status PAP Swagger <./swagger/swagger.html#operation/getStatusOfAllPolicies>`_
+
 
 This operation allows the status of all policies that are deployed or undeployed to be listed together.
 The result can be filtered based on pdp group name, policy name & version.
@@ -346,9 +372,11 @@ Here is a sample response:
 .. literalinclude:: response/policy-status-pap-resp.json
     :language: json
 
-:download:`Download Deployed Policy PAP API Swagger  <swagger/deployed-policy-pap.json>`
+.. csv-table::
+   :header: "/policies/deployed"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/deployed-policy-pap.json
+   `Deployed Policy Status PAP Swagger <./swagger/swagger.html#operation/queryAllDeployedPolicies>`_
 
 This operation allows the deployed policies to be listed together with their respective deployment status.
 The result can be filtered based on policy name & version.
@@ -358,9 +386,11 @@ Here is a sample response:
 .. literalinclude:: response/deployed-policy-pap-resp.json
     :language: json
 
-:download:`Download PDP Statistics PAP API Swagger  <swagger/pdp-statistics-pap.json>`
+.. csv-table::
+   :header: "/pdps/statistics"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/pdp-statistics-pap.json
+   `Policy Statistics PAP Swagger <./swagger/swagger.html#tag/StatisticsRestControllerV1>`_
 
 This operation allows the PDP statistics to be retrieved for all registered PDPs.
 The result can be filtered based on PDP group, PDP subgroup & PDP instance.
@@ -371,9 +401,11 @@ Here is a sample response:
 .. literalinclude:: response/pdp-statistics-pap-resp.json
     :language: json
 
-:download:`Download Policy Audit PAP API Swagger  <swagger/policy-audit-pap.json>`
+.. csv-table::
+   :header: "/policies/audit"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/policy-audit-pap.json
+   `Policy Status PAP Swagger <./swagger/swagger.html#tag/PolicyAuditControllerV1>`_
 
 This operation allows the audit records of policies to be listed together.
 The result can be filtered based on pdp group name, policy name & version.
