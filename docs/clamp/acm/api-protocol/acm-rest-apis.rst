@@ -19,7 +19,11 @@ reference to the Automation Composition Type. The incoming TOSCA is verified and
 referential integrity. On delete requests, a check is made to ensure that no Automation
 Composition Instances exist for the Automation Composition Type to be deleted.
 
-.. swaggerv2doc:: swagger/acm-comissioning.json
+.. csv-table::
+   :header: "Commissioning API"
+   :widths: 10
+
+   `ACM-R Commissioning Swagger <./local-swagger.html#tag/Automation-Composition-Definition>`_
 
 
 Instantiation API
@@ -45,7 +49,11 @@ A call to the update endpoint for a Automation Composition Instance follows the 
 here: :ref:`4.1 Management of Automation Composition Instance Configurations
 <management-acm-instance-configs>`.
 
-.. swaggerv2doc:: swagger/acm-instantiation.json
+.. csv-table::
+   :header: "Instantiation API"
+   :widths: 10
+
+   `ACM-R Instantiation Swagger <./local-swagger.html#tag/Automation-Composition-Instance>`_
 
 
 Instantiation Automation Composition Instance Lifecycle Management
@@ -88,7 +96,12 @@ GUI. The API provides filtering so that specific Participants and Automation Com
 can be retrieved. In addition, the quantity of statistical information to be returned can be
 scoped.
 
-.. swaggerv2doc:: swagger/acm-monitoring.json
+.. csv-table::
+   :header: "Monitoring API"
+   :widths: 10
+
+   `ACM-R Monitoring Swagger <./local-swagger.html#tag/Participant-Monitoring>`_
+
 
 Pass Through API
 ================
