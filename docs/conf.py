@@ -23,7 +23,51 @@ extensions = [
     'sphinxcontrib.seqdiag',
     'sphinxcontrib.swaggerdoc',
     'sphinxcontrib.plantuml',
-    'sphinx_toolbox.collapse'
+    'sphinx_toolbox.collapse',
+    'sphinxcontrib.redoc'
+]
+
+redoc = [
+    {
+        'name': 'Policy API',
+        'page': 'api/swagger',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-api/master/main/src/main/resources/openapi/openapi.yaml',
+        'opts': {
+            'lazy-rendering': True,
+            'suppress-warnings': True,
+            'hide-hostname': True,
+        }
+    },
+    {
+        'name': 'Policy PAP',
+        'page': 'pap/swagger',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-pap/master/main/src/main/resources/openapi/openapi.yaml',
+        'opts': {
+            'lazy-rendering': False,
+            'suppress-warnings': True,
+            'hide-hostname': True,
+        }
+    },
+    {
+        'name': 'Policy XACML',
+        'page': 'xacml/swagger',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-xacml-pdp/master/main/src/main/resources/openapi/openapi.yaml',
+        'opts': {
+            'lazy-rendering': False,
+            'suppress-warnings': True,
+            'hide-hostname': True,
+        }
+    },
+    {
+        'name': 'Policy ACM-R',
+        'page': 'clamp/acm/api-protocol/swagger',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-clamp/master/runtime-acm/src/main/resources/openapi/openapi.yaml',
+        'opts': {
+            'lazy-rendering': False,
+            'suppress-warnings': True,
+            'hide-hostname': True,
+        }
+    },
 ]
 
 #
@@ -53,5 +97,6 @@ def setup(app):
     app.add_css_file("css/ribbon.css")
 
 linkcheck_ignore = [
-  r'http://localhost:\d+/'
+  r'http://localhost:\d+/',
+  r'(.*?)/swagger.html(.*?)'
 ]

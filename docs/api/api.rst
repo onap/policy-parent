@@ -5,8 +5,11 @@
 .. THIS IS USED INTERNALLY IN POLICY ONLY
 .. _api-label:
 
+Policy Life Cycle API
+#####################
+
 1. Policy Life Cycle API
-########################
+========================
 
 1.1 Overview
 ------------
@@ -175,22 +178,19 @@ Below is a table containing sample well-formed TOSCA compliant policies.
 
 
 2. APIs exposed
-###############
+===============
 
 2.1 Global API Table
 --------------------
 
-Below is a global API table from where swagger JSON for different types of policy design API can be downloaded.
+Below you can download the swagger YAML for Policy Framework Lifecycle API.
+You can find *Tosca Node Template Design* and *Policy Design* operations.
 
 .. csv-table::
-   :header: "API name", "Swagger JSON"
+   :header: "API name", "Swagger YAML"
    :widths: 10,5
 
-   "Healthcheck API", ":download:`link <swagger/healthcheck-api.json>`"
-   "Statistics API", ":download:`link <swagger/statistics-api.json>`"
-   "Tosca Policy Type API", ":download:`link <swagger/policytype-api.json>`"
-   "Tosca Policy API", ":download:`link <swagger/policy-api.json>`"
-   "Tosca NodeTemplate API", ":download:`link <swagger/nodetemplates-api.json>`"
+   "Policy Framework Lifecycle API", ":download:`link <https://raw.githubusercontent.com/onap/policy-api/master/main/src/main/resources/openapi/openapi.yaml>`"
 
 2.2 API Swagger
 ---------------
@@ -219,13 +219,22 @@ x-patchversion is used only to communicate a PATCH version in a response for tro
 
 x-onap-requestid is used to track REST transactions for logging purpose, as described above.
 
-.. swaggerv2doc:: swagger/healthcheck-api.json
 
-.. swaggerv2doc:: swagger/statistics-api.json
+.. csv-table::
+   :header: "SWAGGER"
+   :widths: 10
 
-.. swaggerv2doc:: swagger/policytype-api.json
-
-.. swaggerv2doc:: swagger/policy-api.json
+   `To view the full SWAGGER click here <./swagger.html>`_
+    
+.. note::
+   Note that the context-path is not present in the document, because it is in the `application.yaml <https://github.com/onap/policy-api/blob/master/main/src/main/resources/application.yaml>`_ 
+   So the final url is composed by:
+   
+   .. csv-table::
+       :header: "Scheme","Host","Context-Path","Path"
+       :widths: 3,3,3,3
+    
+       "http","://<IP>:<PORT>","/policy/api/v1/","healthcheck"
 
 
 2.3 Creating MetadataSet for policy
@@ -252,9 +261,8 @@ The following sample tosca policy shows the policy metadata section that maps to
 
    "apex.decisionmaker.policy", `apex.policy.decisionmaker.input.tosca.yaml <https://github.com/onap/policy-models/blob/master/models-examples/src/main/resources/policies/apex.policy.decisionmaker.input.tosca.yaml>`_
 
-The following node template Apis are introduced to handle the policy metadataSets as independent entities that can be later mapped to a tosca policy during policy creation.
-
-.. swaggerv2doc:: swagger/nodetemplates-api.json
+`The node template Apis <./swagger.html#tag/Tosca-Node-Template-Design>`_ 
+are introduced to handle the policy metadataSets as independent entities that can be later mapped to a tosca policy during policy creation.
 
 When making a POST policy API call, the client must not only provide well-formed JSON/YAML,
 but also must conform to the TOSCA specification. For example. the "type" field for a TOSCA
@@ -336,8 +344,8 @@ Delete version 1.0.0 of vFirewall Monitoring Policy::
 
 
 3. Policy API application configuration
-#######################################
+=======================================
 
 Starting from Jakarta Release policy-api is a Springboot based microservice.
 
-The policy-api application configuration is packaged as a K8S ConfigMap object via `Policy-API OOM charts <https://gerrit.onap.org/r/gitweb?p=oom.git;a=blob;f=kubernetes/policy/components/policy-api/resources/config/apiParameters.yaml;h=c08b035d53f299fe0e08b45bd95a760283acce66;hb=refs/heads/master>`_
+The policy-api application configuration is packaged as a K8S ConfigMap object via `Policy-API OOM charts <https://raw.githubusercontent.com/onap/oom/master/kubernetes/policy/components/policy-api/resources/config/apiParameters.yaml>`_
