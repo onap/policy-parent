@@ -1,0 +1,29 @@
+name: DemoInstance0
+version: 1.0.1
+compositionId: {{compositionId}}
+description: Demo automation composition instance 0
+elements:
+
+  709c62b3-8918-41b9-a747-d21eb79c6c24:
+    id: 709c62b3-8918-41b9-a747-d21eb79c6c24
+    definition:
+      name: onap.policy.clamp.ac.element.Http_StarterAutomationCompositionElement
+      version: 1.2.3
+    description: Starter Automation Composition Element for the Demo
+    properties:
+      baseUrl: http://cluster-ip:30800
+      httpHeaders:
+        Content-Type: application/json
+        Authorization: Basic YWNtVXNlcjp6YiFYenRHMzQ=
+      configurationEntities:
+        - configurationEntityId:
+            name: onap.policy.clamp.ac.starter
+            version: 1.0.0
+          restSequence:
+            - restRequestId:
+                name: request1
+                version: 1.0.1
+              httpMethod: POST
+              path: /onap/policy/clamp/acelement/v2/activate
+              body: '{ "receiverId": { "name": "onap.policy.clamp.ac.startertobridge", "version": "1.0.0" }, "timerMs": 20000, "elementType": "STARTER", "topicParameterGroup": { "server": "message-router:3904", "listenerTopic": "POLICY_UPDATE_MSG", "publisherTopic": "AC_ELEMENT_MSG", "fetchTimeout": 15000, "topicCommInfrastructure": "dmaap" } }'
+              expectedResponse: 201

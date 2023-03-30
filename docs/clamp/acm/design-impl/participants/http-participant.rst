@@ -13,7 +13,7 @@ the microservice that runs a REST server. Once the microservice is up, the HTTP
 participant can be used to configure the microservice over its REST interface.Of course,
 the HTTP participant works towards any REST service, it is not restricted to REST
 services started by participants.
-
+Supported message Broker are DMaap and Strimzi-Kafka.
 
 .. image:: ../../images/participants/http-participant.png
 
@@ -34,17 +34,30 @@ Elements towards multiple REST endpoints, as shown in the diagram above where th
 participant is running two HTTP Automation Composition Elements, one for Automation Composition A and one for
 Automation Composition B.
 
-Configuring a Automation Composition Element on the HTTP participant for a Automation Composition
--------------------------------------------------------------------------------------------------
+Supported Element Types
+-----------------------
+Supported Element Types for Http participant will be used to define the HTTP participant Element Definition Types in tosca template.
+Participant Supported Element Types is defined in Http participant application.yaml.
+
+.. code-block:: YAML
+
+    participantSupportedElementTypes:
+      -
+        typeName: org.onap.policy.clamp.acm.HttpAutomationCompositionElement
+        typeVersion: 1.0.0
+
+
+Configuring an Automation Composition Definition and Instance for the HTTP participant
+--------------------------------------------------------------------------------------
 A *Configuration Entity* describes a concept that is managed by the HTTP participant. A
 Configuration Entity can be created, Read, Updated, and Deleted (CRUD). The user defines
 the Configuration Entities that it wants its HTTP Automation Composition Element to manage and
 provides a sequence of parameterized REST commands to Create, Read, Update, and Delete
 each Configuration Entity.
 
-Sample tosca template defining a http participant and a automation composition element for a automation composition. :download:`click here <tosca/tosca-http-participant.yml>`
+Sample tosca template defining a http participant and a AC element definition. :download:`click here <tosca/tosca-http-participant.yml>`
 
-The user configures the following properties in the TOSCA for the HTTP participant:
+The user defines the following properties in the TOSCA for the HTTP participant:
 
 .. list-table::
    :widths: 15 10 50
@@ -102,11 +115,14 @@ The *RestRequest* type is described in the following table:
      - HttpStatus
      - The expected HTTP response code fo the REST request
 
+Sample Automation Composition instances.
+In that example the user fills the properties defined in the TOSCA for the HTTP participant :download:`click here <tosca/automation-composition-http.yml>`
+
 Http participant Interactions:
 ------------------------------
-The http participant interacts with Automation Composition Runtime on the northbound via DMaap. It interacts with any microservice on the southbound over http for configuration.
+The http participant interacts with Automation Composition Runtime on the northbound via Message Broker. It interacts with any microservice on the southbound over http for configuration.
 
-The communication for the Automation Composition updates and state change requests are sent from the Automation Composition Runtime to the participant via DMaap.
+The communication for the Automation Composition updates and state change requests are sent from the Automation Composition Runtime to the participant via Message Broker.
 The participant invokes the appropriate http endpoint of the microservice based on the received messages from the Automation Composition Runtime.
 
 
@@ -119,15 +135,16 @@ which takes precedence over the Automation Composition Elements with the startPh
 
 Http participant Workflow:
 --------------------------
-Once the participant is started, it sends a "REGISTER" event to the DMaap topic which is then consumed by the Automation Composition Runtime to register this participant on the runtime database.
-The user can commission the tosca definitions from the Policy Gui to the Automation Composition Runtime that further updates the participant with these definitions via DMaap.
-Once the automation composition definitions are available in the runtime database, the Automation Composition can be instantiated with the default state "UNINITIALISED" from the Policy Gui.
+Once the participant is started, it sends a "REGISTER" event to the Message Broker topic which is then consumed by the Automation Composition Runtime to register this participant on the runtime database.
+The user can commission the tosca definitions from the Policy Gui to the Automation Composition Runtime.
+Once the automation composition definitions are available in the runtime database the user can prime them and further updates the participant with these definitions via Message Broker.
+After primed, the Automation Composition can be instantiated with the default state "UNDEPLOYED" from the Policy Gui.
 
-When the state of the Automation Composition is changed from "UNINITIALISED" to "PASSIVE" from the Policy Gui, the http participant receives the automation composition state change event from the runtime and
+When the state of the Automation Composition is changed from "UNDEPLOYED" to "DEPLOYED" from the Policy Gui, the http participant receives the automation composition state change event from the runtime and
 configures the microservice of the corresponding Automation Composition Element over http.
 The configuration entity for a microservice is associated with each Automation Composition Element for the http participant.
 The http participant holds the executed http requests information along with the responses received.
 
 The participant is used in a generic way to configure any entity over http and it does not hold the information about the microservice to unconfigure/revert the configurations when the
-state of Automation Composition changes from "PASSIVE" to "UNINITIALISED".
+state of Automation Composition changes from "DEPLOYED" to "UNDEPLOYED".
 
