@@ -12,9 +12,9 @@ Automation Composition Elements in the Policy Framework Participant are configur
 
 The Policy Framework participant receives messages through participant-intermediary common code, and handles them by invoking REST APIs towards policy-framework.
 
-For example, When a AutomationCompositionUpdate message is received by policy participant, it contains full ToscaServiceTemplate describing all components participating in an automation composition. When the automation composition element state changed from UNINITIALIZED to PASSIVE, the Policy-participant triggers the creation of policy-types and policies in Policy-Framework.
+For example, When a PARTICIPANT_UPDATE message is received by policy participant prompted by a PRIME, it contains the Automation Composition Element Definitions from the Tosca Service Template that was commissioned. An Automation Composition Instance can then be created from the commissioned definitions. When the automation composition instance element state changed from UNDEPLOYED to DEPLOYED, the Policy-participant receives a AUTOMATION_COMPOSITION_DEPLOY message, which triggers the creation of policy-types and policies in Policy-Framework.
 
-When the state changes from PASSIVE to UNINITIALIZED, Policy-Participant deletes the policies, policy-types by invoking REST APIs towards the policy-framework.
+When the state changes from DEPLOYED to UNDEPLOYED, Policy-Participant deletes the policies, policy-types by invoking REST APIs towards the policy-framework.
 
 Run Policy Framework Participant command line using Maven
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -31,7 +31,9 @@ Distributing Policies
 
 The Policy Framework participant uses the Policy PAP API to deploy and undeploy policies.
 
-When a Policy Framework Automation Composition Element changes from state UNINITIALISED to state PASSIVE, the policy is deployed. When it changes from state PASSIVE to state UNINITIALISED, the policy is undeployed.
+When a Policy Framework Automation Composition Element changes from state UNDEPLOYED to state DEPLOYED, the policy is deployed. When it changes from state DEPLOYED to state UNDEPLOYED, the policy is undeployed.
+
+For more complete detail of the state machines please go to the state machines page :ref:`acm-states-label`.
 
 The PDP group to which the policy should be deployed is specified in the Automation Composition Element metadata, see the Policy Automation Composition Element type definition. If the PDP group specified for policy deployment does not exist, an error is reported.
 
