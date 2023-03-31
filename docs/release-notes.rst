@@ -1374,7 +1374,7 @@ System Limitations
 The policy API component requires a fresh new database when migrating to the guilin release.
 Therefore, upgrades require a fresh new database installation.
 Please see the
-`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/latest/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
+`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/latest/installation/oom.html#installing-or-upgrading-policy-acm>`__ section for appropriate procedures.
 
 Known Vulnerabilities
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1679,7 +1679,7 @@ System Limitations
 The policy API component requires a fresh new database when migrating to the frankfurt release.
 Therefore, upgrades require a fresh new database installation.
 Please see the
-`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/latest/installation/oom.html#installing-or-upgrading-policy>`__ section for appropriate procedures.
+`Installing or Upgrading Policy <https://docs.onap.org/projects/onap-policy-parent/en/latest/installation/oom.html#installing-or-upgrading-policy-acm>`__ section for appropriate procedures.
 
 Known Vulnerabilities
 ~~~~~~~~~~~~~~~~~~~~~
