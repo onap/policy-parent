@@ -1,0 +1,43 @@
+name: PMSHInstance0
+version: 1.0.1
+compositionId: {{compositionId}}
+description: Automation composition instance for PMSH microservice
+elements:
+
+  ecc175fa-cefa-11ed-afa1-0242ac120003:
+    id: ecc175fa-cefa-11ed-afa1-0242ac120003
+    definition:
+      name: org.onap.domain.database.PMSH_K8SMicroserviceAutomationCompositionElement
+      version: 1.2.3
+    description: Automation composition element for the K8S microservice for PMSH
+    properties:
+      chart:
+        chartId:
+          name: dcae-pmsh
+          version: 8.0.0
+        namespace: onap
+        releaseName: pmshms
+        repository:
+          repoName: chartmuseum
+          protocol: http
+          address: chart-museum
+          port: 80
+          userName: onapinitializer
+          password: demo123456!
+        overrideParams:
+          global.masterPassword: test
+
+
+  ecc175fa-cefa-11ed-afa1-0242ac120004:
+    id: ecc175fa-cefa-11ed-afa1-0242ac120004
+    definition:
+      name: org.onap.domain.database.Local_K8SMicroserviceAutomationCompositionElement
+      version: 1.2.3
+    description: Automation composition element for the K8S microservice for local chart
+    properties:
+      chart:
+        chartId:
+          name: nginx-ingress
+          version: 0.9.1
+        releaseName: nginxms
+        namespace: test
