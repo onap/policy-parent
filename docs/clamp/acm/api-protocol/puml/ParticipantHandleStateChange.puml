@@ -1,0 +1,52 @@
+@startuml
+
+(*) --> "Process State Change Message"
+
+if "All Automation Composition Elements with my Participant ID processed?" then
+  --> [yes] "Send State Change Ack Message"
+  --> (*)
+else
+  --> [no] "Process next Automation Composition Element with my ID"
+  if "State Change Message Start Phase equals Automation Composition Element start phase" then
+    [true] if "Current State is DEPLOYED?" then
+     [true] if "Change to UNDEPLOYED?" then
+      --> [true] "Change Automation Composition Element to state UNDEPLOYED"
+      --> "Wait for DEPLOYED->UNDEPLOYED State Change to complete"
+      if "State Change?" then
+        --> [success] "Record Success for State Change Ack message"
+        --> "Process State Change Message"
+      else
+        --> [fail] "Record Error for State Change Ack message"
+        --> "Process State Change Message"
+      endif
+      else
+        --> [false] "Record Error for State Change Ack message"
+        --> "Process State Change Message"
+      endif
+    else
+      [false] if "Current State is UNDEPLOYED?" then
+        [true] if "Change to DEPLOYED?" then
+          --> [true] "Change Automation Composition Element to state DEPLOYED"
+          --> "Wait for UNDEPLOYED->DEPLOYED State Change to complete"
+          if "State Change?" then
+            --> [success] "Record Success for State Change Ack message"
+            --> "Process State Change Message"
+          else
+            --> [fail] "Record Error for State Change Ack message"
+            --> "Process State Change Message"
+          endif
+        else
+          --> [false] "Record Error for State Change Ack message"
+          --> "Process State Change Message"
+        endif
+      else
+        --> [false] "Record Error for State Change Ack message"
+        --> "Process State Change Message"
+      endif
+    endif
+  else
+    --> [false] "Skip Automation Composition Element"
+    --> "Process State Change Message"
+endif
+
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+Commissioning_REST -> CLAMP_Runtime: De-Prime Automation Composition Type Definition
+alt Automation Composition Instances exist for Automation Composition Type
+	Commissioning_REST <- CLAMP_Runtime: Cannot decommission Automation Composition Type Definition
+else No Automation Composition Instances exist for Automation Composition Type
+	Participant <- CLAMP_Runtime: Participant Update\n[Remove Automation Composition Element Definitions\nfrom Participants in Automation Composition]
+	activate Participant
+	Participant -> Participant: Delete Automation Composition Element\nType Definitions and\nCommon Property Values
+	Participant -> CLAMP_Runtime: Participant Update Ack [from each Participant mentioned in Participant Update message]
+	deactivate Participant
+@enduml

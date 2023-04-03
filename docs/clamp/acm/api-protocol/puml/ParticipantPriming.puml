@@ -1,0 +1,13 @@
+@startuml
+Commissioning_REST -> CLAMP_Runtime: Prime Automation Composition Type Defintions and\nset values of Common Properties
+activate CLAMP_Runtime
+loop over Participant Types in Automation Composition Type Definition
+	CLAMP_Runtime -> CLAMP_Runtime: Collect Automation Composition Element Type Definitions and\nCommon Property Values for Participant Type
+end
+Participant <- CLAMP_Runtime: Participant Update\n[Automation Composition Element Type Definitions and\nCommon Property Values for Participant Types]
+deactivate CLAMP_Runtime
+activate Participant
+Participant -> Participant: Store Automation Composition Element Type Definitions and\nCommon Property Values
+Participant -> CLAMP_Runtime: Participant Update Ack\n[from each Participant mentioned in Participant Update message]
+deactivate Participant
+@enduml

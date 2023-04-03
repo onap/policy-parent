@@ -1,0 +1,17 @@
+@startuml
+activate Participant
+Participant -> Participant: Start Participant
+deactivate Participant
+Participant -> CLAMP_Runtime: Participant Registration
+Participant <- CLAMP_Runtime: Participant Registration Ack
+activate CLAMP_Runtime
+loop over Automation Composition Type Definitions
+	CLAMP_Runtime -> CLAMP_Runtime: Collect Automation Composition Element Type Definitions and\nCommon Property Values for\nParticipant Type of this Participant
+end
+deactivate CLAMP_Runtime
+Participant <- CLAMP_Runtime: Participant Update\n[Automation Composition Element Type Definitions and\nCommon Property Values for\nParticipant Type of Participant]
+activate Participant
+Participant -> Participant: Store Automation Composition Element Type Definitions and\nCommon Property Values
+Participant -> CLAMP_Runtime: Participant Update Ack
+deactivate Participant
+@enduml
