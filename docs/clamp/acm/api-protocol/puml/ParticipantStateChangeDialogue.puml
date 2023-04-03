@@ -1,0 +1,35 @@
+@startuml
+
+activate CLAMP_Runtime
+CLAMP_Runtime -> CLAMP_Runtime: Build an ordered list of the Start Phases in the Automation Composition Instance
+deactivate CLAMP_Runtime
+
+alt "State Change UNDEPLOYED_to_DEPLOYED or LOCKED_to_UNLOCKED"
+  loop over Start Phases list in increasing order
+    CLAMP_Runtime -> Participant: Automation Composition State Change\n[to all Participants in Automation Composition with this Start Phase]
+    CLAMP_Runtime -> CLAMP_Runtime: Asynchronously wait for answers from Participants
+    CLAMP_Runtime <- Participant: Automation Composition State Change Ack [from each Participant in this Start Phase of Automation Composition]
+    alt "State Change Ack reports success"
+      CLAMP_Runtime -> CLAMP_Runtime: Log success
+    else "State Change Ack reports an error"
+      CLAMP_Runtime -> CLAMP_Runtime: Log error
+      CLAMP_Runtime -> CLAMP_Runtime: Reset state of Automation Composition CLAMP_Runtime -> CLAMP_Runtime: Abort State Change operation
+    end
+  end
+else "State Change DEPLOYED_to_UNDEPLOYED or UNLOCKED_to_LOCKED"
+ loop over Start Phases list in decreasing order
+    CLAMP_Runtime -> Participant: Automation Composition State Change\n[to all Participants in Automation Composition with this Start Phase]
+    CLAMP_Runtime -> CLAMP_Runtime: Asynchronously wait for answers from Participants
+    CLAMP_Runtime <- Participant: Automation Composition State Change Ack [from each Participant in this Start Phase of Automation Composition]
+    alt "State Change Ack reports success"
+      CLAMP_Runtime -> CLAMP_Runtime: Log success
+    else "State Change Ack reports an error"
+      CLAMP_Runtime -> CLAMP_Runtime: Log error
+      CLAMP_Runtime -> CLAMP_Runtime: Reset state of Automation Composition CLAMP_Runtime -> CLAMP_Runtime: Abort State Change operation
+    end
+  end
+end
+
+CLAMP_Runtime -> CLAMP_Runtime: Set overall state of Automation Composition
+
+@enduml
