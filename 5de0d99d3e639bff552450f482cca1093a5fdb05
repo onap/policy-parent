@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b372cff_4ec489f4",
+        "filename": "docs/installation/docker.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3239
+      },
+      "writtenOn": "2023-04-03T18:39:10Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "5de0d99d3e639bff552450f482cca1093a5fdb05",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
