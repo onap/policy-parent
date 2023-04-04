@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47bb0723_e96d832a",
+        "filename": "docs/clamp/acm/design-impl/participants/tosca/automation-composition-http.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2023-04-04T15:43:03Z",
+      "side": 1,
+      "message": "Wondering, should we use acelement http config as an example?",
+      "range": {
+        "startLine": 1,
+        "startChar": 6,
+        "endLine": 1,
+        "endChar": 19
+      },
+      "revId": "e3606eb39d4a2f7f2882491782457d84f231d8e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
