@@ -56,9 +56,9 @@ started the next one 250 ms. later.
 
 The results are illustrated on the following graphs:
 
-.. image:: images/s3p-drools-1.png
-.. image:: images/s3p-drools-2.png
-.. image:: images/s3p-drools-3.png
+.. image:: drools-s3p-results/s3p-drools-1.png
+.. image:: drools-s3p-results/s3p-drools-2.png
+.. image:: drools-s3p-results/s3p-drools-3.png
 
 
 Commentary

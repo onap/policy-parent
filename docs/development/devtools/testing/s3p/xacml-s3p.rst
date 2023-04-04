@@ -65,7 +65,7 @@ The test was run for 20 minutes with 10 users (i.e., threads), with the followin
 
    10, 4603, 2
 
-.. image:: images/s3p-perf-xacml.png
+.. image:: xacml-s3p-results/s3p-perf-xacml.png
 
 
 Stability Test of Policy XACML PDP

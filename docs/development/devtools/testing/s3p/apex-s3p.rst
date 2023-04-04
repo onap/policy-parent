@@ -57,7 +57,7 @@ phase or provisioned in AAI separately.
 Download & execute the steps in postman collection for creating the entities along with it’s dependencies.
 The steps needs to be performed sequentially one after another. And no input is required from user.
 
-:download:`Create VNF & PNF in AAI for Apex S3P  <postman/create-vnf-pnf-aai-for-apex-s3p.postman_collection.json>`
+:download:`Create VNF & PNF in AAI for Apex S3P  </development/devtools/postman/create-vnf-pnf-aai-for-apex-s3p.postman_collection.json>`
 
 Make sure to skip the delete VNF & PNF steps.
 
