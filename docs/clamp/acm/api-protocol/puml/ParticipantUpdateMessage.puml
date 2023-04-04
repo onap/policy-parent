@@ -1,0 +1,48 @@
+@startuml
+
+(*) --> "Process Update Message"
+
+if "All Automation Composition Elements with my Participant ID processed?" then
+  --> [yes] "Send Update Ack Message"
+  --> (*)
+else
+  --> [no] "Process next Automation Composition Element with my ID"
+  if "New Automation Composition Element?" then
+	--> [yes] "Create Automation Composition Element"
+	--> "Set Automation Composition Element to state UNDEPLOYED/LOCKED"
+	--> "Order Deployment/Unlock of Automation Composition Element"
+	--> "Pass Parameters to Automation Composition Element"
+	--> "Wait for Deployment/Unlock to complete"
+	if "Automation Composition Element Deployed/Unlocked?" then
+      --> [success] "Record Success for Update Ack message"
+      --> "Process Update Message"
+    else
+      --> [fail] "Delete Automation Composition Element"
+      --> "Record Error for Update Ack message"
+      --> "Process Update Message"
+    endif
+  else
+  	--> [no] "Check Automation Composition Element State"
+  endif
+  if "DEPLOYED/UNLOCKED and Automation Composition Version change != patch?" then
+	--> [true] "Record Error for Update Ack message"
+    --> "Process Update Message"
+  else
+  	[false] if "NOT DEPLOYED/UNLOCKED and Automation Composition Version change == major?" then
+      --> [true] "Record Error for Update Ack message"
+      --> "Process Update Message"
+  else
+	--> [false] "Pass Changed Parameters to Automation Composition Element"
+	--> "Wait for reconfiguration to complete"
+    if "Automation Composition Element Reconfiguration?" then
+      --> [success] "Record Success for Update Ack message"
+      --> "Process Update Message"
+    else
+      --> [fail] "Roll back reconfiguration"
+      --> "Record Error for Update Ack message"
+      --> "Process Update Message"
+    endif
+  endif
+endif
+
+@enduml

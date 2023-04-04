@@ -1,0 +1,32 @@
+Message,Source,Target,Purpose,Important Fields,Field Descriptions
+ParticipantRegister,Participant,ACM Runtime,Participant registers with the ACM runtime,participantId,The ID of this participant – in UUID format
+,,,,participantSupportedElementTypes,A list of element types that this participant supports
+ParticipantRegisterAck,ACM Runtime,Participant,Acknowledgment of Participant Registration,participantId,The ID of this participant – in UUID format
+,,,,Result,Success/Fail
+,,,,Message,A message indicating the reason for failure
+ParticipantDeregister,Participant,ACM Runtime,Participant deregisters with the ACM runtime,participantId,The ID of this participant – in UUID format
+ParticipantDeregisterAck,ACM Runtime,Participant,Acknowledgment of Participant Deegistration,participantId,The ID of this participant – in UUID format
+,,,,Result,Success/Fail
+,,,,Message,A message indicating the reason for failure
+ParticipantPrime,ACM Runtime,Participant,Trigger priming/depriming in the participant,participantId,The ID of this participant – in UUID format
+,,,,participantDefinitionUpdates,Contains AC element definition values for a particular participant
+,,,,Result,Success/Fail
+,,,,Message,A message indicating the reason for failure
+ParticipantPrimeAck,Participant,ACM Runtime,Message to confirm participant has been primed/deprimed,participantId,The ID of this participant – in UUID format
+,,,,Result,Success/Fail
+,,,,Message,A message indicating the reason for failure
+ParticipantStatusReq,ACM Runtime,Participant,Message sent to reques a status update from the participant,participantId,The ID of the participant to request update from – in UUID format
+,,,,messageType,Enum indicating the type of message PARTICIPANT_STATUS_REQ
+ParticipantStatus,Participant,ACM Runtime,Status update message,state,Enum indicating the current state of the participant
+,,,,participantDefinitionUpdates,"A list of ParticipantDefinition updates, returned in response to ParticipantStatusReq only"
+,,,,automationCompositionInfoList,List of AutomationCompositionInfo types with AutomationCompositionId and its state
+,,,,participantSupportedElementTypes,Ac element types that this participant is capable for deployinh/supporting
+AutomationCompositionDeploy,ACM Runtime,Participant,Message to request change state of composition to DEPLOY,participantUpdatesList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,startPhase,Integer indicating the start up order of the elements
+,,,,participantId,UUID indicating the participant the message is intended for
+AutomationCompositionDeployAck,Participant,ACM Runtime,Message to acknowledge that deploy or state change message has been received by participant,automationCompositionResultMap,"A map with AutomationCompositionElementID as its key, and a pair of result and message as value per AutomationCompositionElement"
+,,,,automationCompositionId,The id of the automation composition related to this message
+AutomationCompositionStateChange,ACM Runtime,Participant,Message to request change state of composition to states other than DEPLOY,deployOrderedState,Enum indicating the deployment state being requested
+,,,,lockOrderedState,Enum indicating the lock state being requested
+,,,,startPhase,Integer indicating the start up order of the elements
+,,,,participantId,UUID indicating the participant the message is intended for

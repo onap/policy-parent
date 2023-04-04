@@ -1,0 +1,5 @@
+@startuml
+Participant -> CLAMP_Runtime: Participant Deregistration
+Participant <- CLAMP_Runtime: Participant Deregistration Ack
+Participant -> Participant: Shutdown Participant
+@enduml
