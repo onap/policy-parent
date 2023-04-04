@@ -22,6 +22,30 @@
       "revId": "5de0d99d3e639bff552450f482cca1093a5fdb05",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836d7dcf_0503a8cf",
+        "filename": "docs/installation/docker.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2023-04-04T08:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b372cff_4ec489f4",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "5de0d99d3e639bff552450f482cca1093a5fdb05",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
