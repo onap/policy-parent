@@ -11,7 +11,10 @@ Policy Platform Development Tools
     :depth: 3
 
 
-This article explains how to build the ONAP Policy Framework for development purposes and how to run stability/performance tests for a variety of components. To start, the developer should consult the latest ONAP Wiki to familiarize themselves with developer best practices and how-tos to setup their environment, see `https://wiki.onap.org/display/DW/Developer+Best+Practices`.
+This article explains how to build the ONAP Policy Framework for development purposes and how to run stability/
+performance tests for a variety of components. To start, the developer should consult the latest ONAP Wiki to
+familiarize themselves with developer best practices and how-tos to setup their environment,
+see `https://wiki.onap.org/display/DW/Developer+Best+Practices`.
 
 This article assumes that:
 
@@ -19,16 +22,22 @@ This article assumes that:
 * You are using a directory called *git* off your home directory *(~/git)* for your git repositories
 * Your local maven repository is in the location *~/.m2/repository*
 * You have copied the settings.xml from oparent to *~/.m2/* directory
-* You have added settings to access the ONAP Nexus to your M2 configuration, see `Maven Settings Example <https://wiki.onap.org/display/DW/Setting+Up+Your+Development+Environment>`_ (bottom of the linked page)
+* You have added settings to access the ONAP Nexus to your M2 configuration,
+  see `Maven Settings Example <https://wiki.onap.org/display/DW/Setting+Up+Your+Development+Environment>`_
+  (bottom of the linked page)
 
-The procedure documented in this article has been verified to work on a MacBook laptop running macOS Mojave Version 10.14.6 and an Ubuntu 18.06 VM.
+The procedure documented in this article has been verified to work on a MacBook laptop running macOS Mojave Version
+10.14.6 and an Ubuntu 18.06 VM.
 
 Cloning All The Policy Repositories
 ***********************************
 
-Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/admin/repos/q/filter:policy>`_. This script clones all the ONAP Policy Framework repositories.
+Run a script such as the script below to clone the required modules from the
+`ONAP git repository <https://gerrit.onap.org/r/admin/repos/q/filter:policy>`_.
+This script clones all the ONAP Policy Framework repositories.
 
-ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the ONAP ECOMP SDK *ecompsdkos* module, and the A&AI Schema module.
+ONAP Policy Framework has dependencies to the ONAP Parent *oparent* module, the ONAP ECOMP SDK *ecompsdkos* module,
+and the A&AI Schema module.
 
 
 .. code-block:: bash
@@ -167,7 +176,8 @@ Building ONAP Policy Framework Components
         rm -fr ~/.m2/repository/org/onap
 
 
-**Step 2:**  A pom such as the one below can be used to build the ONAP Policy Framework modules. Create the *pom.xml* file in the directory *~/git/onap/policy*.
+**Step 2:**  A pom such as the one below can be used to build the ONAP Policy Framework modules. Create the *pom.xml*
+file in the directory *~/git/onap/policy*.
 
 .. code-block:: xml
    :caption: Typical pom.xml to build the ONAP Policy Framework
@@ -203,8 +213,9 @@ Building ONAP Policy Framework Components
 
 **Policy Architecture/API Transition**
 
-In Dublin, a new Policy Architecture was introduced. The legacy architecture runs in parallel with the new architecture. It will be deprecated after Frankfurt release.
-If the developer is only interested in working with the new architecture components, the engine sub-module can be ommitted.
+In Dublin, a new Policy Architecture was introduced. The legacy architecture runs in parallel with the new
+architecture. It will be deprecated after Frankfurt release. If the developer is only interested in working with the
+new architecture components, the engine sub-module can be ommitted.
 
 
 **Step 3:** You can now build the Policy framework.
@@ -247,15 +258,17 @@ Another example on how to run the MariaDb is using the docker compose file used 
 Running the API component standalone
 ++++++++++++++++++++++++++++++++++++
 
-Assuming you have successfully built the codebase using the instructions above. The only requirement for the API component to run is a
-running MariaDb database instance. The easiest way to do this is to run the docker image, please see the mariadb documentation for the latest
-information on doing so. Once the mariadb is up and running, a configuration file must be provided to the api in order for it to know how to
-connect to the mariadb. You can locate the default configuration file in the packaging of the api component:
+Assuming you have successfully built the codebase using the instructions above. The only requirement for the API
+component to run is a running MariaDb database instance. The easiest way to do this is to run the docker image, please
+see the mariadb documentation for the latest information on doing so. Once the mariadb is up and running, a
+configuration file must be provided to the api in order for it to know how to connect to the mariadb. You can locate
+the default configuration file in the packaging of the api component:
 
 `Default Policy API Configuration <https://gerrit.onap.org/r/gitweb?p=policy/api.git;a=blob;f=packages/policy-api-tarball/src/main/resources/etc/apiParameters.yaml;h=2c19199a8a889cb0ab203334182662fe15e1635e;hb=refs/heads/master>`_
 
-You will want to change the fields pertaining to "host", "port" and "databaseUrl" to your local environment settings and start the
-policy-api springboot application either using your IDE of choice or using the run goal from Spring Boot Maven plugin: *mvn spring-boot:run*.
+You will want to change the fields pertaining to "host", "port" and "databaseUrl" to your local environment settings
+and start the policy-api springboot application either using your IDE of choice or using the run goal from Spring Boot
+Maven plugin: *mvn spring-boot:run*.
 
 Running the API component using Docker Compose
 ++++++++++++++++++++++++++++++++++++++++++++++
@@ -267,16 +280,18 @@ An example of running the api using a docker compose script is located in the Po
 Running the PAP component standalone
 ++++++++++++++++++++++++++++++++++++
 
-Once you have successfully built the PAP codebase, a running MariaDb database and DMaaP instance will also be required to start up the application.
-For MariaDb instance, the easiest way is to run the docker image, please see the mariadb documentation for the latest
-information on doing so. For DMaaP, the easiest way during development is to run the DMaaP simulator which is explained in the below sections.
-Once the mariadb and DMaaP are running, a configuration file must be provided to the PAP component in order for it to know how to
-connect to the mariadb and DMaaP along with other relevant configuration details. You can locate the default configuration file in the packaging of the PAP component:
+Once you have successfully built the PAP codebase, a running MariaDb database and DMaaP instance will also be required
+to start up the application. For MariaDb instance, the easiest way is to run the docker image, please see the mariadb
+documentation for the latest information on doing so. For DMaaP, the easiest way during development is to run the DMaaP
+simulator which is explained in the below sections. Once the mariadb and DMaaP are running, a configuration file must
+be provided to the PAP component in order for it to know how to connect to the mariadb and DMaaP along with other
+relevant configuration details. You can locate the default configuration file in the packaging of the PAP component:
 
 `Default PAP Configuration <https://gerrit.onap.org/r/gitweb?p=policy/pap.git;a=blob;f=packages/policy-pap-tarball/src/main/resources/etc/papParameters.yaml;h=06dd45f4946fd0a11ed8ef859f8fc5bcf409a3f0;hb=HEAD>`_
 
 Update the fields related to MariaDB, DMaaP and the RestServer for the application as per your local environment settings.
 Then to start the application, just run the Spring Boot application using IDE or command line.
+
 
 Running the Smoke Tests
 ***********************
@@ -308,16 +323,17 @@ The following links contain instructions on how to run the S3P Stability and Per
 familiar with the Policy Framework components and test any local changes.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   run-s3p.rst
-   api-s3p.rst
-   pap-s3p.rst
-   apex-s3p.rst
-   drools-s3p.rst
-   xacml-s3p.rst
-   distribution-s3p.rst
-   clamp-s3p.rst
+   testing/s3p/run-s3p.rst
+   testing/s3p/api-s3p.rst
+   testing/s3p/pap-s3p.rst
+   testing/s3p/apex-s3p.rst
+   testing/s3p/drools-s3p.rst
+   testing/s3p/xacml-s3p.rst
+   testing/s3p/distribution-s3p.rst
+   testing/s3p/clamp-s3p.rst
+
 
 Running the Pairwise Tests
 **************************
@@ -380,7 +396,7 @@ To test these images, CSITs will be run.
 
 3. Clone policy/docker repo.
 
-4. Modify docker/csit/docker-compose-all.yml to use the tagged OpenSuse image.
+4. Modify docker/csit/docker-compose.yml to use the tagged OpenSuse image.
 
     Replace:
 
