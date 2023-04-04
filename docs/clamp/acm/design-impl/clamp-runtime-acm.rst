@@ -13,93 +13,133 @@ This article explains how CLAMP Automation Composition Runtime is implemented.
 
 Terminology
 ***********
-- Broadcast message: a message for all participants (participantId=null and participantType=null)
-- Message to a participant: a message only for a participant (participantId and participantType properly filled)
+- Broadcast message: a message for all participants (participantId=null)
+- Message to a participant: a message only for a participant (participantId properly filled)
 - ThreadPoolExecutor: ThreadPoolExecutor executes the given task, into SupervisionAspect class is configured to execute tasks in ordered manner, one by one
 - Spring Scheduling: into SupervisionAspect class, the @Scheduled annotation invokes "schedule()" method every "runtime.participantParameters.heartBeatMs" milliseconds with a fixed delay
 - MessageIntercept: "@MessageIntercept" annotation is used into SupervisionHandler class to intercept "handleParticipantMessage" method calls using spring aspect oriented programming
 - GUI: swagger-ui, Postman or policy-gui
+- Message Broker: supported message Broker are DMaap and Strimzi-Kafka
 
 Design of Rest Api
 ******************
 
-Create of a Automation Composition Type
-+++++++++++++++++++++++++++++++++++++++
-- GUI calls POST "/commission" endpoint with a Automation Composition Type Definition (Tosca Service Template) as body
-- runtime-ACM receives the call by Rest-Api (CommissioningController)
-- It saves to DB the Tosca Service Template using PolicyModelsProvider
-- if there are participants registered, it triggers the execution to send a broadcast PARTICIPANT_UPDATE message
-- the message is built by ParticipantUpdatePublisher using Tosca Service Template data (to fill the list of ParticipantDefinition)
+Check CLAMP Runtime and Participants
+++++++++++++++++++++++++++++++++++++
+- GUI calls GET "/onap/policy/clamp/acm/health" endpoint and receives the "UP" status as response
+- GUI calls GET "/onap/policy/clamp/acm/v2/participants" endpoint and receives all participants registered with supported Element Types as response
 
-Delete of a Automation Composition Type
-+++++++++++++++++++++++++++++++++++++++
-- GUI calls DELETE "/commission" endpoint
+Order an immediate Participant Report from all participants
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls PUT "/onap/policy/clamp/acm/v2/participants" endpoint
 - runtime-ACM receives the call by Rest-Api (CommissioningController)
-- if there are participants registered, runtime-ACM triggers the execution to send a broadcast PARTICIPANT_UPDATE message
-- the message is built by ParticipantUpdatePublisher with an empty list of ParticipantDefinition
+- It triggers the execution to send a broadcast PARTICIPANT_STATUS_REQ message
+
+Create of a Automation Composition Definition Type
+++++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls POST "/onap/policy/clamp/acm/v2/compositions" endpoint with a Automation Composition Type Definition (Tosca Service Template) as body
+- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- It validates the Automation Composition Type Definition
+- It saves to DB the Tosca Service Template using AcDefinitionProvider with new compositionId and COMMISSIONED status
+- the Rest-Api call returns the compositionId generated and the list of Element Definition Type
+
+Update of a Automation Composition Definition Type
+++++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls POST "/onap/policy/clamp/acm/v2/compositions" endpoint with a Automation Composition Type Definition (Tosca Service Template) as body. It have to contain the compositionId
+- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- It checks that Automation Composition Type Definition is in COMMISSIONED status
+- It validates the Automation Composition Type Definition
+- It updates to DB the Tosca Service Template using AcDefinitionProvider using the compositionId
+- the Rest-Api call returns the compositionId and the list of Element Definition Type
+
+Priming of a Automation Composition Definition Type
++++++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}" endpoint with PRIME as primeOrder
+- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- It checks that Automation Composition Type Definition is in COMMISSIONED status
+- It validates and update the AC Element Type Definition with supported Element Types by participants
+- It updates AC Definition to DB with PRIMING as status
+- It triggers the execution to send a broadcast PARTICIPANT_PRIME message
+- the message is built by ParticipantPrimePublisher using Tosca Service Template data
+
+Create of a Automation Composition Instance
++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances" endpoint with a Automation Composition Instance as body. It have to contain the compositionId
+- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- It validates the AC Instance and checks that the related composition has COMMISSIONED as status
+- It set the related participantId into the AC Element Instance using the participantId defined in AC Element Type Definition
+- It saves the Automation Composition to DB with UNDEPLOYED deployState and NONE lockState
+- the Rest-Api call returns the instanceId and the list of AC Element Instance
+
+Update of a Automation Composition Instance
++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances" endpoint with a Automation Composition Instance as body. It have to contain the compositionId and the instanceId
+- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- It checks that AC Instance is in UNDEPLOYED deployState
+- It updates the Automation Composition to DB
+- the Rest-Api call returns the instanceId and the list of AC Element Instance
+
+Issues AC instance to change status
++++++++++++++++++++++++++++++++++++
+
+case **deployOrder: DEPLOY**
+
+- GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with DEPLOY as deployOrder
+- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- It validates the status order issued (related AC Instance has UNDEPLOYED as deployState)
+- It updates the AC Instance to DB with DEPLOYING deployState
+- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_DEPLOY message
+- the message is built by AutomationCompositionDeployPublisher using Tosca Service Template data and Instance data. (with startPhase = first startPhase)
+
+case **lockOrder: UNLOCK**
+
+- GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with UNLOCK as lockOrder
+- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- It validates the status order issued (related AC Instance has DEPLOYED as deployState and LOCK as lockOrder)
+- It updates the AC Instance to DB with LOCKING lockOrder
+- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
+- the message is built by AutomationCompositionStateChangePublisher using Instance data. (with startPhase = first startPhase)
+
+case **lockOrder: LOCK**
+
+- GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with LOCK as lockOrder
+- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- It validates the status order issued (related AC Instance has DEPLOYED as deployState and UNLOCK as lockOrder)
+- It updates the AC Instance to DB with UNLOCKING lockOrder
+- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
+- the message is built by AutomationCompositionStateChangePublisher using Instance data. (with startPhase = last StartPhase)
+
+case **deployOrder: UNDEPLOY**
+
+- GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with UNDEPLOY as deployOrder
+- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- It validates the status order issued (related AC Instance has DEPLOYED as deployState and LOCK as lockOrder)
+- It updates the AC Instance to DB with UNDEPLOYING deployState
+- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
+- the message is built by AutomationCompositionStateChangePublisher using Instance data. (with startPhase = last StartPhase)
+
+Delete of a Automation Composition Instance
++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls DELETE "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint
+- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- It checks that AC Instance is in UNDEPLOYED deployState
+- It deletes the AC Instance from DB
+
+Depriming of a Automation Composition Definition Type
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}" endpoint with DEPRIME as primeOrder
+- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- It checks that Automation Composition Type Definition is in PRIMED status
+- It updates AC Definition to DB with DEPRIMING as status
+- It triggers the execution to send a broadcast PARTICIPANT_PRIME message
+- the message is built by ParticipantPrimePublisher using Tosca Service Template data
+
+Delete of a Automation Composition Definition Type
+++++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls DELETE "/onap/policy/clamp/acm/v2/compositions/{compositionId}" endpoint
+- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- It checks that AC Definition Type is in COMMISSIONED status
 - It deletes the Automation Composition Type from DB
-
-Create of a Automation Composition
-++++++++++++++++++++++++++++++++++
-- GUI calls POST "/instantiation" endpoint with a Automation Composition as body
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
-- It validates the Automation Composition
-- It saves the Automation Composition to DB
-- Design of an update of a Automation Composition
-- GUI calls PUT "/instantiation" endpoint with a Automation Composition as body
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
-- It validates the Automation Composition
-- It saves the Automation Composition to DB
-
-Delete of a Automation Composition
-++++++++++++++++++++++++++++++++++
-- GUI calls DELETE "/instantiation" endpoint
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
-- It checks that Automation Composition is in UNINITIALISED status
-- It deletes the Automation Composition from DB
-
-"issues Automation Composition commands to Automation Compositions"
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-case **UNINITIALISED to PASSIVE**
-
-- GUI calls "/instantiation/command" endpoint with PASSIVE as orderedState
-- runtime-ACM checks if participants registered are matching with the list of Automation Composition Element
-- It updates Automation Composition and Automation Composition elements to DB (orderedState = PASSIVE)
-- It validates the status order issued
-- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_UPDATE message
-- the message is built by AutomationCompositionUpdatePublisher using Tosca Service Template data and AutomationComposition data. (with startPhase = 0)
-- It updates Automation Composition and Automation Composition elements to DB (state = UNINITIALISED2PASSIVE)
-
-case **PASSIVE to UNINITIALISED**
-
-- GUI calls "/instantiation/command" endpoint with UNINITIALISED as orderedState
-- runtime-ACM checks if participants registered are matching with the list of Automation Composition Element
-- It updates Automation Composition and Automation Composition elements to DB (orderedState = UNINITIALISED)
-- It validates the status order issued
-- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
-- the message is built by AutomationCompositionStateChangePublisher with automationcompositionId
-- It updates Automation Composition and Automation Composition elements to DB (state = PASSIVE2UNINITIALISED)
-
-case **PASSIVE to RUNNING**
-
-- GUI calls "/instantiation/command" endpoint with RUNNING as orderedState
-- runtime-ACM checks if participants registered are matching with the list of Automation Composition Element.
-- It updates Automation Composition and Automation Composition elements to DB (orderedState = RUNNING)
-- It validates the status order issued
-- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
-- the message is built by AutomationCompositionStateChangePublisher with automationcompositionId
-- It updates Automation Composition and Automation Composition elements to DB (state = PASSIVE2RUNNING)
-
-case **RUNNING to PASSIVE**
-
-- GUI calls "/instantiation/command" endpoint with UNINITIALISED as orderedState
-- runtime-ACM checks if participants registered are matching with the list of Automation Composition Element
-- It updates Automation Composition and Automation Composition elements to db (orderedState = RUNNING)
-- It validates the status order issued
-- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
-- the message is built by AutomationCompositionStateChangePublisher with automationcompositionId
-- It updates Automation Composition and Automation Composition elements to db (state = RUNNING2PASSIVE)
 
 StartPhase
 **********
@@ -137,80 +177,72 @@ Example where it could be used:
     description: Automation Composition element for the http requests of PMSH microservice
     properties:
       provider: ONAP
-      participant_id:
-        name: HttpParticipant0
-        version: 1.0.0
-      participantType:
-        name: org.onap.acm.HttpAutomationCompositionParticipant
-        version: 2.3.4
       uninitializedToPassiveTimeout: 180
       startPhase: 1
 
 How StartPhase works
 ++++++++++++++++++++
-In state changes from UNITITIALISED → PASSIVE, Automation Composition elements are started in increasing order of their startPhase.
+In state changes from UNDEPLOYED → DEPLOYED or LOCKED → UNLOCKED, Automation Composition elements are started in increasing order of their startPhase.
 
-Example with Http_PMSHMicroserviceAutomationCompositionElement with startPhase to 1 and PMSH_K8SMicroserviceAutomationCompositionElement with startPhase to 0
+Example of DEPLOY order with Http_PMSHMicroserviceAutomationCompositionElement with startPhase to 1 and PMSH_K8SMicroserviceAutomationCompositionElement with startPhase to 0
 
-- runtime-ACM sends a broadcast AUTOMATION_COMPOSITION_UPDATE message to all participants with startPhase = 0
-- participant receives the AUTOMATION_COMPOSITION_UPDATE message and runs to PASSIVE state (only CL elements defined as startPhase = 0)
-- runtime-ACM receives AUTOMATION_COMPOSITION_UPDATE_ACT messages from participants and set the state (from the CL element of the message) to PASSIVE
-- runtime-ACM calculates that all CL elements with startPhase = 0 are set to proper state and sends a broadcast AUTOMATION_COMPOSITION_UPDATE message with startPhase = 1
-- participant receives the AUTOMATION_COMPOSITION_UPDATE message and runs to PASSIVE state (only CL elements defined as startPhase = 1)
-- runtime-ACM calculates that all CL elements are set to proper state and set CL to PASSIVE
+- runtime-ACM sends a broadcast AUTOMATION_COMPOSITION_DEPLOY message to all participants with startPhase = 0
+- participant receives the AUTOMATION_COMPOSITION_DEPLOY message and runs to DEPLOYED state (only AC elements defined as startPhase = 0)
+- runtime-ACM receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
+- runtime-ACM calculates that all AC elements with startPhase = 0 are set to proper state and sends a broadcast AUTOMATION_COMPOSITION_DEPLOY message with startPhase = 1
+- participant receives the AUTOMATION_COMPOSITION_DEPLOY message and runs to DEPLOYED state (only AC elements defined as startPhase = 1)
+- runtime-ACM receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
+- runtime-ACM calculates that all AC elements are set to proper state and set AC to DEPLOYED
 
-In that scenario the message AUTOMATION_COMPOSITION_UPDATE has been sent two times.
+In that scenario the message AUTOMATION_COMPOSITION_DEPLOY has been sent two times.
 
 Design of managing messages
 ***************************
 
 PARTICIPANT_REGISTER
 ++++++++++++++++++++
-- A participant starts and send a PARTICIPANT_REGISTER message
-- ParticipantRegisterListener collects the message from DMaap
-- if not present, it saves participant reference with status UNKNOWN to DB
-- if is present a Automation Composition Type, it triggers the execution to send a PARTICIPANT_UPDATE message to the participant registered (message of Priming)
-- the message is built by ParticipantUpdatePublisher using Tosca Service Template data (to fill the list of ParticipantDefinition)
-- It triggers the execution to send a PARTICIPANT_REGISTER_ACK message to the participant registered
-- MessageIntercept intercepts that event, if PARTICIPANT_UPDATE message has been sent, it will be add a task to handle PARTICIPANT_REGISTER in SupervisionScanner
-- SupervisionScanner starts the monitoring for participantUpdate
+- A participant starts and send a PARTICIPANT_REGISTER message with participantId and supported Element Types
+- runtime-ACM collects the message from Message Broker by ParticipantRegisterListener
+- if not present, it saves participant reference with status ON_LINE to DB
 
-PARTICIPANT_UPDATE_ACK
+PARTICIPANT_PRIME_ACK
 ++++++++++++++++++++++
-- A participant sends PARTICIPANT_UPDATE_ACK message in response to a PARTICIPANT_UPDATE message
-- ParticipantUpdateAckListener collects the message from DMaap
-- MessageIntercept intercepts that event and adds a task to handle PARTICIPANT_UPDATE_ACK in SupervisionScanner
-- SupervisionScanner removes the monitoring for participantUpdate
-- It updates the status of the participant to DB
+- A participant sends PARTICIPANT_PRIME_ACK message in response to a PARTICIPANT_PRIME message
+- ParticipantPrimeAckListener collects the message from Message Broker
+- It updates AC Definition to DB with PRIMED/DEPRIMED as status
 
 PARTICIPANT_STATUS
 ++++++++++++++++++
-- A participant sends a scheduled PARTICIPANT_STATUS message
-- ParticipantStatusListener collects the message from DMaap
+- A participant sends a scheduled PARTICIPANT_STATUS message with participantId and supported Element Types
+- runtime-ACM collects the message from Message Broker by ParticipantStatusListener
+- if not present, it saves participant reference with status ON_LINE to DB
 - MessageIntercept intercepts that event and adds a task to handle PARTICIPANT_STATUS in SupervisionScanner
 - SupervisionScanner clears and starts the monitoring for participantStatus
 
-AUTOMATION_COMPOSITION_UPDATE_ACK
+AUTOMATION_COMPOSITION_DEPLOY_ACK
 +++++++++++++++++++++++++++++++++
-- A participant sends AUTOMATION_COMPOSITION_UPDATE_ACK message in response to a AUTOMATION_COMPOSITION_UPDATE  message. It will send a AUTOMATION_COMPOSITION_UPDATE_ACK - for each CL-elements moved to the ordered state as indicated by the AUTOMATION_COMPOSITION_UPDATE
-- AutomationCompositionUpdateAckListener collects the message from DMaap
-- It checks the status of all Automation Composition elements and checks if the Automation Composition is primed
-- It updates the CL to DB if it is changed
+- A participant sends AUTOMATION_COMPOSITION_DEPLOY_ACK message in response to a AUTOMATION_COMPOSITION_DEPLOY message. It will send a AUTOMATION_COMPOSITION_DEPLOY_ACK - for each AC elements moved to the DEPLOYED state
+- AutomationCompositionUpdateAckListener collects the message from Message Broker
+- It checks the status of all Automation Composition elements and checks if the Automation Composition is fully DEPLOYED
+- It updates the AC to DB
 - MessageIntercept intercepts that event and adds a task to handle a monitoring execution in SupervisionScanner
 
 AUTOMATION_COMPOSITION_STATECHANGE_ACK
 ++++++++++++++++++++++++++++++++++++++
-Design of a AUTOMATION_COMPOSITION_STATECHANGE_ACK is similar to the design for AUTOMATION_COMPOSITION_UPDATE_ACK
+- A participant sends AUTOMATION_COMPOSITION_STATECHANGE_ACK message in response to a AUTOMATION_COMPOSITION_STATECHANGE message. It will send a AUTOMATION_COMPOSITION_DEPLOY_ACK - for each AC elements moved to the ordered state
+- AutomationCompositionStateChangeAckListener collects the message from Message Broker
+- It checks the status of all Automation Composition elements and checks if the transition process of the Automation Composition is terminated
+- It updates the AC to DB
+- MessageIntercept intercepts that event and adds a task to handle a monitoring execution in SupervisionScanner
 
 Design of monitoring execution in SupervisionScanner
 ****************************************************
 Monitoring is designed to process the follow operations:
 
-- to determine the next startPhase in a AUTOMATION_COMPOSITION_UPDATE message
-- to update CL state: in a scenario that "AutomationComposition.state" is in a kind of transitional state (example UNINITIALISED2PASSIVE), if all  - CL-elements are moved properly to the specific state, the "AutomationComposition.state" will be updated to that and saved to DB
-- to retry AUTOMATION_COMPOSITION_UPDATE/AUTOMATION_COMPOSITION_STATE_CHANGE messages. if there is a CL Element not in the proper state, it will retry a broadcast message
-- to retry PARTICIPANT_UPDATE message to the participant in a scenario that runtime-ACM do not receive PARTICIPANT_UPDATE_ACT from it
-- to send PARTICIPANT_STATUS_REQ to the participant in a scenario that runtime-ACM do not receive PARTICIPANT_STATUS from it
+- to determine the next startPhase in a AUTOMATION_COMPOSITION_DEPLOY message
+- to update AC deployState: in a scenario that "AutomationComposition.deployState" is in a kind of transitional state (example DEPLOYING), if all  - AC elements are moved properly to the specific state, the "AutomationComposition.deployState" will be updated to that and saved to DB
+- to update AC lockState: in a scenario that "AutomationComposition.lockState" is in a kind of transitional state (example LOCKING), if all  - AC elements are moved properly to the specific state, the "AutomationComposition.lockState" will be updated to that and saved to DB
+- to retry AUTOMATION_COMPOSITION_DEPLOY/AUTOMATION_COMPOSITION_STATE_CHANGE messages. if there is a AC Element not in the proper state, it will retry a broadcast message
 
 The solution Design of retry, timeout, and reporting for all Participant message dialogues are implemented into the monitoring execution.
 
