@@ -22,6 +22,30 @@
       "revId": "e3606eb39d4a2f7f2882491782457d84f231d8e8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e022a42_4cdffa62",
+        "filename": "docs/clamp/acm/design-impl/participants/tosca/automation-composition-http.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7565
+      },
+      "writtenOn": "2023-04-05T09:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47bb0723_e96d832a",
+      "range": {
+        "startLine": 1,
+        "startChar": 6,
+        "endLine": 1,
+        "endChar": 19
+      },
+      "revId": "e3606eb39d4a2f7f2882491782457d84f231d8e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
