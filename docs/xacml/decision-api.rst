@@ -45,9 +45,11 @@ x-patchversion is used only to communicate a PATCH version in a response for tro
 
 x-onap-requestid is used to track REST transactions for logging purpose, as described above.
 
-:download:`Download the Decision API Swagger <swagger.json>`
+.. csv-table::
+   :header: "Swagger"
+   :widths: 10
 
-.. swaggerv2doc:: swagger.json
+   `Decision API Swagger <./local-swagger.html>`_
 
 
 End of Document

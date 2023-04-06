@@ -16,13 +16,19 @@ The Policy Framework supports the public APIs listed in the links below:
    api/api
    pap/pap
    xacml/decision-api
+   clamp/acm/api-protocol/acm-rest-apis
 
 Postman Environment for API Testing
 -----------------------------------
 
 The following environment file from postman can be used for testing API's. All you need to do is fill in the IP and Port information for the installation that you have created.
 
-:download:`link <PolicyAPI.postman_environment.json>`
+:download:`Postman Environment <PolicyAPI.postman_environment.json>`
+
+.. note::
+  If you are testing on a Docker Installation use *http* as **protocol**, *localhost* as **IP**, 
+  and the values set in the `export-ports.sh <https://raw.githubusercontent.com/onap/policy-docker/master/compose/export-ports.sh>`_ as **PORT**.
+  More information in: :ref:`Docker Installation <docker-label>` 
 
 Postman Collection for API Testing
 ----------------------------------
@@ -33,16 +39,32 @@ Postman collection for `Policy Framework Administration API <https://github.com/
 
 Postman collection for `Policy Framework Decision API <https://github.com/onap/policy-xacml-pdp/blob/master/postman/decision-api-collection.json>`_
 
-API Swagger Generation
-----------------------
+API Swagger
+-----------
 
 The standard for API definition in the RESTful API world is the OpenAPI Specification (OAS). The OAS, which is based on
 the original "Swagger Specification," is being widely used in API developments.
 
-Execute the below curl command for swagger generation by filling in the authorization details, IP and Port information:
+OAS 3.0 is used to describe the API contracts, and those documents are added as a source artifacts.
 
-.. code-block:: bash
+`Swagger Specification for Policy API <https://github.com/onap/policy-api/blob/master/main/src/main/resources/openapi/openapi.yaml>`_
 
-  “curl -k --user ‘{user_id}:{password}’ https://{ip}:{port}/swagger.json”
+`Swagger Specification for Policy PAP <https://github.com/onap/policy-pap/blob/master/main/src/main/resources/openapi/openapi.yaml>`_
 
+`Swagger Specification for Policy XACML-PDP <https://github.com/onap/policy-xacml-pdp/blob/master/main/src/main/resources/openapi/openapi.yaml>`_
+
+`Swagger Specification for Policy ACM-R <https://github.com/onap/policy-clamp/blob/master/runtime-acm/src/main/resources/openapi/openapi.yaml>`_
+
+`Swagger Specification for Policy DROOLS-PDP <https://github.com/onap/policy-drools-pdp/blob/master/feature-healthcheck/src/main/resources/openapi/openapi.yaml>`_
+
+
+The YAML document can be imported in an web editor such as `Editor Swagger <https://editor.swagger.io/>`_ 
+
+An "OpenApi first" approach is adopted, so starting from the Swagger document we auto-generate interfaces that are implemented in the API controllers.
+
+.. note::
+  The Swagger document can still be extracted from the code in the API that uses *Spring-Doc* dependency at the endpoint "../v3/api-docs/"
+  For Example ACM-Runtime endpoint
+  
+  ``http://<IP>:<PORT>/onap/policy/clamp/acm/v3/api-docs``
 
