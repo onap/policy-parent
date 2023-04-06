@@ -26,9 +26,9 @@ The following environment file from postman can be used for testing API's. All y
 :download:`Postman Environment <PolicyAPI.postman_environment.json>`
 
 .. note::
-  If you are testing on a Docker Installation use *http* as **protocol**, *localhost* as **IP**, 
+  If you are testing on a Docker Installation use *http* as **protocol**, *localhost* as **IP**,
   and the values set in the `export-ports.sh <https://raw.githubusercontent.com/onap/policy-docker/master/compose/export-ports.sh>`_ as **PORT**.
-  More information in: :ref:`Docker Installation <docker-label>` 
+  More information in: :ref:`Docker Installation <docker-label>`
 
 Postman Collection for API Testing
 ----------------------------------
@@ -47,24 +47,29 @@ the original "Swagger Specification," is being widely used in API developments.
 
 OAS 3.0 is used to describe the API contracts, and those documents are added as a source artifacts.
 
-`Swagger Specification for Policy API <https://github.com/onap/policy-api/blob/master/main/src/main/resources/openapi/openapi.yaml>`_
+`Swagger Specification for Policy API <./api/local-swagger.html>`_
 
-`Swagger Specification for Policy PAP <https://github.com/onap/policy-pap/blob/master/main/src/main/resources/openapi/openapi.yaml>`_
+`Swagger Specification for Policy PAP <./pap/local-swagger.html>`_
 
-`Swagger Specification for Policy XACML-PDP <https://github.com/onap/policy-xacml-pdp/blob/master/main/src/main/resources/openapi/openapi.yaml>`_
+`Swagger Specification for Policy XACML-PDP <./xacml/local-swagger.html>`_
 
-`Swagger Specification for Policy ACM-R <https://github.com/onap/policy-clamp/blob/master/runtime-acm/src/main/resources/openapi/openapi.yaml>`_
+`Swagger Specification for Policy ACM-R <./clamp/acm/api-protocol/local-swagger.html>`_
 
 `Swagger Specification for Policy DROOLS-PDP <https://github.com/onap/policy-drools-pdp/blob/master/feature-healthcheck/src/main/resources/openapi/openapi.yaml>`_
 
 
-The YAML document can be imported in an web editor such as `Editor Swagger <https://editor.swagger.io/>`_ 
+The YAML document can be also downloaded and imported in an web editor such as `Editor Swagger <https://editor.swagger.io/>`_
 
 An "OpenApi first" approach is adopted, so starting from the Swagger document we auto-generate interfaces that are implemented in the API controllers.
 
 .. note::
   The Swagger document can still be extracted from the code in the API that uses *Spring-Doc* dependency at the endpoint "../v3/api-docs/"
   For Example ACM-Runtime endpoint
-  
+
+  ``http://<IP>:<PORT>/onap/policy/clamp/acm/v3/api-docs``
+
+ The Swagger document can still be extracted from the code in the API that uses *Spring-Doc* dependency at the endpoint "../v3/api-docs/"
+  For Example ACM-Runtime endpoint
+
   ``http://<IP>:<PORT>/onap/policy/clamp/acm/v3/api-docs``
 

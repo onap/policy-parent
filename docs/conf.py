@@ -98,5 +98,5 @@ def setup(app):
 
 linkcheck_ignore = [
   r'http://localhost:\d+/',
-  r'./local-swagger.html(.*?)'
+  r'.(.*?)/local-swagger.html(.*?)'
 ]
