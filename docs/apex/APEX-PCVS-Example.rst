@@ -178,10 +178,10 @@ Install Ubuntu Server and SW
                .. container:: ulist
 
                   -  For all download options of the movie please visit
-                     http://bbb3d.renderfarming.net/download.html
+                     bbb3d.renderfarming.net/download.html
 
                   -  For lower-res downloads and mirrors see
-                     https://peach.blender.org/download
+                     peach.blender.org/download
 
                .. container:: listingblock
 
