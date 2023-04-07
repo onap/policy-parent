@@ -22,6 +22,30 @@
       "revId": "fa9ddbfc8ae98ac96b69847c42302e4a384c63f6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55091173_464f2927",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7629
+      },
+      "writtenOn": "2023-04-07T08:01:41Z",
+      "side": 1,
+      "message": "Hi Liam, the jira and the main changes are related to this file\n\ndocs/clamp/acm/api-protocol/acm-rest-apis.rst \n\nShould I change the commit message?",
+      "parentUuid": "b37f02c2_5beae50d",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "fa9ddbfc8ae98ac96b69847c42302e4a384c63f6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
