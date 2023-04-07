@@ -96,7 +96,7 @@
         <version.openpojo>0.9.1</version.openpojo>
         <version.plexus>3.5.0</version.plexus>
         <version.postgresql>42.5.3</version.postgresql>
-        <version.sdc>2.0.0</version.sdc>
+        <version.sdc>2.0.1</version.sdc>
         <version.slf4j>1.7.36</version.slf4j>
         <version.snakeyaml>1.33</version.snakeyaml>
         <version.spring>5.3.25</version.spring> <!-- Downgrade from oparent -->
