@@ -10,7 +10,6 @@ Policy Examples
    :maxdepth: 1
 
    APEX-MyFirstPolicyExample.rst
-   APEX-PCVS-Example.rst
    APEX-DecisionMakerExample.rst
 
 .. contents::
@@ -43,26 +42,6 @@ My First Policy
          .. container:: ulist
 
             -  :ref:`My-First-Policy Example <apex-myFirstExample>`
-
-VPN SLA
-^^^^^^^
-
-         .. container:: paragraph
-
-            The domain Policy-controlled Video Streaming (PCVS) contains
-            a policy for controlling video streams with different
-            strategies. It also provides details for installing an
-            actual testbed with off-the-shelve software (Mininet,
-            Floodlight, Kafka, Zookeeper). The policy model here
-            demonstrates virtually all APEX features: local context and
-            policies controlling it, task selection logic and multiple
-            tasks in a single state, AVRO schemas for context, AVOR
-            schemas for events (trigger and local), and a CLI editor
-            specification of the policy. The documentation can be found:
-
-         .. container:: ulist
-
-            -  :ref:`VPN SLA Policy on the APEX site <apex-PCVSExample>`
 
 Decision Maker
 ^^^^^^^^^^^^^^
