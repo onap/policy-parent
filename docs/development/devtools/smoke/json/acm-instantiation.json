@@ -1,0 +1,62 @@
+{
+    "compositionId": "{{compositionId}}",
+    "name": "K8SInstance0",
+    "version": "1.0.1",
+    "description": "Demo automation composition instance 0",
+    "elements": {
+        "709c62b3-8918-41b9-a747-d21eb79c6c21": {
+            "id": "709c62b3-8918-41b9-a747-d21eb79c6c21",
+            "definition": {
+                "name": "org.onap.policy.clamp.Local_K8SMicroserviceAutomationCompositionElement",
+                "version": "1.2.3"
+            },
+            "participantId": "101c62b3-8918-41b9-a747-d21eb79c6c02",
+            "description": "K8s Automation composition Element for the nginx-ingress microservice",
+            "properties": {
+                "chart": {
+                    "chartId": {
+                        "name": "nginx-ingress",
+                        "version": "0.11.0"
+                    },
+                    "releaseName": "nginxapp",
+                    "namespace": "onap"
+                }
+            }
+        },
+        "709c62b3-8918-41b9-a747-d21eb79c6c22": {
+            "id": "709c62b3-8918-41b9-a747-d21eb79c6c22",
+            "definition": {
+                "name": "org.onap.policy.clamp.Http_AutomationCompositionElement",
+                "version": "1.2.3"
+            },
+            "participantId": "101c62b3-8918-41b9-a747-d21eb79c6c01",
+            "description": "Http Automation composition Element",
+            "properties": {
+                "baseUrl": "http://httpbin.org",
+                "httpHeaders": {
+                    "Content-Type": "application/json"
+                },
+                "configurationEntities": [
+                    {
+                        "configurationEntityId": {
+                            "name": "entity1",
+                            "version": "1.0.1"
+                        },
+                        "restSequence": [
+                            {
+                                "restRequestId": {
+                                    "name": "request1",
+                                    "version": "1.0.1"
+                                },
+                                "httpMethod": "POST",
+                                "path": "post",
+                                "body": "Dummy data for smoke testing",
+                                "expectedResponse": 200
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
