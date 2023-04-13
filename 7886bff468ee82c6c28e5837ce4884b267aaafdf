@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21064128_35879306",
+        "filename": "docs/development/devtools/local-installation.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2023-04-13T08:52:19Z",
+      "side": 1,
+      "message": "the line giving the error",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 14
+      },
+      "revId": "7886bff468ee82c6c28e5837ce4884b267aaafdf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
