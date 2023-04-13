@@ -421,6 +421,16 @@ To test these images, CSITs will be run.
 
     Automated tests will be run, and log files displayed.
 
+Running Policy Components Locally
+*********************************
+
+The following page outlines how to run the policy framework components locally use IntelliJ, Eclipse and the Command Line.
+
+.. toctree::
+   :maxdepth: 1
+
+   local-installation.rst
+
 
 Generating Swagger Documentation
 ********************************
