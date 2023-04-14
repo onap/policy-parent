@@ -53,9 +53,9 @@ OAS 3.0 is used to describe the API contracts, and those documents are added as 
 
 `Swagger Specification for Policy XACML-PDP <./xacml/local-swagger.html>`_
 
-`Swagger Specification for Policy ACM-R <./clamp/acm/api-protocol/local-swagger.html>`_
+`Swagger Specification for Policy DROOLS-PDP <./drools/local-swagger.html>`_
 
-`Swagger Specification for Policy DROOLS-PDP <https://github.com/onap/policy-drools-pdp/blob/master/feature-healthcheck/src/main/resources/openapi/openapi.yaml>`_
+`Swagger Specification for Policy ACM-R <./clamp/acm/api-protocol/local-swagger.html>`_
 
 
 The YAML document can be also downloaded and imported in an web editor such as `Editor Swagger <https://editor.swagger.io/>`_
@@ -67,9 +67,3 @@ An "OpenApi first" approach is adopted, so starting from the Swagger document we
   For Example ACM-Runtime endpoint
 
   ``http://<IP>:<PORT>/onap/policy/clamp/acm/v3/api-docs``
-
- The Swagger document can still be extracted from the code in the API that uses *Spring-Doc* dependency at the endpoint "../v3/api-docs/"
-  For Example ACM-Runtime endpoint
-
-  ``http://<IP>:<PORT>/onap/policy/clamp/acm/v3/api-docs``
-
