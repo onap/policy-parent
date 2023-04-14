@@ -65,7 +65,7 @@ Introduction to APEX
             being fed by the state before. The simplest policy can have
             just one state. We provide specific support for the
             four-state `MEDA (Match Establish Decide
-            Act) <https://ieeexplore.ieee.org/document/7502880>`__
+            Act) https://ieeexplore.ieee.org/document/7502880`
             policy state model and the three-state `ECA (Event Condition
             Action) <https://en.wikipedia.org/wiki/Event_condition_action>`__
             policy state model. APEX is fully distributed. You can

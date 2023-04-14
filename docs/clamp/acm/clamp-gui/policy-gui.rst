@@ -16,7 +16,8 @@ This section describes how to run the front end on your local machine.
 
 **Building and running CLAMP**
 
-see `Clamp ACM Smoke Tests <https://docs.onap.org/projects/onap-policy-parent/en/latest/development/devtools/clamp-smoke.html>`__
+see
+:ref:`Clamp ACM Smoke Tests <policy-clamp-runtime-smoke-label>`
 
 **Step 1:** Go to the clamp directory
 

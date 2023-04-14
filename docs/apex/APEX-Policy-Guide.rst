@@ -497,7 +497,7 @@ Concept: Policy
 .. container:: ulist
 
   -  The *MEDA* flavor supports policies written to the
-     `MEDA policy pattern <https://ieeexplore.ieee.org/document/7367357>`__
+     `MEDA policy pattern https://ieeexplore.ieee.org/document/7367357`
      and require a sequence of four states: namely *Match*, *Establish*, *Decide* and *Act*.
 
   -  The *OODA* flavor supports policies written to the
