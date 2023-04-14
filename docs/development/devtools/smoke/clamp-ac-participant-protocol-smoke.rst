@@ -33,7 +33,7 @@ Linux user - although the majority of the steps show will be exactly the same in
 =============================
 
 - Automation Composition runtime component docker image is started and running.
-- Participant docker images policy-clamp-cl-pf-ppnt, policy-clamp-cl-http-ppnt, policy-clamp-cl-k8s-ppnt are started and running.
+- Participant docker images policy-clamp-ac-pf-ppnt, policy-clamp-ac-http-ppnt, policy-clamp-ac-k8s-ppnt are started and running.
 - Dmaap simulator for communication between components.
 - mariadb docker container for policy and clampacm database.
 - policy-api for communication between policy participant and policy-framework
@@ -47,7 +47,7 @@ example.
 
 We will be using Docker to run our mariadb instance. It will have a total of two databases running in it.
 
-- clampacm: the runtime-clampacm db
+- clampacm: the policy-clamp-runtime-acm db
 - policyadmin: the policy-api db
 
 3. Running Tests of protocol dialogues
@@ -67,7 +67,7 @@ Test result:
 
 - Observe PARTICIPANT_REGISTER going from participant to runtime
 - Observe PARTICIPANT_REGISTER_ACK going from runtime to participant
-- Observe PARTICIPANT_UPDATE going from runtime to participant
+- Observe PARTICIPANT_PRIME going from runtime to participant
 
 3.2 Participant Deregistration
 ==============================
@@ -81,15 +81,15 @@ Test result:
 3.3 Participant Priming
 =======================
 
-When an automation composition is primed, the portion of the Automation Composition Type Definition and Common Property values for the participants
+When an automation composition definition is primed, the portion of the Automation Composition Type Definition and Common Property values for the participants
 of each participant type mentioned in the Automation Composition Definition are sent to the participants.
 Action: Invoke a REST API to prime acm type definitions and set values of common properties
 
 Test result:
 
-- Observe PARTICIPANT_UPDATE going from runtime to participant with acm type definitions and common property values for participant types
+- Observe PARTICIPANT_PRIME going from runtime to participant with acm type definitions and common property values for participant types
 - Observe that the acm type definitions and common property values for participant types are stored on ParticipantHandler
-- Observe PARTICIPANT_UPDATE_ACK going from runtime to participant
+- Observe PARTICIPANT_PRIME_ACK going from runtime to participant
 
 3.4 Participant DePriming
 =========================
@@ -101,73 +101,68 @@ Action: Invoke a REST API to deprime acm type definitions
 Test result:
 
 - If acm instances exist in runtime database, return a response for the REST API with error response saying "Cannot decommission acm type definition"
-- If no acm instances exist in runtime database, Observe PARTICIPANT_UPDATE going from runtime to participant with definitions as null
+- If no acm instances exist in runtime database, Observe PARTICIPANT_PRIME going from runtime to participant with definitions as null
 - Observe that the acm type definitions and common property values for participant types are removed on ParticipantHandler
-- Observe PARTICIPANT_UPDATE_ACK going from runtime to participant
+- Observe PARTICIPANT_PRIME_ACK going from runtime to participant
 
-3.5 Automation Composition Update
-=================================
+3.5 Automation Composition Instance
+===================================
 
-Automation Composition Update handles creation, change, and deletion of automation compositions on participants.
+Automation Composition Instance handles creation, change, and deletion of automation composition instances on participants.
 Action: Trigger acm instantiation from GUI
 
 Test result:
 
-- Observe AUTOMATION_COMPOSITION_UPDATE going from runtime to participant
-- Observe that the acm type instances and respective property values for participant types are stored on AutomationCompositionHandler
-- Observe that the acm state is UNINITIALISED
-- Observe AUTOMATION_COMPOSITION_UPDATE_ACK going from participant to runtime
+- Observe that the acm instances and respective property values for participant are stored on AutomationCompositionHandler
+- Observe that the acm deploy state is UNDEPLOYED
 
-3.6 Automation Composition state change to PASSIVE
-==================================================
+3.6 Automation Composition deploy state change to DEPLOYED
+==========================================================
 
 Automation Composition Update handles creation, change, and deletion of automation compositions on participants.
-Action: Change state of the acm to PASSIVE
+Action: Change deploy state of the acm to DEPLOYED
+
+Test result:
+
+- Observe AUTOMATION_COMPOSITION_DEPLOY going from runtime to participant
+- Observe that the AutomationCompositionElements deploy state is DEPLOYED
+- Observe that the acm deploy state is DEPLOYED
+- Observe AUTOMATION_COMPOSITION_DEPLOY_ACK going from participant to runtime
+
+3.7 Automation Composition lock state change to UNLOCK
+======================================================
+
+Action: Change lock state of the acm to UNLOCK
 
 Test result:
 
 - Observe AUTOMATION_COMPOSITION_STATE_CHANGE going from runtime to participant
-- Observe that the AutomationCompositionElements state is PASSIVE
-- Observe that the acm state is PASSIVE
+- Observe that the AutomationCompositionElements lock state is UNLOCK
+- Observe that the acm state is UNLOCK
 - Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
 
-3.7 Automation Composition state change to RUNNING
-==================================================
+3.8 Automation Composition lock state change to LOCK
+====================================================
 
-Automation Composition Update handles creation, change, and deletion of automation compositions on participants.
-Action: Change state of the acm to RUNNING
+Action: Change lock state of the acm to LOCK
 
 Test result:
 
 - Observe AUTOMATION_COMPOSITION_STATE_CHANGE going from runtime to participant
-- Observe that the AutomationCompositionElements state is RUNNING
-- Observe that the acm state is RUNNING
+- Observe that the AutomationCompositionElements lock state is LOCK
+- Observe that the acm lock state is LOCK
 - Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
 
-3.8 Automation Composition state change to PASSIVE
-==================================================
+3.9 Automation Composition deploy state change to UNDEPLOYED
+============================================================
 
-Automation Composition Update handles creation, change, and deletion of automation compositions on participants.
-Action: Change state of the acm to PASSIVE
-
-Test result:
-
-- Observe AUTOMATION_COMPOSITION_STATE_CHANGE going from runtime to participant
-- Observe that the AutomationCompositionElements state is PASSIVE
-- Observe that the acm state is PASSIVE
-- Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
-
-3.9 Automation Composition state change to UNINITIALISED
-========================================================
-
-Automation Composition Update handles creation, change, and deletion of automation compositions on participants.
-Action: Change state of the acm to UNINITIALISED
+Action: Change deploy state of the acm to UNDEPLOYED
 
 Test result:
 
 - Observe AUTOMATION_COMPOSITION_STATE_CHANGE going from runtime to participant
-- Observe that the AutomationCompositionElements state is UNINITIALISED
-- Observe that the acm state is UNINITIALISED
+- Observe that the AutomationCompositionElements deploy state is UNDEPLOYED
+- Observe that the acm deploy state is UNDEPLOYED
 - Observe that the AutomationCompositionElements undeploy the instances from respective frameworks
 - Observe that the automation composition instances are removed from participants
 - Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
