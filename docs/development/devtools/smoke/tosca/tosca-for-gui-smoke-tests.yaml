@@ -80,6 +80,7 @@ data_types:
           type: string
   onap.datatype.controlloop.Operation:
     derived_from: tosca.datatypes.Root
+    version: 1.0.0
     description: An operation supported by an actor
     properties:
       id:
@@ -146,7 +147,7 @@ policy_types:
     name: onap.policies.Sirisha
   onap.policies.controlloop.operational.Common:
     derived_from: tosca.policies.Root
-    version: 1.0.0
+    version: 1.0.1
     name: onap.policies.controlloop.operational.Common
     description: |
       Operational Policy for Control Loop execution. Originated in Frankfurt to support TOSCA Compliant
@@ -177,6 +178,7 @@ policy_types:
         required: true
         entry_schema:
           type: onap.datatype.controlloop.Operation
+          type_version: 1.0.0
   onap.policies.controlloop.operational.common.Apex:
     derived_from: onap.policies.controlloop.operational.Common
     type_version: 1.0.0
@@ -218,12 +220,6 @@ node_types:
         metadata:
           common: true
         description: Specifies the organization that provides the control loop element
-      participantType:
-        type: onap.datatypes.ToscaConceptIdentifier
-        required: true
-        metadata:
-          common: true
-        description: The identity of the participant type that hosts this type of Control Loop Element
       startPhase:
         type: integer
         required: false
@@ -363,7 +359,6 @@ topology_template:
       description: Participant for DCAE microservices
       properties:
         provider: ONAP
-
     org.onap.domain.pmsh.PMSH_MonitoringPolicyControlLoopElement:
       version: 1.2.3
       type: org.onap.policy.clamp.controlloop.PolicyControlLoopElement
@@ -371,9 +366,9 @@ topology_template:
       description: Control loop element for the monitoring policy for Performance Management Subscription Handling
       properties:
         provider: Ericsson
-        participantType:
-          name: org.onap.policy.controlloop.PolicyControlLoopParticipant
-          version: 2.3.1
+        participant_id:
+          name: org.onap.PM_Policy
+          version: 1.0.0
         policy_type_id:
           name: onap.policies.monitoring.pm-subscription-handler
           version: 1.0.0
@@ -386,9 +381,9 @@ topology_template:
       description: Control loop element for the operational policy for Performance Management Subscription Handling
       properties:
         provider: Ericsson
-        participantType:
-          name: org.onap.policy.controlloop.PolicyControlLoopParticipant
-          version: 2.3.1
+        participant_id:
+          name: org.onap.PM_Policy
+          version: 1.0.0
         policy_type_id:
           name: onap.policies.operational.pm-subscription-handler
           version: 1.0.0
@@ -402,8 +397,6 @@ topology_template:
       properties:
         provider: Ericsson
         elements:
-          - name: org.onap.domain.pmsh.PMSH_DCAEMicroservice
-            version: 1.2.3
           - name: org.onap.domain.pmsh.PMSH_MonitoringPolicyControlLoopElement
             version: 1.2.3
           - name: org.onap.domain.pmsh.PMSH_OperationalPolicyControlLoopElement

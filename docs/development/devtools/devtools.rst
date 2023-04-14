@@ -306,8 +306,8 @@ familiar with the Policy Framework components and test any local changes.
    db-migrator-smoke.rst
    smoke/acm-participants-smoke.rst
    smoke/clamp-smoke.rst
-   clamp-cl-participant-protocol-smoke.rst
-   policy-participant-smoke.rst
+   smoke/clamp-ac-participant-protocol-smoke.rst
+   smoke/policy-participant-smoke.rst
    api-smoke.rst
    pap-smoke.rst
    apex-smoke.rst
