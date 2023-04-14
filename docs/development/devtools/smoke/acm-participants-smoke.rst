@@ -44,7 +44,6 @@ The following repositories are required for development in this project. These r
 - policy/common
 - policy/models
 - policy/clamp
-- policy/docker
 
 In this setup guide, we will be setting up all the components technically required for a working dev environment.
 
@@ -57,23 +56,28 @@ We will be using Docker to run our mariadb instance. It will have the acm-runtim
 
 - AutomationComposition: the runtime-acm db
 
-The easiest way to do this is to perform a small alteration on an SQL script provided by the clamp backend in the file "runtime/extra/sql/bulkload/create-db.sql"
+The easiest way to do this is to perform a SQL script. Create the *mariadb.sql* file in the directory *~/git*.
 
 .. code-block:: mysql
 
     CREATE DATABASE `clampacm`;
     USE `clampacm`;
-    DROP USER 'policy';
     CREATE USER 'policy';
     GRANT ALL on clampacm.* to 'policy' identified by 'P01icY' with GRANT OPTION;
 
-Once this has been done, we can run the bash script provided here: "runtime/extra/bin-for-dev/start-db.sh"
+Execution of the command above results in the creation and start of the *mariadb-smoke-test* container.
 
-.. code-block:: bash
+    .. code-block:: bash
 
-    ./start-db.sh
+       cd ~/git
+       docker run --name mariadb-smoke-test  \
+        -p 3306:3306 \
+        -e MYSQL_ROOT_PASSWORD=my-secret-pw  \
+        --mount type=bind,source=$HOME/git/mariadb.sql,target=/docker-entrypoint-initdb.d/data.sql \
+        -d mariadb:10.10.2 \
+        --lower-case-table-names=1
 
-This will setup all the automation composition runtime database. The database will be exposed locally on port 3306 and will be backed by an anonymous docker volume.
+The database will be exposed locally on port 3306 and will be backed by an anonymous docker volume.
 
 2.3.2 DMAAP Simulator
 ^^^^^^^^^^^^^^^^^^^^^
@@ -169,50 +173,61 @@ Commissioning Endpoint:
 
 .. code-block:: bash
 
-   POST: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/v2/commission
+   POST: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/v2/compositions
 
-A successful commissioning gives 200 responses in the postman client.
+A successful commissioning gives 201 responses in the postman client.
 
+3.2 Prime an Automation composition definition
+==============================================
+Once the template is commissioned, we can prime it. This will connect AC definition with related participants.
 
-3.2 Create New Instances of Automation composition
+Prime Endpoint:
+
+.. code-block:: bash
+
+   PUT: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/v2/compositions/{compositionId}
+
+Request body:
+
+.. code-block:: json
+
+   {
+        "primeOrder": "PRIME"
+   }
+
+3.3 Create New Instances of Automation composition
 ==================================================
-Once the template is commissioned, we can instantiate automation composition instances. This will create the instances with default state "UNINITIALISED".
+Once AC definition is primes, we can instantiate automation composition instances. This will create the instances with default state "UNDEPLOYED".
 
 Instantiation Endpoint:
 
 .. code-block:: bash
 
-   POST: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/v2/instantiation
+   POST: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/v2/compositions/{compositionId}/instances
 
 Request body:
 
 :download:`Instantiation json <json/acm-instantiation.json>`
 
-3.3 Change the State of the Instance
+3.4 Change the State of the Instance
 ====================================
-When the automation composition is updated with state “PASSIVE”, the Kubernetes participant fetches the node template for all automation composition elements and deploys the helm chart of each AC element into the cluster. The following sample json input is passed on the request body.
+When the automation composition is updated with state “DEPLOYED”, the Kubernetes participant fetches the node template for all automation composition elements and deploys the helm chart of each AC element into the cluster. The following sample json input is passed on the request body.
 
 Automation Composition Update Endpoint:
 
 .. code-block:: bash
 
-   PUT: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/v2/instantiation/command
+   PUT: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}
 
    Request body:
 .. code-block:: bash
 
    {
-     "orderedState": "PASSIVE",
-     "automationCompositionIdentifierList": [
-       {
-         "name": "K8SInstance0",
-         "version": "1.0.1"
-       }
-     ]
+    "deployOrder": "DEPLOY"
    }
 
 
-After the state changed to "PASSIVE", nginx-ingress pod is deployed in the kubernetes cluster. And http participant should have posted the dummy data to the configured URL in the tosca template.
+After the state changed to "DEPLOYED", nginx-ingress pod is deployed in the kubernetes cluster. And http participant should have posted the dummy data to the configured URL in the tosca template.
 
 The following command can be used to verify the pods deployed successfully by kubernetes participant.
 
@@ -221,36 +236,30 @@ The following command can be used to verify the pods deployed successfully by ku
    helm ls -n onap | grep nginx
    kubectl get po -n onap | grep nginx
 
-The overall state of the automation composition should be "PASSIVE" to indicate both the participants has successfully completed the operations. This can be verified by the following rest endpoint.
+The overall state of the automation composition should be "DEPLOYED" to indicate both the participants has successfully completed the operations. This can be verified by the following rest endpoint.
 
 Verify automation composition state:
 
 .. code-block:: bash
 
-   GET: https://<Runtime ACM IP> : <Port>/onap/policy/clamp/acm/v2/instantiation
+   GET: https://<Runtime ACM IP> : <Port>/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}
 
 
-3.4 Automation Compositions can be "UNINITIALISED" after deployment
-===================================================================
+3.4 Automation Compositions can be "UNDEPLOYED" after deployment
+================================================================
 
-By changing the state to "UNINITIALISED", all the helm deployments under the corresponding automation composition will be uninstalled from the cluster.
+By changing the state to "UNDEPLOYED", all the helm deployments under the corresponding automation composition will be uninstalled from the cluster.
 Automation Composition Update Endpoint:
 
 .. code-block:: bash
 
-   PUT: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/v2/instantiation/command
+   PUT: https://<Runtime ACM IP> : <Port> /onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}
 
    Request body:
 .. code-block:: bash
 
    {
-     "orderedState": "UNINITIALISED",
-     "automationCompositionIdentifierList": [
-       {
-         "name": "K8SInstance0",
-         "version": "1.0.1"
-       }
-     ]
+    "deployOrder": "UNDEPLOY"
    }
 
 The nginx pod should be deleted from the k8s cluster.

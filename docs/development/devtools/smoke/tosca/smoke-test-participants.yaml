@@ -68,15 +68,6 @@ node_types:
       provider:
         type: string
         requred: false
-      participant_id:
-        type: onap.datatypes.ToscaConceptIdentifier
-        requred: true
-      participantType:
-        type: onap.datatypes.ToscaConceptIdentifier
-        required: true
-        metadata:
-          common: true
-        description: The identity of the participant type that hosts this type of Automation Composition Element
       startPhase:
         type: integer
         required: false
@@ -137,7 +128,7 @@ node_types:
         entry_schema:
           type: onap.datatypes.ToscaConceptIdentifier
   org.onap.policy.clamp.acm.K8SMicroserviceAutomationCompositionElement:
-    version: 1.0.1
+    version: 1.0.0
     derived_from: org.onap.policy.clamp.acm.AutomationCompositionElement
     properties:
       chart:
@@ -157,7 +148,7 @@ node_types:
         type: string
         required: true
   org.onap.policy.clamp.acm.HttpAutomationCompositionElement:
-    version: 1.0.1
+    version: 1.0.0
     derived_from: org.onap.policy.clamp.acm.AutomationCompositionElement
     properties:
       baseUrl:
@@ -194,18 +185,6 @@ topology_template:
       description: Automation Composition element for the K8S microservice for local chart
       properties:
         provider: ONAP
-        participant_id:
-          name: K8sParticipant0
-          version: 1.0.0
-        participantType:
-          name: org.onap.policy.clamp.acm.KubernetesParticipant
-          version: 2.3.4
-        chart:
-          chartId:
-            name: nginx-ingress
-            version: 0.11.0
-          releaseName: nginxapp
-          namespace: onap
     org.onap.policy.clamp.acm.HttpParticipant:
       version: 2.3.4
       type: org.onap.policy.clamp.acm.Participant
@@ -217,39 +196,17 @@ topology_template:
     org.onap.policy.clamp.Http_AutomationCompositionElement:
       version: 1.2.3
       type: org.onap.policy.clamp.acm.HttpAutomationCompositionElement
-      type_version: 1.0.1
+      type_version: 1.0.0
       description: Automation composition element for the http requests of PMSH microservice
       properties:
         provider: ONAP
-        participant_id:
-          name: HttpParticipant0
-          version: 1.0.0
-        participantType:
-          name: org.onap.policy.clamp.acm.HttpParticipant
-          version: 2.3.4
         uninitializedToPassiveTimeout: 180
         startPhase: 1
-        baseUrl: http://httpbin.org
-        httpHeaders:
-          Content-Type: application/json
-        configurationEntities:
-          - configurationEntityId:
-              name: entity1
-              version: 1.0.1
-            restSequence:
-              - restRequestId:
-                  name: request1
-                  version: 1.0.1
-                httpMethod: POST
-                path: post
-                body: 'Dummy data for smoke testing'
-                expectedResponse: 200
-
 
     org.onap.domain.sample.GenericK8s_AutomationCompositionDefinition:
       version: 1.2.3
       type: org.onap.policy.clamp.acm.AutomationComposition
-      type_version: 1.0.0
+      type_version: 1.0.1
       description: Automation compostion for smoke testing participants
       properties:
         provider: ONAP
