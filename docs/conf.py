@@ -27,13 +27,14 @@ extensions = [
     'sphinxcontrib.redoc'
 ]
 
+redoc_uri = 'https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js'
+
 redoc = [
     {
         'name': 'Policy API',
         'page': 'api/local-swagger',
         'spec': 'https://raw.githubusercontent.com/onap/policy-api/master/main/src/main/resources/openapi/openapi.yaml',
         'opts': {
-            'lazy-rendering': True,
             'suppress-warnings': True,
             'hide-hostname': True,
         }
@@ -43,7 +44,6 @@ redoc = [
         'page': 'pap/local-swagger',
         'spec': 'https://raw.githubusercontent.com/onap/policy-pap/master/main/src/main/resources/openapi/openapi.yaml',
         'opts': {
-            'lazy-rendering': False,
             'suppress-warnings': True,
             'hide-hostname': True,
         }
@@ -53,7 +53,15 @@ redoc = [
         'page': 'xacml/local-swagger',
         'spec': 'https://raw.githubusercontent.com/onap/policy-xacml-pdp/master/main/src/main/resources/openapi/openapi.yaml',
         'opts': {
-            'lazy-rendering': False,
+            'suppress-warnings': True,
+            'hide-hostname': True,
+        }
+    },
+    {
+        'name': 'Policy DROOLS',
+        'page': 'drools/local-swagger',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-drools-pdp/master/feature-healthcheck/src/main/resources/openapi/openapi.yaml',
+        'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
         }
@@ -63,7 +71,6 @@ redoc = [
         'page': 'clamp/acm/api-protocol/local-swagger',
         'spec': 'https://raw.githubusercontent.com/onap/policy-clamp/master/runtime-acm/src/main/resources/openapi/openapi.yaml',
         'opts': {
-            'lazy-rendering': False,
             'suppress-warnings': True,
             'hide-hostname': True,
         }
