@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4611cf9_d951fb5a",
+        "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7629
+      },
+      "writtenOn": "2023-04-17T08:54:47Z",
+      "side": 1,
+      "message": ":ref:`Clamp ACM Smoke Tests \u003cpolicy-clamp-runtime-smoke-label\u003e`\n\nMaybe safer to add the local path",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 135
+      },
+      "revId": "915b85be0dc0d68b36332ccfc0bdf35cf2185356",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
