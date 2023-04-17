@@ -22,6 +22,30 @@
       "revId": "915b85be0dc0d68b36332ccfc0bdf35cf2185356",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1966d6c2_4c754db0",
+        "filename": "docs/clamp/acm/clamp-gui/policy-gui.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 7565
+      },
+      "writtenOn": "2023-04-17T10:37:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4611cf9_d951fb5a",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 135
+      },
+      "revId": "915b85be0dc0d68b36332ccfc0bdf35cf2185356",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
