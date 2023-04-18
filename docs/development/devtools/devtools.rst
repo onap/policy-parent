@@ -302,18 +302,18 @@ familiar with the Policy Framework components and test any local changes.
 .. toctree::
    :maxdepth: 1
 
-   policy-gui-acm-smoke.rst
-   db-migrator-smoke.rst
+   smoke/policy-gui-acm-smoke.rst
+   smoke/db-migrator-smoke.rst
    smoke/acm-participants-smoke.rst
    smoke/clamp-smoke.rst
    smoke/clamp-ac-participant-protocol-smoke.rst
    smoke/policy-participant-smoke.rst
-   api-smoke.rst
-   pap-smoke.rst
-   apex-smoke.rst
-   drools-smoke.rst
-   xacml-smoke.rst
-   distribution-smoke.rst
+   smoke/api-smoke.rst
+   smoke/pap-smoke.rst
+   smoke/apex-smoke.rst
+   smoke/drools-smoke.rst
+   smoke/xacml-smoke.rst
+   smoke/distribution-smoke.rst
 
 
 Running the Stability/Performance Tests
