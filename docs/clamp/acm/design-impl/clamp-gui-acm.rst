@@ -47,7 +47,6 @@ Class-based react components are used to render the different pages related to f
 - Deploying/Undeploying microservices to the policy framework.
 - Deleting Instances.
 
-Although this GUI deploys microservices, it is a completely different paradigm to the new Automation Composition participant-based deployment of services. Details of the CLAMP GUI are provided in :ref:`clamp-policy-gui-label`
 
 2.1.2 Automation Composition GUI
 ================================
