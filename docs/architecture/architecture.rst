@@ -169,7 +169,7 @@ management of the PDPs on which the policies are running. *PolicyAPI* interacts 
 no programmatic interface with *PolicyAdministration*, *PolicyExecution* or any other run-time ONAP components.
 
 The diagram below shows a more detailed view of the architecture, as inspired by
-`RFC-2753 <https://tools.ietf.org/html/rfc2753>`__ and `RFC-3198 <https://tools.ietf.org/html/rfc3198>`__.
+`RFC-2753 https://tools.ietf.org/html/rfc2753` and `RFC-3198 https://tools.ietf.org/html/rfc3198`.
 
 .. image:: images/PFDesignAndAdmin.svg
 
