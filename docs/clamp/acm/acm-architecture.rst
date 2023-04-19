@@ -2,12 +2,49 @@
 
 .. _clamp-acm_architecture-label:
 
-TOSCA Defined Automation Compositions: Architecture and Design
-##############################################################
-
+Automation Composition Management: Architecture and Design
+##########################################################
 
 .. contents::
     :depth: 4
+
+To get a feature, service, or capability working in modern networks is not straightforward.
+It is not as simple as deploying a microservice or running a workflow. Our features, services, and capabilities are
+now typically delivered using loose compositions of microservices, rules, algorithms, configurations, and workflows.
+Of course, we use workflows and deploy microservices, but how do we keep track of what workflow activated which service
+or what microservice instance enables a given capability. We must be able to deploy, keep track of, amend, and remove
+the compositions that combine to give us our features, services and capabilities, that is we must manage those compositions.
+
+.. image:: images/feature-compositions.png
+
+Consider Features A, B and C in the diagram above.
+
+Feature A is realised as an Analytic Microservice, but it also requires counters to be configured in a collection
+service to enable its input stream of data. It also requires two policies to be present, and its result
+requires an Ansible playbook to be present.
+
+Feature B is realised as an AI microservice, which is triggered by a set of triggers that are configured in the
+persistence service. The AI algorithm in Feature B triggers a workflow in the workflow service
+
+Feature C is realised as two microservices, an analytic microservice and a Machine Learning microservice.
+The feature also requires that certain counters are collected and certain Netconf configurations are enabled.
+
+All three features are realised as Automation Compositions, as shown in the diagram below.
+
+.. image:: images/feature-automation-compositions.png
+
+The ability to deploy features in a scalable, flexible and loosely coupled microservice architecture is of course
+a major step forward from layered architectures of the past. However, managing at "Feature" level in such architectures
+does present challenges. For example, to manage the three running instances of Features A to C above,
+9 separate elements must be kept track of. There is nothing in the deployed system to sat what element is
+related to what other element, and what element are working together to realise a feature.
+
+Automation Composition Management (ACM) is a framework that supports Life Cycle Management of Automation Compositions.
+It supports deployment, monitoring, update and removal of Automation Compositions en-bloc, allowing users
+to manage their features, services, and capabilities as single logical units.
+
+1 Introduction
+==============
 
 The idea of using automation compositions to automatically (or autonomously) perform network management
 has been the subject of much research in the Network Management research community, see
@@ -30,20 +67,20 @@ time system.
 
 .. image:: images/01-acm-overview.png
 
-1 Terminology
+2 Terminology
 =============
 
 This section describes the terminology used in the system.
 
-1.1 Automation Composition Terminology
+2.1 Automation Composition Terminology
 --------------------------------------
 
 **Automation Composition Type:** A definition of a Automation Composition in the TOSCA language. This definition describes
 a certain type of a automation composition. The life cycle of instances of a Automation Composition Type are managed
-by CLAMP.
+by ACM.
 
 **Automation Composition Instance:** An instance of a Automation Composition Type. The life cycle of a Automation Composition
-Instance is managed by CLAMP. A Automation Composition Instance is a set of executing elements on which
+Instance is managed by ACM. An Automation Composition Instance is a set of executing elements on which
 Life Cycle Management (LCM) is executed collectively. For example, a set of microservices may be
 spawned and executed together to deliver a service. This collection of services is a automation composition.
 
@@ -55,12 +92,12 @@ Composition Type.
 being managed as part of the overall automation composition. For example, a single microservice that is
 executing as one microservice in a service.
 
-**CLAMP Automation Composition Runtime:** The CLAMP server that holds Automation Composition Type definitions and manages
+**Automation Composition Runtime:** The ACM Runtime server that holds Automation Composition Type definitions and manages
 the life cycle of Automation Composition Instances and their Automation Composition Elements in cooperation with
 participants.
 
 
-1.2 Participant Terminology
+2.2 Participant Terminology
 ---------------------------
 
 **Participant Type:** Definition of a type of system or framework that can take part in control
@@ -68,11 +105,11 @@ loops and a definition of the capabilities of that participant type. A participa
 its type to the CLAMP Automation Composition Runtime.
 
 **Participant:** A system or framework that takes part in automation compositions by executing Automation Composition
-Elements in cooperation with the CLAMP Automation Composition Runtime. A participant chooses to partake
-in automation compositions, to manage Automation Composition Elements for CLAMP, and to receive, send and act on
-LCM messages for the CLAMP runtime.
+Elements in cooperation with the Automation Composition Runtime. A participant chooses to partake
+in automation compositions, to manage Automation Composition Elements for ACM, and to receive, send and act on
+LCM messages for the ACM runtime.
 
-1.3 Terminology for Properties
+2.3 Terminology for Properties
 ------------------------------
 
 **Common Properties:** Properties that apply to all Automation Composition Instances of a certain Automation
@@ -81,7 +118,7 @@ Composition Type and are specified when a Automation Composition Type is commiss
 **Instance Specific Properties:** Properties that must be specified for each Automation Composition Instance
 and are specified when a Automation Composition Instance is Initialized.
 
-1.4 Concepts and their relationships
+2.4 Concepts and their relationships
 ------------------------------------
 
 The UML diagram below shows the concepts described in the terminology sections above and how
@@ -96,7 +133,7 @@ definitions created at design time.
 
 .. _acm-capabilities:
 
-2 Capabilities
+3 Capabilities
 ==============
 
 We consider the capabilities of Automation Compositions at Design Time and Run Time.
@@ -135,88 +172,91 @@ At Design Time, three capabilities are supported:
 
 At Run Time, the following participant related capabilities are supported:
 
-#. **System Pre-Configuration.** This capability allows participants to register and deregister
-   with CLAMP. Participants explicitly register with CLAMP when they start. Automation Composition Priming
-   is performed on each participant once it registers. The post condition for an execution of this
-   capability is that a participant becomes available (registration) or is no longer available
-   (deregistration) for participation in a automation composition.
-
-#. **Automation Composition Priming on Participants.** A participant is primed to support a Automation Composition Type.
-   Priming a participant means that the definition of a automation composition and the values of Common
-   Property Types that apply to all instances of a automation composition type on a participant are sent
-   to a participant. The participant can then take whatever actions it need to do to support
-   the automation composition type in question. Automation Composition Priming takes place at participant
-   registration and at Automation Composition Commissioning. The post condition for an execution of this
-   capability is that all participants in this automation composition type are commissioned, that is they
-   are prepared to run instances of their Automation Composition Element types.
-
+#. **System Pre-Configuration.** This capability allows participants to register and deregister with ACM-R.
+   Participants explicitly register with ACM-R when they start. The post condition for an execution of this capability
+   is that a participant becomes available (registration) or is no longer available (deregistration) for
+   participation in an Automation Composition.
 
 At Run Time, the following Automation Composition Life Cycle management capabilities are supported:
 
 #. **Automation Composition Commissioning:** This capability allows version controlled Automation Composition Type
    definitions to be taken from the Automation Composition Design Time Catalogue and be placed in the
    Commissioned Automation Composition Inventory. It also allows the values of Common Property Types
-   that apply to all instances of a Automation Composition Type to be set. Further, the Automation Composition
-   Type is primed on all concerned participants. The post condition for an execution of this
+   that apply to all instances of a Automation Composition Type to be set. The post condition for an execution of this
    capability is that the Automation Composition Type definition is in the Commissioned Automation Composition
-   Inventory and the Automation Composition Type is primed on concerned participants.
+   Inventory.
+
+#. **Automation Composition Priming on Participants.** The Priming operation sends Automation Composition Types
+   and common property values to participants for each Automation Composition Element Type in the Automation
+   Composition Type. The participant can then take whatever actions it need to do to support
+   the automation composition type in question. Automation Composition Priming is triggered by user interaction
+   with the ACM-R Rest API. The post condition for an execution of this capability is that the AC definitions are
+   primed on all participants, that is they are prepared to run instances of their Automation Composition Element types.
+   Automation composition definitions cannot be primed until they are commissioned.
 
 #. **Automation Composition Instance Life Cycle Management:** This capability allows a Automation Composition
    Instance to have its life cycle managed.
 
-   #. **Automation Composition Instance Creation:** This capability allows a Automation Composition Instance to be
-      created. The Automation Composition Type definition is read from the Commissioned Automation Composition
-      Inventory and values are assigned to the Instance Specific Property Types defined for
-      instances of the Automation Composition Type in the same manner as the existing CLAMP client does.
-      A Automation Composition Instance that has been created but has not yet been instantiated on
-      participants is in state UNINITIALIZED. In this state, the Instance Specific Property Type
-      values can be revised and updated as often as the user requires. The post condition for an
-      execution of this capability is that the Automation Composition instance is created in the
-      Instantiated Automation Composition Inventory but has not been instantiated on Participants.
+   #. **Automation Composition Instance Creation:** This capability allows an Automation Composition Instance to be
+      created. The Automation Composition Type definition is read from the Commissioned Automation Composition Inventory
+      and values are assigned to the Instance Specific Property Types defined for instances of the Automation Composition
+      Type by the ACM client. An Automation Composition Instance that has been created but has not yet been deployed
+      on participants is in deploy state UNDEPLOYED and lock state LOCKED. In this state, the Instance Specific Property
+      Type values can be revised and updated as often as the user requires. The post condition for an execution of this
+      capability is that the Automation Composition instance is created in the Instance Automation Composition Inventory but
+      has not been deployed on Participants.
 
    #. **Automation Composition Instance Update on Participants:** Once the user is happy with the property
       values, the Automation Composition Instance is updated on participants and the Automation Composition Elements
-      for this Automation Composition Instance are initialized or updated by participants using the control
-      loop metadata. The post condition for an execution of this capability is that the Automation
-      Composition instance is updated on Participants.
+      for this Automation Composition Instance are deployed or updated by participants using the acm metadata.
+      The post condition for an execution of this capability is that the Automation Composition instance is updated
+      on Participants.
 
    #. **Automation Composition State Change:** The user can now order the participants to change the state
-      of the Automation Composition Instance. If the Automation Composition is set to state RUNNING, each participant
-      begins accepting and processing automation composition events and the Automation Composition Instance is set
-      to state RUNNING in the Instantiated Automation Composition inventory. The post condition for an
-      execution of this capability is that the Automation Composition instance state is changed on
-      participants.
+      of the Automation Composition Instance. If the Automation Composition is set to deploy state DEPLOYED and
+      lock state UNLOCKED, each participant begins accepting and processing automation composition events and the
+      Automation Composition Instance is set to state DEPLOYED/UNLOCKED in the Instantiated Automation Composition
+      inventory. The post condition for an execution of this capability is that the Automation Composition instance
+      state is changed on participants.
 
    #. **Automation Composition Instance Monitoring:** This capability allows Automation Composition Instances to be
       monitored. Users can check the status of Participants, Automation Composition Instances, and Automation
       Composition Elements. Participants report their overall status and the status of Automation Composition
-      Elements they are running periodically to CLAMP. Clamp aggregates these status reports
+      Elements they are running periodically to ACM-R. ACM aggregates these status reports
       into an aggregated Automation Composition Instance status record, which is available for monitoring.
       The post condition for an execution of this capability is that Automation Composition Instances are
       being monitored.
 
    #. **Automation Composition Instance Supervision:** This capability allows Automation Composition Instances to be
-      supervised. The CLAMP runtime expects participants to report on Automation Composition Elements
-      periodically. The CLAMP runtime checks that periodic reports are received and that each
+      supervised. The ACM runtime expects participants to report on Automation Composition Elements
+      periodically. The ACM runtime checks that periodic reports are received and that each
       Automation Composition Element is in the state it should be in. If reports are missed or if a
       Automation Composition Element is in an incorrect state, remedial action is taken and notifications
       are issued. The post condition for an execution of this capability is that Automation Composition
-      Instances are being supervised by the CLAMP runtime.
+      Instances are being supervised by the ACM runtime.
 
    #. **Automation Composition Instance Removal from Participants:** A user can order the removal of a Automation
       Composition Instance from participants. The post condition for an execution of this capability is
       that the Automation Composition instance is removed from Participants.
 
    #. **Automation Composition Instance Deletion:** A user can order the removal of a Automation Composition Instance
-      from the CLAMP runtime. Automation Composition Instances that are instantiated on participants cannot
-      be removed from the CLAMP runtime. The post condition for an execution of this capability
-      is that the Automation Composition instance is removed from Instantiated Automation Composition Inventory.
+      from the ACM runtime. Automation Composition Instances that are DEPLOYED/UNLOCKED on participants cannot
+      be removed from the ACM runtime. The post condition for an execution of this capability
+      is that the Automation Composition instance is removed from Instance Automation Composition Inventory.
+
+#. **Automation Composition Depriming on Participants.** The Depriming operation removes Automation Composition Types
+   and common property values from participants for each Automation Composition Element Type in the Automation
+   Composition Type. Automation Composition Depriming is triggered by user interaction
+   with the ACM-R Rest API. The post condition for an execution of this capability is that the AC definitions are
+   deprimed on all participants, that is they are no longer prepared to run instances of their Automation Composition
+   Element types. Automation composition definitions cannot be deprimed on a participant until the instances for that
+   participant are deleted.
 
 #. **Automation Composition Decommissioning:** This capability allows version controlled Automation Composition Type
-   definitions to be removed from the Commissioned Automation Composition Inventory. A Automation Composition
-   Definition that has instances in the Instantiated Automation Composition Inventory cannot be removed.
-   The post condition for an execution of this capability is that the Automation Composition Type
-   definition removed from the Commissioned Automation Composition Inventory.
+   definitions to be removed from the Commissioned Automation Composition Inventory. An Automation Composition
+   Definition that has instances in the Instantiated Automation Composition Inventory or has not been deprimed on
+   participants cannot be removed. The post condition for an execution of this capability is that the Automation
+   Composition Type definition removed from the Commissioned Automation Composition Inventory.
 
 .. note::
     The system dialogues for run time capabilities are described in detail on the
@@ -224,20 +264,20 @@ At Run Time, the following Automation Composition Life Cycle management capabili
 
 .. _acm-instance-states:
 
-2.1 Automation Composition Instance States
+3.1 Automation Composition Instance States
 ------------------------------------------
 
-When a automation composition definition has been commissioned, instances of the automation composition can be
-created, updated, and deleted. The system manages the lifecycle of automation compositions and control
-loop elements following the state transition diagram below.
+When an automation composition definition has been commissioned and primed, instances of the automation composition can be
+created, updated, and deleted. The system manages the lifecycle of automation compositions and ac elements
+following the state transition diagram below.
 
 .. image:: images/03-acm-instance-states.png
 
-3 Overall Target Architecture
+4 Overall Target Architecture
 =============================
 
 The diagram below shows an overview of the architecture of TOSCA based Automation Composition
-Management in CLAMP.
+Management in ACM-R.
 
 .. image:: images/04-overview.png
 
@@ -251,7 +291,7 @@ in the figure above, the Design Time component provides a system where Automatio
 designed and defined in metadata. This means that a Automation Composition can have any arbitrary
 structure and the Automation Composition developers can use whatever analytic, policy, or control
 participants they like to implement their Automation Composition. At composition time, the user
-parameterises the Automation Composition and stores it in the design time catalogue. This catalogue
+parameterizes the Automation Composition and stores it in the design time catalogue. This catalogue
 contains the primitive metadata for any participants that can be used to compose a Automation
 Composition. A Automation Composition SDK is used to compose a Automation Composition by aggregating the metadata for
 the participants chosen to be used in a Automation Composition and by constructing the references between
@@ -269,11 +309,11 @@ deletions are not allowed on Automation Composition Types that have instances de
 The Instantiation component manages the Life Cycle Management of Automation Composition Instances and
 their Automation Composition Elements. It publishes a REST interface that is used to create Automation Composition
 Instances and set values for Common and Instance Specific properties. This REST interface is
-public and is used by the CLAMP GUI. It may also be used by any other client via the public
-REST interface. the REST interface also allows the state of Automation Composition Instances to be changed.
+public and is used by the ACM GUI. It may also be used by any other client via the public
+REST interface. The REST interface also allows the state of Automation Composition Instances to be changed.
 A user can change the state of Automation Composition Instances as described in the state transition
 diagram shown in section 2 above. The Instantiation component issues update and state change
-messages via DMaaP to participants so that they can update and manage the state of the Automation
+messages via DMaaP/Kafka to participants so that they can update and manage the state of the Automation
 Composition Elements they are responsible for. The Instantiation component also implements persistence
 of Automation Composition Instances, automation composition elements, and their state changes.
 
@@ -286,15 +326,15 @@ Composition Instances and their Automation Composition Elements, as well as publ
 Automation Composition statistics.
 
 The Supervision component is responsible for checking that Automation Composition Instances are correctly
-instantiated and are in the correct state (UNINITIALIZED/READY/RUNNING). It also handles
+instantiated and are in the correct state (UNDEPLOYED/DEPLOYED/LOCKED/UNLOCKED). It also handles
 timeouts and on state changes to Automation Composition Instances, and retries and rolls back state
 changes where state changes failed.
 
 A Participant is an executing component that partakes in automation compositions. More explicitly, a
 Participant is something that implements the Participant Instantiation and Participant
-Monitoring messaging protocol over DMaaP for Life Cycle management of Automation Composition Elements.
+Monitoring messaging protocol over DMaaP/Kafka for Life Cycle management of Automation Composition Elements.
 A Participant runs Automation Composition Elements and manages and reports on their life cycle
-following the instructions it gets from the CLAMP runtime in messages delivered over DMaaP.
+following the instructions it gets from the ACM runtime in messages delivered over DMaaP/Kafka.
 
 In the figure above, five participants are shown. A Configuration Persistence Participant
 manages Automation Composition Elements that interact with the `ONAP Configuration Persistence Service
@@ -310,12 +350,12 @@ run Automation Composition Elements that interact with any existing system (such
 analytic, machine learning, or artificial intelligence system) so that those systems can
 partake in automation compositions.
 
-4. Other Considerations
+5. Other Considerations
 =======================
 
 .. _management-acm-instance-configs:
 
-4.1 Management of Automation Composition Instance Configurations
+5.1 Management of Automation Composition Instance Configurations
 ----------------------------------------------------------------
 
 In order to keep management of versions of the configuration of automation composition instances
@@ -331,19 +371,10 @@ the **major.minor.patch** number of the version.
 
 Change constraints:
 
-#. A Automation Composition or Automation Composition Element in state **RUNNING** can be changed to a higher patch
-   level or rolled back to a lower patch level. This means that hot changes that do not
-   impact the structure of a Automation Composition or its elements can be executed.
-
-#. A Automation Composition or Automation Composition Element in state **PASSIVE** can be changed to a higher
-   minor/patch level or rolled back to a lower minor/patch level. This means that structural
-   changes to Automation Composition Elements that do not impact the Automation Composition as a whole can be
-   executed by taking the automation composition to state **PASSIVE**.
-
-#. A Automation Composition or Automation Composition Element in state **UNINITIALIZED** can be changed to a higher
+#. An Automation Composition or Automation Composition Element in state **UNDEPLOYED** can be changed to a higher
    major/minor/patch level or rolled back to a lower major/minor/patch level. This means
    that where the structure of the entire automation composition is changed, the automation composition must
-   be uninitialized and reinitialized.
+   be undeployed and redeployed.
 
 #. If a Automation Composition Element has a **minor** version change, then its Automation Composition Instance
    must have at least a **minor** version change.
@@ -351,40 +382,40 @@ Change constraints:
 #. If a Automation Composition Element has a **major** version change, then its Automation Composition Instance
    must have a **major** version change.
 
-4.2 Scalability
+5.2 Scalability
 ---------------
 
-The system is designed to be inherently scalable. The CLAMP runtime is stateless, all state
+The system is designed to be inherently scalable. The ACM runtime is stateless, all state
 is preserved in the Instantiated Automation Composition inventory in the database. When the user
-requests an operation such as an instantiation, activation, passivation, or an uninitialization
-on a Automation Composition Instance, the CLAMP runtime broadcasts the request to participants over
-DMaaP and saves details of the request to the database. The CLAMP runtime does not directly
+requests an operation such as an undeploy, deploy, lock, or an unlock
+on a Automation Composition Instance, the ACM runtime broadcasts the request to participants over
+DMaaP/Kafka and saves details of the request to the database. The ACM runtime does not directly
 wait for responses to requests.
 
-When a request is broadcast on DMaaP, the request is asynchronously picked up by participants
+When a request is broadcast on DMaaP/Kafka, the request is asynchronously picked up by participants
 of the types required for the Automation Composition Instance and those participants manage the life
 cycle of its automation composition elements. Periodically, each participant reports back on the status
 of operations it has picked up for the Automation Composition Elements it controls, together with
-statistics on the Automation Composition Elements over DMaaP. On reception of these participant messages,
-the CLAMP runtime stores this information to its database.
+statistics on the Automation Composition Elements over DMaaP/Kafka. On reception of these participant messages,
+the ACM runtime stores this information to its database.
 
 The participant to use on a automation composition can be selected from the registered participants
 in either of two ways:
 
-**Runtime-side Selection:** The CLAMP runtime selects a suitable participant from the list of
+**Runtime-side Selection:** The ACM runtime selects a suitable participant from the list of
 participants and sends the participant ID that should be used in the Participant Update message.
 In this case, the CLAMP runtime decides on which participant will run the Automation Composition Element
 based on a suitable algorithm. Algorithms could be round robin based or load based.
 
-**Participant-side Selection:** The CLAMP runtime sends a list of Participant IDs that may be used
+**Participant-side Selection:** The ACM runtime sends a list of Participant IDs that may be used
 in the Participant Update message. In this case, the candidate participants decide among
 themselves which participant should host the Automation Composition Element.
 
 This approach makes it easy to scale Automation Composition life cycle management. As Automation Composition
-Instance counts increase, more than one CLAMP runtime can be deployed and REST/supervision
+Instance counts increase, more than one ACM runtime can be deployed and REST/supervision
 operations on Automation Composition Instances can run in parallel. The number of participants can
 scale because an asynchronous broadcast mechanism is used for runtime-participant communication
-and there is no direct connection or communication channel between participants and CLAMP
+and there is no direct connection or communication channel between participants and ACM
 runtime servers. Participant state, Automation Composition Instance state, and Automation Composition Element
 state is held in the database, so any CLAMP runtime server can handle operations for any
 participant. Because many participants of a particular type can be deployed and participant
@@ -392,7 +423,7 @@ instances can load balance automation composition element instances for differen
 of many types across themselves using a mechanism such as a Kubernetes cluster.
 
 
-4.3 Sandboxing and API Gateway Support
+5.3 Sandboxing and API Gateway Support
 --------------------------------------
 
 At runtime, interaction between ONAP platform services and application microservices are
@@ -421,7 +452,7 @@ Instance and Automation Composition Element level.
 At design time, the Automation Composition type definition specifies the type of API gateway configuration
 that should be supported at Automation Composition and Automation Composition Element levels.
 
-At runtime, the CLAMP can configure the API gateway to enable (or deny) interactions between
+At runtime, the ACM-R can configure the API gateway to enable (or deny) interactions between
 Automation Composition Instances and individually for each Automation Composition Element. All service-level
 interactions in/out of a Automation Composition Element, except that to/from the API Gateway, can be
 blocked by networking policies, thus sandboxing a Automation Composition Element and an entire Automation
@@ -438,7 +469,7 @@ configuration for their Automation Composition Element.
 
 Monitoring and logging of the use of the API gateway may also be provided. Information and
 statistics on API gateway use can be read from the API gateway and passed back in monitoring
-messages to the CLAMP runtime.
+messages to the ACM runtime.
 
 Additional isolation and execution-environment sandboxing can be supported depending on the
 Automation Composition Element Type. For example: ONAP policies for given Automation Composition Instances/Types
@@ -446,7 +477,7 @@ can be executed in a dedicated PDP engine instances; DCAE or K8S-hosted services
 in isolated namespaces or in dedicated workers/clusters; etc..
 
 
-5 APIs and Protocols
+6 APIs and Protocols
 ====================
 
 The APIs and Protocols used by CLAMP for Automation Compositions are described on the pages below:
@@ -456,7 +487,7 @@ The APIs and Protocols used by CLAMP for Automation Compositions are described o
 #. :ref:`REST APIs for CLAMP Automation Compositions <acm-rest-apis-label>`
 
 
-6 Design and Implementation
+7 Design and Implementation
 ===========================
 
 The design and implementation of TOSCA Automation Compositions in CLAMP is described for each executable entity on the pages below:
