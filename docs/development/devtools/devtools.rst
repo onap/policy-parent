@@ -344,13 +344,10 @@ the Policy Framework works in a full ONAP deployment.
 .. toctree::
    :maxdepth: 1
 
-   clamp-policy.rst
-
-   clamp-dcae.rst
-
-   policy-cds.rst
-
-   clamp-sdc.rst
+   pairwise/clamp-policy.rst
+   pairwise/clamp-dcae.rst
+   pairwise/policy-cds.rst
+   pairwise/clamp-sdc.rst
 
 ..
    api-pairwise.rst

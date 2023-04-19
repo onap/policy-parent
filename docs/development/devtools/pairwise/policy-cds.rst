@@ -53,7 +53,7 @@ In a real Automation Composition flow, the entities in AAI will be either create
 Download & execute the steps in postman collection for creating the entities along with its dependencies.
 The steps need to be performed sequentially one after another. And no input is required from user.
 
-:download:`Create VNF & PNF in AAI <postman/create-vnf-pnf-aai.postman_collection.json>`
+:download:`Create VNF & PNF in AAI </development/devtools/postman/create-vnf-pnf-aai.postman_collection.json>`
 
 Make sure to skip the delete VNF & PNF steps.
 
@@ -64,14 +64,14 @@ In order for PDP engines to trigger an action in CDS during runtime execution, w
 
 Download the zip files containing the blueprint for VNF & PNF specific actions.
 
-:download:`VNF Test CBA <cds-cba/vnf-test-cba.zip>`
-:download:`PNF Test CBA <cds-cba/pnf-test-cba.zip>`
+:download:`VNF Test CBA </development/devtools/cds-cba/vnf-test-cba.zip>`
+:download:`PNF Test CBA </development/devtools/cds-cba/pnf-test-cba.zip>`
 
 Download & execute the steps in postman collection for publishing the blueprints in CDS.
 In the enrich & publish CBA step, provide the previously downloaded zip file one by one.
 The execute steps are provided to verify that the blueprints are working as expected.
 
-:download:`Publish Blueprints in CDS <postman/publish-cba-CDS.postman_collection.json>`
+:download:`Publish Blueprints in CDS </development/devtools/postman/publish-cba-CDS.postman_collection.json>`
 
 Make sure to skip the delete CBA step.
 
@@ -96,7 +96,7 @@ List of steps covered in the postman collection:
 Download & execute the steps in postman collection.
 The steps need to be performed sequentially one after another. And no input is required from user.
 
-:download:`Apex-PDP VNF & PNF Testing <postman/apex-pdp-vnf-pnf-testing.postman_collection.json>`
+:download:`Apex-PDP VNF & PNF Testing </development/devtools/postman/apex-pdp-vnf-pnf-testing.postman_collection.json>`
 
 Make sure to wait for 2 minutes (the default heartbeat interval) to verify PDP Statistics.
 
@@ -120,7 +120,7 @@ List of steps covered in the postman collection:
 Download & execute the steps in postman collection.
 The steps need to be performed sequentially one after another. And no input is required from user.
 
-:download:`Drools-PDP VNF & PNF Testing <postman/drools-pdp-vnf-pnf-testing.postman_collection.json>`
+:download:`Drools-PDP VNF & PNF Testing </development/devtools/postman/drools-pdp-vnf-pnf-testing.postman_collection.json>`
 
 Make sure to wait for 2 minutes (the default heartbeat interval) to verify PDP Statistics.
 
