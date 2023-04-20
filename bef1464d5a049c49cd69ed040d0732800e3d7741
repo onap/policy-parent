@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19c2c6ef_2b4c7bb7",
+        "filename": "docs/clamp/acm/design-impl/participants/a1pms-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 7668
+      },
+      "writtenOn": "2023-04-20T13:59:20Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 8,
+        "startChar": 31,
+        "endLine": 8,
+        "endChar": 33
+      },
+      "revId": "bef1464d5a049c49cd69ed040d0732800e3d7741",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d8ff363_6fe03b3f",
+        "filename": "docs/clamp/acm/design-impl/participants/a1pms-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 7668
+      },
+      "writtenOn": "2023-04-20T13:59:20Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "bef1464d5a049c49cd69ed040d0732800e3d7741",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "763b8133_75dba32f",
+        "filename": "docs/clamp/acm/design-impl/participants/a1pms-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7668
+      },
+      "writtenOn": "2023-04-20T13:59:20Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 16,
+        "startChar": 80,
+        "endLine": 16,
+        "endChar": 87
+      },
+      "revId": "bef1464d5a049c49cd69ed040d0732800e3d7741",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a75fd9e_3dabbf57",
+        "filename": "docs/clamp/acm/design-impl/participants/a1pms-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7668
+      },
+      "writtenOn": "2023-04-20T13:59:20Z",
+      "side": 1,
+      "message": "and runs",
+      "range": {
+        "startLine": 16,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "bef1464d5a049c49cd69ed040d0732800e3d7741",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
