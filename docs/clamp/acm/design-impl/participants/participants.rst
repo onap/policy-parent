@@ -35,4 +35,5 @@ The detailed implementation of the CLAMP Participant ecosystem is described on t
    participant-intermediary
    http-participant
    k8s-participant
+   a1pms-participant
    policy-framework-participant
