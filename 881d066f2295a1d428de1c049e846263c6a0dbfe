@@ -71,6 +71,78 @@
     },
     {
       "key": {
+        "uuid": "5c94c7bc_8de8d60d",
+        "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 8109
+      },
+      "writtenOn": "2023-04-21T14:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98720ab8_d63d1d50",
+      "range": {
+        "startLine": 8,
+        "startChar": 184,
+        "endLine": 8,
+        "endChar": 188
+      },
+      "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19c89182_655f3958",
+        "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 8109
+      },
+      "writtenOn": "2023-04-21T14:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3917a64_b3b77d00",
+      "range": {
+        "startLine": 8,
+        "startChar": 67,
+        "endLine": 8,
+        "endChar": 71
+      },
+      "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70a50fec_9a737811",
+        "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 8109
+      },
+      "writtenOn": "2023-04-21T14:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "822ce6b6_9b6c0606",
+      "range": {
+        "startLine": 8,
+        "startChar": 123,
+        "endLine": 8,
+        "endChar": 134
+      },
+      "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07bef1c0_207fbdcd",
         "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
         "patchSetId": 1
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "e2635e3d_0e39e57b",
+        "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 8109
+      },
+      "writtenOn": "2023-04-21T14:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07bef1c0_207fbdcd",
+      "range": {
+        "startLine": 76,
+        "startChar": 76,
+        "endLine": 76,
+        "endChar": 87
+      },
+      "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9d0128c_23e2c8df",
+        "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 8109
+      },
+      "writtenOn": "2023-04-21T14:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fcfdc68_85613784",
+      "range": {
+        "startLine": 76,
+        "startChar": 151,
+        "endLine": 76,
+        "endChar": 162
+      },
+      "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f35f8f9_81d390d0",
         "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9dc8c639_d3390d87",
+        "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 8109
+      },
+      "writtenOn": "2023-04-21T14:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f35f8f9_81d390d0",
+      "range": {
+        "startLine": 79,
+        "startChar": 51,
+        "endLine": 79,
+        "endChar": 55
+      },
+      "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42e818e4_f9c7cc81",
         "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
         "patchSetId": 1
@@ -160,6 +304,30 @@
       "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670ec81f_dda9c78f",
+        "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 8109
+      },
+      "writtenOn": "2023-04-21T14:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42e818e4_f9c7cc81",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 12
+      },
+      "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     },
     {
       "key": {
@@ -206,6 +374,54 @@
       "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97b4a0e0_7dcb1eb1",
+        "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 8109
+      },
+      "writtenOn": "2023-04-21T14:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a154cf_c6031c68",
+      "range": {
+        "startLine": 95,
+        "startChar": 115,
+        "endLine": 95,
+        "endChar": 216
+      },
+      "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e18158e_f6401067",
+        "filename": "docs/clamp/acm/design-impl/participants/kserve-participant.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 8109
+      },
+      "writtenOn": "2023-04-21T14:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae970dd9_177a2821",
+      "range": {
+        "startLine": 95,
+        "startChar": 48,
+        "endLine": 95,
+        "endChar": 92
+      },
+      "revId": "881d066f2295a1d428de1c049e846263c6a0dbfe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
