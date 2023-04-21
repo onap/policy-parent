@@ -15,7 +15,6 @@ described in TOSCA.
    acm/acm-states
    acm/defining-acms
    acm/api-protocol/api-protocol-tree
-   acm/clamp-gui/policy-gui
    acm/design-impl/design-impl
 
 .. note::
