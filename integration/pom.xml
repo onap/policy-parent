@@ -29,7 +29,7 @@
     <parent>
         <groupId>org.onap.policy.parent</groupId>
         <artifactId>policy-parent</artifactId>
-        <version>3.7.2-SNAPSHOT</version>
+        <version>3.7.3-SNAPSHOT</version>
     </parent>
     <artifactId>integration</artifactId>
     <packaging>pom</packaging>
@@ -38,7 +38,7 @@
     <properties>
         <java.version>11</java.version>
         <!-- Note Well: For RELEASE/SNAPSHOT always set to the project version -->
-        <version.parent.resources>3.7.2</version.parent.resources>
+        <version.parent.resources>3.7.3-SNAPSHOT</version.parent.resources>
         <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
         <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
         <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
