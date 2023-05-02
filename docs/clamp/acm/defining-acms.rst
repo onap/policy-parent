@@ -9,6 +9,10 @@ Defining Automation Compositions in TOSCA for CLAMP
 .. contents::
     :depth: 4
 
+- **Automation Composition:** A set of elements working together to deliver a feature or function.
+- **Automation Composition Type Definition:** A formal definition of a type of an Automation Composition in the TOSCA modelling language (described in JSON or YAML), which specifies the type and properties of elements that make up an Automation Composition and the types of participants that host those elements
+- **Automation Composition Type:** An Automation Composition type, which has been created (commissioned) in the ACM runtime server
+- **Automation Composition Instance:** An instance of an Automation Composition Type, which as been created in the ACM runtime server. The elements of an Automation Composition Instance run on participants. The collection of all the Automation Composition Element Instances make up an Automation Composition Instance.
 
 A Automation Composition Type is defined in a TOSCA service template. A TOSCA Service Template has
 two parts: a definition part in the service template itself, which contains the definitions
@@ -59,6 +63,12 @@ TOSCA Standard Automation Composition Elements
 .. image:: images/defining-acms/standard-acme.png
   :width: 600
 
+- **Automation Composition Element Type Definition:** A formal definition of a type of an Automation Composition element in an Automation Composition Type Definition.
+- **Automation Composition Element Type:** An Automation Composition element type in an Automation Composition type, which has been created (commissioned) in the ACM runtime server
+- **Automation Composition Element Instance:** An instance of an Automation Composition Element, which can run on an Participant
+- **Participant:** A component that agrees to run elements of Automation Compositions. Therefore, participants agree to be part of Automation Composition Instances. Participants of a particular type can run Automation Composition Elements of specific types.
+
+
 1.2.1 Policy Automation Composition Element
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -102,7 +112,7 @@ of the Kubernetes Automation Composition Element and Kubernetes Participant,plea
 
 Properties are used to define the configuration for Automation Compositions and Automation Composition Elements.
 At design time, the types, constraints, and descriptions of the properties are specified.
-The values for properties are specified in the CLAMP GUI at runtime. TOSCA provides support
+The values for properties are specified in Automation Composition Instance. TOSCA provides support
 for defining properties, see `Section 3.6.10: TOSCA Property Definition
 <https://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.3/os/TOSCA-Simple-Profile-YAML-v1.3-os.html#DEFN_ELEMENT_PROPERTY_DEFN>`_
 in the TOSCA documentation.
@@ -116,20 +126,17 @@ Composition Element, or a Participant.
 **TOSCA Property Type:** The TOSCA definition of the type of a property. A property can have
 a generic type such as string or integer or can have a user defined TOSCA data type.
 
-**TOSCA Property Value:** The value of a Property Type. Property values are assigned at run
-time in CLAMP.
+**TOSCA Property Value:** The value of a Property Type.
 
 **Common Property Type:** Property Types that apply to all instances of a Automation Composition Type.
 
-**Common Property Value:** The value of a Property Type. It is assigned at run time once for
+**Common Property Value:** The value of a Property Type. It is assigned in Automation Composition Definition once for
 all instances of a Automation Composition Type.
 
-**Instance Specific Property Type:** Property Types that apply to an individual instance of
-a Automation Composition Type.
+**Instance Specific Property Type:** Property Types that apply to all instances of a specific Automation Composition Type.
 
 **Instance Specific Property Value:** The value of a Property Type that applies to an
-individual instance of a Automation Composition Type. The value is assigned at run time for each
-automation composition instance.
+individual instance of a Instance Specific Property Type. The value is assigned in Automation Composition Instance.
 
 Automation Composition Properties can be *common* or *instance specific*. See Section 2 of
 :ref:`TOSCA Defined Automation Compositions: Architecture and Design <acm-capabilities>`
@@ -234,7 +241,7 @@ one for the Kubernetes microservice, one for the policy and one or the REST conf
 We use a TOSCA Topology Template to specify a Automation Composition definition and the definitions of
 its Automation Composition Elements. Optionally, we can specify default parameter values in the TOSCA
 Topology Template. The actual values of Automation Composition common and instance specific parameters
-are set at run time in the CLAMP GUI.
+are set in Automation Composition Instance.
 
 In the case of the Gentle Guidance automation composition, we define a Automation Composition Element Node Template
 for each part of the domain logic we are managing. We then define the Automation Composition Node Template
