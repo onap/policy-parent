@@ -32,7 +32,7 @@ Command Line
 
     .. code-block:: bash
 
-    mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
+        mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
 
 Policy PAP
 **********
@@ -52,7 +52,7 @@ Command Line
 
     .. code-block:: bash
 
-    mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
+        mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
 
 Apex-PDP
 ********
@@ -72,8 +72,8 @@ Command Line
 
     .. code-block:: bash
 
-    cd services/services-engine
-    mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.apex.service.engine.main.ApexMain" -Dexec.args="-p /PATH/TO/POLICY_FILE.json"
+        cd services/services-engine
+        mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.apex.service.engine.main.ApexMain" -Dexec.args="-p /PATH/TO/POLICY_FILE.json"
 
 ACM-Runtime
 ***********
@@ -93,7 +93,7 @@ Command Line
 
     .. code-block:: bash
 
-    mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
+        mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
 
 Models Simulators
 *****************
@@ -103,11 +103,11 @@ Command Line
 
     .. code-block:: bash
 
-    mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.models.sim.pdp.PdpSimulatorMain" -Dexec.args="-c /PATH/TO/OnapPfConfig.json"
+        mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.models.sim.pdp.PdpSimulatorMain" -Dexec.args="-c /PATH/TO/OnapPfConfig.json"
 
     .. code-block:: bash
 
-    mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.models.sim.dmaap.startstop.Main" -Dexec.args="-c /PATH/TO/DefaultConfig.json"
+        mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.models.sim.dmaap.startstop.Main" -Dexec.args="-c /PATH/TO/DefaultConfig.json"
 
 XACML-PDP
 *********
@@ -127,8 +127,8 @@ Command Line
 
     .. code-block:: bash
 
-    cd main
-    mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.pdpx.main.startstop.Main" -Dexec.args="-c /PATH/TO/XacmlPdpConfigParameters.json"
+        cd main
+        mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.pdpx.main.startstop.Main" -Dexec.args="-c /PATH/TO/XacmlPdpConfigParameters.json"
 
 Drools-PDP
 **********
@@ -148,8 +148,8 @@ Command Line
 
     .. code-block:: bash
 
-    cd policy-management
-    mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.drools.system.Main"
+        cd policy-management
+        mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.drools.system.Main"
 
 Policy Participant
 ******************
@@ -169,7 +169,7 @@ Command Line
 
     .. code-block:: bash
 
-    mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
+        mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
 
 Http Participant
 ****************
@@ -189,7 +189,7 @@ Command Line
 
     .. code-block:: bash
 
-    mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
+        mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
 
 Kubernetes Participant
 **********************
@@ -209,7 +209,7 @@ Command Line
 
     .. code-block:: bash
 
-    mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
+        mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
 
 A1 Participant
 **************
@@ -229,7 +229,7 @@ Command Line
 
     .. code-block:: bash
 
-    mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
+        mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
 
 Kserve Participant
 ******************
@@ -249,4 +249,4 @@ Command Line
 
     .. code-block:: bash
 
-    mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
+        mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
