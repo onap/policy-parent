@@ -421,12 +421,22 @@ To test these images, CSITs will be run.
 Running Policy Components Locally
 *********************************
 
-The following page outlines how to run the policy framework components locally use IntelliJ, Eclipse and the Command Line.
+The following page outlines how to run the policy framework components locally using IntelliJ, Eclipse and the Command Line.
 
 .. toctree::
    :maxdepth: 1
 
-   local-installation.rst
+   ./installation/local-installation.rst
+
+Running the Policy Framework in Microk8s
+****************************************
+
+The following page outlines how to run the policy framework components using microk8s.
+
+.. toctree::
+   :maxdepth: 1
+
+   ./installation/microk8s-installation.rst
 
 
 Generating Swagger Documentation
