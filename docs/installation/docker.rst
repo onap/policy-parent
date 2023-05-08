@@ -75,6 +75,8 @@ To stop all containers, use stop-compose.sh
   ./stop-compose.sh
 
 
+.. _building-pf-docker-images-label:
+
 Building the ONAP Policy Framework Docker Images
 ************************************************
 If you want to use your own local images, you can build them following these instructions:
