@@ -368,6 +368,15 @@ the Policy Framework works in a full ONAP deployment.
    distribution-pairwise.rst
 
 
+Running Continuous System and Integration Testing suites
+********************************************************
+
+.. toctree::
+   :maxdepth: 1
+
+   testing/csit.rst
+
+
 Testing OpenSuse docker images
 ******************************
 
