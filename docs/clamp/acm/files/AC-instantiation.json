@@ -1,0 +1,71 @@
+{
+  "name": "DemoInstance0",
+  "version": "1.0.1",
+  "compositionId": "COMPOSITIONIDPLACEHOLDER",
+  "description": "Demo automation composition instance 0",
+  "elements": {
+    "709c62b3-8918-41b9-a747-d21eb79c6c21": {
+      "id": "709c62b3-8918-41b9-a747-d21eb79c6c21",
+      "definition": {
+        "name": "onap.policy.clamp.ac.element.K8S_AutomationCompositionElement",
+        "version": "1.2.3"
+      },
+      "description": "Starter Automation Composition Element for the Demo",
+      "properties": {
+        "chart": {
+          "chartId": {
+            "name": "acelement",
+            "version": "0.1.0"
+          },
+          "namespace": "default",
+          "releaseName": "acm-starter",
+          "podName": "acm-starter",
+          "repository": {
+            "repoName": "policy-chartmuseum",
+            "address": "http://policy-chartmuseum:8080"
+          },
+          "overrideParams": {
+            "acelement.elementId.name": "onap.policy.clamp.ac.starter",
+            "service.nodeport": 30800
+          }
+        }
+      }
+    }
+    "709c62b3-8918-41b9-a747-d21eb79c6c24": {
+      "id": "709c62b3-8918-41b9-a747-d21eb79c6c24",
+      "definition": {
+        "name": "onap.policy.clamp.ac.element.Http_AutomationCompositionElement",
+        "version": "1.2.3"
+      },
+      "description": "Starter Automation Composition Element for the Demo",
+      "properties": {
+        "baseUrl": "http://acm-starter-ac-element-impl:8084",
+        "httpHeaders": {
+          "Content-Type": "application/json",
+          "Authorization": "Basic YWNtVXNlcjp6YiFYenRHMzQ="
+        },
+        "configurationEntities": [
+          {
+            "configurationEntityId": {
+              "name": "onap.policy.clamp.ac.starter",
+              "version": "1.0.0"
+            },
+            "restSequence": [
+              {
+                "restRequestId": {
+                  "name": "request1",
+                  "version": "1.0.1"
+                },
+                "httpMethod": "POST",
+                "path": "/onap/policy/clamp/acelement/v2/activate",
+                "body": "{ \"receiverId\": { \"name\": \"onap.policy.clamp.ac.startertobridge\", \"version\": \"1.0.0\" }, \"timerMs\": 20000, \"elementType\": \"STARTER\", \"topicParameterGroup\": { \"server\": \"message-router:3904\", \"listenerTopic\": \"POLICY_UPDATE_MSG\", \"publisherTopic\": \"AC_ELEMENT_MSG\", \"fetchTimeout\": 15000, \"topicCommInfrastructure\": \"dmaap\" } }",
+                "expectedResponse": 201
+              }
+            ]
+          }
+        ]
+      }
+    }
+
+  }
+}
