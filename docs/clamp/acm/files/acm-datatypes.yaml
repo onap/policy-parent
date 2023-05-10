@@ -1,0 +1,58 @@
+data_types:
+  onap.datatypes.ToscaConceptIdentifier:
+    derived_from: tosca.datatypes.Root
+    properties:
+      name:
+        type: string
+        required: true
+      version:
+        type: string
+        required: true
+
+  onap.datatypes.clamp.acm.httpAutomationCompositionElement.RestRequest:
+    version: 1.0.0
+    derived_from: tosca.datatypes.Root
+    properties:
+      restRequestId:
+        type: onap.datatypes.ToscaConceptIdentifier
+        required: true
+        description: The name and version of a REST request to be sent to a REST endpoint
+      httpMethod:
+        type: string
+        required: true
+        constraints:
+          - valid_values:
+              - POST
+              - PUT
+              - GET
+              - DELETE
+        description: The REST method to use
+      path:
+        type: string
+        required: true
+        description: The path of the REST request relative to the base URL
+      body:
+        type: string
+        required: false
+        description: The body of the REST request for PUT and POST requests
+      expectedResponse:
+        type: integer
+        required: true
+        constraints: []
+        description: THe expected HTTP status code for the REST request
+  onap.datatypes.clamp.acm.httpAutomationCompositionElement.ConfigurationEntity:
+    version: 1.0.0
+    derived_from: tosca.datatypes.Root
+    properties:
+      configurationEntityId:
+        type: onap.datatypes.ToscaConceptIdentifier
+        required: true
+        description:
+          The name and version of a Configuration Entity to be handled
+          by the HTTP Automation Composition Element
+      restSequence:
+        type: list
+        entry_schema:
+          type: onap.datatypes.clamp.acm.httpAutomationCompositionElement.RestRequest
+          type_version: 1.0.0
+        description: A sequence of REST commands to send to the REST endpoint
