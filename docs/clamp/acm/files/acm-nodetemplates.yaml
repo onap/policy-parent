@@ -1,0 +1,50 @@
+topology_template:
+  node_templates:
+    org.onap.k8s.acm.K8SAutomationCompositionParticipant:
+      version: 2.3.4
+      type: org.onap.policy.clamp.acm.Participant
+      type_version: 1.0.1
+      description: Participant for K8S
+      properties:
+        provider: ONAP
+    onap.policy.clamp.ac.element.K8S_AutomationCompositionElement:
+      # Helm chart parameters for the microservice
+      version: 1.2.3
+      type: org.onap.policy.clamp.acm.K8SMicroserviceAutomationCompositionElement
+      type_version: 1.0.0
+      description: Automation composition element for the K8S microservice for AC Element Starter
+      properties:
+        provider: ONAP
+        startPhase: 0
+        uninitializedToPassiveTimeout: 300
+        podStatusCheckInterval: 30
+    org.onap.policy.clamp.acm.HttpParticipant:
+      version: 2.3.4
+      type: org.onap.policy.clamp.acm.Participant
+      type_version: 1.0.1
+      description: Participant for Http requests
+      properties:
+        provider: ONAP
+    onap.policy.clamp.ac.element.Http_AutomationCompositionElement:
+      # Http config for AC Element microservice.
+      version: 1.2.3
+      type: org.onap.policy.clamp.acm.HttpAutomationCompositionElement
+      type_version: 1.0.0
+      description: Automation composition element for the http requests of AC Element Starter microservice
+      properties:
+        provider: ONAP
+        uninitializedToPassiveTimeout: 300
+        startPhase: 1
+
+    onap.policy.clamp.ac.element.AutomationCompositionDefinition:
+      version: 1.2.3
+      type: org.onap.policy.clamp.acm.AutomationComposition
+      type_version: 1.0.1
+      description: Automation composition for Demo
+      properties:
+        provider: ONAP
+        elements:
+          - name: onap.policy.clamp.ac.element.K8S_AutomationCompositionElement
+            version: 1.2.3
+          - name: onap.policy.clamp.ac.element.Http_AutomationCompositionElement
+            version: 1.2.3

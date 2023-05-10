@@ -16,10 +16,11 @@ described in TOSCA.
    acm/defining-acms
    acm/api-protocol/api-protocol-tree
    acm/design-impl/design-impl
+   acm/acm-user-guide
 
 .. note::
       Policy/CLAMP was merged into the Policy Framework in the Honolulu release of ONAP. Prior to that release, it was
-      a separate project. The release notes for CLAMP when it existed as a separate proejct are located below.
+      a separate project. The release notes for CLAMP when it existed as a separate project are located below.
 
 .. toctree::
    :maxdepth: 1
