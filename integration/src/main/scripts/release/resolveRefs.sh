@@ -4,7 +4,7 @@
 # ============LICENSE_START================================================
 # ONAP
 # =========================================================================
-# Copyright (C) 2022-2023 Nordix Foundation.
+# Copyright (C) 2023 Nordix Foundation.
 # =========================================================================
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -53,8 +53,7 @@ declare -a pf_repos=(
 usage()
 {
     echo ""
-    echo "$SCRIPT_NAME - on release changes, generate commits to set the snapshot version and update"
-    echo "               references on any repos that reference other repos"
+    echo "$SCRIPT_NAME - this script resolves references with the content of the data file when they get misaligned"
     echo ""
     echo "       usage:  $SCRIPT_NAME [-options]"
     echo ""
@@ -63,19 +62,17 @@ usage()
     echo "         -d data_file - the policy release data file to use, defaults to '$release_data_file'"
     echo "         -l location  - the location of the policy framework repos on the file system,"
     echo "                        defaults to '$repo_location'"
-    echo "         -m           - update snapshots for a major release, default is to update for a minor release"
     echo "         -i issue-id  - issue ID in the format POLICY-nnnn"
     echo ""
     echo " examples:"
     echo "  $SCRIPT_NAME -l /home/user/onap -d /home/user/data/pf_release_data.csv -i POLICY-1234"
-    echo "    set snapshots on the repos at location '/home/user/onap' using the release data"
-    echo "    in the file '/home/user/data/pf_release_data.csv'"
+    echo "    resolves references with the content of the data file"
     exit 255;
 }
 
 major_release=false
 
-while getopts "hmd:l:i:" opt
+while getopts "hd:l:i:" opt
 do
     case $opt in
     h)
@@ -89,9 +86,6 @@ do
         ;;
     i)
         issue_id=$OPTARG
-        ;;
-    m)
-        major_release=true
         ;;
     \?)
         usage
@@ -159,48 +153,14 @@ do
         continue
     fi
 
-    next_release_version=${latest_snapshot_tag%-*}
-
-    major_version=$(echo "$latest_released_tag" | $SED -E 's/^([0-9]*)\.[0-9]*\.[0-9]*$/\1/')
-    minor_version=$(echo "$latest_released_tag" | $SED -E 's/^[0-9]*\.([0-9]*)\.[0-9]*$/\1/')
-    patch_version=$(echo "$next_release_version" | $SED -E 's/^[0-9]*\.[0-9]*\.([0-9]*)$/\1/')
-    # shellcheck disable=SC2004
-
-    if $major_release
-    then
-        new_major_version=$(($major_version+1))
-        new_minor_version=0
-    else
-        new_major_version=$major_version
-        new_minor_version=$(($minor_version+1))
-    fi
-
-    new_snapshot_tag="$new_major_version"."$new_minor_version".0-SNAPSHOT
-
-    echo "updating snapshot version and references of repo $repo to $new_snapshot_tag . . ."
-    mvn -f "$repo_location/$repo" \
-        "-DnewVersion=$new_snapshot_tag" versions:set \
-        versions:update-child-modules versions:commit
-
-    temp_file=$(mktemp)
-
-    echo "set snapshot version of repo $repo in $repo_location/$repo/version.properties"
-    $SED \
-        -e "s/major=$major_version/minor=$new_major_version/" \
-        -e "s/minor=$minor_version/minor=$new_minor_version/" \
-        -e "s/patch=$patch_version/patch=0/" \
-        "$repo_location/$repo/version.properties" \
-        > "$temp_file"
-    mv "$temp_file" "$repo_location/$repo/version.properties"
-
-    updateRefs.sh -pcmoxs -d "$release_data_file" -l "$repo_location" -r "$repo"
+    updateRefs.sh -pcmokxs -d "$release_data_file" -l "$repo_location" -r "$repo"
 
     generateCommit.sh \
        -l "$repo_location" \
         -r "$repo" \
         -i "$issue_id" \
-        -e "Set snapshot and/or references of $repo for new release" \
-        -m "$repo updated to its latest own and reference snapshots"
+        -e "Set all cross references of $repo" \
+        -m "$repo updated with correct cross references"
 
     echo "commit to set snapshot version and/or references of repo $repo generated"
 done
