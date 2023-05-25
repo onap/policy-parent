@@ -2,6 +2,10 @@ project = "onap"
 release = "master"
 version = "master"
 
+# Map to 'latest' if this file is used in 'latest' (master) 'doc' branch.
+# Change to {releasename} after you have created the new 'doc' branch.
+branch = 'latest'
+
 author = "Open Network Automation Platform"
 # yamllint disable-line rule:line-length
 copyright = "ONAP. Licensed under Creative Commons Attribution 4.0 International License"
@@ -33,7 +37,7 @@ redoc = [
     {
         'name': 'Policy API',
         'page': 'api/local-swagger',
-        'spec': 'https://raw.githubusercontent.com/onap/policy-api/master/main/src/main/resources/openapi/openapi.yaml',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-api/' + release + '/main/src/main/resources/openapi/openapi.yaml',
         'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
@@ -42,7 +46,7 @@ redoc = [
     {
         'name': 'Policy PAP',
         'page': 'pap/local-swagger',
-        'spec': 'https://raw.githubusercontent.com/onap/policy-pap/master/main/src/main/resources/openapi/openapi.yaml',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-pap/' + release + '/main/src/main/resources/openapi/openapi.yaml',
         'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
@@ -51,7 +55,7 @@ redoc = [
     {
         'name': 'Policy XACML',
         'page': 'xacml/local-swagger',
-        'spec': 'https://raw.githubusercontent.com/onap/policy-xacml-pdp/master/main/src/main/resources/openapi/openapi.yaml',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-xacml-pdp/' + release + '/main/src/main/resources/openapi/openapi.yaml',
         'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
@@ -60,7 +64,7 @@ redoc = [
     {
         'name': 'Policy DROOLS',
         'page': 'drools/local-swagger',
-        'spec': 'https://raw.githubusercontent.com/onap/policy-drools-pdp/master/feature-healthcheck/src/main/resources/openapi/openapi.yaml',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-drools-pdp/' + release + '/feature-healthcheck/src/main/resources/openapi/openapi.yaml',
         'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
@@ -69,20 +73,13 @@ redoc = [
     {
         'name': 'Policy ACM-R',
         'page': 'clamp/acm/api-protocol/local-swagger',
-        'spec': 'https://raw.githubusercontent.com/onap/policy-clamp/master/runtime-acm/src/main/resources/openapi/openapi.yaml',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-clamp/' + release + '/runtime-acm/src/main/resources/openapi/openapi.yaml',
         'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
         }
     },
 ]
-
-#
-# Map to 'latest' if this file is used in 'latest' (master) 'doc' branch.
-# Change to {releasename} after you have created the new 'doc' branch.
-#
-
-branch = 'latest'
 
 intersphinx_mapping = {}
 doc_url = 'https://docs.onap.org/projects'
