@@ -1,6 +1,6 @@
 project = "onap"
-release = "master"
-version = "master"
+release = "london"
+version = "london"
 
 author = "Open Network Automation Platform"
 # yamllint disable-line rule:line-length
@@ -33,7 +33,7 @@ redoc = [
     {
         'name': 'Policy API',
         'page': 'api/local-swagger',
-        'spec': 'https://raw.githubusercontent.com/onap/policy-api/master/main/src/main/resources/openapi/openapi.yaml',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-api/london/main/src/main/resources/openapi/openapi.yaml',
         'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
@@ -42,7 +42,7 @@ redoc = [
     {
         'name': 'Policy PAP',
         'page': 'pap/local-swagger',
-        'spec': 'https://raw.githubusercontent.com/onap/policy-pap/master/main/src/main/resources/openapi/openapi.yaml',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-pap/london/main/src/main/resources/openapi/openapi.yaml',
         'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
@@ -51,7 +51,7 @@ redoc = [
     {
         'name': 'Policy XACML',
         'page': 'xacml/local-swagger',
-        'spec': 'https://raw.githubusercontent.com/onap/policy-xacml-pdp/master/main/src/main/resources/openapi/openapi.yaml',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-xacml-pdp/london/main/src/main/resources/openapi/openapi.yaml',
         'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
@@ -60,7 +60,7 @@ redoc = [
     {
         'name': 'Policy DROOLS',
         'page': 'drools/local-swagger',
-        'spec': 'https://raw.githubusercontent.com/onap/policy-drools-pdp/master/feature-healthcheck/src/main/resources/openapi/openapi.yaml',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-drools-pdp/london/feature-healthcheck/src/main/resources/openapi/openapi.yaml',
         'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
@@ -69,7 +69,7 @@ redoc = [
     {
         'name': 'Policy ACM-R',
         'page': 'clamp/acm/api-protocol/local-swagger',
-        'spec': 'https://raw.githubusercontent.com/onap/policy-clamp/master/runtime-acm/src/main/resources/openapi/openapi.yaml',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-clamp/london/runtime-acm/src/main/resources/openapi/openapi.yaml',
         'opts': {
             'suppress-warnings': True,
             'hide-hostname': True,
@@ -82,7 +82,7 @@ redoc = [
 # Change to {releasename} after you have created the new 'doc' branch.
 #
 
-branch = 'latest'
+branch = 'london'
 
 intersphinx_mapping = {}
 doc_url = 'https://docs.onap.org/projects'
