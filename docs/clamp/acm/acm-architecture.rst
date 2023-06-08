@@ -240,9 +240,11 @@ At Run Time, the following Automation Composition Life Cycle management capabili
       that the Automation Composition instance is removed from Participants.
 
    #. **Automation Composition Instance Deletion:** A user can order the removal of a Automation Composition Instance
-      from the ACM runtime. Automation Composition Instances that are DEPLOYED/UNLOCKED on participants cannot
-      be removed from the ACM runtime. The post condition for an execution of this capability
-      is that the Automation Composition instance is removed from Instance Automation Composition Inventory.
+      from the ACM runtime and participants. Automation Composition Instances that are DEPLOYED/UNLOCKED on participants cannot
+      be removed from the ACM runtime. Each participant begins accepting and processing automation composition events removing the
+      Automation Composition Instance from the inventory. The post condition for an execution of this capability
+      is that the Automation Composition instance is removed from Instance Automation Composition Inventory
+      in ACM runtime and participants.
 
 #. **Automation Composition Depriming on Participants.** The Depriming operation removes Automation Composition Types
    and common property values from participants for each Automation Composition Element Type in the Automation

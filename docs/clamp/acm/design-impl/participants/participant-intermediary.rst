@@ -64,30 +64,38 @@ DePrime of an Automation Composition Definition Type
 - the message is built by ParticipantPrimePublisher with an empty list of ParticipantDefinition
 - Participant-intermediary will receive a PARTICIPANT_PRIME message and deletes the Tosca Service Template data on ParticipantHandler
 
-Design of "issues automation composition commands to automation compositions" - case UNDEPLOY to DEPLOY
--------------------------------------------------------------------------------------------------------
+Design of "issues automation composition commands to automation compositions" - case UNDEPLOYED to DEPLOYED
+-----------------------------------------------------------------------------------------------------------
 - AUTOMATION_COMPOSITION_DEPLOY message with instantiation details and DEPLOY order state is sent to participants
 - Participant-intermediary validates the current deployState change
 - Participant-intermediary will receive AUTOMATION_COMPOSITION_DEPLOY message and sends the details of AutomationCompositionElements to participants
 - Each participant performs its designated job of deployment by interacting with respective frameworks
 
-Design of "issues automation composition commands to automation compositions" - case DEPLOY to UNDEPLOY
--------------------------------------------------------------------------------------------------------
+Design of "issues automation composition commands to automation compositions" - case DEPLOYED to UNDEPLOYED
+-----------------------------------------------------------------------------------------------------------
 - AUTOMATION_COMPOSITION_STATE_CHANGE message with instantiation details and UNDEPLOY order state is sent to participants
 - Participant-intermediary validates the current deployState change
 - Participant-intermediary will receive AUTOMATION_COMPOSITION_STATE_CHANGE message and sends AC-element details to participants
 - Each participant performs its designated job of undeployment by interacting with respective frameworks
 
-Design of "issues automation composition commands to automation compositions" - case LOCK to UNLOCK
----------------------------------------------------------------------------------------------------
+Design of "issues automation composition commands to automation compositions" - case LOCKED to UNLOCKED
+-------------------------------------------------------------------------------------------------------
 - AUTOMATION_COMPOSITION_STATE_CHANGE message with instantiation details and UNLOCK order state is sent to participants
 - Participant-intermediary validates the current lockState change
 - Participant-intermediary will receive AUTOMATION_COMPOSITION_STATE_CHANGE message
 
-Design of "issues automation composition commands to automation compositions" - case UNLOCK to LOCK
----------------------------------------------------------------------------------------------------
+Design of "issues automation composition commands to automation compositions" - case UNLOCKED to LOCKED
+-------------------------------------------------------------------------------------------------------
 - AUTOMATION_COMPOSITION_STATE_CHANGE message with instantiation details and LOCK order state is sent to participants
 - Participant-intermediary validates the current lockState change
+
+Design of Delete - case UNDEPLOYED to DELETED
+---------------------------------------------
+- AUTOMATION_COMPOSITION_STATE_CHANGE message with instantiation details and DELETE order state is sent to participants
+- Participant-intermediary validates the current deployState change
+- Participant-intermediary will receive AUTOMATION_COMPOSITION_STATE_CHANGE message and sends AC-element details to participants
+- Each participant performs its designated job of removing instantiation data if not done in undeployment
+- Participant-intermediary will remove instantiation data
 
 Design of a PARTICIPANT_STATUS_REQ message
 ------------------------------------------
