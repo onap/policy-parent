@@ -210,6 +210,24 @@ Request payload
 .. literalinclude:: files/AC-instantiation.json
    :language: json
 
+Update AC instance properties (Optional)
+----------------------------------------
+Before the AC instance is deployed, the user is allowed to update the instance property values if needed. The runtime updates these new values
+in the database.
+
+.. code-block:: bash
+
+  Invoke a POST request
+  'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances'
+
+Request Payload
+
+Example payload to update the base url of the http request
+
+.. literalinclude:: files/AC-update.json
+   :language: json
+
+
 Deploy AC instance
 ------------------
 Once the AC instance is created, the user can deploy the instance which in turn activates the corresponding participants to execute the intended operations.
@@ -242,6 +260,20 @@ Note:
 Once all the AC elements are deployed, there should be a test microservice pod running on the kubernetes cluster which is
 configured to send events on the kafka by the http participant. This can be verified on the test microservice application logs.
 The AC instances can also be undeployed and deleted by the user.
+
+Update AC instance properties after deployment (Optional)
+---------------------------------------------------------
+After the AC instance is deployed, the user can still update the instance property values if needed. In this case, the runtime updates these new values
+in the database and also sends an update event to the participants. The participants has to implement the update method to perform the
+required operation.
+
+.. code-block:: bash
+
+  Invoke a POST request
+  'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances'
+
+Note:
+  Please refer the request payload section for updating the instance properties before deployment.
 
 UnDeploy AutomationComposition
 ------------------------------

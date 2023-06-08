@@ -206,9 +206,9 @@ At Run Time, the following Automation Composition Life Cycle management capabili
       capability is that the Automation Composition instance is created in the Instance Automation Composition Inventory but
       has not been deployed on Participants.
 
-   #. **Automation Composition Instance Update on Participants:** Once the user is happy with the property
-      values, the Automation Composition Instance is updated on participants and the Automation Composition Elements
-      for this Automation Composition Instance are deployed or updated by participants using the acm metadata.
+   #. **Automation Composition Instance Update on Participants:** The AC instance property values can be updated before/after
+      the instance deployment. Before the deployment, the new property values are only updated on the runtime database whereas
+      the updated property values are also sent to the participants when the instance is in DEPLOYED state.
       The post condition for an execution of this capability is that the Automation Composition instance is updated
       on Participants.
 
