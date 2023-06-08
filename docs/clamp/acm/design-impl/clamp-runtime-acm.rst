@@ -123,7 +123,9 @@ Delete of a Automation Composition Instance
 - GUI calls DELETE "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint
 - runtime-ACM receives the call by Rest-Api (InstantiationController)
 - It checks that AC Instance is in UNDEPLOYED deployState
-- It deletes the AC Instance from DB
+- It updates the AC Instance to DB with DELETING deployState
+- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
+- the message is built by AutomationCompositionStateChangePublisher using Instance data. (with startPhase = last StartPhase)
 
 Depriming of a Automation Composition Definition Type
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -242,6 +244,7 @@ Monitoring is designed to process the follow operations:
 - to determine the next startPhase in a AUTOMATION_COMPOSITION_DEPLOY message
 - to update AC deployState: in a scenario that "AutomationComposition.deployState" is in a kind of transitional state (example DEPLOYING), if all  - AC elements are moved properly to the specific state, the "AutomationComposition.deployState" will be updated to that and saved to DB
 - to update AC lockState: in a scenario that "AutomationComposition.lockState" is in a kind of transitional state (example LOCKING), if all  - AC elements are moved properly to the specific state, the "AutomationComposition.lockState" will be updated to that and saved to DB
+- to delete AC Instance: in a scenario that "AutomationComposition.deployState" is in DELETING, if all  - AC elements are moved properly to DELETED, the AC Instance will be deleted from DB
 - to retry AUTOMATION_COMPOSITION_DEPLOY/AUTOMATION_COMPOSITION_STATE_CHANGE messages. if there is a AC Element not in the proper state, it will retry a broadcast message
 
 The solution Design of retry, timeout, and reporting for all Participant message dialogues are implemented into the monitoring execution.

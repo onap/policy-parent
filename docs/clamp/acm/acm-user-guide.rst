@@ -268,7 +268,7 @@ This deletes the AC instance from the database including all the element propert
   Invoke a DELETE request
   'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances/${instanceId}'
 
-This returns 200 on successful deletion of the instance.
+This returns a 202 response on successful delete order request.
 
 Deprime Ac defintions
 ---------------------

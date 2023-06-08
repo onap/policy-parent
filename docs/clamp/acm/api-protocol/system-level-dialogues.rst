@@ -114,8 +114,17 @@ Note that this dialogue creates the Automation Composition Instance in the ACM d
 
 3.2 Delete an Automation Composition Instance
 ---------------------------------------------
+The user requests the AC Instance to be deleted using a REST endpoint. The ACM Runtime orders the AC Instance to be deleted.
 
 .. image:: ../images/system-dialogues/DeleteAcInstance.png
+
+Each participant deletes its AC Element Instances from the AC Instance
+
+.. image:: ../images/system-dialogues/DeleteInstanceElements.png
+
+The ACM Runtime receives and stores the responses, when all instances element are deleted, it delete the instance.
+
+.. image:: ../images/system-dialogues/DeleteResponseStored.png
 
 3.3 Deploy Automation Composition Instance
 ------------------------------------------

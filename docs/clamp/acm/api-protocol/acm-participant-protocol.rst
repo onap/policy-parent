@@ -101,7 +101,7 @@ message.
 
 .. image:: ../images/acm-participants-protocol/acm-state-change.png
 
-The flow of the DEPLOY/UNDEPLOY state change messages are shown below. But the same flow is true for LOCK/UNLOCK
+The flow of the DEPLOY/UNDEPLOY state change messages are shown below. But the same flow is true for LOCK/UNLOCK and DELETE
 
 .. note:: More details of the state machine are available on :ref:`ACM States <acm-states-label>`
 
