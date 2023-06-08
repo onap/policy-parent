@@ -75,9 +75,10 @@ Update of a Automation Composition Instance
 +++++++++++++++++++++++++++++++++++++++++++
 - GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances" endpoint with a Automation Composition Instance as body. It have to contain the compositionId and the instanceId
 - runtime-ACM receives the call by Rest-Api (InstantiationController)
-- It checks that AC Instance is in UNDEPLOYED deployState
+- It checks that AC Instance is in UNDEPLOYED/DEPLOYED deployState
 - It updates the Automation Composition to DB
 - the Rest-Api call returns the instanceId and the list of AC Element Instance
+- the runtime sends an update event to the participants which inturn performs the update operation on the deployed instances.
 
 Issues AC instance to change status
 +++++++++++++++++++++++++++++++++++

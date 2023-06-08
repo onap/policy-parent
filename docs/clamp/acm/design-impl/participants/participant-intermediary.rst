@@ -26,6 +26,7 @@ Inbound messages to participants
 - AUTOMATION_COMPOSITION_DEPLOY: a message received from clamp-acm runtime server for a clamp-acm deploy with clamp-acm instances
 - PARTICIPANT_PRIME: a message received from clamp-acm runtime server for a participant update with tosca definitions of clamp-acm
 - PARTICIPANT_STATUS_REQ: A status request received from clamp-acm runtime server to send an immediate ParticipantStatus from all participants
+- PROPERTIES_UPDATE: a message received from clamp-acm runtime server for updating the Ac instance property values
 
 Outbound messages
 -----------------
@@ -77,6 +78,13 @@ Design of "issues automation composition commands to automation compositions" - 
 - Participant-intermediary validates the current deployState change
 - Participant-intermediary will receive AUTOMATION_COMPOSITION_STATE_CHANGE message and sends AC-element details to participants
 - Each participant performs its designated job of undeployment by interacting with respective frameworks
+
+Update of an Automation Composition Instance
+--------------------------------------------
+- AC-runtime updates the instance properties of the deployed Ac instances
+- it triggers the execution to send a broadcast PROPERTIES_UPDATE message
+- the message is built by AcElementPropertiesPublisher using the REST request payload (to fill the list of elements with the updated property values)
+- Participant-intermediary will receive a PROPERTIES_UPDATE message and stores the updated values of the elements on ParticipantHandler
 
 Design of "issues automation composition commands to automation compositions" - case LOCK to UNLOCK
 ---------------------------------------------------------------------------------------------------
