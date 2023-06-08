@@ -75,7 +75,7 @@ AutomationCompositionElementListener:
   Every participant should implement a handler class that implements the AutomationCompositionElementListener interface
   from the Participant Intermediary. The intermediary listener class listens for the incoming events from the ACM-runtime
   and invoke the handler class implementations for various operations. This class implements the methods for deploying,
-  undeploying, locking, unlocking , getting UseState, getting OperationalState requests that are coming from the ACM-runtime.
+  undeploying, locking, unlocking , updating, getting UseState, getting OperationalState requests that are coming from the ACM-runtime.
   The methods are as follows.
 
 .. code-block:: bash
@@ -84,6 +84,7 @@ AutomationCompositionElementListener:
   2. void deploy(UUID automationCompositionId, AcElementDeploy element, Map<String, Object> properties) throws PfModelException;
   3. default void lock(UUID automationCompositionId, UUID automationCompositionElementId) throws PfModelException;
   4. default void unlock(UUID automationCompositionId, UUID automationCompositionElementId) throws PfModelException;
+  5. default void update(UUID automationCompositionId, AcElementDeploy element, Map<String, Object> properties) throws PfModelException;
 
 These method from the interface are implemented independently as per the user requirement. These methods after handling the
 appropriate requests should also invoke the intermediary's publisher apis to notify the ACM-runtime with the acknowledgement events.
