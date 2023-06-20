@@ -22,6 +22,30 @@
       "revId": "5d55a74d6492b744e105a08644675b1236fee14b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e04068_e068fed7",
+        "filename": "docs/clamp/acm/api-protocol/system-level-dialogues.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2023-06-20T15:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a0810c0_19dd3224",
+      "range": {
+        "startLine": 248,
+        "startChar": 12,
+        "endLine": 248,
+        "endChar": 19
+      },
+      "revId": "5d55a74d6492b744e105a08644675b1236fee14b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
