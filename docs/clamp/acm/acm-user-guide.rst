@@ -326,3 +326,99 @@ The AC definitions can be deleted if there are no instances are running and it i
   Invoke a DELETE request 'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}'
 
 This return a 200 response on a successful deletion operation.
+
+Participant simulator
+=====================
+Participant simulator do not execute any particular functionality, and can be used to mock one or more participants in debug tests.
+It should be used to test ACM-runtime and Participant Intermediary in specific scenario that could be difficult to replay in real environment.
+
+Functionality covered:
+
+#. Set participantId and supportedElementType by properties file or by parameter environment.
+#. Set a delay for each operation at runtime by Rest-Api.
+#. Set success or fail for each operation at runtime by Rest-Api.
+#. update useState, operationalState and outPropeties and send to ACM-runtime by Rest-Api.
+#. read all AC instance elements information by Rest-Api.
+
+Mock a participant using docker-compose
+---------------------------------------
+The follow example show a docker-compose configuration to mock http Participant, where 'onap/policy-clamp-ac-sim-ppnt' is the Participant simulator image:
+
+.. code-block:: yaml
+
+  http-participant:
+    image: onap/policy-clamp-ac-sim-ppnt
+    environment:
+      - participantId=101c62b3-8918-41b9-a747-d21eb79c6c01
+      - supportedElementTypeName=org.onap.policy.clamp.acm.HttpAutomationCompositionElement
+      - SERVER_SSL_ENABLED=false
+      - useHttps=false
+      - SERVER_PORT=8084
+    ports:
+      - "8084:8084"
+
+Set delay and success/fail
+--------------------------
+Parameters like delay and success/fail could be set any time using the following endpoint:
+
+.. code-block:: bash
+
+  Invoke a PUT request 'http://participant_sim_ip:port/onap/policy/clamp/acm/simparticipant/v2/parameters'
+
+The Json below is an example of configuration:
+
+.. code-block:: json
+
+  {
+    "deploySuccess": true,
+    "undeploySuccess": true,
+    "lockSuccess": true,
+    "unlockSuccess": true,
+    "deleteSuccess": true,
+    "updateSuccess": true,
+    "primeSuccess": true,
+    "deprimeSuccess": true,
+    "deployTimerMs": 1000,
+    "undeployTimerMs": 1000,
+    "lockTimerMs": 100,
+    "unlockTimerMs": 100,
+    "updateTimerMs": 100,
+    "deleteTimerMs": 100,
+    "primeTimerMs": 100,
+    "deprimeTimerMs": 100
+  }
+
+Update and send useState operationalState and outProperites
+-----------------------------------------------------------
+Data like useState operationalState and outProperites could be updated any time using the following endpoint:
+
+.. code-block:: bash
+
+  Invoke a PUT request 'http://participant_sim_ip:port/onap/policy/clamp/acm/simparticipant/v2/datas'
+
+The Json below is an example of update, where {{instanceId}} is the UUID of the AC instance and {{instanceElementId}} is the UUID of the AC instance element:
+
+.. code-block:: json
+
+  {
+        "outProperties": {
+            "Opresult": true,
+            "list": [
+                {"id": 1 },
+                {"id": 2 }
+            ]
+        },
+        "automationCompositionId": "{{instanceId}}",
+        "automationCompositionElementId": "{{instanceElementId}}",
+        "useState": "IDLE",
+        "operationalState": "ENABLED"
+  }
+
+Read all AC instance elements information
+-----------------------------------------
+All AC instance elements information like deployState, lockState, useState, operationalState, inProperties and outProperties
+could be read using the following endpoint:
+
+.. code-block:: bash
+
+  Invoke a GET request 'http://participant_sim_ip:port/onap/policy/clamp/acm/simparticipant/v2/instances'
