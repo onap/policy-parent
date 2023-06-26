@@ -211,8 +211,48 @@ The ACM Runtime receives and stores the responses.
 
 .. image:: ../images/system-dialogues/UpdateUsageState.png
 
-End of Document
+3.11 Failure handling in ACM
+----------------------------
+After any ACM operation is completed, one of the following result messages will be updated in the ACM. These result values are
+updated along with the overall state of the ACM instance.
 
+ - NO_ERROR
+ - TIMEOUT
+ - FAILED
+
+The enum result values 'NO_ERROR' and 'FAILED' have to be set by the participants while reporting the CompositionState back to the runtime.
+
+If the operation succeeds, the participant is required to update the result value with 'NO_ERROR' while reporting the composition state.
+
+.. image:: ../images/system-dialogues/SuccessAcmResult.png
+
+The result value should be updated as 'FAILED' by the participants when any failures occurred.
+Also in case of failures, the overall state of the composition remains in any of the transitioning states (DEPLOYING, UNDEPLOYING, PRIMING, UPDATING)
+with the appropriate result values updated by the participant.
+
+.. image:: ../images/system-dialogues/FailedAcmResult.png
+
+Runtime marks the operation result with the value 'TIMEOUT' when the participant gets disconnected from the ACM-R in the middle of any ACM operation.
+When the participant fails to report the periodic heartbeat during an ACM operation, the operation result is then marked as 'TIMEOUT' by the ACM-R after the configured waiting limit is
+reached.
+
+.. image:: ../images/system-dialogues/TimeoutAcmResult.png
+
+The following parameter is set in the application properties for the runtime to configure the 'TIMEOUT' value in milliseconds.
+
+.. code-block:: yaml
+
+        runtime:
+          participantParameters:
+            maxStatusWaitMs: 100000  --> Denotes the maximum wait time by the runtime to receive the periodic status update from the participants
+
+An ACM operation has to be completed and updated with any of the above specified result values in order to allow the user to trigger subsequent requests.
+The user cannot trigger any state change events before the operation gets completed. When an operation is marked 'TIMEOUT', the following scenarios are applicable.
+
+ - The participant might come back ONLINE and complete the operation to mark the result with 'NO_ERROR' or 'FAILED'
+ - The user can trigger another state change event to the ACM.
+
+End of Document
 
 
 
