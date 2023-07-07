@@ -90,6 +90,8 @@ AutomationCompositionElementListener:
   6. void update(UUID automationCompositionId, AcElementDeploy element, Map<String, Object> inProperties) throws PfModelException;
   7. void prime(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList) throws PfModelException;
   8. void deprime(UUID compositionId) throws PfModelException;
+  9. void handleRestartComposition(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList, AcTypeState state) throws PfModelException;
+  10. void handleRestartInstance(UUID automationCompositionId, AcElementDeploy element, Map<String, Object> properties, DeployState deployState, LockState lockState) throws PfModelException;
 
 These method from the interface are implemented independently as per the user requirement. These methods after handling the
 appropriate requests should also invoke the intermediary's publisher apis to notify the ACM-runtime with the acknowledgement events.
@@ -143,7 +145,11 @@ In/Out Properties
   outProperties.put("myProperty", myProperty);
   intermediaryApi.sendAcElementInfo(automationCompositionId, elementId, acElement.getUseState(), acElement.getOperationalState(), outProperties);
 
-
+Restart scenario
+----------------
+  Restart methods handle the scenario when participant shut down and restart.
+  The method handleRestartComposition will be called for each composition and will be present the 'state' at the time the participant shut down.
+  The method handleRestartInstance will be called for each instance element and will be present the 'deployState' and the 'lockState' at the time the participant shut down.
 
 In ONAP, the following participants are already implemented in java spring boot for various requirements. The maven modules
 can be referred here:
@@ -355,5 +361,62 @@ The following example shows the Handler implementation and how could be the impl
         }
     }
 
+
+    @Override
+    public void handleRestartComposition(UUID compositionId,
+            List<AutomationCompositionElementDefinition> elementDefinitionList, AcTypeState state)
+            throws PfModelException {
+
+        switch (state) {
+            case PRIMING:
+                prime(compositionId, elementDefinitionList);
+                break;
+
+            case DEPRIMING:
+                // TODO restart process
+
+                deprime(compositionId);
+                break;
+
+            default:
+                // TODO restart process
+
+                intermediaryApi.updateCompositionState(compositionId, state, StateChangeResult.NO_ERROR, "Restarted");
+        }
+    }
+
+    @Override
+    public void handleRestartInstance(UUID automationCompositionId, AcElementDeploy element,
+            Map<String, Object> properties, DeployState deployState, LockState lockState) throws PfModelException {
+
+         // TODO restart process
+
+        if (DeployState.DEPLOYING.equals(deployState)) {
+            deploy(automationCompositionId, element, properties);
+            return;
+        }
+        if (DeployState.UNDEPLOYING.equals(deployState)) {
+            undeploy(automationCompositionId, element.getId());
+            return;
+        }
+        if (DeployState.UPDATING.equals(deployState)) {
+            update(automationCompositionId, element, properties);
+            return;
+        }
+        if (DeployState.DELETING.equals(deployState)) {
+            delete(automationCompositionId, element.getId());
+            return;
+        }
+        if (LockState.LOCKING.equals(lockState)) {
+            lock(automationCompositionId, element.getId());
+            return;
+        }
+        if (LockState.UNLOCKING.equals(lockState)) {
+            unlock(automationCompositionId, element.getId());
+            return;
+        }
+        intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
+                deployState, lockState, StateChangeResult.NO_ERROR, "Restarted");
+    }
 
 
