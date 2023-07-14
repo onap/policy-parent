@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f82b5f7_1ae585ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2023-07-14T10:41:24Z",
+      "side": 1,
+      "message": "This can be rebased and merged once after the \"fix broken links\" review is merged in london. https://gerrit.onap.org/r/c/policy/parent/+/135455",
+      "revId": "fa04ffadb2c78d48e4049ea2a4af9cbfdd0ee696",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
