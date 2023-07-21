@@ -4830,11 +4830,11 @@ Introduction to APEX Logging
 
             All APEX components make extensive use of logging using the
             logging façade `SLF4J <https://www.slf4j.org/>`__ with the
-            backend `Logback <https://logback.qos.ch/>`__. Both are used
+            backend `Logback <http://logback.qos.ch/>`__. Both are used
             off-the-shelve, so the standard documentation and
             configuration apply to APEX logging. For details on how to
             work with logback please see the `logback
-            manual <https://logback.qos.ch/manual/index.html>`__.
+            manual <http://logback.qos.ch/manual/index.html>`__.
 
          .. container:: paragraph
 
