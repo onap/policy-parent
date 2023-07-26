@@ -22,7 +22,7 @@ Participant Registration is performed by a Participant when it starts up. It reg
 
 1.2 Deregister a Participant
 ----------------------------
-Participant Deregistration is performed by a Participant when it shuts down. It deregisters its ID and type with the ACM runtime. The participant should already have cleared down all its ACM Element instances and set their states to "Not In Service".
+Participant Deregistration is performed by a Participant when it shuts down. It deregisters its ID and type with the ACM runtime.
 
 .. image:: ../images/system-dialogues/DeregisterParticipant.png
 

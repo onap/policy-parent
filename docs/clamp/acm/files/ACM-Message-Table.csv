@@ -1,32 +1,55 @@
 Message,Source,Target,Purpose,Important Fields,Field Descriptions
 ParticipantRegister,Participant,ACM Runtime,Participant registers with the ACM runtime,participantId,The ID of this participant – in UUID format
 ,,,,participantSupportedElementTypes,A list of element types that this participant supports
+,,,,messageType,Enum indicating the type of message PARTICIPANT_REGISTER
 ParticipantRegisterAck,ACM Runtime,Participant,Acknowledgment of Participant Registration,participantId,The ID of this participant – in UUID format
-,,,,Result,Success/Fail
-,,,,Message,A message indicating the reason for failure
+,,,,messageType,Enum indicating the type of message PARTICIPANT_REGISTER_ACK
 ParticipantDeregister,Participant,ACM Runtime,Participant deregisters with the ACM runtime,participantId,The ID of this participant – in UUID format
+,,,,messageType,Enum indicating the type of message PARTICIPANT_DEREGISTER
 ParticipantDeregisterAck,ACM Runtime,Participant,Acknowledgment of Participant Deegistration,participantId,The ID of this participant – in UUID format
-,,,,Result,Success/Fail
-,,,,Message,A message indicating the reason for failure
+,,,,messageType,Enum indicating the type of message PARTICIPANT_DEREGISTER_ACK
 ParticipantPrime,ACM Runtime,Participant,Trigger priming/depriming in the participant,participantId,The ID of this participant – in UUID format
+,,,,compositionId,The id of the AC Definition related to this message
 ,,,,participantDefinitionUpdates,Contains AC element definition values for a particular participant
-,,,,Result,Success/Fail
-,,,,Message,A message indicating the reason for failure
+,,,,messageType,Enum indicating the type of message PARTICIPANT_PRIME
 ParticipantPrimeAck,Participant,ACM Runtime,Message to confirm participant has been primed/deprimed,participantId,The ID of this participant – in UUID format
-,,,,Result,Success/Fail
-,,,,Message,A message indicating the reason for failure
+,,,,compositionId,The id of the AC Definition related to this message
+,,,,stateChangeResult,NO_ERROR/FAILED
+,,,,message,A message indicating the result
+,,,,messageType,Enum indicating the type of message PARTICIPANT_PRIME_ACK
 ParticipantStatusReq,ACM Runtime,Participant,Message sent to reques a status update from the participant,participantId,The ID of the participant to request update from – in UUID format
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_STATUS_REQ
 ParticipantStatus,Participant,ACM Runtime,Status update message,state,Enum indicating the current state of the participant
 ,,,,participantDefinitionUpdates,"A list of ParticipantDefinition updates, returned in response to ParticipantStatusReq only"
 ,,,,automationCompositionInfoList,List of AutomationCompositionInfo types with AutomationCompositionId and its state
 ,,,,participantSupportedElementTypes,Ac element types that this participant is capable for deployinh/supporting
+,,,,messageType,Enum indicating the type of message PARTICIPANT_STATUS
 AutomationCompositionDeploy,ACM Runtime,Participant,Message to request change state of composition to DEPLOY,participantUpdatesList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,compositionId,The id of the AC Definition related to this message
+,,,,automationCompositionId,The id of the automation composition related to this message
 ,,,,startPhase,Integer indicating the start up order of the elements
 ,,,,participantId,UUID indicating the participant the message is intended for
+,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_DEPLOY
 AutomationCompositionDeployAck,Participant,ACM Runtime,Message to acknowledge that deploy or state change message has been received by participant,automationCompositionResultMap,"A map with AutomationCompositionElementID as its key, and a pair of result and message as value per AutomationCompositionElement"
+,,,,compositionId,The id of the AC Definition related to this message
 ,,,,automationCompositionId,The id of the automation composition related to this message
+,,,,message,A message indicating the result
+,,,,stateChangeResult,NO_ERROR/FAILED
+,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_DEPLOY_ACK
 AutomationCompositionStateChange,ACM Runtime,Participant,Message to request change state of composition to states other than DEPLOY,deployOrderedState,Enum indicating the deployment state being requested
 ,,,,lockOrderedState,Enum indicating the lock state being requested
+,,,,compositionId,The id of the AC Definition related to this message
+,,,,automationCompositionId,The id of the automation composition related to this message
 ,,,,startPhase,Integer indicating the start up order of the elements
 ,,,,participantId,UUID indicating the participant the message is intended for
+,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_STATECHANGE_ACK
+PropertiesUpdate,ACM Runtime,Participant,Message to request update,participantUpdatesList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,compositionId,The id of the AC Definition related to this message
+,,,,automationCompositionId,The id of the automation composition related to this message
+,,,,participantId,UUID indicating the participant the message is intended for
+,,,,messageType,Enum indicating the type of message PROPERTIES_UPDATE
+ParticipantRestart,ACM Runtime,Participant,Message to request update,participantId,The ID of this participant – in UUID format
+,,,,automationcompositionList,A list of ParticipantRestartAc instances which carries details of an updated participant.
+,,,,compositionId,The id of the AC Definition related to this message
+,,,,participantDefinitionUpdates,Contains AC element definition values for a particular participant
+,,,,messageType,Enum indicating the type of message PARTICIPANT_RESTART
