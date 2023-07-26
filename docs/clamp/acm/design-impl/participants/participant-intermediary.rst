@@ -27,6 +27,7 @@ Inbound messages to participants
 - PARTICIPANT_PRIME: a message received from clamp-acm runtime server for a participant update with tosca definitions of clamp-acm
 - PARTICIPANT_STATUS_REQ: A status request received from clamp-acm runtime server to send an immediate ParticipantStatus from all participants
 - PROPERTIES_UPDATE: a message received from clamp-acm runtime server for updating the Ac instance property values
+- PARTICIPANT_RESTART: a message received from clamp-acm runtime server with tosca definitions and the Ac instances to handle restarting
 
 Outbound messages
 -----------------
@@ -43,12 +44,14 @@ Design of a PARTICIPANT_REGISTER message
 - in AC-runtime ParticipantRegisterListener collects the message from Message Broker
 - if participant is not present in DB, it saves participant reference with status ON_LINE to DB
 - It triggers the execution to send a PARTICIPANT_REGISTER_ACK message to the participant registered
+- if participant is present in DB and there are AC Definitions related to the Participant, 
+  it triggers the execution to send a PARTICIPANT_RESTART message to the participant restarted 
 
 Design of a PARTICIPANT_DEREGISTER message
 ------------------------------------------
 - A participant is going to close and undeploys all AC-elements and send a PARTICIPANT_DEREGISTER message
 - in AC-runtime, ParticipantDeregisterListener collects the message from Message Broker
-- if participant has AC-elements instance, it updates with UNDEPLOYED deployStatus
+- It saves participant reference with status OFF_LINE to DB
 - It triggers the execution to send a PARTICIPANT_DEREGISTER_ACK message to the participant deregistered
 - Participant is not monitored.
 
