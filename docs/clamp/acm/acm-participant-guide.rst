@@ -122,11 +122,34 @@ This following method is invoked to update the AC element state after each opera
 
   1.  void updateAutomationCompositionElementState(UUID automationCompositionId, UUID elementId, DeployState deployState, LockState lockState, StateChangeResult stateChangeResult, String message);
   2.  Map<UUID, AutomationComposition> getAutomationCompositions();
-  3.  void sendAcElementInfo(UUID automationCompositionId, UUID elementId, String useState, String operationalState, Map<String, Object> outProperties);
-  4.  void updateCompositionState(UUID compositionId, AcTypeState state, StateChangeResult stateChangeResult, String message);
+  3.  AutomationComposition getAutomationComposition(UUID automationCompositionId);
+  4.  AutomationCompositionElement getAutomationCompositionElement(UUID automationCompositionId, UUID elementId);
+  5.  Map<UUID, Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition>> getAcElementsDefinitions();
+  6.  Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition> getAcElementsDefinitions(UUID compositionId);
+  7.  AutomationCompositionElementDefinition getAcElementDefinition(UUID compositionId, ToscaConceptIdentifier elementId);
+  8.  void sendAcDefinitionInfo(UUID compositionId, ToscaConceptIdentifier elementId, Map<String, Object> outProperties);
+  9.  void updateCompositionState(UUID compositionId, AcTypeState state, StateChangeResult stateChangeResult, String message);
+  10.  void sendAcElementInfo(UUID automationCompositionId, UUID elementId, String useState, String operationalState, Map<String, Object> outProperties);
 
-In/Out Properties
------------------
+In/Out composition Properties
+-----------------------------
+  The 'Common Properties' could be created or updated by ACM-runtime. Participants will receive that Properties during priming events.
+
+  The 'Out Properties' could be created or updated by participants. ACM-runtime will receive that Properties during ParticipantStatus event.
+  The participant can trigger this event using the method sendAcDefinitionInfo.
+
+  Is allowed to the participant to read all In/Out Properties of all compositions handled by the participant using the method getAcElementsDefinitions.
+  The following code is an example how to update the property 'myProperty' and send to ACM-runtime:
+
+.. code-block:: java
+
+  var acElement = intermediaryApi.getAcElementDefinition(compositionId, elementId);
+  var outProperties = acElement.getOutProperties();
+  outProperties.put("myProperty", myProperty);
+  intermediaryApi.sendAcDefinitionInfo(compositionId, elementId, outProperties);
+
+In/Out instance Properties
+--------------------------
   The 'In Properties' could be created or updated by ACM-runtime. Participants will receive that Properties during deploy and update events.
 
   The 'Out Properties' could be created or updated by participants. ACM-runtime will receive that Properties during ParticipantStatus event.
@@ -138,9 +161,7 @@ In/Out Properties
 
 .. code-block:: java
 
-  var automationCompositions = intermediaryApi.getAutomationCompositions();
-  var automationComposition = automationCompositions.get(automationCompositionId);
-  var acElement = automationComposition.getElements().get(elementId);
+  var acElement = intermediaryApi.getAutomationCompositionElement(automationCompositionId, elementId);
   var outProperties = acElement.getOutProperties();
   outProperties.put("myProperty", myProperty);
   intermediaryApi.sendAcElementInfo(automationCompositionId, elementId, acElement.getUseState(), acElement.getOperationalState(), outProperties);

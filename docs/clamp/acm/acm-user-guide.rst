@@ -337,7 +337,9 @@ Functionality covered:
 #. Set participantId and supportedElementType by properties file or by parameter environment.
 #. Set a delay for each operation at runtime by Rest-Api.
 #. Set success or fail for each operation at runtime by Rest-Api.
-#. update useState, operationalState and outPropeties and send to ACM-runtime by Rest-Api.
+#. update composition outProperties and send to ACM-runtime by Rest-Api.
+#. read all AC Definition inProperties/outProperties information by Rest-Api.
+#. update useState, operationalState and outProperties and send to ACM-runtime by Rest-Api.
 #. read all AC instance elements information by Rest-Api.
 
 Mock a participant using docker-compose
@@ -388,8 +390,44 @@ The Json below is an example of configuration:
     "deprimeTimerMs": 100
   }
 
-Update and send useState operationalState and outProperites
------------------------------------------------------------
+Update and send composition outProperites
+-----------------------------------------
+Data like useState operationalState and outProperites could be updated any time using the following endpoint:
+
+.. code-block:: bash
+
+  Invoke a PUT request 'http://participant_sim_ip:port/onap/policy/clamp/acm/simparticipant/v2/compositiondatas'
+
+The Json below is an example of update, where {{compositionId}} is the UUID of the AC Definition
+and ("onap.policy.clamp.ac.element.Http_BridgeAutomationCompositionElement", "1.2.3") is the ToscaConceptIdentifier  of the AC Definition element:
+
+.. code-block:: json
+
+  {
+        "outProperties": {
+            "list": [
+                {"id": 10 },
+                {"id": 20 }
+            ]
+        },
+        "compositionId": "{{compositionId}}",
+        "compositionDefinitionElementId": {
+            "name": "onap.policy.clamp.ac.element.Http_BridgeAutomationCompositionElement",
+            "version": "1.2.3"
+        }
+  }
+
+Read all AC Definition elements information
+-------------------------------------------
+All AC Definition elements information like composition inProperties and outProperties
+could be read using the following endpoint:
+
+.. code-block:: bash
+
+  Invoke a GET request 'http://participant_sim_ip:port/onap/policy/clamp/acm/simparticipant/v2/compositiondatas'
+
+Update and send useState operationalState and instance outProperites
+--------------------------------------------------------------------
 Data like useState operationalState and outProperites could be updated any time using the following endpoint:
 
 .. code-block:: bash
