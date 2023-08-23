@@ -1,0 +1,9 @@
+Code-Review+2: Adheli Tavares <adheli.tavares@est.tech>
+Code-Review+1: Liam Fallon <liam.fallon@est.tech>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Submitted-by: Adheli Tavares <adheli.tavares@est.tech>
+Submitted-at: Wed, 23 Aug 2023 15:51:37 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/policy/parent/+/135806
+Project: policy/parent
+Branch: refs/heads/java-17
