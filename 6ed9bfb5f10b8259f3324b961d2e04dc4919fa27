@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae4c7251_8a337669",
+        "filename": "docs/apex/APEX-User-Manual.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 4833,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2023-09-20T08:21:12Z",
+      "side": 1,
+      "message": "I had to edit this file because the website\u0027s certificates for https expired and were failing the github checks for documentation.",
+      "range": {
+        "startLine": 4833,
+        "startChar": 30,
+        "endLine": 4833,
+        "endChar": 34
+      },
+      "revId": "6ed9bfb5f10b8259f3324b961d2e04dc4919fa27",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
