@@ -1,0 +1,10 @@
+@startuml
+participant "ACM Runtime"
+participant "ACM Database"
+participant Participant
+
+alt "instance Id and Composition Ids exist"
+  Participant -> "ACM Runtime" : [ASYNC] Migration completed
+  "ACM Runtime" -> "ACM Database" : instance and AC Element will be set in a final state (DEPLOYED)\n and Comp Def IDs change for instance and AC Element
+end
+@enduml

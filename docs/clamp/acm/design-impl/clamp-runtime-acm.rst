@@ -78,7 +78,18 @@ Update of a Automation Composition Instance
 - It checks that AC Instance is in UNDEPLOYED/DEPLOYED deployState
 - It updates the Automation Composition to DB
 - the Rest-Api call returns the instanceId and the list of AC Element Instance
-- the runtime sends an update event to the participants which inturn performs the update operation on the deployed instances.
+- the runtime sends an update event to the participants which performs the update operation on the deployed instances.
+
+Migrate of a Automation Composition Instance
+++++++++++++++++++++++++++++++++++++++++++++
+- GUI has already a new composition definition primed
+- GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances" endpoint with a Automation Composition Instance as body. It have to contain the compositionId, the compositionTargetId and the instanceId
+- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- It checks that AC Instance is in DEPLOYED deployState
+- It checks that compositionTargetId is related to a primed composition definition
+- It updates the Automation Composition to DB
+- the Rest-Api call returns the instanceId and the list of AC Element Instance
+- the runtime sends a migrate event to the participants which performs the migrate operation on the deployed instances.
 
 Issues AC instance to change status
 +++++++++++++++++++++++++++++++++++

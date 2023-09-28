@@ -1,0 +1,30 @@
+@startuml
+participant Rest
+participant "ACM Runtime"
+participant "ACM Database"
+participant Participants
+
+group Create New Composition type for Migration
+Rest -> "ACM Runtime" : Composition Definitions
+"ACM Runtime" -> "ACM Database" : Saved Definition
+Rest -> "ACM Runtime" : Prime Definition
+"ACM Runtime" -> Participants:  [ASYNC] Prime Definition
+end group
+
+group Migration per Instance
+/'Instance migration from source to target composition type. '/
+Rest -> "ACM Runtime" : Migrate Instance\n(InstanceId, sourceCompId, targetCompId, instance properties)
+note top
+Instance migration from source to target
+composition type.
+end note
+alt "instance Id and Composition Ids exist"
+  "ACM Runtime" -> "ACM Database" : Definition Validation
+  "ACM Runtime" -> "ACM Database" : instance and AC Element will be set\nin a transitional state (MIGRATING),\n new instance properties will be saved
+  "ACM Runtime" -> Participants : [ASYNC] Migration message from source to target composition
+  "ACM Runtime" -> Rest : Instance migration has been requested
+ else
+  "ACM Runtime" -> Rest : 400 Bad Reqest
+end
+end group
+@enduml

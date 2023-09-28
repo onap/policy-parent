@@ -1,0 +1,15 @@
+@startuml
+participant "ACM Runtime"
+participant Participant
+participant "Participant Api"
+
+alt "instance Id and Composition Ids exist"
+  "ACM Runtime" -> Participant : [ASYNC] Migration message from source to target composition
+  Participant -> "Participant Api" : Migrate AC Element
+  "Participant Api" -> Participant : AC Element Migrated
+  Participant -> "ACM Runtime" : [ASYNC] Migration completed
+  note right
+  Returns AUTOMATION_COMPOSITION_STATE_CHANGE message.
+  end note
+end
+@enduml
