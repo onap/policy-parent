@@ -275,6 +275,24 @@ required operation.
 Note:
   Please refer the request payload section for updating the instance properties before deployment.
 
+Migrate AC instance
+-------------------
+After the AC instance is deployed, the user can migrate it to other composition definition.
+The target composition have to be primed and have to contain the same element definitions present in the source composition.
+The user can update the instance property values if needed.
+
+.. code-block:: bash
+
+  Invoke a POST request
+  'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances'
+
+Request Payload
+
+Example payload to migrate and update the base url of the http request
+
+.. literalinclude:: files/AC-migrate.json
+   :language: json
+
 UnDeploy AutomationComposition
 ------------------------------
 The AC instances can be undeployed from the system by the participants.
@@ -378,10 +396,12 @@ The Json below is an example of configuration:
     "unlockSuccess": true,
     "deleteSuccess": true,
     "updateSuccess": true,
+    "migrateSuccess": true,
     "primeSuccess": true,
     "deprimeSuccess": true,
     "deployTimerMs": 1000,
     "undeployTimerMs": 1000,
+    "migrateTimerMs": 100,
     "lockTimerMs": 100,
     "unlockTimerMs": 100,
     "updateTimerMs": 100,

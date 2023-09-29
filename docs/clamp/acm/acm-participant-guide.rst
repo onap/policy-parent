@@ -92,6 +92,7 @@ AutomationCompositionElementListener:
   8. void deprime(UUID compositionId) throws PfModelException;
   9. void handleRestartComposition(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList, AcTypeState state) throws PfModelException;
   10. void handleRestartInstance(UUID automationCompositionId, AcElementDeploy element, Map<String, Object> properties, DeployState deployState, LockState lockState) throws PfModelException;
+  11. void migrate(UUID instanceId, AcElementDeploy element, UUID compositionTargetId, Map<String, Object> properties) throws PfModelException;
 
 These method from the interface are implemented independently as per the user requirement. These methods after handling the
 appropriate requests should also invoke the intermediary's publisher apis to notify the ACM-runtime with the acknowledgement events.
@@ -133,13 +134,39 @@ This following method is invoked to update the AC element state after each opera
 
 In/Out composition Properties
 -----------------------------
-  The 'Common Properties' could be created or updated by ACM-runtime. Participants will receive that Properties during priming events.
+The 'Common Properties' could be created or updated by ACM-runtime.
+Participants will receive that Properties during priming events.
 
-  The 'Out Properties' could be created or updated by participants. ACM-runtime will receive that Properties during ParticipantStatus event.
-  The participant can trigger this event using the method sendAcDefinitionInfo.
+.. code-block:: java
 
-  Is allowed to the participant to read all In/Out Properties of all compositions handled by the participant using the method getAcElementsDefinitions.
-  The following code is an example how to update the property 'myProperty' and send to ACM-runtime:
+  @Override
+  public void prime(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList) throws PfModelException {
+      for (var acElementDefinition : elementDefinitionList) {
+          var inProperties = acElementDefinition.getAutomationCompositionElementToscaNodeTemplate().getProperties();
+          .......
+      }
+      .......
+  }
+
+The 'Common Properties' could be fetched during depriming events.
+
+.. code-block:: java
+
+  @Override
+  public void deprime(UUID compositionId) throws PfModelException {
+      var elementDefinitionList = intermediaryApi.getAcElementsDefinitions(compositionId);
+      for (var acElementDefinition : elementDefinitionList.values()) {
+          var inProperties = acElementDefinition.getAutomationCompositionElementToscaNodeTemplate().getProperties();
+          .......
+      }
+      .......
+  }
+ 
+The 'Out Properties' could be created or updated by participants. ACM-runtime will receive that Properties during ParticipantStatus event.
+The participant can trigger this event using the method sendAcDefinitionInfo.
+
+Is allowed to the participant to read all In/Out Properties of all compositions handled by the participant using the method getAcElementsDefinitions.
+The following code is an example how to update the property 'myProperty' and send to ACM-runtime:
 
 .. code-block:: java
 
@@ -350,6 +377,21 @@ The following example shows the Handler implementation and how could be the impl
         } else {
             intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
                     DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Update failed!");
+        }
+    }
+
+    @Override
+    public void migrate(UUID automationCompositionId, AcElementDeploy element, UUID compositionTargetId,
+            Map<String, Object> properties) throws PfModelException {
+
+        // TODO migrate process
+
+        if (isMigrateSuccess()) {
+            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
+                    DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migrated");
+        } else {
+            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
+                    DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Migrate failed!");
         }
     }
 

@@ -154,7 +154,21 @@ The ACM Runtime receives and stores the responses.
 
 .. image:: ../images/system-dialogues/UpdateAcElementsResponse.png
 
-3.5 Undeploy Automation Composition Instance
+3.5 Migrate Automation Composition Instance
+-------------------------------------------
+The user requests the AC Instance to be migrated using a REST endpoint. The ACM Runtime orders the AC Instance to be migrated.
+
+.. image:: ../images/system-dialogues/MigrateAcInstance.png
+
+Each participant migrated its AC Element from the AC Instance
+
+.. image:: ../images/system-dialogues/MigrateAcElements.png
+
+The ACM Runtime receives and stores the responses.
+
+.. image:: ../images/system-dialogues/MigrateAcElementsResponse.png
+
+3.6 Undeploy Automation Composition Instance
 --------------------------------------------
 The user requests the AC Instance to be undeployed using a REST endpoint. The ACM Runtime orders the AC Instance to be undeployed.
 
@@ -168,12 +182,12 @@ The ACM Runtime receives and stores the responses.
 
 .. image:: ../images/system-dialogues/UndeployResponseStored.png
 
-3.6 Read Automation Composition Instances
+3.7 Read Automation Composition Instances
 -----------------------------------------
 
 .. image:: ../images/system-dialogues/ReadAcInstances.png
 
-3.7 Unlock Automation Composition Instance
+3.8 Unlock Automation Composition Instance
 ------------------------------------------
 The user requests the AC Instance to be unlocked using a REST endpoint. The ACM Runtime orders the AC Instance to be unlocked on Participants.
 
@@ -187,7 +201,7 @@ The ACM Runtime receives and stores the responses.
 
 .. image:: ../images/system-dialogues/UnlockResponseStored.png
 
-3.8 Lock Automation Composition Instance
+3.9 Lock Automation Composition Instance
 ----------------------------------------
 The user requests the AC Instance to be locked using a REST endpoint. The ACM Runtime orders the AC Instance to be locked on Participants.
 
@@ -201,17 +215,17 @@ The ACM Runtime receives and stores the responses.
 
 .. image:: ../images/system-dialogues/LockResponseStored.png
 
-3.9 Update Operational State on Automation Composition Instance
----------------------------------------------------------------
+3.10 Update Operational State on Automation Composition Instance
+----------------------------------------------------------------
 
 .. image:: ../images/system-dialogues/UpdateOperationalState.png
 
-3.10 Update Usage State on Automation Composition Instance
+3.11 Update Usage State on Automation Composition Instance
 ----------------------------------------------------------
 
 .. image:: ../images/system-dialogues/UpdateUsageState.png
 
-3.11 Failure handling in ACM
+3.12 Failure handling in ACM
 ----------------------------
 After any ACM operation is completed, one of the following result messages will be updated in the ACM. These result values are
 updated along with the overall state of the ACM instance.

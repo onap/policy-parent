@@ -53,3 +53,9 @@ ParticipantRestart,ACM Runtime,Participant,Message to request update,participant
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,participantDefinitionUpdates,Contains AC element definition values for a particular participant
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_RESTART
+AutomationCompositionMigration,ACM Runtime,Participant,Message to request update,participantUpdatesList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,compositionId,The id of the AC Definition related to this message
+,,,,compositionTargetId,The id of the AC Definition target
+,,,,automationCompositionId,The id of the automation composition related to this message
+,,,,participantId,UUID indicating the participant the message is intended for
+,,,,messageType,Enum indicating the type of message PROPERTIES_UPDATE

@@ -27,6 +27,7 @@ Inbound messages to participants
 - PARTICIPANT_PRIME: a message received from clamp-acm runtime server for a participant update with tosca definitions of clamp-acm
 - PARTICIPANT_STATUS_REQ: A status request received from clamp-acm runtime server to send an immediate ParticipantStatus from all participants
 - PROPERTIES_UPDATE: a message received from clamp-acm runtime server for updating the Ac instance property values
+- AUTOMATION_COMPOSITION_MIGRATION: a message received from clamp-acm runtime server for migrating the Ac instance from a composition definition to a composition definition target
 - PARTICIPANT_RESTART: a message received from clamp-acm runtime server with tosca definitions and the Ac instances to handle restarting
 
 Outbound messages
@@ -60,13 +61,13 @@ Prime of an Automation Composition Definition Type
 - AC-runtime assigns the AC Definition to the participants based of Supported Element Definition Type by participant
 - it triggers the execution to send a broadcast PARTICIPANT_PRIME message
 - the message is built by ParticipantPrimePublisher using Tosca Service Template data (to fill the list of ParticipantDefinition)
-- Participant-intermediary will receive a PARTICIPANT_PRIME message and stores the Tosca Service Template data on ParticipantHandler
+- Participant-intermediary will receive a PARTICIPANT_PRIME message and stores the Tosca Service Template data on CacheProvider
 
 DePrime of an Automation Composition Definition Type
 ----------------------------------------------------
 - AC-runtime triggers the execution to send a broadcast PARTICIPANT_PRIME message
 - the message is built by ParticipantPrimePublisher with an empty list of ParticipantDefinition
-- Participant-intermediary will receive a PARTICIPANT_PRIME message and deletes the Tosca Service Template data on ParticipantHandler
+- Participant-intermediary will receive a PARTICIPANT_PRIME message and deletes the Tosca Service Template data on CacheProvider
 
 Design of "issues automation composition commands to automation compositions" - case UNDEPLOYED to DEPLOYED
 -----------------------------------------------------------------------------------------------------------
@@ -82,13 +83,19 @@ Design of "issues automation composition commands to automation compositions" - 
 - Participant-intermediary will receive AUTOMATION_COMPOSITION_STATE_CHANGE message and sends AC-element details to participants
 - Each participant performs its designated job of undeployment by interacting with respective frameworks
 
-
 Update of an Automation Composition Instance
 --------------------------------------------
 - AC-runtime updates the instance properties of the deployed Ac instances
 - it triggers the execution to send a broadcast PROPERTIES_UPDATE message
 - the message is built by AcElementPropertiesPublisher using the REST request payload (to fill the list of elements with the updated property values)
-- Participant-intermediary will receive a PROPERTIES_UPDATE message and stores the updated values of the elements on ParticipantHandler
+- Participant-intermediary will receive a PROPERTIES_UPDATE message and stores the updated values of the elements on CacheProvider
+
+Migrate of an Automation Composition Instance
+---------------------------------------------
+- AC-runtime saves the compositionTargetId and updates the instance properties of the deployed Ac instances
+- it triggers the execution to send a broadcast AUTOMATION_COMPOSITION_MIGRATION message
+- the message is built by AutomationCompositionMigrationPublisher using the REST request payload (to fill the compositionTargetId and list of elements with the updated property values)
+- Participant-intermediary will receive a AUTOMATION_COMPOSITION_MIGRATION message and stores the compositionTargetId and the updated values of the elements on CacheProvider
 
 Design of "issues automation composition commands to automation compositions" - case LOCKED to UNLOCKED
 -------------------------------------------------------------------------------------------------------
