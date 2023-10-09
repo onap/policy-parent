@@ -210,6 +210,34 @@ Example of DEPLOY order with Http_PMSHMicroserviceAutomationCompositionElement w
 
 In that scenario the message AUTOMATION_COMPOSITION_DEPLOY has been sent two times.
 
+Configure custom namings for TOSCA node types
++++++++++++++++++++++++++++++++++++++++++++++
+
+The node type of the AC element and the Automation composition can be customised as per the user requirement.
+These customised names can be used in the TOSCA node type definitions of AC element and composition. All the
+AC element and composition definitions (node templates) should be derived from the corresponding node types.
+The following parameters are provided in the config file of runtime-acm for customisation:
+
+.. code-block:: YAML
+
+runtime:
+  acmParameters:
+    toscaElementName: customElementType
+    toscaCompositionName: customCompositionType
+
+If there are no values provided for customisation, the default node types "org.onap.policy.clamp.acm.AutomationCompositionElement"
+and "org.onap.policy.clamp.acm.AutomationComposition" are used for the AC element and composition by the runtime-acm.
+In this case, the element and composition definition has to be derived from the same in the TOSCA. For overriding the names in the
+onap helm chart, the following properties can be updated in the values.yaml.
+
+.. code-block:: YAML
+
+customNaming:
+  toscaElementName: customElementName
+  toscaCompositionName: customCompositionName
+
+
+
 Design of managing messages
 ***************************
 
