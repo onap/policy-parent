@@ -75,8 +75,9 @@ org.onap.policy.clamp.acm.AutomationCompositionElement:
   the ACM elements.
   Here we are defining various timeout properties and startPhase parameter that are common for all the AC elements.
 
-  Note: This node type value can be customised if the user wants to change the default name. Please refer the
-        "Configure custom namings for TOSCA node types" section of the Automation Composition Runtime design and implementation.
+  Note:
+    This node type value can be customised if the user wants to change the default name. Please refer the "Configure custom namings for TOSCA node types"
+    section of the Automation Composition Runtime design and implementation.
 
 org.onap.policy.clamp.acm.K8SMicroserviceAutomationCompositionElement:
   This node type is used to define AC elements that are associated with kubernetes operations. It is further derived from the
@@ -93,8 +94,9 @@ org.onap.policy.clamp.acm.AutomationComposition:
   Primitive node type for defining Automation composition definitions that comprises one or more AC elements in it.
   The AC definition of this type will be created under the Node templates.
 
-  Note: This node type value can be customised if the user wants to change the default name. Please refer the
-        "Configure custom namings for TOSCA node types" section of the Automation Composition Runtime design and implementation.
+  Note:
+    This node type value can be customised if the user wants to change the default name. Please refer the "Configure custom namings for TOSCA node types"
+    section of the Automation Composition Runtime design and implementation.
 
 .. literalinclude:: files/acm-nodetypes.yaml
    :language: yaml
