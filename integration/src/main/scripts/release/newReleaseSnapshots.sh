@@ -186,7 +186,7 @@ do
 
     echo "set snapshot version of repo $repo in $repo_location/$repo/version.properties"
     $SED \
-        -e "s/major=$major_version/minor=$new_major_version/" \
+        -e "s/major=$major_version/major=$new_major_version/" \
         -e "s/minor=$minor_version/minor=$new_minor_version/" \
         -e "s/patch=$patch_version/patch=0/" \
         "$repo_location/$repo/version.properties" \
