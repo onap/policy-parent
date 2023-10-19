@@ -3,7 +3,7 @@
 # ============LICENSE_START================================================
 # ONAP
 # =========================================================================
-# Copyright (C) 2022 Nordix Foundation.
+# Copyright (C) 2022-2023 Nordix Foundation.
 # =========================================================================
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -96,6 +96,7 @@ echo "------------"
 
 grep "job-status-red" "$jenkins_report_temp_file" |
     grep -v stage |
+    grep -v release-merge |
     cut -f1 -d' ' |
     sed 's/_/\//' |
     awk '{printf("https://jenkins.onap.org/%s\n", $1)}'
@@ -114,6 +115,7 @@ echo ""
 echo "invalid jobs"
 echo "------------"
 grep -v -E "(job-status-red|job-status-yellow|job-status-blue)" "$jenkins_report_temp_file" |
+    grep -v stage |
     cut -f1 -d' ' |
     sed 's/_/\//' |
     awk '{printf("https://jenkins.onap.org/%s\n", $1)}'
