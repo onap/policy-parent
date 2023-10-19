@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73a692c_546317bf",
+        "filename": "integration/src/main/scripts/reports/pf_status_report.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2023-10-19T08:30:29Z",
+      "side": 1,
+      "message": "missing updated license",
+      "range": {
+        "startLine": 6,
+        "startChar": 16,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "4d1263925dc0d6e79fc68e040b8c84bb4f194d5b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
