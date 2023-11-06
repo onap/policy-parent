@@ -11,63 +11,35 @@ Policy Clamp Automation Composition
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Both the Performance and the Stability tests were executed by performing requests
-against acm components installed as docker images in local environment.
+against acm components installed as docker images in local environment. These tests we all
+performed on a Ubuntu VM with 32GB of memory, 16 CPU and 50GB of disk space.
 
 
 ACM Deployment
 ++++++++++++++
 
-The docker containers can be deployed via Policy CSIT script.
-Clone the Policy/docker repo to the local vm
+In an effort to allow the execution of the s3p tests to be as close to automatic as possible,
+a script will be executed that will perform the following:
 
-.. code-block:: bash
-
-    git clone "https://gerrit.onap.org/r/policy/docker"
-
-Set the following environment variables on the system before deploying the containers.
-
-.. code-block:: bash
-
-    export CONTAINER_LOCATION=nexus3.onap.org:10001/
-    export PROJECT=clamp
-
-Invoke the following script from the ~/docker/csit folder.
-
-.. code-block:: bash
-
-    ./start-all.sh
-
-This script installs the docker containers of ACM and Policy components required for running the tests.
+- Install of a microk8s kubernetes environment
+- Bring up the policy components
+- Checks that the components are successfully up and running before proceeding
+- Install Java 17
+- Install Jmeter locally and configure it
+- Specify whether you want to run stability or performance tests
 
 
-Jmeter setup
+The remainder of this document outlines how to run the tests and the test results
+
+Common Setup
 ++++++++++++
+The common setup for performance and stability tests is now automated - being carried out by a script in- **testsuites/run-s3p-test.sh**.
 
-Apache jmeter tool is installed either on the same virtual machine or on a different virtual machine.
+Clone the policy-clamp repo to access the test scripts
 
 .. code-block:: bash
 
-    # Install required packages
-    sudo apt install -y wget unzip
-
-    # Install JMeter
-    mkdir -p jmeter
-    cd jmeter
-    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.zip # check if valid version
-    unzip -q apache-jmeter-5.5.zip
-    rm apache-jmeter-5.5.zip
-
-
-Setup Verification
-++++++++++++++++++
-Ensure the following components are up and running before executing the test.
-
-- acm runtime component docker image is started and running.
-- Participant docker images policy-clamp-cl-pf-ppnt, policy-clamp-cl-http-ppnt, policy-clamp-cl-k8s-ppnt are started and running.
-- Dmaap simulator for communication between components.
-- mariadb docker container for policy and clampacm database.
-- policy-api for communication between policy participant and policy-framework
-- Both tests were run via jMeter, which was installed on a separate VM.
+    git clone https://gerrit.onap.org/r/policy/clamp
 
 Stability Test of acm components
 ++++++++++++++++++++++++++++++++
@@ -76,46 +48,34 @@ Test Plan
 ---------
 The 72 hours stability test ran the following steps sequentially in a single threaded loop.
 
-- **Create Policy defaultDomain** - creates an operational policy using policy/api component
-- **Delete Policy sampleDomain** - deletes the operational policy sampleDomain using policy/api component
-- **Commission AC definition** - commissions the acm definition in runtime
-- **Instantiate acm** - Instantiate the acm towards participants
-- **Check acm state** - check the current state of acm
-- **Change State to PASSIVE** - change the state of the acm to PASSIVE
-- **Check acm state** - check the current state of acm
-- **Change State to UNINITIALISED** - change the state of the ACM to UNINITIALISED
-- **Check acm state** - check the current state of acm
-- **Delete instantiated acm** - delete the instantiated acm from all participants
-- **Delete ACM Definition** - delete the acm definition on runtime
+- **Commission Automation Composition Definitions** - Commissions the ACM Definitions
+- **Register Participants** - Registers the presence of participants in the acm database
+- **Prime AC definition** - Primes the AC Definition to the participants
+- **Instantiate acm** - Instantiate the acm instance
+- **DEPLOY the ACM instance** - change the state of the acm to DEPLOYED
+- **Check instance state** - check the current state of instance and that it is DEPLOYED
+- **UNDEPLOY the ACM instance** - change the state of the ACM to UNDEPLOYED
+- **Check instance state** - check the current state of instance and that it is UNDEPLOYED
+- **Delete instance** - delete the instance from all participants and ACM db
+- **DEPRIME ACM definitions** - DEPRIME ACM definitions from participants
+- **Delete ACM Definition** - delete the ACM definition on runtime
 
-The following parameters can be configured on the JMX file for the test.
+This runs for 72 hours. Test results are present in the **testsuites/automated-performance/s3pTestResults.jtl**
+directory. Logs are present for jmeter in **testsuites/automated-performance/jmeter.log** and
+**testsuites/automated-performance/nohup.out**
 
-- **HTTP Authorization Manager** - used to store user/password authentication details.
-- **HTTP Header Manager** - used to store headers which will be used for making HTTP requests.
-- **User Defined Variables** -  used to store following user defined parameters.
+Run Test
+--------
 
-=============================  ========================================================================
- **Name**                      **Description**
-=============================  ========================================================================
- RUNTIME_HOST                  IP Address or host name of acm runtime component
- RUNTIME_PORT                  Port number of acm runtime components for making REST API calls
- POLICY_PARTICIPANT_HOST       IP Address or host name of policy participant
- POLICY_PARTICIPANT_HOST_PORT  Port number of policy participant
-=============================  ========================================================================
-
-Download the ACM stability.jmx and performance.jmx files from the Policy-Clamp repo.
-
-Stability jmx file
+The code in the setup section also serves to run the tests. Just one execution needed to do it all.
 
 .. code-block:: bash
 
-    ~/clamp/testsuites/stability/src/main/resources/testplans/stability.jmx
+    bash run-s3p-test.sh run stability
 
-The test was run in the background via "nohup", to prevent it from being interrupted:
+Once the test execution is completed, the results are present in the **automate-performance/s3pTestResults.jtl** file.
 
-.. code-block:: bash
-
-    nohup ./jmeter/apache-jmeter-5.5/bin/jmeter -n -t stability.jmx -l testresults.jtl
+This file can be imported into the Jmeter GUI for visualization. The below results are tabulated from the GUI.
 
 Test Results
 ------------
@@ -124,37 +84,31 @@ Test Results
 
 Stability test plan was triggered for 72 hours.
 
-.. Note::
-
-              .. container:: paragraph
-			  
-                  The assertions of state changes are not completely taken care of, as the stability is ran with acm components
-                  alone, and not including complete policy framework deployment, which makes it difficult for actual state changes from
-                  PASSIVE to RUNNING etc to happen.
-
 **Test Statistics**
 
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-97916                    100.00 %           0.00 %              246 ms
+260590                    100.00 %           0.00 %              997 ms
 =======================  =================  ==================  ==================================
 
 **ACM component Setup**
 
-================  ============================================================    ===========================================  =========================
-**CONTAINER ID**  **IMAGE**                                                       **PORT**                                     **NAME**
-================  ============================================================    ===========================================  =========================
- a9cb0cd103cf     nexus3.onap.org:10001/onap/policy-clamp-runtime-acm:latest      6969/tcp                                     policy-clamp-runtime-acm
- 886e572b8438     nexus3.onap.org:10001/onap/policy-clamp-ac-pf-ppnt:latest       6969/tcp                                     policy-clamp-ac-pf-ppnt
- 035707b1b95f     nexus3.onap.org:10001/onap/policy-api:latest                    6969/tcp                                     policy-api
- d34204f95ff3     nexus3.onap.org:10001/onap/policy-clamp-ac-http-ppnt:latest     6969/tcp                                     policy-clamp-ac-http-ppnt
- 4470e608c9a8     nexus3.onap.org:10001/onap/policy-clamp-ac-k8s-ppnt:latest      6969/tcp                                     policy-clamp-ac-k8s-ppnt
- 62229d46b79c     nexus3.onap.org:10001/onap/policy-models-simulator:latest       3905/tcp, 6666/tcp, 6668-6670/tcp, 6680/tcp  simulator
- efaf0ca5e1f0     nexus3.onap.org:10001/mariadb:10.5.8                            3306/tcp                                     mariadb
- e84cf17db2a4     nexus3.onap.org:10001/onap/policy-pap:latest                    6969/tcp                                     policy-pap
- 0a16eecd13c9     nexus3.onap.org:10001/onap/policy-apex-pdp:latest               6969/tcp                                     policy-apex-pdp
-================  ============================================================    ===========================================  =========================
+==============================================  ============================================================    ===========================================
+**NAME**                                        **IMAGE**                                                       **PORT**
+==============================================  ============================================================    ===========================================
+ policy-clamp-runtime-acm-5c6d8fbfb-jz8rb       nexus3.onap.org:10001/onap/policy-clamp-runtime-acm:latest      30007/tcp
+ policy-clamp-ac-pf-ppnt-55c4cb99f4-spvng       nexus3.onap.org:10001/onap/policy-clamp-ac-pf-ppnt:latest       30008/tcp
+ policy-api-58cb45fc9b-ff5md                    nexus3.onap.org:10001/onap/policy-api:latest                    30002/tcp
+ policy-clamp-ac-http-ppnt-7b99cbfbf8-d4w9v     nexus3.onap.org:10001/onap/policy-clamp-ac-http-ppnt:latest     30009/tcp
+ policy-clamp-ac-k8s-ppnt-6d854cc8b6-twdkh      nexus3.onap.org:10001/onap/policy-clamp-ac-k8s-ppnt:latest      30010/tcp
+ policy-models-simulator-bcd494d87-bfg6g        nexus3.onap.org:10001/onap/policy-models-simulator:latest       30904/tcp
+ mariadb-galera-0                               nexus3.onap.org:10001/mariadb:10.5.8                            3306/tcp
+ policy-pap-847d89997d-x9h99                    nexus3.onap.org:10001/onap/policy-pap:latest                    30003/tcp
+ policy-apex-pdp-0                              nexus3.onap.org:10001/onap/policy-apex-pdp:latest               6969/tcp
+==============================================  ============================================================    ===========================================
+
+
 
 .. Note::
 
@@ -190,8 +144,15 @@ Performance test of acm components has the goal of testing the min/avg/max proce
 Setup Details
 -------------
 
-The performance test is performed on a similar setup as Stability test. The JMeter VM will be sending a large number of REST requests to the runtime component and collecting the statistics.
+We can setup the environment and execute the tests like this from the **clamp/testsuites** directory
 
+.. code-block:: bash
+
+    bash run-s3p-test.sh run performance
+
+This runs for 2 hours. Test results are present in the **testsuites/automate-performance/s3pTestResults.jtl**
+directory. Logs are present for jmeter in **testsuites/automate-performance/jmeter.log** and
+**testsuites/automated-performance/nohup.out**
 
 Test Plan
 ---------
@@ -204,24 +165,15 @@ Performance test plan is the same as the stability test plan above except for th
 Run Test
 --------
 
-Performance jmx file
+The code in the setup section also serves to run the tests. Just one execution needed to do it all.
 
 .. code-block:: bash
 
-    ~/clamp/testsuites/performance/src/main/resources/testplans/performance.jmx
+    bash run-s3p-test.sh run performance
 
-Running/Triggering the performance test will be the same as the stability test. That is, launch JMeter pointing to corresponding *.jmx* test plan. The *RUNTIME_HOST*, *RUNTIME_PORT*, *POLICY_PARTICIPANT_HOST*, *POLICY_PARTICIPANT_HOST_PORT* are already set up in *.jmx*
+Once the test execution is completed, the results are present in the **automate-performance/s3pTestResults.jtl** file.
 
-.. code-block:: bash
-
-    nohup ./jmeter/apache-jmeter-5.5/bin/jmeter -n -t performance.jmx -l testresults.jtl
-
-Once the test execution is completed, execute the below script to get the statistics:
-
-.. code-block:: bash
-
-    $ cd ./clamp/testsuites/performance/src/main/resources/testplans
-    $ ./results.sh resultTree.log
+This file can be imported into the Jmeter GUI for visualization. The below results are tabulated from the Jmeter GUI.
 
 Test Results
 ------------
@@ -233,24 +185,24 @@ Test results are shown as below.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-13591                    100 %              0.00 %              249 ms
+15520                    100 %              0.00 %              464 ms
 =======================  =================  ==================  ==================================
 
 **ACM component Setup**
 
-================  ============================================================    ===========================================  =========================
-**CONTAINER ID**  **IMAGE**                                                       **PORT**                                     **NAME**
-================  ============================================================    ===========================================  =========================
- a9cb0cd103cf     nexus3.onap.org:10001/onap/policy-clamp-runtime-acm:latest      6969/tcp                                     policy-clamp-runtime-acm
- 886e572b8438     nexus3.onap.org:10001/onap/policy-clamp-ac-pf-ppnt:latest       6969/tcp                                     policy-clamp-ac-pf-ppnt
- 035707b1b95f     nexus3.onap.org:10001/onap/policy-api:latest                    6969/tcp                                     policy-api
- d34204f95ff3     nexus3.onap.org:10001/onap/policy-clamp-ac-http-ppnt:latest     6969/tcp                                     policy-clamp-ac-http-ppnt
- 4470e608c9a8     nexus3.onap.org:10001/onap/policy-clamp-ac-k8s-ppnt:latest      6969/tcp                                     policy-clamp-ac-k8s-ppnt
- 62229d46b79c     nexus3.onap.org:10001/onap/policy-models-simulator:latest       3905/tcp, 6666/tcp, 6668-6670/tcp, 6680/tcp  simulator
- efaf0ca5e1f0     nexus3.onap.org:10001/mariadb:10.5.8                            3306/tcp                                     mariadb
- e84cf17db2a4     nexus3.onap.org:10001/onap/policy-pap:latest                    6969/tcp                                     policy-pap
- 0a16eecd13c9     nexus3.onap.org:10001/onap/policy-apex-pdp:latest               6969/tcp                                     policy-apex-pdp
-================  ============================================================    ===========================================  =========================
+==============================================  ============================================================    ===========================================
+**NAME**                                        **IMAGE**                                                       **PORT**
+==============================================  ============================================================    ===========================================
+ policy-clamp-runtime-acm-5c6d8fbfb-jz8rb       nexus3.onap.org:10001/onap/policy-clamp-runtime-acm:latest      30007/tcp
+ policy-clamp-ac-pf-ppnt-55c4cb99f4-spvng       nexus3.onap.org:10001/onap/policy-clamp-ac-pf-ppnt:latest       30008/tcp
+ policy-api-58cb45fc9b-ff5md                    nexus3.onap.org:10001/onap/policy-api:latest                    30002/tcp
+ policy-clamp-ac-http-ppnt-7b99cbfbf8-d4w9v     nexus3.onap.org:10001/onap/policy-clamp-ac-http-ppnt:latest     30009/tcp
+ policy-clamp-ac-k8s-ppnt-6d854cc8b6-twdkh      nexus3.onap.org:10001/onap/policy-clamp-ac-k8s-ppnt:latest      30010/tcp
+ policy-models-simulator-bcd494d87-bfg6g        nexus3.onap.org:10001/onap/policy-models-simulator:latest       30904/tcp
+ mariadb-galera-0                               nexus3.onap.org:10001/mariadb:10.5.8                            3306/tcp
+ policy-pap-847d89997d-x9h99                    nexus3.onap.org:10001/onap/policy-pap:latest                    30003/tcp
+ policy-apex-pdp-0                              nexus3.onap.org:10001/onap/policy-apex-pdp:latest               6969/tcp
+==============================================  ============================================================    ===========================================
 
 **JMeter Screenshot**
 
