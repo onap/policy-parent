@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b26329cd_2f2e14bf",
+        "filename": "docs/development/devtools/testing/s3p/distribution-s3p.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2023-11-06T13:27:48Z",
+      "side": 1,
+      "message": "Enter localhost as IP address\n\njust for clarification",
+      "range": {
+        "startLine": 58,
+        "startChar": 14,
+        "endLine": 58,
+        "endChar": 27
+      },
+      "revId": "93fd8441d5e0c5d22b9512355f69cb75857d119f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
