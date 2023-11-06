@@ -13,71 +13,7 @@ Policy Distribution component
 Common Setup
 ------------
 
-Update the ubuntu software installer
-
-.. code-block:: bash
-
-    sudo apt update
-
-Install Java
-
-.. code-block:: bash
-
-    sudo apt install -y openjdk-11-jdk
-
-Ensure that the Java version that is executing is OpenJDK version 11
-
-.. code-block:: bash
-
-    $ java --version
-    openjdk 11.0.11 2021-04-20
-    OpenJDK Runtime Environment (build 11.0.11+9-Ubuntu-0ubuntu2.18.04)
-    OpenJDK 64-Bit Server VM (build 11.0.11+9-Ubuntu-0ubuntu2.18.04, mixed mode)
-
-Install Docker and Docker Compose
-
-.. code-block:: bash
-
-    # Add docker repository
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-    sudo apt update
-
-    # Install docker
-    sudo apt-get install docker-ce docker-ce-cli containerd.io
-
-Change the permissions of the Docker socket file
-
-.. code-block:: bash
-
-    sudo chmod 666 /var/run/docker.sock
-
-Check the status of the Docker service and ensure it is running correctly
-
-.. code-block:: bash
-
-    systemctl status --no-pager docker
-    docker.service - Docker Application Container Engine
-       Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
-       Active: active (running) since Wed 2020-10-14 13:59:40 UTC; 1 weeks 0 days ago
-       # ... (truncated for brevity)
-
-    docker ps
-    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-
-Install and verify docker-compose
-
-.. code-block:: bash
-
-    # Install compose (check if version is still available or update as necessary)
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
-
-    # Check if install was successful
-    docker-compose --version
+The common setup for performance and stability tests is now automated - being carried out by a script in- **testsuites/run-sc3-test.sh**.
 
 Clone the policy-distribution repo to access the test scripts
 
@@ -85,130 +21,55 @@ Clone the policy-distribution repo to access the test scripts
 
     git clone https://gerrit.onap.org/r/policy/distribution
 
-.. _setup-distribution-s3p-components:
+**The following common steps are carried out by the scripts**
 
-Start services for MariaDB, Policy API, PAP and Distribution
-------------------------------------------------------------
+* Updates the repo package lists for apt
+* Installs Java 17 open jdk
+* Installs docker
+* Installs docker-compose
+* Retrieves version information in environment variables from th release info file
+* Builds relevant images including the pdp simulator
+* Triggers docker compose to bring up containers required for the testing
+* Installs jmeter
+* Installs visualvm (and starts it in a GUI environment)
+* Configures permissions for monitoring
+* Starts jstatd
+* Waits for containers to come up
+* Runs either stability or performance tests for a specified duration depending on the arguments specified
 
-Navigate to the main folder for scripts to setup services:
-
-.. code-block:: bash
-
-    cd ~/distribution/testsuites/stability/src/main/resources/setup
-
-Modify the versions.sh script to match all the versions being tested.
-
-.. code-block:: bash
-
-    vi ~/distribution/testsuites/stability/src/main/resources/setup/versions.sh
-
-Ensure the correct docker image versions are specified - e.g. for Kohn-M4
-
-- export POLICY_DIST_VERSION=2.8-SNAPSHOT
-
-Run the start.sh script to start the components. After installation, script will execute
-``docker ps`` and show the running containers.
+For example, the below runs performance tests for 2 hours. Start from the root directory of policy distribution
 
 .. code-block:: bash
 
-    ./start.sh
-
-    Creating network "setup_default" with the default driver
-    Creating policy-distribution ... done
-    Creating mariadb             ... done
-    Creating simulator           ... done
-    Creating policy-db-migrator  ... done
-    Creating policy-api          ... done
-    Creating policy-pap          ... done
-
-    fa4e9bd26e60   nexus3.onap.org:10001/onap/policy-pap:2.7-SNAPSHOT-latest                "/opt/app/policy/pap…"   1 second ago    Up Less than a second   6969/tcp             policy-pap
-    efb65dd95020   nexus3.onap.org:10001/onap/policy-api:2.7-SNAPSHOT-latest                "/opt/app/policy/api…"   1 second ago    Up Less than a second   6969/tcp             policy-api
-    cf602c2770ba   nexus3.onap.org:10001/onap/policy-db-migrator:2.5-SNAPSHOT-latest        "/opt/app/policy/bin…"   2 seconds ago   Up 1 second             6824/tcp             policy-db-migrator
-    99383d2fecf4   pdp/simulator                                                            "sh /opt/app/policy/…"   2 seconds ago   Up 1 second                                  pdp-simulator
-    3c0e205c5f47   nexus3.onap.org:10001/onap/policy-models-simulator:2.7-SNAPSHOT-latest   "simulators.sh"          3 seconds ago   Up 2 seconds            3904/tcp             simulator
-    3ad00d90d6a3   nexus3.onap.org:10001/onap/policy-distribution:2.8-SNAPSHOT-latest       "/opt/app/policy/bin…"   3 seconds ago   Up 2 seconds            6969/tcp, 9090/tcp   policy-distribution
-    bb0b915cdecc   nexus3.onap.org:10001/mariadb:10.5.8                                     "docker-entrypoint.s…"   3 seconds ago   Up 2 seconds            3306/tcp             mariadb
+    cd testsuites
+    ./run-s3p-test.sh performance 7200
 
 .. note::
     The containers on this docker-compose are running with HTTP configuration. For HTTPS, ports
     and configurations will need to be changed, as well certificates and keys must be generated
     for security.
 
-
-Install JMeter
---------------
-
-Download and install JMeter
-
-.. code-block:: bash
-
-    # Install required packages
-    sudo apt install -y wget unzip
-
-    # Install JMeter
-    mkdir -p jmeter
-    cd jmeter
-    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.zip # check if valid version
-    unzip -q apache-jmeter-5.5.zip
-    rm apache-jmeter-5.5.zip
-
-
-Install & configure visualVM
---------------------------------------
-
-VisualVM needs to be installed in the virtual machine running Distribution. It will be used to
-monitor CPU, Memory and GC for Distribution while the stability tests are running.
-
-.. code-block:: bash
-
-    sudo apt install -y visualvm
-
-Run these commands to configure permissions (if permission errors happens, use ``sudo su``)
-
-.. code-block:: bash
-
-    # Set globally accessable permissions on policy file
-    sudo chmod 777 /usr/lib/jvm/java-11-openjdk-amd64/bin/visualvm.policy
-
-    # Create Java security policy file for VisualVM
-    sudo cat > /usr/lib/jvm/java-11-openjdk-amd64/bin/visualvm.policy << EOF
-    grant codebase "jrt:/jdk.jstatd" {
-       permission java.security.AllPermission;
-    };
-    grant codebase "jrt:/jdk.internal.jvmstat" {
-       permission java.security.AllPermission;
-    };
-    EOF
-
-Run the following command to start jstatd using port 1111
-
-.. code-block:: bash
-
-    /usr/lib/jvm/java-11-openjdk-amd64/bin/jstatd -p 1111 -J-Djava.security.policy=/usr/lib/jvm/java-11-openjdk-amd64/bin/visualvm.policy &
-
-Run visualVM to connect to POLICY_DISTRIBUTION_IP:9090
-
-.. code-block:: bash
-
-    # Get the Policy Distribution container IP
-    echo $(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' policy-distribution)
-
-    # Start visual vm
-    visualvm &
-
-This will load up the visualVM GUI
+The script will load up the visualvm GUI on your virtual machine. You will need to manually connect
+it to the distribution JMX port.
 
 Connect to Distribution JMX Port.
 
     1. On the visualvm toolbar, click on "Add JMX Connection"
-    2. Enter the Distribution container IP and Port 9090. This is the JMX port exposed by the
+    2. Enter the localhost and Port 9090. This is the JMX port exposed by the
        distribution container
-    3. Double click on the newly added nodes under "Remotes" to start monitoring CPU, Memory & GC.
+    3. Double click on the newly added nodes under "Local" to start monitoring CPU, Memory & GC.
 
 Example Screenshot of visualVM
 
 .. image:: distribution-s3p-results/distribution-visualvm-snapshot.png
 
+Teardown Docker
+
+Once the testing is finished, you can tear down the docker setup from **./testsuites** with:
+
+.. code-block:: bash
+
+    docker-compose -f stability/src/main/resources/setup/docker-compose.yml down
 
 Stability Test of Policy Distribution
 +++++++++++++++++++++++++++++++++++++
@@ -237,7 +98,6 @@ The 72h stability test will run the following steps sequentially in a single thr
 - **Delete Old CSAR** - Checks if CSAR already exists in the watched directory, if so it deletes it
 - **Add CSAR** - Adds CSAR to the directory that distribution is watching
 - **Get Healthcheck** - Ensures Healthcheck is returning 200 OK
-- **Get Statistics** - Ensures Statistics is returning 200 OK
 - **Get Metrics** - Ensures Metrics is returning 200 OK
 - **Assert PDP Group Query** - Checks that PDPGroupQuery contains the deployed policy
 - **Assert PoliciesDeployed** - Checks that the policy is deployed
@@ -268,33 +128,21 @@ Screenshot of Distribution stability test plan
 Running the Test Plan
 ---------------------
 
-Check if the /tmp/policydistribution/distributionmount exists as it was created during the start.sh
-script execution. If not, run the following commands to create folder and change folder permissions
-to allow the testplan to insert the CSAR into the /tmp/policydistribution/distributionmount folder.
-
-.. note::
-    Make sure that only csar file is being loaded in the watched folder and log generation is in a
-    logs folder, as any sort of zip file can be understood by distribution as a policy file. A
-    logback.xml configuration file is available under setup/distribution folder.
+The main script takes care of everything. To run the 72 hour stability tests do as follows
 
 .. code-block:: bash
 
-    sudo mkdir -p /tmp/policydistribution/distributionmount
-    sudo chmod -R a+trwx /tmp
+    cd testsuites
+    ./run-s3p-test.sh stability 259200
 
-
-Navigate to the stability test folder.
-
-.. code-block:: bash
-
-    cd ~/distribution/testsuites/stability/src/main/resources/testplans/
-
-Execute the run_test.sh
+* visualvm produces the monitor and threads - we can screenshot those and add them to the test results
+* A jmeter .jtl file is produced by the run - it is called distribution-stability.jtl
+* The file can be imported into the jmeter GUI to view statistics
+* The application performance index table can be produced with jmeter on the cli as below:ls
 
 .. code-block:: bash
 
-    ./run_test.sh
-
+    jmeter -n -t your_test_plan.jmx -l test_results.jtl -e -o report_directory
 
 Test Results
 ------------
@@ -332,7 +180,8 @@ It also tests that distribution can handle multiple policy CSARs and that these 
 Setup Details
 -------------
 
-The performance test is based on the same setup as the distribution stability tests.
+The performance test is based on the same setup as the distribution stability tests. This setup is done by the main
+**run-s3p-test.sh** script
 
 
 Test Plan Sequence
@@ -350,23 +199,23 @@ Performance test plan is different from the stability test plan.
 Running the Test Plan
 ---------------------
 
-Check if /tmp folder permissions to allow the Testplan to insert the CSAR into the
-/tmp/policydistribution/distributionmount folder.
-Clean up from previous run. If necessary, put containers down with script ``down.sh`` from setup
-folder mentioned on :ref:`Setup components <setup-distribution-s3p-components>`
+The main script takes care of everything. To run the 4 hour performance tests do as follows
 
 .. code-block:: bash
 
-    sudo mkdir -p /tmp/policydistribution/distributionmount
-    sudo chmod -R a+trwx /tmp
+    cd testsuites
+    ./run-s3p-test.sh performance 14400
 
-Navigate to the testplan folder and execute the test script:
+* visualvm produces the monitor and threads - we can screenshot those and add them to the test results
+* A jmeter .jtl file is produced by the run - it is called distribution-performance.jtl
+* The file can be imported into the jmeter GUI to view statistics
+* The application performance index table can be produced with jmeter on the cli as below:
 
 .. code-block:: bash
 
-    cd ~/distribution/testsuites/performance/src/main/resources/testplans/
-    ./run_test.sh
-    
+    jmeter -n -t your_test_plan.jmx -l test_results.jtl -e -o report_directory
+
+This produced html pages where statistics tables can be seen and added to the results.
 
 Test Results
 ------------
