@@ -10,7 +10,7 @@
 Policy APEX PDP component
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Both the Stability and the Performance tests were executed in a full ONAP OOM deployment in Nordix lab.
+Both the Stability and the Performance tests were executed in a full Policy Framework deployment in a VM.
 
 Setup Details
 +++++++++++++
@@ -18,48 +18,21 @@ Setup Details
 Deploying ONAP using OOM
 ------------------------
 
-APEX-PDP along with all policy components are deployed as part of a full ONAP OOM deployment.
-At a minimum, the following ONAP components are needed: policy, mariadb-galera, aai, cassandra, aaf, and dmaap.
+APEX-PDP along with all policy components are deployed as part of a full Policy Framework deployment.
+At a minimum, the following components are needed: policy, mariadb-galera, prometheus and dmaap.
 
-Before deploying, the values.yaml files are changed to use NodePort instead of ClusterIP for policy-api,
-policy-pap, and policy-apex-pdp, so that they are accessible from jmeter::
-
-  policy-apex-pdp              NodePort    10.43.131.43    <none>        6969:31739/TCP
-  policy-api                   NodePort    10.43.67.153    <none>        6969:30430/TCP
-  policy-pap                   NodePort    10.43.200.57    <none>        6969:30585/TCP
-
-The node ports (31739, 30430 and 30585 above) are used in JMeter.
-The HOSTNAMEs for JMeter are set to the IPs returned by running "kubectl get node -o wide"
-and to find the applications for each node by running "kubectl describe node <node-name>".
+The S3P tests utilise the ./run-s3p-tests script in the apex component. This will setup the microk8s environment, deploy
+policy and prometheus, expose the services so they can be reached by JMeter, install JMeter and run the tests based on
+the arguments provided.
 
 Set up policy-models-simulator
 ------------------------------
 
-Policy-models-simulator is deployed to use CDS and DMaaP simulators during policy execution.
+Policy-models-simulator is deployed to use the DMaaP simulator during policy execution.
     Simulator configurations used are available in apex-pdp repository:
       testsuites/apex-pdp-stability/src/main/resources/simulatorConfig/
 
-It is run as a docker image from a node accessible to the kubernetes cluster::
-
-  docker run -d --rm --publish 6680:6680 --publish 31054:3905 \
-    --volume "apex-pdp/testsuites/apex-pdp-stability/src/main/resources/simulatorConfig:/opt/app/policy/simulators/etc/mounted" \
-    nexus3.onap.org:10001/onap/policy-models-simulator:2.7-SNAPSHOT-latest
-
-The published ports 6680 and 31054 are used in JMeter for CDS and DMaaP simulators.
-
-Creation of VNF & PNF in AAI
-----------------------------
-
-In order for APEX-PDP engine to fetch the resource details from AAI during runtime execution, we need to create dummy
-VNF & PNF entities in AAI. In a real control loop flow, the entities in AAI will be either created during orchestration
-phase or provisioned in AAI separately.
-
-Download & execute the steps in postman collection for creating the entities along with it’s dependencies.
-The steps needs to be performed sequentially one after another. And no input is required from user.
-
-:download:`Create VNF & PNF in AAI for Apex S3P  </development/devtools/postman/create-vnf-pnf-aai-for-apex-s3p.postman_collection.json>`
-
-Make sure to skip the delete VNF & PNF steps.
+The published port 30904 is used in JMeter for the DMaaP simulator.
 
 JMeter Tests
 ------------
@@ -147,7 +120,6 @@ The following steps can be used to configure the parameters of test plan.
  APEX_PORT           Port number of APEX for making REST API calls such as healthcheck/metrics
  SIM_HOST            IP Address or hostname running policy-models-simulator
  DMAAP_PORT          Port number of DMaaP simulator for making REST API calls such as reading notification events
- CDS_PORT            Port number of CDS simulator
  wait                Wait time if required after a request (in milliseconds)
  threads             Number of threads to run test cases in parallel
  threadsTimeOutInMs  Synchronization timer for threads running in parallel (in milliseconds)
@@ -156,11 +128,7 @@ The following steps can be used to configure the parameters of test plan.
 Run Test
 --------
 
-The test was run in the background via "nohup", to prevent it from being interrupted:
-
-.. code-block:: bash
-
-    nohup ./apache-jmeter-5.4.3/bin/jmeter.sh -n -t apexPdpStabilityTestPlan.jmx -l stabilityTestResults.jtl
+The test was run in the background via "nohup", to prevent it from being interrupted.
 
 Test Results
 ------------
@@ -175,34 +143,16 @@ Stability test plan was triggered for 72 hours. There were no failures during th
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-430397                    100 %             0.00 %              151.694 ms
+112245                   99.47 %            0.53 %              2.309 sec.
 =======================  =================  ==================  ==================================
-
-.. Note::
-
-   There were no failures during the 72 hours test.
 
 **JMeter Screenshot**
 
-.. image:: apex-s3p-results/apex_stability_jmeter_results.png
+.. image:: apex-s3p-results/apex_stability_results.png
 
-**Memory and CPU usage**
-
-The memory and CPU usage can be monitored by running "top" command in the APEX-PDP pod.
-A snapshot is taken before and after test execution to monitor the changes in resource utilization.
-Prometheus metrics is also collected before and after the test execution.
-
-Memory and CPU usage before test execution:
-
-.. image:: apex-s3p-results/apex_top_before_72h.png
-
-:download:`Prometheus metrics before 72h test  <apex-s3p-results/apex_metrics_before_72h.txt>`
-
-Memory and CPU usage after test execution:
-
-.. image:: apex-s3p-results/apex_top_after_72h.png
-
-:download:`Prometheus metrics after 72h test  <apex-s3p-results/apex_metrics_after_72h.txt>`
+.. Note::
+    These results show a huge dip in the number of requests compared to the previous release of Apex-PDP>
+    Further investigation and improvement is needed in the coming release.
 
 Performance Test of APEX-PDP
 ++++++++++++++++++++++++++++
@@ -229,10 +179,7 @@ Performance test plan is the same as the stability test plan above except for th
 Run Test
 --------
 
-.. code-block:: bash
-
-    nohup ./apache-jmeter-5.4.3/bin/jmeter.sh -n -t apexPdpPerformanceTestPlan.jmx -l perftestresults.jtl
-
+The test was run in the background via "nohup", to prevent it from being interrupted.
 
 Test Results
 ------------
@@ -244,15 +191,19 @@ Test results are shown as below.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-47567                    100 %              0.00 %              163.841 ms
+12486                    99.32 %            0.68 %              576.64 ms
 =======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
 
-.. image:: apex-s3p-results/apex_perf_jmeter_results.png
+.. image:: apex-s3p-results/apex_performance_results.png
+
+.. Note::
+    These results show a huge dip in the number of requests compared to the previous release of Apex-PDP>
+    Further investigation and improvement is needed in the coming release.
 
 Summary
 +++++++
 
 Multiple policies were executed in a multi-threaded fashion for both stability and performance tests.
-Both tests ran smoothly without any issues.
+Both tests showed a dip in performance and stability.
