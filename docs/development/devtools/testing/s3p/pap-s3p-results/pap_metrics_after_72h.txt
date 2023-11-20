@@ -1,306 +1,521 @@
-# HELP logback_events_total Number of error level events that made it to the logs
-# TYPE logback_events_total counter
-logback_events_total{level="warn",} 23.0
-logback_events_total{level="debug",} 0.0
-logback_events_total{level="error",} 1.0
-logback_events_total{level="trace",} 0.0
-logback_events_total{level="info",} 1709270.0
-# HELP system_cpu_usage The "recent cpu usage" for the whole system
-# TYPE system_cpu_usage gauge
-system_cpu_usage 0.1270718232044199
-# HELP hikaricp_connections_acquire_seconds Connection acquire time
-# TYPE hikaricp_connections_acquire_seconds summary
-hikaricp_connections_acquire_seconds_count{pool="HikariPool-1",} 298222.0
-hikaricp_connections_acquire_seconds_sum{pool="HikariPool-1",} 321.533641537
-# HELP hikaricp_connections_acquire_seconds_max Connection acquire time
-# TYPE hikaricp_connections_acquire_seconds_max gauge
-hikaricp_connections_acquire_seconds_max{pool="HikariPool-1",} 0.006766789
-# HELP tomcat_sessions_created_sessions_total  
+# HELP hikaricp_connections_min Min connections
+# TYPE hikaricp_connections_min gauge
+hikaricp_connections_min{pool="HikariPool-1",} 10.0
+# HELP tomcat_sessions_created_sessions_total
 # TYPE tomcat_sessions_created_sessions_total counter
-tomcat_sessions_created_sessions_total 158246.0
-# HELP jvm_classes_unloaded_classes_total The total number of classes unloaded since the Java virtual machine has started execution
-# TYPE jvm_classes_unloaded_classes_total counter
-jvm_classes_unloaded_classes_total 799.0
+tomcat_sessions_created_sessions_total 3.0
+# HELP disk_total_bytes Total space for path
+# TYPE disk_total_bytes gauge
+disk_total_bytes{path="/opt/app/policy/pap/bin/.",} 1.0386530304E11
+# HELP jvm_classes_loaded_classes The number of classes that are currently loaded in the Java virtual machine
+# TYPE jvm_classes_loaded_classes gauge
+jvm_classes_loaded_classes 20615.0
+# HELP hikaricp_connections_usage_seconds Connection usage time
+# TYPE hikaricp_connections_usage_seconds summary
+hikaricp_connections_usage_seconds_count{pool="HikariPool-1",} 321133.0
+hikaricp_connections_usage_seconds_sum{pool="HikariPool-1",} 45213.218
+# HELP hikaricp_connections_usage_seconds_max Connection usage time
+# TYPE hikaricp_connections_usage_seconds_max gauge
+hikaricp_connections_usage_seconds_max{pool="HikariPool-1",} 0.027
+# HELP hikaricp_connections_active Active connections
+# TYPE hikaricp_connections_active gauge
+hikaricp_connections_active{pool="HikariPool-1",} 0.0
+# HELP process_start_time_seconds Start time of the process since unix epoch.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.700139959198E9
+# HELP jvm_memory_used_bytes The amount of used memory
+# TYPE jvm_memory_used_bytes gauge
+jvm_memory_used_bytes{area="nonheap",id="CodeHeap 'profiled nmethods'",} 3.2981376E7
+jvm_memory_used_bytes{area="heap",id="G1 Survivor Space",} 494864.0
+jvm_memory_used_bytes{area="heap",id="G1 Old Gen",} 2.1805824E8
+jvm_memory_used_bytes{area="nonheap",id="Metaspace",} 1.13110752E8
+jvm_memory_used_bytes{area="nonheap",id="CodeHeap 'non-nmethods'",} 1472896.0
+jvm_memory_used_bytes{area="heap",id="G1 Eden Space",} 3.7748736E7
+jvm_memory_used_bytes{area="nonheap",id="Compressed Class Space",} 1.4127568E7
+jvm_memory_used_bytes{area="nonheap",id="CodeHeap 'non-profiled nmethods'",} 3.4159744E7
+# HELP jvm_gc_memory_promoted_bytes_total Count of positive increases in the size of the old generation memory pool before GC to after GC
+# TYPE jvm_gc_memory_promoted_bytes_total counter
+jvm_gc_memory_promoted_bytes_total 1.78894336E8
+# HELP jvm_threads_peak_threads The peak live thread count since the Java virtual machine started or peak was reset
+# TYPE jvm_threads_peak_threads gauge
+jvm_threads_peak_threads 43.0
+# HELP hikaricp_connections_creation_seconds_max Connection creation time
+# TYPE hikaricp_connections_creation_seconds_max gauge
+hikaricp_connections_creation_seconds_max{pool="HikariPool-1",} 0.0
+# HELP hikaricp_connections_creation_seconds Connection creation time
+# TYPE hikaricp_connections_creation_seconds summary
+hikaricp_connections_creation_seconds_count{pool="HikariPool-1",} 2131.0
+hikaricp_connections_creation_seconds_sum{pool="HikariPool-1",} 17.144
+# HELP system_cpu_count The number of processors available to the Java virtual machine
+# TYPE system_cpu_count gauge
+system_cpu_count 16.0
+# HELP spring_security_filterchains_session_url_encoding_after_total
+# TYPE spring_security_filterchains_session_url_encoding_after_total counter
+spring_security_filterchains_session_url_encoding_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168998.0
+# HELP executor_queue_remaining_tasks The number of additional elements that this queue can ideally accept without blocking
+# TYPE executor_queue_remaining_tasks gauge
+executor_queue_remaining_tasks{name="applicationTaskExecutor",} 2.147483647E9
+# HELP hikaricp_connections Total connections
+# TYPE hikaricp_connections gauge
+hikaricp_connections{pool="HikariPool-1",} 10.0
+# HELP tomcat_sessions_expired_sessions_total
+# TYPE tomcat_sessions_expired_sessions_total counter
+tomcat_sessions_expired_sessions_total 2.0
+# HELP tomcat_sessions_active_current_sessions
+# TYPE tomcat_sessions_active_current_sessions gauge
+tomcat_sessions_active_current_sessions 1.0
+# HELP hikaricp_connections_timeout_total Connection timeout total count
+# TYPE hikaricp_connections_timeout_total counter
+hikaricp_connections_timeout_total{pool="HikariPool-1",} 0.0
+# HELP jvm_threads_live_threads The current number of live threads including both daemon and non-daemon threads
+# TYPE jvm_threads_live_threads gauge
+jvm_threads_live_threads 38.0
+# HELP spring_security_filterchains_active_seconds_max
+# TYPE spring_security_filterchains_active_seconds_max gauge
+spring_security_filterchains_active_seconds_max{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 0.0
+spring_security_filterchains_active_seconds_max{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 0.0
+# HELP spring_security_filterchains_active_seconds
+# TYPE spring_security_filterchains_active_seconds summary
+spring_security_filterchains_active_seconds_active_count{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 0.0
+spring_security_filterchains_active_seconds_duration_sum{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 0.0
+spring_security_filterchains_active_seconds_active_count{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 0.0
+spring_security_filterchains_active_seconds_duration_sum{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 0.0
+# HELP spring_security_filterchains_logout_after_total
+# TYPE spring_security_filterchains_logout_after_total counter
+spring_security_filterchains_logout_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168998.0
+# HELP jvm_info JVM version info
+# TYPE jvm_info gauge
+jvm_info{runtime="OpenJDK Runtime Environment",vendor="Alpine",version="17.0.9+8-alpine-r0",} 1.0
+# HELP disk_free_bytes Usable space for path
+# TYPE disk_free_bytes gauge
+disk_free_bytes{path="/opt/app/policy/pap/bin/.",} 8.5940973568E10
+# HELP spring_security_authentications_active_seconds
+# TYPE spring_security_authentications_active_seconds summary
+spring_security_authentications_active_seconds_active_count{authentication_failure_type="n/a",authentication_method="ProviderManager",authentication_request_type="UsernamePasswordAuthenticationToken",authentication_result_type="n/a",} 0.0
+spring_security_authentications_active_seconds_duration_sum{authentication_failure_type="n/a",authentication_method="ProviderManager",authentication_request_type="UsernamePasswordAuthenticationToken",authentication_result_type="n/a",} 0.0
+# HELP spring_security_authentications_active_seconds_max
+# TYPE spring_security_authentications_active_seconds_max gauge
+spring_security_authentications_active_seconds_max{authentication_failure_type="n/a",authentication_method="ProviderManager",authentication_request_type="UsernamePasswordAuthenticationToken",authentication_result_type="n/a",} 0.0
+# HELP jvm_threads_daemon_threads The current number of live daemon threads
+# TYPE jvm_threads_daemon_threads gauge
+jvm_threads_daemon_threads 28.0
+# HELP spring_security_filterchains_context_holder_before_total
+# TYPE spring_security_filterchains_context_holder_before_total counter
+spring_security_filterchains_context_holder_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
+# HELP spring_security_filterchains_context_holder_after_total
+# TYPE spring_security_filterchains_context_holder_after_total counter
+spring_security_filterchains_context_holder_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168998.0
 # HELP jvm_gc_memory_allocated_bytes_total Incremented for an increase in the size of the (young) heap memory pool after one GC to before the next
 # TYPE jvm_gc_memory_allocated_bytes_total counter
-jvm_gc_memory_allocated_bytes_total 3.956513686328E12
-# HELP tomcat_sessions_alive_max_seconds  
-# TYPE tomcat_sessions_alive_max_seconds gauge
-tomcat_sessions_alive_max_seconds 2488.0
-# HELP spring_data_repository_invocations_seconds_max  
+jvm_gc_memory_allocated_bytes_total 2.70538060492E12
+# HELP executor_pool_core_threads The core number of threads for the pool
+# TYPE executor_pool_core_threads gauge
+executor_pool_core_threads{name="applicationTaskExecutor",} 8.0
+# HELP spring_security_filterchains_authentication_anonymous_before_total
+# TYPE spring_security_filterchains_authentication_anonymous_before_total counter
+spring_security_filterchains_authentication_anonymous_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
+# HELP jdbc_connections_active Current number of active connections that have been allocated from the data source.
+# TYPE jdbc_connections_active gauge
+jdbc_connections_active{name="dataSource",} 0.0
+# HELP http_server_requests_seconds
+# TYPE http_server_requests_seconds summary
+http_server_requests_seconds_count{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/metrics",} 16898.0
+http_server_requests_seconds_sum{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/metrics",} 3967.357676154
+http_server_requests_seconds_count{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/status",} 16898.0
+http_server_requests_seconds_sum{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/status",} 3952.559792217
+http_server_requests_seconds_count{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/healthcheck",} 8449.0
+http_server_requests_seconds_sum{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/healthcheck",} 1962.407770331
+http_server_requests_seconds_count{error="none",exception="none",method="DELETE",outcome="SUCCESS",status="200",uri="/pdps/groups/{name}",} 1.0
+http_server_requests_seconds_sum{error="none",exception="none",method="DELETE",outcome="SUCCESS",status="200",uri="/pdps/groups/{name}",} 1.13003001
+http_server_requests_seconds_count{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/pdps",} 33794.0
+http_server_requests_seconds_sum{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/pdps",} 8534.756994317
+http_server_requests_seconds_count{error="none",exception="none",method="POST",outcome="SUCCESS",status="202",uri="/pdps/policies",} 8449.0
+http_server_requests_seconds_sum{error="none",exception="none",method="POST",outcome="SUCCESS",status="202",uri="/pdps/policies",} 9029.386618813
+http_server_requests_seconds_count{error="none",exception="none",method="DELETE",outcome="SUCCESS",status="202",uri="/pdps/policies/{name}",} 8448.0
+http_server_requests_seconds_sum{error="none",exception="none",method="DELETE",outcome="SUCCESS",status="202",uri="/pdps/policies/{name}",} 9292.095374281
+http_server_requests_seconds_count{error="none",exception="none",method="GET",outcome="CLIENT_ERROR",status="401",uri="UNKNOWN",} 3.0
+http_server_requests_seconds_sum{error="none",exception="none",method="GET",outcome="CLIENT_ERROR",status="401",uri="UNKNOWN",} 0.146722928
+http_server_requests_seconds_count{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/deployed",} 8448.0
+http_server_requests_seconds_sum{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/deployed",} 1963.048694006
+http_server_requests_seconds_count{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/audit/{pdpGroupName}",} 8448.0
+http_server_requests_seconds_sum{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/audit/{pdpGroupName}",} 2081.277984093
+http_server_requests_seconds_count{error="none",exception="none",method="POST",outcome="SUCCESS",status="202",uri="/pdps/deployments/batch",} 16896.0
+http_server_requests_seconds_sum{error="none",exception="none",method="POST",outcome="SUCCESS",status="202",uri="/pdps/deployments/batch",} 18067.385431232
+http_server_requests_seconds_count{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/status/{pdpGroupName}/{policyName}/{policyVersion}",} 16915.0
+http_server_requests_seconds_sum{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/status/{pdpGroupName}/{policyName}/{policyVersion}",} 4012.92045444
+http_server_requests_seconds_count{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/audit/{pdpGroupName}/{policyName}/{policyVersion}",} 16896.0
+http_server_requests_seconds_sum{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/audit/{pdpGroupName}/{policyName}/{policyVersion}",} 4284.22784792
+http_server_requests_seconds_count{error="none",exception="none",method="PUT",outcome="SUCCESS",status="200",uri="/pdps/groups/{name}",} 3.0
+http_server_requests_seconds_sum{error="none",exception="none",method="PUT",outcome="SUCCESS",status="200",uri="/pdps/groups/{name}",} 1.687419501
+http_server_requests_seconds_count{error="none",exception="none",method="POST",outcome="SUCCESS",status="200",uri="/pdps/groups/batch",} 1.0
+http_server_requests_seconds_sum{error="none",exception="none",method="POST",outcome="SUCCESS",status="200",uri="/pdps/groups/batch",} 1.716173275
+http_server_requests_seconds_count{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/components/healthcheck",} 8448.0
+http_server_requests_seconds_sum{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/components/healthcheck",} 4213.059172045
+# HELP http_server_requests_seconds_max
+# TYPE http_server_requests_seconds_max gauge
+http_server_requests_seconds_max{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/metrics",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/status",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/healthcheck",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="DELETE",outcome="SUCCESS",status="200",uri="/pdps/groups/{name}",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/pdps",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="POST",outcome="SUCCESS",status="202",uri="/pdps/policies",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="DELETE",outcome="SUCCESS",status="202",uri="/pdps/policies/{name}",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="GET",outcome="CLIENT_ERROR",status="401",uri="UNKNOWN",} 0.051127942
+http_server_requests_seconds_max{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/deployed",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/audit/{pdpGroupName}",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="POST",outcome="SUCCESS",status="202",uri="/pdps/deployments/batch",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/status/{pdpGroupName}/{policyName}/{policyVersion}",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/policies/audit/{pdpGroupName}/{policyName}/{policyVersion}",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="PUT",outcome="SUCCESS",status="200",uri="/pdps/groups/{name}",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="POST",outcome="SUCCESS",status="200",uri="/pdps/groups/batch",} 0.0
+http_server_requests_seconds_max{error="none",exception="none",method="GET",outcome="SUCCESS",status="200",uri="/components/healthcheck",} 0.0
+# HELP spring_security_filterchains_authentication_basic_before_total
+# TYPE spring_security_filterchains_authentication_basic_before_total counter
+spring_security_filterchains_authentication_basic_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
+# HELP pap_policy_deployments_total
+# TYPE pap_policy_deployments_total counter
+pap_policy_deployments_total{operation="deploy",status="FAILURE",} 0.0
+pap_policy_deployments_total{operation="undeploy",status="SUCCESS",} 16896.0
+pap_policy_deployments_total{operation="deploy",status="SUCCESS",} 16897.0
+pap_policy_deployments_total{operation="undeploy",status="FAILURE",} 0.0
+# HELP jvm_buffer_total_capacity_bytes An estimate of the total capacity of the buffers in this pool
+# TYPE jvm_buffer_total_capacity_bytes gauge
+jvm_buffer_total_capacity_bytes{id="mapped - 'non-volatile memory'",} 0.0
+jvm_buffer_total_capacity_bytes{id="mapped",} 0.0
+jvm_buffer_total_capacity_bytes{id="direct",} 1544596.0
+# HELP jvm_gc_live_data_size_bytes Size of long-lived heap memory pool after reclamation
+# TYPE jvm_gc_live_data_size_bytes gauge
+jvm_gc_live_data_size_bytes 5.4770176E7
+# HELP process_files_max_files The maximum file descriptor count
+# TYPE process_files_max_files gauge
+process_files_max_files 1048576.0
+# HELP jvm_memory_committed_bytes The amount of memory in bytes that is committed for the Java virtual machine to use
+# TYPE jvm_memory_committed_bytes gauge
+jvm_memory_committed_bytes{area="nonheap",id="CodeHeap 'profiled nmethods'",} 4.1222144E7
+jvm_memory_committed_bytes{area="heap",id="G1 Survivor Space",} 4194304.0
+jvm_memory_committed_bytes{area="heap",id="G1 Old Gen",} 2.60046848E8
+jvm_memory_committed_bytes{area="nonheap",id="Metaspace",} 1.13967104E8
+jvm_memory_committed_bytes{area="nonheap",id="CodeHeap 'non-nmethods'",} 3342336.0
+jvm_memory_committed_bytes{area="heap",id="G1 Eden Space",} 9.6468992E7
+jvm_memory_committed_bytes{area="nonheap",id="Compressed Class Space",} 1.4548992E7
+jvm_memory_committed_bytes{area="nonheap",id="CodeHeap 'non-profiled nmethods'",} 3.5454976E7
+# HELP spring_data_repository_invocations_seconds_max Duration of repository invocations
 # TYPE spring_data_repository_invocations_seconds_max gauge
 spring_data_repository_invocations_seconds_max{exception="None",method="findByKeyParentKeyNameAndKeyParentKeyVersion",repository="PolicyStatusRepository",state="SUCCESS",} 0.0
-spring_data_repository_invocations_seconds_max{exception="None",method="saveAll",repository="PolicyStatusRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="save",repository="PdpGroupRepository",state="SUCCESS",} 0.0
+spring_data_repository_invocations_seconds_max{exception="None",method="saveAll",repository="PolicyStatusRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="findByPdpGroup",repository="PolicyAuditRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="findById",repository="ToscaServiceTemplateRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="findByPdpGroup",repository="PolicyStatusRepository",state="SUCCESS",} 0.0
-spring_data_repository_invocations_seconds_max{exception="None",method="findAll",repository="PdpGroupRepository",state="SUCCESS",} 0.863253324
+spring_data_repository_invocations_seconds_max{exception="None",method="findAll",repository="PdpGroupRepository",state="SUCCESS",} 0.010393136
 spring_data_repository_invocations_seconds_max{exception="None",method="deleteById",repository="PdpGroupRepository",state="SUCCESS",} 0.0
-spring_data_repository_invocations_seconds_max{exception="None",method="findAll",repository="PolicyStatusRepository",state="SUCCESS",} 0.144251855
+spring_data_repository_invocations_seconds_max{exception="None",method="findAll",repository="PolicyStatusRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="saveAll",repository="PolicyAuditRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="findByPdpGroupAndNameAndVersion",repository="PolicyAuditRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="findById",repository="ToscaNodeTemplateRepository",state="SUCCESS",} 0.0
+spring_data_repository_invocations_seconds_max{exception="None",method="existsById",repository="PdpGroupRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="findByKeyName",repository="PdpGroupRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="save",repository="PdpSubGroupRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="save",repository="PdpRepository",state="SUCCESS",} 0.0
 spring_data_repository_invocations_seconds_max{exception="None",method="deleteAll",repository="PolicyStatusRepository",state="SUCCESS",} 0.0
-# HELP spring_data_repository_invocations_seconds  
+# HELP spring_data_repository_invocations_seconds Duration of repository invocations
 # TYPE spring_data_repository_invocations_seconds summary
-spring_data_repository_invocations_seconds_count{exception="None",method="findByKeyParentKeyNameAndKeyParentKeyVersion",repository="PolicyStatusRepository",state="SUCCESS",} 15740.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="findByKeyParentKeyNameAndKeyParentKeyVersion",repository="PolicyStatusRepository",state="SUCCESS",} 3116.970495755
-spring_data_repository_invocations_seconds_count{exception="None",method="saveAll",repository="PolicyStatusRepository",state="SUCCESS",} 113798.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="saveAll",repository="PolicyStatusRepository",state="SUCCESS",} 480.71823635
-spring_data_repository_invocations_seconds_count{exception="None",method="save",repository="PdpGroupRepository",state="SUCCESS",} 28085.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="save",repository="PdpGroupRepository",state="SUCCESS",} 9.645079055
-spring_data_repository_invocations_seconds_count{exception="None",method="findByPdpGroup",repository="PolicyAuditRepository",state="SUCCESS",} 6981.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="findByPdpGroup",repository="PolicyAuditRepository",state="SUCCESS",} 616.931466813
-spring_data_repository_invocations_seconds_count{exception="None",method="findById",repository="ToscaServiceTemplateRepository",state="SUCCESS",} 46250.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="findById",repository="ToscaServiceTemplateRepository",state="SUCCESS",} 8406.051483096
-spring_data_repository_invocations_seconds_count{exception="None",method="findByPdpGroup",repository="PolicyStatusRepository",state="SUCCESS",} 42765.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="findByPdpGroup",repository="PolicyStatusRepository",state="SUCCESS",} 10979.997264985
-spring_data_repository_invocations_seconds_count{exception="None",method="findAll",repository="PdpGroupRepository",state="SUCCESS",} 101780.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="findAll",repository="PdpGroupRepository",state="SUCCESS",} 20530.858991818
+spring_data_repository_invocations_seconds_count{exception="None",method="findByKeyParentKeyNameAndKeyParentKeyVersion",repository="PolicyStatusRepository",state="SUCCESS",} 16915.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="findByKeyParentKeyNameAndKeyParentKeyVersion",repository="PolicyStatusRepository",state="SUCCESS",} 34.05336667
+spring_data_repository_invocations_seconds_count{exception="None",method="save",repository="PdpGroupRepository",state="SUCCESS",} 33797.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="save",repository="PdpGroupRepository",state="SUCCESS",} 14.614549552
+spring_data_repository_invocations_seconds_count{exception="None",method="saveAll",repository="PolicyStatusRepository",state="SUCCESS",} 135740.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="saveAll",repository="PolicyStatusRepository",state="SUCCESS",} 60.741361443
+spring_data_repository_invocations_seconds_count{exception="None",method="findByPdpGroup",repository="PolicyAuditRepository",state="SUCCESS",} 8448.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="findByPdpGroup",repository="PolicyAuditRepository",state="SUCCESS",} 140.930950983
+spring_data_repository_invocations_seconds_count{exception="None",method="findById",repository="ToscaServiceTemplateRepository",state="SUCCESS",} 52516.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="findById",repository="ToscaServiceTemplateRepository",state="SUCCESS",} 125.813080008
+spring_data_repository_invocations_seconds_count{exception="None",method="findByPdpGroup",repository="PolicyStatusRepository",state="SUCCESS",} 50972.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="findByPdpGroup",repository="PolicyStatusRepository",state="SUCCESS",} 106.770108329
+spring_data_repository_invocations_seconds_count{exception="None",method="findAll",repository="PdpGroupRepository",state="SUCCESS",} 102439.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="findAll",repository="PdpGroupRepository",state="SUCCESS",} 1036.574172723
 spring_data_repository_invocations_seconds_count{exception="None",method="deleteById",repository="PdpGroupRepository",state="SUCCESS",} 1.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="deleteById",repository="PdpGroupRepository",state="SUCCESS",} 0.004567796
-spring_data_repository_invocations_seconds_count{exception="None",method="findAll",repository="PolicyStatusRepository",state="SUCCESS",} 32620.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="findAll",repository="PolicyStatusRepository",state="SUCCESS",} 11459.109680167
-spring_data_repository_invocations_seconds_count{exception="None",method="saveAll",repository="PolicyAuditRepository",state="SUCCESS",} 28080.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="saveAll",repository="PolicyAuditRepository",state="SUCCESS",} 45.836464781
-spring_data_repository_invocations_seconds_count{exception="None",method="findByPdpGroupAndNameAndVersion",repository="PolicyAuditRepository",state="SUCCESS",} 13960.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="findByPdpGroupAndNameAndVersion",repository="PolicyAuditRepository",state="SUCCESS",} 1765.653676534
-spring_data_repository_invocations_seconds_count{exception="None",method="findById",repository="ToscaNodeTemplateRepository",state="SUCCESS",} 21331.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="findById",repository="ToscaNodeTemplateRepository",state="SUCCESS",} 1.286926983
-spring_data_repository_invocations_seconds_count{exception="None",method="findByKeyName",repository="PdpGroupRepository",state="SUCCESS",} 13970.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="findByKeyName",repository="PdpGroupRepository",state="SUCCESS",} 4175.556697162
+spring_data_repository_invocations_seconds_sum{exception="None",method="deleteById",repository="PdpGroupRepository",state="SUCCESS",} 0.007675311
+spring_data_repository_invocations_seconds_count{exception="None",method="findAll",repository="PolicyStatusRepository",state="SUCCESS",} 33795.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="findAll",repository="PolicyStatusRepository",state="SUCCESS",} 53.729542707
+spring_data_repository_invocations_seconds_count{exception="None",method="saveAll",repository="PolicyAuditRepository",state="SUCCESS",} 33793.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="saveAll",repository="PolicyAuditRepository",state="SUCCESS",} 41.990371471
+spring_data_repository_invocations_seconds_count{exception="None",method="findByPdpGroupAndNameAndVersion",repository="PolicyAuditRepository",state="SUCCESS",} 16896.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="findByPdpGroupAndNameAndVersion",repository="PolicyAuditRepository",state="SUCCESS",} 371.016745717
+spring_data_repository_invocations_seconds_count{exception="None",method="findById",repository="ToscaNodeTemplateRepository",state="SUCCESS",} 25663.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="findById",repository="ToscaNodeTemplateRepository",state="SUCCESS",} 2.215574842
+spring_data_repository_invocations_seconds_count{exception="None",method="existsById",repository="PdpGroupRepository",state="SUCCESS",} 1.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="existsById",repository="PdpGroupRepository",state="SUCCESS",} 0.843078054
+spring_data_repository_invocations_seconds_count{exception="None",method="findByKeyName",repository="PdpGroupRepository",state="SUCCESS",} 16902.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="findByKeyName",repository="PdpGroupRepository",state="SUCCESS",} 80.237779619
 spring_data_repository_invocations_seconds_count{exception="None",method="save",repository="PdpSubGroupRepository",state="SUCCESS",} 2.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="save",repository="PdpSubGroupRepository",state="SUCCESS",} 0.864602048
-spring_data_repository_invocations_seconds_count{exception="None",method="save",repository="PdpRepository",state="SUCCESS",} 36866.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="save",repository="PdpRepository",state="SUCCESS",} 7686.38602325
-spring_data_repository_invocations_seconds_count{exception="None",method="deleteAll",repository="PolicyStatusRepository",state="SUCCESS",} 56899.0
-spring_data_repository_invocations_seconds_sum{exception="None",method="deleteAll",repository="PolicyStatusRepository",state="SUCCESS",} 882.098525295
-# HELP jvm_threads_states_threads The current number of threads having NEW state
-# TYPE jvm_threads_states_threads gauge
-jvm_threads_states_threads{state="runnable",} 9.0
-jvm_threads_states_threads{state="blocked",} 0.0
-jvm_threads_states_threads{state="waiting",} 29.0
-jvm_threads_states_threads{state="timed-waiting",} 8.0
-jvm_threads_states_threads{state="new",} 0.0
-jvm_threads_states_threads{state="terminated",} 0.0
-# HELP process_cpu_usage The "recent cpu usage" for the Java Virtual Machine process
-# TYPE process_cpu_usage gauge
-process_cpu_usage 0.006697923643670462
-# HELP tomcat_sessions_expired_sessions_total  
-# TYPE tomcat_sessions_expired_sessions_total counter
-tomcat_sessions_expired_sessions_total 158186.0
-# HELP jvm_buffer_total_capacity_bytes An estimate of the total capacity of the buffers in this pool
-# TYPE jvm_buffer_total_capacity_bytes gauge
-jvm_buffer_total_capacity_bytes{id="mapped",} 0.0
-jvm_buffer_total_capacity_bytes{id="direct",} 169210.0
-# HELP process_start_time_seconds Start time of the process since unix epoch.
-# TYPE process_start_time_seconds gauge
-process_start_time_seconds 1.649849957815E9
-# HELP hikaricp_connections_creation_seconds_max Connection creation time
-# TYPE hikaricp_connections_creation_seconds_max gauge
-hikaricp_connections_creation_seconds_max{pool="HikariPool-1",} 0.51
-# HELP hikaricp_connections_creation_seconds Connection creation time
-# TYPE hikaricp_connections_creation_seconds summary
-hikaricp_connections_creation_seconds_count{pool="HikariPool-1",} 3936.0
-hikaricp_connections_creation_seconds_sum{pool="HikariPool-1",} 942.369
-# HELP hikaricp_connections_max Max connections
-# TYPE hikaricp_connections_max gauge
-hikaricp_connections_max{pool="HikariPool-1",} 10.0
-# HELP jdbc_connections_min Minimum number of idle connections in the pool.
-# TYPE jdbc_connections_min gauge
-jdbc_connections_min{name="dataSource",} 10.0
-# HELP jvm_memory_committed_bytes The amount of memory in bytes that is committed for the Java virtual machine to use
-# TYPE jvm_memory_committed_bytes gauge
-jvm_memory_committed_bytes{area="heap",id="Tenured Gen",} 1.76160768E8
-jvm_memory_committed_bytes{area="nonheap",id="CodeHeap 'profiled nmethods'",} 4.9020928E7
-jvm_memory_committed_bytes{area="heap",id="Eden Space",} 7.0582272E7
-jvm_memory_committed_bytes{area="nonheap",id="Metaspace",} 1.1890688E8
-jvm_memory_committed_bytes{area="nonheap",id="CodeHeap 'non-nmethods'",} 2555904.0
-jvm_memory_committed_bytes{area="heap",id="Survivor Space",} 8781824.0
-jvm_memory_committed_bytes{area="nonheap",id="Compressed Class Space",} 1.5450112E7
-jvm_memory_committed_bytes{area="nonheap",id="CodeHeap 'non-profiled nmethods'",} 3.1850496E7
-# HELP jvm_threads_peak_threads The peak live thread count since the Java virtual machine started or peak was reset
-# TYPE jvm_threads_peak_threads gauge
-jvm_threads_peak_threads 51.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="save",repository="PdpSubGroupRepository",state="SUCCESS",} 0.03577736
+spring_data_repository_invocations_seconds_count{exception="None",method="save",repository="PdpRepository",state="SUCCESS",} 38194.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="save",repository="PdpRepository",state="SUCCESS",} 52.220218057
+spring_data_repository_invocations_seconds_count{exception="None",method="deleteAll",repository="PolicyStatusRepository",state="SUCCESS",} 67870.0
+spring_data_repository_invocations_seconds_sum{exception="None",method="deleteAll",repository="PolicyStatusRepository",state="SUCCESS",} 24.905966529
+# HELP system_load_average_1m The sum of the number of runnable entities queued to available processors and the number of runnable entities running on the available processors averaged over a period of time
+# TYPE system_load_average_1m gauge
+system_load_average_1m 0.34375
+# HELP spring_security_filterchains_requestcache_before_total
+# TYPE spring_security_filterchains_requestcache_before_total counter
+spring_security_filterchains_requestcache_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
+# HELP tomcat_sessions_alive_max_seconds
+# TYPE tomcat_sessions_alive_max_seconds gauge
+tomcat_sessions_alive_max_seconds 1853.0
+# HELP jvm_memory_max_bytes The maximum amount of memory in bytes that can be used for memory management
+# TYPE jvm_memory_max_bytes gauge
+jvm_memory_max_bytes{area="nonheap",id="CodeHeap 'profiled nmethods'",} 1.22023936E8
+jvm_memory_max_bytes{area="heap",id="G1 Survivor Space",} -1.0
+jvm_memory_max_bytes{area="heap",id="G1 Old Gen",} 8.434745344E9
+jvm_memory_max_bytes{area="nonheap",id="Metaspace",} -1.0
+jvm_memory_max_bytes{area="nonheap",id="CodeHeap 'non-nmethods'",} 7606272.0
+jvm_memory_max_bytes{area="heap",id="G1 Eden Space",} -1.0
+jvm_memory_max_bytes{area="nonheap",id="Compressed Class Space",} 1.073741824E9
+jvm_memory_max_bytes{area="nonheap",id="CodeHeap 'non-profiled nmethods'",} 1.22028032E8
+# HELP hikaricp_connections_acquire_seconds Connection acquire time
+# TYPE hikaricp_connections_acquire_seconds summary
+hikaricp_connections_acquire_seconds_count{pool="HikariPool-1",} 321133.0
+hikaricp_connections_acquire_seconds_sum{pool="HikariPool-1",} 68.182780148
+# HELP hikaricp_connections_acquire_seconds_max Connection acquire time
+# TYPE hikaricp_connections_acquire_seconds_max gauge
+hikaricp_connections_acquire_seconds_max{pool="HikariPool-1",} 0.001688513
 # HELP hikaricp_connections_idle Idle connections
 # TYPE hikaricp_connections_idle gauge
 hikaricp_connections_idle{pool="HikariPool-1",} 10.0
-# HELP hikaricp_connections Total connections
-# TYPE hikaricp_connections gauge
-hikaricp_connections{pool="HikariPool-1",} 10.0
-# HELP http_server_requests_seconds  
-# TYPE http_server_requests_seconds summary
-http_server_requests_seconds_count{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/audit/{pdpGroupName}/{policyName}/{policyVersion}",} 13960.0
-http_server_requests_seconds_sum{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/audit/{pdpGroupName}/{policyName}/{policyVersion}",} 4066.52698026
-http_server_requests_seconds_count{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/metrics",} 22470.0
-http_server_requests_seconds_sum{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/metrics",} 3622.506076129
-http_server_requests_seconds_count{exception="None",method="POST",outcome="SUCCESS",status="202",uri="/policy/pap/v1/pdps/deployments/batch",} 13961.0
-http_server_requests_seconds_sum{exception="None",method="POST",outcome="SUCCESS",status="202",uri="/policy/pap/v1/pdps/deployments/batch",} 27890.47103474
-http_server_requests_seconds_count{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/status",} 14404.0
-http_server_requests_seconds_sum{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/status",} 7821.856496806
-http_server_requests_seconds_count{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/status/{pdpGroupName}/{policyName}/{policyVersion}",} 15738.0
-http_server_requests_seconds_sum{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/status/{pdpGroupName}/{policyName}/{policyVersion}",} 5848.655389921
-http_server_requests_seconds_count{exception="None",method="DELETE",outcome="SUCCESS",status="202",uri="/policy/pap/v1/pdps/policies/{name}",} 7059.0
-http_server_requests_seconds_sum{exception="None",method="DELETE",outcome="SUCCESS",status="202",uri="/policy/pap/v1/pdps/policies/{name}",} 15554.208182423
-http_server_requests_seconds_count{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/audit/{pdpGroupName}",} 6981.0
-http_server_requests_seconds_sum{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/audit/{pdpGroupName}",} 1756.291465092
-http_server_requests_seconds_count{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/deployed",} 6979.0
-http_server_requests_seconds_sum{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/deployed",} 1934.785157616
-http_server_requests_seconds_count{exception="None",method="PUT",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps/groups/{name}",} 4.0
-http_server_requests_seconds_sum{exception="None",method="PUT",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps/groups/{name}",} 7.281567744
-http_server_requests_seconds_count{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps",} 31395.0
-http_server_requests_seconds_sum{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps",} 13046.055299896
-http_server_requests_seconds_count{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/healthcheck",} 11237.0
-http_server_requests_seconds_sum{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/healthcheck",} 6979.030310367
-http_server_requests_seconds_count{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/components/healthcheck",} 6979.0
-http_server_requests_seconds_sum{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/components/healthcheck",} 3741.773622509
-http_server_requests_seconds_count{exception="None",method="GET",outcome="CLIENT_ERROR",status="404",uri="/policy/pap/v1/policies/status/{pdpGroupName}/{policyName}/{policyVersion}",} 2.0
-http_server_requests_seconds_sum{exception="None",method="GET",outcome="CLIENT_ERROR",status="404",uri="/policy/pap/v1/policies/status/{pdpGroupName}/{policyName}/{policyVersion}",} 1.318371311
-http_server_requests_seconds_count{exception="None",method="DELETE",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps/groups/{name}",} 1.0
-http_server_requests_seconds_sum{exception="None",method="DELETE",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps/groups/{name}",} 1.026191347
-http_server_requests_seconds_count{exception="None",method="POST",outcome="SUCCESS",status="202",uri="/policy/pap/v1/pdps/policies",} 7077.0
-http_server_requests_seconds_sum{exception="None",method="POST",outcome="SUCCESS",status="202",uri="/policy/pap/v1/pdps/policies",} 14603.589203056
-http_server_requests_seconds_count{exception="None",method="POST",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps/groups/batch",} 2.0
-http_server_requests_seconds_sum{exception="None",method="POST",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps/groups/batch",} 1.877099877
-# HELP http_server_requests_seconds_max  
-# TYPE http_server_requests_seconds_max gauge
-http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/audit/{pdpGroupName}/{policyName}/{policyVersion}",} 0.0
-http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/metrics",} 0.147881793
-http_server_requests_seconds_max{exception="None",method="POST",outcome="SUCCESS",status="202",uri="/policy/pap/v1/pdps/deployments/batch",} 0.0
-http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/status",} 0.0
-http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/status/{pdpGroupName}/{policyName}/{policyVersion}",} 0.0
-http_server_requests_seconds_max{exception="None",method="DELETE",outcome="SUCCESS",status="202",uri="/policy/pap/v1/pdps/policies/{name}",} 0.0
-http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/audit/{pdpGroupName}",} 0.0
-http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/policies/deployed",} 0.0
-http_server_requests_seconds_max{exception="None",method="PUT",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps/groups/{name}",} 0.0
-http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps",} 0.227488581
-http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/healthcheck",} 0.272733892
-http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/policy/pap/v1/components/healthcheck",} 0.0
-http_server_requests_seconds_max{exception="None",method="GET",outcome="CLIENT_ERROR",status="404",uri="/policy/pap/v1/policies/status/{pdpGroupName}/{policyName}/{policyVersion}",} 0.0
-http_server_requests_seconds_max{exception="None",method="DELETE",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps/groups/{name}",} 0.0
-http_server_requests_seconds_max{exception="None",method="POST",outcome="SUCCESS",status="202",uri="/policy/pap/v1/pdps/policies",} 0.0
-http_server_requests_seconds_max{exception="None",method="POST",outcome="SUCCESS",status="200",uri="/policy/pap/v1/pdps/groups/batch",} 0.0
-# HELP jvm_buffer_count_buffers An estimate of the number of buffers in the pool
-# TYPE jvm_buffer_count_buffers gauge
-jvm_buffer_count_buffers{id="mapped",} 0.0
-jvm_buffer_count_buffers{id="direct",} 10.0
+# HELP jvm_gc_pause_seconds Time spent in GC pause
+# TYPE jvm_gc_pause_seconds summary
+jvm_gc_pause_seconds_count{action="end of minor GC",cause="Metadata GC Threshold",gc="G1 Young Generation",} 1.0
+jvm_gc_pause_seconds_sum{action="end of minor GC",cause="Metadata GC Threshold",gc="G1 Young Generation",} 0.03
+jvm_gc_pause_seconds_count{action="end of minor GC",cause="GCLocker Initiated GC",gc="G1 Young Generation",} 5.0
+jvm_gc_pause_seconds_sum{action="end of minor GC",cause="GCLocker Initiated GC",gc="G1 Young Generation",} 0.032
+jvm_gc_pause_seconds_count{action="end of minor GC",cause="G1 Evacuation Pause",gc="G1 Young Generation",} 29819.0
+jvm_gc_pause_seconds_sum{action="end of minor GC",cause="G1 Evacuation Pause",gc="G1 Young Generation",} 205.153
+# HELP jvm_gc_pause_seconds_max Time spent in GC pause
+# TYPE jvm_gc_pause_seconds_max gauge
+jvm_gc_pause_seconds_max{action="end of minor GC",cause="Metadata GC Threshold",gc="G1 Young Generation",} 0.0
+jvm_gc_pause_seconds_max{action="end of minor GC",cause="GCLocker Initiated GC",gc="G1 Young Generation",} 0.0
+jvm_gc_pause_seconds_max{action="end of minor GC",cause="G1 Evacuation Pause",gc="G1 Young Generation",} 0.0
+# HELP spring_security_authentications_seconds_max
+# TYPE spring_security_authentications_seconds_max gauge
+spring_security_authentications_seconds_max{authentication_failure_type="n/a",authentication_method="ProviderManager",authentication_request_type="UsernamePasswordAuthenticationToken",authentication_result_type="UsernamePasswordAuthenticationToken",error="none",} 0.269684484
+# HELP spring_security_authentications_seconds
+# TYPE spring_security_authentications_seconds summary
+spring_security_authentications_seconds_count{authentication_failure_type="n/a",authentication_method="ProviderManager",authentication_request_type="UsernamePasswordAuthenticationToken",authentication_result_type="UsernamePasswordAuthenticationToken",error="none",} 168993.0
+spring_security_authentications_seconds_sum{authentication_failure_type="n/a",authentication_method="ProviderManager",authentication_request_type="UsernamePasswordAuthenticationToken",authentication_result_type="UsernamePasswordAuthenticationToken",error="none",} 38517.298249707
+# HELP tomcat_sessions_rejected_sessions_total
+# TYPE tomcat_sessions_rejected_sessions_total counter
+tomcat_sessions_rejected_sessions_total 0.0
+# HELP jvm_classes_unloaded_classes_total The total number of classes unloaded since the Java virtual machine has started execution
+# TYPE jvm_classes_unloaded_classes_total counter
+jvm_classes_unloaded_classes_total 268.0
+# HELP spring_security_http_secured_requests_seconds
+# TYPE spring_security_http_secured_requests_seconds summary
+spring_security_http_secured_requests_seconds_count{error="none",} 168992.0
+spring_security_http_secured_requests_seconds_sum{error="none",} 32721.168866206
+# HELP spring_security_http_secured_requests_seconds_max
+# TYPE spring_security_http_secured_requests_seconds_max gauge
+spring_security_http_secured_requests_seconds_max{error="none",} 0.0
+# HELP spring_security_filterchains_context_async_before_total
+# TYPE spring_security_filterchains_context_async_before_total counter
+spring_security_filterchains_context_async_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
+# HELP hikaricp_connections_max Max connections
+# TYPE hikaricp_connections_max gauge
+hikaricp_connections_max{pool="HikariPool-1",} 10.0
+# HELP spring_security_http_secured_requests_active_seconds
+# TYPE spring_security_http_secured_requests_active_seconds summary
+spring_security_http_secured_requests_active_seconds_active_count 1.0
+spring_security_http_secured_requests_active_seconds_duration_sum 0.011941797
+# HELP spring_security_http_secured_requests_active_seconds_max
+# TYPE spring_security_http_secured_requests_active_seconds_max gauge
+spring_security_http_secured_requests_active_seconds_max 0.011942844
+# HELP spring_security_filterchains_authentication_basic_after_total
+# TYPE spring_security_filterchains_authentication_basic_after_total counter
+spring_security_filterchains_authentication_basic_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168998.0
+# HELP process_cpu_usage The "recent cpu usage" for the Java Virtual Machine process
+# TYPE process_cpu_usage gauge
+process_cpu_usage 3.61387926826283E-4
+# HELP executor_completed_tasks_total The approximate total number of tasks that have completed execution
+# TYPE executor_completed_tasks_total counter
+executor_completed_tasks_total{name="applicationTaskExecutor",} 0.0
+# HELP jvm_threads_started_threads_total The total number of application threads started in the JVM
+# TYPE jvm_threads_started_threads_total counter
+jvm_threads_started_threads_total 4650.0
+# HELP process_uptime_seconds The uptime of the Java virtual machine
+# TYPE process_uptime_seconds gauge
+process_uptime_seconds 380261.777
+# HELP pap_policy_deployments_seconds Timer for HTTP request to deploy/undeploy a policy
+# TYPE pap_policy_deployments_seconds summary
+pap_policy_deployments_seconds_count{operation="deploy",status="FAILURE",} 0.0
+pap_policy_deployments_seconds_sum{operation="deploy",status="FAILURE",} 0.0
+pap_policy_deployments_seconds_count{operation="undeploy",status="SUCCESS",} 8448.0
+pap_policy_deployments_seconds_sum{operation="undeploy",status="SUCCESS",} 7322.301986411
+pap_policy_deployments_seconds_count{operation="deploy",status="SUCCESS",} 25345.0
+pap_policy_deployments_seconds_sum{operation="deploy",status="SUCCESS",} 21200.125523501
+pap_policy_deployments_seconds_count{operation="undeploy",status="FAILURE",} 0.0
+pap_policy_deployments_seconds_sum{operation="undeploy",status="FAILURE",} 0.0
+# HELP pap_policy_deployments_seconds_max Timer for HTTP request to deploy/undeploy a policy
+# TYPE pap_policy_deployments_seconds_max gauge
+pap_policy_deployments_seconds_max{operation="deploy",status="FAILURE",} 0.0
+pap_policy_deployments_seconds_max{operation="undeploy",status="SUCCESS",} 0.0
+pap_policy_deployments_seconds_max{operation="deploy",status="SUCCESS",} 0.0
+pap_policy_deployments_seconds_max{operation="undeploy",status="FAILURE",} 0.0
+# HELP jvm_gc_overhead_percent An approximation of the percent of CPU time used by GC activities over the last lookback period or since monitoring began, whichever is shorter, in the range [0..1]
+# TYPE jvm_gc_overhead_percent gauge
+jvm_gc_overhead_percent 0.0
+# HELP jvm_buffer_memory_used_bytes An estimate of the memory that the Java virtual machine is using for this buffer pool
+# TYPE jvm_buffer_memory_used_bytes gauge
+jvm_buffer_memory_used_bytes{id="mapped - 'non-volatile memory'",} 0.0
+jvm_buffer_memory_used_bytes{id="mapped",} 0.0
+jvm_buffer_memory_used_bytes{id="direct",} 1544596.0
+# HELP spring_security_filterchains_header_after_total
+# TYPE spring_security_filterchains_header_after_total counter
+spring_security_filterchains_header_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168998.0
+# HELP jvm_gc_max_data_size_bytes Max size of long-lived heap memory pool
+# TYPE jvm_gc_max_data_size_bytes gauge
+jvm_gc_max_data_size_bytes 8.434745344E9
+# HELP spring_security_filterchains_authorization_before_total
+# TYPE spring_security_filterchains_authorization_before_total counter
+spring_security_filterchains_authorization_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
+# HELP jvm_compilation_time_ms_total The approximate accumulated elapsed time spent in compilation
+# TYPE jvm_compilation_time_ms_total counter
+jvm_compilation_time_ms_total{compiler="HotSpot 64-Bit Tiered Compilers",} 425964.0
+# HELP application_started_time_seconds Time taken to start the application
+# TYPE application_started_time_seconds gauge
+application_started_time_seconds{main_application_class="org.onap.policy.pap.main.PolicyPapApplication",} 32.135
+# HELP jdbc_connections_min Minimum number of idle connections in the pool.
+# TYPE jdbc_connections_min gauge
+jdbc_connections_min{name="dataSource",} 10.0
+# HELP spring_security_filterchains_context_servlet_before_total
+# TYPE spring_security_filterchains_context_servlet_before_total counter
+spring_security_filterchains_context_servlet_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
 # HELP hikaricp_connections_pending Pending threads
 # TYPE hikaricp_connections_pending gauge
 hikaricp_connections_pending{pool="HikariPool-1",} 0.0
-# HELP system_load_average_1m The sum of the number of runnable entities queued to available processors and the number of runnable entities running on the available processors averaged over a period of time
-# TYPE system_load_average_1m gauge
-system_load_average_1m 0.6
-# HELP jvm_memory_used_bytes The amount of used memory
-# TYPE jvm_memory_used_bytes gauge
-jvm_memory_used_bytes{area="heap",id="Tenured Gen",} 6.7084064E7
-jvm_memory_used_bytes{area="nonheap",id="CodeHeap 'profiled nmethods'",} 4.110464E7
-jvm_memory_used_bytes{area="heap",id="Eden Space",} 3.329572E7
-jvm_memory_used_bytes{area="nonheap",id="Metaspace",} 1.12499384E8
-jvm_memory_used_bytes{area="nonheap",id="CodeHeap 'non-nmethods'",} 1394432.0
-jvm_memory_used_bytes{area="heap",id="Survivor Space",} 463856.0
-jvm_memory_used_bytes{area="nonheap",id="Compressed Class Space",} 1.3096368E7
-jvm_memory_used_bytes{area="nonheap",id="CodeHeap 'non-profiled nmethods'",} 3.1773568E7
-# HELP tomcat_sessions_rejected_sessions_total  
-# TYPE tomcat_sessions_rejected_sessions_total counter
-tomcat_sessions_rejected_sessions_total 0.0
-# HELP jvm_gc_live_data_size_bytes Size of long-lived heap memory pool after reclamation
-# TYPE jvm_gc_live_data_size_bytes gauge
-jvm_gc_live_data_size_bytes 5.0955016E7
-# HELP jvm_gc_memory_promoted_bytes_total Count of positive increases in the size of the old generation memory pool before GC to after GC
-# TYPE jvm_gc_memory_promoted_bytes_total counter
-jvm_gc_memory_promoted_bytes_total 1.692072808E9
-# HELP tomcat_sessions_active_max_sessions  
-# TYPE tomcat_sessions_active_max_sessions gauge
-tomcat_sessions_active_max_sessions 1101.0
-# HELP jdbc_connections_active Current number of active connections that have been allocated from the data source.
-# TYPE jdbc_connections_active gauge
-jdbc_connections_active{name="dataSource",} 0.0
-# HELP jdbc_connections_max Maximum number of active connections that can be allocated at the same time.
-# TYPE jdbc_connections_max gauge
-jdbc_connections_max{name="dataSource",} 10.0
-# HELP jvm_memory_max_bytes The maximum amount of memory in bytes that can be used for memory management
-# TYPE jvm_memory_max_bytes gauge
-jvm_memory_max_bytes{area="heap",id="Tenured Gen",} 2.803236864E9
-jvm_memory_max_bytes{area="nonheap",id="CodeHeap 'profiled nmethods'",} 1.22912768E8
-jvm_memory_max_bytes{area="heap",id="Eden Space",} 1.12132096E9
-jvm_memory_max_bytes{area="nonheap",id="Metaspace",} -1.0
-jvm_memory_max_bytes{area="nonheap",id="CodeHeap 'non-nmethods'",} 5828608.0
-jvm_memory_max_bytes{area="heap",id="Survivor Space",} 1.40115968E8
-jvm_memory_max_bytes{area="nonheap",id="Compressed Class Space",} 1.073741824E9
-jvm_memory_max_bytes{area="nonheap",id="CodeHeap 'non-profiled nmethods'",} 1.22916864E8
-# HELP jvm_threads_daemon_threads The current number of live daemon threads
-# TYPE jvm_threads_daemon_threads gauge
-jvm_threads_daemon_threads 34.0
-# HELP process_files_open_files The open file descriptor count
-# TYPE process_files_open_files gauge
-process_files_open_files 36.0
-# HELP system_cpu_count The number of processors available to the Java virtual machine
-# TYPE system_cpu_count gauge
-system_cpu_count 1.0
-# HELP jvm_gc_pause_seconds Time spent in GC pause
-# TYPE jvm_gc_pause_seconds summary
-jvm_gc_pause_seconds_count{action="end of major GC",cause="Metadata GC Threshold",} 2.0
-jvm_gc_pause_seconds_sum{action="end of major GC",cause="Metadata GC Threshold",} 0.391
-jvm_gc_pause_seconds_count{action="end of major GC",cause="Allocation Failure",} 13.0
-jvm_gc_pause_seconds_sum{action="end of major GC",cause="Allocation Failure",} 5.98
-jvm_gc_pause_seconds_count{action="end of minor GC",cause="Allocation Failure",} 56047.0
-jvm_gc_pause_seconds_sum{action="end of minor GC",cause="Allocation Failure",} 549.532
-jvm_gc_pause_seconds_count{action="end of minor GC",cause="GCLocker Initiated GC",} 9.0
-jvm_gc_pause_seconds_sum{action="end of minor GC",cause="GCLocker Initiated GC",} 0.081
-# HELP jvm_gc_pause_seconds_max Time spent in GC pause
-# TYPE jvm_gc_pause_seconds_max gauge
-jvm_gc_pause_seconds_max{action="end of major GC",cause="Metadata GC Threshold",} 0.0
-jvm_gc_pause_seconds_max{action="end of major GC",cause="Allocation Failure",} 0.0
-jvm_gc_pause_seconds_max{action="end of minor GC",cause="Allocation Failure",} 0.0
-jvm_gc_pause_seconds_max{action="end of minor GC",cause="GCLocker Initiated GC",} 0.0
-# HELP hikaricp_connections_min Min connections
-# TYPE hikaricp_connections_min gauge
-hikaricp_connections_min{pool="HikariPool-1",} 10.0
-# HELP process_files_max_files The maximum file descriptor count
-# TYPE process_files_max_files gauge
-process_files_max_files 1048576.0
-# HELP hikaricp_connections_active Active connections
-# TYPE hikaricp_connections_active gauge
-hikaricp_connections_active{pool="HikariPool-1",} 0.0
-# HELP jvm_threads_live_threads The current number of live threads including both daemon and non-daemon threads
-# TYPE jvm_threads_live_threads gauge
-jvm_threads_live_threads 46.0
-# HELP process_uptime_seconds The uptime of the Java virtual machine
-# TYPE process_uptime_seconds gauge
-process_uptime_seconds 510671.853
-# HELP hikaricp_connections_usage_seconds Connection usage time
-# TYPE hikaricp_connections_usage_seconds summary
-hikaricp_connections_usage_seconds_count{pool="HikariPool-1",} 298222.0
-hikaricp_connections_usage_seconds_sum{pool="HikariPool-1",} 125489.766
-# HELP hikaricp_connections_usage_seconds_max Connection usage time
-# TYPE hikaricp_connections_usage_seconds_max gauge
-hikaricp_connections_usage_seconds_max{pool="HikariPool-1",} 0.878
-# HELP pap_policy_deployments_total  
-# TYPE pap_policy_deployments_total counter
-pap_policy_deployments_total{operation="deploy",status="FAILURE",} 0.0
-pap_policy_deployments_total{operation="undeploy",status="SUCCESS",} 13971.0
-pap_policy_deployments_total{operation="deploy",status="SUCCESS",} 14028.0
-pap_policy_deployments_total{operation="undeploy",status="FAILURE",} 0.0
-# HELP jvm_buffer_memory_used_bytes An estimate of the memory that the Java virtual machine is using for this buffer pool
-# TYPE jvm_buffer_memory_used_bytes gauge
-jvm_buffer_memory_used_bytes{id="mapped",} 0.0
-jvm_buffer_memory_used_bytes{id="direct",} 169210.0
-# HELP hikaricp_connections_timeout_total Connection timeout total count
-# TYPE hikaricp_connections_timeout_total counter
-hikaricp_connections_timeout_total{pool="HikariPool-1",} 0.0
-# HELP jvm_classes_loaded_classes The number of classes that are currently loaded in the Java virtual machine
-# TYPE jvm_classes_loaded_classes gauge
-jvm_classes_loaded_classes 18727.0
+# HELP spring_security_filterchains_logout_before_total
+# TYPE spring_security_filterchains_logout_before_total counter
+spring_security_filterchains_logout_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
+# HELP executor_pool_size_threads The current number of threads in the pool
+# TYPE executor_pool_size_threads gauge
+executor_pool_size_threads{name="applicationTaskExecutor",} 0.0
+# HELP spring_security_filterchains_context_async_after_total
+# TYPE spring_security_filterchains_context_async_after_total counter
+spring_security_filterchains_context_async_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168998.0
+# HELP system_cpu_usage The "recent cpu usage" of the system the application is running in
+# TYPE system_cpu_usage gauge
+system_cpu_usage 0.02665967384267763
+# HELP spring_security_authorizations_active_seconds_max
+# TYPE spring_security_authorizations_active_seconds_max gauge
+spring_security_authorizations_active_seconds_max{spring_security_authentication_type="n/a",spring_security_authorization_decision="unknown",spring_security_object="request",} 0.0
+# HELP spring_security_authorizations_active_seconds
+# TYPE spring_security_authorizations_active_seconds summary
+spring_security_authorizations_active_seconds_active_count{spring_security_authentication_type="n/a",spring_security_authorization_decision="unknown",spring_security_object="request",} 0.0
+spring_security_authorizations_active_seconds_duration_sum{spring_security_authentication_type="n/a",spring_security_authorization_decision="unknown",spring_security_object="request",} 0.0
 # HELP jdbc_connections_idle Number of established but idle connections.
 # TYPE jdbc_connections_idle gauge
 jdbc_connections_idle{name="dataSource",} 10.0
-# HELP tomcat_sessions_active_current_sessions  
-# TYPE tomcat_sessions_active_current_sessions gauge
-tomcat_sessions_active_current_sessions 60.0
-# HELP jvm_gc_max_data_size_bytes Max size of long-lived heap memory pool
-# TYPE jvm_gc_max_data_size_bytes gauge
-jvm_gc_max_data_size_bytes 2.803236864E9
+# HELP jdbc_connections_max Maximum number of active connections that can be allocated at the same time.
+# TYPE jdbc_connections_max gauge
+jdbc_connections_max{name="dataSource",} 10.0
+# HELP tomcat_sessions_active_max_sessions
+# TYPE tomcat_sessions_active_max_sessions gauge
+tomcat_sessions_active_max_sessions 2.0
+# HELP spring_security_filterchains_access_exceptions_after_total
+# TYPE spring_security_filterchains_access_exceptions_after_total counter
+spring_security_filterchains_access_exceptions_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168998.0
+# HELP process_files_open_files The open file descriptor count
+# TYPE process_files_open_files gauge
+process_files_open_files 30.0
+# HELP spring_security_filterchains_authentication_anonymous_after_total
+# TYPE spring_security_filterchains_authentication_anonymous_after_total counter
+spring_security_filterchains_authentication_anonymous_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168998.0
+# HELP executor_active_threads The approximate number of threads that are actively executing tasks
+# TYPE executor_active_threads gauge
+executor_active_threads{name="applicationTaskExecutor",} 0.0
+# HELP jvm_threads_states_threads The current number of threads
+# TYPE jvm_threads_states_threads gauge
+jvm_threads_states_threads{state="runnable",} 9.0
+jvm_threads_states_threads{state="blocked",} 0.0
+jvm_threads_states_threads{state="waiting",} 21.0
+jvm_threads_states_threads{state="timed-waiting",} 8.0
+jvm_threads_states_threads{state="new",} 0.0
+jvm_threads_states_threads{state="terminated",} 0.0
+# HELP logback_events_total Number of log events that were enabled by the effective log level
+# TYPE logback_events_total counter
+logback_events_total{level="warn",} 0.0
+logback_events_total{level="debug",} 0.0
+logback_events_total{level="error",} 76.0
+logback_events_total{level="trace",} 0.0
+logback_events_total{level="info",} 1846777.0
+# HELP executor_pool_max_threads The maximum allowed number of threads in the pool
+# TYPE executor_pool_max_threads gauge
+executor_pool_max_threads{name="applicationTaskExecutor",} 2.147483647E9
+# HELP spring_security_filterchains_requestcache_after_total
+# TYPE spring_security_filterchains_requestcache_after_total counter
+spring_security_filterchains_requestcache_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168998.0
+# HELP spring_security_filterchains_context_servlet_after_total
+# TYPE spring_security_filterchains_context_servlet_after_total counter
+spring_security_filterchains_context_servlet_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168998.0
+# HELP jvm_buffer_count_buffers An estimate of the number of buffers in the pool
+# TYPE jvm_buffer_count_buffers gauge
+jvm_buffer_count_buffers{id="mapped - 'non-volatile memory'",} 0.0
+jvm_buffer_count_buffers{id="mapped",} 0.0
+jvm_buffer_count_buffers{id="direct",} 16.0
+# HELP jvm_memory_usage_after_gc_percent The percentage of long-lived heap pool used after the last GC event, in the range [0..1]
+# TYPE jvm_memory_usage_after_gc_percent gauge
+jvm_memory_usage_after_gc_percent{area="heap",pool="long-lived",} 0.02585237978229115
+# HELP application_ready_time_seconds Time taken for the application to be ready to service requests
+# TYPE application_ready_time_seconds gauge
+application_ready_time_seconds{main_application_class="org.onap.policy.pap.main.PolicyPapApplication",} 32.272
+# HELP http_server_requests_active_seconds_max
+# TYPE http_server_requests_active_seconds_max gauge
+http_server_requests_active_seconds_max{exception="none",method="GET",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.293631789
+http_server_requests_active_seconds_max{exception="none",method="PUT",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.0
+http_server_requests_active_seconds_max{exception="none",method="DELETE",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.0
+http_server_requests_active_seconds_max{exception="none",method="POST",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.0
+# HELP http_server_requests_active_seconds
+# TYPE http_server_requests_active_seconds summary
+http_server_requests_active_seconds_active_count{exception="none",method="GET",outcome="SUCCESS",status="200",uri="UNKNOWN",} 1.0
+http_server_requests_active_seconds_duration_sum{exception="none",method="GET",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.293630483
+http_server_requests_active_seconds_active_count{exception="none",method="PUT",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.0
+http_server_requests_active_seconds_duration_sum{exception="none",method="PUT",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.0
+http_server_requests_active_seconds_active_count{exception="none",method="DELETE",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.0
+http_server_requests_active_seconds_duration_sum{exception="none",method="DELETE",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.0
+http_server_requests_active_seconds_active_count{exception="none",method="POST",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.0
+http_server_requests_active_seconds_duration_sum{exception="none",method="POST",outcome="SUCCESS",status="200",uri="UNKNOWN",} 0.0
+# HELP spring_security_filterchains_seconds_max
+# TYPE spring_security_filterchains_seconds_max gauge
+spring_security_filterchains_seconds_max{error="none",security_security_reached_filter_section="before",spring_security_filterchain_position="11",spring_security_filterchain_size="11",spring_security_reached_filter_name="AuthorizationFilter",} 0.272513877
+spring_security_filterchains_seconds_max{error="none",security_security_reached_filter_section="after",spring_security_filterchain_position="11",spring_security_filterchain_size="11",spring_security_reached_filter_name="DisableEncodeUrlFilter",} 0.001009437
+# HELP spring_security_filterchains_seconds
+# TYPE spring_security_filterchains_seconds summary
+spring_security_filterchains_seconds_count{error="none",security_security_reached_filter_section="before",spring_security_filterchain_position="11",spring_security_filterchain_size="11",spring_security_reached_filter_name="AuthorizationFilter",} 168999.0
+spring_security_filterchains_seconds_sum{error="none",security_security_reached_filter_section="before",spring_security_filterchain_position="11",spring_security_filterchain_size="11",spring_security_reached_filter_name="AuthorizationFilter",} 38579.546360899
+spring_security_filterchains_seconds_count{error="none",security_security_reached_filter_section="after",spring_security_filterchain_position="11",spring_security_filterchain_size="11",spring_security_reached_filter_name="DisableEncodeUrlFilter",} 168998.0
+spring_security_filterchains_seconds_sum{error="none",security_security_reached_filter_section="after",spring_security_filterchain_position="11",spring_security_filterchain_size="11",spring_security_reached_filter_name="DisableEncodeUrlFilter",} 17.300671502
+# HELP spring_security_filterchains_authorization_after_total
+# TYPE spring_security_filterchains_authorization_after_total counter
+spring_security_filterchains_authorization_after_total{security_security_reached_filter_section="after",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168992.0
+# HELP spring_security_filterchains_access_exceptions_before_total
+# TYPE spring_security_filterchains_access_exceptions_before_total counter
+spring_security_filterchains_access_exceptions_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
+# HELP spring_security_authorizations_seconds
+# TYPE spring_security_authorizations_seconds summary
+spring_security_authorizations_seconds_count{error="AccessDeniedException",spring_security_authentication_type="AnonymousAuthenticationToken",spring_security_authorization_decision="false",spring_security_object="request",} 6.0
+spring_security_authorizations_seconds_sum{error="AccessDeniedException",spring_security_authentication_type="AnonymousAuthenticationToken",spring_security_authorization_decision="false",spring_security_object="request",} 0.020998153
+spring_security_authorizations_seconds_count{error="none",spring_security_authentication_type="UsernamePasswordAuthenticationToken",spring_security_authorization_decision="true",spring_security_object="request",} 168993.0
+spring_security_authorizations_seconds_sum{error="none",spring_security_authentication_type="UsernamePasswordAuthenticationToken",spring_security_authorization_decision="true",spring_security_object="request",} 4.092135265
+# HELP spring_security_authorizations_seconds_max
+# TYPE spring_security_authorizations_seconds_max gauge
+spring_security_authorizations_seconds_max{error="AccessDeniedException",spring_security_authentication_type="AnonymousAuthenticationToken",spring_security_authorization_decision="false",spring_security_object="request",} 0.012322361
+spring_security_authorizations_seconds_max{error="none",spring_security_authentication_type="UsernamePasswordAuthenticationToken",spring_security_authorization_decision="true",spring_security_object="request",} 2.03312E-4
+# HELP spring_security_filterchains_session_url_encoding_before_total
+# TYPE spring_security_filterchains_session_url_encoding_before_total counter
+spring_security_filterchains_session_url_encoding_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
+# HELP spring_security_filterchains_header_before_total
+# TYPE spring_security_filterchains_header_before_total counter
+spring_security_filterchains_header_before_total{security_security_reached_filter_section="before",spring_security_filterchain_position="0",spring_security_filterchain_size="0",spring_security_reached_filter_name="none",} 168999.0
+# HELP executor_queued_tasks The approximate number of tasks that are queued for execution
+# TYPE executor_queued_tasks gauge
+executor_queued_tasks{name="applicationTaskExecutor",} 0.0
+
