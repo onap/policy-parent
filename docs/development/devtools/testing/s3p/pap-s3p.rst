@@ -11,12 +11,12 @@ Policy PAP component
 ~~~~~~~~~~~~~~~~~~~~
 
 Both the Performance and the Stability tests were executed by performing requests
-against Policy components installed as part of a full ONAP OOM deployment in Nordix lab.
+against Policy components installed as part of a full ONAP OOM deployment or a docker deployment in Nordix lab.
 
 Setup Details
 +++++++++++++
 
-- Policy-PAP along with all policy components deployed as part of a full ONAP OOM deployment.
+- Policy-PAP along with all policy components deployed as part of a Policy docker deployment.
 - A second instance of APEX-PDP is spun up in the setup. Update the configuration file (OnapPfConfig.json) such that the PDP can register to the new group created by PAP in the tests.
 - Both tests were run via jMeter.
 
@@ -99,7 +99,7 @@ The test was run in the background via "nohup", to prevent it from being interru
 
 .. code-block:: bash
 
-    nohup apache-jmeter-5.5/bin/jmeter -n -t stability.jmx -l stabilityTestResults.jtl &
+    nohup apache-jmeter-5.6.2/bin/jmeter -n -t stability.jmx -l stabilityTestResults.jtl &
 
 Test Results
 ------------
@@ -114,13 +114,9 @@ Stability test plan was triggered for 72 hours. There were no failures during th
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-    102290                    100 %             0.15 %              782 ms
+    168997                    100 %             0.00 %              425 ms
 =======================  =================  ==================  ==================================
 
-.. Note::
-
-   There were 0.15% failures during the 72 hours test, due to the timing between the update of the metric "undeploySuccessCount" and the Undeploy itself.
-   We suggest for the next test to increase the timeout timing up to 130s between "Undeploy policy in defaultGroup" and "PAP Metrics after deployments"
 
 **JMeter Screenshot**
 
@@ -128,19 +124,23 @@ Stability test plan was triggered for 72 hours. There were no failures during th
 
 **Memory and CPU usage**
 
-The memory and CPU usage can be monitored by running "top" command in the PAP pod.
-A snapshot is taken before and after test execution to monitor the changes in resource utilization.
+The memory and CPU usage can be monitored by running "docker stats" command in the PAP container.
+A snapshot is taken before, during and after test execution to monitor the changes in resource utilization.
 Prometheus metrics is also collected before and after the test execution.
 
 Memory and CPU usage before test execution:
 
-.. image:: pap-s3p-results/pap_top_before_72h.png
+.. image:: pap-s3p-results/pap_stats_before_72h.png
 
 :download:`Prometheus metrics before 72h test  <pap-s3p-results/pap_metrics_before_72h.txt>`
 
+Memory and CPU usage during test execution:
+
+.. image:: pap-s3p-results/pap_stats_during_72h.png
+
 Memory and CPU usage after test execution:
 
-.. image:: pap-s3p-results/pap_top_after_72h.png
+.. image:: pap-s3p-results/pap_stats_after_72h.png
 
 :download:`Prometheus metrics after 72h test  <pap-s3p-results/pap_metrics_after_72h.txt>`
 
@@ -178,7 +178,7 @@ Running/Triggering the performance test will be the same as the stability test. 
 
 .. code-block:: bash
 
-    nohup apache-jmeter-5.5/bin/jmeter -n -t performance.jmx -l performanceTestResults.jtl &
+    nohup apache-jmeter-5.6.2/bin/jmeter -n -t performance.jmx -l performanceTestResults.jtl &
 
 Test Results
 ------------
@@ -190,7 +190,7 @@ Test results are shown as below.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-19886                    100 %              0.00 %              3107 ms
+199400                    100 %              0.00 %              397 ms
 =======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
