@@ -25,7 +25,7 @@ All the transaction flows are initiated from a test client server running JMeter
 Setup Details
 -------------
 
-The stability test was performed on a default ONAP OOM installation in the Nordix Lab environment.
+The stability test was performed on a default Policy docker installation in the Nordix Lab environment.
 JMeter was installed on a separate VM to inject the traffic defined in the
 `API stability script
 <https://git.onap.org/policy/api/tree/testsuites/stability/src/main/resources/testplans/policy_api_stability.jmx>`_
@@ -33,7 +33,7 @@ with the following command:
 
 .. code-block:: bash
 
-    nohup apache-jmeter-5.5/bin/jmeter -n -t policy_api_stability.jmx -l stabilityTestResultsPolicyApi.jtl &
+    nohup apache-jmeter-5.6.2/bin/jmeter -n -t policy_api_stability.jmx -l stabilityTestResultsPolicyApi.jtl &
 
 The test was run in the background via “nohup” and “&”, to prevent it from being interrupted.
 
@@ -50,7 +50,6 @@ of each entity is set to the running thread number.
 **Setup Thread (will be running only once)**
 
 - Get policy-api Healthcheck
-- Get API Counter Statistics
 - Get Preloaded Policy Types
 
 **API Test Flow (5 threads running the same steps in the same loop)**
@@ -120,14 +119,14 @@ Test Results
 **Summary**
 
 No errors were found during the 72 hours of the Policy API stability run.
-The load was performed against a non-tweaked ONAP OOM installation.
+The load was performed against a non-tweaked Policy docker deployment.
 
 **Test Statistics**
 
 =======================  =============  ===========  ===============================  ===============================  ===============================
 **Total # of requests**  **Success %**    **TPS**    **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
 =======================  =============  ===========  ===============================  ===============================  ===============================
-    950839                    100%         3.67              1351 ms                               126 ms                          16324 ms
+    730178                    100%         2.8              1766 ms                               127 ms                          107029 ms
 =======================  =============  ===========  ===============================  ===============================  ===============================
 
 .. image:: api-s3p-results/api-s3p-jm-1_J.png
@@ -135,23 +134,23 @@ The load was performed against a non-tweaked ONAP OOM installation.
 **JMeter Results**
 
 The following graphs show the response time distributions.   The "Get Policy Types" API calls are the most expensive calls that
-average a 13 seconds plus response time.
+average a 8.6 seconds plus response time.
 
 .. image:: api-s3p-results/api-response-time-distribution_J.png
 .. image:: api-s3p-results/api-response-time-overtime_J.png
 
 **Memory and CPU usage**
 
-The memory and CPU usage can be monitored by running "top" command in the policy-api pod.
+The memory and CPU usage can be monitored by running "docker stats" command in the policy-api container.
 A snapshot is taken before and after test execution to monitor the changes in resource utilization.
 
 Memory and CPU usage before test execution:
 
-.. image:: api-s3p-results/api_top_before_72h.png
+.. image:: api-s3p-results/api_stat_before_72h.png
 
 Memory and CPU usage after test execution:
 
-.. image:: api-s3p-results/api_top_after_72h.png
+.. image:: api-s3p-results/api_stat_after_72h.png
 
 
 Performance Test of Policy API
@@ -165,7 +164,7 @@ Performance test of policy-api has the goal of testing the min/avg/max processin
 Setup Details
 -------------
 
-The performance test was performed on a default ONAP OOM installation in the Nordix Lab environment.
+The performance test was performed on a default Policy docker installation in the Nordix Lab environment.
 JMeter was installed on a separate VM to inject the traffic defined in the
 `API performance script
 <https://git.onap.org/policy/api/tree/testsuites/performance/src/main/resources/testplans/policy_api_performance.jmx>`_
@@ -173,7 +172,7 @@ with the following command:
 
 .. code-block:: bash
 
-    nohup apache-jmeter-5.5/bin/jmeter -n -t policy_api_performance.jmx -l performanceTestResultsPolicyApi.jtl &
+    nohup apache-jmeter-5.6.2/bin/jmeter -n -t policy_api_performance.jmx -l performanceTestResultsPolicyApi.jtl &
 
 The test was run in the background via “nohup” and “&”, to prevent it from being interrupted.
 
@@ -193,7 +192,7 @@ Running/Triggering performance test will be the same as stability test. That is,
 =======================  =============  ===========  ===============================  ===============================  ===============================
 **Total # of requests**  **Success %**    **TPS**    **Avg. time taken per request**  **Min. time taken per request**  **Max. time taken per request**
 =======================  =============  ===========  ===============================  ===============================  ===============================
-    16212                     100%           1.8              11109 ms                              162 ms                          237265 ms
+    56740                     100%           6.3              6340 ms                              72 ms                          65557 ms
 =======================  =============  ===========  ===============================  ===============================  ===============================
 
 .. image:: api-s3p-results/api-s3p-jm-2_J.png
