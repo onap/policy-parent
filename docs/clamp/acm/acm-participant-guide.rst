@@ -483,3 +483,42 @@ The following example shows the Handler implementation and how could be the impl
     }
 
 
+AC Element states in failure scenarios
+--------------------------------------
+
+During the execution of any state change order, there is always a possibility of failures or exceptions that can occur in the participant.
+This can be tackled by the followed approaches.
+
+The participant implementation can handle the exception and revert back the appropriate AC element state, by invoking the
+'updateAutomationCompositionElementState' api from the participant intermediary.
+
+Alternatively, the participant can simply throw a PfModelException from its implementation which will be handled by the participant intermediary.
+The intermediary handles this exception and rolls back the AC element to its previous state with the appropriate stateChange Result.
+Please refer the following table for the state change reversion that happens in the participant intermediary for the AC elements.
+
+================== ==================
+**Error Scenario** **State Reverted**
+================== ==================
+Prime fails        Commissoned
+
+Deprime fails      Primed
+
+Deploy fails       Undeployed
+
+Undeploy fails     Deployed
+
+Update fails       Deployed
+
+Delete fails       Undeployed
+
+Lock fails         Unlocked
+
+Unlock fails       Locked
+================== ==================
+
+Considering the above mentioned behavior of the participant Intermediary, it is the responsibility of the developer to tackle the
+error scenarios in the participant with the suitable approach.
+
+Tips:
+If the participant tries to undeploy an element which doesn’t exist in the system any more (due to various other external factors),
+it could update the element state to ‘undeployed’ using the Intermediary api.
