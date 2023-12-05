@@ -16,6 +16,7 @@ described in TOSCA.
    acm/defining-acms
    acm/api-protocol/api-protocol-tree
    acm/design-impl/design-impl
+   acm/allowed-operations
    acm/acm-user-guide
    acm/acm-participant-guide
 
