@@ -177,11 +177,24 @@ The following code is an example how to update the property 'myProperty' and sen
 
 In/Out instance Properties
 --------------------------
+  The 'In/Out Properties' are stored into the instance elements, so each element has its own In/Out Properties.
+
   The 'In Properties' could be created or updated by ACM-runtime. Participants will receive that Properties during deploy and update events.
 
   The 'Out Properties' could be created or updated by participants. ACM-runtime will receive that Properties during ParticipantStatus event.
-  The participant can trigger this event using the method sendAcElementInfo.
-  The 'useState' and 'operationalState' can be used as well.
+  The participant can trigger this event using the method sendAcElementInfo. The 'useState' and 'operationalState' can be used as well.
+  The 'Out Properties' could be **cleaned**:
+
+  * by the participant using the method sendAcElementInfo
+  * by intermediary automatically during deleting of the instance
+  * by an update when the instance is in UNDEPLOYED state (changing the elementId)
+
+  The 'Out Properties' will be **not cleaned** by intermediary:
+
+  * during DEPLOIYNG (Out Properties will be take from last changes matching by elementId)
+  * during UNDEPLOING
+  * during LOCKING/UNLOCKING
+  * during UPDATING/MIGRATING
 
   Is allowed to the participant to read all In/Out Properties and state of all instances handled by the participant using the method getAutomationCompositions.
   The following code is an example how to update the property 'myProperty' and send to ACM-runtime:
@@ -196,6 +209,7 @@ In/Out instance Properties
 Restart scenario
 ----------------
   Restart methods handle the scenario when participant shut down and restart.
+  During RESTARTING, compositions and instances will be stored in participant memory with In/Out Properties, 'useState' and 'operationalState'.
   The method handleRestartComposition will be called for each composition and will be present the 'state' at the time the participant shut down.
   The method handleRestartInstance will be called for each instance element and will be present the 'deployState' and the 'lockState' at the time the participant shut down.
 
