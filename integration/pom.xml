@@ -44,19 +44,18 @@
         <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
         <docker.push.registry>nexus3.onap.org:10003</docker.push.registry>
         <!-- Dependency Versions -->
-        <version.aaf>2.7.4</version.aaf>
-        <version.ccsdk>1.5.1</version.ccsdk>
+        <version.ccsdk>1.5.3</version.ccsdk>
         <version.cucumber>7.13.0</version.cucumber>
-        <version.dmaap>1.1.12</version.dmaap>
         <version.docker-java>3.3.2</version.docker-java>
         <version.drools>8.44.0.Final</version.drools>
         <version.frontend.maven>1.13.4</version.frontend.maven>
         <version.io.prometheus>0.16.0</version.io.prometheus>
-        <version.jackson>2.15.2</version.jackson>
+        <version.jackson>2.16.1</version.jackson>
         <version.jacoco>0.8.10</version.jacoco>
-        <version.jersey>3.1.3</version.jersey>
-        <version.jetty>11.0.18</version.jetty>
-        <version.jupiter>5.10.0</version.jupiter>
+        <version.jersey>3.1.5</version.jersey>
+        <version.jetty>11.0.20</version.jetty>
+        <version.jupiter>5.10.1</version.jupiter>
+        <version.kafka>3.6.1</version.kafka>
         <version.log4j>2.20.0</version.log4j>
         <version.logback>1.4.14</version.logback>
         <version.maven-remote-resources-plugin>3.1.0</version.maven-remote-resources-plugin>
@@ -68,13 +67,14 @@
         <version.nsa-cambria>1.2.1-oss</version.nsa-cambria>
         <version.nsa-sa-client>1.3.0-oss</version.nsa-sa-client>
         <version.plexus>3.5.0</version.plexus>
-        <version.sdc>2.0.1</version.sdc>
+        <version.sdc-dist>2.1.1</version.sdc-dist>
+        <version.sdc-tosca>1.9.0</version.sdc-tosca>
         <version.slf4j>2.0.11</version.slf4j>
-        <version.spring>6.0.14</version.spring>
-        <version.springboot>3.1.7</version.springboot>
+        <version.spring>6.0.16</version.spring>
+        <version.springboot>3.1.8</version.springboot>
         <version.spring-security>6.1.6</version.spring-security>
-        <version.swagger.codegen.v3>3.0.46</version.swagger.codegen.v3>
-        <version.swagger.core.v3>2.2.15</version.swagger.core.v3>
+        <version.swagger.codegen.v3>3.0.52</version.swagger.codegen.v3>
+        <version.swagger.core.v3>2.2.20</version.swagger.core.v3>
         <surefireArgLine>
             --add-opens java.base/java.time=ALL-UNNAMED
             --add-opens java.base/java.util=ALL-UNNAMED
@@ -95,9 +95,10 @@
                 <version>${version.parent.resources}</version>
             </dependency>
             <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
                 <version>${version.jackson}</version>
+                <type>pom</type>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.jersey.containers</groupId>
@@ -164,6 +165,22 @@
                 <version>4.0.1</version>
             </dependency>
             <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+                <version>4.0.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-core</artifactId>
+                <version>4.0.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>4.0.4</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
                 <groupId>jakarta.servlet</groupId>
                 <artifactId>jakarta.servlet-api</artifactId>
                 <version>6.0.0</version>
@@ -186,7 +203,7 @@
             <dependency>
                 <groupId>jakarta.inject</groupId>
                 <artifactId>jakarta.inject-api</artifactId>
-                <version>2.0.1.MR</version>
+                <version>2.0.1</version>
             </dependency>
             <!-- Swagger -->
             <dependency>
@@ -227,7 +244,7 @@
             <dependency>
                 <groupId>org.apache.kafka</groupId>
                 <artifactId>kafka-clients</artifactId>
-                <version>3.6.0</version>
+                <version>${version.kafka}</version>
             </dependency>
             <!-- HttpComponents Core (blocking I/O) -->
             <dependency>
@@ -261,6 +278,11 @@
                 <groupId>com.worldturner.medeia</groupId>
                 <artifactId>medeia-validator-core</artifactId>
                 <version>${version.medeia.validator}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>2.9.0</version>
             </dependency>
             <!-- Lombok -->
             <dependency>
@@ -299,26 +321,6 @@
                 <artifactId>log4j-to-slf4j</artifactId>
                 <version>${version.log4j}</version>
             </dependency>
-            <!-- Dmaap Client -->
-            <dependency>
-                <groupId>org.onap.dmaap.messagerouter.dmaapclient</groupId>
-                <artifactId>dmaapClient</artifactId>
-                <version>${version.dmaap}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>log4j</groupId>
-                        <artifactId>log4j</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>apache-log4j-extras</artifactId>
-                        <groupId>log4j</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
             <!-- CDS dependencies -->
             <dependency>
                 <groupId>org.onap.ccsdk.cds.blueprintsprocessor.modules</groupId>
@@ -339,18 +341,6 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- AAF Client -->
-            <dependency>
-                <groupId>org.onap.aaf.authz</groupId>
-                <artifactId>aaf-cadi-aaf</artifactId>
-                <version>${version.aaf}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>log4j</groupId>
-                        <artifactId>log4j</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
             <!-- Client library for Cambria event routing API -->
             <dependency>
                 <groupId>com.att.nsa</groupId>
@@ -366,7 +356,7 @@
             <dependency>
                 <groupId>org.yaml</groupId>
                 <artifactId>snakeyaml</artifactId>
-                <version>2.0</version>
+                <version>2.2</version>
             </dependency>
             <!-- Drools -->
             <!--
@@ -465,12 +455,12 @@
             <dependency>
                 <groupId>org.onap.sdc.sdc-distribution-client</groupId>
                 <artifactId>sdc-distribution-client</artifactId>
-                <version>${version.sdc}</version>
+                <version>${version.sdc-dist}</version>
             </dependency>
             <dependency>
                 <groupId>org.onap.sdc.sdc-tosca</groupId>
                 <artifactId>sdc-tosca</artifactId>
-                <version>${version.sdc}</version>
+                <version>${version.sdc-tosca}</version>
             </dependency>
 
             <!-- Test dependencies -->
@@ -635,6 +625,11 @@
                 <artifactId>commons-net</artifactId>
                 <version>3.9.0</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-jexl3</artifactId>
+                <version>3.2.1</version>
+            </dependency>
             <!-- Github -->
             <dependency>
                 <groupId>com.github.docker-java</groupId>
@@ -785,6 +780,11 @@
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-core</artifactId>
                 <version>${version.micrometer}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpkix-fips</artifactId>
+                <version>1.0.7</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -1041,7 +1041,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.6.0</version>
+                    <version>3.6.3</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
