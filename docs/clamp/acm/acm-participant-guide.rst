@@ -77,22 +77,22 @@ AutomationCompositionElementListener:
   Every participant should implement a handler class that implements the AutomationCompositionElementListener interface
   from the Participant Intermediary. The intermediary listener class listens for the incoming events from the ACM-runtime
   and invoke the handler class implementations for various operations. This class implements the methods for deploying,
-  undeploying, locking, unlocking , deleting, updating, priming, depriming requests that are coming from the ACM-runtime.
+  undeploying, locking, unlocking , deleting, updating, migrating, priming, depriming requests that are coming from the ACM-runtime.
   The methods are as follows.
 
 .. code-block:: java
 
-  1. void undeploy(UUID automationCompositionId, UUID automationCompositionElementId) throws PfModelException;
-  2. void deploy(UUID automationCompositionId, AcElementDeploy element, Map<String, Object> inProperties) throws PfModelException;
-  3. void lock(UUID automationCompositionId, UUID automationCompositionElementId) throws PfModelException;
-  4. void unlock(UUID automationCompositionId, UUID automationCompositionElementId) throws PfModelException;
-  5. void delete(UUID automationCompositionId, UUID automationCompositionElementId) throws PfModelException;
-  6. void update(UUID automationCompositionId, AcElementDeploy element, Map<String, Object> inProperties) throws PfModelException;
-  7. void prime(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList) throws PfModelException;
-  8. void deprime(UUID compositionId) throws PfModelException;
-  9. void handleRestartComposition(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList, AcTypeState state) throws PfModelException;
-  10. void handleRestartInstance(UUID automationCompositionId, AcElementDeploy element, Map<String, Object> properties, DeployState deployState, LockState lockState) throws PfModelException;
-  11. void migrate(UUID instanceId, AcElementDeploy element, UUID compositionTargetId, Map<String, Object> properties) throws PfModelException;
+  1. void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  2. void undeploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  3. void lock(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  4. void unlock(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  5. void delete(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  6. void update(CompositionElementDto compositionElement, InstanceElementDto instanceElement, InstanceElementDto instanceElementUpdated) throws PfModelException;
+  7. void prime(CompositionDto composition) throws PfModelException;
+  8. void deprime(CompositionDto composition) throws PfModelException;
+  9. void handleRestartComposition(CompositionDto composition, AcTypeState state) throws PfModelException;
+  10. void handleRestartInstance(CompositionElementDto compositionElement, InstanceElementDto instanceElement, DeployState deployState, LockState lockState) throws PfModelException;
+  11. void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
 
 These method from the interface are implemented independently as per the user requirement. These methods after handling the
 appropriate requests should also invoke the intermediary's publisher apis to notify the ACM-runtime with the acknowledgement events.
@@ -104,6 +104,92 @@ ParticipantParameters:
 .. code-block:: java
 
   ParticipantIntermediaryParameters getIntermediaryParameters()
+
+Abstract class AcElementListenerV1
+----------------------------------
+This abstract class is introduced to help to maintain the java backward compatibility with AutomationCompositionElementListener implemented in 7.1.0 version.
+So developers can decide to align to new functionality later. Any new functionality in the future will be wrapped by this class.
+
+The Abstract class AcElementListenerV1 supports the follow methods.
+
+.. code-block:: java
+
+  1. void undeploy(UUID instanceId, UUID elementId) throws PfModelException;
+  2. void deploy(UUID instanceId, AcElementDeploy element, Map<String, Object> inProperties) throws PfModelException;
+  3. void lock(UUID instanceId, UUID elementId) throws PfModelException;
+  4. void unlock(UUID instanceId, UUID elementId) throws PfModelException;
+  5. void delete(UUID instanceId, UUID elementId) throws PfModelException;
+  6. void update(UUID instanceId, AcElementDeploy element, Map<String, Object> inProperties) throws PfModelException;
+  7. void prime(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList) throws PfModelException;
+  8. void deprime(UUID compositionId) throws PfModelException;
+  9. void handleRestartComposition(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList, AcTypeState state) throws PfModelException;
+  10. void handleRestartInstance(UUID instanceId, AcElementDeploy element, Map<String, Object> properties, DeployState deployState, LockState lockState) throws PfModelException;
+  11. void migrate(UUID instanceId, AcElementDeploy element, UUID compositionTargetId, Map<String, Object> properties) throws PfModelException;
+
+**Note**: this class needs intermediaryApi and it should be passed by constructor. It is declared as protected and can be used.
+Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime, deprime, handleRestartComposition and handleRestartInstance.
+
+Un example of AutomationCompositionElementHandler implemented in 7.1.0 version and how to use AcElementListenerV1 abstract class:
+
+.. code-block:: java
+
+  @Component
+  @RequiredArgsConstructor
+  public class AutomationCompositionElementHandler implements AutomationCompositionElementListener {
+
+    private final ParticipantIntermediaryApi intermediaryApi;
+    private final otherService otherService;
+    ..............................
+  }
+
+  @Component
+  public class AutomationCompositionElementHandler extends AcElementListenerV1 {
+
+    private final OtherService otherService;
+
+    public AutomationCompositionElementHandler(ParticipantIntermediaryApi intermediaryApi, OtherService otherService) {
+        super(intermediaryApi);
+        this.otherService = otherService;
+    }
+    ..............................
+  }
+
+
+
+A second example:
+
+.. code-block:: java
+
+  @Component
+  public class AutomationCompositionElementHandler implements AutomationCompositionElementListener {
+
+    @Autowired
+    private ParticipantIntermediaryApi intermediaryApi;
+
+    @Autowired
+    private otherService otherService;
+    ..............................
+  }
+
+  @Component
+  public class AutomationCompositionElementHandler extends AcElementListenerV1 {
+
+    @Autowired
+    private otherService otherService;
+
+    public AutomationCompositionElementHandler(ParticipantIntermediaryApi intermediaryApi) {
+        super(intermediaryApi);
+    }
+    ..............................
+  }
+
+Abstract class AcElementListenerV2
+----------------------------------
+This abstract class is introduced to help to maintain the java backward compatibility with AutomationCompositionElementListener from new releases.
+Any new functionality in the future will be wrapped by this class.
+
+**Note**: this class needs intermediaryApi and it should be passed by constructor. It is declared as protected and can be used.
+Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime, deprime, handleRestartComposition and handleRestartInstance.
 
 
 APIs to invoke
@@ -117,63 +203,94 @@ ParticipantIntermediaryApi:
 
   The methods are as follows:
 
-This following method is invoked to update the AC element state after each operation is completed in the participant.
+This following methods could be invoked to fetch data during each operation in the participant.
 
 .. code-block:: java
 
-  1.  void updateAutomationCompositionElementState(UUID automationCompositionId, UUID elementId, DeployState deployState, LockState lockState, StateChangeResult stateChangeResult, String message);
-  2.  Map<UUID, AutomationComposition> getAutomationCompositions();
-  3.  AutomationComposition getAutomationComposition(UUID automationCompositionId);
-  4.  AutomationCompositionElement getAutomationCompositionElement(UUID automationCompositionId, UUID elementId);
-  5.  Map<UUID, Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition>> getAcElementsDefinitions();
-  6.  Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition> getAcElementsDefinitions(UUID compositionId);
-  7.  AutomationCompositionElementDefinition getAcElementDefinition(UUID compositionId, ToscaConceptIdentifier elementId);
-  8.  void sendAcDefinitionInfo(UUID compositionId, ToscaConceptIdentifier elementId, Map<String, Object> outProperties);
-  9.  void updateCompositionState(UUID compositionId, AcTypeState state, StateChangeResult stateChangeResult, String message);
-  10.  void sendAcElementInfo(UUID automationCompositionId, UUID elementId, String useState, String operationalState, Map<String, Object> outProperties);
+  1.  Map<UUID, AutomationComposition> getAutomationCompositions();
+  2.  AutomationComposition getAutomationComposition(UUID instanceId);
+  3.  AutomationCompositionElement getAutomationCompositionElement(UUID instanceId, UUID elementId);
+  4.  Map<UUID, Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition>> getAcElementsDefinitions();
+  5.  Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition> getAcElementsDefinitions(UUID compositionId);
+  6.  AutomationCompositionElementDefinition getAcElementDefinition(UUID compositionId, ToscaConceptIdentifier elementId);
+
+This following methods are invoked to update the outProperties during each operation in the participant.
+
+.. code-block:: java
+
+  1.  void sendAcDefinitionInfo(UUID compositionId, ToscaConceptIdentifier elementId, Map<String, Object> outProperties);
+  2.  void sendAcElementInfo(UUID instanceId, UUID elementId, String useState, String operationalState, Map<String, Object> outProperties);
+
+This following methods are invoked to update the AC element state or AC element definition state after each operation is completed in the participant.
+
+.. code-block:: java
+
+  1.  void updateAutomationCompositionElementState(UUID instanceId, UUID elementId, DeployState deployState, LockState lockState, StateChangeResult stateChangeResult, String message);
+  2.  void updateCompositionState(UUID compositionId, AcTypeState state, StateChangeResult stateChangeResult, String message);
 
 In/Out composition Properties
 -----------------------------
 The 'Common Properties' could be created or updated by ACM-runtime.
-Participants will receive that Properties during priming events.
+Participants will receive that Properties during priming and deprime events by CompositionDto class.
 
 .. code-block:: java
 
   @Override
-  public void prime(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList) throws PfModelException {
-      for (var acElementDefinition : elementDefinitionList) {
-          var inProperties = acElementDefinition.getAutomationCompositionElementToscaNodeTemplate().getProperties();
+  public void prime(CompositionDto composition) throws PfModelException {
+      for (var entry : composition.inPropertiesMap().entrySet()) {
+          var elementDefinitionId = entry.getKey();
+          var inProperties = entry.getValue();
           .......
       }
       .......
   }
 
-The 'Common Properties' could be fetched during depriming events.
+Participants will receive the Properties related to the element definition by CompositionElementDto class.
 
 .. code-block:: java
 
   @Override
-  public void deprime(UUID compositionId) throws PfModelException {
-      var elementDefinitionList = intermediaryApi.getAcElementsDefinitions(compositionId);
-      for (var acElementDefinition : elementDefinitionList.values()) {
-          var inProperties = acElementDefinition.getAutomationCompositionElementToscaNodeTemplate().getProperties();
-          .......
-      }
+  public void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException {
+      var inCompositionProperties = compositionElement.inProperties();
       .......
   }
- 
+
 The 'Out Properties' could be created or updated by participants. ACM-runtime will receive that Properties during ParticipantStatus event.
 The participant can trigger this event using the method sendAcDefinitionInfo.
+
+Participants will receive that outProperties during priming and deprime events by CompositionDto class.
+
+.. code-block:: java
+
+  @Override
+  public void deprime(CompositionDto composition) throws PfModelException {
+      for (var entry : composition.outPropertiesMap().entrySet()) {
+          var elementDefinitionId = entry.getKey();
+          var outProperties = entry.getValue();
+          .......
+      }
+      .......
+  }
+
+Participants will receive the outProperties related to the element definition by CompositionElementDto class.
+
+.. code-block:: java
+
+  @Override
+  public void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException {
+      var outCompositionProperties = compositionElement.outProperties();
+      .......
+  }
 
 Is allowed to the participant to read all In/Out Properties of all compositions handled by the participant using the method getAcElementsDefinitions.
 The following code is an example how to update the property 'myProperty' and send to ACM-runtime:
 
 .. code-block:: java
 
-  var acElement = intermediaryApi.getAcElementDefinition(compositionId, elementId);
+  var acElement = intermediaryApi.getAcElementDefinition(compositionId, elementDefinitionId);
   var outProperties = acElement.getOutProperties();
   outProperties.put("myProperty", myProperty);
-  intermediaryApi.sendAcDefinitionInfo(compositionId, elementId, outProperties);
+  intermediaryApi.sendAcDefinitionInfo(compositionId, elementDefinitionId, outProperties);
 
 In/Out instance Properties
 --------------------------
@@ -196,15 +313,28 @@ In/Out instance Properties
   * during LOCKING/UNLOCKING
   * during UPDATING/MIGRATING
 
-  Is allowed to the participant to read all In/Out Properties and state of all instances handled by the participant using the method getAutomationCompositions.
-  The following code is an example how to update the property 'myProperty' and send to ACM-runtime:
+Participants will receive the in/out instance Properties related to the element by InstanceElementDto class.
 
 .. code-block:: java
 
-  var acElement = intermediaryApi.getAutomationCompositionElement(automationCompositionId, elementId);
+  @Override
+  public void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException {
+      var inProperties = instanceElement.inProperties();
+      var outProperties = instanceElement.outProperties();
+      .......
+  }
+
+Is allowed to the participant to read all In/Out Properties and state of all instances handled by the participant using the method getAutomationCompositions.
+The following code is an example how to update the property 'myProperty' and send to ACM-runtime:
+
+.. code-block:: java
+
+  var acElement = intermediaryApi.getAutomationCompositionElement(instanceId, elementId);
   var outProperties = acElement.getOutProperties();
   outProperties.put("myProperty", myProperty);
-  intermediaryApi.sendAcElementInfo(automationCompositionId, elementId, acElement.getUseState(), acElement.getOperationalState(), outProperties);
+  intermediaryApi.sendAcElementInfo(instanceId, elementId, acElement.getUseState(), acElement.getOperationalState(), outProperties);
+
+**Note**: In update and migrate Participants will receive the instance Properties before the merge (instanceElement) and the instance Properties merged (instanceElementUpdated / instanceElementMigrate).
 
 Restart scenario
 ----------------
@@ -299,201 +429,197 @@ The following example shows the Handler implementation and how could be the impl
 .. code-block:: java
 
   @Component
-  @RequiredArgsConstructor
-  public class MyFirstAcElementHandler implements AutomationCompositionElementListener {
-
-    private final ParticipantIntermediaryApi intermediaryApi;
+  public class AutomationCompositionElementHandler extends AcElementListenerV2 {
 
     @Override
-    public void deploy(UUID automationCompositionId, AcElementDeploy element, Map<String, Object> properties)
+    public void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
             throws PfModelException {
 
         // TODO deploy process
 
         if (isDeploySuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
-                    DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Deployed");
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR,
+                "Deployed");
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
-                    DeployState.UNDEPLOYED, null, StateChangeResult.FAILED, "Deploy failed!");
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.FAILED,
+                "Deploy failed!");
         }
     }
 
     @Override
-    public void undeploy(UUID automationCompositionId, UUID automationCompositionElementId) throws PfModelException {
-        LOGGER.debug("undeploy call");
+    public void undeploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
+            throws PfModelException {
 
         // TODO undeploy process
 
         if (isUndeploySuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId,
-                    automationCompositionElementId, DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR,
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR,
                     "Undeployed");
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId,
-                    automationCompositionElementId, DeployState.DEPLOYED, null, StateChangeResult.FAILED,
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.FAILED,
                     "Undeploy failed!");
         }
     }
 
     @Override
-    public void lock(UUID automationCompositionId, UUID automationCompositionElementId) throws PfModelException {
+    public void lock(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
+            throws PfModelException {
 
         // TODO lock process
 
         if (isLockSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId,
-                    automationCompositionElementId, null, LockState.LOCKED, StateChangeResult.NO_ERROR, "Locked");
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), null, LockState.LOCKED, StateChangeResult.NO_ERROR, "Locked");
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId,
-                    automationCompositionElementId, null, LockState.UNLOCKED, StateChangeResult.FAILED, "Lock failed!");
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), null, LockState.UNLOCKED, StateChangeResult.FAILED, "Lock failed!");
         }
     }
 
     @Override
-    public void unlock(UUID automationCompositionId, UUID automationCompositionElementId) throws PfModelException {
+    public void unlock(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
+            throws PfModelException {
 
         // TODO unlock process
 
         if (isUnlockSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId,
-                    automationCompositionElementId, null, LockState.UNLOCKED, StateChangeResult.NO_ERROR, "Unlocked");
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), null, LockState.UNLOCKED, StateChangeResult.NO_ERROR, "Unlocked");
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId,
-                    automationCompositionElementId, null, LockState.LOCKED, StateChangeResult.FAILED, "Unlock failed!");
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), null, LockState.LOCKED, StateChangeResult.FAILED, "Unlock failed!");
         }
     }
 
     @Override
-    public void delete(UUID automationCompositionId, UUID automationCompositionElementId) throws PfModelException {
+    public void delete(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
+            throws PfModelException {
 
         // TODO delete process
 
         if (isDeleteSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId,
-                    automationCompositionElementId, DeployState.DELETED, null, StateChangeResult.NO_ERROR, "Deleted");
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DELETED, null, StateChangeResult.NO_ERROR, "Deleted");
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId,
-                    automationCompositionElementId, DeployState.UNDEPLOYED, null, StateChangeResult.FAILED,
-                    "Delete failed!");
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.FAILED,
+                "Delete failed!");
         }
     }
 
     @Override
-    public void update(UUID automationCompositionId, AcElementDeploy element, Map<String, Object> properties)
-            throws PfModelException {
+    public void update(CompositionElementDto compositionElement, InstanceElementDto instanceElement,
+                       InstanceElementDto instanceElementUpdated) throws PfModelException {
 
         // TODO update process
 
         if (isUpdateSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
-                    DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Updated");
+            intermediaryApi.updateAutomationCompositionElementState(
+                instanceElement.instanceId(), instanceElement.elementId(),
+                DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Updated");
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
-                    DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Update failed!");
+            intermediaryApi.updateAutomationCompositionElementState(
+                instanceElement.instanceId(), instanceElement.elementId(),
+                DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Update failed!");
         }
     }
 
     @Override
-    public void migrate(UUID automationCompositionId, AcElementDeploy element, UUID compositionTargetId,
-            Map<String, Object> properties) throws PfModelException {
+    public void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget,
+                        InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate)
+        throws PfModelException
 
         // TODO migrate process
 
         if (isMigrateSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
-                    DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migrated");
+            intermediaryApi.updateAutomationCompositionElementState(
+                instanceElement.instanceId(), instanceElement.elementId(),
+                DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migrated");
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
-                    DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Migrate failed!");
+            intermediaryApi.updateAutomationCompositionElementState(
+                instanceElement.instanceId(), instanceElement.elementId(),
+                DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Migrate failed!");
         }
     }
 
     @Override
-    public void prime(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList)
-            throws PfModelException {
+    public void prime(CompositionDto composition) throws PfModelException {
 
         // TODO prime process
 
         if (isPrimeSuccess()) {
-            intermediaryApi.updateCompositionState(compositionId, AcTypeState.PRIMED, StateChangeResult.NO_ERROR,
-                    "Primed");
+            intermediaryApi.updateCompositionState(composition.compositionId(),
+                AcTypeState.PRIMED, StateChangeResult.NO_ERROR, "Primed");
         } else {
-            intermediaryApi.updateCompositionState(compositionId, AcTypeState.COMMISSIONED, StateChangeResult.FAILED,
-                    "Prime failed!");
+            intermediaryApi.updateCompositionState(composition.compositionId(),
+                AcTypeState.COMMISSIONED, StateChangeResult.FAILED, "Prime failed!");
         }
     }
 
     @Override
-    public void deprime(UUID compositionId) throws PfModelException {
+    public void deprime(CompositionDto composition) throws PfModelException {
 
         // TODO deprime process
 
         if (isDeprimeSuccess()) {
-            intermediaryApi.updateCompositionState(compositionId, AcTypeState.COMMISSIONED, StateChangeResult.NO_ERROR,
-                    "Deprimed");
+            intermediaryApi.updateCompositionState(composition.compositionId(), AcTypeState.COMMISSIONED,
+                StateChangeResult.NO_ERROR, "Deprimed");
         } else {
-            intermediaryApi.updateCompositionState(compositionId, AcTypeState.PRIMED, StateChangeResult.FAILED,
-                    "Deprime failed!");
+            intermediaryApi.updateCompositionState(composition.compositionId(), AcTypeState.PRIMED,
+                StateChangeResult.FAILED, "Deprime failed!");
         }
     }
 
 
     @Override
-    public void handleRestartComposition(UUID compositionId,
-            List<AutomationCompositionElementDefinition> elementDefinitionList, AcTypeState state)
-            throws PfModelException {
+    public void handleRestartComposition(CompositionDto composition, AcTypeState state) throws PfModelException {
+
+         // TODO restart process
 
         switch (state) {
-            case PRIMING:
-                prime(compositionId, elementDefinitionList);
-                break;
-
-            case DEPRIMING:
-                // TODO restart process
-
-                deprime(compositionId);
-                break;
-
-            default:
-                // TODO restart process
-
-                intermediaryApi.updateCompositionState(compositionId, state, StateChangeResult.NO_ERROR, "Restarted");
+            case PRIMING -> prime(composition);
+            case DEPRIMING -> deprime(composition);
+            default -> intermediaryApi
+                .updateCompositionState(composition.compositionId(), state, StateChangeResult.NO_ERROR, "Restarted");
         }
     }
 
     @Override
-    public void handleRestartInstance(UUID automationCompositionId, AcElementDeploy element,
-            Map<String, Object> properties, DeployState deployState, LockState lockState) throws PfModelException {
+    public void handleRestartInstance(CompositionElementDto compositionElement, InstanceElementDto instanceElement,
+        DeployState deployState, LockState lockState) throws PfModelException {
 
          // TODO restart process
 
         if (DeployState.DEPLOYING.equals(deployState)) {
-            deploy(automationCompositionId, element, properties);
+            deploy(compositionElement, instanceElement);
             return;
         }
         if (DeployState.UNDEPLOYING.equals(deployState)) {
-            undeploy(automationCompositionId, element.getId());
+            undeploy(compositionElement, instanceElement);
             return;
         }
         if (DeployState.UPDATING.equals(deployState)) {
-            update(automationCompositionId, element, properties);
+            update(compositionElement, instanceElement, instanceElement);
             return;
         }
         if (DeployState.DELETING.equals(deployState)) {
-            delete(automationCompositionId, element.getId());
+            delete(compositionElement, instanceElement);
             return;
         }
         if (LockState.LOCKING.equals(lockState)) {
-            lock(automationCompositionId, element.getId());
+            lock(compositionElement, instanceElement);
             return;
         }
         if (LockState.UNLOCKING.equals(lockState)) {
-            unlock(automationCompositionId, element.getId());
+            unlock(compositionElement, instanceElement);
             return;
         }
-        intermediaryApi.updateAutomationCompositionElementState(automationCompositionId, element.getId(),
-                deployState, lockState, StateChangeResult.NO_ERROR, "Restarted");
+        intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+            instanceElement.elementId(), deployState, lockState, StateChangeResult.NO_ERROR, "Restarted");
     }
 
 
@@ -528,6 +654,8 @@ Delete fails       Undeployed
 Lock fails         Unlocked
 
 Unlock fails       Locked
+
+Migrate fails      Deployed
 ================== ==================
 
 Considering the above mentioned behavior of the participant Intermediary, it is the responsibility of the developer to tackle the
