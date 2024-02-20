@@ -7,3 +7,4 @@ sphinxcontrib-spelling
 sphinxcontrib-plantuml
 sphinx_toolbox
 sphinxcontrib-redoc
+six
