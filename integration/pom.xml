@@ -753,6 +753,12 @@
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${version.springboot}</version>
                 <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.vaadin.external.google</groupId>
+                        <artifactId>android-json</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
