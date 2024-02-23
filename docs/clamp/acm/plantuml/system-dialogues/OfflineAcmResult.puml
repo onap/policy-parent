@@ -1,0 +1,19 @@
+@startuml
+
+  Rest -> "ACM Runtime": ACM operation triggered by the user
+  activate "ACM Runtime"
+  "ACM Runtime" -> "ACM Database": Read Automation Composition information
+  activate Participant
+  "ACM Runtime" -> Participant : [ASYNC] Send the state change event to the participant
+  "ACM Runtime" -> "ACM Database": Mark the AC element into transitioning state
+  deactivate  "ACM Runtime"
+  Participant -> Participant: Goes OFF_LINE due to an unexpected error
+  deactivate Participant
+
+  activate "ACM Runtime"
+  "ACM Runtime" -> "ACM Database": Mark OFF_LINE reached for the participant status report
+  "ACM Runtime" -> "ACM Database": Mark TIMEOUT reached for the AC instance
+  deactivate  "ACM Runtime"
+
+
+@enduml

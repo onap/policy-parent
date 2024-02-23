@@ -1,0 +1,42 @@
+@startuml
+
+alt "Deploying the instance"
+  Rest -> "ACM Runtime": Deploy triggered by the user
+  activate "ACM Runtime"
+  "ACM Runtime" -> "Participant-intermediary" : [ASYNC] Deploying the instance
+  deactivate  "ACM Runtime"
+
+  activate "Participant-intermediary"
+  activate Participant
+  "Participant-intermediary" -> Participant : Create Deploy thread
+  deactivate "Participant-intermediary"
+  note right
+  Deploy thread is stuck
+  end note
+end
+
+alt "Instance in Timeout"
+  activate "ACM Runtime"
+  "ACM Runtime" -> "ACM Runtime" : set instance in Timeout
+  deactivate  "ACM Runtime"
+end
+
+alt "Undeploying the instance"
+  Rest -> "ACM Runtime": Undeploy triggered by the user
+  activate "ACM Runtime"
+  activate "Participant-intermediary"
+  "ACM Runtime" -> "Participant-intermediary" : [ASYNC] Undeploying the instance
+  deactivate  "ACM Runtime"
+  "Participant-intermediary" -> Participant : Terminate Deploy thread
+  deactivate Participant
+  "Participant-intermediary" -> Participant : Create Undeploy thread
+  activate Participant
+  deactivate "Participant-intermediary"
+  Participant -> "Participant-intermediary" : instance Undeployed
+  activate "Participant-intermediary"
+  deactivate Participant
+  "Participant-intermediary" -> "ACM Runtime" : [ASYNC] instance Undeployed
+  deactivate "Participant-intermediary"
+end
+
+@enduml

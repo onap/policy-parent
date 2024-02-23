@@ -241,14 +241,13 @@ If the operation succeeds, the participant is required to update the result valu
 .. image:: ../images/system-dialogues/SuccessAcmResult.png
 
 The result value should be updated as 'FAILED' by the participants when any failures occurred.
-Also in case of failures, the overall state of the composition remains in any of the transitioning states (DEPLOYING, UNDEPLOYING, PRIMING, UPDATING)
+Also in case of failures, the overall state of the composition/instance remains in any of the transitioning states (DEPLOYING, UNDEPLOYING, PRIMING, DEPRIMING, UPDATING, MIGRATING)
 with the appropriate result values updated by the participant.
 
 .. image:: ../images/system-dialogues/FailedAcmResult.png
 
-Runtime marks the operation result with the value 'TIMEOUT' when the participant gets disconnected from the ACM-R in the middle of any ACM operation.
-When the participant fails to report the periodic heartbeat during an ACM operation, the operation result is then marked as 'TIMEOUT' by the ACM-R after the configured waiting limit is
-reached.
+Runtime marks the operation result with the value 'TIMEOUT' when the participant fails to report the message back during an ACM operation,
+the operation result is then marked as 'TIMEOUT' by the ACM-R after the configured waiting limit is reached.
 
 .. image:: ../images/system-dialogues/TimeoutAcmResult.png
 
@@ -263,8 +262,25 @@ The following parameter is set in the application properties for the runtime to 
 An ACM operation has to be completed and updated with any of the above specified result values in order to allow the user to trigger subsequent requests.
 The user cannot trigger any state change events before the operation gets completed. When an operation is marked 'TIMEOUT', the following scenarios are applicable.
 
- - The participant might come back ONLINE and complete the operation to mark the result with 'NO_ERROR' or 'FAILED'
+ - The participant might complete the operation to mark the result with 'NO_ERROR' or 'FAILED'
  - The user can trigger another state change event to the ACM.
+
+The following flow shown and example of deployment that get stuck, and the user decide to undeploy.
+
+.. image:: ../images/system-dialogues/TimeoutParticipant.png
+
+
+3.13 OFF_LINE handling in ACM
+-----------------------------
+Runtime marks the participant state with the value 'OFF_LINE' when the participant fails to report the periodic heartbeat,
+the participant state is then marked as 'OFF_LINE' by the ACM-R after the configured waiting limit is reached.
+That scenario might happen when participant is shutdown, in that scenario all on going operations with that participant are marked 'TIMEOUT' due the missing messages back.
+
+The user cannot trigger any state change events when participant state is 'OFF_LINE'.
+
+.. image:: ../images/system-dialogues/OfflineAcmResult.png
+
+When a participant state is marked 'OFF_LINE', it might come back ONLINE and the user can trigger state change events to the ACM.
 
 End of Document
 
