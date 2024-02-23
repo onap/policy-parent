@@ -19,7 +19,7 @@ Participant states are NOT managed by ACM but the state of a participant is reco
 
 Automation Composition Type State
 =================================
-The states that an Automation Composition Type can have are shown in the diagram below.
+The states that an Automation Composition Type can have, are shown in the diagram below.
 
 .. image:: images/acm-states/AcTypeStates.png
 
@@ -32,6 +32,11 @@ The states that an Automation Composition Element Type can have on ACM Runtime a
 The states that an Automation Composition Element Type can have on a Participant are shown in the diagram below.
 
 .. image:: images/acm-states/AcElementTypeStatesOnPpnt.png
+
+The states diagram below, shows the fail and timeout scenario.
+In that diagram the state is presented using this combination [ Composition Element Type State : Composition Type State : StateChangeResult ].
+
+.. image:: images/acm-states/AcTypeStatesFail.png
 
 Automation Composition Instance State
 =====================================
@@ -48,5 +53,30 @@ The states that an Automation Composition Element Instance can have on ACM Runti
 The states that an Automation Composition Element Instance can have on a Participant are shown in the diagram below.
 
 .. image:: images/acm-states/AcElementInstanceStatesOnPpnt.png
+
+Automation Composition State with fail and timeout
+==================================================
+The states that an Automation Composition Element Instance can have for each flow, are shown in the diagrams below.
+For each diagram the state is presented using this combination [ Instance Element State : Instance State : StateChangeResult ].
+
+Deploy
+------
+
+.. image:: images/acm-states/AcInstanceStatesDeploy.png
+
+Update
+------
+
+.. image:: images/acm-states/AcInstanceStatesUpdate.png
+
+Migrate
+-------
+
+.. image:: images/acm-states/AcInstanceStatesMigrate.png
+
+Delete
+------
+
+.. image:: images/acm-states/AcInstanceStatesDelete.png
 
 End of Document
