@@ -363,6 +363,7 @@ Functionality covered:
 #. read all AC Definition inProperties/outProperties information by Rest-Api.
 #. update useState, operationalState and outProperties and send to ACM-runtime by Rest-Api.
 #. read all AC instance elements information by Rest-Api.
+#. log of all information for each operation.
 
 Mock a participant using docker-compose
 ---------------------------------------
@@ -484,3 +485,10 @@ could be read using the following endpoint:
 .. code-block:: bash
 
   Invoke a GET request 'http://participant_sim_ip:port/onap/policy/clamp/acm/simparticipant/v2/instances'
+
+Log of all information for each operation
+-----------------------------------------
+All information for each operation are logged, so the developer can monitoring what data are passed through the calls. Example of log during deploy.
+
+26-02-2024 09:55:38.547 [pool-4-thread-4] DEBUG  o.o.p.c.a.p.s.m.h.AutomationCompositionElementHandler.deploy **- deploy call**
+**compositionElement: CompositionElementDto[** compositionId=6502ba5e-1939-42b0-8bd2-bf89f0d51be6, elementDefinitionId=onap.policy.clamp.ac.element.Http_StarterAutomationCompositionElement 1.2.3, inProperties={ ... }, outProperties={} **], instanceElement: InstanceElementDto[** instanceId=022b3dee-a878-4b32-8544-de86e67e7335, elementId=2d614898-4945-41c7-9127-947b401aa753, toscaServiceTemplateFragment=ToscaServiceTemplate( ... ), inProperties={ ... }, outProperties={} **]**
