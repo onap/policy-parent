@@ -3,20 +3,24 @@
 [*] --> UNDEPLOYED: Create
 UNDEPLOYED --> [*]: Delete
 UNDEPLOYED --> DEPLOYING: Deploy
-DEPLOYING --> DEPLOYED: AC Element\nInstance DEPLOYED
+DEPLOYING --> DEPLOYED: AC Instance\nElement DEPLOYED
 DEPLOYING --> UNDEPLOYING: Undeploy
 DEPLOYED --> UNDEPLOYING: Undeploy
-UNDEPLOYING --> UNDEPLOYED: AC Element\nInstance UNDEPLOYED
+DEPLOYED --> UPDATING: Update
+DEPLOYED --> MIGRATING: Migrate
+MIGRATING --> DEPLOYED: AC Instance\nElement MIGRATED
+UNDEPLOYING --> UNDEPLOYED: AC Instance\nElement UNDEPLOYED
+UNDEPLOYING --> UNDEPLOYED: AC Instance\nElement UNDEPLOYED
 
 
 state DEPLOYED {
  [*] --> LOCKED: Deploy
  LOCKED --> [*]: Undeploy
  LOCKED --> UNLOCKING: Unlock
- UNLOCKING --> UNLOCKED: AC Element\nInstance UNLOCKED
+ UNLOCKING --> UNLOCKED: AC Instance\nElement UNLOCKED
  UNLOCKED --> LOCKING: Lock
  UNLOCKING --> LOCKING: Lock
- LOCKING --> LOCKED: AC Element\nInstance LOCKED
+ LOCKING --> LOCKED: AC Instance\nElement LOCKED
 }
 
 @enduml
