@@ -150,7 +150,7 @@ operations on a high level before proceeding with the workflow.
 
 
 Prerequisites:
-  - ACM components including acm-runtime, required participants (http and kubernetes in this case) and Dmaap/kafka clients are deployed in docker or kubernetes environment.
+  - ACM components including acm-runtime, required participants (http and kubernetes in this case) and kafka clients are deployed in docker or kubernetes environment.
   - Kubernetes and Helm are installed.
   - Chartmuseum server is installed to host the acelement microservice helm chart. (`Procedure to install chartmuseum <https://wiki.onap.org/display/DW/Microk8s+and+helm+setup+in+Ubuntu>`_.)
   - The helm chart for ACM test microservice is available in the policy/clamp repository that can be cloned locally and uploaded to the chartmuseum using helm push.(`AC element helm chart <https://github.com/onap/policy-clamp/tree/master/examples/src/main/resources/clamp/acm/acelement-helm>`_.)

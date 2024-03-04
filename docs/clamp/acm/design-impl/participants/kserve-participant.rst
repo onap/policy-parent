@@ -7,7 +7,7 @@ Kserve Participant
 
 The Kserve participant receives inference service information from CLAMP runtime and creates the inference services in the Kubernetes cluster. The participant acts as a wrapper around Kserve and creates the inference service.
 
-Supported message Broker are DMaap and Strimzi-Kafka.
+It supports the message Broker Kafka.
 
 .. image:: ../../images/participants/kserve-participant.png
 

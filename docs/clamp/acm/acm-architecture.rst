@@ -315,7 +315,7 @@ public and is used by the ACM GUI. It may also be used by any other client via t
 REST interface. The REST interface also allows the state of Automation Composition Instances to be changed.
 A user can change the state of Automation Composition Instances as described in the state transition
 diagram shown in section 2 above. The Instantiation component issues update and state change
-messages via DMaaP/Kafka to participants so that they can update and manage the state of the Automation
+messages via Kafka to participants so that they can update and manage the state of the Automation
 Composition Elements they are responsible for. The Instantiation component also implements persistence
 of Automation Composition Instances, automation composition elements, and their state changes.
 
@@ -334,9 +334,9 @@ changes where state changes failed.
 
 A Participant is an executing component that partakes in automation compositions. More explicitly, a
 Participant is something that implements the Participant Instantiation and Participant
-Monitoring messaging protocol over DMaaP/Kafka for Life Cycle management of Automation Composition Elements.
+Monitoring messaging protocol over Kafka for Life Cycle management of Automation Composition Elements.
 A Participant runs Automation Composition Elements and manages and reports on their life cycle
-following the instructions it gets from the ACM runtime in messages delivered over DMaaP/Kafka.
+following the instructions it gets from the ACM runtime in messages delivered over Kafka.
 
 In the figure above, five participants are shown. A Configuration Persistence Participant
 manages Automation Composition Elements that interact with the `ONAP Configuration Persistence Service
@@ -391,14 +391,14 @@ The system is designed to be inherently scalable. The ACM runtime is stateless, 
 is preserved in the Instantiated Automation Composition inventory in the database. When the user
 requests an operation such as an undeploy, deploy, lock, or an unlock
 on a Automation Composition Instance, the ACM runtime broadcasts the request to participants over
-DMaaP/Kafka and saves details of the request to the database. The ACM runtime does not directly
+Kafka and saves details of the request to the database. The ACM runtime does not directly
 wait for responses to requests.
 
-When a request is broadcast on DMaaP/Kafka, the request is asynchronously picked up by participants
+When a request is broadcast on Kafka, the request is asynchronously picked up by participants
 of the types required for the Automation Composition Instance and those participants manage the life
 cycle of its automation composition elements. Periodically, each participant reports back on the status
 of operations it has picked up for the Automation Composition Elements it controls, together with
-statistics on the Automation Composition Elements over DMaaP/Kafka. On reception of these participant messages,
+statistics on the Automation Composition Elements over Kafka. On reception of these participant messages,
 the ACM runtime stores this information to its database.
 
 The participant to use on a automation composition can be selected from the registered participants

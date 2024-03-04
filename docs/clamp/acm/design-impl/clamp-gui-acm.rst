@@ -51,7 +51,7 @@ Class-based react components are used to render the different pages related to f
 2.1.2 Automation Composition GUI
 ================================
 
-The current automation composition GUI is an extension of the previously created GUI for the Clamp project. The Clamp project used the CLAMP GUI to connect to various onap services, including policy api, policy pap, dcae, sdc and cds. Although the current automation composition project builds upon this GUI, it does not rely on these connected services. Instead, the Automation Composition GUI connects to the Automation Composition Runtime only. The Automation Composition Runtime then communicates with the database and all the Automation Composition participants (indirectly) over DMAAP.
+The current automation composition GUI is an extension of the previously created GUI for the Clamp project. The Clamp project used the CLAMP GUI to connect to various onap services, including policy api, policy pap, dcae, sdc and cds. Although the current automation composition project builds upon this GUI, it does not rely on these connected services. Instead, the Automation Composition GUI connects to the Automation Composition Runtime only. The Automation Composition Runtime then communicates with the database and all the Automation Composition participants (indirectly) over Kafka.
 
 The CLAMP GUI was originally housed in the clamp repository but for the Istanbul release, it has been moved to the policy/gui repo. There are 3 different GUIs within this repository - clamp-gui (and Automation Composition gui) code is housed under the "gui-clamp" directory and the majority of development takes place within the "gui-clamp/ui-react" directory.
 
@@ -106,15 +106,15 @@ This is where all of the endpoints for operations on Automation Compositions are
 
 The rest endpoints are split over two main classes; CommissioningController.java and InstantiationController.java. There are also some rest endpoints defined in the MonitoringQueryController. These classes have minimal business logic defined in them and delegate these operations to other classes within the controlloop.runtime package. The Automation Composition Runtime write all data received on its' endpoints regarding commissioning and instantiation to its; database, where it can be easily accessed later by the UI.
 
-The Runtime also communicates with the participants over DMAAP. Commissioning a automation composition definition writes it to the database but also triggers priming of the definitions over DMAAP. The participants then receive those definitions and hold them in memory. Similarly, upon decommissioning, a message is sent over DMAAP to the participants to trigger de-priming.
+The Runtime also communicates with the participants over Kafka. Commissioning a automation composition definition writes it to the database but also triggers priming of the definitions over Kafka. The participants then receive those definitions and hold them in memory. Similarly, upon decommissioning, a message is sent over Kafka to the participants to trigger de-priming.
 
-Using DMAAP, the Runtime can send; updates to the automation composition definitions, change the state of automation compositions, receive information about participants, receive state information about automation compositions and effectively supervise the automation compositions. This data is then made available via Rest APIs that can be queried by the frontend. This is how the GUI can perform monitoring operations.
+Using Kafka, the Runtime can send; updates to the automation composition definitions, change the state of automation compositions, receive information about participants, receive state information about automation compositions and effectively supervise the automation compositions. This data is then made available via Rest APIs that can be queried by the frontend. This is how the GUI can perform monitoring operations.
 
 More detail on the design of the Runtime Automation Composition can be found in :ref:`clamp-runtime-acm`.
 
-2.4 DMAAP
+2.4 Kafka
 ---------
-DMAAP is component that provides data movement services that transports and processes data from any source to any target.  It provides the capability to:
+Kafka is component that provides data movement services that transports and processes data from any source to any target.  It provides the capability to:
 - Support the transfer of messages between ONAP components, as well as to other components
 - Support the transfer of data between ONAP components as well as to other components.
 - Data Filtering capabilities
@@ -131,10 +131,10 @@ The purpose of the Automation Composition participants is to communicate with di
 
     .. image:: ../images/gui/ParticipantsDirectory.png
 
-The participants communicate with the Runtime over DMAAP. Tosca service template specifications, Automation Composition updates and state changes are shared with the participants via messages from runtime Automation Composition through the topic "POLICY-CLRUNTIME-PARTICIPANT".
+The participants communicate with the Runtime over Kafka. Tosca service template specifications, Automation Composition updates and state changes are shared with the participants via messages from runtime Automation Composition through the topic "POLICY-CLRUNTIME-PARTICIPANT".
 
 3. GUI Sample Flows
 ###################
-The primary flows from the GUI to the backend, through DMAAP and the participants are shown in the diagram below. This diagram just serves as an illustration of the scenarios that the user will experience in the GUI. You can see factually complete dialogues in :ref:`system-level-label`.
+The primary flows from the GUI to the backend, through Kafka and the participants are shown in the diagram below. This diagram just serves as an illustration of the scenarios that the user will experience in the GUI. You can see factually complete dialogues in :ref:`system-level-label`.
 
     .. image:: ../images/gui/GUI-Flow.png

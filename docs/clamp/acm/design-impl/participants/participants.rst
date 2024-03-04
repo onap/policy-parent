@@ -7,7 +7,7 @@ Automation Composition Participants
 
 A Participant is a component that acts as a bridge between the CLAMP Automation Composition Management runtime and components such as
 the Policy Framework, DCAE, or a Kubernetes cluster that are taking part in automation composition management. It listens
-to DMaaP to receive messages from the CLAMP runtime and performs operations towards components that
+to Kafka to receive messages from the CLAMP runtime and performs operations towards components that
 are taking part in acms. A participant has an Automation Composition Management Element for each automation composition in
 which it is taking part.
 

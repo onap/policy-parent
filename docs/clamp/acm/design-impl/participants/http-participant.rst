@@ -13,7 +13,7 @@ the microservice that runs a REST server. Once the microservice is up, the HTTP
 participant can be used to configure the microservice over its REST interface.Of course,
 the HTTP participant works towards any REST service, it is not restricted to REST
 services started by participants.
-Supported message Broker are DMaap and Strimzi-Kafka.
+It supports the message Broker Kafka.
 
 .. image:: ../../images/participants/http-participant.png
 

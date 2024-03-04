@@ -19,7 +19,7 @@ Terminology
 - Spring Scheduling: into SupervisionAspect class, the @Scheduled annotation invokes "schedule()" method every "runtime.participantParameters.heartBeatMs" milliseconds with a fixed delay
 - MessageIntercept: "@MessageIntercept" annotation is used into SupervisionHandler class to intercept "handleParticipantMessage" method calls using spring aspect oriented programming
 - GUI: swagger-ui, Postman or policy-gui
-- Message Broker: supported message Broker are DMaap and Strimzi-Kafka
+- Message Broker: It supports the message Broker Kafka
 
 Design of Rest Api
 ******************

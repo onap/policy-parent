@@ -10,7 +10,7 @@ k8s cluster on the specified namespace. It can fetch the helm chart from remote 
 that are configured on the helm client. The participant acts as a wrapper around the helm client and creates the required
 resources in the k8s cluster.
 
-Supported message Broker are DMaap and Strimzi-Kafka.
+It supports the message Broker Kafka.
 
 The kubernetes participant also exposes REST endpoints for onboarding, installing and uninstalling of helm charts from the
 local chart database which facilitates the user to also use this component as a standalone application for helm operations.

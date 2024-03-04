@@ -16,7 +16,7 @@ Terminology
 - Message to a participant: a message only for a participant (participantId properly filled)
 - MessageSender: a class that takes care of sending messages from participant-intermediary
 - GUI: graphical user interface, Postman or a Front-End Application
-- Message Broker: supported message Broker are DMaap and Strimzi-Kafka
+- Message Broker: It supports the message Broker Kafka
 
 Inbound messages to participants
 --------------------------------

@@ -1,26 +1,23 @@
-<mxfile host="Electron" modified="2023-04-21T08:55:06.953Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="OcRdNbxY9G9qqtWJc1uy" version="21.2.1" type="device" pages="2">
+<mxfile host="Electron" modified="2024-02-29T16:58:02.405Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.1.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="AuKzFCe65gxm2slO3SbG" version="23.1.5" type="device" pages="2">
   <diagram name="A1PMS" id="EQz7CeIsnqjb-CRsskzZ">
-    <mxGraphModel dx="3766" dy="2280" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2234" dy="1236" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="BEZJXQmxWPO11OeoHs-X-1" value="CLAMP-ACM&lt;br&gt;GUI" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;" parent="1" vertex="1">
           <mxGeometry x="47" y="-103" width="153" height="81" as="geometry" />
         </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-2" value="Automation Composition Runtime (CLAMP-ACM)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+        <mxCell id="BEZJXQmxWPO11OeoHs-X-2" value="Automation Composition Runtime (ACM-r)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="44" y="28" width="156" height="81" as="geometry" />
         </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-3" value="DMaaP" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="BEZJXQmxWPO11OeoHs-X-3" value="Kafka" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-232" y="201" width="760" height="39" as="geometry" />
         </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-4" value="A1PMS participant&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+        <mxCell id="BEZJXQmxWPO11OeoHs-X-4" value="HTTP Participant" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#e1d5e7;strokeColor=#9673a6;verticalAlign=top;" parent="1" vertex="1">
           <mxGeometry x="12" y="333" width="243" height="183" as="geometry" />
         </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-5" value="A1PMS Participant Automation Composition Element Configuration for Automation Composition A&lt;br&gt;&lt;br&gt;- Define A1 policy service entities&lt;br&gt;&amp;nbsp; + Sequence of A1 Policy Services&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Client Id&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Callback URL&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=16;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-553" y="-227" width="251" height="216" as="geometry" />
-        </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-9" value="A1PMS Participant Automation Composition Element Configuration for Automation Composition B&lt;br&gt;&lt;br&gt;- Define A1 policy service entities&lt;br&gt;&amp;nbsp; + Sequence of A1 Policy Services&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Client Id&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Callback URL&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=16;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="-556" y="24" width="251" height="216" as="geometry" />
+        <mxCell id="BEZJXQmxWPO11OeoHs-X-5" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;HTTP Participant Automation Composition Element Configuration for Automation Composition A&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;br&gt;- Define configuration entities&lt;br&gt;&amp;nbsp; + Sequence of REST calls for CRUD&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Base URL&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- HTTP Headers&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=16;fillColor=#fff2cc;strokeColor=#d6b656;size=14;" parent="1" vertex="1">
+          <mxGeometry x="-517" y="-229" width="217" height="218" as="geometry" />
         </mxCell>
         <mxCell id="BEZJXQmxWPO11OeoHs-X-10" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.996;exitY=0.278;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="BEZJXQmxWPO11OeoHs-X-5" target="BEZJXQmxWPO11OeoHs-X-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -28,9 +25,9 @@
             <mxPoint x="52" y="-80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-11" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=1.022;exitY=0.288;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.015;entryY=0.632;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="BEZJXQmxWPO11OeoHs-X-9" target="BEZJXQmxWPO11OeoHs-X-1" edge="1">
+        <mxCell id="BEZJXQmxWPO11OeoHs-X-11" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=1.022;exitY=0.288;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.015;entryY=0.632;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="BEZJXQmxWPO11OeoHs-X-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="-293" y="-157" as="sourcePoint" />
+            <mxPoint x="-299.47800000000007" y="86.20799999999997" as="sourcePoint" />
             <mxPoint x="54" y="-73" as="targetPoint" />
           </mxGeometry>
         </mxCell>
@@ -40,20 +37,17 @@
             <mxPoint x="117" y="-22" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-13" value="A1PMS&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#eeeeee;strokeColor=#36393d;" parent="1" vertex="1">
-          <mxGeometry x="368" y="333" width="203.5" height="183" as="geometry" />
+        <mxCell id="BEZJXQmxWPO11OeoHs-X-7" value="Microservice for Control Loop A" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="413" y="340" width="133" height="78" as="geometry" />
         </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-7" value="A1 policy for Automation Composition A" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="413" y="376" width="120" height="60" as="geometry" />
+        <mxCell id="BEZJXQmxWPO11OeoHs-X-8" value="Microservice for Control Loop B" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="413" y="445" width="132" height="77" as="geometry" />
         </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-8" value="A1 policy for Automation Composition B" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="413" y="447" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-14" value="A1PMS Automation Composition Element for Automation Composition A" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+        <mxCell id="BEZJXQmxWPO11OeoHs-X-14" value="HTTP Automation Composition Element for Automation Composition A" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="27" y="378" width="213" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-15" value="A1PMS Automation Composition Element for Automation Composition B" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="32" y="450" width="202" height="60" as="geometry" />
+        <mxCell id="BEZJXQmxWPO11OeoHs-X-15" value="HTTP Automation Composition Element for Automation Composition B" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="27" y="450" width="213" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BEZJXQmxWPO11OeoHs-X-37" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;sketch=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;fontSize=12;startSize=8;endSize=8;curved=1;exitX=0.262;exitY=1.001;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" target="BEZJXQmxWPO11OeoHs-X-39" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -114,14 +108,14 @@
         <mxCell id="BEZJXQmxWPO11OeoHs-X-48" value="" style="ellipse;whiteSpace=wrap;html=1;align=center;aspect=fixed;resizable=0;points=[];outlineConnect=0;sketch=0;fontSize=16;direction=south;fillColor=#B20000;fontColor=#ffffff;strokeColor=#B20000;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="80" y="151" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="BEZJXQmxWPO11OeoHs-X-50" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" parent="1" target="BEZJXQmxWPO11OeoHs-X-13" edge="1">
+        <mxCell id="BEZJXQmxWPO11OeoHs-X-50" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.392;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" target="BEZJXQmxWPO11OeoHs-X-8" edge="1" source="BEZJXQmxWPO11OeoHs-X-15">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="256" y="426" as="sourcePoint" />
-            <mxPoint x="305" y="376" as="targetPoint" />
+            <mxPoint x="368" y="425.21403508771937" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="BEZJXQmxWPO11OeoHs-X-51" value="REST" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" parent="1" vertex="1">
-          <mxGeometry x="278" y="395" width="61" height="31" as="geometry" />
+          <mxGeometry x="299" y="444" width="61" height="31" as="geometry" />
         </mxCell>
         <mxCell id="BEZJXQmxWPO11OeoHs-X-52" value="Instantiation" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="-26" y="143" width="104" height="31" as="geometry" />
@@ -134,6 +128,18 @@
         </mxCell>
         <mxCell id="BEZJXQmxWPO11OeoHs-X-55" value="Monitoring" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="162" y="270.5" width="93" height="31" as="geometry" />
+        </mxCell>
+        <mxCell id="3F4Z10m4reDTS2ubKLEs-1" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;HTTP Participant Automation Composition Element Configuration for Automation Composition B&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;br&gt;- Define configuration entities&lt;br&gt;&amp;nbsp; + Sequence of REST calls for CRUD&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Base URL&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- HTTP Headers&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=16;fillColor=#f8cecc;strokeColor=#b85450;size=14;" vertex="1" parent="1">
+          <mxGeometry x="-517" y="16" width="217" height="218" as="geometry" />
+        </mxCell>
+        <mxCell id="3F4Z10m4reDTS2ubKLEs-2" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.392;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="BEZJXQmxWPO11OeoHs-X-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="404" as="sourcePoint" />
+            <mxPoint x="413" y="404" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3F4Z10m4reDTS2ubKLEs-3" value="REST" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="295" y="361" width="61" height="31" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -152,7 +158,7 @@
         <mxCell id="hDoWaCIZZ_nO79t9Hxqc-2" value="Automation Composition Runtime (CLAMP-ACM)" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="44" y="28" width="156" height="81" as="geometry" />
         </mxCell>
-        <mxCell id="hDoWaCIZZ_nO79t9Hxqc-3" value="DMaaP" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="hDoWaCIZZ_nO79t9Hxqc-3" value="Kafka" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-232" y="201" width="760" height="39" as="geometry" />
         </mxCell>
         <mxCell id="hDoWaCIZZ_nO79t9Hxqc-5" value="Kserve Participant Automation Composition Element Configuration for Automation Composition A&lt;br&gt;&lt;br&gt;- Define Inference Service Entities&lt;br&gt;&amp;nbsp; + Sequence of Inference Services&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Name&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Namespace&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- Payload&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontSize=16;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">

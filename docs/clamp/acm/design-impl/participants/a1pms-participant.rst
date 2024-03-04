@@ -7,7 +7,7 @@ A1PMS Participant
 
 The A1PMS participant receives A1 policy service information from the CLAMP runtime and creates the A1 policy service in A1PMS. The participant acts as a wrapper around the A1PMS and creates the policy service.
 
-Supported message Broker are DMaap and Strimzi-Kafka.
+It supports the message Broker Kafka.
 
 .. image:: ../../images/participants/a1pms-participant.png
 

@@ -127,7 +127,7 @@ The CLAMP Automation Composition Participant Protocol uses the following message
 descriptions below give an overview of each message. For the precise definition of the messages,
 see the `CLAMP code at Github
 <https://github.com/onap/policy-clamp/tree/master/models/src/main/java/org/onap/policy/clamp/models/acm/messages/kafka/participant>`_
-. All messages are carried on DMaaP.
+. All messages are carried on Kafka.
 
 .. csv-table:: ACM Messages
   :file: ../files/ACM-Message-Table.csv
