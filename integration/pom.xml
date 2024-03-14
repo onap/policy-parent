@@ -47,7 +47,7 @@
         <version.ccsdk>1.5.3</version.ccsdk>
         <version.cucumber>7.15.0</version.cucumber>
         <version.docker-java>3.3.2</version.docker-java>
-        <version.drools>9.44.0.Final</version.drools>
+        <version.drools>8.40.1.Final</version.drools>
         <version.frontend.maven>1.13.4</version.frontend.maven>
         <version.io.prometheus>0.16.0</version.io.prometheus>
         <version.jackson>2.16.1</version.jackson>
