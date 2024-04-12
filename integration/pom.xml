@@ -39,7 +39,14 @@
         <java.version>17</java.version>
         <!-- Note Well: For RELEASE/SNAPSHOT always set to the project version -->
         <version.parent.resources>4.1.2-SNAPSHOT</version.parent.resources>
+        <version.parent.checkstyle>4.1.2-SNAPSHOT</version.parent.checkstyle>
         <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
+        <sonar-jacoco-listeners.version>3.2</sonar-jacoco-listeners.version>
+        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+        <!-- Default Sonar configuration -->
+        <sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco-ut/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <!-- Note: This list should match jacoco-maven-plugin's exclusion list below -->
+        <sonar.exclusions>org/drools/**/*,**/gen/**,**/generated-sources/**</sonar.exclusions>
         <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
         <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
         <docker.push.registry>nexus3.onap.org:10003</docker.push.registry>
@@ -63,6 +70,7 @@
         <version.kotlin>1.9.23</version.kotlin>
         <version.log4j>2.23.1</version.log4j>
         <version.logback>1.4.14</version.logback>
+        <version.maven-checkstyle-plugin>3.3.1</version.maven-checkstyle-plugin>
         <version.maven-remote-resources-plugin>3.1.0</version.maven-remote-resources-plugin>
         <version.medeia.validator>1.1.1</version.medeia.validator>
         <version.micrometer>1.11.10</version.micrometer>
@@ -79,6 +87,7 @@
         <version.spring>6.0.18</version.spring>
         <version.springboot>3.1.10</version.springboot>
         <version.spring-security>6.1.8</version.spring-security>
+        <version.sonar>3.11.0.3922</version.sonar>
         <version.swagger.codegen.v3>3.0.52</version.swagger.codegen.v3>
         <version.swagger.core.v3>2.2.20</version.swagger.core.v3>
         <version.tomcat>10.1.19</version.tomcat>
@@ -952,7 +961,6 @@
                 <artifactId>kotlin-stdlib-common</artifactId>
                 <version>${version.kotlin}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
     <scm>
@@ -985,7 +993,7 @@
                                             <pluginExecutionFilter>
                                                 <groupId>org.apache.maven.plugins</groupId>
                                                 <artifactId>maven-checkstyle-plugin</artifactId>
-                                                <version>3.3.0</version>
+                                                <version>${version.maven-checkstyle-plugin}</version>
                                                 <goals>
                                                     <goal>check</goal>
                                                 </goals>
@@ -1105,6 +1113,25 @@
                         </plugin>
                     </plugins>
                 </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>cve</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.owasp</groupId>
+                        <artifactId>dependency-check-maven</artifactId>
+                        <version>9.1.0</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>aggregate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
             </build>
         </profile>
     </profiles>
@@ -1276,6 +1303,21 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.1.2</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${version.sonar}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>4.0.0-M13</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -1301,6 +1343,8 @@
                 <configuration>
                     <excludes>
                         <exclude>org/drools/**/*</exclude>
+                        <exclude>**/gen/**</exclude>
+                        <exclude>**/generated-sources/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -1356,6 +1400,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${version.maven-checkstyle-plugin}</version>
                 <executions>
                     <execution>
                         <id>onap-license</id>
@@ -1401,9 +1446,9 @@
                 </executions>
                 <dependencies>
                     <dependency>
-                        <groupId>org.onap.oparent</groupId>
+                        <groupId>org.onap.policy.parent</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>${oparent.version}</version>
+                        <version>${version.parent.checkstyle}</version>
                         <scope>compile</scope>
                     </dependency>
                 </dependencies>
