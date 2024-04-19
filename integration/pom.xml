@@ -40,11 +40,11 @@
         <!-- Note Well: For RELEASE/SNAPSHOT always set to the project version -->
         <version.parent.resources>4.1.2-SNAPSHOT</version.parent.resources>
         <version.parent.checkstyle>4.1.2-SNAPSHOT</version.parent.checkstyle>
-        <jacoco.dataFile>${project.basedir}/../target/code-coverage/jacoco-ut.exec</jacoco.dataFile>
-        <sonar-jacoco-listeners.version>3.2</sonar-jacoco-listeners.version>
-        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+        <jacoco.destFile>${project.build.directory}/code-coverage/jacoco-ut.exec</jacoco.destFile>
         <!-- Default Sonar configuration -->
-        <sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco-ut/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.reporting.outputDirectory}/jacoco-ut/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
         <!-- Note: This list should match jacoco-maven-plugin's exclusion list below -->
         <sonar.exclusions>org/drools/**/*,**/gen/**,**/generated-sources/**</sonar.exclusions>
         <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
@@ -1318,6 +1318,16 @@
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>3.1.1</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>3.2.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${version.sonar}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -1346,6 +1356,7 @@
                         <exclude>**/gen/**</exclude>
                         <exclude>**/generated-sources/**</exclude>
                     </excludes>
+                    <output>file</output>
                 </configuration>
                 <executions>
                     <execution>
@@ -1354,8 +1365,9 @@
                             <goal>prepare-agent</goal>
                         </goals>
                         <configuration>
-                            <destFile>${jacoco.dataFile}</destFile>
+                            <destFile>${jacoco.destFile}</destFile>
                             <append>true</append>
+                            <propertyName>surefireArgLine</propertyName>
                         </configuration>
                     </execution>
                     <execution>
@@ -1365,35 +1377,19 @@
                             <goal>report</goal>
                         </goals>
                         <configuration>
-                            <dataFile>${jacoco.dataFile}</dataFile>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>pre-integration-test</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                        <configuration>
-                            <skip>true</skip>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>post-integration-test</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                        <configuration>
-                            <skip>true</skip>
+                            <dataFile>${jacoco.destFile}</dataFile>
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
                         </configuration>
                     </execution>
                     <execution>
                         <id>report-aggregate</id>
-                        <phase>prepare-package</phase>
+                        <phase>verify</phase>
                         <goals>
                             <goal>report-aggregate</goal>
                         </goals>
+                        <configuration>
+                            <includeCurrentProject>true</includeCurrentProject>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -1452,6 +1448,23 @@
                         <scope>compile</scope>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>integration-tests</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Sets the VM argument line used when integration tests are run. -->
+                            <argLine>${failsafeArgLine}</argLine>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

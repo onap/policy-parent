@@ -67,7 +67,7 @@
                     <artifactId>formatter-maven-plugin</artifactId>
                     <version>2.11.0</version>
                     <configuration>
-                        <configFile>${project.parent.basedir}/onap-java-formatter.xml</configFile>
+                        <configFile>${project.basedir}/onap-java-formatter.xml</configFile>
                     </configuration>
                     <!-- https://code.revelc.net/formatter-maven-plugin/
                          use mvn formatter:format to rewrite source files
@@ -87,11 +87,6 @@
                     <!-- https://github.com/diffplug/spotless/tree/master/plugin-maven
                          use mvn spotless:apply to rewrite source files
                          use mvn spotless:check to validate source files -->
-                </plugin>
-                <plugin>
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>${sonar.scanner.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
