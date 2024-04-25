@@ -8,7 +8,7 @@ Using Policy DB Migrator
 ########################
 
 Policy DB Migrator is a set of shell scripts used to
-install the database tables required to run ONAP Policy Framework.
+install the database tables required to run ONAP Policy Framework and ACM.
 
 .. note::
    Currently the Istanbul versions of the PAP and API components require
@@ -53,7 +53,7 @@ These script can take up to four parameters:
      - upgrade/downgrade/report
    * - schema
      - -s
-     - policyadmin
+     - policyadmin/clampacm
    * - to
      - -t
      - 0800/0900
@@ -76,7 +76,7 @@ to run and connect to the database.
    * - SQL_HOST
      - mariadb
    * - SQL_DB
-     - policyadmin
+     - policyadmin/clampacm
    * - SQL_USER
      - policy_user
    * - SQL_PASSWORD
@@ -98,7 +98,7 @@ to run and connect to the database.
    * - SQL_HOST
      - postgres
    * - SQL_DB
-     - policyadmin
+     - policyadmin/clampacm
    * - SQL_USER
      - policy_user
    * - SQL_PASSWORD
@@ -119,7 +119,7 @@ Prior to upgrading the following script is run:
 
    /opt/app/policy/bin/prepare_upgrade.sh <SCHEMA NAME>
 
-This will copy the upgrade files from ``/home/policy/${SCRIPT_DIRECTORY}`` to ``$POLICY_HOME/etc/db/migration/<SCHEMA NAME>/${SCRIPT_DIRECTORY}/``
+This will copy the upgrade files from ``/home/${SCHEMA}/${SCRIPT_DIRECTORY}`` to ``$POLICY_HOME/etc/db/migration/<SCHEMA NAME>/${SCRIPT_DIRECTORY}/``
 
 Each individual sql file that makes up that release will be run as part of the upgrade.
 
@@ -132,7 +132,7 @@ Prior to downgrading the following script is run:
 
    /opt/app/policy/bin/prepare_downgrade.sh <SCHEMA NAME>
 
-This will copy the downgrade files from ``/home/policy/${SCRIPT_DIRECTORY}`` to ``$POLICY_HOME/etc/db/migration/<SCHEMA NAME>/${SCRIPT_DIRECTORY}/``
+This will copy the downgrade files from ``/home/${SCHEMA}/${SCRIPT_DIRECTORY}`` to ``$POLICY_HOME/etc/db/migration/<SCHEMA NAME>/${SCRIPT_DIRECTORY}/``
 
 Each individual sql file that makes up that release will be run as part of the downgrade.
 
@@ -199,7 +199,7 @@ Console output will also show the sql script command as in the example below:
 migration schema
 ================
 
-The migration schema contains two tables which belong to ``db-migrator``.
+The migration schema contains three tables which belong to ``db-migrator``.
 
 * schema_versions - table to store the schema version currently installed by ``db-migrator``
 
@@ -210,7 +210,9 @@ The migration schema contains two tables which belong to ``db-migrator``.
    * - name
      - version
    * - policyadmin
-     - 0900
+     - 1400
+   * - clampacm
+     - 1400
 
 * policyadmin_schema_changelog - table which stores a record of each sql file that has been run
 
@@ -234,6 +236,29 @@ The migration schema contains two tables which belong to ``db-migrator``.
      - 1309210909250800u
      - 1
      - 2021-09-13 09:09:26
+
+* clampacm_schema_changelog - table which stores a record of each sql file that has been run
+
+.. list-table::
+   :widths: 10 40 10 10 10 20 10 20
+   :header-rows: 1
+
+   * - ID
+     - script
+     - operation
+     - from_version
+     - to_version
+     - tag
+     - success
+     - atTime
+   * - 1
+     - 0100-automationcomposition.sql
+     - upgrade
+     - 0
+     - 1400
+     - 1309210909250800u
+     - 1
+     - 2024-04-24 09:09:26
 
 * ID: Sequence number of the operation
 * script: name of the sql script which was run
@@ -340,7 +365,7 @@ If the target version of your upgrade or downgrade is the same as the current ve
 no sql files are run.
 
 If an upgrade is run on a database where tables already exist in the policy schema, the
-current schema version is set to 0800 and only sql scripts from later versions are run.
+current schema version is set to 1300 and only sql scripts from later versions are run.
 
 .. note::
    It is advisable to take a backup of your database prior to running this utility.
