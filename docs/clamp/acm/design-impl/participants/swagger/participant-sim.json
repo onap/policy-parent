@@ -1,233 +1,82 @@
 {
-    "swagger": "2.0",
+    "openapi": "3.0.1",
     "info": {
-        "description": "Api Documentation",
-        "version": "1.0",
-        "title": "Api Documentation",
-        "termsOfService": "urn:tos",
-        "contact": {},
+        "title": "ACM Mock Participant",
+        "description": "CLAMP Mock Participant API",
         "license": {
             "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0"
         }
     },
+    "externalDocs": {
+        "description": "CLAMP Automation Composition Management Documentation",
+        "url": "https://docs.onap.org/projects/onap-policy-parent/en/latest/clamp/clamp.html"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8084/onap/policy/clamp/acm/simparticipant",
+            "description": "Generated server url"
+        }
+    ],
     "paths": {
-        "/onap/participantsim/v2/elements": {
-            "put": {
-                "tags": [
-                    "Clamp Automation Composition Participant Simulator API"
-                ],
-                "summary": "Updates simulated automation composition elements",
-                "description": "Updates simulated automation composition elements, returning the updated automation composition definition IDs",
-                "operationId": "updateUsingPUT",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json",
-                    "application/yaml"
-                ],
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Body of a automation composition element",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/AutomationCompositionElementReq",
-                            "originalRef": "AutomationCompositionElementReq"
-                        }
-                    },
-                    {
-                        "name": "X-ONAP-RequestID",
-                        "in": "header",
-                        "description": "RequestID for http transaction",
-                        "required": false,
-                        "type": "string",
-                        "format": "uuid"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/TypedSimpleResponse«AutomationCompositionElement»",
-                            "originalRef": "TypedSimpleResponse«AutomationCompositionElement»"
-                        }
-                    },
-                    "201": {
-                        "description": "Created"
-                    },
-                    "401": {
-                        "description": "Authentication Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Authorization Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "basicAuth": []
-                    }
-                ],
-                "x-interface info": {
-                    "api-version": "1.0.0",
-                    "last-mod-release": "Dublin"
-                }
-            }
-        },
-        "/onap/participantsim/v2/elements/{name}/{version}": {
+        "/v2/parameters": {
             "get": {
                 "tags": [
-                    "Clamp Automation Composition Participant Simulator API"
+                    "Simulator-participant-controller"
                 ],
-                "summary": "Query details of the requested simulated automation composition elements",
-                "description": "Queries details of the requested simulated automation composition elements, returning all automation composition element details",
-                "operationId": "elementsUsingGET",
-                "produces": [
-                    "application/json",
-                    "application/yaml"
-                ],
+                "summary": "Return all Parameters",
+                "description": "Return all the parameters configured in the Simulator Participant",
+                "operationId": "getConfig",
                 "parameters": [
                     {
-                        "name": "name",
-                        "in": "path",
-                        "description": "Automation Composition element name",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "description": "Automation Composition element version",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "X-ONAP-RequestID",
+                        "name": "X-onap-RequestId",
                         "in": "header",
                         "description": "RequestID for http transaction",
                         "required": false,
-                        "type": "string",
-                        "format": "uuid"
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "$ref": "#/definitions/AutomationCompositionElementRes",
-                                "originalRef": "AutomationCompositionElementRes"
+                        "description": "OK, reutrns a serialised instance of [SimConfig](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/policy-clamp-participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/SimConfig.java)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SimConfig"
+                                }
                             }
                         }
                     },
                     "401": {
-                        "description": "Authentication Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
-                    },
-                    "403": {
                         "description": "Authorization Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SimConfig"
+                                }
                             },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SimConfig"
+                                }
                             }
                         }
-                    },
-                    "404": {
-                        "description": "Not Found"
                     },
                     "500": {
                         "description": "Internal Server Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SimConfig"
+                                }
                             },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SimConfig"
+                                }
                             }
                         }
                     }
@@ -236,229 +85,121 @@
                     {
                         "basicAuth": []
                     }
-                ],
-                "x-interface info": {
-                    "api-version": "1.0.0",
-                    "last-mod-release": "Dublin"
-                }
-            }
-        },
-        "/onap/participantsim/v2/participants": {
+                ]
+            },
             "put": {
                 "tags": [
-                    "Clamp Automation Composition Participant Simulator API"
+                    "Simulator-participant-controller"
                 ],
-                "summary": "Updates simulated participants",
-                "description": "Updates simulated participants, returning the updated automation composition definition IDs",
-                "operationId": "updateUsingPUT_1",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json",
-                    "application/yaml"
-                ],
+                "summary": "change the parameters",
+                "description": "Change the parameters the behaviour of the Simulator Participant",
+                "operationId": "setConfig",
                 "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "Body of a participant",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ParticipantReq",
-                            "originalRef": "ParticipantReq"
-                        }
-                    },
                     {
                         "name": "X-ONAP-RequestID",
                         "in": "header",
                         "description": "RequestID for http transaction",
                         "required": false,
-                        "type": "string",
-                        "format": "uuid"
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SimConfig"
+                            }
+                        },
+                        "application/yaml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SimConfig"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/TypedSimpleResponse«Participant»",
-                            "originalRef": "TypedSimpleResponse«Participant»"
-                        }
+                        "description": "OK, the parameters has been saved"
                     },
-                    "201": {
-                        "description": "Created"
+                    "400": {
+                        "description": "Bad Request"
                     },
                     "401": {
-                        "description": "Authentication Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Authorization Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found"
+                        "description": "Authorization Error"
                     },
                     "500": {
-                        "description": "Internal Server Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
+                        "description": "Internal Server Error"
                     }
                 },
                 "security": [
                     {
                         "basicAuth": []
                     }
-                ],
-                "x-interface info": {
-                    "api-version": "1.0.0",
-                    "last-mod-release": "Dublin"
-                }
+                ]
             }
         },
-        "/onap/participantsim/v2/participants/{name}/{version}": {
+        "/v2/datas": {
             "get": {
                 "tags": [
-                    "Clamp Automation Composition Participant Simulator API"
+                    "Simulator-participant-controller"
                 ],
-                "summary": "Query details of the requested simulated participants",
-                "description": "Queries details of the requested simulated participants, returning all participant details",
-                "operationId": "participantsUsingGET",
-                "produces": [
-                    "application/json",
-                    "application/yaml"
-                ],
+                "summary": "Query details of the requested internal datas",
+                "description": "Query details of the requested internal datas",
+                "operationId": "getDatas",
                 "parameters": [
                     {
-                        "name": "name",
-                        "in": "path",
-                        "description": "Participant name",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "version",
-                        "in": "path",
-                        "description": "Participant version",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "X-ONAP-RequestID",
+                        "name": "X-onap-RequestId",
                         "in": "header",
                         "description": "RequestID for http transaction",
                         "required": false,
-                        "type": "string",
-                        "format": "uuid"
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/ParticipantRes",
-                                "originalRef": "ParticipantRes"
+                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/policy-clamp-participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
                             }
                         }
                     },
                     "401": {
-                        "description": "Authentication Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
-                            },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
-                            }
-                        }
-                    },
-                    "403": {
                         "description": "Authorization Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
                             },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
                             }
                         }
-                    },
-                    "404": {
-                        "description": "Not Found"
                     },
                     "500": {
                         "description": "Internal Server Error",
-                        "headers": {
-                            "X-LatestVersion": {
-                                "type": "string"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
                             },
-                            "X-PatchVersion": {
-                                "type": "string"
-                            },
-                            "X-MinorVersion": {
-                                "type": "string"
-                            },
-                            "X-ONAP-RequestID": {
-                                "type": "string",
-                                "format": "uuid"
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
                             }
                         }
                     }
@@ -467,10 +208,641 @@
                     {
                         "basicAuth": []
                     }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Simulator-participant-controller"
                 ],
-                "x-interface info": {
-                    "api-version": "1.0.0",
-                    "last-mod-release": "Dublin"
+                "summary": "change the parameters",
+                "description": "Change the data of the Simulator Participant",
+                "operationId": "setData",
+                "parameters": [
+                    {
+                        "name": "X-ONAP-RequestID",
+                        "in": "header",
+                        "description": "RequestID for http transaction",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InternalData"
+                            }
+                        },
+                        "application/yaml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InternalData"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK, the data has been saved"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Authorization Error"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ]
+            }
+        },
+        "/v2/compositiondatas": {
+            "get": {
+                "tags": [
+                    "Simulator-participant-controller"
+                ],
+                "summary": "Query details of the requested internal composition datas",
+                "description": "Query details of the requested internal composition datas",
+                "operationId": "getCompositionDatas",
+                "parameters": [
+                    {
+                        "name": "X-onap-RequestId",
+                        "in": "header",
+                        "description": "RequestID for http transaction",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/policy-clamp-participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authorization Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
+                            },
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
+                            },
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Simulator-participant-controller"
+                ],
+                "summary": "change the parameters",
+                "description": "Change the data of the Simulator Participant",
+                "operationId": "setCompositionData",
+                "parameters": [
+                    {
+                        "name": "X-ONAP-RequestID",
+                        "in": "header",
+                        "description": "RequestID for http transaction",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InternalData"
+                            }
+                        },
+                        "application/yaml": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InternalData"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK, the data has been saved"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Authorization Error"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ]
+            }
+        },
+        "/v2/instances": {
+            "get": {
+                "tags": [
+                    "Simulator-participant-controller"
+                ],
+                "summary": "Query details of the requested automation composition instances",
+                "description": "Query details of the requested automation composition instances for the given automation composition definition ID, returning details of all its automation composition instances",
+                "operationId": "getAutomationCompositions",
+                "parameters": [
+                    {
+                        "name": "X-onap-RequestId",
+                        "in": "header",
+                        "description": "RequestID for http transaction",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Serialised instance of [AutomationCompositions](https://github.com/onap/policy-clamp/blob/master/models/src/main/java/org/onap/policy/clamp/models/acm/concepts/AutomationCompositions.java) containing a list of automation composition instances found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AutomationCompositions"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authorization Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AutomationCompositions"
+                                }
+                            },
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AutomationCompositions"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AutomationCompositions"
+                                }
+                            },
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AutomationCompositions"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ]
+            }
+        },
+        "/v2/instances/{instanceId}": {
+            "get": {
+                "tags": [
+                    "Simulator-participant-controller"
+                ],
+                "summary": "Get automation composition instance details.",
+                "description": "Get details of the requested automation composition instance.",
+                "operationId": "getAutomationComposition",
+                "parameters": [
+                    {
+                        "name": "instanceId",
+                        "in": "path",
+                        "description": "The UUID of the automation composition instance to get",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "X-onap-RequestId",
+                        "in": "header",
+                        "description": "RequestID for http transaction",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Serialised instance of [AutomationComposition](https://github.com/onap/policy-clamp/blob/master/models/src/main/java/org/onap/policy/clamp/models/acm/concepts/AutomationComposition.java) containing the automation composition instance",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AutomationComposition"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authorization Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AutomationComposition"
+                                }
+                            },
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AutomationComposition"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AutomationComposition"
+                                }
+                            },
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AutomationComposition"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SimConfig": {
+                "type": "object",
+                "properties": {
+                    "deploySuccess": {
+                        "type": "boolean"
+                    },
+                    "undeploySuccess": {
+                        "type": "boolean"
+                    },
+                    "lockSuccess": {
+                        "type": "boolean"
+                    },
+                    "unlockSuccess": {
+                        "type": "boolean"
+                    },
+                    "deleteSuccess": {
+                        "type": "boolean"
+                    },
+                    "updateSuccess": {
+                        "type": "boolean"
+                    },
+                    "migrateSuccess": {
+                        "type": "boolean"
+                    },
+                    "primeSuccess": {
+                        "type": "boolean"
+                    },
+                    "deprimeSuccess": {
+                        "type": "boolean"
+                    },
+                    "deployTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "undeployTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "lockTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "unlockTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "updateTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "migrateTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deleteTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "primeTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "deprimeTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "InternalData": {
+                "type": "object",
+                "properties": {
+                    "intProperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    },
+                    "outProperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    },
+                    "compositionId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "compositionDefinitionElementId": {
+                        "$ref": "#/components/schemas/ToscaConceptIdentifier"
+                    },
+                    "automationCompositionId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "automationCompositionElementId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "useState": {
+                        "type": "string"
+                    },
+                    "operationalState": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ToscaConceptIdentifier": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AutomationComposition": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "derivedFrom": {
+                        "type": "string"
+                    },
+                    "metadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "compositionId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "compositionTargetId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "restarting": {
+                        "type": "boolean"
+                    },
+                    "deployState": {
+                        "type": "string",
+                        "enum": [
+                            "DEPLOYED",
+                            "DEPLOYING",
+                            "UNDEPLOYED",
+                            "UNDEPLOYING",
+                            "DELETING",
+                            "DELETED",
+                            "UPDATING",
+                            "MIGRATING"
+                        ]
+                    },
+                    "lockState": {
+                        "type": "string",
+                        "enum": [
+                            "LOCKED",
+                            "LOCKING",
+                            "UNLOCKED",
+                            "UNLOCKING",
+                            "NONE"
+                        ]
+                    },
+                    "elements": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/AutomationCompositionElement"
+                        }
+                    },
+                    "stateChangeResult": {
+                        "type": "string",
+                        "enum": [
+                            "NO_ERROR",
+                            "FAILED",
+                            "TIMEOUT"
+                        ]
+                    },
+                    "definedName": {
+                        "type": "string"
+                    },
+                    "definedVersion": {
+                        "type": "string"
+                    },
+                    "typeVersion": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "$ref": "#/components/schemas/ToscaEntityKey"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AutomationCompositionElement": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "definition": {
+                        "$ref": "#/components/schemas/ToscaConceptIdentifier"
+                    },
+                    "participantId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "restarting": {
+                        "type": "boolean"
+                    },
+                    "deployState": {
+                        "type": "string",
+                        "enum": [
+                            "DEPLOYED",
+                            "DEPLOYING",
+                            "UNDEPLOYED",
+                            "UNDEPLOYING",
+                            "DELETING",
+                            "DELETED",
+                            "UPDATING",
+                            "MIGRATING"
+                        ]
+                    },
+                    "lockState": {
+                        "type": "string",
+                        "enum": [
+                            "LOCKED",
+                            "LOCKING",
+                            "UNLOCKED",
+                            "UNLOCKING",
+                            "NONE"
+                        ]
+                    },
+                    "operationalState": {
+                        "type": "string"
+                    },
+                    "useState": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    },
+                    "outProperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "AutomationCompositions": {
+                "type": "object",
+                "properties": {
+                    "automationCompositionList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AutomationComposition"
+                        }
+                    }
+                }
+            },
+            "ToscaEntityKey": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    }
+                }
+            },
+            "InternalDatas": {
+                "type": "object",
+                "properties": {
+                    "list": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/InternalData"
+                        }
+                    }
                 }
             }
         }

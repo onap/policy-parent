@@ -194,6 +194,108 @@ Any new functionality in the future will be wrapped by this class.
 Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime, deprime, handleRestartComposition and handleRestartInstance.
 
 
+Methods: deploy, undeploy, lock, unlock and delete
+  compositionElement:
+    ======================  =======================================
+     **field**                       **description**
+    ======================  =======================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+    ======================  =======================================
+  instanceElement:
+    ==============================  ===========================
+     **field**                       **description**
+    ==============================  ===========================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment    policies and policy types
+     inProperties                    instance in-properties
+      outProperties                  instance out-properties
+    ==============================  ===========================
+
+Method: update
+  compositionElement:
+    ======================  =======================================
+     **field**                       **description**
+    ======================  =======================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+    ======================  =======================================
+  instanceElement:
+    ==============================  ================================================
+     **field**                       **description**
+    ==============================  ================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(before the update)**
+      outProperties                  instance out-properties
+    ==============================  ================================================
+  instanceElementUpdated:
+    ==============================  ======================================
+     **field**                       **description**
+    ==============================  ======================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(updated)**
+      outProperties                  instance out-properties
+    ==============================  ======================================
+
+Methods: prime, deprime
+  composition:
+    ======================  ===================================================================
+     **field**                       **description**
+    ======================  ===================================================================
+     compositionId           composition definition Id
+     inProperties            composition definition in-properties for each definition element
+     outProperties           composition definition out-properties for each definition element
+    ======================  ===================================================================
+
+Method: migrate
+  compositionElement:
+    ======================  =======================================
+     **field**                       **description**
+    ======================  =======================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+    ======================  =======================================
+  compositionElementTarget:
+    ======================  ==============================================
+     **field**                       **description**
+    ======================  ==============================================
+     compositionId           composition definition target Id
+     elementDefinitionId     composition definition target element Id
+     inProperties            composition definition target in-properties
+     outProperties           composition definition target out-properties
+    ======================  ==============================================
+  instanceElement:
+    ==============================  ===================================================
+     **field**                       **description**
+    ==============================  ===================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(before the migration)**
+      outProperties                  instance out-properties
+    ==============================  ===================================================
+  instanceElementMigrate:
+    ==============================  ======================================
+     **field**                       **description**
+    ==============================  ======================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(updated)**
+      outProperties                  instance out-properties
+    ==============================  ======================================
+
 APIs to invoke
 --------------
 ParticipantIntermediaryApi:

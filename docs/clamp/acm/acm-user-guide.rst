@@ -418,7 +418,7 @@ The Json below is an example of configuration:
 
 Update and send composition outProperites
 -----------------------------------------
-Data like useState operationalState and outProperites could be updated any time using the following endpoint:
+Composition Definition outProperites could be updated any time using the following endpoint:
 
 .. code-block:: bash
 
@@ -454,7 +454,7 @@ could be read using the following endpoint:
 
 Update and send useState operationalState and instance outProperites
 --------------------------------------------------------------------
-Data like useState operationalState and outProperites could be updated any time using the following endpoint:
+AC instance data like useState operationalState and outProperites could be updated any time using the following endpoint:
 
 .. code-block:: bash
 
@@ -466,7 +466,7 @@ The Json below is an example of update, where {{instanceId}} is the UUID of the 
 
   {
         "outProperties": {
-            "Opresult": true,
+            "result": true,
             "list": [
                 {"id": 1 },
                 {"id": 2 }
