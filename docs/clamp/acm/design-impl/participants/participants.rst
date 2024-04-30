@@ -38,3 +38,4 @@ The detailed implementation of the CLAMP Participant ecosystem is described on t
    a1pms-participant
    kserve-participant
    policy-framework-participant
+   sim-participant
