@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d5038d1_3cfdcf37",
+        "filename": "integration/src/main/scripts/release/updateRefs.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2024-05-01T08:41:13Z",
+      "side": 1,
+      "message": "update change year",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "cedf384f065e4494a4434e846522975b2ad6c187",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
