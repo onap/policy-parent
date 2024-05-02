@@ -15,6 +15,189 @@ Policy Framework Release Notes
 ..      * one section describing the purpose of this new release.
 
 ..      ==========================
+..      * * *     MONTREAL     * * *
+..      ==========================
+
+Version: 13.0.0
+---------------
+
+:Release Date: 2023-11-30 (Montreal Release)
+
+Artifacts released:
+
+.. list-table::
+   :widths: 15 10 10
+   :header-rows: 1
+
+   * - Repository
+     - Java Artifact
+     - Docker Image (if applicable)
+   * - policy/parent
+     - 4.0.2
+     - N/A
+   * - policy/docker
+     - 3.0.2
+     - | policy-jre-alpine
+       | policy-jdk-alpine
+       | policy-db-migrator
+   * - policy/common
+     - 2.0.2
+     - N/A
+   * - policy/models
+     - 3.0.2
+     - N/A
+   * - policy/api
+     - 3.0.2
+     - policy-api
+   * - policy/pap
+     - 3.0.2
+     - policy-pap
+   * - policy/apex-pdp
+     - 3.0.2
+     - policy-apex-pdp
+   * - policy/drools-pdp
+     - 2.0.2
+     - policy-drools
+   * - policy/xacml-pdp
+     - 3.0.2
+     - policy-xacml-pdp
+   * - policy/distribution
+     - 3.0.2
+     - policy-distribution
+   * - policy/clamp
+     - 7.0.3
+     - | policy-clamp-ac-pf-ppnt
+       | policy-clamp-ac-k8s-ppnt
+       | policy-clamp-ac-http-ppnt
+       | policy-clamp-runtime-acm'
+   * - policy/gui
+     - 3.0.2
+     - policy-gui
+   * - policy/drools-applications
+     - 2.0.2
+     - policy-pdpd-cl
+
+Key Updates
+===========
+
+* Improvements to CLAMP Automation Composition Management (ACM)
+
+  CLAMP ACM is improved with new features and Failure handling capabilities. ACM can handle a restarted participant and send updates to the participant with the runtime data.
+  In addition, the user can also update instance properties on the deployed instances without impacting the ACM system. From Montreal release, the ACM participants can handle
+  multiple messages from ACM simultaneously. ACM configuration now supports customizable element names in the compositions.
+
+  See:
+   - `POLICY-4505 <https://jira.onap.org/browse/POLICY-4505>`_ - R13: Improvements specific to clamp
+
+* Migration functionality in ACM
+
+  From Montreal release, Users can migrate the deployed AC instances to a different composition definition with updated configurations without impacting the running system.
+
+  See:
+   - `POLICY-4809 <https://jira.onap.org/browse/POLICY-4809>`_ - R13: Instance Migration/Upgrade in ACM
+
+* Java 17 Upgrade
+
+  All the components in the policy framework are upgraded to java 17 version. Spring version upgraded to spring 6 and spring boot 3. This improves the overall performance of the
+  applications along with the latest java capabilities. Also this upgrade is very significant in removing the critical security vulnerabilities.
+
+  See:
+   - `POLICY-4665 <https://jira.onap.org/browse/POLICY-4665>`_ - R13: Java 17 and associated dependency upgrade
+
+* Remove AAF from Policy Framework
+
+  AAF project is deprecated in ONAP. Policy Framework is refactored to remove unused functionalities and configurations related to AAF.
+
+  See:
+   - `POLICY-4592 <https://jira.onap.org/browse/POLICY-4592>`_ - R13: Remove AAF from Policy Framework
+
+Known Limitations, Issues and Workarounds
+=========================================
+
+System Limitations
+~~~~~~~~~~~~~~~~~~
+N/A
+
+Known Vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~
+N/A
+
+Workarounds
+~~~~~~~~~~~
+N/A
+
+Security Notes
+==============
+
+Policy Framework upgraded to Spring 6 and Springboot 3 and eliminated critical security vulnerabilities. Java version upgraded to Java 17.
+
+Functional Improvements
+=======================
+| `POLICY-4505 <https://jira.onap.org/browse/POLICY-4505>`_ - R13: Improvements specific to clamp
+|  `POLICY-4591 <https://jira.onap.org/browse/POLICY-4591>`_ - Update properties on deployed instances
+|  `POLICY-4683 <https://jira.onap.org/browse/POLICY-4683>`_ - Failure handling on the ACM-R
+|  `POLICY-4700 <https://jira.onap.org/browse/POLICY-4700>`_ - Handle multiple messages from ACM to Participant simultaneously
+|  `POLICY-4716 <https://jira.onap.org/browse/POLICY-4716>`_ - Enable timeout functionality in ACM/Participants
+|  `POLICY-4684 <https://jira.onap.org/browse/POLICY-4684>`_ - Participant restart handling in ACM
+|  `POLICY-4827 <https://jira.onap.org/browse/POLICY-4827>`_ - Allow customisation of element names in composition definition
+|  `POLICY-4699 <https://jira.onap.org/browse/POLICY-4699>`_ - Create a mock participant for ACM testing
+|  `POLICY-4809 <https://jira.onap.org/browse/POLICY-4809>`_ - Instance Migration/Upgrade in ACM
+
+Necessary Improvements and Bug Fixes
+====================================
+
+Necessary Improvements
+~~~~~~~~~~~~~~~~~~~~~~
+| `POLICY-4396 <https://jira.onap.org/browse/POLICY-4396>`_ - R13: Improvements on Apex-pdp
+|  `POLICY-4765 <https://jira.onap.org/browse/POLICY-4765>`_ - Support for Context Albums across policy sets in Apex
+|  `POLICY-4645 <https://jira.onap.org/browse/POLICY-4645>`_ - Use Postgres DB in CSIT tests for Apex-pdp
+| `POLICY-4505 <https://jira.onap.org/browse/POLICY-4505>`_ - R13: Improvements on clamp Acm
+|  `POLICY-4651 <https://jira.onap.org/browse/POLICY-4651>`_ - Extend instance deletion to request additional actions in participant
+|  `POLICY-4636 <https://jira.onap.org/browse/POLICY-4636>`_ - ACM manual and automation tests
+|  `POLICY-4774 <https://jira.onap.org/browse/POLICY-4774>`_ - Participant priming properties
+|  `POLICY-4762 <https://jira.onap.org/browse/POLICY-4762>`_ - Unused Property Removal in clamp/docker
+|  `POLICY-4802 <https://jira.onap.org/browse/POLICY-4802>`_ - Make authentication optional for prometheus metrics
+|  `POLICY-4808 <https://jira.onap.org/browse/POLICY-4808>`_ - Update swagger with new functionality and examples
+|  `POLICY-4818 <https://jira.onap.org/browse/POLICY-4818>`_ - policy endpoint allow packaging of kafka-client dependency
+|  `POLICY-4768 <https://jira.onap.org/browse/POLICY-4768>`_ - Update openapi.yaml to have the common headers section
+|  `POLICY-4763 <https://jira.onap.org/browse/POLICY-4763>`_ - Make changes to the liveness/readiness timeout in helm charts
+| `POLICY-4593 <https://jira.onap.org/browse/POLICY-4593>`_ - R13: Software (non functional) improvements
+|  `POLICY-4615 <https://jira.onap.org/browse/POLICY-4615>`_ - Software Vulnerability discrepancies in Sonatype reports
+|  `POLICY-4406 <https://jira.onap.org/browse/POLICY-4406>`_ - Mitigate vulnerable dependencies in CDS
+|  `POLICY-4831 <https://jira.onap.org/browse/POLICY-4831>`_ - Fix Sonar issues
+
+
+Bug Fixes
+~~~~~~~~~
+| `POLICY-4769 <https://jira.onap.org/browse/POLICY-4769>`_ - State change result of AC instances not updated after TIMEOUT
+| `POLICY-4770 <https://jira.onap.org/browse/POLICY-4770>`_ - Participants are offline in the runtime database after registration
+| `POLICY-4772 <https://jira.onap.org/browse/POLICY-4772>`_ - Restart flag in ACM instance is still true after participant is restarted
+| `POLICY-4773 <https://jira.onap.org/browse/POLICY-4773>`_ - Missing validation in Delete AC instance
+| `POLICY-4776 <https://jira.onap.org/browse/POLICY-4776>`_ - Participants are unable to perform deploy/undeploy/delete operations after restart
+| `POLICY-4804 <https://jira.onap.org/browse/POLICY-4804>`_ - Participant Intermediary is not updating the transition state "UNDEPLOYING" in the participant status
+| `POLICY-4830 <https://jira.onap.org/browse/POLICY-4830>`_ - Tosca element names are not validated if not aligned with the configured values
+
+
+References
+==========
+
+For more information on the ONAP London release, please see:
+
+#. `ONAP Home Page`_
+#. `ONAP Documentation`_
+#. `ONAP Release Downloads`_
+#. `ONAP Wiki Page`_
+
+.. _`ONAP Home Page`: https://www.onap.org
+.. _`ONAP Wiki Page`: https://wiki.onap.org
+.. _`ONAP Documentation`: https://docs.onap.org
+.. _`ONAP Release Downloads`: https://git.onap.org
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+
+..      ==========================
 ..      * * *     LONDON     * * *
 ..      ==========================
 
