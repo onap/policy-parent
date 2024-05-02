@@ -88,7 +88,7 @@ Stability test plan was triggered for 24 hours.
 =======================  =================  ========================  =========================
 **Total # of requests**  **Error %**        **Average Latency (ms)**  **Measured requests/sec**
 =======================  =================  ========================  =========================
-  63618103                 0.00 %             5 ms                      736.064 ms
+  54472562                 0.00 %             5 ms                      630.1 ms
 =======================  =================  ========================  =========================
 
 **JMeter Results**
@@ -97,22 +97,26 @@ Stability test plan was triggered for 24 hours.
 
 **Policy component Setup**
 
-==============================================  ====================================================================  ===========================================
+==============================================  ====================================================================  =============================================
 **NAME**                                        **IMAGE**                                                             **PORT**
-==============================================  ====================================================================  ===========================================
+==============================================  ====================================================================  =============================================
+zookeeper-deployment-7ff87c7fcc-fbsfb           confluentinc/cp-zookeeper:latest                                      2181/TCP
+kafka-deployment-5c87d497b-m8s2g	            confluentinc/cp-kafka:latest                                          9092/TCP
+policy-drools-pdp-0	                            nexus3.onap.org:10001/onap/policy-pdpd-cl:2.1.3-SNAPSHOT              6969/TCP 9696/TCP
+policy-apex-pdp-0	                            nexus3.onap.org:10001/onap/policy-apex-pdp:3.1.3-SNAPSHOT             6969/TCP
+policy-distribution-f48bff778-48pm2	            nexus3.onap.org:10001/onap/policy-distribution:3.1.3-SNAPSHOT         6969/TCP
+policy-models-simulator-6947667bdc-wcd9r        nexus3.onap.org:10001/onap/policy-models-simulator:3.1.3-SNAPSHOT     6666/TCP 6680/TCP 6668/TCP 6669/TCP 6670/TCP
+policy-clamp-ac-http-ppnt-7d747b5d98-wmr5n      nexus3.onap.org:10001/onap/policy-clamp-ac-http-ppnt:7.1.3-SNAPSHOT   8084/TCP
+policy-clamp-ac-k8s-ppnt-6bbd86bbc6-vnvx6       nexus3.onap.org:10001/onap/policy-clamp-ac-k8s-ppnt:7.1.3-SNAPSHOT    8083/TCP
+policy-clamp-ac-pf-ppnt-5fcbbcdb6c-k2cbk        nexus3.onap.org:10001/onap/policy-clamp-ac-pf-ppnt:7.1.3-SNAPSHOT     6969/TCP
+policy-clamp-ac-sim-ppnt-97f487577-m2zjr        nexus3.onap.org:10001/onap/policy-clamp-ac-sim-ppnt:7.1.3-SNAPSHOT    6969/TCP
+policy-clamp-runtime-acm-66b5d6b64-l6dpq        nexus3.onap.org:10001/onap/policy-clamp-runtime-acm:7.1.3-SNAPSHOT    6969/TCP
 mariadb-galera-0                                docker.io/bitnami/mariadb-galera:10.5.8                               3306/TCP
-policy-models-simulator-bcd494d87-cldfr         nexus3.onap.org:10001/onap/policy-models-simulator:3.0.2-SNAPSHOT     30904/TCP
-policy-apex-pdp-0                               nexus3.onap.org:10001/onap/policy-apex-pdp:3.0.2-SNAPSHOT             30001/TCP
-prometheus-f66f97b6-kpg5c                       nexus3.onap.org:10001/prom/prometheus:latest                          30909/TCP
-policy-distribution-86777bdd78-95zjx            nexus3.onap.org:10001/onap/policy-distribution:3.0.2-SNAPSHOT         30006/TCP
-policy-clamp-ac-http-ppnt-7b99cbfbf8-d5zjk      nexus3.onap.org:10001/onap/policy-clamp-ac-http-ppnt:7.0.3-SNAPSHOT
-policy-clamp-ac-pf-ppnt-55c4cb99f4-pp699        nexus3.onap.org:10001/onap/policy-clamp-ac-pf-ppnt:7.0.3-SNAPSHOT     30008/TCP
-policy-clamp-ac-k8s-ppnt-6d854cc8b6-nzlgh       nexus3.onap.org:10001/onap/policy-clamp-ac-k8s-ppnt:7.0.3-SNAPSHOT
-policy-clamp-runtime-acm-5c6d8fbfb-zww5j        nexus3.onap.org:10001/onap/policy-clamp-runtime-acm:7.0.3-SNAPSHOT    30007/TCP
-policy-pap-847d89997d-gljzh                     nexus3.onap.org:10001/onap/policy-pap:3.0.2-SNAPSHOT                  30003/TCP
-policy-xacml-pdp-656d57d578-9h6fx               nexus3.onap.org:10001/onap/policy-xacml-pdp:3.0.2-SNAPSHOT            30004/TCP
-policy-api-58cb45fc9b-9qcx6                     nexus3.onap.org:10001/onap/policy-api:3.0.2-SNAPSHOT                  30002/tcp
-==============================================  ====================================================================  ===========================================
+prometheus-f66f97b6-kkmpq                       nexus3.onap.org:10001/prom/prometheus:latest                          9090/TCP
+policy-api-7f7d995b4-2zhnw                      nexus3.onap.org:10001/onap/policy-api:3.1.3-SNAPSHOT                  6969/TCP
+policy-pap-f7899d4cd-mfrtp                      nexus3.onap.org:10001/onap/policy-pap:3.1.3-SNAPSHOT                  6969/TCP
+policy-xacml-pdp-6c86f85ff6-6qzgf               nexus3.onap.org:10001/onap/policy-xacml-pdp:3.1.2                     6969/TCP
+==============================================  ====================================================================  =============================================
 
 .. Note::
 
@@ -188,7 +192,7 @@ The test was run for 20 minutes with 10 users (i.e., threads), with the followin
 =======================  =================  ========================  =========================
 **Total # of requests**  **Error %**        **Average Latency (ms)**  **Measured requests/sec**
 =======================  =================  ========================  =========================
-  912141                   0.00 %             25.5666 ms                741.917 ms
+  888047                   0.00 %             25 ms                     723.2 ms
 =======================  =================  ========================  =========================
 
 .. image:: xacml-s3p-results/s3p-perf-xacml.png
