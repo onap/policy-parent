@@ -37,7 +37,7 @@ The common setup for performance and stability tests is now automated - being ca
 
 Clone the policy-clamp repo to access the test scripts
 
-.. code-block:: bash
+.. code-block:: sh
 
     git clone https://gerrit.onap.org/r/policy/clamp
 
@@ -69,9 +69,9 @@ Run Test
 
 The code in the setup section also serves to run the tests. Just one execution needed to do it all.
 
-.. code-block:: bash
+.. code-block:: sh
 
-    bash run-s3p-test.sh run stability
+    ./run-s3p-test.sh run stability
 
 Once the test execution is completed, the results are present in the **automate-performance/s3pTestResults.jtl** file.
 
@@ -89,24 +89,28 @@ Stability test plan was triggered for 72 hours.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-260590                    100.00 %           0.00 %              997 ms
+261852                    100.00 %           0.00 %              387.126 ms
 =======================  =================  ==================  ==================================
 
 **ACM component Setup**
 
-==============================================  ============================================================    ===========================================
-**NAME**                                        **IMAGE**                                                       **PORT**
-==============================================  ============================================================    ===========================================
- policy-clamp-runtime-acm-5c6d8fbfb-jz8rb       nexus3.onap.org:10001/onap/policy-clamp-runtime-acm:latest      30007/tcp
- policy-clamp-ac-pf-ppnt-55c4cb99f4-spvng       nexus3.onap.org:10001/onap/policy-clamp-ac-pf-ppnt:latest       30008/tcp
- policy-api-58cb45fc9b-ff5md                    nexus3.onap.org:10001/onap/policy-api:latest                    30002/tcp
- policy-clamp-ac-http-ppnt-7b99cbfbf8-d4w9v     nexus3.onap.org:10001/onap/policy-clamp-ac-http-ppnt:latest     30009/tcp
- policy-clamp-ac-k8s-ppnt-6d854cc8b6-twdkh      nexus3.onap.org:10001/onap/policy-clamp-ac-k8s-ppnt:latest      30010/tcp
- policy-models-simulator-bcd494d87-bfg6g        nexus3.onap.org:10001/onap/policy-models-simulator:latest       30904/tcp
- mariadb-galera-0                               nexus3.onap.org:10001/mariadb:10.5.8                            3306/tcp
- policy-pap-847d89997d-x9h99                    nexus3.onap.org:10001/onap/policy-pap:latest                    30003/tcp
- policy-apex-pdp-0                              nexus3.onap.org:10001/onap/policy-apex-pdp:latest               6969/tcp
-==============================================  ============================================================    ===========================================
+==============================================  ==================================================================  ====================
+**NAME**                                        **IMAGE**                                                            **PORT**
+==============================================  ==================================================================  ====================
+ zookeeper-deployment-7ff87c7fcc-ptkwv          confluentinc/cp-zookeeper:latest                                     2181/TCP
+ kafka-deployment-5c87d497b-2jv27               confluentinc/cp-kafka:latest                                         9092/TCP
+ policy-models-simulator-6947667bdc-v4czs       nexus3.onap.org:10001/onap/policy-models-simulator:latest            3904:30904/TCP
+ prometheus-f66f97b6-rknvp                      nexus3.onap.org:10001/prom/prometheus:latest                         9090:30909/TCP
+ mariadb-galera-0                               nexus3.onap.org:10001/bitnami/mariadb-galera:10.5.8                  3306/TCP
+ policy-apex-pdp-0                              nexus3.onap.org:10001/onap/policy-apex-pdp:3.1.3-SNAPSHOT            6969:30001/TCP
+ policy-clamp-ac-http-ppnt-7d747b5d98-4phjf     nexus3.onap.org:10001/onap/policy-clamp-ac-http-ppnt7.1.3-SNAPSHOT   8084/TCP
+ policy-clamp-ac-sim-ppnt-97f487577-4p7ks       nexus3.onap.org:10001/onap/policy-clamp-ac-sim-ppnt7.1.3-SNAPSHOT    6969/TCP
+ policy-clamp-ac-k8s-ppnt-6bbd86bbc6-csknn      nexus3.onap.org:10001/onap/policy-clamp-ac-k8s-ppnt7.1.3-SNAPSHOT    8083:30443/TCP
+ policy-clamp-ac-pf-ppnt-5fcbbcdb6c-twkxw       nexus3.onap.org:10001/onap/policy-clamp-ac-pf-ppnt7.1.3-SNAPSHOT     6969:30008/TCP
+ policy-clamp-runtime-acm-66b5d6b64-4gnth       nexus3.onap.org:10001/onap/policy-clamp-runtime-acm7.1.3-SNAPSHOT    6969:30007/TCP
+ policy-pap-f7899d4cd-7m898                     nexus3.onap.org:10001/onap/policy-pap:3.1.3-SNAPSHOT                 6969:30003/TCP
+ policy-api-7f7d995b4-ckb84                     nexus3.onap.org:10001/onap/policy-api:3.1.3-SNAPSHOT                 6969:30002/TCP
+==============================================  ==================================================================  ====================
 
 
 
@@ -124,14 +128,6 @@ Stability test plan was triggered for 72 hours.
 
 .. image:: clamp-s3p-results/acm_stability_table.png
 
-**Memory and CPU usage**
-
-The memory and CPU usage can be monitored by running "docker stats" command.
-
-Memory and CPU usage after test execution:
-
-.. image:: clamp-s3p-results/Stability_after_stats.png
-
 
 Performance Test of acm components
 ++++++++++++++++++++++++++++++++++
@@ -146,30 +142,45 @@ Setup Details
 
 We can setup the environment and execute the tests like this from the **clamp/testsuites** directory
 
-.. code-block:: bash
+.. code-block:: sh
 
-    bash run-s3p-test.sh run performance
+    ./run-s3p-test.sh run performance
 
-This runs for 2 hours. Test results are present in the **testsuites/automate-performance/s3pTestResults.jtl**
+Test results are present in the **testsuites/automate-performance/s3pTestResults.jtl**
 directory. Logs are present for jmeter in **testsuites/automate-performance/jmeter.log** and
 **testsuites/automated-performance/nohup.out**
 
 Test Plan
 ---------
 
-Performance test plan is the same as the stability test plan above except for the few differences listed below.
+The Performance test ran the following steps sequentially by 5 threaded users. Any user will create 100 compositions/instances.
 
-- Increase the number of threads up to 5 (simulating 5 users' behaviours at the same time).
-- Reduce the test time to 2 hours.
+- **SetUp** - SetUp Thread Group
+   - **Register Participants** - Registers the presence of participants in the acm database
+- **AutomationComposition Test Flow** - flow by 5 threaded users.
+   - **Creation and Deploy** - Creates 100 Compositions and Instances
+      - **Commission Automation Composition Definitions** - Commissions the ACM Definitions
+      - **Prime AC definition** - Primes the AC Definition to the participants
+      - **Instantiate acm** - Instantiate the acm instance
+      - **DEPLOY the ACM instance** - change the state of the acm to DEPLOYED
+      - **Check instance state** - check the current state of instance and that it is DEPLOYED
+   - **Get participants** - fetch all participants
+   - **Get compositions** - fetch all compositions
+   - **Undeploy and Delete** - Deletes instances and Compositions created before
+      - **UNDEPLOY the ACM instance** - change the state of the ACM to UNDEPLOYED
+      - **Check instance state** - check the current state of instance and that it is UNDEPLOYED
+      - **Delete instance** - delete the instance from all participants and ACM db
+      - **DEPRIME ACM definitions** - DEPRIME ACM definitions from participants
+      - **Delete ACM Definition** - delete the ACM definition on runtime
 
 Run Test
 --------
 
 The code in the setup section also serves to run the tests. Just one execution needed to do it all.
 
-.. code-block:: bash
+.. code-block:: sh
 
-    bash run-s3p-test.sh run performance
+    ./run-s3p-test.sh run performance
 
 Once the test execution is completed, the results are present in the **automate-performance/s3pTestResults.jtl** file.
 
@@ -185,24 +196,28 @@ Test results are shown as below.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-15520                    100 %              0.00 %              464 ms
+8624                     100 %              0.00 %              1296.8 ms
 =======================  =================  ==================  ==================================
 
 **ACM component Setup**
 
-==============================================  ============================================================    ===========================================
-**NAME**                                        **IMAGE**                                                       **PORT**
-==============================================  ============================================================    ===========================================
- policy-clamp-runtime-acm-5c6d8fbfb-jz8rb       nexus3.onap.org:10001/onap/policy-clamp-runtime-acm:latest      30007/tcp
- policy-clamp-ac-pf-ppnt-55c4cb99f4-spvng       nexus3.onap.org:10001/onap/policy-clamp-ac-pf-ppnt:latest       30008/tcp
- policy-api-58cb45fc9b-ff5md                    nexus3.onap.org:10001/onap/policy-api:latest                    30002/tcp
- policy-clamp-ac-http-ppnt-7b99cbfbf8-d4w9v     nexus3.onap.org:10001/onap/policy-clamp-ac-http-ppnt:latest     30009/tcp
- policy-clamp-ac-k8s-ppnt-6d854cc8b6-twdkh      nexus3.onap.org:10001/onap/policy-clamp-ac-k8s-ppnt:latest      30010/tcp
- policy-models-simulator-bcd494d87-bfg6g        nexus3.onap.org:10001/onap/policy-models-simulator:latest       30904/tcp
- mariadb-galera-0                               nexus3.onap.org:10001/mariadb:10.5.8                            3306/tcp
- policy-pap-847d89997d-x9h99                    nexus3.onap.org:10001/onap/policy-pap:latest                    30003/tcp
- policy-apex-pdp-0                              nexus3.onap.org:10001/onap/policy-apex-pdp:latest               6969/tcp
-==============================================  ============================================================    ===========================================
+==============================================  ==================================================================  ====================
+**NAME**                                        **IMAGE**                                                            **PORT**
+==============================================  ==================================================================  ====================
+ zookeeper-deployment-7ff87c7fcc-5svgw          confluentinc/cp-zookeeper:latest                                     2181/TCP
+ kafka-deployment-5c87d497b-hmbhc               confluentinc/cp-kafka:latest                                         9092/TCP
+ policy-models-simulator-6947667bdc-crcwq       nexus3.onap.org:10001/onap/policy-models-simulator:latest            3904:30904/TCP
+ prometheus-f66f97b6-24dvx                      nexus3.onap.org:10001/prom/prometheus:latest                         9090:30909/TCP
+ mariadb-galera-0                               nexus3.onap.org:10001/bitnami/mariadb-galera:10.5.8                  3306/TCP
+ policy-apex-pdp-0                              nexus3.onap.org:10001/onap/policy-apex-pdp:3.1.3-SNAPSHOT            6969:30001/TCP
+ policy-clamp-ac-sim-ppnt-97f487577-pn56t       nexus3.onap.org:10001/onap/policy-clamp-ac-sim-ppnt7.1.3-SNAPSHOT    6969/TCP
+ policy-clamp-ac-http-ppnt-7d747b5d98-qjjlv     nexus3.onap.org:10001/onap/policy-clamp-ac-http-ppnt7.1.3-SNAPSHOT   8084/TCP
+ policy-clamp-ac-k8s-ppnt-6bbd86bbc6-ffbz2      nexus3.onap.org:10001/onap/policy-clamp-ac-k8s-ppnt7.1.3-SNAPSHOT    8083:30443/TCP
+ policy-clamp-ac-pf-ppnt-5fcbbcdb6c-vmsnv       nexus3.onap.org:10001/onap/policy-clamp-ac-pf-ppnt7.1.3-SNAPSHOT     6969:30008/TCP
+ policy-clamp-runtime-acm-66b5d6b64-6vjl5       nexus3.onap.org:10001/onap/policy-clamp-runtime-acm7.1.3-SNAPSHOT    6969:30007/TCP
+ policy-pap-f7899d4cd-8sjk9                     nexus3.onap.org:10001/onap/policy-pap:3.1.3-SNAPSHOT                 6969:30003/TCP
+ policy-api-7f7d995b4-dktdw                     nexus3.onap.org:10001/onap/policy-api:3.1.3-SNAPSHOT                 6969:30002/TCP
+==============================================  ==================================================================  ====================
 
 **JMeter Screenshot**
 
