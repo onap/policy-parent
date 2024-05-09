@@ -1,0 +1,22 @@
+
+runtime:
+  participantParameters:
+    heartBeatMs: 20000
+    maxStatusWaitMs: 200000
+  topicParameterGroup:
+    topicSources:
+      -
+        topic: policy-acruntime-participant
+        servers:
+          - ${topicServer:localhost:29092}
+        topicCommInfrastructure: kafka
+        fetchTimeout: 15000
+    topicSinks:
+      -
+        topic: policy-acruntime-participant
+        servers:
+          - ${topicServer:localhost:29092}
+        topicCommInfrastructure: kafka
+  acmParameters:
+    toscaElementName: org.onap.policy.clamp.acm.AutomationCompositionElement
+    toscaCompositionName: org.onap.policy.clamp.acm.AutomationComposition
