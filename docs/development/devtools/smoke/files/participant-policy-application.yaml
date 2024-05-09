@@ -1,0 +1,41 @@
+participant:
+  pdpGroup: defaultGroup
+  pdpType: apex
+  policyApiParameters:
+    clientName: api
+    hostname: localhost
+    port: 6968
+    userName: policyadmin
+    password: zb!XztG34
+    useHttps: false
+    allowSelfSignedCerts: false
+  policyPapParameters:
+    clientName: pap
+    hostname: localhost
+    port: 6970
+    userName: policyadmin
+    password: zb!XztG34
+    useHttps: false
+    allowSelfSignedCerts: false
+  intermediaryParameters:
+    reportingTimeIntervalMs: 120000
+    description: Participant Description
+    participantId: 101c62b3-8918-41b9-a747-d21eb79c6c03
+    clampAutomationCompositionTopics:
+      topicSources:
+        -
+          topic: policy-acruntime-participant
+          servers:
+            - ${topicServer:localhost:29092}
+          topicCommInfrastructure: kafka
+          fetchTimeout: 15000
+      topicSinks:
+        -
+          topic: policy-acruntime-participant
+          servers:
+            - ${topicServer:localhost:29092}
+          topicCommInfrastructure: kafka
+    participantSupportedElementTypes:
+      -
+        typeName: org.onap.policy.clamp.acm.PolicyAutomationCompositionElement
+        typeVersion: 1.0.0

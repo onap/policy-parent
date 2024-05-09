@@ -10,7 +10,6 @@
                 "name": "org.onap.policy.clamp.Local_K8SMicroserviceAutomationCompositionElement",
                 "version": "1.2.3"
             },
-            "participantId": "101c62b3-8918-41b9-a747-d21eb79c6c02",
             "description": "K8s Automation composition Element for the nginx-ingress microservice",
             "properties": {
                 "chart": {
@@ -29,7 +28,6 @@
                 "name": "org.onap.policy.clamp.Http_AutomationCompositionElement",
                 "version": "1.2.3"
             },
-            "participantId": "101c62b3-8918-41b9-a747-d21eb79c6c01",
             "description": "Http Automation composition Element",
             "properties": {
                 "baseUrl": "http://httpbin.org",

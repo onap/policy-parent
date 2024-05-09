@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: default
+  security.user:
+    name: policyadmin
+    password: zb!XztG34
+  mvc.converters.preferred-json-mapper: gson
+  datasource:
+    url: jdbc:mariadb://localhost:3306/policyadmin
+    driverClassName: org.mariadb.jdbc.Driver
+    username: policy_user
+    password: policy_user
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.onap.policy.common.spring.utils.CustomImplicitNamingStrategy
+
+server:
+  port: 6968
+  servlet:
+    context-path: /policy/api/v1
