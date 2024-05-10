@@ -10,13 +10,13 @@ Property-configuration mechanisms
 .. contents::
     :depth: 3
 
-This article explains how to implement handling and validation of common parameter into the Policy Framework Components.
+This article explains how to implement handling and validation of common parameters into the Policy Framework Components.
 
 Not Spring boot framework
 *************************
-The application should have a ParameterHandler class to support the map values from Json to a POJO, so it should be load the file, convert it performing all type conversion.
+The application should have a ParameterHandler class to support the map of values from Json to a POJO; so it should load the file and convert it; performing all type conversion.
 
-The code below shown an example of ParameterHandler:
+The code below shown is an example of ParameterHandler:
 
 .. code-block:: java
 
@@ -59,9 +59,9 @@ The code below shown an example of ParameterHandler:
    }
 
 
-The POJO have to implement **org.onap.policy.common.parameters.ParameterGroup** interface or eventually extend **org.onap.policy.common.parameters.ParameterGroupImpl**. The last one already implements **validate()** method that performs error checking using validation **org.onap.policy.common.parameters.annotations**.
+The POJO has to implement the **org.onap.policy.common.parameters.ParameterGroup** interface or eventually extend **org.onap.policy.common.parameters.ParameterGroupImpl**. The last one already implements the **validate()** method that performs error checking using validation **org.onap.policy.common.parameters.annotations**.
 
-The code below shown an example of POJO:
+The code below shows an example of the POJO:
 
 .. code-block:: java
 
@@ -87,7 +87,7 @@ The code below shown an example of POJO:
    }
 
 
-The code shows below, is an example of Unit Test validation of the POJO PapParameterGroup:
+The code shown below, is an example of Unit Test validation of the POJO PapParameterGroup:
 
 .. code-block:: java
 
@@ -106,13 +106,13 @@ The code shows below, is an example of Unit Test validation of the POJO PapParam
 
 Using Spring boot framework
 ***************************
-Spring loads automatically the property file and put it available under the **org.springframework.core.env.Environment** Spring component.
+Spring loads the property file automatically and makes it available under the **org.springframework.core.env.Environment** Spring component.
 
 Environment
 +++++++++++
 A component can use Environment component directly.
 
-Environment component is not a good approach because there is not type conversion and error checking, but it could be useful when the name of the property you need to access changes dynamically.
+The Environment component is not a good approach because there is no type conversion or error checking, but it could be useful when the name of the property you need to access changes dynamically.
 
 .. code-block:: java
 
@@ -134,7 +134,7 @@ Annotation-based Spring configuration
 All annotation-based Spring configurations support the Spring Expression Language (SpEL), a powerful expression language that supports querying and manipulating an object graph at runtime.
 A documentation about SpEL could be found here: https://docs.spring.io/spring-framework/docs/3.0.x/reference/expressions.html.
 
-A component can use **org.springframework.beans.factory.annotation.Value**, which reads from properties, performs a type conversion and injects the value into the filed. There is not error checking, but it can assign default value if the property is not defined.
+A component can use **org.springframework.beans.factory.annotation.Value**, which reads from properties, performs a type conversion and injects the value into the field. There is no error checking, but it can assign a default value if the property is not defined.
 
 .. code-block:: java
 
@@ -178,9 +178,9 @@ ConfigurationProperties
        private String description;
    }
 
-In a scenario that we need to include into a POJO shown before, a class that implement **ParameterGroup** interface, we need to add the **org.onap.policy.common.parameters.validation.ParameterGroupConstraint** annotation. That annotation is configured to use **ParameterGroupValidator** that handles the conversion of a **org.onap.policy.common.parameters.BeanValidationResult** to a Spring validation.
+In a scenario where we need to include the properties in a POJO, as shown before, in a class that implements **ParameterGroup** interface, we need to add the **org.onap.policy.common.parameters.validation.ParameterGroupConstraint** annotation. That annotation is configured to use **ParameterGroupValidator**, which handles the conversion of a **org.onap.policy.common.parameters.BeanValidationResult** to a Spring validation.
 
-The code below shown how to add TopicParameterGroup parameter into ClRuntimeParameterGroup:
+The code below shows how to add the TopicParameterGroup parameter into acRuntimeParameterGroup:
 
 .. code-block:: java
 
@@ -197,7 +197,7 @@ A bean configured with ConfigurationProperties, is automatically a Spring compon
    @RequiredArgsConstructor
    public class Example {
 
-      private ClRuntimeParameterGroup parameters;
+      private acRuntimeParameterGroup parameters;
       ....
 
       public void method() {
@@ -206,7 +206,7 @@ A bean configured with ConfigurationProperties, is automatically a Spring compon
         .....
       }
 
-The code shows below, is an example of Unit Test validation of the POJO ClRuntimeParameterGroup:
+The code shown below, is an example of Unit Test validation of the POJO acRuntimeParameterGroup:
 
 .. code-block:: java
 
@@ -214,7 +214,7 @@ The code shows below, is an example of Unit Test validation of the POJO ClRuntim
 
    @Test
    void testParameters_NullTopicParameterGroup() {
-       final ClRuntimeParameterGroup parameters = CommonTestData.geParameterGroup();
+       final acRuntimeParameterGroup parameters = CommonTestData.geParameterGroup();
        parameters.setTopicParameterGroup(null);
        assertThat(validatorFactory.getValidator().validate(parameters)).isNotEmpty();
    }
