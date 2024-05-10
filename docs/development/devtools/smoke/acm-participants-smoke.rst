@@ -26,92 +26,71 @@ The procedure documented in this article has been verified using Ubuntu 20.04 LT
 
 2.1 Prerequisites
 =================
-- Java 11
+- Java 17
 - Docker
-- Maven 3
+- Maven 3.9
 - Git
 - helm3
 - k8s cluster
 - Refer to this guide for basic environment setup `Setting up dev environment <https://wiki.onap.org/display/DW/Setting+Up+Your+Development+Environment>`_
 
-2.2 Assumptions
-===============
-- You are accessing the policy repositories through gerrit.
+2.2 Cloning CLAMP automation composition
+========================================
 
-The following repositories are required for development in this project. These repositories should be present on your machine and you should run "mvn clean install" on all of them so that the packages are present in your .m2 repository.
+Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/admin/repos/q/filter:policy>`_. This script clones CLAMP automation composition and all dependency.
 
-- policy/parent
-- policy/common
-- policy/models
-- policy/clamp
+.. code-block:: bash
 
-In this setup guide, we will be setting up all the components technically required for a working dev environment.
+    cd ~/git
+    git clone https://gerrit.onap.org/r/policy/clamp clamp
+
+
+Execution of the command above results in the following directory hierarchy in your *~/git* directory:
+
+    *  ~/git/clamp
+
 
 2.3 Setting up the components
 =============================
 
-2.3.1 MariaDB Setup
-^^^^^^^^^^^^^^^^^^^
-We will be using Docker to run our mariadb instance. It will have the acm-runtime database running in it.
-
-- AutomationComposition: the runtime-acm db
-
+2.3.1 Running MariaDb and Kafka
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+We will be using Docker to run our mariadb instance and Kafka. It will have the acm-runtime database running in it.
 The easiest way to do this is to perform a SQL script. Create the *mariadb.sql* file in the directory *~/git*.
 
-.. code-block:: mysql
+.. literalinclude:: files/mariadb.sql
+   :language: SQL
 
-    CREATE DATABASE `clampacm`;
-    USE `clampacm`;
-    CREATE USER 'policy';
-    GRANT ALL on clampacm.* to 'policy' identified by 'P01icY' with GRANT OPTION;
+Create the '*docker-compose.yaml*' using following code:
 
-Execution of the command above results in the creation and start of the *mariadb-smoke-test* container.
+.. literalinclude:: files/docker-compose-local.yaml
+   :language: yaml
 
-    .. code-block:: bash
+Run the docker composition:
 
-       cd ~/git
-       docker run --name mariadb-smoke-test  \
-        -p 3306:3306 \
-        -e MYSQL_ROOT_PASSWORD=my-secret-pw  \
-        --mount type=bind,source=$HOME/git/mariadb.sql,target=/docker-entrypoint-initdb.d/data.sql \
-        -d mariadb:10.10.2 \
-        --lower-case-table-names=1
+   .. code-block:: bash
 
-The database will be exposed locally on port 3306 and will be backed by an anonymous docker volume.
+      cd ~/git/
+      docker compose up
 
-2.3.2 DMAAP Simulator
-^^^^^^^^^^^^^^^^^^^^^
-For convenience, a dmaap simulator has been provided in the policy/models repository. To start the simulator, you can do the following:
+2.3.2 Setting topicParameterGroup for kafka localhost
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+It needs to set 'kafka' as topicCommInfrastructure and 'localhost:29092' as server.
+In the clamp repo, you should find the file 'runtime-acm/src/main/resources/application.yaml'. This file (in the 'runtime' parameters section) may need to be altered as below:
 
-1. Navigate to /models-sim/policy-models-simulators in the policy/models repository.
-2. Add a configuration file to src/test/resources with the following contents:
+.. literalinclude:: files/runtime-application.yaml
+   :language: yaml
 
-.. code-block:: json
+Same changes (in the 'participant' parameters section)
+may need to be apply into the file 'participant/participant-impl/participant-impl-http/src/main/resources/config/application.yaml'.
 
-    {
-       "dmaapProvider":{
-          "name":"DMaaP simulator",
-          "topicSweepSec":900
-       },
-       "restServers":[
-          {
-             "name":"DMaaP simulator",
-             "providerClass":"org.onap.policy.models.sim.dmaap.rest.DmaapSimRestControllerV1",
-             "host":"localhost",
-             "port":3904,
-             "https":false
-          }
-       ]
-    }
+.. literalinclude:: files/participant-http-application.yaml
+   :language: yaml
 
-3. You can then start dmaap with:
+And into the file 'participant/participant-impl/participant-impl-kubernetes/src/main/resources/config/application.yaml'.
 
-.. code-block:: bash
-
-    mvn exec:java  -Dexec.mainClass=org.onap.policy.models.simulators.Main -Dexec.args="src/test/resources/YOUR_CONF_FILE.json"
-
-At this stage the dmaap simulator should be running on your local machine on port 3904.
-
+.. literalinclude:: files/participant-kubernetes-application.yaml
+   :language: yaml
 
 2.3.3 Automation composition Runtime
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,7 +224,7 @@ Verify automation composition state:
    GET: https://<Runtime ACM IP> : <Port>/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}
 
 
-3.4 Automation Compositions can be "UNDEPLOYED" after deployment
+3.5 Automation Compositions can be "UNDEPLOYED" after deployment
 ================================================================
 
 By changing the state to "UNDEPLOYED", all the helm deployments under the corresponding automation composition will be uninstalled from the cluster.
