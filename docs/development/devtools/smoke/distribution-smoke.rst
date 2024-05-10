@@ -7,131 +7,72 @@
 Policy Distribution Smoke Test
 ################################
 
-The policy-distribution smoke testing is executed against a custom ONAP docker installation as defined in the docker compose file in "policy/docker/csit/".
+The policy-distribution smoke testing is executed against a custom ONAP docker or Kubernetes installation as defined in the docker compose file in "policy/docker/csit/".
 The policy-distribution configuration file is located in "docker/csit/config/distribution/".
-This test verifies the execution of the REST api's exposed by the component to make sure the CSAR Decoding and Forwarding works as expected.
+This test verifies the execution of the REST API's exposed by the component to make sure the CSAR Decoding and Forwarding works as expected.
+Also, the deployment of the policy is checked automatically. An event is then sent to the deployed policy, and thus, its correct operation is verified.
 
-General Setup
-*****************
+There are 2 alternative ways to carry out the tests. In Docker and in Kubernetes
+
+Docker Setup
+************
 In policy/docker/csit/
 
-.. code-block:: bash
+More detailed setup for docker CSIT is here
 
-    ./start-grafana.sh distribution
-
-This script will compose the ONAP components used during the smoke tests are:
-
-- Policy API to perform CRUD of policies.
-- Policy DB to store the policies, and DB Migrator to start the db.
-- DMAAP Simulator for the communication between components.
-- Policy PAP to perform runtime administration (deploy/undeploy/status/statistics/etc).
-- Policy Apex-PDP to deploy & undeploy policies. And send heartbeats to PAP.
-- Policy Drools-PDP to deploy & undeploy policies. And send heartbeats to PAP.
-- Policy Xacml-PDP to deploy & undeploy policies. And send heartbeats to PAP.
-
-- Policy Distribution to test the Decoding and Forwarding functions.
-
-Use this script to easily bring down the containers :
+`Policy CSIT Test Install Docker <https://docs.onap.org/projects/onap-policy-parent/en/latest/development/devtools/testing/csit.html>`_
 
 .. code-block:: bash
 
-    ./stop-grafana.sh
+    ./run-project-csit.sh distribution
 
-Testing procedure
-**********************
+This script will do the following:
 
-The test set is focused on the following use cases:
+- Deploys all required components - including api, pap and distribution
+- Runs distributions CSIT tests. These tests:
 
-- Wait until Distribution starts and reach the built-in REST endpoints for fetching healthcheck & statistics.
-- Execute some of the REST api's exposed by policy-pap component.
+    - Take a policy from a CSAR file in distribution.
+    - Distribution sends and deploys it in API and PAP.
+    - Send an event to the deployed policy - if the policy is NOT deployed successfully, this will FAIL with a 404.
 
-Starting Policy Distribution
-------------------------------------
+- Takes down all the components.
+- Saves the results in a .html file in the csit/archives/distribution directory
+- Saves the docker compose logs in the same directory
 
-Check the docker logs to see when Distribution service is up and running.
+K8S Setup
+*********
+In policy/docker/csit/
 
-Get the ips of distribution and pap services:
+More detailed setup for K8S CSIT is here
 
-.. code::
-  :number-lines:
-
-    ./get-instance-ip.sh policy-distribution
-	./get-instance-ip.sh policy-pap
-
-Health check status & statistical data of running distribution system.
+`Policy CSIT Test Install Kubernetes <https://docs.onap.org/projects/onap-policy-parent/en/latest/development/devtools/testing/csit.html>`_
 
 .. code-block:: bash
 
-	curl -u 'healthcheck:zb!XztG34' --basic http://{POLICY_DISTRIBUTION_IP}:6969/healthcheck
-	curl -u 'healthcheck:zb!XztG34' --basic http://{POLICY_DISTRIBUTION_IP}:6969/statistics
+    ./run-k8s-csit.sh install distribution
 
-Expected result for healthcheck
+This script will do the following:
 
-.. code-block:: json
+- Installs microk8s and configures it.
+- Deploys all required components - including api, pap and distribution as helm charts
+- Waits for all the charts to come up
+- Runs distributions CSIT tests. These tests:
 
-	{"name":"Policy SSD","url":"policy-distribution","healthy":true,"code":200,"message":"alive"}
+    - Take a policy from a CSAR file in distribution.
+    - Distribution sends and deploys it in API and PAP.
+    - Sends an event to the deployed policy - if the policy is NOT deployed successfully, this will FAIL with a 404.
 
-Expected result for statistics
+- Saves the results in a .html file in the csit/archives/distribution directory
+- The pods are not automatically taken down.
 
-.. code-block:: json
-
-	{"code":200,"totalDistributionCount":0,"distributionSuccessCount":0,"distributionFailureCount":0,"totalDownloadCount":0,"downloadSuccessCount":0,"downloadFailureCount":0}
-
-Trigger Policy Distribution Core
-------------------------------------------
-
-In order to test policy-distribution, we need to trigger the decoding copying a .csar in the mapped volume,
-defined in the docker-compose-distribution-smoke.yml as :
-
-.. code-block:: yaml
-
-      volumes:
-       - ./distribution/config/temp/:/opt/app/policy/distribution/etc/temp/
-
-So now copy the "sample_csar_with_apex_policy.csar" from ./distribution/config/csar/ to ./distribution/config/temp/
-
-If the commissioning is successful we should see from the logs this message
-
-.. image:: images/message-commissioning-participant.png
-
-So if we check the distribution statistics again
+To uninstall policy helm deployment and/or the microk8s cluster, use `run-k8s-csit.sh`
 
 .. code-block:: bash
 
-	{"code":200,"totalDistributionCount":1,"distributionSuccessCount":1,"distributionFailureCount":0,"totalDownloadCount":1,"downloadSuccessCount":1,"downloadFailureCount":0}
+  # to uninstall deployment
+  ./run-k8s-csit.sh uninstall
 
-Execute policy-pap testing
-------------------------------------
-.. note::
-	The user for pap is different.
+  # to remove cluster
+  ./run-k8s-csit.sh clean
 
-Check the details of policies deployed
-
-.. code-block:: bash
-
-	curl -k --user 'policyadmin:zb!XztG34' http://{POLICY_PAP_IP}:6969/policy/pap/v1/policies/status
-
-Expected SUCCESS result
-
-.. code-block:: json
-
-	[{"pdpGroup":"defaultGroup","pdpType":"apex","pdpId":"apex-91fa25a1-0456-42fa-9556-6a4d2bd613fc","policy":{"name":"operational.apex.sampledomain","version":"1.0.0"},"policyType":{"name":"onap.policies.native.Apex","version":"1.0.0"},"deploy":true,"state":"SUCCESS"},{"pdpGroup":"defaultGroup","pdpType":"xacml","pdpId":"xacml-83e19452-0854-41dd-9f17-8b0a68f11813","policy":{"name":"SDNC_Policy.ONAP_NF_NAMING_TIMESTAMP","version":"1.0.0"},"policyType":{"name":"onap.policies.Naming","version":"1.0.0"},"deploy":true,"state":"SUCCESS"}]
-
-Check number of policies deployed
-
-.. code-block:: bash
-
-	curl -k --user 'policyadmin:zb!XztG34' http://{POLICY_PAP_IP}:6969/policy/pap/v1/policies/deployed
-
-Expected success-count result
-
-.. code-block:: json
-
-	[{"policy-type":"onap.policies.native.Apex","policy-type-version":"1.0.0","policy-id":"operational.apex.sampledomain","policy-version":"1.0.0","success-count":1,"failure-count":0,"incomplete-count":0},{"policy-type":"onap.policies.Naming","policy-type-version":"1.0.0","policy-id":"SDNC_Policy.ONAP_NF_NAMING_TIMESTAMP","policy-version":"1.0.0","success-count":1,"failure-count":0,"incomplete-count":0}]
-
-Or download & execute the steps in postman collection for verifying policy-pap component.
-The steps need to be performed sequentially one after another. And no input is required from user.
-
-`Policy Framework Administration API <https://github.com/onap/policy-pap/blob/master/postman/pap-api-collection.json>`_
-
-Make sure to execute the delete steps in order to clean the setup after testing.
+End of document
