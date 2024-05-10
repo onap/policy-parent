@@ -23,9 +23,9 @@ Linux user - although the majority of the steps show will be exactly the same in
 2.1 Prerequisites
 =================
 
-- Java 11
+- Java 17
 - Docker
-- Maven 3
+- Maven 3.9
 - Git
 - Refer to this guide for basic environment setup `Setting up dev environment <https://wiki.onap.org/display/DW/Setting+Up+Your+Development+Environment>`_
 
@@ -34,7 +34,7 @@ Linux user - although the majority of the steps show will be exactly the same in
 
 - Automation Composition runtime component docker image is started and running.
 - Participant docker images policy-clamp-ac-pf-ppnt, policy-clamp-ac-http-ppnt, policy-clamp-ac-k8s-ppnt are started and running.
-- Dmaap simulator for communication between components.
+- Kafka/Zookeeper for communication between components.
 - mariadb docker container for policy and clampacm database.
 - policy-api for communication between policy participant and policy-framework
 
