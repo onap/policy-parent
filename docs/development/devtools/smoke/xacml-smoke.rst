@@ -10,37 +10,33 @@
 XACML PDP Smoke Test
 ~~~~~~~~~~~~~~~~~~~~
 
-The policy-xacml-pdp smoke testing can be executed against a kubernetes based ONAP installation,
+The policy-xacml-pdp smoke testing can be executed against a kubernetes based policy framework installation,
 and/or a docker-compose set up similar to the one executed by CSIT tests.
 
 General Setup
 *************
 
-ONAP OOM kubernetes
--------------------
+PF kubernetes Install
+---------------------
 
 For installation instructions, please refer to the following documentation:
 
-`OOM Documentation <https://docs.onap.org/projects/onap-oom/en/latest/>`_
+`Policy Framework K8S Install <https://docs.onap.org/projects/onap-policy-parent/en/latest/development/devtools/testing/csit.html>`_
 
-At a minimum policy needs the following components installed:
-
-- onap base charts
-- AAF for certificate generation
-- DMaaP message-router for communication among policy components.
+The script referred to in the above link should handle the install of the of microk8s, docker and other required components for the install of the policy framework and clamp components. The scripts are used by policy as a means to run the CSIT tests in Kubernetes.
 
 docker-compose based
 --------------------
 
-A smaller testing environment can be put together by replicating the CSIT test environment:
+A smaller testing environment can be put together by replicating the docker-based CSIT test environment. Details are on the same page as K8s setup:
 
-`Policy CSIT Test infrastructure <https://git.onap.org/policy/docker/tree/csit>`_
+`Policy CSIT Test Install Docker <https://docs.onap.org/projects/onap-policy-parent/en/latest/development/devtools/testing/csit.html>`_
 
 Testing procedures
 ******************
 
 The smoke tests should be focused on verifying the proper workings of the xacml
-PDP and dependent components.   The following scenarios should be considered:
+PDP and dependent components. The following scenarios should be considered:
 
 - PDP-X registration with PAP.
 - PDP-X restarts and re-registration with PAP.
