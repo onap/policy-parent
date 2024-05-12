@@ -122,14 +122,13 @@ PAP supports the operations listed in the following table, via its REST API:
    "Undeploy policy", "Undeploys a policy from the PDPs"
    "Policy Status", "Queries the status of all policies"
    "Policy deployment status", "Queries the status of all deployed policies"
-   "PDP statistics", "Queries the statistics of PDPs"
    "Policy Audit", "Queries the audit records of policies"
 
-1.2 DMaaP API
+1.2 KAFKA API
 -------------
 
-PAP interacts with the PDPs via the DMaaP Message Router.  The messages listed
-in the following table are transmitted via DMaaP:
+PAP interacts with the PDPs via the kafka interface.  The messages listed
+in the following table are transmitted via Kafka:
 
 .. csv-table::
    :header: "Message", "Direction", "Description"
@@ -139,12 +138,12 @@ in the following table are transmitted via DMaaP:
    "PDP update", "Outgoing", "Assigns a PDP to a PDP Group and Subgroup; also deploys or undeploys policies from the PDP"
    "PDP state change", "Outgoing", "Changes the state of a PDP or all PDPs within a PDP Group or Subgroup"
 
-In addition, PAP generates notifications via the DMaaP Message Router when policies are successfully or unsuccessfully
+In addition, PAP generates notifications via the Kafka when policies are successfully or unsuccessfully
 deployed (or undeployed) from all relevant PDPs.
 
 Here is a sample notification:
 
-.. literalinclude:: notification/dmaap-pap-notif.json
+.. literalinclude:: notification/kafka-pap-notif.json
     :language: json
 
 
@@ -201,22 +200,6 @@ Here is a sample response:
 .. literalinclude:: response/consolidated-healthcheck-pap-resp.json
     :language: json
 
-.. csv-table::
-   :header: "/statistics"
-   :widths: 10
-
-   `Statistics PAP Swagger <./local-swagger.html#tag/StatisticsRestControllerV1>`_
-
-This operation allows statistics for PDP groups, PDP subgroups, and individual PDPs to be retrieved.
-
-.. note::
-  While this API is supported, most of the statistics are not currently updated; that work has been deferred to a later
-  release.
-
-Here is a sample response:
-
-.. literalinclude:: response/statistics-pap-resp.json
-    :language: json
 
 .. csv-table::
    :header: "/pdps/groups/{name}"
@@ -387,21 +370,6 @@ Here is a sample response:
     :language: json
 
 .. csv-table::
-   :header: "/pdps/statistics"
-   :widths: 10
-
-   `Policy Statistics PAP Swagger <./local-swagger.html#tag/StatisticsRestControllerV1>`_
-
-This operation allows the PDP statistics to be retrieved for all registered PDPs.
-The result can be filtered based on PDP group, PDP subgroup & PDP instance.
-Along with record count, start time & end time as query parameters.
-
-Here is a sample response:
-
-.. literalinclude:: response/pdp-statistics-pap-resp.json
-    :language: json
-
-.. csv-table::
    :header: "/policies/audit"
    :widths: 10
 
@@ -424,15 +392,5 @@ The *PolicyAdministration* component (PAP) is initialized using a configuration 
 
 The configuration file is a YAML file containing the relevant fields for configuring the REST server, Database and DMaaP connectivity and so on.
 
-3.1 Disable collection of PDP Statistics
-========================================
-
-This configuration is to inform PAP to not save the PDP statistics in the database.
-
-In *papParameters.yaml*, add or change the property savePdpStatisticsInDb to false.
-
-.. note::
-  By default, if the property is not present, it will be considered as false and
-  PDP statistics will not be saved in the database.
 
 End of Document
