@@ -1,0 +1,8 @@
+Code-Review+2: Adheli Tavares <adheli.tavares@est.tech>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Submitted-by: Adheli Tavares <adheli.tavares@est.tech>
+Submitted-at: Tue, 14 May 2024 09:14:17 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/policy/parent/+/137883
+Project: policy/parent
+Branch: refs/heads/master
