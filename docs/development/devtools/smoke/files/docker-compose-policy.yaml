@@ -1,0 +1,61 @@
+services:
+  mariadb:
+    image: mariadb:10.10.2
+    command: ['mysqld', '--lower_case_table_names=1']
+    volumes:
+      - type: bind
+        source: ./mariadb.sql
+        target: /docker-entrypoint-initdb.d/data.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+    ports:
+      - "3306:3306"
+
+  policy-db-migrator:
+    image: nexus3.onap.org:10001/onap/policy-db-migrator:3.1.3-SNAPSHOT
+    container_name: policy-db-migrator
+    hostname: policy-db-migrator
+    depends_on:
+      - mariadb
+    expose:
+      - 6824
+    environment:
+      SQL_DB: policyadmin
+      SQL_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_USER: policy_user
+      MYSQL_PASSWORD: policy_user
+      MYSQL_CMD: mysql
+    volumes:
+      - ./init.sh:/opt/app/policy/bin/db_migrator_policy_init.sh:ro
+      - ./wait_for_port.sh:/opt/app/policy/bin/wait_for_port.sh:ro
+    entrypoint: /opt/app/policy/bin/wait_for_port.sh
+    command: [
+      '-c',
+      '/opt/app/policy/bin/db_migrator_policy_init.sh',
+      'mariadb', '3306'
+    ]
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 2181:2181
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - 29092:29092
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
