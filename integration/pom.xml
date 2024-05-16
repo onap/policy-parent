@@ -1487,7 +1487,7 @@
                     <dependency>
                         <groupId>org.onap.policy.parent</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>${project.version}</version>
+                        <version>[4.1.2,)</version>
                         <scope>compile</scope>
                     </dependency>
                 </dependencies>
