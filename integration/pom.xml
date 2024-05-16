@@ -39,6 +39,7 @@
         <java.version>17</java.version>
         <!-- Note Well: For RELEASE/SNAPSHOT always set to the project version -->
         <version.parent.resources>5.0.0-SNAPSHOT</version.parent.resources>
+        <version.parent.checkstyle>[4.1.2,)</version.parent.checkstyle>
         <jacoco.destFile>${project.build.directory}/code-coverage/jacoco-ut.exec</jacoco.destFile>
         <!-- Default Sonar configuration -->
         <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
@@ -1487,7 +1488,7 @@
                     <dependency>
                         <groupId>org.onap.policy.parent</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>[4.1.2,)</version>
+                        <version>${version.parent.checkstyle}</version>
                         <scope>compile</scope>
                     </dependency>
                 </dependencies>
