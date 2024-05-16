@@ -38,7 +38,7 @@
     <properties>
         <java.version>17</java.version>
         <!-- Note Well: For RELEASE/SNAPSHOT always set to the project version -->
-        <version.parent.resources>4.1.4-SNAPSHOT</version.parent.resources>
+        <version.parent.resources>4.1.4</version.parent.resources>
         <jacoco.destFile>${project.build.directory}/code-coverage/jacoco-ut.exec</jacoco.destFile>
         <!-- Default Sonar configuration -->
         <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
