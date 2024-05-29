@@ -19,7 +19,7 @@ Deploying ONAP using OOM
 ------------------------
 
 APEX-PDP along with all policy components are deployed as part of a full Policy Framework deployment.
-At a minimum, the following components are needed: policy, mariadb-galera, prometheus and dmaap.
+At a minimum, the following components are needed: policy, mariadb-galera, prometheus and kafka.
 
 The S3P tests utilise the ./run-s3p-tests script in the apex component. This will setup the microk8s environment, deploy
 policy and prometheus, expose the services so they can be reached by JMeter, install JMeter and run the tests based on
@@ -28,11 +28,11 @@ the arguments provided.
 Set up policy-models-simulator
 ------------------------------
 
-Policy-models-simulator is deployed to use the DMaaP simulator during policy execution.
+Kafka is deployed and is used during policy execution.
     Simulator configurations used are available in apex-pdp repository:
       testsuites/apex-pdp-stability/src/main/resources/simulatorConfig/
 
-The published port 30904 is used in JMeter for the DMaaP simulator.
+The published port 29092 is used in JMeter for the Kafka.
 
 JMeter Tests
 ------------
@@ -48,8 +48,8 @@ Both tests were run via jMeter.
 
 .. Note::
    Policy executions are validated in a stricter fashion during the tests.
-   There are test cases where up to 80 events are expected on the DMaaP topic.
-   DMaaP simulator is used to keep it simple and avoid any message pickup timing related issues.
+   There are test cases where up to 80 events are expected on the Kafka topic.
+   Kafka is used to keep it simple and avoid any message pickup timing related issues.
 
 Stability Test of APEX-PDP
 ++++++++++++++++++++++++++
@@ -77,20 +77,18 @@ Once the policies are created and deployed to APEX-PDP by the setup thread, five
 
 - **Healthcheck** - checks the health status of APEX-PDP
 - **Prometheus Metrics** - checks that APEX-PDP is exposing prometheus metrics
-- **Test Simplecontrolloop policy success case** - Send a trigger event to *unauthenticated.DCAE_CL_OUTPUT* DMaaP topic.
+- **Test Simplecontrolloop policy success case** - Send a trigger event to *unauthenticated.DCAE_CL_OUTPUT* Kafka topic.
     If the policy execution is successful, 3 different notification events are sent to *APEX-CL-MGT* topic by each one of the 5 threads.
     So, it is checked if 15 notification messages are received in total on *APEX-CL-MGT* topic with the relevant messages.
-- **Test Simplecontrolloop policy failure case** - Send a trigger event with invalid pnfName to *unauthenticated.DCAE_CL_OUTPUT* DMaaP topic.
+- **Test Simplecontrolloop policy failure case** - Send a trigger event with invalid pnfName to *unauthenticated.DCAE_CL_OUTPUT* Kafka topic.
     The policy execution is expected to fail due to AAI failure response. 2 notification events are expected on *APEX-CL-MGT* topic by a thread in this case.
     It is checked if 10 notification messages are received in total on *APEX-CL-MGT* topic with the relevant messages.
-- **Test Example policy success case** - Send a trigger event to *unauthenticated.DCAE_POLICY_EXAMPLE_OUTPUT* DMaaP topic.
+- **Test Example policy success case** - Send a trigger event to *unauthenticated.DCAE_POLICY_EXAMPLE_OUTPUT* Kafka topic.
     If the policy execution is successful, 4 different notification events are sent to *APEX-CL-MGT* topic by each one of the 5 threads.
     So, it is checked if 20 notification messages are received in total on *APEX-CL-MGT* topic with the relevant messages.
-- **Test Example policy failure case** - Send a trigger event with invalid vnfName to *unauthenticated.DCAE_POLICY_EXAMPLE_OUTPUT* DMaaP topic.
+- **Test Example policy failure case** - Send a trigger event with invalid vnfName to *unauthenticated.DCAE_POLICY_EXAMPLE_OUTPUT* Kafka topic.
     The policy execution is expected to fail due to AAI failure response. 2 notification events are expected on *APEX-CL-MGT* topic by a thread in this case.
     So, it is checked if 10 notification messages are received in total on *APEX-CL-MGT* topic with the relevant messages.
-- **Clean up DMaaP notification topic** - DMaaP notification topic which is *APEX-CL-MGT* is cleaned up after each test to make sure that one failure doesn't lead to cascading errors.
-
 
 Teardown Phase
 """"""""""""""
@@ -119,7 +117,7 @@ The following steps can be used to configure the parameters of test plan.
  API_PORT            Port number of API for making REST API calls such as create/delete of policy
  APEX_PORT           Port number of APEX for making REST API calls such as healthcheck/metrics
  SIM_HOST            IP Address or hostname running policy-models-simulator
- DMAAP_PORT          Port number of DMaaP simulator for making REST API calls such as reading notification events
+ KAFKA_PORT          Port number of Kafka bootstrap server for sending message events
  wait                Wait time if required after a request (in milliseconds)
  threads             Number of threads to run test cases in parallel
  threadsTimeOutInMs  Synchronization timer for threads running in parallel (in milliseconds)
@@ -143,7 +141,7 @@ Stability test plan was triggered for 72 hours. There were no failures during th
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-112245                   99.47 %            0.53 %              2.309 sec.
+312366                   100 %              0 %                 4148ms
 =======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
@@ -191,7 +189,7 @@ Test results are shown as below.
 =======================  =================  ==================  ==================================
 **Total # of requests**  **Success %**      **Error %**         **Average time taken per request**
 =======================  =================  ==================  ==================================
-12486                    99.32 %            0.68 %              576.64 ms
+344624                   100 %              0 %                 4178 ms
 =======================  =================  ==================  ==================================
 
 **JMeter Screenshot**
