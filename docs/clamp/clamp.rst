@@ -5,8 +5,8 @@
 CLAMP Metadata Automation Composition Management using TOSCA
 #############################################################
 
-CLAMP supports the definition, deployment, and life cycle management of automation composition elements using Metadata
-described in TOSCA.
+CLAMP supports the definition, deployment, and life cycle management of
+automation composition elements using Metadata described in TOSCA.
 
 .. toctree::
    :maxdepth: 2
@@ -21,8 +21,9 @@ described in TOSCA.
    acm/acm-participant-guide
 
 .. note::
-      Policy/CLAMP was merged into the Policy Framework in the Honolulu release of ONAP. Prior to that release, it was
-      a separate project. The release notes for CLAMP when it existed as a separate project are located below.
+      Policy/CLAMP was merged into the Policy Framework in the Honolulu release
+      of ONAP. Prior to that release, it was a separate project. The release
+      notes for CLAMP when it existed as a separate project are located below.
 
 .. toctree::
    :maxdepth: 1
