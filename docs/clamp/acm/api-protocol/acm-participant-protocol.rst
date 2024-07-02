@@ -14,18 +14,21 @@ Protocol Dialogues
 ==================
 
 The protocol supports the dialogues described below.
+Any participant could have more than one replica. All replicas of a specific participant, have same participant ID.
+All replica data are synchronized by ACM-runtime through a sync message. This message will be triggered at any change in composition and instance.
 
 Participant Registration and De-Registration
 --------------------------------------------
 
-Participant Registration is performed by a Participant when it starts up. It registers its ID and the ACM Element Types it supports with the ACM runtime.
-In a scenario where Participant has been restarted, ACM runtime have to provide all Primed ACM Definition and Deployed ACM instances of the Participant sending a Restart message.
+Participant Registration is performed by a Participant when it starts up.
+It registers its replica ID, participant ID and the ACM Element Types it supports with the ACM runtime.
+In a scenario where a replica of a Participant has been restarted, ACM runtime have to provide all Primed ACM Definition and Deployed ACM instances of the Replica sending a Sync message.
 
 
 .. image:: ../images/system-dialogues/RegisterParticipant.png
 
 
-Participant Deregistration is performed by a Participant when it shuts down. It deregisters its ID and type with the ACM runtime.
+Participant Deregistration is performed by a Participant when it shuts down. It deregisters its replica ID with the ACM runtime.
 
 .. image:: ../images/system-dialogues/DeregisterParticipant.png
 

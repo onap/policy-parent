@@ -10,9 +10,10 @@ ACM States
 
 Automation Composition Management manages a number of states of various types to manage the lifecycle of compositions. Those states are described here. Please also see the ACM System Level Dialogues page to see the system dialogues that change states and how states interrelate in detail. Please also see ITU Recommendation X.731, which is reflected in the states of AC Element Instances.
 
-Participant State
-=================
-Participant states are NOT managed by ACM but the state of a participant is recorded and supervised by ACM.
+Participant Replica State
+=========================
+Any participant could have more than one replica.
+Participant replica states are NOT managed by ACM but the state of a participant replica is recorded and supervised by ACM.
 
 .. image:: images/acm-states/ParticipantStates.png
 

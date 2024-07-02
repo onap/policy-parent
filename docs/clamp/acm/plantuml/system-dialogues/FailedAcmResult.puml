@@ -1,0 +1,21 @@
+@startuml
+participant "ACM Runtime"
+participant "Participant Replica 1"
+participant "Participant API Replica 1"
+participant "Participant Replica 2"
+
+"ACM Runtime" -> "Participant Replica 1": [ASYNC] Trigger an ACM operation for this AC Instance
+alt Does the primed Participant ID on this AC Element Instance match my Participant ID?
+  alt Does this AC Element Instance exist?
+    "Participant Replica 1" -> "ACM Runtime": [ASYNC] AC Element does not exist
+  end
+  "Participant Replica 1" -> "Participant API Replica 1": Perform ACM operation
+  "Participant API Replica 1" -> "Participant Replica 1": ACM operation failed Response
+  "Participant Replica 1" -> "ACM Runtime": [ASYNC] INFO: ACM operation failed
+  note left of "Participant Replica 1"
+    This returns the response message with StateChangeResult 'FAILED'
+  end note
+"ACM Runtime" -> "Participant Replica 2": [ASYNC] Send sync message
+end
+
+@enduml

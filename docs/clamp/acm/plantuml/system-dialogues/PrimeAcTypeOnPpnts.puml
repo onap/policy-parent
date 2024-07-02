@@ -1,28 +1,28 @@
 @startuml
 participant REST
-participant ACM_Runtime
+participant "ACM Runtime"
+database "ACM Database"
 participant Participant
-database ACM_Database
 
 alt Automation Composition Type has Deployed Instances
-  REST <- ACM_Runtime: Priming of Automation Composition Type Failed, instances deployed
+  REST <- "ACM Runtime": Priming of Automation Composition Type Failed, \ninstances deployed
 else Automation Composition Type is in state COMMISSIONED or PRIMED
- REST -> ACM_Runtime: Prime Automation Composition Type
+ REST -> "ACM Runtime": Prime Automation Composition Type
 
- ACM_Runtime -> ACM_Database: Read Automation Composition Type
- ACM_Runtime -> ACM_Database: Read Participants
- ACM_Runtime -> ACM_Runtime: Set suitable participant ID on each AC Element Type
+ "ACM Runtime" -> "ACM Database": Read Automation Composition Type
+ "ACM Runtime" -> "ACM Database": Read Participants
+ "ACM Runtime" -> "ACM Runtime": Set suitable participant ID on each AC Element Type
 
  alt Was a sutable participant ID found for each AC Element Type?
-  ACM_Runtime -> Participant: [ASYNC] Send Priming Request to all Participants\nwith Automation Composition Type Definition
-  ACM_Runtime -> ACM_Database: Set Automation Composition Type State to PRIMING
+  "ACM Runtime" -> Participant: [ASYNC] Send Priming Request to all Participants\nwith Automation Composition Type Definition
+  "ACM Runtime" -> "ACM Database": Set Automation Composition Type State to PRIMING
 
-  REST <- ACM_Runtime: Priming of Automation Composition Type Ordered
+  REST <- "ACM Runtime": Priming of Automation Composition Type Ordered
  else
-   REST <- ACM_Runtime: Priming of Automation Composition Type Faield, no sutiable participant found
+   REST <- "ACM Runtime": Priming of Automation Composition Type Faield, \nno sutiable participant found
  end
 else
- REST <- ACM_Runtime: Priming of Automation Composition Type Failed, invalid state
+ REST <- "ACM Runtime": Priming of Automation Composition Type Failed, \ninvalid state
 end
 
 @enduml

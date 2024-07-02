@@ -1,20 +1,24 @@
 @startuml
+
+participant Participant
+participant "ACM Runtime"
+database "ACM Database"
+
 activate Participant
-  Participant -> "CLAMP Runtime": [ASYNC] Register
-activate "CLAMP Runtime"
+  Participant -> "ACM Runtime": [ASYNC] Register
+activate "ACM Runtime"
 deactivate Participant
-  "CLAMP Runtime" -> "CLAMP Database": Create or Update Perticipant Registration,\n store supported ACM element types \n and set Perticipant State as ON_LINE
-  "CLAMP Runtime" -> Participant: [ASYNC] Registration Accepted
-  loop over ACM Definition
-	  "CLAMP Runtime" -> "CLAMP Database": Mark all ACM element instances deployed\n on Participant as Restarting
-    "CLAMP Runtime" -> Participant: [ASYNC] Restart\n send Common Property Values\n and Instance Elements of this Participant]
-deactivate "CLAMP Runtime"
+  "ACM Runtime" -> "ACM Database": Create a Participant Replica Registration,\n store supported ACM element types \n and set Replica State as ON_LINE
+  loop ACM Definition
+    "ACM Runtime" -> Participant: [ASYNC] Sync message\n send Common Property Values\n and Instance Elements of this Participant
 activate Participant
-Participant -> Participant: Store Common Property Values and Instance Elements
-Participant -> "CLAMP Runtime": [ASYNC] State Change Ack
-activate "CLAMP Runtime"
+    Participant -> Participant: Store Common Property Values and Instance Elements
+  end loop
+  alt
+  "ACM Runtime" -> Participant: [ASYNC] Registration Accepted
+deactivate "ACM Runtime"
+Participant -> Participant:  set participant as registered
+Participant -> "ACM Runtime": [ASYNC] Status message
 deactivate Participant
-  "CLAMP Runtime" -> "CLAMP Database": Remove Restarting from all Compositions \n and Instances of this Participant
-deactivate "CLAMP Runtime"
-  end
+end
 @enduml

@@ -1,0 +1,19 @@
+@startuml
+
+participant "ACM Runtime"
+database "ACM Database"
+participant "Participant Replica 1"
+participant "Participant Replica 2"
+
+"ACM Runtime" <- "Participant Replica 1": [ASYNC] Delete Automation Composition Element \nInstance Response
+"ACM Runtime" -> "ACM Database": Store Automation Composition Element Instance \nResponse Information
+
+alt Is AC Element Instance Deleted?
+ "ACM Runtime" -> "ACM Database": Set AC Element Instance State as DELETED
+ alt Are all the other AC Element Instances in this AC Instance in state DELETED?
+  "ACM Runtime" -> "ACM Database": Delete AC Instance
+  "ACM Runtime" -> "Participant Replica 2": [ASYNC] Send sync message
+ end
+end
+
+@enduml

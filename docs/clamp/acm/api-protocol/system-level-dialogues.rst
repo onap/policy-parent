@@ -16,7 +16,8 @@ Priming The CLAMP Automation Composition Runtime Lifecycle Management uses the f
 1.1 Register a Participant
 --------------------------
 
-Participant Registration is performed by a Participant when it starts up. It registers its ID and the ACM Element Types it supports with the ACM runtime.
+Participant Registration is performed by a Participant when it starts up.
+It registers its replica ID, participant ID and the ACM Element Types it supports with the ACM runtime.
 
 .. image:: ../images/system-dialogues/RegisterParticipant.png
 
@@ -28,11 +29,17 @@ Participant Deregistration is performed by a Participant when it shuts down. It 
 
 1.3 Supervise Participants
 --------------------------
-Participant Supervision is performed periodically between participants and the ACM runtime server to ensure that registered participants are available over time. Participants send a heartbeat message to the ACM runtime at a configured interval. The heartbeat message contains updated status information for each AC Element Instance that has changed status since the last Heartbeat message sent by the participant.
+Participant Supervision is performed periodically between participants and the ACM runtime server to ensure that registered participants are available over time.
+Participants send a heartbeat Status message to the ACM runtime at a configured interval.
 
 .. image:: ../images/system-dialogues/SuperviseParticipantsStatusUpdate.png
 
-The ACM runtime regularly checks the heartbeat reports from participants and takes action if participants time out. If a heartbeat message is not received for a participant in the Timeout Interval, the participant is marked as timed out and its ACM element instances are informed.
+Participants could send outProperties update using Status message to the ACM runtime.
+When Status message contains outProperties, ACM-runtime updates the Database and triggers a sync message to all replicas.
+
+.. image:: ../images/system-dialogues/SuperviseParticipantsStatusOutPropertiesUpdate.png
+
+The ACM runtime regularly checks the heartbeat reports from participants and takes action if participants time out. If a heartbeat message is not received for a participant replica in the Timeout Interval, the participant replica is marked as timed out.
 
 .. image:: ../images/system-dialogues/SuperviseParticipantsTimeout.png
 
@@ -77,7 +84,7 @@ A participant should respond for each Automation Composition Element Type, thus 
 
 .. image:: ../images/system-dialogues/PrimeAcTypeMultiplePpnts.png
 
-The ACM Runtime updates the priming information in the database.
+The ACM Runtime updates the priming information in the database, and send sync message to all replicas.
 
 .. image:: ../images/system-dialogues/PrimeInfoUpdatedInDb.png
 
@@ -91,7 +98,7 @@ A participant should respond for each Automation Composition Element Type, thus 
 
 .. image:: ../images/system-dialogues/DeprimeElements.png
 
-The ACM Runtime updates the priming information in the database.
+The ACM Runtime updates the priming information in the database, and send sync message to all replicas.
 
 .. image:: ../images/system-dialogues/UpdateDeprimeInDb.png
 
@@ -122,7 +129,7 @@ Each participant deletes its AC Element Instances from the AC Instance
 
 .. image:: ../images/system-dialogues/DeleteInstanceElements.png
 
-The ACM Runtime receives and stores the responses, when all instances element are deleted, it delete the instance.
+The ACM Runtime receives and stores the responses, when all instances element are deleted, it delete the instance and send sync message to all replicas.
 
 .. image:: ../images/system-dialogues/DeleteResponseStored.png
 
@@ -136,7 +143,7 @@ Each participant deploys its AC Element Instances from the AC Instance.
 
 .. image:: ../images/system-dialogues/DeployAcInstanceElements.png
 
-The ACM Runtime receives and stores the responses.
+The ACM Runtime receives and stores the responses, and send sync message to all replicas.
 
 .. image:: ../images/system-dialogues/DeployResponseStored.png
 
@@ -150,7 +157,7 @@ Each participant updates its AC Element from the AC Instance
 
 .. image:: ../images/system-dialogues/UpdateAcElements.png
 
-The ACM Runtime receives and stores the responses.
+The ACM Runtime receives and stores the responses, and send sync message to all replicas.
 
 .. image:: ../images/system-dialogues/UpdateAcElementsResponse.png
 
@@ -164,7 +171,7 @@ Each participant migrated its AC Element from the AC Instance
 
 .. image:: ../images/system-dialogues/MigrateAcElements.png
 
-The ACM Runtime receives and stores the responses.
+The ACM Runtime receives and stores the responses, and send sync message to all replicas.
 
 .. image:: ../images/system-dialogues/MigrateAcElementsResponse.png
 
@@ -178,7 +185,7 @@ Each participant undeploys its AC Element Instances from the AC Instance
 
 .. image:: ../images/system-dialogues/UndeployInstanceElements.png
 
-The ACM Runtime receives and stores the responses.
+The ACM Runtime receives and stores the responses, and send sync message to all replicas.
 
 .. image:: ../images/system-dialogues/UndeployResponseStored.png
 
@@ -197,7 +204,7 @@ Each participant unlocks its AC Element Instances from the AC Instance.
 
 .. image:: ../images/system-dialogues/UnlockInstanceElements.png
 
-The ACM Runtime receives and stores the responses.
+The ACM Runtime receives and stores the responses, and send sync message to all replicas.
 
 .. image:: ../images/system-dialogues/UnlockResponseStored.png
 
@@ -211,21 +218,16 @@ Each participant locks its AC Element Instances from the AC Instance.
 
 .. image:: ../images/system-dialogues/LockAcInstanceElements.png
 
-The ACM Runtime receives and stores the responses.
+The ACM Runtime receives and stores the responses, and send sync message to all replicas.
 
 .. image:: ../images/system-dialogues/LockResponseStored.png
 
-3.10 Update Operational State on Automation Composition Instance
-----------------------------------------------------------------
+3.10 Update Operational State, Use State and outProperties on Automation Composition Instance
+---------------------------------------------------------------------------------------------
 
 .. image:: ../images/system-dialogues/UpdateOperationalState.png
 
-3.11 Update Usage State on Automation Composition Instance
-----------------------------------------------------------
-
-.. image:: ../images/system-dialogues/UpdateUsageState.png
-
-3.12 Failure handling in ACM
+3.11 Failure handling in ACM
 ----------------------------
 After any ACM operation is completed, one of the following result messages will be updated in the ACM. These result values are
 updated along with the overall state of the ACM instance.
@@ -270,17 +272,17 @@ The following flow shown and example of deployment that get stuck, and the user 
 .. image:: ../images/system-dialogues/TimeoutParticipant.png
 
 
-3.13 OFF_LINE handling in ACM
+3.12 OFF_LINE handling in ACM
 -----------------------------
-Runtime marks the participant state with the value 'OFF_LINE' when the participant fails to report the periodic heartbeat,
-the participant state is then marked as 'OFF_LINE' by the ACM-R after the configured waiting limit is reached.
-That scenario might happen when participant is shutdown, in that scenario all on going operations with that participant are marked 'TIMEOUT' due the missing messages back.
+Runtime marks the participant state with the value 'OFF_LINE' when the participant replica fails to report the periodic heartbeat,
+the participant replica state is then marked as 'OFF_LINE' by the ACM-R after the configured waiting limit is reached.
+That scenario might happen when participant replica is shutdown, in that scenario all on going operations with that participant are marked 'TIMEOUT' due the missing messages back.
 
-The user cannot trigger any state change events when participant state is 'OFF_LINE'.
+The user cannot trigger any state change events when all participant replicas state are 'OFF_LINE' (no one is available 'ONLINE').
 
 .. image:: ../images/system-dialogues/OfflineAcmResult.png
 
-When a participant state is marked 'OFF_LINE', it might come back ONLINE and the user can trigger state change events to the ACM.
+When a participant replica state is marked 'OFF_LINE', it might come back ONLINE and the user can trigger state change events to the ACM.
 
 End of Document
 

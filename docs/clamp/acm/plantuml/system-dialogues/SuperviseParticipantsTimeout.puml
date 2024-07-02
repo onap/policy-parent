@@ -1,16 +1,13 @@
 @startuml
 
-participant ACM_Runtime
-database ACM_Database
+participant "ACM Runtime"
+database "ACM Database"
 
-loop Every ACM_Runtime Supervision Interval
-  loop Over all Participants
-    ACM_Runtime -> Database: Read Participant Heartbeat Information
-    alt Participant Heartbeat not received in Timeout Interval
-      ACM_Runtime -> ACM_Database: Set Participant State as OFFLINE
-      ACM_Runtime -> ACM_Runtime: Mark all ACM Element Instances\nrunning on Participant as OFFLINE
-      activate ACM_Runtime
-      deactivate ACM_Runtime
+loop Every ACM Runtime Supervision Interval
+  loop Over all Participant replicas
+    "ACM Runtime" -> "ACM Database": Read Participant Replica Heartbeat Information
+    alt Participant Replica Heartbeat not received in Timeout Interval
+      "ACM Runtime" -> "ACM Database": Set Participant Replica State as OFFLINE
     end
   end
 end

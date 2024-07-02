@@ -1,16 +1,19 @@
 @startuml
-participant Participant_API
-participant Participant
-participant ACM_Runtime
+participant "Participant API Replica 1"
+participant "Participant Replica 1"
+participant "ACM Runtime"
+participant "Participant Replica 2"
 
-Participant_API -> Participant_API: Perform Operation that Updates Operational State
-activate Participant_API
-deactivate Participant_API
+"Participant API Replica 1" -> "Participant API Replica 1": Perform Operation that Updates \nOperational State, Use State and outProperties
+activate "Participant API Replica 1"
+deactivate "Participant API Replica 1"
 
-Participant_API -> Participant: Operational State has been updated
-Participant -> Participant: Update Operational State in ACM Element Instance
+"Participant API Replica 1" -> "Participant Replica 1": Operational State, Use State and outProperties \nhas been updated
+"Participant Replica 1" -> "Participant Replica 1": Update Operational State, Use State and outProperties \nin ACM Element Instance
+"Participant Replica 1" -> "ACM Runtime": [ASYNC] Send message including states and outProperties \nof AC Element Instances on Participant
+"ACM Runtime" -> "Participant Replica 2": [ASYNC] Send sync message
 
 == Periodically with Heartbeat ==
-Participant -> ACM_Runtime: [ASYNC] Heartbeat message including\nstatus and states of AC Element Instances on Participant
+"Participant Replica 1" -> "ACM Runtime": [ASYNC] Heartbeat message including status
 
 @enduml

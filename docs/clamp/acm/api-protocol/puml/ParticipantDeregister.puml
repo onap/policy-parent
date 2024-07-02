@@ -1,6 +1,11 @@
 @startuml
+
+participant Participant
+participant "ACM Runtime"
+database "ACM Database"
+
 Participant -> "ACM Runtime": [ASYNC] Deregister
-"ACM Runtime" -> "ACM Database": Set Participant State as OFF_LINE
+"ACM Runtime" -> "ACM Database": Set Participant Replica State as OFF_LINE
 Participant <- "ACM Runtime": [ASYNC] Deregistration Accepted
 Participant -> Participant: Shutdown Participant
 @enduml

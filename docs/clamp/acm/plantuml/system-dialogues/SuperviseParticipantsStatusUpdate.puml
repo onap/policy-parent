@@ -1,17 +1,12 @@
 @startuml
 
 participant Participant
-participant ACM_Runtime
-database ACM_Database
+participant "ACM Runtime"
+database "ACM Database"
 
 loop Every Participant Supervision Interval
- Participant -> ACM_Runtime: [ASYNC] Heartbeat message including\nstatus and states of AC Element Instances on Participant
- ACM_Runtime -> ACM_Database: Update Participant Heartbeat data
- ACM_Runtime -> ACM_Database: Set Participant State as ONLINE
-
- loop Every AC Element Instance in Heartbeat Message
-  ACM_Runtime -> ACM_Database: Mark AC Element Instance as ONLINE\nand Update AC Element Instance status
- end
+ Participant -> "ACM Runtime": [ASYNC] Heartbeat message including\nreplica ID and participant ID
+ "ACM Runtime" -> "ACM Database": Update Participant Replica as 'ON_LINE'
 end
 
 @enduml

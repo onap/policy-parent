@@ -1,20 +1,11 @@
 @startuml
 
 participant Participant
-participant ACM_Runtime
-database ACM_Database
+participant "ACM Runtime"
+database "ACM Database"
 
-Participant -> Participant: Uninitialize all ACM Element Instances running on Participant\n(See Instantiation Dialogues)
-activate Participant
-deactivate Participant
-
-Participant -> ACM_Runtime: [ASYNC] Deregister
-ACM_Runtime -> ACM_Database: Delete Participant Registration
-ACM_Runtime -> ACM_Database: Set Participant State as OFFLINE
-Participant <- ACM_Runtime: [ASYNC] Deregistration Accepted
-
-ACM_Runtime -> ACM_Runtime: Mark all ACM Element Instances\nrunning on Participant as OFFLINE
-activate ACM_Runtime
-deactivate ACM_Runtime
-
+Participant -> "ACM Runtime": [ASYNC] Deregister
+"ACM Runtime" -> "ACM Database": Set Participant Replica State as OFF_LINE
+Participant <- "ACM Runtime": [ASYNC] Deregistration Accepted
+Participant -> Participant: Shutdown Participant
 @enduml

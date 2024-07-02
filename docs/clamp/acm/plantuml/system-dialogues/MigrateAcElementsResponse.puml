@@ -1,10 +1,12 @@
 @startuml
 participant "ACM Runtime"
 participant "ACM Database"
-participant Participant
+participant "Participant Replica 1"
+participant "Participant Replica 2"
 
 alt "instance Id and Composition Ids exist"
-  Participant -> "ACM Runtime" : [ASYNC] Migration completed
+  "Participant Replica 1" -> "ACM Runtime" : [ASYNC] Migration completed
   "ACM Runtime" -> "ACM Database" : instance and AC Element will be set in a final state (DEPLOYED)\n and Comp Def IDs change for instance and AC Element
+  "ACM Runtime" -> "Participant Replica 2": [ASYNC] Send sync message
 end
 @enduml

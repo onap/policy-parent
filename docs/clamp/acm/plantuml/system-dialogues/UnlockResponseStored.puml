@@ -1,16 +1,18 @@
 @startuml
 
-participant ACM_Runtime
-participant Participant
-database ACM_Database
+participant "ACM Runtime"
+database "ACM Database"
+participant "Participant Replica 1"
+participant "Participant Replica 2"
 
-ACM_Runtime <- Participant: [ASYNC] Unlock Automation Composition Element Instance Response
-ACM_Runtime -> ACM_Database: Store Automation Composition Element Instance Response Information
+"ACM Runtime" <- "Participant Replica 1": [ASYNC] Unlock Automation Composition Element \nInstance Response
+"ACM Runtime" -> "ACM Database": Store Automation Composition Element Instance \nResponse Information
 
 alt Is AC Element Instance Unlocked?
- ACM_Runtime -> ACM_Database: Set AC Element Instance administrative state as UNLOCKED
+ "ACM Runtime" -> "ACM Database": Set AC Element Instance administrative state as UNLOCKED
  alt Have all the other AC Element Instances in this AC Instance been UNLOCKED?
-  ACM_Runtime -> ACM_Runtime: Set AC Instance administrative state as UNLOCKED
+  "ACM Runtime" -> "ACM Database": Set AC Instance administrative state as UNLOCKED
+  "ACM Runtime" -> "Participant Replica 2": [ASYNC] Send sync message
   end
 end
 

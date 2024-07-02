@@ -1,16 +1,18 @@
 @startuml
 
-participant ACM_Runtime
-participant Participant
-database ACM_Database
+participant "ACM Runtime"
+database "ACM Database"
+participant "Participant Replica 1"
+participant "Participant Replica 2"
 
-ACM_Runtime <- Participant: [ASYNC] Undeploy Automation Composition Element Instance Response
-ACM_Runtime -> ACM_Database: Store Automation Composition Element Instance Response Information
+"ACM Runtime" <- "Participant Replica 1": [ASYNC] Undeploy Automation Composition Element \nInstance Response
+"ACM Runtime" -> "ACM Database": Store Automation Composition Element Instance \nResponse Information
 
 alt Is AC Element Instance undeployed?
- ACM_Runtime -> ACM_Database: Mark AC Element Instance as UNDEPLOYED
+ "ACM Runtime" -> "ACM Database": Mark AC Element Instance as UNDEPLOYED
   alt Are all the other AC Element Instances in this AC Instance in state UNDEPLOYED?
-   ACM_Runtime -> ACM_Runtime: Set AC Instance state as UNDEPLOYED
+   "ACM Runtime" -> "ACM Database": Set AC Instance state as UNDEPLOYED
+  "ACM Runtime" -> "Participant Replica 2": [ASYNC] Send sync message
   end
 end
 

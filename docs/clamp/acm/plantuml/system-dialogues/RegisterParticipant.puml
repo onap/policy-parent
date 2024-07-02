@@ -1,16 +1,24 @@
 @startuml
 
 participant Participant
-participant ACM_Runtime
-database ACM_Database
+participant "ACM Runtime"
+database "ACM Database"
 
-Participant -> ACM_Runtime: [ASYNC] Register
-ACM_Runtime -> ACM_Database: Create or Update Participant Registration\nand store supported ACM element types
-ACM_Runtime -> ACM_Database: Set Participant State as ONLINE
-Participant <- ACM_Runtime: Registration Accepted
-
-ACM_Runtime -> ACM_Runtime: Mark all ACM Element Instances\nrunning on Participant as ONLINE
-activate ACM_Runtime
-deactivate ACM_Runtime
-
+activate Participant
+  Participant -> "ACM Runtime": [ASYNC] Register
+activate "ACM Runtime"
+deactivate Participant
+  "ACM Runtime" -> "ACM Database": Create a Participant Replica Registration,\n store supported ACM element types \n and set Replica State as ON_LINE
+  loop ACM Definition
+    "ACM Runtime" -> Participant: [ASYNC] Sync message\n send Common Property Values\n and Instance Elements of this Participant
+activate Participant
+    Participant -> Participant: Store Common Property Values and Instance Elements
+  end loop
+  alt
+  "ACM Runtime" -> Participant: [ASYNC] Registration Accepted
+deactivate "ACM Runtime"
+Participant -> Participant:  set participant as registered
+Participant -> "ACM Runtime": [ASYNC] Status message
+deactivate Participant
+end
 @enduml

@@ -1,0 +1,12 @@
+@startuml
+
+participant "Participant Replica 1"
+participant "Participant Replica 2"
+participant "ACM Runtime"
+database "ACM Database"
+
+"Participant Replica 1" -> "ACM Runtime": [ASYNC] Status message including outProperties update
+"ACM Runtime" -> "ACM Database": Update Participant Replica \nas 'ON_LINE' and outProperties
+"ACM Runtime" -> "Participant Replica 2": [ASYNC] Send sync message
+"Participant Replica 2" -> "Participant Replica 2": Update memory from sync message
+@enduml

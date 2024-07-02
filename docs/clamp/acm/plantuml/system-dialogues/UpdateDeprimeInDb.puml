@@ -1,14 +1,16 @@
 @startuml
-participant ACM_Runtime
-participant Participant
-database ACM_Database
+participant "ACM Runtime"
+database "ACM Database"
+participant "Participant Replica 1"
+participant "Participant Replica 2"
 
-ACM_Runtime <- Participant: [ASYNC] Result of Depriming of AC Element Type
-ACM_Runtime -> ACM_Database: Record result of AC Element Type Depriming
+"ACM Runtime" <- "Participant Replica 1": [ASYNC] Result of Depriming of AC Element Type
+"ACM Runtime" -> "ACM Database": Record result of AC Element Type Depriming
 
 alt Is AC Element Type Deprimed?
  alt Have all the other AC Element Types in this AC Type been Deprimed?
-  ACM_Runtime -> ACM_Runtime: Set AC Type state as COMMISSIONED
+  "ACM Runtime" -> "ACM Database": Set AC Type state as COMMISSIONED
+  "ACM Runtime" -> "Participant Replica 2": [ASYNC] Send sync message
  end
 end
 
