@@ -13,7 +13,7 @@ This article explains how CLAMP Automation Composition Runtime is implemented.
 
 Terminology
 ***********
-- Broadcast message: a message for all participants (participantId=null)
+- Broadcast message: a message for all participants (participantId=null and replicaId=null)
 - Message to a participant: a message only for a participant (participantId properly filled)
 - ThreadPoolExecutor: ThreadPoolExecutor executes the given task, into SupervisionAspect class is configured to execute tasks in ordered manner, one by one
 - Spring Scheduling: into SupervisionAspect class, the @Scheduled annotation invokes "schedule()" method every "runtime.participantParameters.heartBeatMs" milliseconds with a fixed delay
@@ -32,13 +32,13 @@ Check CLAMP Runtime and Participants
 Order an immediate Participant Report from all participants
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - GUI calls PUT "/onap/policy/clamp/acm/v2/participants" endpoint
-- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- ACM-runtime receives the call by Rest-Api (CommissioningController)
 - It triggers the execution to send a broadcast PARTICIPANT_STATUS_REQ message
 
 Create of a Automation Composition Definition Type
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 - GUI calls POST "/onap/policy/clamp/acm/v2/compositions" endpoint with a Automation Composition Type Definition (Tosca Service Template) as body
-- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- ACM-runtime receives the call by Rest-Api (CommissioningController)
 - It validates the Automation Composition Type Definition
 - It saves to DB the Tosca Service Template using AcDefinitionProvider with new compositionId and COMMISSIONED status
 - the Rest-Api call returns the compositionId generated and the list of Element Definition Type
@@ -46,7 +46,7 @@ Create of a Automation Composition Definition Type
 Update of a Automation Composition Definition Type
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 - GUI calls POST "/onap/policy/clamp/acm/v2/compositions" endpoint with a Automation Composition Type Definition (Tosca Service Template) as body. It have to contain the compositionId
-- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- ACM-runtime receives the call by Rest-Api (CommissioningController)
 - It checks that Automation Composition Type Definition is in COMMISSIONED status
 - It validates the Automation Composition Type Definition
 - It updates to DB the Tosca Service Template using AcDefinitionProvider using the compositionId
@@ -55,7 +55,7 @@ Update of a Automation Composition Definition Type
 Priming of a Automation Composition Definition Type
 +++++++++++++++++++++++++++++++++++++++++++++++++++
 - GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}" endpoint with PRIME as primeOrder
-- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- ACM-runtime receives the call by Rest-Api (CommissioningController)
 - It checks that Automation Composition Type Definition is in COMMISSIONED status
 - It validates and update the AC Element Type Definition with supported Element Types by participants
 - It updates AC Definition to DB with PRIMING as status
@@ -65,7 +65,7 @@ Priming of a Automation Composition Definition Type
 Create of a Automation Composition Instance
 +++++++++++++++++++++++++++++++++++++++++++
 - GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances" endpoint with a Automation Composition Instance as body. It have to contain the compositionId
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
 - It validates the AC Instance and checks that the related composition has COMMISSIONED as status
 - It set the related participantId into the AC Element Instance using the participantId defined in AC Element Type Definition
 - It saves the Automation Composition to DB with UNDEPLOYED deployState and NONE lockState
@@ -74,7 +74,7 @@ Create of a Automation Composition Instance
 Update of a Automation Composition Instance
 +++++++++++++++++++++++++++++++++++++++++++
 - GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances" endpoint with a Automation Composition Instance as body. It have to contain the compositionId and the instanceId
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
 - It checks that AC Instance is in UNDEPLOYED/DEPLOYED deployState
 - It updates the Automation Composition to DB
 - the Rest-Api call returns the instanceId and the list of AC Element Instance
@@ -84,7 +84,7 @@ Migrate of a Automation Composition Instance
 ++++++++++++++++++++++++++++++++++++++++++++
 - GUI has already a new composition definition primed
 - GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances" endpoint with a Automation Composition Instance as body. It have to contain the compositionId, the compositionTargetId and the instanceId
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
 - It checks that AC Instance is in DEPLOYED deployState
 - It checks that compositionTargetId is related to a primed composition definition
 - It updates the Automation Composition to DB
@@ -97,7 +97,7 @@ Issues AC instance to change status
 case **deployOrder: DEPLOY**
 
 - GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with DEPLOY as deployOrder
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
 - It validates the status order issued (related AC Instance has UNDEPLOYED as deployState)
 - It updates the AC Instance to DB with DEPLOYING deployState
 - It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_DEPLOY message
@@ -106,7 +106,7 @@ case **deployOrder: DEPLOY**
 case **lockOrder: UNLOCK**
 
 - GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with UNLOCK as lockOrder
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
 - It validates the status order issued (related AC Instance has DEPLOYED as deployState and LOCK as lockOrder)
 - It updates the AC Instance to DB with LOCKING lockOrder
 - It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
@@ -115,7 +115,7 @@ case **lockOrder: UNLOCK**
 case **lockOrder: LOCK**
 
 - GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with LOCK as lockOrder
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
 - It validates the status order issued (related AC Instance has DEPLOYED as deployState and UNLOCK as lockOrder)
 - It updates the AC Instance to DB with UNLOCKING lockOrder
 - It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
@@ -124,7 +124,7 @@ case **lockOrder: LOCK**
 case **deployOrder: UNDEPLOY**
 
 - GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with UNDEPLOY as deployOrder
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
 - It validates the status order issued (related AC Instance has DEPLOYED as deployState and LOCK as lockOrder)
 - It updates the AC Instance to DB with UNDEPLOYING deployState
 - It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
@@ -133,7 +133,7 @@ case **deployOrder: UNDEPLOY**
 Delete of a Automation Composition Instance
 +++++++++++++++++++++++++++++++++++++++++++
 - GUI calls DELETE "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint
-- runtime-ACM receives the call by Rest-Api (InstantiationController)
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
 - It checks that AC Instance is in UNDEPLOYED deployState
 - It updates the AC Instance to DB with DELETING deployState
 - It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_STATE_CHANGE message
@@ -142,7 +142,7 @@ Delete of a Automation Composition Instance
 Depriming of a Automation Composition Definition Type
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 - GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}" endpoint with DEPRIME as primeOrder
-- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- ACM-runtime receives the call by Rest-Api (CommissioningController)
 - It checks that Automation Composition Type Definition is in PRIMED status
 - It updates AC Definition to DB with DEPRIMING as status
 - It triggers the execution to send a broadcast PARTICIPANT_PRIME message
@@ -151,7 +151,7 @@ Depriming of a Automation Composition Definition Type
 Delete of a Automation Composition Definition Type
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 - GUI calls DELETE "/onap/policy/clamp/acm/v2/compositions/{compositionId}" endpoint
-- runtime-ACM receives the call by Rest-Api (CommissioningController)
+- ACM-runtime receives the call by Rest-Api (CommissioningController)
 - It checks that AC Definition Type is in COMMISSIONED status
 - It deletes the Automation Composition Type from DB
 
@@ -200,13 +200,13 @@ In state changes from UNDEPLOYED → DEPLOYED or LOCKED → UNLOCKED, Automation
 
 Example of DEPLOY order with Http_PMSHMicroserviceAutomationCompositionElement with startPhase to 1 and PMSH_K8SMicroserviceAutomationCompositionElement with startPhase to 0
 
-- runtime-ACM sends a broadcast AUTOMATION_COMPOSITION_DEPLOY message to all participants with startPhase = 0
+- ACM-runtime sends a broadcast AUTOMATION_COMPOSITION_DEPLOY message to all participants with startPhase = 0
 - participant receives the AUTOMATION_COMPOSITION_DEPLOY message and runs to DEPLOYED state (only AC elements defined as startPhase = 0)
-- runtime-ACM receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
-- runtime-ACM calculates that all AC elements with startPhase = 0 are set to proper state and sends a broadcast AUTOMATION_COMPOSITION_DEPLOY message with startPhase = 1
+- ACM-runtime receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
+- ACM-runtime calculates that all AC elements with startPhase = 0 are set to proper state and sends a broadcast AUTOMATION_COMPOSITION_DEPLOY message with startPhase = 1
 - participant receives the AUTOMATION_COMPOSITION_DEPLOY message and runs to DEPLOYED state (only AC elements defined as startPhase = 1)
-- runtime-ACM receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
-- runtime-ACM calculates that all AC elements are set to proper state and set AC to DEPLOYED
+- ACM-runtime receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
+- ACM-runtime calculates that all AC elements are set to proper state and set AC to DEPLOYED
 
 In that scenario the message AUTOMATION_COMPOSITION_DEPLOY has been sent two times.
 
@@ -216,7 +216,7 @@ Configure custom namings for TOSCA node types
 The node type of the AC element and the Automation composition can be customised as per the user requirement.
 These customised names can be used in the TOSCA node type definitions of AC element and composition. All the
 AC element and composition definitions (node templates) should be derived from the corresponding node types.
-The following parameters are provided in the config file of runtime-acm for customisation:
+The following parameters are provided in the config file of ACM-runtime for customisation:
 
 .. code-block:: YAML
 
@@ -226,7 +226,7 @@ The following parameters are provided in the config file of runtime-acm for cust
      toscaCompositionName: customCompositionType
 
 If there are no values provided for customisation, the default node types "org.onap.policy.clamp.acm.AutomationCompositionElement"
-and "org.onap.policy.clamp.acm.AutomationComposition" are used for the AC element and composition by the runtime-acm.
+and "org.onap.policy.clamp.acm.AutomationComposition" are used for the AC element and composition by the ACM-runtime.
 In this case, the element and composition definition has to be derived from the same in the TOSCA. For overriding the names in the
 onap helm chart, the following properties can be updated in the values.yaml.
 
@@ -242,23 +242,22 @@ Design of managing messages
 
 PARTICIPANT_REGISTER
 ++++++++++++++++++++
-- A participant starts and send a PARTICIPANT_REGISTER message with participantId and supported Element Types
-- runtime-ACM collects the message from Message Broker by ParticipantRegisterListener
-- if not present, it saves participant reference with status ON_LINE to DB
+- A participant replica starts and send a PARTICIPANT_REGISTER message with participantId, replicaId and supported Element Types
+- ACM-runtime collects the message from Message Broker by ParticipantRegisterListener
+- if not present, it saves participant replica reference with status ON_LINE to DB
 
 PARTICIPANT_PRIME_ACK
 ++++++++++++++++++++++
 - A participant sends PARTICIPANT_PRIME_ACK message in response to a PARTICIPANT_PRIME message
 - ParticipantPrimeAckListener collects the message from Message Broker
 - It updates AC Definition to DB with PRIMED/DEPRIMED as status
+- If AC Definition is fully PRIMED, ACM-runtime sends sync message to all participants replica
 
 PARTICIPANT_STATUS
 ++++++++++++++++++
-- A participant sends a scheduled PARTICIPANT_STATUS message with participantId and supported Element Types
-- runtime-ACM collects the message from Message Broker by ParticipantStatusListener
-- if not present, it saves participant reference with status ON_LINE to DB
-- MessageIntercept intercepts that event and adds a task to handle PARTICIPANT_STATUS in SupervisionScanner
-- SupervisionScanner clears and starts the monitoring for participantStatus
+- A participant sends a scheduled PARTICIPANT_STATUS message with participantId, replicaId and supported Element Types
+- ACM-runtime collects the message from Message Broker by ParticipantStatusListener
+- if not present, it saves participant replica reference with status ON_LINE to DB
 
 AUTOMATION_COMPOSITION_DEPLOY_ACK
 +++++++++++++++++++++++++++++++++
@@ -284,26 +283,27 @@ Monitoring is designed to process the follow operations:
 - to update AC deployState: in a scenario that "AutomationComposition.deployState" is in a kind of transitional state (example DEPLOYING), if all  - AC elements are moved properly to the specific state, the "AutomationComposition.deployState" will be updated to that and saved to DB
 - to update AC lockState: in a scenario that "AutomationComposition.lockState" is in a kind of transitional state (example LOCKING), if all  - AC elements are moved properly to the specific state, the "AutomationComposition.lockState" will be updated to that and saved to DB
 - to delete AC Instance: in a scenario that "AutomationComposition.deployState" is in DELETING, if all  - AC elements are moved properly to DELETED, the AC Instance will be deleted from DB
-- to retry AUTOMATION_COMPOSITION_DEPLOY/AUTOMATION_COMPOSITION_STATE_CHANGE messages. if there is a AC Element not in the proper state, it will retry a broadcast message
+- to retry AUTOMATION_COMPOSITION_DEPLOY/AUTOMATION_COMPOSITION_STATE_CHANGE messages. if there is an AC instance with startPhase completed, it will be moved to the next startPhase and retry a broadcast message with the new startPhase
+- to send sync message to all participants replica: in scenario where AC instance transition is fully completed
 
-The solution Design of retry, timeout, and reporting for all Participant message dialogues are implemented into the monitoring execution.
+The solution Design timeout and reporting for all Participant message dialogues are implemented into the monitoring execution.
 
-- Spring Scheduling inserts the task to monitor retry execution into ThreadPoolExecutor
+- Spring Scheduling inserts the task to monitor timeout execution into ThreadPoolExecutor
 - ThreadPoolExecutor executes the task
-- a message will be retry if runtime-ACM do no receive Act message before MaxWaitMs milliseconds
+- set AC instance stateChangeResult in timeout, if ACM-runtime do no receive Act message before MaxWaitMs milliseconds
 
 Design of Exception handling
 ****************************
 GlobalControllerExceptionHandler
 ++++++++++++++++++++++++++++++++
-If error occurred during the Rest Api call, runtime-ACM responses with a proper status error code and a JSON message error.
-This class is implemented to intercept and handle AutomationCompositionException, PfModelException and PfModelRuntimeException if they are thrown during the Rest Ali calls.
+If error occurred during the Rest Api call, ACM-runtime responses with a proper status error code and a JSON message error.
+This class is implemented to intercept and handle AutomationCompositionException and PfModelRuntimeException if they are thrown during the Rest Ali calls.
 All of those classes must implement ErrorResponseInfo that contains message error and status response code.
 So the Exception is converted in JSON message.
 
 RuntimeErrorController
 ++++++++++++++++++++++
-If wrong end-point is called or an Exception not intercepted by GlobalControllerExceptionHandler, runtime-ACM responses with a proper status error code and a JSON message error.
+If wrong end-point is called or an Exception not intercepted by GlobalControllerExceptionHandler, ACM-runtime responses with a proper status error code and a JSON message error.
 This class is implemented to redirect the standard Web error page to a JSON message error.
 Typically that happen when a wrong end-point is called, but also could be happen for not authorized call, or any other Exception not intercepted by GlobalControllerExceptionHandler.
 
@@ -313,7 +313,7 @@ RequestResponseLoggingFilter class handles version and "X-ONAP-RequestID" during
 
 Media Type Support
 ******************
-runtime-ACM Rest Api supports **application/json**, **application/yaml** and **text/plain** Media Types. The configuration is implemented in CoderHttpMesageConverter.
+ACM-runtime Rest Api supports **application/json**, **application/yaml** and **text/plain** Media Types. The configuration is implemented in CoderHttpMesageConverter.
 
 application/json
 ++++++++++++++++

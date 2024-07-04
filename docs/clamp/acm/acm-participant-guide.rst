@@ -48,17 +48,29 @@ and the same is configured for the 'ParticipantIntermediaryParameters' object in
 
 .. code-block:: bash
 
+  intermediaryParameters:
+    topics:
+      operationTopic: policy-acruntime-participant
+      syncTopic: acm-ppnt-sync
     clampAutomationCompositionTopics:
           topicSources:
             -
-              topic: POLICY-ACRUNTIME-PARTICIPANT
+              topic: ${participant.intermediaryParameters.topics.operationTopic}
+              servers:
+                - ${topicServer:localhost}:9092
+              topicCommInfrastructure: kafka
+              fetchTimeout: 15000
+              additionalProps:
+                group.id: policy-clamp-ac-name
+            -
+              topic: ${participant.intermediaryParameters.topics.syncTopic}
               servers:
                 - ${topicServer:localhost}:9092
               topicCommInfrastructure: kafka
               fetchTimeout: 15000
           topicSinks:
             -
-              topic: POLICY-ACRUNTIME-PARTICIPANT
+              topic: ${participant.intermediaryParameters.topics.operationTopic}
               servers:
                 - ${topicServer:localhost}:9092
               topicCommInfrastructure: kafka
@@ -92,9 +104,7 @@ AutomationCompositionElementListener:
   6. void update(CompositionElementDto compositionElement, InstanceElementDto instanceElement, InstanceElementDto instanceElementUpdated) throws PfModelException;
   7. void prime(CompositionDto composition) throws PfModelException;
   8. void deprime(CompositionDto composition) throws PfModelException;
-  9. void handleRestartComposition(CompositionDto composition, AcTypeState state) throws PfModelException;
-  10. void handleRestartInstance(CompositionElementDto compositionElement, InstanceElementDto instanceElement, DeployState deployState, LockState lockState) throws PfModelException;
-  11. void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
+  9. void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
 
 These method from the interface are implemented independently as per the user requirement. These methods after handling the
 appropriate requests should also invoke the intermediary's publisher apis to notify the ACM-runtime with the acknowledgement events.
@@ -124,12 +134,10 @@ The Abstract class AcElementListenerV1 supports the follow methods.
   6. void update(UUID instanceId, AcElementDeploy element, Map<String, Object> inProperties) throws PfModelException;
   7. void prime(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList) throws PfModelException;
   8. void deprime(UUID compositionId) throws PfModelException;
-  9. void handleRestartComposition(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList, AcTypeState state) throws PfModelException;
-  10. void handleRestartInstance(UUID instanceId, AcElementDeploy element, Map<String, Object> properties, DeployState deployState, LockState lockState) throws PfModelException;
-  11. void migrate(UUID instanceId, AcElementDeploy element, UUID compositionTargetId, Map<String, Object> properties) throws PfModelException;
+  9. void migrate(UUID instanceId, AcElementDeploy element, UUID compositionTargetId, Map<String, Object> properties) throws PfModelException;
 
 **Note**: this class needs intermediaryApi and it should be passed by constructor. It is declared as protected and can be used.
-Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime, deprime, handleRestartComposition and handleRestartInstance.
+Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime and deprime.
 
 Un example of AutomationCompositionElementHandler implemented in 7.1.0 version and how to use AcElementListenerV1 abstract class:
 
@@ -191,7 +199,7 @@ This abstract class is introduced to help to maintain the java backward compatib
 Any new functionality in the future will be wrapped by this class.
 
 **Note**: this class needs intermediaryApi and it should be passed by constructor. It is declared as protected and can be used.
-Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime, deprime, handleRestartComposition and handleRestartInstance.
+Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime and deprime.
 
 
 Methods: deploy, undeploy, lock, unlock and delete
@@ -243,7 +251,7 @@ Method: update
      elementId                       instance element id
      toscaServiceTemplateFragment
      inProperties                    instance in-properties **(updated)**
-      outProperties                  instance out-properties
+     outProperties                   instance out-properties
     ==============================  ======================================
 
 Methods: prime, deprime
@@ -283,7 +291,7 @@ Method: migrate
      elementId                       instance element id
      toscaServiceTemplateFragment
      inProperties                    instance in-properties **(before the migration)**
-      outProperties                  instance out-properties
+     outProperties                   instance out-properties
     ==============================  ===================================================
   instanceElementMigrate:
     ==============================  ======================================
@@ -293,7 +301,7 @@ Method: migrate
      elementId                       instance element id
      toscaServiceTemplateFragment
      inProperties                    instance in-properties **(updated)**
-      outProperties                  instance out-properties
+     outProperties                   instance out-properties
     ==============================  ======================================
 
 APIs to invoke
@@ -440,13 +448,6 @@ The following code is an example how to update the property 'myProperty' and sen
 
 **Note**: In update and migrate Participants will receive the instance Properties before the merge (instanceElement) and the instance Properties merged (instanceElementUpdated / instanceElementMigrate).
 
-Restart scenario
-----------------
-  Restart methods handle the scenario when participant shut down and restart.
-  During RESTARTING, compositions and instances will be stored in participant memory with In/Out Properties, 'useState' and 'operationalState'.
-  The method handleRestartComposition will be called for each composition and will be present the 'state' at the time the participant shut down.
-  The method handleRestartInstance will be called for each instance element and will be present the 'deployState' and the 'lockState' at the time the participant shut down.
-
 In ONAP, the following participants are already implemented in java spring boot for various requirements. The maven modules
 can be referred here:
 
@@ -507,18 +508,28 @@ The following example shows the topic parameters and the additional 'myparameter
   participant:
     myparameter: my parameter
     intermediaryParameters:
+      topics:
+        operationTopic: policy-acruntime-participant
+        syncTopic: acm-ppnt-sync
       reportingTimeIntervalMs: 120000
       description: Participant Description
       participantId: 101c62b3-8918-41b9-a747-d21eb79c6c90
       clampAutomationCompositionTopics:
         topicSources:
-          - topic: POLICY-ACRUNTIME-PARTICIPANT
+          - topic: ${participant.intermediaryParameters.topics.operationTopic}
+            servers:
+              - ${topicServer:localhost}:9092
+            topicCommInfrastructure: kafka
+            fetchTimeout: 15000
+            additionalProps:
+              group.id: policy-clamp-my-first-ptn
+          - topic: ${participant.intermediaryParameters.topics.syncTopic}
             servers:
               - ${topicServer:localhost}:9092
             topicCommInfrastructure: kafka
             fetchTimeout: 15000
         topicSinks:
-          - topic: POLICY-ACRUNTIME-PARTICIPANT
+          - topic: ${participant.intermediaryParameters.topics.operationTopic}
             servers:
               - ${topicServer:localhost}:9092
             topicCommInfrastructure: kafka
@@ -676,54 +687,6 @@ The following example shows the Handler implementation and how could be the impl
             intermediaryApi.updateCompositionState(composition.compositionId(), AcTypeState.PRIMED,
                 StateChangeResult.FAILED, "Deprime failed!");
         }
-    }
-
-
-    @Override
-    public void handleRestartComposition(CompositionDto composition, AcTypeState state) throws PfModelException {
-
-         // TODO restart process
-
-        switch (state) {
-            case PRIMING -> prime(composition);
-            case DEPRIMING -> deprime(composition);
-            default -> intermediaryApi
-                .updateCompositionState(composition.compositionId(), state, StateChangeResult.NO_ERROR, "Restarted");
-        }
-    }
-
-    @Override
-    public void handleRestartInstance(CompositionElementDto compositionElement, InstanceElementDto instanceElement,
-        DeployState deployState, LockState lockState) throws PfModelException {
-
-         // TODO restart process
-
-        if (DeployState.DEPLOYING.equals(deployState)) {
-            deploy(compositionElement, instanceElement);
-            return;
-        }
-        if (DeployState.UNDEPLOYING.equals(deployState)) {
-            undeploy(compositionElement, instanceElement);
-            return;
-        }
-        if (DeployState.UPDATING.equals(deployState)) {
-            update(compositionElement, instanceElement, instanceElement);
-            return;
-        }
-        if (DeployState.DELETING.equals(deployState)) {
-            delete(compositionElement, instanceElement);
-            return;
-        }
-        if (LockState.LOCKING.equals(lockState)) {
-            lock(compositionElement, instanceElement);
-            return;
-        }
-        if (LockState.UNLOCKING.equals(lockState)) {
-            unlock(compositionElement, instanceElement);
-            return;
-        }
-        intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-            instanceElement.elementId(), deployState, lockState, StateChangeResult.NO_ERROR, "Restarted");
     }
 
 

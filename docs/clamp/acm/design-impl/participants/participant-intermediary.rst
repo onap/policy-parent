@@ -28,7 +28,7 @@ Inbound messages to participants
 - PARTICIPANT_STATUS_REQ: A status request received from clamp-acm runtime server to send an immediate ParticipantStatus from all participants
 - PROPERTIES_UPDATE: a message received from clamp-acm runtime server for updating the Ac instance property values
 - AUTOMATION_COMPOSITION_MIGRATION: a message received from clamp-acm runtime server for migrating the Ac instance from a composition definition to a composition definition target
-- PARTICIPANT_RESTART: a message received from clamp-acm runtime server with tosca definitions and the Ac instances to handle restarting
+- PARTICIPANT_SYNC_MSG: a message received from clamp-acm runtime server with tosca definitions and the Ac instances to handle synchronization
 
 Outbound messages
 -----------------
@@ -41,12 +41,12 @@ Outbound messages
 
 Design of a PARTICIPANT_REGISTER message
 ----------------------------------------
-- A participant starts and send a PARTICIPANT_REGISTER message with participantId and Supported Element Definition Types
+- A participant starts and send a PARTICIPANT_REGISTER message with participantId, replicaId and Supported Element Definition Types
 - in AC-runtime ParticipantRegisterListener collects the message from Message Broker
 - if participant is not present in DB, it saves participant reference with status ON_LINE to DB
 - It triggers the execution to send a PARTICIPANT_REGISTER_ACK message to the participant registered
 - if participant is present in DB and there are AC Definitions related to the Participant, 
-  it triggers the execution to send a PARTICIPANT_RESTART message to the participant restarted 
+  it triggers the execution to send a PARTICIPANT_SYNC_MSG message to synchronize participant
 
 Design of a PARTICIPANT_DEREGISTER message
 ------------------------------------------
