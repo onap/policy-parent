@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c438d5_cb51caf0",
+        "filename": "docs/apex/APEX-Policy-Guide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2024-07-11T14:38:29Z",
+      "side": 1,
+      "message": "https://www.oracle.com/java/ works. Suggest to change, as IE is specific Ireland.",
+      "range": {
+        "startLine": 475,
+        "startChar": 32,
+        "endLine": 475,
+        "endChar": 34
+      },
+      "revId": "845753605b71ed6da160782cb23fbd889ae98449",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
