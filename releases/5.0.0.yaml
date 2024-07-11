@@ -1,0 +1,4 @@
+distribution_type: 'maven'
+version: '5.0.0'
+project: 'policy-parent'
+log_dir: 'policy-parent-maven-stage-master/1417/'
