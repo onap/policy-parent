@@ -70,7 +70,7 @@
         <version.kafka>3.6.1</version.kafka>
         <version.kotlin>1.9.23</version.kotlin>
         <version.log4j>2.23.1</version.log4j>
-        <version.logback>1.4.14</version.logback>
+        <version.logback>1.5.6</version.logback>
         <version.maven-checkstyle-plugin>3.3.1</version.maven-checkstyle-plugin>
         <version.maven-remote-resources-plugin>3.1.0</version.maven-remote-resources-plugin>
         <version.medeia.validator>1.1.1</version.medeia.validator>
@@ -84,10 +84,10 @@
         <version.plexus>3.5.0</version.plexus>
         <version.sdc-dist>2.1.1</version.sdc-dist>
         <version.sdc-tosca>1.9.0</version.sdc-tosca>
-        <version.slf4j>2.0.12</version.slf4j>
-        <version.spring>6.0.18</version.spring>
-        <version.springboot>3.1.10</version.springboot>
-        <version.spring-security>6.1.8</version.spring-security>
+        <version.slf4j>2.0.13</version.slf4j>
+        <version.spring>6.1.11</version.spring>
+        <version.springboot>3.3.1</version.springboot>
+        <version.spring-security>6.3.1</version.spring-security>
         <version.sonar>3.11.0.3922</version.sonar>
         <version.swagger.codegen.v3>3.0.52</version.swagger.codegen.v3>
         <version.swagger.core.v3>2.2.20</version.swagger.core.v3>
@@ -678,7 +678,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
-                <version>4.4</version>
+                <version>4.5.0-M2</version>
             </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
@@ -903,7 +903,7 @@
             <dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
                 <artifactId>tomcat-embed-core</artifactId>
-                <version>10.1.19</version>
+                <version>10.1.25</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -1155,7 +1155,7 @@
                     <plugin>
                         <groupId>org.owasp</groupId>
                         <artifactId>dependency-check-maven</artifactId>
-                        <version>9.1.0</version>
+                        <version>10.0.2</version>
                         <executions>
                             <execution>
                                 <goals>
