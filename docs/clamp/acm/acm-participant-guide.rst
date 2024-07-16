@@ -690,6 +690,54 @@ The following example shows the Handler implementation and how could be the impl
     }
 
 
+Allowed state from the participant perspective
+----------------------------------------------
+
++------------+--------------+---------------------+-------------------------+
+| **Action** | **state**    |   **stChResult**    | **Description**         |
++------------+--------------+---------------------+-------------------------+
+|            | PRIMED       |   NO_ERROR          | Prime is completed      |
++   Prime    +--------------+---------------------+-------------------------+
+|            | COMMISSIONED |   FAILED            | Prime is failed         |
++------------+--------------+---------------------+-------------------------+
+|            | COMMISSIONED |   NO_ERROR          | Deprime is completed    |
++  Deprime   +--------------+---------------------+-------------------------+
+|            | PRIMED       |   FAILED            | Deprime is failed       |
++------------+--------------+---------------------+-------------------------+
+
++------------+-----------------+---------------+----------------+----------------------------------------+
+| **Action** | **deployState** | **lockState** | **stChResult** | **Description**                        |
++------------+-----------------+---------------+----------------+----------------------------------------+
+|            |  DEPLOYED       |               |  NO_ERROR      |  Deploy is completed                   |
++ Deploy     +-----------------+---------------+----------------+----------------------------------------+
+|            |  UNDEPLOYED     |               |  FAILED        |  Deploy is failed                      |
++------------+-----------------+---------------+----------------+----------------------------------------+
+|            |  UNDEPLOYED     |               |  NO_ERROR      |  Undeploy is completed                 |
+| Undeploy   +-----------------+---------------+----------------+----------------------------------------+
+|            |  DEPLOYED       |               |  FAILED        |  Undeploy is failed                    |
++------------+-----------------+---------------+----------------+----------------------------------------+
+|            |                 |  LOCKED       |  NO_ERROR      |  Lock is completed                     |
++ Lock       +-----------------+---------------+----------------+----------------------------------------+
+|            |                 |  UNLOCKED     |  FAILED        |  Lock is failed                        |
++------------+-----------------+---------------+----------------+----------------------------------------+
+|            |                 |  UNLOCKED     |  NO_ERROR      |  Unlock is completed                   |
++ Unlock     +-----------------+---------------+----------------+----------------------------------------+
+|            |                 |  LOCKED       |  FAILED        |  Unlock is failed                      |
++------------+-----------------+---------------+----------------+----------------------------------------+
+|            |  DEPLOYED       |               |  NO_ERROR      |  Update is completed                   |
+| Update     +-----------------+---------------+----------------+----------------------------------------+
+|            |  DEPLOYED       |               |  FAILED        |  Update is failed                      |
++------------+-----------------+---------------+----------------+----------------------------------------+
+|            |  DEPLOYED       |               |  NO_ERROR      |  Migrate is completed                  |
++ Migrate    +-----------------+---------------+----------------+----------------------------------------+
+|            |  DEPLOYED       |               |  FAILED        |  Migrate is failed                     |
++------------+-----------------+---------------+----------------+----------------------------------------+
+|            |  DELETED        |               |  NO_ERROR      |  Delete is completed                   |
+| Delete     +-----------------+---------------+----------------+----------------------------------------+
+|            |  UNDEPLOYED     |               |  FAILED        |  Delete is failed                      |
++------------+-----------------+---------------+----------------+----------------------------------------+
+
+
 AC Element states in failure scenarios
 --------------------------------------
 
@@ -728,6 +776,179 @@ Migrate fails      Deployed
 Considering the above mentioned behavior of the participant Intermediary, it is the responsibility of the developer to tackle the
 error scenarios in the participant with the suitable approach.
 
-Tips:
-If the participant tries to undeploy an element which doesn’t exist in the system any more (due to various other external factors),
-it could update the element state to ‘undeployed’ using the Intermediary api.
+Handle states and failure scenarios from the participant perspective
+--------------------------------------------------------------------
+
+It is important to make distinction between the state of the instance/element flow, and the state of the application/configuration involved.
+A deployed element means that a participant has completed a deploy action, and should not be confused with a deployed application.
+Example with two elements:
+
+1. an instance is deployed, so the two elements are DEPLOYED
+2. user calls undeploy command (ACM-R sets all element as DEPLOYING)
+3. participant executes the first instance element with success and sends UNDEPLOYED state
+4. participant executes the second instance element with fail and sends DEPLOYED state
+5. user calls undeploy command again (ACM-R sets all element as DEPLOYING)
+6. participant does not know that the application related to the first element is already UNDEPLOYED when the flow state is UNDEPLOYING
+
+There are some contexts in a failure scenario that the participant need to know the state of the deployed application.
+From participant side, using "outProperties" it could be possible to handle custom states that better suit whit the context.
+
+Example of a participant that deploy/undeploy applications.
+The following Java code shows how to implement deploy and undeploy that avoid to repeat the action already executed.
+
+.. code-block:: java
+
+    @Override
+    public void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
+        throws PfModelException {
+
+        if ("DEPLOYED".equals(instanceElement.outProperties().get("state"))) {
+            // deploy process already done
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR,
+                "Already Deployed");
+            return;
+        }
+
+        // deployment process
+        .......................................
+        .......................................
+        // end of the deployment process
+
+        if (isDeploySuccess()) {
+            instanceElement.outProperties().put("state", "DEPLOYED");
+            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
+                null, null, instanceElement.outProperties());
+
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Deployed");
+        } else {
+            instanceElement.outProperties().put("state", "UNDEPLOYED");
+            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
+                null, null, instanceElement.outProperties());
+
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.FAILED, "Deploy failed!");
+        }
+    }
+
+    @Override
+    public void undeploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
+        throws PfModelException {
+
+        if ("DEPLOYED".equals(instanceElement.outProperties().get("state"))) {
+            // undeploy process already done
+
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR,
+                "Already Undeployed");
+            return;
+        }
+
+        // undeployment process
+        .......................................
+        .......................................
+        // end of the undeployment process
+
+        if (isUndeploySuccess()) {
+            instanceElement.outProperties().put("state", "UNDEPLOYED");
+            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
+                null, null, instanceElement.outProperties());
+
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR, "Undeployed");
+        } else {
+            instanceElement.outProperties().put("state", "DEPLOYED");
+            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
+                null, null, instanceElement.outProperties());
+
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Undeploy failed!");
+        }
+    }
+
+
+Example of a participant that make configurations.
+The following Java code shows how to implement deploy and undeploy that needs a clean up and repeat the action.
+The state of the configuration will saved in outProperties.
+
+.. code-block:: java
+
+    @Override
+    public void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException {
+
+        if ("DEPLOYED".equals(instanceElement.outProperties().get("state"))) {
+            // clean up deployment
+
+        } else if ("DEPLOYING".equals(state) || "UNDEPLOYING".equals(state)) {
+            // check and clean up
+
+        }
+
+        // deployment process
+        instanceElement.outProperties().put("state", "DEPLOYING");
+        intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
+            null, null, instanceElement.outProperties());
+
+        .......................................
+        .......................................
+        // end of the deployment process
+
+        if (isDeploySuccess()) {
+            instanceElement.outProperties().put("state", "DEPLOYED");
+            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
+                null, null, instanceElement.outProperties());
+
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Deployed");
+        } else {
+            instanceElement.outProperties().put("state", "UNDEPLOYED");
+            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
+                null, null, instanceElement.outProperties());
+
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.FAILED, "Deploy failed!");
+        }
+    }
+
+    @Override
+    public void undeploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
+        throws PfModelException {
+
+        if ("UNDEPLOYED".equals(instanceElement.outProperties().get("state"))) {
+            // clean up undeployment
+
+        } else if ("DEPLOYING".equals(state) || "UNDEPLOYING".equals(state)) {
+            // check and clean up
+
+        }
+
+        // undeployment process
+        instanceElement.outProperties().put("state", "UNDEPLOYING");
+        intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
+            null, null, instanceElement.outProperties());
+
+        .......................................
+        .......................................
+        // end of the undeployment process
+
+        if (isUndeploySuccess()) {
+            instanceElement.outProperties().put("state", "UNDEPLOYED");
+            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
+                null, null, instanceElement.outProperties());
+
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR, "Undeployed");
+        } else {
+            instanceElement.outProperties().put("state", "DEPLOYED");
+            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
+                null, null, instanceElement.outProperties());
+
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Undeploy failed!");
+        }
+    }
+
+
+*In all suggestions shown before we have used labels as "DEPLOY", "UNDEPLOY", "DEPLOYING", "UNDEPLOYING" but the developer can change them as better suit with the context of the participant.*
+
