@@ -66,6 +66,9 @@
         <version.jaxb>4.0.5</version.jaxb>
         <version.jersey>3.1.5</version.jersey>
         <version.jetty>11.0.20</version.jetty>
+        <version.json-path>2.9.0</version.json-path>
+        <version.json-schema-friend>0.12.4</version.json-schema-friend>
+        <version.json-schema-validator>1.5.0</version.json-schema-validator>
         <version.jupiter>5.10.2</version.jupiter>
         <version.kafka>3.6.1</version.kafka>
         <version.kotlin>1.9.23</version.kotlin>
@@ -73,7 +76,6 @@
         <version.logback>1.5.6</version.logback>
         <version.maven-checkstyle-plugin>3.3.1</version.maven-checkstyle-plugin>
         <version.maven-remote-resources-plugin>3.1.0</version.maven-remote-resources-plugin>
-        <version.medeia.validator>1.1.1</version.medeia.validator>
         <version.micrometer>1.11.10</version.micrometer>
         <version.mockito>5.5.0</version.mockito>
         <version.mockserver>5.15.0</version.mockserver>
@@ -338,19 +340,19 @@
                 <version>20240303</version>
             </dependency>
             <dependency>
-                <groupId>com.worldturner.medeia</groupId>
-                <artifactId>medeia-validator-gson</artifactId>
-                <version>${version.medeia.validator}</version>
+                <groupId>com.networknt</groupId>
+                <artifactId>json-schema-validator</artifactId>
+                <version>${version.json-schema-validator}</version>
             </dependency>
             <dependency>
-                <groupId>com.worldturner.medeia</groupId>
-                <artifactId>medeia-validator-core</artifactId>
-                <version>${version.medeia.validator}</version>
+                <groupId>net.jimblackler.jsonschemafriend</groupId>
+                <artifactId>core</artifactId>
+                <version>${version.json-schema-friend}</version>
             </dependency>
             <dependency>
                 <groupId>com.jayway.jsonpath</groupId>
                 <artifactId>json-path</artifactId>
-                <version>2.9.0</version>
+                <version>${version.json-path}</version>
             </dependency>
             <!-- Lombok -->
             <dependency>
