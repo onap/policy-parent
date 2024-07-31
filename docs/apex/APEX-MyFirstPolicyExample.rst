@@ -39,7 +39,10 @@ Introduction
                   In this document we will show how APEX and APEX
                   Policies can be used to achieve this, starting with a
                   simple policy, building up to more complicated policy
-                  that demonstrates the features of APEX.
+                  that demonstrates the features of APEX. This example demonstrates
+                  the data models, events and task logics that can be considered
+                  for the scenario. From Oslo release, only apex cli editor can be used
+                  for generating the policies.
 
 Data Models
 ^^^^^^^^^^^
@@ -270,28 +273,6 @@ New Policy Model
                       define many Policy Models, each containing a different
                       set of policies.
 
-                  .. container:: paragraph
-
-                      So the first step is to create a new empty Policy Model
-                      called ``MyFirstPolicyModel``. Using the APEX Policy
-                      Editor, click on the 'File' menus and select 'New'. Then
-                      define our new policy model called
-                      ``MyFirstPolicyModel``. Use the 'Generate UUID' button to
-                      create a new unique ID for the policy model, and fill in
-                      a description for the policy model. Press the ``Submit``
-                      button to save your changes.
-
-                  .. container:: imageblock
-
-                    .. container:: content
-
-                      |File > New to create a new Policy Model|
-
-                  .. container:: imageblock
-
-                    .. container:: content
-
-                      |Create a new Policy Model|
 
 Events
 ------
@@ -300,63 +281,20 @@ Events
 
           .. container:: sect1
 
-            .. rubric:: Create the input event ``SALE_INPUT`` and the
+            .. rubric:: Define the input event ``SALE_INPUT`` and the
                output event ``SALE_AUTH``
                :name: create_the_input_event_code_sale_input_code_and_the_output_event_code_sale_auth_code
 
             .. container:: paragraph
 
-               Using the APEX Policy Editor, click on the 'Events' tab.
-               In the 'Events' pane, right click and select 'New':
+               Define the new event types called ``SALE_INPUT`` and ``SALE_AUTH``.
 
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Right click to create a new event|
-
-            .. container:: paragraph
-
-               Create a new event type called ``SALE_INPUT``. Use the
-               'Generate UUID' button to create a new unique ID for the
-               event type, and fill in a description for the event. Add
-               a namespace, e.g. ``com.hyperm``. We can add hard-coded
-               strings for the ``Source`` and ``Target``, e.g. ``POS``
-               and ``APEX``. At this stage we will not add any parameter
-               fields, we will leave this until later. Use the
-               ``Submit`` button to create the event.
-
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Fill in the necessary information for the
-                  'SALE_INPUT' event and click 'Submit'|
-
-            .. container:: paragraph
-
-               Repeat the same steps for a new event type called
-               ``SALE_AUTH``. Just use ``APEX`` as source and ``POS`` as
-               target, since this is the output event coming from APEX
-               going to the sales point.
 
             .. container:: paragraph
 
                Before we can add parameter fields to an event we must
                first define APEX Context Item Schemas that can be used
                by those fields.
-
-            .. container:: paragraph
-
-               To create new item schemas, click on the 'Context Item
-               Schemas' tab. In that 'Context Item Schemas' pane, right
-               click and select 'Create new ContextSchema'.
-
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Right click to create a new Item Schema|
 
             .. container:: paragraph
 
@@ -411,20 +349,6 @@ Events
                |                 |                 |                 | values          |
                +-----------------+-----------------+-----------------+-----------------+
 
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Create a new Item Schema|
-
-            .. container:: paragraph
-
-               The item schemas can now be seen on the 'Context Item
-               Schemas' tab, and can be updated at any time by
-               right-clicking on the item schemas on the 'Context Item
-               Schemas' tab. Now we can go back to the event definitions
-               for ``SALE_INPUT`` and ``SALE_AUTH`` and add some
-               parameter fields.
 
             .. TIP::
 
@@ -449,10 +373,7 @@ Events
 
             .. container:: paragraph
 
-               Click on the 'Events' tab, then right click the
-               ``SALE_INPUT`` row and select 'Edit Event
-               :literal:`SALE_INPUT’. To add a new event parameter use the 'Add Event Parameter' button at the bottom of the screen. For the `SALE_INPUT`
-               event add the following event parameters:
+               Add the following event parameters:
 
             .. table:: Table 2. Event Parameter Fields for the ``SALE_INPUT`` Event
 
@@ -476,10 +397,6 @@ Events
                | notes                | notes_type           | *yes*                 |
                +----------------------+----------------------+-----------------------+
 
-            .. container:: paragraph
-
-               Remember to click the 'Submit' button at the bottom of
-               the event definition pane.
 
             .. TIP::
 
@@ -490,16 +407,10 @@ Events
                   passed to APEX. If an *optional* field is not set for an output event then value
                   will be set to ``null``.
 
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Add new event parameters to an event|
 
             .. container:: paragraph
 
-               Select the ``SALE_AUTH`` event and add the following
-               event parameters:
+               Add the following event parameters for ``SALE_AUTH`` event:
 
             .. table:: Table 3. Event Parameter Fields for the ``SALE_AUTH`` Event
 
@@ -527,10 +438,6 @@ Events
                | notes                | notes_type           | *yes*                 |
                +----------------------+----------------------+-----------------------+
 
-            .. container:: paragraph
-
-               Remember to click the 'Submit' button at the bottom of
-               the event definition pane.
 
             .. container:: paragraph
 
@@ -569,32 +476,8 @@ New Policy
             .. container:: paragraph
 
                Therefore, to create a new policy we must first define
-               one or more tasks.
-
-            .. container:: paragraph
-
-               To create a new Task click on the 'Tasks' tab. In the
-               'Tasks' pane, right click and select 'Create new Task'.
-               Create a new Task called ``MorningBoozeCheck``. Use the
-               'Generate UUID' button to create a new unique ID for the
-               task, and fill in a description for the task.
-
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Right click to create a new task|
-
-            .. container:: paragraph
-
-               Tasks are configured with a set of *input fields* and a
-               set of *output fields*. To add new input/output fields
-               for a task use the 'Add Task Input Field' and 'Add Task
-               Output Field' button. The list of input and out fields to
-               add for the ``MorningBoozeCheck`` task are given below.
-               The input fields are drawn from the parameters in the
-               state’s input event, and the task’s output fields are
-               used to populate the state’s output event. The task’s
+               one or more tasks. Tasks are configured with a set of
+               *input fields* and a set of *output fields*. The task’s
                input and output fields must be a subset of the event
                parameters defined for the input and output events for
                any state that uses that task. (You may have noticed that
@@ -651,11 +534,6 @@ New Policy
                | notes                             | notes_type                        |
                +-----------------------------------+-----------------------------------+
 
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Add input and out fields for the task|
 
             .. container:: paragraph
 
@@ -687,12 +565,6 @@ New Policy
                Programmers Guide.
 
 
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Add task logic the task|
-
             .. container:: paragraph
 
                An alternative version of the same logic is available in
@@ -701,40 +573,17 @@ New Policy
 
             .. container:: paragraph
 
-               The task definition is now complete so click the 'Submit'
-               button to save the task. The task can now be seen on the
-               'Tasks' tab, and can be updated at any time by
-               right-clicking on the task on the 'Task' tab. Now that we
+               The task definition is now complete. Now that we
                have created our task, we can can create a policy that
                uses that task.
 
             .. container:: paragraph
 
-               To create a new Policy click on the 'Policies' tab. In
-               the 'Policies' pane, right click and select 'Create new
-               Policy':
-
-            .. container:: paragraph
-
-               Create a new Policy called ``MyFirstPolicy``. Use the
-               'Generate UUID' button to create a new unique ID for the
-               policy, and fill in a description for the policy. Use
-               'FREEFORM' as the 'Policy Flavour'.
-
-            .. container:: paragraph
-
-               Each policy must have at least one state. Since this is
+               Create a new Policy called ``MyFirstPolicy``.Each policy
+               must have at least one state. Since this is
                'freeform' policy we can add as many states as we wish.
                Let’s start with one state. Add a new state called
-               ``BoozeAuthDecide`` to this ``MyFirstPolicy`` policy
-               using the 'Add new State' button after filling in the
-               name of our new state.
-
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Create a new policy|
+               ``BoozeAuthDecide`` to this ``MyFirstPolicy`` policy.
 
             .. container:: paragraph
 
@@ -754,17 +603,11 @@ New Policy
                will automatically select ``SALE_INPUT`` as the 'Policy
                Trigger Event' for our policy.
 
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Create a state|
 
             .. container:: paragraph
 
                In this case we will create a reference the pre-existing
-               ``MorningBoozeCheck`` task that we defined above using
-               the 'Add New Task' button. Select the
+               ``MorningBoozeCheck`` task that we defined above. Select the
                ``MorningBoozeCheck`` task, and use the name of the task
                as the 'Local Name' for the task.
 
@@ -832,57 +675,6 @@ New Policy
                ``MorningBoozeCheck`` task directly into outgoing
                ``SALE_AUTH`` events.)
 
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Add a Task and Output Mapping|
-
-            .. container:: paragraph
-
-               Click the 'Submit' button to complete the definition of
-               our ``MyFirstPolicy`` policy. The policy
-               ``MyFirstPolicy`` can now be seen in the list of policies
-               on the 'Policies' tab, and can be updated at any time by
-               right-clicking on the policy on the 'Policies' tab.
-
-            .. container:: paragraph
-
-               The ``MyFirstPolicyModel``, including our
-               ``MyFirstPolicy`` policy can now be checked for errors.
-               Click on the 'Model' menu and select 'Validate'. The
-               model should validate without any 'Warning' or 'Error'
-               messages. If you see any 'Error' or 'Warning' messages,
-               carefully read the message as a hint to find where you
-               might have made a mistake when defining some aspect of
-               your policy model.
-
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Validate the policy model for error using the 'Model'
-                  > 'Validate' menu item|
-
-            .. container:: paragraph
-
-               Congratulations, you have now completed your first APEX
-               policy. The policy model containing our new policy can
-               now be exported from the editor and saved. Click on the
-               'File' menu and select 'Download' to save the policy
-               model in JSON format. The exported policy model is then
-               available in the directory you selected, for instance
-               ``$APEX_HOME/examples/models/MyFirstPolicy/1/MyFirstPolicyModel_0.0.1.json``.
-               The exported policy can now be loaded into the APEX
-               Policy Engine, or can be re-loaded and edited by the APEX
-               Policy Editor.
-
-            .. container:: imageblock
-
-               .. container:: content
-
-                  |Download the completed policy model using the 'File'
-                  > 'Download' menu item|
 
 Test The Policy
 ---------------
@@ -961,7 +753,7 @@ CLI Editor File
             .. container:: paragraph
 
                An equivalent version of the ``MyFirstPolicyModel``
-               policy model can again be generated using the APEX CLI
+               policy model can be generated using the APEX CLI
                editor. A sample APEX CLI script is shown below:
 
                .. container:: ulist
@@ -1013,14 +805,8 @@ Extend Policy Model
 
             .. container:: paragraph
 
-               To create a new Task click on the 'Tasks' tab. In the
-               'Tasks' pane, right click and select 'Create new Task':
-
-            .. container:: paragraph
-
-               Create a new Task called ``MorningBoozeCheckAlt1``. Use
-               the 'Generate UUID' button to create a new unique ID for
-               the task, and fill in a description for the task. Select
+               Create a new Task called ``MorningBoozeCheckAlt1``. Create a
+               new unique ID for the task, and fill in a description for the task. Use
                the same input and output fields that we used earlier
                when we defined the ``MorningBoozeCheck`` task earlier.
 
@@ -1099,49 +885,13 @@ Extend Policy Model
                of the other supported languages please refer to APEX
                Programmers Guide.
 
-              .. container:: imageblock
-
-                .. container:: content
-
-                  |Create a new alternative task
-                  \`MorningBoozeCheckAlt1\`|
-
             .. container:: paragraph
 
-               The task definition is now complete so click the 'Submit'
-               button to save the task. Now that we have created our
+               The task definition is now complete. Now that we have created our
                task, we can can add this task to the single pre-existing
                state (``BoozeAuthDecide``) in our policy.
 
-            .. container:: paragraph
 
-               To edit the ``BoozeAuthDecide`` state in our policy click
-               on the 'Policies' tab. In the 'Policies' pane, right
-               click on our ``MyFirstPolicy`` policy and select 'Edit'.
-               Navigate to the ``BoozeAuthDecide`` state in the 'states'
-               section at the bottom of the policy definition pane.
-
-              .. container:: imageblock
-
-               .. container:: content
-
-                  |Right click to edit a policy|
-
-            .. container:: paragraph
-
-               To add our new task ``MorningBoozeCheckAlt1``, scroll
-               down to the ``BoozeAuthDecide`` state in the 'States'
-               section. In the 'State Tasks' section for
-               ``BoozeAuthDecide`` use the 'Add new task' button. Select
-               our new ``MorningBoozeCheckAlt1`` task, and use the name
-               of the task as the 'Local Name' for the task. The
-               ``MorningBoozeCheckAlt1`` task can reuse the same
-               ``MorningBoozeCheck_Output_Direct`` 'Direct State Output
-               Mapping' that we used for the ``MorningBoozeCheck`` task.
-               (Recall that the role of the 'State Output Mapping' is to
-               select the output event for the state, and select the
-               next state to be executed. These both remain the same as
-               before.)
 
             .. container:: paragraph
 
@@ -1164,29 +914,17 @@ Extend Policy Model
                logic using the
                ```JavaScript`` <https://en.wikipedia.org/wiki/JavaScript>`__
                scripting language. Sample task selection logic code
-               is given here (|policy2_taskSelectionLogic_link|). Paste the script text into the 'Task
-               Selection Logic' box, and use "JAVASCRIPT" as the 'Task
-               Selection Logic Type / Flavour'. It is necessary to mark
+               is given here (|policy2_taskSelectionLogic_link|). It is necessary to mark
                one of the tasks as the 'Default Task' so that the task
                selection logic always has a fallback default option in
                cases where a particular task cannot be selected. In this
                case the ``MorningBoozeCheck`` task can be the default
                task.
 
-
-              .. container:: imageblock
-
                .. container:: content
 
                   |State definition with 2 Tasks and Task Selection
                   Logic|
-
-            .. container:: paragraph
-
-               When complete don’t forget to click the 'Submit' button
-               at the bottom of 'Policies' pane for our
-               ``MyFirstPolicy`` policy after updating the
-               ``BoozeAuthDecide`` state.
 
             .. container:: paragraph
 
@@ -1197,11 +935,9 @@ Extend Policy Model
 
             .. container:: paragraph
 
-               The exported policy model is then available in the
-               directory you selected, as **MyFirstPolicyModel_0.0.1.json**.
-               The exported policy can now be loaded into the APEX
-               Policy Engine, or can be re-loaded and edited by the APEX
-               Policy Editor.
+               Congratulations, you have now completed the second step
+               towards your first APEX policy.The policy can now be loaded into the APEX
+               Policy Engine.
 
 Test The Policy
 ---------------
@@ -1289,7 +1025,7 @@ CLI Editor File
             .. container:: paragraph
 
                An equivalent version of the ``MyFirstPolicyModel``
-               policy model can again be generated using the APEX CLI
+               policy model can be generated using the APEX CLI
                editor. A sample APEX CLI script is shown below:
 
               .. container:: ulist
@@ -1303,23 +1039,6 @@ CLI Editor File
       2.3.0-SNAPSHOT
       Last updated 2020-04-03 16:04:24 IST
 
-.. |File > New to create a new Policy Model| image:: images/mfp/MyFirstPolicy_P1_newPolicyModel1.png
-.. |Create a new Policy Model| image:: images/mfp/MyFirstPolicy_P1_newPolicyModel2.png
-.. |Right click to create a new event| image:: images/mfp/MyFirstPolicy_P1_newEvent1.png
-.. |Fill in the necessary information for the 'SALE_INPUT' event and click 'Submit'| image:: images/mfp/MyFirstPolicy_P1_newEvent2.png
-.. |Right click to create a new Item Schema| image:: images/mfp/MyFirstPolicy_P1_newItemSchema1.png
-.. |Create a new Item Schema| image:: images/mfp/MyFirstPolicy_P1_newItemSchema2.png
-.. |Add new event parameters to an event| image:: images/mfp/MyFirstPolicy_P1_newEvent3.png
-.. |Right click to create a new task| image:: images/mfp/MyFirstPolicy_P1_newTask1.png
-.. |Add input and out fields for the task| image:: images/mfp/MyFirstPolicy_P1_newTask2.png
-.. |Add task logic the task| image:: images/mfp/MyFirstPolicy_P1_newTask3.png
-.. |Create a new policy| image:: images/mfp/MyFirstPolicy_P1_newPolicy1.png
-.. |Create a state| image:: images/mfp/MyFirstPolicy_P1_newState1.png
-.. |Add a Task and Output Mapping| image:: images/mfp/MyFirstPolicy_P1_newState2.png
-.. |Validate the policy model for error using the 'Model' > 'Validate' menu item| image:: images/mfp/MyFirstPolicy_P1_validatePolicyModel.png
-.. |Download the completed policy model using the 'File' > 'Download' menu item| image:: images/mfp/MyFirstPolicy_P1_exportPolicyModel1.png
-.. |Create a new alternative task `MorningBoozeCheckAlt1`| image:: images/mfp/MyFirstPolicy_P2_newTask1.png
-.. |Right click to edit a policy| image:: images/mfp/MyFirstPolicy_P2_editPolicy1.png
 .. |State definition with 2 Tasks and Task Selection Logic| image:: images/mfp/MyFirstPolicy_P2_editState1.png
 .. |taskLogicMvel_link| raw:: html
 

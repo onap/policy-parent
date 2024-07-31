@@ -54,12 +54,6 @@ To start all components without Policy GUI:
 
   ./start-compose.sh
 
-To start all components with Policy GUI:
-
-.. code-block:: bash
-
-  ./start-compose.sh --gui
-
 To start all components with Grafana dashboards and Prometheus server:
 
 .. code-block:: bash

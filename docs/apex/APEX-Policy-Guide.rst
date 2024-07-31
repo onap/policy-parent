@@ -145,7 +145,7 @@ APEX Policy Model
 .. container:: paragraph
 
   The APEX policy model is shown in UML notation in the figure below. A policy model can be stored in JSON or XML
-  format in a file or can be held in a database. The APEX editor creates and modifies APEX policy models. APEX
+  format in a file or can be held in a database. The APEX cli editor creates and modifies APEX policy models. APEX
   deployment deploys policy models, and a policy model is loaded into APEX engines so that the engines can run the
   policies in the policy model.
 
@@ -327,7 +327,7 @@ Concept: ContextMap
   The set of context that is available for use by the policies of a *PolicyModel* is defined as *ContextMap* concept
   instances. The *PolicyModel* holds a map of all the *ContextMap* definitions. A *ContextMap* is itself a container
   for a group of related context items, each of which is represented by a *ContextItem* concept instance. *ContextMap*
-  concepts are keyed with an ``ArtifactKey`` key. A developer can use the APEX Policy Editor to create context maps for
+  concepts are keyed with an ``ArtifactKey`` key. A developer can use the APEX Policy Cli Editor to create context maps for
   their application domain.
 
 .. container:: paragraph
