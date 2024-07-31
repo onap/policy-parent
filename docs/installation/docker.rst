@@ -35,7 +35,6 @@ After cloning the docker repository, the scripts and compose files are under the
     compose
       config -- all the components configurations
       metrics -- configuration for Prometheus server and Grafana dashboards
-      docker-compose.gui.yml -- compose file with gui services
       docker-compose.yml -- compose file with policy components services, including simulator, prometheus and grafana
       export-ports.sh -- script to export the http ports for all components and where the images are collected from
       get-versions.sh -- script to get the latest SNAPSHOT version of images based on branch (master is default)
@@ -48,17 +47,11 @@ Start the containers automatically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Assuming all the scripts are being executed from the compose folder.
 
-To start all components without Policy GUI:
+To start all components:
 
 .. code-block:: bash
 
   ./start-compose.sh
-
-To start all components with Policy GUI:
-
-.. code-block:: bash
-
-  ./start-compose.sh --gui
 
 To start all components with Grafana dashboards and Prometheus server:
 
@@ -174,7 +167,7 @@ Use the script get-versions.sh
 
 .. code-block:: bash
 
-  ./start-compose.sh <component> [--grafana] [--gui]
+  ./start-compose.sh <component> [--grafana]
 
 The <component> input is any of the policy components available:
 

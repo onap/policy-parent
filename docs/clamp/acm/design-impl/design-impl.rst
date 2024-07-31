@@ -11,5 +11,4 @@ The sections below describe the components that handle TOSCA Automation Composit
    :maxdepth: 1
 
    clamp-runtime-acm
-   clamp-gui-acm
    participants/participants
