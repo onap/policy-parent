@@ -24,6 +24,30 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7032d2b3_fb757007",
+        "filename": "docs/installation/docker.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2024-08-01T13:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a39da33c_c2d79dd3",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 62
+      },
+      "revId": "a91b8b2d069c87046bbcc92d10c57ab70de16b8f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eeb0c62_13e80e79",
@@ -47,6 +71,30 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc54091_d33bc714",
+        "filename": "docs/installation/docker.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2024-08-01T13:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eeb0c62_13e80e79",
+      "range": {
+        "startLine": 51,
+        "startChar": 24,
+        "endLine": 51,
+        "endChar": 42
+      },
+      "revId": "a91b8b2d069c87046bbcc92d10c57ab70de16b8f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "317b9c93_0507c01b",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-01T12:18:09Z",
       "side": 1,
       "message": "missed this",
+      "range": {
+        "startLine": 171,
+        "startChar": 45,
+        "endLine": 171,
+        "endChar": 52
+      },
+      "revId": "a91b8b2d069c87046bbcc92d10c57ab70de16b8f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dbff19e_13f2bde9",
+        "filename": "docs/installation/docker.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2024-08-01T13:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317b9c93_0507c01b",
       "range": {
         "startLine": 171,
         "startChar": 45,
