@@ -311,7 +311,7 @@ deletions are not allowed on Automation Composition Types that have instances de
 The Instantiation component manages the Life Cycle Management of Automation Composition Instances and
 their Automation Composition Elements. It publishes a REST interface that is used to create Automation Composition
 Instances and set values for Common and Instance Specific properties. This REST interface is
-public and is used by the ACM GUI. It may also be used by any other client via the public
+public. It may also be used by any other client via the public
 REST interface. The REST interface also allows the state of Automation Composition Instances to be changed.
 A user can change the state of Automation Composition Instances as described in the state transition
 diagram shown in section 2 above. The Instantiation component issues update and state change
@@ -496,6 +496,5 @@ The design and implementation of TOSCA Automation Compositions in CLAMP is descr
 
 #. :ref:`The CLAMP Automation Composition Runtime Server <clamp-runtime-acm>`
 #. :ref:`CLAMP Automation Composition Participants <clamp-acm-participants>`
-#. :ref:`Managing Automation Compositions using The CLAMP GUI <clamp-gui-acm>`
 
 End of Document

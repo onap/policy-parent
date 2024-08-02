@@ -65,7 +65,6 @@ and the A&AI Schema module.
     policy/drools-applications \
     policy/xacml-pdp \
     policy/distribution \
-    policy/gui \
     policy/clamp "
 
     ##
@@ -156,7 +155,6 @@ Execution of the script above results in the following directory hierarchy in yo
     *  ~/git/onap/policy/models
     *  ~/git/onap/policy/api
     *  ~/git/onap/policy/pap
-    *  ~/git/onap/policy/gui
     *  ~/git/onap/policy/docker
     *  ~/git/onap/policy/drools-applications
     *  ~/git/onap/policy/drools-pdp
@@ -206,7 +204,6 @@ file in the directory *~/git/onap/policy*.
             <module>drools-pdp</module>
             <module>drools-applications</module>
             <module>distribution</module>
-            <module>gui</module>
             <module>clamp</module>
         </modules>
     </project>
@@ -302,7 +299,6 @@ familiar with the Policy Framework components and test any local changes.
 .. toctree::
    :maxdepth: 1
 
-   smoke/policy-gui-acm-smoke.rst
    smoke/db-migrator-smoke.rst
    smoke/acm-participants-smoke.rst
    smoke/clamp-smoke.rst
