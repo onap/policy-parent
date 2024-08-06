@@ -14,6 +14,192 @@ Policy Framework Release Notes
 ..      * Except the date and the version number, all the other sections are optional but there must be at least
 ..      * one section describing the purpose of this new release.
 
+
+..      ==========================
+..      * * *     NEWDELHI     * * *
+..      ==========================
+
+Version: 14.0.0
+---------------
+
+:Release Date: 2024-06-13 (Newdelhi Release)
+
+Artifacts released:
+
+.. list-table::
+   :widths: 15 10 10
+   :header-rows: 1
+
+   * - Repository
+     - Java Artifact
+     - Docker Image (if applicable)
+   * - policy/parent
+     - 4.1.4
+     - N/A
+   * - policy/docker
+     - 3.1.3
+     - | policy-jre-alpine
+       | policy-jdk-alpine
+       | policy-db-migrator
+   * - policy/common
+     - 2.1.3
+     - N/A
+   * - policy/models
+     - 3.1.3
+     - N/A
+   * - policy/api
+     - 3.1.3
+     - policy-api
+   * - policy/pap
+     - 3.1.3
+     - policy-pap
+   * - policy/apex-pdp
+     - 3.1.3
+     - policy-apex-pdp
+   * - policy/drools-pdp
+     - 2.1.3
+     - policy-drools
+   * - policy/xacml-pdp
+     - 3.1.3
+     - policy-xacml-pdp
+   * - policy/distribution
+     - 3.1.3
+     - policy-distribution
+   * - policy/clamp
+     - 7.1.3
+     - | policy-clamp-ac-pf-ppnt
+       | policy-clamp-ac-k8s-ppnt
+       | policy-clamp-ac-http-ppnt
+       | policy-clamp-runtime-acm'
+   * - policy/gui
+     - 3.1.3
+     - policy-gui
+   * - policy/drools-applications
+     - 2.1.3
+     - policy-pdpd-cl
+
+Key Updates
+===========
+
+* Improvements to CLAMP Automation Composition Management (ACM)
+
+  CLAMP ACM is improved with various new capabilities in newdelhi release. ACM supports tracing feature with the integration of openTelemetry for http and kafka tracing.
+  This provides a more efficient way of diagnosing bottlenecks and performance issues in the system.
+  Participant's outProperties are now retained during the restart and redeployment scenario that can be consumed by the participants.
+  New Regression test suite has been added to test the ACM workflow with various combinations of ACM-R and participant versions.
+  ACM element versions can now be upgraded during Migration.
+
+  See:
+   - `POLICY-4865 <https://jira.onap.org/browse/POLICY-4865>`_ - R14: Improvements specific to clamp
+
+* Backward compatibility support in ACM
+
+  From Newdelhi release, Users can deploy a newer version of ACM-R against an older participant version maintaining the backward compatibility.
+  Participant intermediary provides flexibility for the users to maintain the older version participant when ACM-R is upgraded.
+
+  See:
+   - `POLICY-4952 <https://jira.onap.org/browse/POLICY-4952>`_ - R14: Backward compatibility between ACM-R and participants
+
+* Oparent dependency removed
+
+  From newdelhi onwards, Policy framework can be installed without oparent maven dependency. policy-parent provides all the required dependencies and design rule configurations
+  for the policy components.
+
+  See:
+   - `POLICY-4960 <https://jira.onap.org/browse/POLICY-4960>`_ - R14: Remove oparent dependency from PF
+
+* Tracing support in clamp
+
+  Distributed tracing of messages between acm, participants, databases, rest is available in policy clamp that helps to diagnose the bottlenecks and performance issues in the system.
+  A combination of OpenTelemetry and Micrometer is used to achieve this.
+
+  See:
+   - `POLICY-4875 <https://jira.onap.org/browse/POLICY-4875>`_ - R14: Add support for Open Telemetry in ACM.
+
+Known Limitations, Issues and Workarounds
+=========================================
+
+System Limitations
+~~~~~~~~~~~~~~~~~~
+N/A
+
+Known Vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~
+N/A
+
+Workarounds
+~~~~~~~~~~~
+N/A
+
+Security Notes
+==============
+N/A
+
+Functional Improvements
+=======================
+| `POLICY-4865 <https://jira.onap.org/browse/POLICY-4865>`_ - R14: Improvements specific to clamp
+|  `POLICY-4875 <https://jira.onap.org/browse/POLICY-4875>`_ - Add support for Open Telemetry in ACM
+|  `POLICY-4908 <https://jira.onap.org/browse/POLICY-4908>`_ - Add support for outProperties retention in restart/redeploy scenario
+|  `POLICY-4952 <https://jira.onap.org/browse/POLICY-4952>`_ - Support backward compatibility between ACM and participants
+|  `POLICY-4915 <https://jira.onap.org/browse/POLICY-4915>`_ - Allow element version update in Migration
+|  `POLICY-4869 <https://jira.onap.org/browse/POLICY-4869>`_ - Allow semantic versioning in ACM templates and instances
+|  `POLICY-4934 <https://jira.onap.org/browse/POLICY-4934>`_ - Add db migrator support for clamp database
+
+| `POLICY-4960 <https://jira.onap.org/browse/POLICY-4960>`_ - Remove oparent dependency in Policy framework
+
+
+Necessary Improvements and Bug Fixes
+====================================
+
+Necessary Improvements
+~~~~~~~~~~~~~~~~~~~~~~
+| `POLICY-4867 <https://jira.onap.org/browse/POLICY-4867>`_ - R14: Refactoring and removal of unused code
+|  `POLICY-4855 <https://jira.onap.org/browse/POLICY-4855>`_ - Remove AAF from Policy common repository
+| `POLICY-4868 <https://jira.onap.org/browse/POLICY-4868>`_ - R14: Software (non functional) improvements
+|  `POLICY-4960 <https://jira.onap.org/browse/POLICY-4960>`_ - Remove oparent dependency in Policy framework
+|  `POLICY-4654 <https://jira.onap.org/browse/POLICY-4654>`_ - Add metrics for ACM-R and participants
+|  `POLICY-4893 <https://jira.onap.org/browse/POLICY-4893>`_ - Update Security dependencies
+|  `POLICY-4895 <https://jira.onap.org/browse/POLICY-4895>`_ - Update SLAs dashboards with spring actuator changes
+|  `POLICY-4987 <https://jira.onap.org/browse/POLICY-4987>`_ - Improve CSIT scripts and dependencies updates to CSIT docker images
+|  `POLICY-5002 <https://jira.onap.org/browse/POLICY-5002>`_ - Alter release scripts to include checkstyle update
+| `POLICY-4865 <https://jira.onap.org/browse/POLICY-4865>`_ - R14: Improvements specific to CLAMP
+|  `POLICY-4806 <https://jira.onap.org/browse/POLICY-4806>`_ - Support stress testing of ACM with multiple compositions
+|  `POLICY-4870 <https://jira.onap.org/browse/POLICY-4870>`_ - Improve descriptiveness of error messages in clamp
+|  `POLICY-4900 <https://jira.onap.org/browse/POLICY-4900>`_ - Add validation in ACM for unique element Ids
+|  `POLICY-4918 <https://jira.onap.org/browse/POLICY-4918>`_ - Support recursive update of properties in participant Intermediary
+| `POLICY-4635 <https://jira.onap.org/browse/POLICY-4635>`_ - R14: Enhance Policy Framework Documentation
+|  `POLICY-4644 <https://jira.onap.org/browse/POLICY-4644>`_ - Development documentation for Apex
+|  `POLICY-4584 <https://jira.onap.org/browse/POLICY-4584>`_ - Update property configuration mechanism documentation
+|  `POLICY-4585 <https://jira.onap.org/browse/POLICY-4585>`_ - Update PAP architecture documentation
+|  `POLICY-4629 <https://jira.onap.org/browse/POLICY-4629>`_ - Update policy framework upgrade documentation
+
+Bug Fixes
+~~~~~~~~~
+| `POLICY-4946 <https://jira.onap.org/browse/POLICY-4946>`_ - Authorization issue in jenkins merge job for policy clamp regression module
+| `POLICY-4953 <https://jira.onap.org/browse/POLICY-4953>`_ - Missing properties from participant cache during migration
+| `POLICY-4961 <https://jira.onap.org/browse/POLICY-4961>`_ - Fix AutomationComposition copy constructor
+| `POLICY-4968 <https://jira.onap.org/browse/POLICY-4968>`_ - K8s Participant gets out of sync with ChartMuseum
+
+
+References
+==========
+
+For more information on the ONAP London release, please see:
+
+#. `ONAP Home Page`_
+#. `ONAP Documentation`_
+#. `ONAP Release Downloads`_
+#. `ONAP Wiki Page`_
+
+.. _`ONAP Home Page`: https://www.onap.org
+.. _`ONAP Wiki Page`: https://wiki.onap.org
+.. _`ONAP Documentation`: https://docs.onap.org
+.. _`ONAP Release Downloads`: https://git.onap.org
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+
 ..      ==========================
 ..      * * *     MONTREAL     * * *
 ..      ==========================

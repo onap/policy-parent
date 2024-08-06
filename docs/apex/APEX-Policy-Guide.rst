@@ -471,7 +471,7 @@ Concept: Logic
 
   The *LogicCode* field of a Logic concept definition is a string that holds the program code that is to be executed
   at run time. The *LogicType* field defines the language of the code. The standard values are the logic languages
-  supported by APEX: `JAVASCRIPT <https://en.wikipedia.org/wiki/JavaScript>`__, `JAVA <https://java.com/en/>`__,
+  supported by APEX: `JAVASCRIPT <https://en.wikipedia.org/wiki/JavaScript>`__, `JAVA <https://www.oracle.com/java/>`__,
   `JYTHON <http://www.jython.org/>`__, `JRUBY <http://jruby.org/>`__, or
   `MVEL <https://en.wikibooks.org/wiki/Transwiki:MVEL_Language_Guide>`__.
 
