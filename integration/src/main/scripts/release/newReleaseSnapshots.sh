@@ -4,7 +4,7 @@
 # ============LICENSE_START================================================
 # ONAP
 # =========================================================================
-# Copyright (C) 2022-2023 Nordix Foundation.
+# Copyright (C) 2022-2023,2024 Nordix Foundation.
 # =========================================================================
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -45,7 +45,6 @@ declare -a pf_repos=(
         "policy/apex-pdp"
         "policy/xacml-pdp"
         "policy/distribution"
-        "policy/gui"
         "policy/clamp"
         "policy/drools-applications"
 )

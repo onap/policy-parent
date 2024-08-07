@@ -4,7 +4,7 @@
 # ============LICENSE_START================================================
 # ONAP
 # =========================================================================
-# Copyright (C) 2022 Nordix Foundation.
+# Copyright (C) 2022,2024 Nordix Foundation.
 # =========================================================================
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -334,7 +334,7 @@ release_phase_10() {
 }
 
 release_phase_11() {
-    echo "Updating snapshots for repos, updating references on policy/drools-applications, policy/gui . . ."
+    echo "Updating snapshots for repos, updating references on policy/drools-applications . . ."
     bumpSnapshots.sh \
         -d "$release_data_file" \
         -l "$repo_location" \
@@ -344,47 +344,34 @@ release_phase_11() {
         -d "$release_data_file" \
         -l "$repo_location" \
         -r "policy/drools-applications"
-    updateRefs.sh \
-        -pcmxk \
-        -d "$release_data_file" \
-        -l "$repo_location" \
-        -r "policy/gui"
     generateCommit.sh \
         -l "$repo_location" \
         -r "policy/drools-applications" \
         -i "$issue_id" \
         -e "update references in policy/drools-applications pom" \
         -m "updated references in the policy/drools-applications pom"
-    generateCommit.sh \
-        -l "$repo_location" \
-        -r "policy/gui" \
-        -i "$issue_id" \
-        -e "update references in policy/gui pom" \
-        -m "updated references in the policy/gui pom"
-    echo "Updated snapshots for repos, updated references on policy/drools-applications, policy/gui"
+    echo "Updated snapshots for repos, updated references on policy/drools-applications"
 }
 
 release_phase_12() {
     echo "Generating artifact release yaml file and commit for policy/drools-applications . . ."
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/drools-applications -i "$issue_id"
-    releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/gui -i "$issue_id"
     echo "Generated artifact release yaml file and commit for policy/drools-applications"
 }
 
 release_phase_13() {
     echo "Generating docker release yaml file and commit for policy/drools-applications . . ."
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/drools-applications -i "$issue_id"
-    releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/gui -i "$issue_id"
     echo "Generated docker release yaml file and commit for policy/drools-applications"
 }
 
 release_phase_14() {
-    echo "Updating snapshots on policy/drools-applications and policy/gui . . ."
+    echo "Updating snapshots on policy/drools-applications . . ."
     bumpSnapshots.sh \
         -d "$release_data_file" \
         -l "$repo_location" \
         -i "$issue_id"
-    echo "Updated snapshots on policy/drools-applications and policy/gui"
+    echo "Updated snapshots on policy/drools-applications"
 }
 
 release_phase_15() {
