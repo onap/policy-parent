@@ -47,7 +47,6 @@ declare -a pf_repos=(
     "policy/xacml-pdp"
     "policy/distribution"
     "policy/clamp"
-    "policy/gui"
     "policy/drools-applications"
 )
 
