@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95a4d13_25f23a5c",
+        "filename": "docs/clamp/acm/api-protocol/system-level-dialogues.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2024-08-19T14:57:06Z",
+      "side": 1,
+      "message": "Should we add more details like what can be updated by the user using the prepare api? For example, will it allows the user to change any property values or stores any additional data on database etc?",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 48
+      },
+      "revId": "a712b0b36da0fe590f57fa25b3eebf819a6ede8f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16c7f604_9800540b",
+        "filename": "docs/clamp/acm/design-impl/clamp-runtime-acm.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2024-08-19T14:57:06Z",
+      "side": 1,
+      "message": "Is it referring to the policy-gui?, if so do we need to update it?",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 6
+      },
+      "revId": "a712b0b36da0fe590f57fa25b3eebf819a6ede8f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
