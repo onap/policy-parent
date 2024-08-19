@@ -1,0 +1,19 @@
+@startuml
+
+participant "ACM Runtime"
+database "ACM Database"
+participant "Participant Replica 1"
+participant "Participant Replica 2"
+
+"ACM Runtime" <- "Participant Replica 1": [ASYNC] Review Automation Composition Element \nInstance Response
+"ACM Runtime" -> "ACM Database": Store Automation Composition Element Instance \nResponse Information
+
+alt Is Review AC Element Instance Completed?
+ "ACM Runtime" -> "ACM Database": Set AC Element Instance SubState as NONE
+ alt Are all the other AC Element Instances in this AC Instance in state NONE?
+  "ACM Runtime" -> "ACM Database": Set AC Instance SubState as NONE
+  "ACM Runtime" -> "Participant Replica 2": [ASYNC] Send sync message
+ end
+end
+
+@enduml

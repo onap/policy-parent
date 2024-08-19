@@ -1,0 +1,25 @@
+@startuml
+participant "ACM Runtime"
+participant Participant
+participant "Participant API"
+
+"ACM Runtime" -> Participant: [ASYNC] Migration Precheck AC Element Instances for this AC Instance
+
+loop over AC Element Instances in AC Instance
+ alt Does the primed Participant ID on this AC Element Instance\nmatch my Participant ID?
+   Participant -> "Participant API": Migration Precheck AC Element Instance
+   activate "Participant API"
+   Participant <- "Participant API": AC Element Instance Migration Precheck Response
+   deactivate "Participant API"
+   alt AC Element Migration Precheck completed
+    Participant -> Participant: Set AC Element Instance administrative subState to NONE
+    "ACM Runtime" <- Participant: [ASYNC] INFO: Migration Precheck AC Element has been completed
+   end
+ else
+  note left of Participant
+   Ignore this AC Element instance as its for another participant
+  end note
+ end
+end
+
+@enduml

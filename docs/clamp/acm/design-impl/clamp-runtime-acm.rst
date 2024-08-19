@@ -80,6 +80,17 @@ Update of a Automation Composition Instance
 - the Rest-Api call returns the instanceId and the list of AC Element Instance
 - the runtime sends an update event to the participants which performs the update operation on the deployed instances.
 
+Migrate-Precheck of a Automation Composition Instance
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI has already a new composition definition primed
+- GUI calls POST "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances" endpoint with a Automation Composition Instance as body. It have to contain the compositionId, the compositionTargetId and the instanceId
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
+- It checks that AC Instance is in DEPLOYED deployState
+- It checks that compositionTargetId is related to a primed composition definition
+- It only set the subState of the Automation Composition to DB
+- the Rest-Api call returns the instanceId and the list of AC Element Instance
+- the runtime sends a migrate-precheck event to the participants which performs the check operation on the deployed instances.
+
 Migrate of a Automation Composition Instance
 ++++++++++++++++++++++++++++++++++++++++++++
 - GUI has already a new composition definition primed
@@ -94,6 +105,15 @@ Migrate of a Automation Composition Instance
 Issues AC instance to change status
 +++++++++++++++++++++++++++++++++++
 
+case **subOrder: PREPARE**
+
+- GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with PREPARE as subOrder
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
+- It validates the status order issued (related AC Instance has UNDEPLOYED as deployState)
+- It updates the AC Instance to DB with PREPARING subState
+- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_PREPARE message with preDeploy set to true
+- the message is built by AcPreparePublisher using Instance data.
+
 case **deployOrder: DEPLOY**
 
 - GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with DEPLOY as deployOrder
@@ -102,6 +122,15 @@ case **deployOrder: DEPLOY**
 - It updates the AC Instance to DB with DEPLOYING deployState
 - It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_DEPLOY message
 - the message is built by AutomationCompositionDeployPublisher using Tosca Service Template data and Instance data. (with startPhase = first startPhase)
+
+case **subOrder: REVIEW**
+
+- GUI calls "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint with REVIEW as subOrder
+- ACM-runtime receives the call by Rest-Api (InstantiationController)
+- It validates the status order issued (related AC Instance has DEPLOYED as deployState)
+- It updates the AC Instance to DB with REVIEWING subState
+- It triggers the execution to send a broadcast AUTOMATION_COMPOSITION_PREPARE message with preDeploy set to false
+- the message is built by AcPreparePublisher using Instance data.
 
 case **lockOrder: UNLOCK**
 
@@ -209,6 +238,61 @@ Example of DEPLOY order with Http_PMSHMicroserviceAutomationCompositionElement w
 - ACM-runtime calculates that all AC elements are set to proper state and set AC to DEPLOYED
 
 In that scenario the message AUTOMATION_COMPOSITION_DEPLOY has been sent two times.
+
+Migration using Stage
+*********************
+The stage is particularly important in Automation Composition migration because sometime the user wishes to control
+not only the order in which the state changes in Automation Composition Elements but also to execute again using the same Automation Composition Elements.
+
+How to define Stage
++++++++++++++++++++
+Stage is defined as shown below in the Definition of TOSCA fundamental Automation Composition Types yaml file.
+
+.. code-block:: YAML
+
+  stage:
+    type: list
+    required: false
+    description: A list indicating the stages in which this automation composition element will be started, the
+                 first stage is zero. Automation Composition Elements are started in their stage order.
+                 Automation Composition Elements with the same stage are started simultaneously.
+    metadata:
+      common: true
+
+Example where it could be used:
+
+.. code-block:: YAML
+
+  org.onap.domain.database.Http_PMSHMicroserviceAutomationCompositionElement:
+    # Consul http config for PMSH.
+    version: 1.2.3
+    type: org.onap.policy.clamp.acm.HttpAutomationCompositionElement
+    type_version: 1.0.1
+    description: Automation Composition element for the http requests of PMSH microservice
+    properties:
+      provider: ONAP
+      uninitializedToPassiveTimeout: 180
+      stage: [0,2]
+
+How Stage works
++++++++++++++++
+In state changes in MIGRATING Automation Composition elements starts in increasing order from stage 0.
+
+Example of MIGRATE order with Http_PMSHMicroserviceAutomationCompositionElement with stage [0,2] and PMSH_K8SMicroserviceAutomationCompositionElement with startPhase to [0,1]:
+
+- ACM-runtime sends a broadcast AUTOMATION_COMPOSITION_MIGRATION message to all participants with stage = 0
+- participant receives the AUTOMATION_COMPOSITION_MIGRATION message and runs to DEPLOYED state (only AC elements that contains stage 0: Http_PMSHMicroserviceAutomationCompositionElement and PMSH_K8SMicroserviceAutomationCompositionElement)
+- ACM-runtime receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
+- ACM-runtime calculates that all AC elements with stage = 0 are set to proper state and sends a broadcast AUTOMATION_COMPOSITION_MIGRATION message with stage = 1
+- participant receives the AUTOMATION_COMPOSITION_MIGRATION message and runs to DEPLOYED state (only AC elements that contains stage 1: PMSH_K8SMicroserviceAutomationCompositionElement)
+- ACM-runtime receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
+- ACM-runtime calculates that all AC elements with stage = 1 are set to proper state and sends a broadcast AUTOMATION_COMPOSITION_MIGRATION message with stage = 2
+- participant receives the AUTOMATION_COMPOSITION_MIGRATION message and runs to DEPLOYED state (only AC elements that contains stage 2: Http_PMSHMicroserviceAutomationCompositionElement)
+- ACM-runtime receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
+- ACM-runtime calculates that all AC elements are set to proper state and set AC to DEPLOYED
+
+In that scenario the message AUTOMATION_COMPOSITION_MIGRATION has been sent three times,
+Http_PMSHMicroserviceAutomationCompositionElement and PMSH_K8SMicroserviceAutomationCompositionElement will be executed two times.
 
 Configure custom namings for TOSCA node types
 *********************************************

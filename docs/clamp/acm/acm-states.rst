@@ -80,6 +80,12 @@ Delete
 
 .. image:: images/acm-states/AcInstanceStatesDelete.png
 
+Automation Composition Instance Sub State
+=========================================
+The sub states that an Automation Composition Instance can have are shown in the diagram below.
+
+.. image:: images/acm-states/AcInstanceSubStates.png
+
 How State are saved in DB
 =========================
 Any state will be saved in DB as number:
@@ -111,8 +117,8 @@ Automation Composition Type State
 |  DEPRIMING     |         3  |
 +----------------+------------+
 
-Automation Composition Instance State
-=====================================
+Automation Composition Instance DeployState
+===========================================
 
 +---------------+------------+
 |  DeployState  |  Database  |
@@ -134,5 +140,36 @@ Automation Composition Instance State
 |  MIGRATING    |         7  |
 +---------------+------------+
 
+Automation Composition Instance Lock State
+==========================================
+
++-------------+------------+
+|  LockState  |  Database  |
++=============+============+
+|  LOCKED     |         0  |
++-------------+------------+
+|  LOCKING    |         1  |
++-------------+------------+
+|  UNLOCKED   |         2  |
++-------------+------------+
+|  UNLOCKING  |         3  |
++-------------+------------+
+|  NONE       |         4  |
++-------------+------------+
+
+Automation Composition Instance Sub State
+=========================================
+
++-------------------------+------------+
+|  SubState               |  Database  |
++=========================+============+
+|  NONE                   |         0  |
++-------------------------+------------+
+|  MIGRATION_PRECHECKING  |         1  |
++-------------------------+------------+
+|  PREPARING              |         2  |
++-------------------------+------------+
+|  REVIEWING              |         3  |
++-------------------------+------------+
 
 End of Document

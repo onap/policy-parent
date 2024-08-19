@@ -133,7 +133,21 @@ The ACM Runtime receives and stores the responses, when all instances element ar
 
 .. image:: ../images/system-dialogues/DeleteResponseStored.png
 
-3.3 Deploy Automation Composition Instance
+3.3 Prepare Automation Composition Instance
+-------------------------------------------
+The user requests the AC Instance to be prepared using a REST endpoint. The ACM Runtime orders the AC Instance to be prepared to Participants.
+
+.. image:: ../images/system-dialogues/PrepareAcInstance.png
+
+Each participant prepares its AC Element Instances from the AC Instance.
+
+.. image:: ../images/system-dialogues/PrepareAcInstanceElements.png
+
+The ACM Runtime receives and stores the responses, and send sync message to all replicas.
+
+.. image:: ../images/system-dialogues/PrepareResponseStored.png
+
+3.4 Deploy Automation Composition Instance
 ------------------------------------------
 The user requests the AC Instance to be deployed using a REST endpoint. The ACM Runtime orders the AC Instance to be deployed to Participants.
 
@@ -147,7 +161,21 @@ The ACM Runtime receives and stores the responses, and send sync message to all 
 
 .. image:: ../images/system-dialogues/DeployResponseStored.png
 
-3.4 Update Automation Composition Instance
+3.5 Review Automation Composition Instance
+------------------------------------------
+The user requests the AC Instance to be Reviewed using a REST endpoint. The ACM Runtime orders the AC Instance to be reviewed to Participants.
+
+.. image:: ../images/system-dialogues/ReviewAcInstance.png
+
+Each participant reviews its AC Element Instances from the AC Instance.
+
+.. image:: ../images/system-dialogues/ReviewAcInstanceElements.png
+
+The ACM Runtime receives and stores the responses, and send sync message to all replicas.
+
+.. image:: ../images/system-dialogues/ReviewResponseStored.png
+
+3.6 Update Automation Composition Instance
 ------------------------------------------
 The user requests the AC Instance to be updated using a REST endpoint. The ACM Runtime orders the AC Instance to be updated.
 
@@ -161,7 +189,21 @@ The ACM Runtime receives and stores the responses, and send sync message to all 
 
 .. image:: ../images/system-dialogues/UpdateAcElementsResponse.png
 
-3.5 Migrate Automation Composition Instance
+3.7 Migration Precheck Automation Composition Instance
+------------------------------------------------------
+The user requests a Migration Precheck for the AC Instance using a REST endpoint. The ACM Runtime orders the Migration Precheck for AC Instance to Participants.
+
+.. image:: ../images/system-dialogues/MigrationPrecheckAcInstance.png
+
+Each participant execute a Migration Precheck to its AC Element Instances from the AC Instance.
+
+.. image:: ../images/system-dialogues/MigrationPrecheckAcInstanceElements.png
+
+The ACM Runtime receives and stores the responses, and send sync message to all replicas.
+
+.. image:: ../images/system-dialogues/MigrationPrecheckResponseStored.png
+
+3.8 Migrate Automation Composition Instance
 -------------------------------------------
 The user requests the AC Instance to be migrated using a REST endpoint. The ACM Runtime orders the AC Instance to be migrated.
 
@@ -175,7 +217,7 @@ The ACM Runtime receives and stores the responses, and send sync message to all 
 
 .. image:: ../images/system-dialogues/MigrateAcElementsResponse.png
 
-3.6 Undeploy Automation Composition Instance
+3.9 Undeploy Automation Composition Instance
 --------------------------------------------
 The user requests the AC Instance to be undeployed using a REST endpoint. The ACM Runtime orders the AC Instance to be undeployed.
 
@@ -189,13 +231,13 @@ The ACM Runtime receives and stores the responses, and send sync message to all 
 
 .. image:: ../images/system-dialogues/UndeployResponseStored.png
 
-3.7 Read Automation Composition Instances
------------------------------------------
+3.10 Read Automation Composition Instances
+------------------------------------------
 
 .. image:: ../images/system-dialogues/ReadAcInstances.png
 
-3.8 Unlock Automation Composition Instance
-------------------------------------------
+3.11 Unlock Automation Composition Instance
+-------------------------------------------
 The user requests the AC Instance to be unlocked using a REST endpoint. The ACM Runtime orders the AC Instance to be unlocked on Participants.
 
 .. image:: ../images/system-dialogues/OrderInstanceUnlock.png
@@ -208,8 +250,8 @@ The ACM Runtime receives and stores the responses, and send sync message to all 
 
 .. image:: ../images/system-dialogues/UnlockResponseStored.png
 
-3.9 Lock Automation Composition Instance
-----------------------------------------
+3.12 Lock Automation Composition Instance
+-----------------------------------------
 The user requests the AC Instance to be locked using a REST endpoint. The ACM Runtime orders the AC Instance to be locked on Participants.
 
 .. image:: ../images/system-dialogues/LockAcInstance.png
@@ -222,12 +264,12 @@ The ACM Runtime receives and stores the responses, and send sync message to all 
 
 .. image:: ../images/system-dialogues/LockResponseStored.png
 
-3.10 Update Operational State, Use State and outProperties on Automation Composition Instance
+3.13 Update Operational State, Use State and outProperties on Automation Composition Instance
 ---------------------------------------------------------------------------------------------
 
 .. image:: ../images/system-dialogues/UpdateOperationalState.png
 
-3.11 Failure handling in ACM
+3.14 Failure handling in ACM
 ----------------------------
 After any ACM operation is completed, one of the following result messages will be updated in the ACM. These result values are
 updated along with the overall state of the ACM instance.
@@ -272,7 +314,7 @@ The following flow shown and example of deployment that get stuck, and the user 
 .. image:: ../images/system-dialogues/TimeoutParticipant.png
 
 
-3.12 OFF_LINE handling in ACM
+3.15 OFF_LINE handling in ACM
 -----------------------------
 Runtime marks the participant state with the value 'OFF_LINE' when the participant replica fails to report the periodic heartbeat,
 the participant replica state is then marked as 'OFF_LINE' by the ACM-R after the configured waiting limit is reached.
