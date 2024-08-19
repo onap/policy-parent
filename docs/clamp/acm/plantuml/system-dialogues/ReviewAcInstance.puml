@@ -1,0 +1,18 @@
+@startuml
+participant REST
+participant "ACM Runtime"
+participant Participants
+database "ACM Database"
+
+REST -> "ACM Runtime": Review Automation Composition Instance
+"ACM Runtime" -> "ACM Database": Read Automation Composition Instance Information
+
+alt Automation Composition Instance exists
+  "ACM Runtime" -> Participants: [ASYNC] Review AC Element Instances for this AC Instance
+  "ACM Runtime" -> "ACM Database": Set AC Instance and its AC Element Instances to subState REVIEWING
+  "ACM Runtime" -> REST: Review of Automation Composition Instance has been requested
+else
+  "ACM Runtime" -> REST: Automation Composition instance does not exist
+end
+
+@enduml

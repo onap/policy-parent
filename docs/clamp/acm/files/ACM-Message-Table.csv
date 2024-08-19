@@ -38,6 +38,7 @@ AutomationCompositionDeploy,ACM Runtime,Participant,Message to request change st
 ,,,,participantId,UUID indicating the participant the message is intended for
 ,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_DEPLOY
 AutomationCompositionDeployAck,Participant,ACM Runtime,Message to acknowledge that deploy or state change message has been received by participant,automationCompositionResultMap,"A map with AutomationCompositionElementID as its key, and a pair of result and message as value per AutomationCompositionElement"
+,,,,stage,The next stage that participant is supposed to receiving
 ,,,,replicaId,The replica ID of this participant – in UUID format
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,automationCompositionId,The id of the automation composition related to this message
@@ -66,8 +67,14 @@ ParticipantSync,ACM Runtime,Participant,Message to request sync,participantId,Th
 ,,,,restarting,Flag - if true it is a restarting scenario
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_SYNC_MSG
 AutomationCompositionMigration,ACM Runtime,Participant,Message to request update,participantUpdatesList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,precheck,Flag - if true it is a Migration Precheck
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,compositionTargetId,The id of the AC Definition target
 ,,,,automationCompositionId,The id of the automation composition related to this message
 ,,,,participantId,UUID indicating the participant the message is intended for
 ,,,,messageType,Enum indicating the type of message PROPERTIES_UPDATE
+AutomationCompositionPrepare,ACM Runtime,Participant,Message to request prepare/review,participantList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,preDeploy,Flag - if true the instance is Undeployed and the action is a Prepare - otherwise (false) the instance is Deployed and the action is a Review
+,,,,compositionId,The id of the AC Definition related to this message
+,,,,automationCompositionId,The id of the automation composition related to this message
+,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_PREPARE
