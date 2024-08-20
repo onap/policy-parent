@@ -232,6 +232,30 @@ Example payload to update the base url of the http request
    :language: json
 
 
+Prepare AC instance
+-------------------
+Once the AC instance is created, the user can prepare the instance which in turn activates the corresponding participants to execute the intended operations.
+In this case, the participants that support that action will be send the result by outProperties.
+
+.. code-block:: bash
+
+  Invoke a PUT request
+  'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances/${instanceId}'
+
+This returns a 202 response on a successful prepare order request. The elements will be in "PREPARING" sub state until the completion.
+The current status and result can be fetched through the following endpoint.
+
+.. code-block:: bash
+
+  Invoke a GET request
+  'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances/${instanceId}'
+
+Request payload
+
+.. literalinclude:: files/AC-prepare.json
+   :language: json
+
+
 Deploy AC instance
 ------------------
 Once the AC instance is created, the user can deploy the instance which in turn activates the corresponding participants to execute the intended operations.
@@ -265,6 +289,29 @@ Once all the AC elements are deployed, there should be a test microservice pod r
 configured to send events on the kafka by the http participant. This can be verified on the test microservice application logs.
 The AC instances can also be undeployed and deleted by the user.
 
+Review AC instance
+------------------
+Once the AC instance is deployed, the user can review the instance which in turn activates the corresponding participants to execute the intended operations.
+In this case, the participants that support that action will be send the result by outProperties.
+
+.. code-block:: bash
+
+  Invoke a PUT request
+  'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances/${instanceId}'
+
+This returns a 202 response on a successful review order request. The elements will be in "REVIEWING" sub state until the completion.
+The current status and result can be fetched through the following endpoint.
+
+.. code-block:: bash
+
+  Invoke a GET request
+  'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances/${instanceId}'
+
+Request payload
+
+.. literalinclude:: files/AC-review.json
+   :language: json
+
 Update AC instance properties after deployment (Optional)
 ---------------------------------------------------------
 After the AC instance is deployed, the user can still update the instance property values if needed. In this case, the runtime updates these new values
@@ -279,10 +326,28 @@ required operation.
 Note:
   Please refer the request payload section for updating the instance properties before deployment.
 
+Migrate-Precheck AC instance
+----------------------------
+After the AC instance is deployed, the user can trigger a migrate-precheck from it to other composition definition.
+The target composition have to be primed.
+The user can emulate an update of the instance property values if needed.
+
+.. code-block:: bash
+
+  Invoke a POST request
+  'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances'
+
+Request Payload
+
+Example payload to migrate-precheck
+
+.. literalinclude:: files/AC-migrate-precheck.json
+   :language: json
+
 Migrate AC instance
 -------------------
 After the AC instance is deployed, the user can migrate it to other composition definition.
-The target composition have to be primed and have to contain the same element definitions present in the source composition.
+The target composition have to be primed.
 The user can update the instance property values if needed.
 
 .. code-block:: bash
@@ -324,8 +389,8 @@ This deletes the AC instance from the database including all the element propert
 
 This returns a 202 response on successful delete order request.
 
-Deprime Ac defintions
----------------------
+Deprime Ac definitions
+----------------------
 Once the AC instance is deleted, it can be deprimed from the participants to be safely deleted from the database.
 
 .. code-block:: bash
@@ -339,8 +404,8 @@ Request payload
 .. literalinclude:: files/AC-depriming.json
    :language: json
 
-Delete AC defintion
--------------------
+Delete AC definition
+--------------------
 The AC definitions can be deleted if there are no instances are running and it is not primed to the participants.
 
 .. code-block:: bash
@@ -393,28 +458,8 @@ Parameters like delay and success/fail could be set any time using the following
 
 The Json below is an example of configuration:
 
-.. code-block:: json
-
-  {
-    "deploySuccess": true,
-    "undeploySuccess": true,
-    "lockSuccess": true,
-    "unlockSuccess": true,
-    "deleteSuccess": true,
-    "updateSuccess": true,
-    "migrateSuccess": true,
-    "primeSuccess": true,
-    "deprimeSuccess": true,
-    "deployTimerMs": 1000,
-    "undeployTimerMs": 1000,
-    "migrateTimerMs": 100,
-    "lockTimerMs": 100,
-    "unlockTimerMs": 100,
-    "updateTimerMs": 100,
-    "deleteTimerMs": 100,
-    "primeTimerMs": 100,
-    "deprimeTimerMs": 100
-  }
+.. literalinclude:: files/simparticipant-parameters.json
+   :language: json
 
 Update and send composition outProperites
 -----------------------------------------
@@ -504,6 +549,7 @@ Default value of 'element.handler' is the most recent version.
 ==================== ====================
 AcElementHandlerV1   AcElementListenerV1
 AcElementHandlerV2   AcElementListenerV2
+AcElementHandlerV3   AcElementListenerV3
 ==================== ====================
 
 Example:
@@ -511,4 +557,4 @@ Example:
 .. code-block:: yaml
 
   element:
-    handler: AcElementHandlerV1
+    handler: AcElementHandlerV3

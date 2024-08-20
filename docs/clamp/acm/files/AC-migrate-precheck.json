@@ -1,0 +1,17 @@
+{
+  "name": "DemoInstance0",
+  "version": "1.0.1",
+  "compositionId": "COMPOSITIONIDPLACEHOLDER",
+  "instanceId": "INSTANCEIDPLACEHOLDER",
+  "compositionTargetId": "COMPOSITIONIDTARGET",
+  "description": "Demo automation composition instance 0",
+  "precheck": true,
+  "elements": {
+    "709c62b3-8918-41b9-a747-d21eb79c6c21": {
+      "id": "709c62b3-8918-41b9-a747-d21eb79c6c21",
+      "properties": {
+        "baseUrl": "http://acm-starter-ac-element-impl_updated:8084"
+      }
+    }
+  }
+}

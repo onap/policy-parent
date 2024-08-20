@@ -100,7 +100,7 @@ The Kubernetes Participant runs Kubernetes Automation Composition Elements. Each
 Element manages a Kubernetes microservice using Helm. The user defines the Helm chart for the
 Kubernetes microservice as well as other properties that the microservice requires in order to
 execute. The Yaml file that holds the
-`Kubernetes Automation Composition Element Type defintion is available in Github
+`Kubernetes Automation Composition Element Type definition is available in Github
 <https://github.com/onap/policy-clamp/blob/master/common/src/main/resources/tosca/KubernetesAutomationCompositionElementType.yaml>`_
 and is the canonical definition of the Kubernetes Automation Composition Element type. For a description
 of the Kubernetes Automation Composition Element and Kubernetes Participant,please see

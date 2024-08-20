@@ -91,7 +91,7 @@ AutomationCompositionElementListener:
   Every participant should implement a handler class that implements the AutomationCompositionElementListener interface
   from the Participant Intermediary. The intermediary listener class listens for the incoming events from the ACM-runtime
   and invoke the handler class implementations for various operations. This class implements the methods for deploying,
-  undeploying, locking, unlocking , deleting, updating, migrating, priming, depriming requests that are coming from the ACM-runtime.
+  undeploying, locking, unlocking , deleting, updating, preparing, reviewing, migrating, migrationPrechecking, priming, depriming requests that are coming from the ACM-runtime.
   The methods are as follows.
 
 .. code-block:: java
@@ -104,7 +104,10 @@ AutomationCompositionElementListener:
   6. void update(CompositionElementDto compositionElement, InstanceElementDto instanceElement, InstanceElementDto instanceElementUpdated) throws PfModelException;
   7. void prime(CompositionDto composition) throws PfModelException;
   8. void deprime(CompositionDto composition) throws PfModelException;
-  9. void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
+  9. void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate, int stage) throws PfModelException;
+  10. void migratePrecheck(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
+  11. void review(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  12. void prepare(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
 
 These method from the interface are implemented independently as per the user requirement. These methods after handling the
 appropriate requests should also invoke the intermediary's publisher apis to notify the ACM-runtime with the acknowledgement events.
@@ -117,92 +120,17 @@ ParticipantParameters:
 
   ParticipantIntermediaryParameters getIntermediaryParameters()
 
-Abstract class AcElementListenerV1
-----------------------------------
-This abstract class is introduced to help to maintain the java backward compatibility with AutomationCompositionElementListener implemented in 7.1.0 version.
-So developers can decide to align to new functionality later. Any new functionality in the future will be wrapped by this class.
 
-The Abstract class AcElementListenerV1 supports the follow methods.
-
-.. code-block:: java
-
-  1. void undeploy(UUID instanceId, UUID elementId) throws PfModelException;
-  2. void deploy(UUID instanceId, AcElementDeploy element, Map<String, Object> inProperties) throws PfModelException;
-  3. void lock(UUID instanceId, UUID elementId) throws PfModelException;
-  4. void unlock(UUID instanceId, UUID elementId) throws PfModelException;
-  5. void delete(UUID instanceId, UUID elementId) throws PfModelException;
-  6. void update(UUID instanceId, AcElementDeploy element, Map<String, Object> inProperties) throws PfModelException;
-  7. void prime(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList) throws PfModelException;
-  8. void deprime(UUID compositionId) throws PfModelException;
-  9. void migrate(UUID instanceId, AcElementDeploy element, UUID compositionTargetId, Map<String, Object> properties) throws PfModelException;
-
-**Note**: this class needs intermediaryApi and it should be passed by constructor. It is declared as protected and can be used.
-Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime and deprime.
-
-Un example of AutomationCompositionElementHandler implemented in 7.1.0 version and how to use AcElementListenerV1 abstract class:
-
-.. code-block:: java
-
-  @Component
-  @RequiredArgsConstructor
-  public class AutomationCompositionElementHandler implements AutomationCompositionElementListener {
-
-    private final ParticipantIntermediaryApi intermediaryApi;
-    private final otherService otherService;
-    ..............................
-  }
-
-  @Component
-  public class AutomationCompositionElementHandler extends AcElementListenerV1 {
-
-    private final OtherService otherService;
-
-    public AutomationCompositionElementHandler(ParticipantIntermediaryApi intermediaryApi, OtherService otherService) {
-        super(intermediaryApi);
-        this.otherService = otherService;
-    }
-    ..............................
-  }
-
-
-
-A second example:
-
-.. code-block:: java
-
-  @Component
-  public class AutomationCompositionElementHandler implements AutomationCompositionElementListener {
-
-    @Autowired
-    private ParticipantIntermediaryApi intermediaryApi;
-
-    @Autowired
-    private otherService otherService;
-    ..............................
-  }
-
-  @Component
-  public class AutomationCompositionElementHandler extends AcElementListenerV1 {
-
-    @Autowired
-    private otherService otherService;
-
-    public AutomationCompositionElementHandler(ParticipantIntermediaryApi intermediaryApi) {
-        super(intermediaryApi);
-    }
-    ..............................
-  }
-
-Abstract class AcElementListenerV2
+Abstract class AcElementListenerV3
 ----------------------------------
 This abstract class is introduced to help to maintain the java backward compatibility with AutomationCompositionElementListener from new releases.
 Any new functionality in the future will be wrapped by this class.
 
 **Note**: this class needs intermediaryApi and it should be passed by constructor. It is declared as protected and can be used.
-Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime and deprime.
+Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime, deprime, migratePrecheck, review and prepare.
 
 
-Methods: deploy, undeploy, lock, unlock and delete
+Methods: deploy, undeploy, lock, unlock, delete, review and prepare
   compositionElement:
     ======================  =======================================
      **field**                       **description**
@@ -264,7 +192,186 @@ Methods: prime, deprime
      outProperties           composition definition out-properties for each definition element
     ======================  ===================================================================
 
+Method: migratePrecheck
+  compositionElement:
+    ======================  =====================================================
+     **field**                       **description**
+    ======================  =====================================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+     state                   element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ======================  =====================================================
+  compositionElementTarget:
+    ======================  =====================================================
+     **field**                       **description**
+    ======================  =====================================================
+     compositionId           composition definition target Id
+     elementDefinitionId     composition definition target element Id
+     inProperties            composition definition target in-properties
+     outProperties           composition definition target out-properties
+     state                   element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ======================  =====================================================
+  instanceElement:
+    ==============================  ===================================================
+     **field**                       **description**
+    ==============================  ===================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(before the migration)**
+     outProperties                   instance out-properties
+     state                           element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ==============================  ===================================================
+  instanceElementMigrate:
+    ==============================  ====================================================
+     **field**                       **description**
+    ==============================  ====================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(updated)**
+     outProperties                   instance out-properties
+     state                           element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ==============================  ====================================================
+
 Method: migrate
+  compositionElement:
+    ======================  =====================================================
+     **field**                       **description**
+    ======================  =====================================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+     state                   element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ======================  =====================================================
+  compositionElementTarget:
+    ======================  =====================================================
+     **field**                       **description**
+    ======================  =====================================================
+     compositionId           composition definition target Id
+     elementDefinitionId     composition definition target element Id
+     inProperties            composition definition target in-properties
+     outProperties           composition definition target out-properties
+     state                   element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ======================  =====================================================
+  instanceElement:
+    ==============================  ===================================================
+     **field**                       **description**
+    ==============================  ===================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(before the migration)**
+     outProperties                   instance out-properties
+     state                           element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ==============================  ===================================================
+  instanceElementMigrate:
+    ==============================  ====================================================
+     **field**                       **description**
+    ==============================  ====================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(updated)**
+     outProperties                   instance out-properties
+     state                           element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ==============================  ====================================================
+  stage:
+    the stage of the migration that the participant has to execute
+
+
+Abstract class AcElementListenerV2
+----------------------------------
+This abstract class is introduced to help to maintain temporarily the java backward compatibility with AutomationCompositionElementListener implemented in 8.0.0 version.
+So developers can decide to align to new functionality later. Any new functionality in the future will be wrapped by this class.
+
+The Abstract class AcElementListenerV2 supports the follow methods.
+
+.. code-block:: java
+
+  1. void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  2. void undeploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  3. void lock(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  4. void unlock(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  5. void delete(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  6. void update(CompositionElementDto compositionElement, InstanceElementDto instanceElement, InstanceElementDto instanceElementUpdated) throws PfModelException;
+  7. void prime(CompositionDto composition) throws PfModelException;
+  8. void deprime(CompositionDto composition) throws PfModelException;
+  9. void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
+  10. void migratePrecheck(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
+  11. void review(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  12. void prepare(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+
+**Note**: this class needs intermediaryApi and it should be passed by constructor. It is declared as protected and can be used.
+Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime, deprime, migratePrecheck, review and prepare.
+
+
+Methods: deploy, undeploy, lock, unlock, delete, review and prepare
+  compositionElement:
+    ======================  =======================================
+     **field**                       **description**
+    ======================  =======================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+    ======================  =======================================
+  instanceElement:
+    ==============================  ===========================
+     **field**                       **description**
+    ==============================  ===========================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment    policies and policy types
+     inProperties                    instance in-properties
+      outProperties                  instance out-properties
+    ==============================  ===========================
+
+Method: update
+  compositionElement:
+    ======================  =======================================
+     **field**                       **description**
+    ======================  =======================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+    ======================  =======================================
+  instanceElement:
+    ==============================  ================================================
+     **field**                       **description**
+    ==============================  ================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(before the update)**
+      outProperties                  instance out-properties
+    ==============================  ================================================
+  instanceElementUpdated:
+    ==============================  ======================================
+     **field**                       **description**
+    ==============================  ======================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(updated)**
+     outProperties                   instance out-properties
+    ==============================  ======================================
+
+Methods: prime, deprime
+  composition:
+    ======================  ===================================================================
+     **field**                       **description**
+    ======================  ===================================================================
+     compositionId           composition definition Id
+     inProperties            composition definition in-properties for each definition element
+     outProperties           composition definition out-properties for each definition element
+    ======================  ===================================================================
+
+Method: migrate and migratePrecheck
   compositionElement:
     ======================  =======================================
      **field**                       **description**
@@ -303,6 +410,84 @@ Method: migrate
      inProperties                    instance in-properties **(updated)**
      outProperties                   instance out-properties
     ==============================  ======================================
+
+
+Abstract class AcElementListenerV1
+----------------------------------
+This abstract class is introduced to help to maintain temporarily the java backward compatibility with AutomationCompositionElementListener implemented in 7.1.0 version.
+So developers can decide to align to new functionality later. Any new functionality in the future will be wrapped by this class.
+
+The Abstract class AcElementListenerV1 supports the follow methods.
+
+.. code-block:: java
+
+  1. void undeploy(UUID instanceId, UUID elementId) throws PfModelException;
+  2. void deploy(UUID instanceId, AcElementDeploy element, Map<String, Object> inProperties) throws PfModelException;
+  3. void lock(UUID instanceId, UUID elementId) throws PfModelException;
+  4. void unlock(UUID instanceId, UUID elementId) throws PfModelException;
+  5. void delete(UUID instanceId, UUID elementId) throws PfModelException;
+  6. void update(UUID instanceId, AcElementDeploy element, Map<String, Object> inProperties) throws PfModelException;
+  7. void prime(UUID compositionId, List<AutomationCompositionElementDefinition> elementDefinitionList) throws PfModelException;
+  8. void deprime(UUID compositionId) throws PfModelException;
+  9. void migrate(UUID instanceId, AcElementDeploy element, UUID compositionTargetId, Map<String, Object> properties) throws PfModelException;
+
+**Note**: this class needs intermediaryApi and it should be passed by constructor. It is declared as protected and can be used.
+Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime, deprime, migratePrecheck, review and prepare.
+
+Un example of AutomationCompositionElementHandler implemented in 7.1.0 version and how to use AcElementListenerV1 abstract class:
+
+.. code-block:: java
+
+  @Component
+  @RequiredArgsConstructor
+  public class AutomationCompositionElementHandler implements AutomationCompositionElementListener {
+
+    private final ParticipantIntermediaryApi intermediaryApi;
+    private final otherService otherService;
+    ..............................
+  }
+
+  @Component
+  public class AutomationCompositionElementHandler extends AcElementListenerV1 {
+
+    private final OtherService otherService;
+
+    public AutomationCompositionElementHandler(ParticipantIntermediaryApi intermediaryApi, OtherService otherService) {
+        super(intermediaryApi);
+        this.otherService = otherService;
+    }
+    ..............................
+  }
+
+
+
+A second example:
+
+.. code-block:: java
+
+  @Component
+  public class AutomationCompositionElementHandler implements AutomationCompositionElementListener {
+
+    @Autowired
+    private ParticipantIntermediaryApi intermediaryApi;
+
+    @Autowired
+    private otherService otherService;
+    ..............................
+  }
+
+  @Component
+  public class AutomationCompositionElementHandler extends AcElementListenerV1 {
+
+    @Autowired
+    private otherService otherService;
+
+    public AutomationCompositionElementHandler(ParticipantIntermediaryApi intermediaryApi) {
+        super(intermediaryApi);
+    }
+    ..............................
+  }
+
 
 APIs to invoke
 --------------
@@ -423,7 +608,7 @@ In/Out instance Properties
   * during DEPLOIYNG (Out Properties will be take from last changes matching by elementId)
   * during UNDEPLOING
   * during LOCKING/UNLOCKING
-  * during UPDATING/MIGRATING
+  * during UPDATING/MIGRATING/PREPARE/REVIEW/MIGRATION_PRECHECKING
 
 Participants will receive the in/out instance Properties related to the element by InstanceElementDto class.
 
@@ -628,7 +813,7 @@ The following example shows the Handler implementation and how could be the impl
 
     @Override
     public void update(CompositionElementDto compositionElement, InstanceElementDto instanceElement,
-                       InstanceElementDto instanceElementUpdated) throws PfModelException {
+            InstanceElementDto instanceElementUpdated) throws PfModelException {
 
         // TODO update process
 
@@ -645,20 +830,60 @@ The following example shows the Handler implementation and how could be the impl
 
     @Override
     public void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget,
-                        InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate)
-        throws PfModelException
+            InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate, int stage)
+            throws PfModelException
 
-        // TODO migrate process
+        switch (instanceElementMigrate.state()) {
+            case NEW -> // TODO new element scenario
+            case REMOVED -> // TODO element remove scenario
+            default ->  // TODO migration process
+        }
 
         if (isMigrateSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(
-                instanceElement.instanceId(), instanceElement.elementId(),
-                DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migrated");
+            if (isStageCompleted()) {
+                intermediaryApi.updateAutomationCompositionElementState(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migrated");
+            } else {
+                intermediaryApi.updateAutomationCompositionElementStage(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    StateChangeResult.NO_ERROR, nextStage, "stage " + stage + " Migrated");
+            }
         } else {
             intermediaryApi.updateAutomationCompositionElementState(
                 instanceElement.instanceId(), instanceElement.elementId(),
                 DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Migrate failed!");
         }
+    }
+
+    @Override
+    public void migratePrecheck(UUID instanceId, UUID elementId) throws PfModelException {
+
+        // TODO migration Precheck process
+
+        intermediaryApi.updateAutomationCompositionElementState(
+            instanceElement.instanceId(), instanceElement.elementId(),
+            DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migration precheck completed");
+    }
+
+    @Override
+    public void prepare(UUID instanceId, UUID elementId) throws PfModelException {
+
+        // TODO prepare process
+
+        intermediaryApi.updateAutomationCompositionElementState(
+            instanceElement.instanceId(), instanceElement.elementId(),
+            DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR, "Prepare completed");
+    }
+
+    @Override
+    public void review(UUID instanceId, UUID elementId) throws PfModelException {
+
+        // TODO review process
+
+        intermediaryApi.updateAutomationCompositionElementState(
+            instanceElement.instanceId(), instanceElement.elementId(),
+            DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Review completed");
     }
 
     @Override
@@ -705,37 +930,43 @@ Allowed state from the participant perspective
 |            | PRIMED       |   FAILED            | Deprime is failed       |
 +------------+--------------+---------------------+-------------------------+
 
-+------------+-----------------+---------------+----------------+----------------------------------------+
-| **Action** | **deployState** | **lockState** | **stChResult** | **Description**                        |
-+------------+-----------------+---------------+----------------+----------------------------------------+
-|            |  DEPLOYED       |               |  NO_ERROR      |  Deploy is completed                   |
-+ Deploy     +-----------------+---------------+----------------+----------------------------------------+
-|            |  UNDEPLOYED     |               |  FAILED        |  Deploy is failed                      |
-+------------+-----------------+---------------+----------------+----------------------------------------+
-|            |  UNDEPLOYED     |               |  NO_ERROR      |  Undeploy is completed                 |
-| Undeploy   +-----------------+---------------+----------------+----------------------------------------+
-|            |  DEPLOYED       |               |  FAILED        |  Undeploy is failed                    |
-+------------+-----------------+---------------+----------------+----------------------------------------+
-|            |                 |  LOCKED       |  NO_ERROR      |  Lock is completed                     |
-+ Lock       +-----------------+---------------+----------------+----------------------------------------+
-|            |                 |  UNLOCKED     |  FAILED        |  Lock is failed                        |
-+------------+-----------------+---------------+----------------+----------------------------------------+
-|            |                 |  UNLOCKED     |  NO_ERROR      |  Unlock is completed                   |
-+ Unlock     +-----------------+---------------+----------------+----------------------------------------+
-|            |                 |  LOCKED       |  FAILED        |  Unlock is failed                      |
-+------------+-----------------+---------------+----------------+----------------------------------------+
-|            |  DEPLOYED       |               |  NO_ERROR      |  Update is completed                   |
-| Update     +-----------------+---------------+----------------+----------------------------------------+
-|            |  DEPLOYED       |               |  FAILED        |  Update is failed                      |
-+------------+-----------------+---------------+----------------+----------------------------------------+
-|            |  DEPLOYED       |               |  NO_ERROR      |  Migrate is completed                  |
-+ Migrate    +-----------------+---------------+----------------+----------------------------------------+
-|            |  DEPLOYED       |               |  FAILED        |  Migrate is failed                     |
-+------------+-----------------+---------------+----------------+----------------------------------------+
-|            |  DELETED        |               |  NO_ERROR      |  Delete is completed                   |
-| Delete     +-----------------+---------------+----------------+----------------------------------------+
-|            |  UNDEPLOYED     |               |  FAILED        |  Delete is failed                      |
-+------------+-----------------+---------------+----------------+----------------------------------------+
++------------------+-----------------+---------------+----------------+----------------------------------+
+| **Action**       | **deployState** | **lockState** | **stChResult** | **Description**                  |
++------------------+-----------------+---------------+----------------+----------------------------------+
+|                  |  DEPLOYED       |               |  NO_ERROR      |  Deploy is completed             |
++ Deploy           +-----------------+---------------+----------------+----------------------------------+
+|                  |  UNDEPLOYED     |               |  FAILED        |  Deploy is failed                |
++------------------+-----------------+---------------+----------------+----------------------------------+
+|                  |  UNDEPLOYED     |               |  NO_ERROR      |  Undeploy is completed           |
+| Undeploy         +-----------------+---------------+----------------+----------------------------------+
+|                  |  DEPLOYED       |               |  FAILED        |  Undeploy is failed              |
++------------------+-----------------+---------------+----------------+----------------------------------+
+|                  |                 |  LOCKED       |  NO_ERROR      |  Lock is completed               |
++ Lock             +-----------------+---------------+----------------+----------------------------------+
+|                  |                 |  UNLOCKED     |  FAILED        |  Lock is failed                  |
++------------------+-----------------+---------------+----------------+----------------------------------+
+|                  |                 |  UNLOCKED     |  NO_ERROR      |  Unlock is completed             |
++ Unlock           +-----------------+---------------+----------------+----------------------------------+
+|                  |                 |  LOCKED       |  FAILED        |  Unlock is failed                |
++------------------+-----------------+---------------+----------------+----------------------------------+
+|                  |  DEPLOYED       |               |  NO_ERROR      |  Update is completed             |
+| Update           +-----------------+---------------+----------------+----------------------------------+
+|                  |  DEPLOYED       |               |  FAILED        |  Update is failed                |
++------------------+-----------------+---------------+----------------+----------------------------------+
+|                  |  DEPLOYED       |               |  NO_ERROR      |  Migration is completed          |
++ Migrate          +-----------------+---------------+----------------+----------------------------------+
+|                  |  DEPLOYED       |               |  FAILED        |  Migration is failed             |
++------------------+-----------------+---------------+----------------+----------------------------------+
+| Migrate Precheck |  DEPLOYED       |               |  NO_ERROR      |  Migration-precheck is completed |
++------------------+-----------------+---------------+----------------+----------------------------------+
+| Prepare          |  UNDEPLOYED     |               |  NO_ERROR      |  Prepare is completed            |
++------------------+-----------------+---------------+----------------+----------------------------------+
+| Review           |  DEPLOYED       |               |  NO_ERROR      |  Review is completed             |
++------------------+-----------------+---------------+----------------+----------------------------------+
+|                  |  DELETED        |               |  NO_ERROR      |  Delete is completed             |
+| Delete           +-----------------+---------------+----------------+----------------------------------+
+|                  |  UNDEPLOYED     |               |  FAILED        |  Delete is failed                |
++------------------+-----------------+---------------+----------------+----------------------------------+
 
 
 AC Element states in failure scenarios
