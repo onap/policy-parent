@@ -788,7 +788,7 @@ Data Migration
 ==============
 
 PDP-D data is migrated across releases with the
-`db-migrator <https://git.onap.org/policy/drools-pdp/tree/policy-management/src/main/server-gen/bin/db-migrator>`__.
+`db-migrator <https://git.onap.org/policy/docker/tree/policy-db-migrator/src/main/docker/db-migrator>`__.
 
 The migration occurs when different release data is detected. *db-migrator* will look under the
 *$POLICY_HOME/etc/db/migration* for databases and SQL scripts to migrate.
@@ -832,7 +832,7 @@ The db-migrator tool syntax is
     	 ok: is the migration status valid
 
 See the
-`feature-distributed-locking sql directory <https://git.onap.org/policy/drools-pdp/tree/feature-distributed-locking/src/main/feature/db/pooling/sql>`__
+`feature-distributed-locking sql directory <https://git.onap.org/policy/docker/tree/policy-db-migrator/src/main/docker/config/pooling/sql>`__
 for an example of upgrade/downgrade scripts.
 
 The following command will provide a report on the upgrade or downgrade activies:
