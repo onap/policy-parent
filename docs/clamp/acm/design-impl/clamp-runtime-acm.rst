@@ -294,6 +294,26 @@ Example of MIGRATE order with Http_PMSHMicroserviceAutomationCompositionElement 
 In that scenario the message AUTOMATION_COMPOSITION_MIGRATION has been sent three times,
 Http_PMSHMicroserviceAutomationCompositionElement and PMSH_K8SMicroserviceAutomationCompositionElement will be executed two times.
 
+Add and remove elements during Migration
+****************************************
+When an AC instance is migrated to a new AC definition, the user has the flexibility to add a new element or remove an existing element from the instance.
+The target AC composition definition should contain the new element definition added and also the respective elements removed while commissioning to ACM-R.
+The new elements are further instantiated in the migration request with the instance properties, and the elements required to be undeployed are removed accordingly.
+ACM-R sends the updated element list in the migration request to the participants where the participant is expected to handle the add/remove scenario.
+The migration method on the participant receives the details of previously existed composition/instance as well as the updated composition/instance and hence the difference in the new and old properties for an
+element can be identified by the participant.
+Participants can also identify the newly added elements and the removed elements with the ElementState enum that is set for each element.
+
+Example:
+ For a newly added element in the migration, the element information about the previously existed element will contain the ElementState enum set to the value "NOT_PRESENT" by the intermediary, and the updated element object will contain the
+ ElementState value "NEW". Based on these enum values on both the objects, the participant can identify a new element added in the migration. The participant can choose to trigger a deployment of this new element and update the element state once the
+ deploy operation is complete.
+
+ For the elements that are removed in the migration, the element information about the previously existed element will contain the ElementState enum set to the value "PRESENT" by the intermediary, and the object for the updated element info will contain the
+ ElementState value "REMOVED". Based on this, the participant can identify a removed element in the migration and choose to trigger an undeployment of this element. The element state after the undeploy operation need not be updated to ACM-R as the element is already removed in the ACM-R.
+ The participant is also expected to trigger a "DELETE" operation for the removed element if required in order to delete any element OutProperties if stored in the memory. Similarly, The element state after the delete operation need not be updated to ACM-R for the removed element.
+
+
 Configure custom namings for TOSCA node types
 *********************************************
 

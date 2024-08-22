@@ -11,6 +11,12 @@
       "properties": {
         "baseUrl": "http://acm-starter-ac-element-impl_updated:8084"
       }
+    },
+    "709c62b3-8918-41b9-a747-d21eb79c6c22": {
+      "id": "709c62b3-8918-41b9-a747-d21eb79c6c22",
+      "properties": {
+        "baseUrl": "http://acm-sink-ac-element-impl_updated:8085"
+      }
     }
   }
 }

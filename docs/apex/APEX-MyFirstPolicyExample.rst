@@ -367,8 +367,7 @@ Events
 
               .. container:: paragraph
 
-                  ``Avro`` schema definitions can be any valid `Avro <https://avro.apac
-                  he.org/docs/current/spec.html>`__ schema. For events using fields defined with
+                  ``Avro`` schema definitions can be any valid `Avro <https://avro.apache.org/docs/1.12.0/specification/>`__ schema. For events using fields defined with
                   Avro schemas, any incoming event containing that field must contain a value that conforms to the Avro schema.
 
             .. container:: paragraph
