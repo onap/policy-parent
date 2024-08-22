@@ -347,8 +347,12 @@ Example payload to migrate-precheck
 Migrate AC instance
 -------------------
 After the AC instance is deployed, the user can migrate it to other composition definition.
-The target composition have to be primed.
-The user can update the instance property values if needed.
+The target composition have to be primed and there can be an addition/removal of elements at this stage.
+The user can update the instance property values for the existing elements if needed.
+A new element can be added and any elements that are no longer needed can be removed from the target composition and
+the migration payload.
+The migration payload should contain the updated element list for the instance.
+
 
 .. code-block:: bash
 
@@ -358,6 +362,8 @@ The user can update the instance property values if needed.
 Request Payload
 
 Example payload to migrate and update the base url of the http request
+A new element with id "709c62b3-8918-41b9-a747-d21eb79c6c22" has been added during migration which will be deployed
+by the participant.
 
 .. literalinclude:: files/AC-migrate.json
    :language: json

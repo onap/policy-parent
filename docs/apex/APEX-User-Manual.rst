@@ -2099,7 +2099,7 @@ Configure Context Schema Handler
                are supported. Characters commonly used in field names,
                such as ``.`` and ``-``, are not supported by AVRO. for
                more information see `Avro Spec:
-               Names <https://avro.apache.org/docs/1.8.1/spec.html#names>`__.
+               Names <https://avro.apache.org/docs/1.12.0/specification/>`__.
 
             .. container:: paragraph
 
