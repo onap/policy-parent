@@ -91,7 +91,7 @@ AutomationCompositionElementListener:
   Every participant should implement a handler class that implements the AutomationCompositionElementListener interface
   from the Participant Intermediary. The intermediary listener class listens for the incoming events from the ACM-runtime
   and invoke the handler class implementations for various operations. This class implements the methods for deploying,
-  undeploying, locking, unlocking , deleting, updating, preparing, reviewing, migrating, migrationPrechecking, priming, depriming requests that are coming from the ACM-runtime.
+  undeploying, locking, unlocking, deleting, updating, preparing, reviewing, migrating, migrationPrechecking, priming, depriming requests that are coming from the ACM-runtime.
   The methods are as follows.
 
 .. code-block:: java
@@ -524,6 +524,7 @@ This following methods are invoked to update the AC element state or AC element 
 
   1.  void updateAutomationCompositionElementState(UUID instanceId, UUID elementId, DeployState deployState, LockState lockState, StateChangeResult stateChangeResult, String message);
   2.  void updateCompositionState(UUID compositionId, AcTypeState state, StateChangeResult stateChangeResult, String message);
+  3.  void updateAutomationCompositionElementStage(UUID instance, UUID elementId, StateChangeResult stateChangeResult, int stage, String message);
 
 In/Out composition Properties
 -----------------------------
@@ -729,7 +730,7 @@ The following example shows the Handler implementation and how could be the impl
 .. code-block:: java
 
   @Component
-  public class AutomationCompositionElementHandler extends AcElementListenerV2 {
+  public class AutomationCompositionElementHandler extends AcElementListenerV3 {
 
     @Override
     public void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement)

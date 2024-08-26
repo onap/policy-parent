@@ -31,7 +31,6 @@ ParticipantStatus,Participant,ACM Runtime,Status update message,state,Enum indic
 ,,,,participantSupportedElementTypes,Ac element types that this participant is capable for deployinh/supporting
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_STATUS
 AutomationCompositionDeploy,ACM Runtime,Participant,Message to request change state of composition to DEPLOY,participantUpdatesList,A list of ParticipantUpdates instances which carries details of an updated participant.
-,,,,replicaId,The replica ID of this participant – in UUID format
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,automationCompositionId,The id of the automation composition related to this message
 ,,,,startPhase,Integer indicating the start up order of the elements
@@ -72,7 +71,7 @@ AutomationCompositionMigration,ACM Runtime,Participant,Message to request update
 ,,,,compositionTargetId,The id of the AC Definition target
 ,,,,automationCompositionId,The id of the automation composition related to this message
 ,,,,participantId,UUID indicating the participant the message is intended for
-,,,,messageType,Enum indicating the type of message PROPERTIES_UPDATE
+,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_MIGRATION
 AutomationCompositionPrepare,ACM Runtime,Participant,Message to request prepare/review,participantList,A list of ParticipantUpdates instances which carries details of an updated participant.
 ,,,,preDeploy,Flag - if true the instance is Undeployed and the action is a Prepare - otherwise (false) the instance is Deployed and the action is a Review
 ,,,,compositionId,The id of the AC Definition related to this message
