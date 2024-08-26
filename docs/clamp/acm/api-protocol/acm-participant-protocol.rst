@@ -36,7 +36,7 @@ Participant Deregistration is performed by a Participant when it shuts down. It 
 Automation Composition Priming and De-Priming
 ---------------------------------------------
 
-The Priming operation sends Automation Composition Types and common property values to participants for each Automation Composition Element Type in the Automation Composition Type. The ParticipantPrime message type is sent to trigger priming and depriming in participants in participants
+The Priming operation sends Automation Composition Types and common property values to participants for each Automation Composition Element Type in the Automation Composition Type. The ParticipantPrime message type is sent to trigger priming and depriming in participants.
 
 .. image:: ../images/system-dialogues/PrimeAcTypeOnPpnts.png
 
@@ -65,7 +65,7 @@ Automation Composition Update
 
 Automation Composition Update handles creation, change, and deletion of Automation Compositions on
 participants. Change of Automation Compositions uses a semantic versioning approach and follows the
-semantics described on the page :ref:`4.1 Management of Automation Composition Instance
+semantics described on the page :ref:`5.1 Management of Automation Composition Instance
 Configurations <management-acm-instance-configs>`.
 
 .. image:: ../images/acm-participants-protocol/acm-update.png

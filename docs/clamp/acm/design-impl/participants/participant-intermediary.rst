@@ -43,7 +43,7 @@ Outbound messages
 Design of a PARTICIPANT_REGISTER message
 ----------------------------------------
 - A participant starts and send a PARTICIPANT_REGISTER message with participantId, replicaId and Supported Element Definition Types
-- in AC-runtime ParticipantRegisterListener collects the message from Message Broker
+- in ACM-runtime ParticipantRegisterListener collects the message from Message Broker
 - if participant is not present in DB, it saves participant reference with status ON_LINE to DB
 - It triggers the execution to send a PARTICIPANT_REGISTER_ACK message to the participant registered
 - if participant is present in DB and there are AC Definitions related to the Participant, 
@@ -52,14 +52,14 @@ Design of a PARTICIPANT_REGISTER message
 Design of a PARTICIPANT_DEREGISTER message
 ------------------------------------------
 - A participant is going to close and undeploys all AC-elements and send a PARTICIPANT_DEREGISTER message
-- in AC-runtime, ParticipantDeregisterListener collects the message from Message Broker
+- in ACM-runtime, ParticipantDeregisterListener collects the message from Message Broker
 - It saves participant reference with status OFF_LINE to DB
 - It triggers the execution to send a PARTICIPANT_DEREGISTER_ACK message to the participant deregistered
 - Participant is not monitored.
 
 Prime of an Automation Composition Definition Type
 --------------------------------------------------
-- AC-runtime assigns the AC Definition to the participants based of Supported Element Definition Type by participant
+- ACM-runtime assigns the AC Definition to the participants based of Supported Element Definition Type by participant
 - it triggers the execution to send a broadcast PARTICIPANT_PRIME message
 - the message is built by ParticipantPrimePublisher using Tosca Service Template data (to fill the list of ParticipantDefinition)
 - Participant-intermediary will receive a PARTICIPANT_PRIME message and stores the Tosca Service Template data on CacheProvider
@@ -67,7 +67,7 @@ Prime of an Automation Composition Definition Type
 
 DePrime of an Automation Composition Definition Type
 ----------------------------------------------------
-- AC-runtime triggers the execution to send a broadcast PARTICIPANT_PRIME message
+- ACM-runtime triggers the execution to send a broadcast PARTICIPANT_PRIME message
 - the message is built by ParticipantPrimePublisher with an empty list of ParticipantDefinition
 - Participant-intermediary will receive a PARTICIPANT_PRIME message and deletes the Tosca Service Template data on CacheProvider
 - Each participant performs its designated job of deprime
@@ -100,7 +100,7 @@ Design of "issues automation composition commands to automation compositions" - 
 
 Update of an Automation Composition Instance
 --------------------------------------------
-- AC-runtime updates the instance properties of the deployed Ac instances
+- ACM-runtime updates the instance properties of the deployed Ac instances
 - it triggers the execution to send a broadcast PROPERTIES_UPDATE message
 - the message is built by AcElementPropertiesPublisher using the REST request payload (to fill the list of elements with the updated property values)
 - Participant-intermediary will receive a PROPERTIES_UPDATE message and stores the updated values of the elements on CacheProvider
@@ -115,7 +115,7 @@ Migrate-precheck of an Automation Composition Instance
 
 Migrate of an Automation Composition Instance
 ---------------------------------------------
-- AC-runtime saves the compositionTargetId and updates the instance properties of the deployed Ac instances
+- ACM-runtime saves the compositionTargetId and updates the instance properties of the deployed Ac instances
 - it triggers the execution to send a broadcast AUTOMATION_COMPOSITION_MIGRATION message with precheck set to false
 - the message is built by AutomationCompositionMigrationPublisher using the REST request payload (to fill the compositionTargetId and list of elements with the updated property values)
 - Participant-intermediary will receive a AUTOMATION_COMPOSITION_MIGRATION message and stores the compositionTargetId and the updated values of the elements on CacheProvider
@@ -132,6 +132,7 @@ Design of "issues automation composition commands to automation compositions" - 
 -------------------------------------------------------------------------------------------------------
 - AUTOMATION_COMPOSITION_STATE_CHANGE message with instantiation details and LOCK order state is sent to participants
 - Participant-intermediary validates the current lockState change
+- Participant-intermediary will receive AUTOMATION_COMPOSITION_STATE_CHANGE message
 - Each participant performs its designated job of lock
 
 Design of Delete - case UNDEPLOYED to DELETED
@@ -141,11 +142,10 @@ Design of Delete - case UNDEPLOYED to DELETED
 - Participant-intermediary will receive AUTOMATION_COMPOSITION_STATE_CHANGE message and sends AC-element details to participants
 - Each participant performs its designated job of removing instantiation data if not done in undeployment
 - Participant-intermediary will remove instantiation data
-- Each participant performs its designated job of delete
 
 Design of a PARTICIPANT_STATUS_REQ message
 ------------------------------------------
-- AC-runtime triggers the execution to send a broadcast PARTICIPANT_STATUS_REQ message or to send it to a specific participant
+- ACM-runtime triggers the execution to send a broadcast PARTICIPANT_STATUS_REQ message or to send it to a specific participant
 - the message is built by ParticipantStatusReqPublisher
 - Participant-intermediary will receive a PARTICIPANT_STATUS_REQ message
 
@@ -159,7 +159,7 @@ Design of a AUTOMATION_COMPOSITION_DEPLOY_ACK message
 -----------------------------------------------------
 - A participant sends AUTOMATION_COMPOSITION_DEPLOY_ACK message in response to a AUTOMATION_COMPOSITION_DEPLOY message.
 - For each AC-elements moved to the ordered state as indicated by the AUTOMATION_COMPOSITION_DEPLOY
-- AutomationCompositionUpdateAckListener in AC-runtime collects the messages from Message Broker
+- AutomationCompositionUpdateAckListener in ACM-runtime collects the messages from Message Broker
 - It checks the deployStatus of all automation composition elements
 - It updates the AC-instance in DB accordingly
 
@@ -167,6 +167,6 @@ Design of a AUTOMATIONCOMPOSITION_STATECHANGE_ACK message
 ---------------------------------------------------------
 - A participant sends AUTOMATIONCOMPOSITION_STATECHANGE_ACK message in response to a AUTOMATIONCOMPOSITION_STATECHANGE message.
 - For each AC-elements moved to the ordered state as indicated by the AUTOMATIONCOMPOSITION_STATECHANGE
-- AutomationCompositionStateChangeAckListener in AC-runtime collects the messages from Message Broker
+- AutomationCompositionStateChangeAckListener in ACM-runtime collects the messages from Message Broker
 - It checks the deployStatus/lockStatus of all automation composition elements
 - It updates the AC-instance in DB accordingly

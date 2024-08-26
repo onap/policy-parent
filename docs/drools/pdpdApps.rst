@@ -878,7 +878,7 @@ The reader can also look at the `policy/docker repository <https://github.com/on
 More specifically, these directories have examples of other PDP-D Control Loop configurations:
 
 * `plans <https://github.com/onap/policy-docker/tree/master/compose>`__: startup & teardown scripts.
-* `scripts <https://github.com/onap/policy-docker/blob/master/compose/docker-compose.yml>`__: docker-compose file.
+* `scripts <https://github.com/onap/policy-docker/blob/master/compose>`__: docker-compose files.
 * `tests <https://github.com/onap/policy-docker/blob/master/csit/resources/tests/drools-applications-test.robot>`__: test plan.
 
 Additional information
