@@ -16,14 +16,15 @@ Notes
 
 Cluster Used in this Guide
 **************************
-* Ubuntu-based cluster using Ubuntu 20.04.1 LTS
-* 3 nodes - each having 8GB RAM and 4CPU
+* Ubuntu-based VM using Ubuntu 22.04.1 LTS
+* VM has 16GB RAM and 150 GB HDD and 4CPU
+* microk8s-based cluster is used
 
 Prerequisites
 *************
-* K8s Cluster capable of running kubectl commands
-* Both kubectl client and the server use v1.22.4
-* Helm version v3.6.3 is installed
+* Microk8s Cluster capable of running kubectl commands
+* Both kubectl client and the server use v1.30.4
+* Helm version v3.15.4 is installed
 * There should be a running chart repo called "local"
 * Chartmuseum used to create the chart repo
 
@@ -60,19 +61,19 @@ Once this is completed, we should be able to see all of the charts in the local 
 
     helm search repo local
 
-    local/policy                     	12.0.0       	           	ONAP Policy
-    local/policy-apex-pdp            	12.0.0       	           	ONAP Policy APEX PDP
-    local/policy-api                 	12.0.0       	           	ONAP Policy Design API
-    local/policy-clamp-ac-a1pms-ppnt 	12.0.0       	           	ONAP Policy Clamp A1PMS Participant
-    local/policy-clamp-ac-http-ppnt  	12.0.0       	           	ONAP Policy Clamp Controlloop Http Participant
-    local/policy-clamp-ac-k8s-ppnt   	12.0.0       	           	ONAP Policy Clamp Controlloop K8s Participant
-    local/policy-clamp-ac-kserve-ppnt	12.0.0       	           	ONAP Policy Clamp Kserve Participant
-    local/policy-clamp-ac-pf-ppnt    	12.0.0       	           	ONAP Policy Clamp Controlloop Policy Participant
-    local/policy-clamp-runtime-acm   	12.0.0       	           	ONAP Policy Clamp Controlloop Runtime
-    local/policy-distribution        	12.0.0       	           	ONAP Policy Distribution
-    local/policy-drools-pdp          	12.0.0       	           	ONAP Drools Policy Engine (PDP-D)
-    local/policy-pap                 	12.0.0       	           	ONAP Policy Administration (PAP)
-    local/policy-xacml-pdp           	12.0.0       	           	ONAP Policy XACML PDP (PDP-X)
+    local/policy                     	14.0.5       	           	ONAP Policy
+    local/policy-apex-pdp            	14.0.1       	           	ONAP Policy APEX PDP
+    local/policy-api                 	14.0.2       	           	ONAP Policy Design API
+    local/policy-clamp-ac-a1pms-ppnt 	14.0.1       	           	ONAP Policy Clamp A1PMS Participant
+    local/policy-clamp-ac-http-ppnt  	14.0.1       	           	ONAP Policy Clamp Controlloop Http Participant
+    local/policy-clamp-ac-k8s-ppnt   	14.0.1       	           	ONAP Policy Clamp Controlloop K8s Participant
+    local/policy-clamp-ac-kserve-ppnt	14.0.1       	           	ONAP Policy Clamp Kserve Participant
+    local/policy-clamp-ac-pf-ppnt    	14.0.1       	           	ONAP Policy Clamp Controlloop Policy Participant
+    local/policy-clamp-runtime-acm   	14.0.2       	           	ONAP Policy Clamp Controlloop Runtime
+    local/policy-distribution        	14.0.1       	           	ONAP Policy Distribution
+    local/policy-drools-pdp          	14.0.2       	           	ONAP Drools Policy Engine (PDP-D)
+    local/policy-pap                 	14.0.2       	           	ONAP Policy Administration (PAP)
+    local/policy-xacml-pdp           	14.0.3       	           	ONAP Policy XACML PDP (PDP-X)
 
 .. note::
     Only the policy/acm charts are shown above - there will be many others.
@@ -101,7 +102,7 @@ Install Strimzi Kafka Operator
 .. code-block:: bash
 
     helm repo add strimzi https://strimzi.io/charts/
-    helm install strimzi-kafka-operator strimzi/strimzi-kafka-operator --namespace strimzi-system --version 0.32.0 --set watchAnyNamespace=true --create-namespace
+    helm install strimzi-kafka-operator strimzi/strimzi-kafka-operator --namespace strimzi-system --version 0.43.0 --set watchAnyNamespace=true --create-namespace
 
 Once these are installed and running, we can move on to the installation of the policy and related helm charts
 
@@ -113,9 +114,9 @@ At this stage, we have all the required charts that we need for either Policy Fr
 
     helm deploy dev local/onap --namespace onap -f ~/override.yaml --create-namespace
 
-In the above **helm deploy** command we provide an override file called **override.yaml**. In this file, we can turn on/off different parts of the onap installation. we have provided 2 different override files below in the collapsable code. One is for just the policy components and requirements. One is for the ACM components and requirements. These are provided just as examples - you can adjust any way you see fit.
+In the above **helm deploy** command we provide an override file called **override.yaml**. In this file, we can turn on/off different parts of the onap installation. we have provided an file below in the collapsable code. This is provided just as examples - you can adjust any way you see fit. The choice between postgres and mariadb is controlled by **global.mariadbGalera.localCluster & global.mariadbGalera.useInPolicy** for mariadb and **global.postgres.localCluster & global.postgres.useInPolicy** for postgres
 
-.. collapse:: Policy Chart Override
+.. collapse:: Policy/ACM Chart Override
 
     .. code-block:: yaml
 
@@ -127,6 +128,35 @@ In the above **helm deploy** command we provide an override file called **overri
             enabled: false
           cmpv2Enabled: false
           addTestingComponents: false
+          useStrimziKafka: true
+          useStrimziKafkaPf: false
+          mariadbGalera:
+            # flag to enable the DB creation via mariadb-operator
+            useOperator: false
+            # if useOperator set to "true", set "enableServiceAccount to "false"
+            # as the SA is created by the Operator
+            enableServiceAccount: true
+            localCluster: true
+            # '&mariadbConfig' means we "store" the values for  later use in the file
+            # with '*mariadbConfig' pointer.
+            config: &mariadbConfig
+              mysqlDatabase: policyadmin
+            service: &mariadbService policy-mariadb
+            internalPort: 3306
+            nameOverride: *mariadbService
+            # (optional) if localCluster=false and an external secret is used set this variable
+            #userRootSecret: <secretName>
+            useInPolicy: true
+          prometheusEnabled: false
+          postgres:
+            localCluster: false
+            service:
+              name: pgset
+              name2: policy-pg-primary
+              name3: policy-pg-replica
+            container:
+              name: postgres
+            useInPolicy: false
         robot:
           enabled: false
         so:
@@ -134,7 +164,7 @@ In the above **helm deploy** command we provide an override file called **overri
         cassandra:
           enabled: false
         mariadb-galera:
-          enabled: true
+          enabled: false
           replicaCount: 1
         appc:
           enabled: false
@@ -166,146 +196,9 @@ In the above **helm deploy** command we provide an override file called **overri
         pnda:
           enabled: false
         dmaap:
-          enabled: true
+          enabled: false
           message-router:
-            enabled: true
-          dmaap-bc:
             enabled: false
-          dmaap-dr-prov:
-            enabled: false
-          dmaap-dr-node:
-            enabled: false
-          dmaap-strimzi:
-            enabled: false
-        esr:
-          enabled: false
-        log:
-          enabled: false
-        sniro-emulator:
-          enabled: false
-        oof:
-          enabled: false
-        msb:
-          enabled: false
-        multicloud:
-          enabled: false
-        nbi:
-          enabled: false
-        pomba:
-          enabled: false
-        portal:
-          enabled: false
-        platform:
-          enabled: false
-        sdc:
-          enabled: false
-        uui:
-          enabled: false
-        vfc:
-          enabled: false
-        vid:
-          enabled: false
-        modeling:
-          enabled: false
-        cps:
-          enabled: false
-        vnfsdk:
-          enabled: false
-        vvp:
-          enabled: false
-        strimzi:
-          enabled: true
-          replicaCount: 1
-          persistence:
-            kafka:
-              size: 1Gi
-            zookeeper:
-              size: 256Mi
-          strimzi-kafka-bridge:
-            enabled: false
-        policy:
-          enabled: true
-          policy-clamp-ac-a1pms-ppnt:
-            enabled: false
-          policy-clamp-ac-k8s-ppnt:
-            enabled: false
-          policy-clamp-ac-http-ppnt:
-            enabled: false
-          policy-clamp-ac-pf-ppnt:
-            enabled: false
-          policy-clamp-runtime-acm:
-            enabled: false
-          policy-gui:
-            enabled: false
-          policy-apex-pdp:
-            enabled: true
-          policy-nexus:
-            enabled: false
-          policy-api:
-            enabled: true
-          policy-pap:
-            enabled: true
-          policy-xacml-pdp:
-            enabled: true
-          policy-drools-pdp:
-            enabled: true
-          policy-distribution:
-            enabled: true
-
-.. collapse:: ACM Chart Override
-
-    .. code-block:: yaml
-
-        global:
-          repository: nexus3.onap.org:10001
-          pullPolicy: IfNotPresent
-          masterPassword: password
-          serviceMesh:
-            enabled: false
-          cmpv2Enabled: false
-          addTestingComponents: false
-        robot:
-          enabled: false
-        so:
-          enabled: false
-        cassandra:
-          enabled: false
-        mariadb-galera:
-          enabled: true
-          replicaCount: 1
-        appc:
-          enabled: false
-        sdnc:
-          enabled: false
-          replicaCount: 1
-          config:
-            enableClustering: false
-        aaf:
-          enabled: false
-        aai:
-          enabled: false
-        clamp:
-          enabled: false
-        cli:
-          enabled: false
-        cds:
-          enabled: false
-        consul:
-          enabled: false
-        contrib:
-          enabled: false
-        awx:
-          enabled: false
-        netbox:
-          enabled: false
-        dcaegen2:
-          enabled: false
-        pnda:
-          enabled: false
-        dmaap:
-          enabled: true
-          message-router:
-            enabled: true
           dmaap-bc:
             enabled: false
           dmaap-dr-prov:
@@ -364,6 +257,8 @@ In the above **helm deploy** command we provide an override file called **overri
           enabled: true
           policy-clamp-ac-a1pms-ppnt:
             enabled: true
+          policy-clamp-ac-kserve-ppnt:
+            enabled: true
           policy-clamp-ac-k8s-ppnt:
             enabled: true
           policy-clamp-ac-http-ppnt:
@@ -375,7 +270,7 @@ In the above **helm deploy** command we provide an override file called **overri
           policy-gui:
             enabled: false
           policy-apex-pdp:
-            enabled: false
+            enabled: true
           policy-nexus:
             enabled: false
           policy-api:
@@ -383,9 +278,9 @@ In the above **helm deploy** command we provide an override file called **overri
           policy-pap:
             enabled: true
           policy-xacml-pdp:
-            enabled: false
+            enabled: true
           policy-drools-pdp:
-            enabled: false
+            enabled: true
           policy-distribution:
             enabled: false
 
@@ -428,8 +323,8 @@ The assumption is you have cloned the charts from the OOM repository into a loca
 
 From your local copy, edit any of the values.yaml files in the policy tree to make desired changes.
 
-The policy schema will be installed automatically as part of the database configuration using ``db-migrator``.
-By default the policy schema is upgraded to the latest version.
+The policy/acm schemas will be installed automatically as part of the database configuration using ``db-migrator``.
+By default the policy/acm schemas is upgraded to the latest version.
 For more information on how to change the ``db-migrator`` setup please see
 :ref:`Using Policy DB Migrator <policy-db-migrator-label>`.
 
@@ -448,8 +343,8 @@ After undeploying policy, loop on monitoring the policy pods until they go away.
 
 .. code-block:: bash
 
-  helm undeploy dev-policy
-  kubectl get pods -n onap | grep dev-policy
+  helm undeploy dev
+  kubectl get pods -n onap | grep dev
 
 
 **Step 4** Re-Deploy Policy pods
@@ -458,8 +353,8 @@ After deploying policy, loop on monitoring the policy pods until they come up.
 
 .. code-block:: bash
 
-  helm deploy dev-policy local/onap --namespace onap
-  kubectl get pods -n onap | grep dev-policy
+  helm deploy dev local/onap --namespace onap -f override.yaml
+  kubectl get pods -n onap | grep dev
 
 .. note::
    If you want to purge the existing data and start with a clean install,
