@@ -40,11 +40,11 @@ Docker Image
 ~~~~~~~~~~~~
 
 Check the *drools-pdp* `released versions <https://wiki.onap.org/display/DW/Policy+Framework+Project%3A+Component+Versions>`__ page for the latest versions.
-At the time of this writing *1.8.2* is the latest version.
+At the time of this writing *3.0.0* is the latest version.
 
 .. code-block:: bash
 
-    docker pull onap/policy-drools:1.8.2
+    docker pull onap/policy-drools:3.0.0
 
 A container instantiated from this image will run under the non-priviledged *policy* account.
 
@@ -60,7 +60,7 @@ The following command can be used to explore the directory layout.
 
 .. code-block:: bash
 
-    docker run --rm -it nexus3.onap.org:10001/onap/policy-drools:1.8.2 -- bash
+    docker run --rm -it nexus3.onap.org:10001/onap/policy-drools:3.0.0 -- bash
 
 Communication Endpoints
 =======================
@@ -674,16 +674,6 @@ A feature is packaged in a *feature-<name>.zip* and has this internal layout:
     #                  of pdp-d that are necessary for <feature-name> to operate
     #                  correctly.
     #   lib/feature    the single feature jar that implements the feature.
-    #   [db]           database directory, if the feature contains sql.
-    #   [db]/<db-name> database to which underlying sql scripts should be applied.
-    #                  ideally, <db-name> = <feature-name> so it is easily to associate
-    #                  the db data with a feature itself.   In addition, since a feature is
-    #                  a somewhat independent isolated unit of functionality,the <db-name>
-    #                  database ideally isolates all its data.
-    #   [db]/<db-name>/sql  directory with all the sql scripts.
-    #   [db]/<db-name>/sql/<sql-scripts>  for this feature, sql
-    #                  upgrade scripts should be suffixed with ".upgrade.sql"
-    #                  and downgrade scripts should be suffixed with ".downgrade.sql"
     #   [artifacts]    maven artifacts to be deployed in a maven repository.
     #   [artifacts]/<artifact>  maven artifact with identifiable maven coordinates embedded
     #                  in the artifact.
@@ -835,41 +825,13 @@ See the
 `feature-distributed-locking sql directory <https://git.onap.org/policy/docker/tree/policy-db-migrator/src/main/docker/config/pooling/sql>`__
 for an example of upgrade/downgrade scripts.
 
-The following command will provide a report on the upgrade or downgrade activies:
-
-.. code-block:: bash
-
-    db-migrator -s ALL -o report
-
-For example in the official guilin delivery:
-
-.. code-block:: bash
-
-    policy@dev-drools-0:/tmp/policy-install$ db-migrator -s ALL -o report
-    +---------+---------+
-    | name    | version |
-    +---------+---------+
-    | pooling | 1811    |
-    +---------+---------+
-    +-------------------------------------+-----------+---------+---------------------+
-    | script                              | operation | success | atTime              |
-    +-------------------------------------+-----------+---------+---------------------+
-    | 1804-distributedlocking.upgrade.sql | upgrade   | 1       | 2020-05-22 19:33:09 |
-    | 1811-distributedlocking.upgrade.sql | upgrade   | 1       | 2020-05-22 19:33:09 |
-    +-------------------------------------+-----------+---------+---------------------+
-
-In order to use the *db-migrator* tool, the system must be configured with a database.
-
-.. code-block:: bash
-
-    SQL_HOST=mariadb
 
 Maven Repositories
 ==================
 
 The drools libraries in the PDP-D uses maven to fetch rules artifacts and software dependencies.
 
-The default *settings.xml* file specifies the repositories to search.   This configuration
+The default *settings.xml* file specifies the repositories to search. This configuration
 can be overriden with a custom copy that would sit in a mounted configuration
 directory.  See an example of the OOM override
 `settings.xml <https://github.com/onap/oom/blob/master/kubernetes/policy/components/policy-drools-pdp/resources/configmaps/settings.xml>`_.
@@ -920,19 +882,6 @@ in a container.
     	 -s|--settings: custom settings.xml
     	 -a|--artifact: file artifact (jar or pom) to deploy and/or install
 
-AAF
-===
-
-Policy can talk to AAF for authorization requests.   To enable AAF set
-the following environment variables:
-
-.. code-block:: bash
-
-    AAF=true
-    AAF_NAMESPACE=org.onap.policy
-    AAF_HOST=aaf-locate.onap
-
-By default AAF is disabled.
 
 Policy Tool
 ===========
@@ -969,15 +918,14 @@ It contains 3 sections:
 
 - *PDP-D* running status
 - *features* applied
-- Data migration status on a per database basis.
 
 The *start* and *stop* commands are useful for developers testing functionality on a docker container instance.
 
 Telemetry Shell
 ===============
 
-*PDP-D* offers an ample set of REST APIs to debug, introspect, and change state on a running PDP-D.   This is known as the
-*telemetry* API.   The *telemetry* shell wraps these APIs for shell-like access using
+*PDP-D* offers an ample set of REST APIs to debug, introspect, and change state on a running PDP-D. This is known as the
+*telemetry* API. The *telemetry* shell wraps these APIs for shell-like access using
 `http-prompt <http://http-prompt.com/>`__.
 
 .. code-block:: bash
@@ -1040,7 +988,6 @@ These are the configuration items that can reside externally and override the de
 - ***.post.sh** scripts that will be executed after the PDP-D starts.
 - **policy-keystore** to override the default PDP-D java keystore.
 - **policy-truststore** to override the default PDP-D java truststore.
-- **aaf-cadi.keyfile** to override the default AAF CADI Key generated by AAF.
 - ***.properties** to override or add any properties file for the PDP-D, this includes *controller*, *endpoint*,
   *engine* or *system* configurations.
 - **logback*.xml** to override the default logging configuration.
@@ -1109,27 +1056,12 @@ First create an environment file (in this example *env.conf*) to configure the P
     POLICY_PDP_PAP_API_KEY=
     POLICY_PDP_PAP_API_SECRET=
 
-    # DMaaP
-
-    DMAAP_SERVERS=localhost
 
 Note that *SQL_HOST*, and *REPOSITORY* are empty, so the PDP-D does not attempt
 to integrate with those components.
 
 Configuration
 ~~~~~~~~~~~~~
-
-In order to avoid the noise in the logs that relate to dmaap configuration, a startup script (*noop.pre.sh*) is added
-to convert *dmaap* endpoints to *noop* in the host directory to be mounted.
-
-noop.pre.sh
-"""""""""""
-
-.. code-block:: bash
-
-    #!/bin/bash -x
-
-    sed -i "s/^dmaap/noop/g" $POLICY_HOME/config/*.properties
 
 
 active.post.sh
@@ -1171,7 +1103,6 @@ To run the *telemetry shell* and other tools from the host:
 
     docker exec -it PDPD bash -c "/opt/app/policy/bin/telemetry"
     docker exec -it PDPD bash -c "/opt/app/policy/bin/policy status"
-    docker exec -it PDPD bash -c "/opt/app/policy/bin/db-migrator -s ALL -o report"
 
 Controlled instantiation of the PDP-D
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1332,23 +1263,6 @@ and the *mariadb* database:
     POLICY_PDP_PAP_API_KEY=
     POLICY_PDP_PAP_API_SECRET=
 
-    # DMaaP
-
-    DMAAP_SERVERS=localhost
-
-prepare.pre.sh
-~~~~~~~~~~~~~~
-
-A pre-start script *config/prepare.pres.sh"can be added the custom config directory
-to prepare the PDP-D to activate the distributed-locking feature (using the database)
-and to use "noop" topics instead of *dmaap* topics:
-
-.. code-block:: bash
-
-    #!/bin/bash
-
-    bash -c "/opt/app/policy/bin/features enable distributed-locking"
-    sed -i "s/^dmaap/noop/g" $POLICY_HOME/config/*.properties
 
 active.post.sh
 ~~~~~~~~~~~~~~
@@ -1381,7 +1295,7 @@ The reader can also look at the `policy/docker repository <https://github.com/on
 More specifically, these directories have examples of other PDP-D configurations:
 
 * `plans <https://github.com/onap/policy-docker/tree/master/compose>`__: startup & teardown scripts.
-* `scripts <https://github.com/onap/policy-docker/blob/master/compose/docker-compose.yml>`__: docker-compose file.
+* `scripts <https://github.com/onap/policy-docker/blob/master/compose/compose.yaml>`__: docker-compose file.
 * `tests <https://github.com/onap/policy-docker/blob/master/csit/resources/tests/drools-pdp-test.robot>`__: test plan.
 
 Configuring the PDP-D in an OOM Kubernetes installation

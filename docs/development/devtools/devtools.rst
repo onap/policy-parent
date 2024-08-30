@@ -234,34 +234,17 @@ With docker images:
 Developing and Debugging each Policy Component
 **********************************************
 
-Running a MariaDb Instance
-++++++++++++++++++++++++++
-
-The Policy Framework requires a MariaDb instance running. The easiest way to do this is to run a docker image locally.
-
-One example on how to do this is to use the scripts used by the policy/api S3P tests.
-
-`Simulator Setup Script Example <https://gerrit.onap.org/r/gitweb?p=policy/api.git;a=tree;f=testsuites/stability/src/main/resources/simulatorsetup;h=9038413f67cff2e2a79d6345f198f96ee0c57de1;hb=refs/heads/master>`_
-
-    .. code-block:: bash
-
-       cd ~/git/onap/api/testsuites/stability/src/main/resources/simulatorsetup
-       ./setup_components.sh
-
-Another example on how to run the MariaDb is using the docker compose file used by the Policy API CSITs:
-
-`Example Compose Script to run MariaDB <https://gerrit.onap.org/r/gitweb?p=integration/csit.git;a=blob;f=scripts/policy/docker-compose-api.yml;h=e32190f1e6cb6d9b64ddf53a2db2c746723a0c6a;hb=refs/heads/master>`_
 
 Running the API component standalone
 ++++++++++++++++++++++++++++++++++++
 
 Assuming you have successfully built the codebase using the instructions above. The only requirement for the API
-component to run is a running MariaDb database instance. The easiest way to do this is to run the docker image, please
-see the mariadb documentation for the latest information on doing so. Once the mariadb is up and running, a
-configuration file must be provided to the api in order for it to know how to connect to the mariadb. You can locate
-the default configuration file in the packaging of the api component:
+component to run is a running MariaDb/Postgres database instance. The easiest way to do this is to run the docker
+image, please see the official documentation for the latest information on doing so. Once the database is up and
+running, a configuration file must be provided to the api in order for it to know how to connect to the database.
+You can locate the default configuration file in the packaging of the api component:
 
-`Default Policy API Configuration <https://gerrit.onap.org/r/gitweb?p=policy/api.git;a=blob;f=packages/policy-api-tarball/src/main/resources/etc/apiParameters.yaml;h=2c19199a8a889cb0ab203334182662fe15e1635e;hb=refs/heads/master>`_
+`Default Policy API Configuration <https://github.com/onap/policy-api/blob/master/packages/policy-api-tarball/src/main/resources/etc/apiParameters.yaml>`_
 
 You will want to change the fields pertaining to "host", "port" and "databaseUrl" to your local environment settings
 and start the policy-api springboot application either using your IDE of choice or using the run goal from Spring Boot
@@ -272,22 +255,21 @@ Running the API component using Docker Compose
 
 An example of running the api using a docker compose script is located in the Policy Integration CSIT test repository.
 
-`Policy CSIT API Docker Compose <https://gerrit.onap.org/r/gitweb?p=integration/csit.git;a=blob;f=scripts/policy/docker-compose-api.yml;h=e32190f1e6cb6d9b64ddf53a2db2c746723a0c6a;hb=refs/heads/master>`_
+`Policy CSIT Docker Compose <https://github.com/onap/policy-docker/blob/master/compose/compose.yaml>`_
 
 Running the PAP component standalone
 ++++++++++++++++++++++++++++++++++++
 
-Once you have successfully built the PAP codebase, a running MariaDb database and DMaaP instance will also be required
-to start up the application. For MariaDb instance, the easiest way is to run the docker image, please see the mariadb
-documentation for the latest information on doing so. For DMaaP, the easiest way during development is to run the DMaaP
-simulator which is explained in the below sections. Once the mariadb and DMaaP are running, a configuration file must
-be provided to the PAP component in order for it to know how to connect to the mariadb and DMaaP along with other
-relevant configuration details. You can locate the default configuration file in the packaging of the PAP component:
+Once you have successfully built the PAP codebase, a running MariaDb/Postgres database and Kafka instance will also be
+required to start up the application. To start database and Kafka, check official documentation on how to run an
+instance of each. After database and Kafka are up and running, a configuration file must be provided to the PAP
+component in order for it to know how to connect to the database and Kafka along with other relevant configuration
+details. You can locate the default configuration file in the packaging of the PAP component:
 
-`Default PAP Configuration <https://gerrit.onap.org/r/gitweb?p=policy/pap.git;a=blob;f=packages/policy-pap-tarball/src/main/resources/etc/papParameters.yaml;h=06dd45f4946fd0a11ed8ef859f8fc5bcf409a3f0;hb=HEAD>`_
+`Default PAP Configuration <https://github.com/onap/policy-pap/blob/master/packages/policy-pap-tarball/src/main/resources/etc/papParameters.yaml>`_
 
-Update the fields related to MariaDB, DMaaP and the RestServer for the application as per your local environment settings.
-Then to start the application, just run the Spring Boot application using IDE or command line.
+Update the fields related to database, Kafka and the RestServer for the application as per your local environment
+settings. Then to start the application, just run the Spring Boot application using IDE or command line.
 
 
 Running the Smoke Tests
@@ -315,8 +297,8 @@ familiar with the Policy Framework components and test any local changes.
 Running the Stability/Performance Tests
 ***************************************
 
-The following links contain instructions on how to run the S3P Stability and Performance tests. These may be helpful to developers to become
-familiar with the Policy Framework components and test any local changes.
+The following links contain instructions on how to run the S3P Stability and Performance tests. These may be helpful
+to developers to become familiar with the Policy Framework components and test any local changes.
 
 .. toctree::
    :maxdepth: 2
@@ -334,8 +316,8 @@ familiar with the Policy Framework components and test any local changes.
 Running the Pairwise Tests
 **************************
 
-The following links contain instructions on how to run the pairwise tests. These may be helpful to developers check that
-the Policy Framework works in a full ONAP deployment.
+The following links contain instructions on how to run the pairwise tests. These may be helpful to developers check
+that the Policy Framework works in a full ONAP deployment.
 
 .. toctree::
    :maxdepth: 1
@@ -426,7 +408,8 @@ To test these images, CSITs will be run.
 Running Policy Components Locally
 *********************************
 
-The following page outlines how to run the policy framework components locally using IntelliJ, Eclipse and the Command Line.
+The following page outlines how to run the policy framework components locally using IntelliJ,
+Eclipse and the Command Line.
 
 .. toctree::
    :maxdepth: 1
@@ -457,57 +440,14 @@ Using the Swagger-UI maven dependency Swagger HTML documentation can be accessed
 - The generated swagger.json can be accessed at: *https://service_IP:service_port/v2/api-docs*
 - Swagger UI can be accessed at: *https://service_IP:service_port/swagger-ui/index.html*
 
-Running the DMaaP Simulator during Development
-**********************************************
-It is sometimes convenient to run the DMaaP simulator during development. You can run it from the command line using Maven or from within your IDE.
-
-Running on the Command Line
-+++++++++++++++++++++++++++
-1. Check out the policy models repository
-2. Go to the *models-sim/policy-models-simulators* subdirectory in the policy-models repo
-3. Run the following Maven command:
-
-   .. code-block:: bash
-
-      mvn exec:java  -Dexec.mainClass=org.onap.policy.models.simulators.Main -Dexec.args="src/test/resources/simParameters.json"
-
-Running in Eclipse
-++++++++++++++++++
-1. Check out the policy models repository
-2. Go to the *models-sim/policy-models-simulators* module in the policy-models repo
-3. Specify a run configuration using the class *org.onap.policy.models.simulators.Main* as the main class
-4. Specify an argument of *src/test/resources/simParameters.json* to the run configuration
-5. Run the configuration
-
-Specifying a local configuration file
-+++++++++++++++++++++++++++++++++++++
-
-You may specify a local configuration file instead of *src/test/resources/simParameters.json* on the command line or as an argument in the run configuration in eclipse:
-
-.. code-block:: json
-
-   {
-     "dmaapProvider": {
-       "name": "DMaaP simulator",
-       "topicSweepSec": 900
-     },
-     "restServers": [
-       {
-         "name": "DMaaP simulator",
-         "providerClass": "org.onap.policy.models.sim.dmaap.rest.DmaapSimRestControllerV1",
-         "host": "localhost",
-         "port": 3904,
-         "https": false
-       }
-     ]
-   }
 
 Bringing up Strimzi-Kafka Deploment with Policy Framework
 *********************************************************
 
-This page will explain how to setup a local Kubernetes cluster and minimal helm setup to run and deploy Policy Framework on a single host.
+This page will explain how to setup a local Kubernetes cluster and minimal helm setup to run and deploy
+Policy Framework on a single host.
 
-This is meant for a development purpose only as we are going to use microk8s in this page
+This is meant for a development purpose only as we are going to use microk8s in this page:
 
 .. toctree::
    :maxdepth: 1
