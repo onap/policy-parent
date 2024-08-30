@@ -141,10 +141,10 @@ Start the containers manually
 
 **Step 1:** Set the containers location and project.
 
-For *local* images, set CONTAINER_LOCATION="", located at the `export-ports.sh` script
+For *local* images, set `LOCAL_IMAGES=true`, located at the `get-versions.sh` script
 *You will need to build locally all the images using the steps in the previous section*
 
-For *remote* images set CONTAINER_LOCATION="nexus3.onap.org:10001/"
+Remote images are downloaded by default from "nexus3.onap.org:10001"
 
 
 **Step 2:** Set gerrit branch
@@ -207,7 +207,7 @@ Before the `-jar /app/pap.jar \ ` line, add the following block:
   -Dcom.sun.management.jmxremote.authenticate=false \
   -Dcom.sun.management.jmxremote.local.only=false \
 
-On `docker-compose.yml` compose file, add to the port section the mapping 5005.
+On `compose.yml` file, add to the port section the mapping 5005.
 
 .. code-block:: yaml
 
@@ -215,7 +215,6 @@ On `docker-compose.yml` compose file, add to the port section the mapping 5005.
   image: ${CONTAINER_LOCATION}onap/policy-pap:${POLICY_PAP_VERSION}
   container_name: policy-pap
   depends_on:
-    - mariadb
     - simulator
     - api
   hostname: policy-pap
