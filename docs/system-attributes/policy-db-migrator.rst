@@ -53,13 +53,13 @@ These script can take up to four parameters:
      - upgrade/downgrade/report
    * - schema
      - -s
-     - policyadmin/clampacm
+     - schema_name
    * - to
      - -t
-     - 0800/0900
+     - target_version (latest is 1600)
    * - from
      - -f
-     - 0800/0900
+     - origin_version (earliest is 0800)
 
 The container also consists of several sql files which are used to upgrade/downgrade
 the policy database.
@@ -76,7 +76,7 @@ to run and connect to the database.
    * - SQL_HOST
      - mariadb
    * - SQL_DB
-     - policyadmin/clampacm
+     - policyadmin clampacm etc [one or more schema separated by space]
    * - SQL_USER
      - policy_user
    * - SQL_PASSWORD
@@ -98,7 +98,7 @@ to run and connect to the database.
    * - SQL_HOST
      - postgres
    * - SQL_DB
-     - policyadmin/clampacm
+     - policyadmin clampacm etc [one or more schema separated by space]
    * - SQL_USER
      - policy_user
    * - SQL_PASSWORD
@@ -369,6 +369,6 @@ current schema version is set to 1300 and only sql scripts from later versions a
 
 .. note::
    It is advisable to take a backup of your database prior to running this utility.
-   Please refer to the mariadb documentation on how to do this.
+   Please refer to the mariadb or postgres documentation on how to do this.
 
 End of Document

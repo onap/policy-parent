@@ -44,9 +44,9 @@ for the latest images:
 
 .. code-block:: bash
 
-    docker pull onap/policy-pdpd-cl:1.8.2
+    docker pull onap/policy-pdpd-cl:3.0.0
 
-At the time of this writing *1.8.2* is the latest version.
+At the time of this writing *3.0.0* is the latest version.
 
 The *onap/policy-pdpd-cl* image extends the *onap/policy-drools* image with
 the *usecases* controller that realizes the *control loop* application.
@@ -120,10 +120,6 @@ The enabled features in the *onap/policy-pdpd-cl* image are:
 - **controlloop-management**: generic controller capabilities.
 - **controlloop-usecases**: new *controller* introduced in the guilin release to realize the ONAP use cases.
 
-The following features are installed but disabled:
-
-- **controlloop-tdjam**: experimental java-only *controller* to be deprecated post guilin.
-- **controlloop-utils**: *actor* simulators.
 
 Control Loops Transaction (controlloop-trans)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -146,11 +142,6 @@ It is the *guilin* release implementation of the ONAP use cases.
 It relies on the new *Actor* model framework to carry out a policy's
 execution.
 
-TDJAM Controller (controlloop-tdjam)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This is an experimental, java-only controller that will be deprecated after the
-guilin release.
 
 Utilities (controlloop-utils)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -273,10 +264,6 @@ First create an environment file (in this example *env.conf*) to configure the P
     DCAE_SERVERS=localhost
     DCAE_CONSUMER_GROUP=dcae.policy.shared
 
-    # Open DMaaP
-
-    DMAAP_SERVERS=localhost
-
     # AAI
 
     AAI_HOST=localhost
@@ -310,18 +297,6 @@ First create an environment file (in this example *env.conf*) to configure the P
 
 Configuration
 ~~~~~~~~~~~~~
-
-noop.pre.sh
-"""""""""""
-
-In order to avoid the noise in the logs that relate to dmaap configuration, a startup script (*noop.pre.sh*) is added
-to convert *dmaap* endpoints to *noop* in the host directory to be mounted.
-
-.. code-block:: bash
-
-    #!/bin/bash -x
-
-    sed -i "s/^dmaap/noop/g" $POLICY_HOME/config/*.properties
 
 features.pre.sh
 """""""""""""""
@@ -878,7 +853,7 @@ The reader can also look at the `policy/docker repository <https://github.com/on
 More specifically, these directories have examples of other PDP-D Control Loop configurations:
 
 * `plans <https://github.com/onap/policy-docker/tree/master/compose>`__: startup & teardown scripts.
-* `scripts <https://github.com/onap/policy-docker/blob/master/compose>`__: docker-compose files.
+* `scripts <https://github.com/onap/policy-docker/blob/master/compose/compose.yaml>`__: docker-compose file.
 * `tests <https://github.com/onap/policy-docker/blob/master/csit/resources/tests/drools-applications-test.robot>`__: test plan.
 
 Additional information
