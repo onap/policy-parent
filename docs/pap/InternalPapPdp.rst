@@ -10,20 +10,19 @@ The Internal Policy Framework PAP-PDP API
 .. contents::
     :depth: 3
 
-This page describes the API between the PAP and PDPs. The APIs in this section are implemented using `DMaaP
-API <https://wiki.onap.org/display/DW/DMaaP+API>`__ messaging. The APIs in this section are used for internal
-communication in the Policy Framework. The APIs are NOT supported for use by components outside the Policy Framework and
-are subject to revision and change at any time.
+This page describes the API between the PAP and PDPs. The APIs in this section are used for internal
+communication in the Policy Framework, using Kafka as messaging system. The APIs are NOT supported for
+use by components outside the Policy Framework and are subject to revision and change at any time.
 
 There are three messages on the API:
 
 1. PDP_STATUS: PDP→PAP, used by PDPs to report to the PAP
 
-2. PDP_UPDATE: PAP→PDP, used by the PAP to update the policies running on PDPs, triggers a PDP_STATUS message with
-   the result of the PDP_UPDATE operation
+2. PDP_UPDATE: PAP→PDP, used by the PAP to update the policies running on PDPs, triggers a PDP_STATUS
+   message with the result of the PDP_UPDATE operation
 
-3. PDP_STATE_CHANGE: PAP→PDP, used by the PAP to change the state of PDPs, triggers a PDP_STATUS message with the result
-   of the PDP_STATE_CHANGE operation
+3. PDP_STATE_CHANGE: PAP→PDP, used by the PAP to change the state of PDPs, triggers a PDP_STATUS message
+   with the result of the PDP_STATE_CHANGE operation
 
 
 The fields in the table below are valid on API calls:
@@ -57,7 +56,7 @@ policiesToBeUndeployed          N/A      M        N/A      The list of policies 
 ->(name)                        O        M        N/A      The name of a TOSCA policy running on the PDP
 ->policy_type                   O        M        N/A      The TOSCA policy type of the policyWhen a PDP starts,
                                                            it commences periodic sending of *PDP_STATUS*
-                                                           messages on DMaaP. The PAP receives these messages
+                                                           messages. The PAP receives these messages
                                                            and acts in whatever manner is appropriate.
 ->policy_type_version           O        M        N/A      The version of the TOSCA policy type of the policy
 ->properties                    O        M        N/A      The properties of the policy for the XACML, Drools,
@@ -95,9 +94,9 @@ type in the implementation of this API.
 ==================
 The purpose of this API is for PDPs to provide heartbeat, status, health, and statistical information to Policy
 Administration. There is a single *PDP_STATUS* message on this API. PDPs send this message to the PAP using the
-*POLICY_PDP_PAP* DMaaP topic. The PAP listens on this topic for messages.
+*POLICY_PDP_PAP* topic. The PAP listens on this topic for messages.
 
-When a PDP starts, it commences periodic sending of *PDP_STATUS* messages on DMaaP. The PAP receives these messages and
+When a PDP starts, it commences periodic sending of *PDP_STATUS* messages. The PAP receives these messages and
 acts in whatever manner is appropriate. *PDP_UPDATE* and *PDP_STATE_CHANGE* operations trigger a
 *PDP_STATUS* message as a response.
 
@@ -133,13 +132,6 @@ sent to the PAP in a *PDP_STATUS* message is unknown to the PAP, the PAP locks t
     name: xacml-23d33c2a-8715-43a8-ade5-5923fc0f185c
     pdpGroup: defaultGroup
     pdpSubgroup: xacml
-    statistics:
-      policyDeployCount: 0
-      policyDeploySuccessCount: 0
-      policyDeployFailCount: 0
-      policyExecutedCount: 123
-      policyExecutedSuccessCount: 122
-      policyExecutedFailCount: 1
 
 
 .. code-block:: yaml
@@ -160,16 +152,6 @@ sent to the PAP in a *PDP_STATUS* message is unknown to the PAP, the PAP locks t
     deployment_instance_info:
       node_address: drools_2_pod
       # Other deployment instance info
-    statistics:
-      policyDeployCount: 3
-      policyDeploySuccessCount: 3
-      policyDeployFailCount: 0
-      policyExecutedCount: 123
-      policyExecutedSuccessCount: 122
-      policyExecutedFailCount: 1
-      policyUndeployCount: 0
-      policyUndeploySuccessCount: 0
-      policyUndeployFailCount: 0
     response:
       responseTo: 52117e25-f416-45c7-a955-83ed929d557f
       responseStatus: SUCCESSSS
@@ -191,16 +173,6 @@ sent to the PAP in a *PDP_STATUS* message is unknown to the PAP, the PAP locks t
     policies:
       - name: onap.controllloop.operational.apex.bbs.EastRegion
         version: 1.0.0
-    statistics:
-      policyExecutedCount: 0
-      policyExecutedSuccessCount: 0
-      policyExecutedFailCount: 0
-      policyDeployCount: 1
-      policyDeploySuccessCount: 1
-      policyDeployFailCount: 0
-      policyUndeployCount: 0
-      policyUndeploySuccessCount: 0
-      policyUndeployFailCount: 0
     response:
       responseTo: 679fad9b-abbf-4b9b-971c-96a8372ec8af
       responseStatus: SUCCESS
@@ -235,20 +207,13 @@ sent to the PAP in a *PDP_STATUS* message is unknown to the PAP, the PAP locks t
     name: xacml-23d33c2a-8715-43a8-ade5-5923fc0f185c
     pdpGroup: onap.pdpgroup.Monitoring
     pdpSubgroup: xacml
-    statistics:
-      policyDeployCount: 0
-      policyDeploySuccessCount: 0
-      policyDeployFailCount: 0
-      policyExecutedCount: 123
-      policyExecutedSuccessCount: 122
-      policyExecutedFailCount: 1
 
 
 2 PDP API for PAPs
 ==================
 
 The purpose of this API is for the PAP to load and update policies on PDPs and to change the state of PDPs.
-The PAP sends *PDP_UPDATE* and *PDP_STATE_CHANGE* messages to PDPs using the *POLICY_PAP_PDP* DMaaP topic.
+The PAP sends *PDP_UPDATE* and *PDP_STATE_CHANGE* messages to PDPs using the *POLICY_PAP_PDP* topic.
 PDPs listen on this topic for messages.
 
 The PAP can set the scope of *PDP_STATE_CHANGE* message:
