@@ -993,7 +993,7 @@
         <connection>scm:git:ssh://git.onap.org:29418/${project.groupId}</connection>
         <developerConnection>scm:git:ssh://git.onap.org:29418/${project.groupId}</developerConnection>
         <tag>HEAD</tag>
-        <url>https://wiki.onap.org/display/DW/Integration+Project</url>
+        <url>https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230649/Integration+Project</url>
     </scm>
     <profiles>
         <profile>

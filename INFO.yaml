@@ -12,7 +12,7 @@ project_lead: &onap_releng_ptl
 primary_contact: *onap_releng_ptl
 issue_tracking:
     type: 'jira'
-    url: 'https://jira.onap.org/projects/POLICY'
+    url: 'https://lf-onap.atlassian.net/jira/software/c/projects/POLICY/boards/2'
     key: 'POLICY'
 mailing_list:
     type: 'groups.io'
@@ -21,8 +21,8 @@ mailing_list:
 realtime_discussion: ''
 meetings:
     - type: 'zoom'
-      agenda: 'https://wiki.onap.org/pages/viewpage.action?pageId=6589781'
-      url: 'https://wiki.onap.org/display/DW/Policy+Framework+Project'
+      agenda: 'https://lf-onap.atlassian.net/wiki/spaces/Meetings/pages/15486632/Pre+Post+Oslo+2024+Policy+Team+Meetings'
+      url: 'https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230647/Policy+Framework+Project'
       server: 'n/a'
       channel: 'n/a'
       repeats: 'weekly'

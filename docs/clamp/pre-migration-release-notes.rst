@@ -26,8 +26,8 @@ The main goal of the Guilin release was to:
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `CLAMP R7 - M1 release planning <https://wiki.onap.org/display/DW/CLAMP+R7+-+M1+Release+Planning>`_
-	- The full list of issues(bugs) solved, is available on `CLAMP R7 - Guilin list of solved issues(bugs) <https://wiki.onap.org/pages/viewpage.action?pageId=93000705>`_
+	- The full list of implemented user stories and epics is available on `CLAMP R7 - M1 release planning <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16430687/CLAMP+R7+-+M1+Release+Planning>`_
+	- The full list of issues(bugs) solved, is available on `CLAMP R7 - Guilin list of solved issues(bugs) <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16450689/CLAMP+R7+-+Guilin+list+of+solved+issues+bugs>`_
 
 **Known Issues**
 
@@ -42,13 +42,13 @@ The main goal of the Guilin release was to:
 CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
 
 Quick Links:
- 	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
+ 	- `CLAMP project page <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230605/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
 **Upgrade Notes**
 
-    - The Upgrade strategy for Guilin can be found here:`<https://wiki.onap.org/display/DW/Frankfurt+CLAMP+Container+upgrade+strategy>`_
+    - The Upgrade strategy for Guilin can be found here:`<https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16417801/Frankfurt+CLAMP+Container+upgrade+strategy>`_
     - New Docker Containers are available. the list of containers composing this release are below:
        - clamp-backend: nexus3.onap.org:10001/onap/clamp-backend 5.1.5
        - clamp-frontend: nexus3.onap.org:10001/onap/clamp-frontend 5.1.5
@@ -64,11 +64,11 @@ Version: 5.0.7 (Frankfurt maintenance release tag 6.0.0)
 
 **Bug Fixes**
 
-	- `CLAMP-878 <https://jira.onap.org/browse/CLAMP-885>`_ Clamp backend pod fails with mariaDB server error
-	- `CLAMP-885 <https://jira.onap.org/browse/CLAMP-885>`_ CLAMP update documentation
+	- `CLAMP-878 <https://lf-onap.atlassian.net/browse/CLAMP-885>`_ Clamp backend pod fails with mariaDB server error
+	- `CLAMP-885 <https://lf-onap.atlassian.net/browse/CLAMP-885>`_ CLAMP update documentation
 
 **Known Issues**
-    - `CLAMP-856 <https://jira.onap.org/browse/CLAMP-856>`_ CLAMP should not display all CDS workflow properties
+    - `CLAMP-856 <https://lf-onap.atlassian.net/browse/CLAMP-856>`_ CLAMP should not display all CDS workflow properties
     - Other more minor issues are captured in the following page:`CLAMP known Frankfurt issues <https://wiki.onap.org/display/DW/CLAMP+R6+-+Frankfurt+known+issues%28bugs%29+-+to+be+solved+in+futur+Releases>`_
 
 **Security Notes**
@@ -84,12 +84,12 @@ N/A
 CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
 
 Quick Links:
- 	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
+ 	- `CLAMP project page <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230605/CLAMP+Project>`_
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
 **Upgrade Notes**
 
-    - The Upgrade strategy for Frankfurt can be found here:`<https://wiki.onap.org/display/DW/Frankfurt+CLAMP+Container+upgrade+strategy>`_
+    - The Upgrade strategy for Frankfurt can be found here:`<https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16417801/Frankfurt+CLAMP+Container+upgrade+strategy>`_
     - New Docker Containers are available. the list of containers composing this release are below:
 
        - clamp-backend-filebeat-onap: docker.elastic.co/beats/filebeat 5.5.0
@@ -121,11 +121,11 @@ The main goal of the Frankfurt release was to:
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `Frankfurt CLAMP M1 release planning <https://wiki.onap.org/display/DW/CLAMP+R6+-+M1+Release+Planning>`_
-	- The full list of issues(bugs) solved, is available on `CLAMP R6 - Frankfurt list of solved issues(bugs) <https://wiki.onap.org/pages/viewpage.action?pageId=84648915>`_
+	- The full list of implemented user stories and epics is available on `Frankfurt CLAMP M1 release planning <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16397735/CLAMP+R6+-+M1+Release+Planning>`_
+	- The full list of issues(bugs) solved, is available on `CLAMP R6 - Frankfurt list of solved issues(bugs) <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16426873/CLAMP+R6+-+Frankfurt+list+of+solved+issues+bugs>`_
 
 **Known Issues**
-    - `CLAMP-856 <https://jira.onap.org/browse/CLAMP-856>`_ CLAMP should not display all CDS workflow properties
+    - `CLAMP-856 <https://lf-onap.atlassian.net/browse/CLAMP-856>`_ CLAMP should not display all CDS workflow properties
 
 **Security Notes**
 
@@ -138,13 +138,13 @@ The main goal of the Frankfurt release was to:
 CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
 
 Quick Links:
- 	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
+ 	- `CLAMP project page <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230605/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
 **Upgrade Notes**
 
-    - The Upgrade strategy for Frankfurt can be found here:`<https://wiki.onap.org/display/DW/Frankfurt+CLAMP+Container+upgrade+strategy>`_
+    - The Upgrade strategy for Frankfurt can be found here:`<https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16417801/Frankfurt+CLAMP+Container+upgrade+strategy>`_
     - New Docker Containers are available. the list of containers composing this release are below:
       - clamp-backend-filebeat-onap: docker.elastic.co/beats/filebeat 5.5.0
       - clamp-backend: nexus3.onap.org:10001/onap/clamp-backend 5.0.6
@@ -174,9 +174,9 @@ The main goal of the El Alto release was to:
 
 **Known Issues**
 
-    - `CLAMP-506 <https://jira.onap.org/browse/CLAMP-506>`_ Elastic Search Clamp image cannot be built anymore(SearchGuard DMCA issue)
+    - `CLAMP-506 <https://lf-onap.atlassian.net/browse/CLAMP-506>`_ Elastic Search Clamp image cannot be built anymore(SearchGuard DMCA issue)
     - Due to the uncertainties with the DMCA SearchGuard issue, the ELK stack has been removed from El Alto release, meaning the CLAMP "Control Loop Dashboard" is not part of the El Alto release.
-    - `CLAMP-519 <https://jira.onap.org/browse/CLAMP-519>`_ Clamp cannot authenticate to AAF(Local authentication as workaround)
+    - `CLAMP-519 <https://lf-onap.atlassian.net/browse/CLAMP-519>`_ Clamp cannot authenticate to AAF(Local authentication as workaround)
 
 
 **Security Notes**
@@ -188,14 +188,14 @@ The main goal of the El Alto release was to:
 *Known Vulnerabilities in Used Modules*
 
 CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
-The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in El Alto <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_.
+The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in El Alto <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16399457/El+Alto+CLAMP+Security+Vulnerability+Report>`_.
 
 Quick Links:
- 	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
+ 	- `CLAMP project page <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230605/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
- 	- `Project Vulnerability Review Table for CLAMP (El Alto) <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_
+ 	- `Project Vulnerability Review Table for CLAMP (El Alto) <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16399457/El+Alto+CLAMP+Security+Vulnerability+Report>`_
 
 **Upgrade Notes**
 
@@ -222,27 +222,26 @@ The main goal of the El Alto-Early Drop release was to:
 
 **Known Issues**
 
-    - `CLAMP-384 <https://jira.onap.org/browse/CLAMP-384>`_ Loop State in UI is not reflecting the current state
+    - `CLAMP-384 <https://lf-onap.atlassian.net/browse/CLAMP-384>`_ Loop State in UI is not reflecting the current state
 
 **Security Notes**
 
 *Fixed Security Issues*
 
-    - `OJSI-166 <https://jira.onap.org/browse/OJSI-166>`_ Port 30290 exposes unprotected service outside of cluster.
+    - `OJSI-166 <https://lf-onap.atlassian.net/browse/OJSI-166>`_ Port 30290 exposes unprotected service outside of cluster.
 
 *Known Security Issues*
 
 *Known Vulnerabilities in Used Modules*
 
-CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
-The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in El Alto Early Drop <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_.
+CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been
+addressed, items that remain open have been assessed for risk and actions to be taken in future release.
+The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the
+`project in El Alto Early Drop <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16386513/CLAMP+R5+-+Early+Drop>`_.
 
 Quick Links:
- 	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
-
+ 	- `CLAMP project page <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230605/CLAMP+Project>`_
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
-
- 	- `Project Vulnerability Review Table for CLAMP (El Alto Early Drop) <https://wiki.onap.org/pages/viewpage.action?pageId=68540334>`_
 
 **Upgrade Notes**
 
@@ -261,41 +260,43 @@ The Dublin release is the fourth release of the Control Loop Automation Manageme
 
 The main goal of the Dublin release was to:
 
-    - Stabilize Platform maturity by stabilizing CLAMP maturity matrix see `Wiki for Dublin <https://wiki.onap.org/display/DW/Dublin+Release+Platform+Maturity>`_.
+    - Stabilize Platform maturity by stabilizing CLAMP maturity matrix see `Wiki for Dublin <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16337727/Dublin+Release+Platform+Maturity>`_.
     - CLAMP supports of Policy-model based Configuration Policy
     - CLAMP supports new Policy Engine direct Rest API (no longer based on jar provided by Policy Engine)
     - CLAMP main Core/UI have been reworked, removal of security issues reported by Nexus IQ.
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `DUBLIN RELEASE <https://jira.onap.org/projects/CLAMP/versions/10427>`_
+	- The full list of implemented user stories and epics is available on `DUBLIN RELEASE <https://lf-onap.atlassian.net/projects/CLAMP/versions/10427>`_
 	  This includes the list of bugs that were fixed during the course of this release.
 
 **Known Issues**
 
-    - `CLAMP-384 <https://jira.onap.org/browse/CLAMP-384>`_ Loop State in UI is not reflecting the current state
+    - `CLAMP-384 <https://lf-onap.atlassian.net/browse/CLAMP-384>`_ Loop State in UI is not reflecting the current state
 
 **Security Notes**
 
 *Fixed Security Issues*
 
-    - `OJSI-128 <https://jira.onap.org/browse/OJSI-128>`_ In default deployment CLAMP (clamp) exposes HTTP port 30258 outside of cluster.
-    - `OJSI-147 <https://jira.onap.org/browse/OJSI-147>`_ In default deployment CLAMP (cdash-kibana) exposes HTTP port 30290 outside of cluster.
-    - `OJSI-152 <https://jira.onap.org/browse/OJSI-152>`_ In default deployment CLAMP (clamp) exposes HTTP port 30295 outside of cluster.
+    - `OJSI-128 <https://lf-onap.atlassian.net/browse/OJSI-128>`_ In default deployment CLAMP (clamp) exposes HTTP port 30258 outside of cluster.
+    - `OJSI-147 <https://lf-onap.atlassian.net/browse/OJSI-147>`_ In default deployment CLAMP (cdash-kibana) exposes HTTP port 30290 outside of cluster.
+    - `OJSI-152 <https://lf-onap.atlassian.net/browse/OJSI-152>`_ In default deployment CLAMP (clamp) exposes HTTP port 30295 outside of cluster.
 
 *Known Security Issues*
 
 *Known Vulnerabilities in Used Modules*
 
-CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
-The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in Dublin <https://wiki.onap.org/pages/viewpage.action?pageId=64003444>`_.
+CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been
+addressed, items that remain open have been assessed for risk and actions to be taken in future release.
+The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of
+the `project in Dublin <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16374261/Dublin+CLAMP+Security+Vulnerability+Report>`_.
 
 Quick Links:
- 	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
+ 	- `CLAMP project page <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230605/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
- 	- `Project Vulnerability Review Table for CLAMP (Dublin) <https://wiki.onap.org/pages/viewpage.action?pageId=64003444>`_
+ 	- `Project Vulnerability Review Table for CLAMP (Dublin) <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16374261/Dublin+CLAMP+Security+Vulnerability+Report>`_
 
 **Upgrade Notes**
 
@@ -316,7 +317,7 @@ none
 **Known Issues**
 CLAMP certificates have been renewed to extend their expiry dates
 
-    - `CLAMP-335 <https://jira.onap.org/browse/CLAMP-335>`_ Update Certificates on Casablanca release.
+    - `CLAMP-335 <https://lf-onap.atlassian.net/browse/CLAMP-335>`_ Update Certificates on Casablanca release.
 
 
 Version: 3.0.3 - maintenance release
@@ -333,7 +334,7 @@ none
 **Known Issues**
 one documentation issue was fixed, this issue does not require a new docker image:
 
-    - `CLAMP-257 <https://jira.onap.org/browse/CLAMP-257>`_ User Manual for CLAMP : nothing on readthedocs.
+    - `CLAMP-257 <https://lf-onap.atlassian.net/browse/CLAMP-257>`_ User Manual for CLAMP : nothing on readthedocs.
 
 Version: 3.0.3 (Casablanca)
 ---------------------------
@@ -356,7 +357,7 @@ The main goal of the Casablanca release was to:
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `CASABLANCA RELEASE <https://jira.onap.org/projects/CLAMP/versions/10408>`_
+	- The full list of implemented user stories and epics is available on `CASABLANCA RELEASE <https://lf-onap.atlassian.net/projects/CLAMP/versions/10408>`_
 	  This includes the list of bugs that were fixed during the course of this release.
 
 **Known Issues**
@@ -365,15 +366,17 @@ The main goal of the Casablanca release was to:
 
 **Security Notes**
 
-CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and actions to be taken in future release.
-The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in Casablanca <https://wiki.onap.org/pages/viewpage.action?pageId=42598587>`_.
+CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been
+addressed, items that remain open have been assessed for risk and actions to be taken in future release.
+The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of
+the `project in Casablanca <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16315131/Casablanca+CLAMP+Security+Vulnerability+Report>`_.
 
 Quick Links:
- 	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
+ 	- `CLAMP project page <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230605/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
- 	- `Project Vulnerability Review Table for CLAMP in Casablanca <https://wiki.onap.org/pages/viewpage.action?pageId=42598587>`_
+ 	- `Project Vulnerability Review Table for CLAMP in Casablanca <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16315131/Casablanca+CLAMP+Security+Vulnerability+Report>`_
 
 **Upgrade Notes**
 
@@ -411,12 +414,12 @@ The main goal of the Beijing release was to:
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `BEIJING RELEASE <https://jira.onap.org/projects/CLAMP/versions/10314>`_
+	- The full list of implemented user stories and epics is available on `BEIJING RELEASE <https://lf-onap.atlassian.net/projects/CLAMP/versions/10314>`_
 	  This includes the list of bugs that were fixed during the course of this release.
 
 **Known Issues**
 
-    - `CLAMP-69 <https://jira.onap.org/browse/CLAMP-69>`_ Deploy action does not always work.
+    - `CLAMP-69 <https://lf-onap.atlassian.net/browse/CLAMP-69>`_ Deploy action does not always work.
 
         The "Deploy" action does not work directly after submitting it.
 
@@ -426,18 +429,21 @@ The main goal of the Beijing release was to:
 
 **Security Notes**
 
-CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been addressed, items that remain open have been assessed for risk and determined to be false positive. The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of the `project in Beijing <https://wiki.onap.org/pages/viewpage.action?pageId=25440749>`_.
+CLAMP code has been formally scanned during build time using NexusIQ and all Critical vulnerabilities have been 
+addressed, items that remain open have been assessed for risk and determined to be false positive. 
+The CLAMP open Critical security vulnerabilities and their risk assessment have been documented as part of 
+the `project in Beijing <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16275671/CLAMP+R2+-+Security+Vulnerability+Threat+Analysis>`_.
 
 Quick Links:
- 	- `CLAMP project page <https://wiki.onap.org/display/DW/CLAMP+Project>`_
+ 	- `CLAMP project page <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230605/CLAMP+Project>`_
 
  	- `Passing Badge information for CLAMP <https://bestpractices.coreinfrastructure.org/en/projects/1197>`_
 
- 	- `Project Vulnerability Review Table for CLAMP (Bejing) <https://wiki.onap.org/pages/viewpage.action?pageId=25440749>`_
+ 	- `Project Vulnerability Review Table for CLAMP (Beijing) <https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16275671/CLAMP+R2+-+Security+Vulnerability+Threat+Analysis>`_
 
 **Upgrade Notes**
 
-    New Docker Containers are avaialble, an ELK stack is also now part of CLAMP deployments.
+    New Docker Containers are available, an ELK stack is also now part of CLAMP deployments.
 
 **Deprecation Notes**
 
@@ -464,13 +470,13 @@ The main goal of the Amsterdam release was to:
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `AMSTERDAM RELEASE <https://jira.onap.org/projects/CLAMP/versions/10313>`_
+	- The full list of implemented user stories and epics is available on `AMSTERDAM RELEASE <https://lf-onap.atlassian.net/projects/CLAMP/versions/10313>`_
 	  This is technically the first release of CLAMP, previous release was the seed code contribution.
 	  As such, the defects fixed in this release were raised during the course of the release.
 	  Anything not closed is captured below under Known Issues. If you want to review the defects fixed in the Amsterdam release, refer to Jira link above.
 
 **Known Issues**
-	- `CLAMP-68 <https://jira.onap.org/browse/CLAMP-68>`_ ResourceVF not always provisioned.
+	- `CLAMP-68 <https://lf-onap.atlassian.net/browse/CLAMP-68>`_ ResourceVF not always provisioned.
 
         In Closed Loop -> Properties CL: When opening the popup window, the first service in the list does not show Resource-VF even though in SDC there is a resource instance in the service.
 
@@ -478,7 +484,7 @@ The main goal of the Amsterdam release was to:
 
         If you have multiple service available (if not create a dummy one on SDC), just click on another one and then click back on the first one in the list. The ResourceVF should be provisioned now.
 
-    - `CLAMP-69 <https://jira.onap.org/browse/CLAMP-69>`_ Deploy action does not always work.
+    - `CLAMP-69 <https://lf-onap.atlassian.net/browse/CLAMP-69>`_ Deploy action does not always work.
 
         The "Deploy" action does not work directly after submitting it.
 
