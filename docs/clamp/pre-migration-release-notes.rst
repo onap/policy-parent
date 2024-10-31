@@ -64,11 +64,11 @@ Version: 5.0.7 (Frankfurt maintenance release tag 6.0.0)
 
 **Bug Fixes**
 
-	- `CLAMP-878 <https://jira.onap.org/browse/CLAMP-885>`_ Clamp backend pod fails with mariaDB server error
-	- `CLAMP-885 <https://jira.onap.org/browse/CLAMP-885>`_ CLAMP update documentation
+	- `CLAMP-878 <https://lf-onap.atlassian.net/browse/CLAMP-885>`_ Clamp backend pod fails with mariaDB server error
+	- `CLAMP-885 <https://lf-onap.atlassian.net/browse/CLAMP-885>`_ CLAMP update documentation
 
 **Known Issues**
-    - `CLAMP-856 <https://jira.onap.org/browse/CLAMP-856>`_ CLAMP should not display all CDS workflow properties
+    - `CLAMP-856 <https://lf-onap.atlassian.net/browse/CLAMP-856>`_ CLAMP should not display all CDS workflow properties
     - Other more minor issues are captured in the following page:`CLAMP known Frankfurt issues <https://wiki.onap.org/display/DW/CLAMP+R6+-+Frankfurt+known+issues%28bugs%29+-+to+be+solved+in+futur+Releases>`_
 
 **Security Notes**
@@ -125,7 +125,7 @@ The main goal of the Frankfurt release was to:
 	- The full list of issues(bugs) solved, is available on `CLAMP R6 - Frankfurt list of solved issues(bugs) <https://wiki.onap.org/pages/viewpage.action?pageId=84648915>`_
 
 **Known Issues**
-    - `CLAMP-856 <https://jira.onap.org/browse/CLAMP-856>`_ CLAMP should not display all CDS workflow properties
+    - `CLAMP-856 <https://lf-onap.atlassian.net/browse/CLAMP-856>`_ CLAMP should not display all CDS workflow properties
 
 **Security Notes**
 
@@ -174,9 +174,9 @@ The main goal of the El Alto release was to:
 
 **Known Issues**
 
-    - `CLAMP-506 <https://jira.onap.org/browse/CLAMP-506>`_ Elastic Search Clamp image cannot be built anymore(SearchGuard DMCA issue)
+    - `CLAMP-506 <https://lf-onap.atlassian.net/browse/CLAMP-506>`_ Elastic Search Clamp image cannot be built anymore(SearchGuard DMCA issue)
     - Due to the uncertainties with the DMCA SearchGuard issue, the ELK stack has been removed from El Alto release, meaning the CLAMP "Control Loop Dashboard" is not part of the El Alto release.
-    - `CLAMP-519 <https://jira.onap.org/browse/CLAMP-519>`_ Clamp cannot authenticate to AAF(Local authentication as workaround)
+    - `CLAMP-519 <https://lf-onap.atlassian.net/browse/CLAMP-519>`_ Clamp cannot authenticate to AAF(Local authentication as workaround)
 
 
 **Security Notes**
@@ -222,13 +222,13 @@ The main goal of the El Alto-Early Drop release was to:
 
 **Known Issues**
 
-    - `CLAMP-384 <https://jira.onap.org/browse/CLAMP-384>`_ Loop State in UI is not reflecting the current state
+    - `CLAMP-384 <https://lf-onap.atlassian.net/browse/CLAMP-384>`_ Loop State in UI is not reflecting the current state
 
 **Security Notes**
 
 *Fixed Security Issues*
 
-    - `OJSI-166 <https://jira.onap.org/browse/OJSI-166>`_ Port 30290 exposes unprotected service outside of cluster.
+    - `OJSI-166 <https://lf-onap.atlassian.net/browse/OJSI-166>`_ Port 30290 exposes unprotected service outside of cluster.
 
 *Known Security Issues*
 
@@ -268,20 +268,20 @@ The main goal of the Dublin release was to:
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `DUBLIN RELEASE <https://jira.onap.org/projects/CLAMP/versions/10427>`_
+	- The full list of implemented user stories and epics is available on `DUBLIN RELEASE <https://lf-onap.atlassian.net/projects/CLAMP/versions/10427>`_
 	  This includes the list of bugs that were fixed during the course of this release.
 
 **Known Issues**
 
-    - `CLAMP-384 <https://jira.onap.org/browse/CLAMP-384>`_ Loop State in UI is not reflecting the current state
+    - `CLAMP-384 <https://lf-onap.atlassian.net/browse/CLAMP-384>`_ Loop State in UI is not reflecting the current state
 
 **Security Notes**
 
 *Fixed Security Issues*
 
-    - `OJSI-128 <https://jira.onap.org/browse/OJSI-128>`_ In default deployment CLAMP (clamp) exposes HTTP port 30258 outside of cluster.
-    - `OJSI-147 <https://jira.onap.org/browse/OJSI-147>`_ In default deployment CLAMP (cdash-kibana) exposes HTTP port 30290 outside of cluster.
-    - `OJSI-152 <https://jira.onap.org/browse/OJSI-152>`_ In default deployment CLAMP (clamp) exposes HTTP port 30295 outside of cluster.
+    - `OJSI-128 <https://lf-onap.atlassian.net/browse/OJSI-128>`_ In default deployment CLAMP (clamp) exposes HTTP port 30258 outside of cluster.
+    - `OJSI-147 <https://lf-onap.atlassian.net/browse/OJSI-147>`_ In default deployment CLAMP (cdash-kibana) exposes HTTP port 30290 outside of cluster.
+    - `OJSI-152 <https://lf-onap.atlassian.net/browse/OJSI-152>`_ In default deployment CLAMP (clamp) exposes HTTP port 30295 outside of cluster.
 
 *Known Security Issues*
 
@@ -316,7 +316,7 @@ none
 **Known Issues**
 CLAMP certificates have been renewed to extend their expiry dates
 
-    - `CLAMP-335 <https://jira.onap.org/browse/CLAMP-335>`_ Update Certificates on Casablanca release.
+    - `CLAMP-335 <https://lf-onap.atlassian.net/browse/CLAMP-335>`_ Update Certificates on Casablanca release.
 
 
 Version: 3.0.3 - maintenance release
@@ -333,7 +333,7 @@ none
 **Known Issues**
 one documentation issue was fixed, this issue does not require a new docker image:
 
-    - `CLAMP-257 <https://jira.onap.org/browse/CLAMP-257>`_ User Manual for CLAMP : nothing on readthedocs.
+    - `CLAMP-257 <https://lf-onap.atlassian.net/browse/CLAMP-257>`_ User Manual for CLAMP : nothing on readthedocs.
 
 Version: 3.0.3 (Casablanca)
 ---------------------------
@@ -356,7 +356,7 @@ The main goal of the Casablanca release was to:
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `CASABLANCA RELEASE <https://jira.onap.org/projects/CLAMP/versions/10408>`_
+	- The full list of implemented user stories and epics is available on `CASABLANCA RELEASE <https://lf-onap.atlassian.net/projects/CLAMP/versions/10408>`_
 	  This includes the list of bugs that were fixed during the course of this release.
 
 **Known Issues**
@@ -411,12 +411,12 @@ The main goal of the Beijing release was to:
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `BEIJING RELEASE <https://jira.onap.org/projects/CLAMP/versions/10314>`_
+	- The full list of implemented user stories and epics is available on `BEIJING RELEASE <https://lf-onap.atlassian.net/projects/CLAMP/versions/10314>`_
 	  This includes the list of bugs that were fixed during the course of this release.
 
 **Known Issues**
 
-    - `CLAMP-69 <https://jira.onap.org/browse/CLAMP-69>`_ Deploy action does not always work.
+    - `CLAMP-69 <https://lf-onap.atlassian.net/browse/CLAMP-69>`_ Deploy action does not always work.
 
         The "Deploy" action does not work directly after submitting it.
 
@@ -464,13 +464,13 @@ The main goal of the Amsterdam release was to:
 
 **Bug Fixes**
 
-	- The full list of implemented user stories and epics is available on `AMSTERDAM RELEASE <https://jira.onap.org/projects/CLAMP/versions/10313>`_
+	- The full list of implemented user stories and epics is available on `AMSTERDAM RELEASE <https://lf-onap.atlassian.net/projects/CLAMP/versions/10313>`_
 	  This is technically the first release of CLAMP, previous release was the seed code contribution.
 	  As such, the defects fixed in this release were raised during the course of the release.
 	  Anything not closed is captured below under Known Issues. If you want to review the defects fixed in the Amsterdam release, refer to Jira link above.
 
 **Known Issues**
-	- `CLAMP-68 <https://jira.onap.org/browse/CLAMP-68>`_ ResourceVF not always provisioned.
+	- `CLAMP-68 <https://lf-onap.atlassian.net/browse/CLAMP-68>`_ ResourceVF not always provisioned.
 
         In Closed Loop -> Properties CL: When opening the popup window, the first service in the list does not show Resource-VF even though in SDC there is a resource instance in the service.
 
@@ -478,7 +478,7 @@ The main goal of the Amsterdam release was to:
 
         If you have multiple service available (if not create a dummy one on SDC), just click on another one and then click back on the first one in the list. The ResourceVF should be provisioned now.
 
-    - `CLAMP-69 <https://jira.onap.org/browse/CLAMP-69>`_ Deploy action does not always work.
+    - `CLAMP-69 <https://lf-onap.atlassian.net/browse/CLAMP-69>`_ Deploy action does not always work.
 
         The "Deploy" action does not work directly after submitting it.
 
