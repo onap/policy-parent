@@ -107,7 +107,3 @@ The properties are found in the feature-active-standby-management.properties fil
 
 
 End of Document
-
-.. SSNote: Wiki page ref. https://wiki.onap.org/pages/viewpage.action?pageId=16005790
-
-

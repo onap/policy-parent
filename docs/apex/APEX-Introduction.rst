@@ -521,7 +521,7 @@ Resources
 
             -  Issue Management (source and documentation, ONAP JIRA,
                requires a Linux Foundation ID):
-               https://jira.onap.org/projects/POLICY/issues
+               https://lf-onap.atlassian.net/jira/software/c/projects/POLICY/issues
 
 .. container::
    :name: footer
