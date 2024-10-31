@@ -432,7 +432,7 @@ At runtime, interaction between ONAP platform services and application microserv
 relatively unconstrained, so interactions between Automation Composition Elements for a given Automation
 Composition Instance remain relatively unconstrained. A
 `proposal to support access-controlled access to and between ONAP services
-<https://wiki.onap.org/pages/viewpage.action?pageId=103417456>`_
+<https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16472429/ONAP+Next+Generation+Security+Logging+Architecture>`_
 will improve this. This can be complemented by intercepting and controlling services
 accesses between Automation Composition Elements for Automation Composition Instances for some/all Automation
 Composition types.
