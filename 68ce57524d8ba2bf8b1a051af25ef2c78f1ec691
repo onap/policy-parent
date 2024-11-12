@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d45d0c3_484f33e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2024-11-12T15:49:37Z",
+      "side": 1,
+      "message": "Removed the -1 Bypass because of Too Many Requests error on LF Confluence pages",
+      "revId": "68ce57524d8ba2bf8b1a051af25ef2c78f1ec691",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
