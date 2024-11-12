@@ -569,8 +569,8 @@ Using Features and Listeners
 
 Features hook into the interception points provided by the the *PDP-D* main entities.
 
-*Endpoint Listeners*, see `here <https://git.onap.org/policy/common/tree/policy-endpoints/src/main/java/org/onap/policy/common/endpoints/event/comm/TopicListener.java>`__
-and `here <https://git.onap.org/policy/common/tree/policy-endpoints/src/main/java/org/onap/policy/common/endpoints/listeners>`__, can be used in conjuction with features for additional capabilities.
+*Endpoint Listeners*, see `here <https://git.onap.org/policy/common/tree/message-bus/src/main/java/org/onap/policy/common/message/bus/event/TopicListener.java>`__
+and `here <https://git.onap.org/policy/common/tree/policy-endpoints/src/main/java/org/onap/policy/common/endpoints/listeners>`__, can be used in conjunction with features for additional capabilities.
 
 Using Maven-Drools applications
 """""""""""""""""""""""""""""""

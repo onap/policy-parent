@@ -19,6 +19,7 @@ automation composition elements using Metadata described in TOSCA.
    acm/allowed-operations
    acm/acm-user-guide
    acm/acm-participant-guide
+   acm/clamp-csit
 
 .. note::
       Policy/CLAMP was merged into the Policy Framework in the Honolulu release
