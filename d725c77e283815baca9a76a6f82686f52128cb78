@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf716cc_f782e005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2024-11-12T14:53:42Z",
+      "side": 1,
+      "message": "I have fixed this broken link in my other review for csit docs.",
+      "revId": "d725c77e283815baca9a76a6f82686f52128cb78",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
