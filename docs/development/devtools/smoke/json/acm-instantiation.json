@@ -15,7 +15,7 @@
                 "chart": {
                     "chartId": {
                         "name": "nginx-ingress",
-                        "version": "0.11.0"
+                        "version": "1.4.1"
                     },
                     "releaseName": "nginxapp",
                     "namespace": "onap"

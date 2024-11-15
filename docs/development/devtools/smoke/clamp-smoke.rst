@@ -121,7 +121,7 @@ Running on the Command Line
    .. code-block:: bash
 
       cd ~/git/clamp/runtime-acm
-      java -jar target/policy-clamp-runtime-acm-7.1.3-SNAPSHOT.jar
+      java -jar target/policy-clamp-runtime-acm-8.1.0-SNAPSHOT.jar
 
 
 Running participant simulator
@@ -132,7 +132,7 @@ Run the following commands:
    .. code-block:: bash
 
       cd ~/git/clamp/participant/participant-impl/participant-impl-simulator
-      java -jar target/policy-clamp-participant-impl-simulator-7.1.3-SNAPSHOT.jar
+      java -jar target/policy-clamp-participant-impl-simulator-8.1.0-SNAPSHOT.jar
 
 
 Running the CLAMP automation composition docker image
