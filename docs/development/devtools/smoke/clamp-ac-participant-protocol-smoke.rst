@@ -67,7 +67,6 @@ Test result:
 
 - Observe PARTICIPANT_REGISTER going from participant to runtime
 - Observe PARTICIPANT_REGISTER_ACK going from runtime to participant
-- Observe PARTICIPANT_PRIME going from runtime to participant
 
 3.2 Participant Deregistration
 ==============================
@@ -89,7 +88,8 @@ Test result:
 
 - Observe PARTICIPANT_PRIME going from runtime to participant with acm type definitions and common property values for participant types
 - Observe that the acm type definitions and common property values for participant types are stored on ParticipantHandler
-- Observe PARTICIPANT_PRIME_ACK going from runtime to participant
+- Observe PARTICIPANT_PRIME_ACK going from participant to runtime
+- Observe PARTICIPANT_SYNC_MSG going from runtime to participant
 
 3.4 Participant DePriming
 =========================
@@ -103,7 +103,8 @@ Test result:
 - If acm instances exist in runtime database, return a response for the REST API with error response saying "Cannot decommission acm type definition"
 - If no acm instances exist in runtime database, Observe PARTICIPANT_PRIME going from runtime to participant with definitions as null
 - Observe that the acm type definitions and common property values for participant types are removed on ParticipantHandler
-- Observe PARTICIPANT_PRIME_ACK going from runtime to participant
+- Observe PARTICIPANT_PRIME_ACK going from participant to runtime
+- Observe PARTICIPANT_SYNC_MSG going from runtime to participant
 
 3.5 Automation Composition Instance
 ===================================
@@ -128,6 +129,7 @@ Test result:
 - Observe that the AutomationCompositionElements deploy state is DEPLOYED
 - Observe that the acm deploy state is DEPLOYED
 - Observe AUTOMATION_COMPOSITION_DEPLOY_ACK going from participant to runtime
+- Observe PARTICIPANT_SYNC_MSG going from runtime to participant
 
 3.7 Automation Composition lock state change to UNLOCK
 ======================================================
@@ -140,6 +142,7 @@ Test result:
 - Observe that the AutomationCompositionElements lock state is UNLOCK
 - Observe that the acm state is UNLOCK
 - Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
+- Observe PARTICIPANT_SYNC_MSG going from runtime to participant
 
 3.8 Automation Composition lock state change to LOCK
 ====================================================
@@ -152,6 +155,7 @@ Test result:
 - Observe that the AutomationCompositionElements lock state is LOCK
 - Observe that the acm lock state is LOCK
 - Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
+- Observe PARTICIPANT_SYNC_MSG going from runtime to participant
 
 3.9 Automation Composition deploy state change to UNDEPLOYED
 ============================================================
@@ -166,6 +170,7 @@ Test result:
 - Observe that the AutomationCompositionElements undeploy the instances from respective frameworks
 - Observe that the automation composition instances are removed from participants
 - Observe AUTOMATION_COMPOSITION_STATE_CHANGE_ACK going from participant to runtime
+- Observe PARTICIPANT_SYNC_MSG going from runtime to participant
 
 3.10 Automation Composition monitoring and reporting
 ====================================================
@@ -176,8 +181,7 @@ Action: Bring up participant
 Test result:
 
 - Observe that PARTICIPANT_STATUS message is sent from participants to runtime in a regular interval
-- Trigger a PARTICIPANT_STATUS_REQ from runtime and observe a PARTICIPANT_STATUS message with tosca definitions of automation composition type definitions sent
-  from all the participants to runtime
+- Trigger a PARTICIPANT_STATUS_REQ from runtime and observe a PARTICIPANT_STATUS message from all the participants to runtime
 
 This concluded the required smoke tests
 

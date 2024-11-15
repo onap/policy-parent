@@ -21,6 +21,8 @@ This article assumes that:
 * Your local maven repository is in the location *~/.m2/repository*
 * You have copied the settings.xml from oparent to *~/.m2/* directory
 * You have added settings to access the ONAP Nexus to your M2 configuration, see `Maven Settings Example <https://wiki.onap.org/display/DW/Setting+Up+Your+Development+Environment>`_ (bottom of the linked page)
+* Your local helm is in the location /usr/local/bin/helm
+* Your local kubectl is in the location /usr/local/bin/kubectl
 
 The procedure documented in this article has been verified using Ubuntu 20.04 LTS VM.
 
@@ -92,6 +94,9 @@ And into the file 'participant/participant-impl/participant-impl-kubernetes/src/
 .. literalinclude:: files/participant-kubernetes-application.yaml
    :language: yaml
 
+If the helm location is not '/usr/local/bin/helm' or the kubectl location is not '/usr/local/bin/kubectl', you have to update
+the file 'participant/participant-impl/participant-impl-kubernetes/src/main/java/org/onap/policy/clamp/acm/participant/kubernetes/helm/HelmClient.java'.
+
 2.3.3 Automation composition Runtime
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To start the automation composition runtime service, we need to execute the following maven command from the "runtime-acm" directory in the clamp repo. Automation composition runtime uses the config file "src/main/resources/application.yaml" by default.
@@ -130,7 +135,7 @@ For building docker images of runtime-acm and participants:
 
 .. code-block:: bash
 
-   cd ~/git/onap/policy/clamp/packages/
+   cd ~/git/onap/policy/clamp/
    mvn clean install -P docker
 
 
@@ -174,6 +179,8 @@ Request body:
         "primeOrder": "PRIME"
    }
 
+A successful prime request gives 202 responses in the postman client.
+
 3.3 Create New Instances of Automation composition
 ==================================================
 Once AC definition is primes, we can instantiate automation composition instances. This will create the instances with default state "UNDEPLOYED".
@@ -187,6 +194,8 @@ Instantiation Endpoint:
 Request body:
 
 :download:`Instantiation json <json/acm-instantiation.json>`
+
+A successful creation of new instance gives 201 responses in the postman client.
 
 3.4 Change the State of the Instance
 ====================================
@@ -206,6 +215,7 @@ Automation Composition Update Endpoint:
    }
 
 
+A successful deploy request gives 202 responses in the postman client.
 After the state changed to "DEPLOYED", nginx-ingress pod is deployed in the kubernetes cluster. And http participant should have posted the dummy data to the configured URL in the tosca template.
 
 The following command can be used to verify the pods deployed successfully by kubernetes participant.
