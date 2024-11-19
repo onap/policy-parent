@@ -1,0 +1,14 @@
+Repo, Last Tag Version,Snapshot Version,Changed Files,Docker Images
+policy/parent,5.0.0,5.0.1-SNAPSHOT,0,
+policy/docker,4.0.0,4.0.1-SNAPSHOT,1,'policy-jre-alpine':'policy-jdk-alpine':'policy-db-migrator'
+policy/common,3.0.0,3.0.1-SNAPSHOT,0,
+policy/models,4.0.0,4.0.1-SNAPSHOT,2,'policy-models-simulator'
+policy/api,4.0.0,4.0.1-SNAPSHOT,1,'policy-api'
+policy/pap,4.0.0,4.0.1-SNAPSHOT,1,'policy-pap'
+policy/apex-pdp,4.0.0,4.0.1-SNAPSHOT,1,'policy-apex-pdp'
+policy/drools-pdp,3.0.0,3.0.1-SNAPSHOT,1,'policy-drools'
+policy/xacml-pdp,4.0.0,4.0.1-SNAPSHOT,1,'policy-xacml-pdp'
+policy/distribution,4.0.0,4.0.1-SNAPSHOT,1,'policy-distribution'
+policy/clamp,8.0.0,8.0.1-SNAPSHOT,8,'policy-clamp-ac-pf-ppnt':'policy-clamp-ac-k8s-ppnt':'policy-clamp-ac-http-ppnt':'policy-clamp-ac-a1pms-ppnt':'policy-clamp-runtime-acm':'policy-clamp-acm-element-impl':'policy-clamp-ac-kserve-ppnt':'policy-clamp-ac-sim-ppnt'
+policy/gui,4.0.0,4.0.1-SNAPSHOT,1,'policy-gui'
+policy/drools-applications,3.0.0,3.0.1-SNAPSHOT,0,'policy-pdpd-cl'
