@@ -13,7 +13,7 @@ Guidelines for PDP-PAP interaction
 A PDP (Policy Decision Point) is where the policy execution happens. The administrative actions such as
 managing the PDPs, deploying or undeploying policies to these PDPs etc. are handled by PAP
 (Policy Administration Point). Any PDP should follow certain behavior to be registered and functional in
-the Policy Framework. All the communications between PAP and PDP happen over DMaaP on topic *POLICY-PDP-PAP*.
+the Policy Framework. All the communications between PAP and PDP happen over Kafka on topic *POLICY-PDP-PAP*.
 The below diagram shows how a PDP interacts with PAP.
 
 .. image:: images/PDP_PAP.svg
@@ -23,7 +23,7 @@ The below diagram shows how a PDP interacts with PAP.
 A PDP should be configured to start with the below information in its startup configuration file.
 
 - *pdpGroup* to which the PDP should belong to.
-- *DMaaP topic* 'POLICY-PDP-PAP' which should be the source and sink for communicating with PAP.
+- *Kafka topic* 'POLICY-PDP-PAP' which should be the source and sink for communicating with PAP.
 
 **2. PDP sends PDP_STATUS (registration message)**
 
@@ -81,7 +81,7 @@ PAP also sends the *pdpHeartbeatIntervalMs* which is the time interval in which 
 
 **4. PDP sends PDP_STATUS response to PDP_UPDATE**
 
-PDP on receiving the PDP_UPDATE message from the DMaaP topic, it first checks if the message is intended for the PDP.
+PDP on receiving the PDP_UPDATE message from the Kafka topic, it first checks if the message is intended for the PDP.
 If so, it updates itself with the information in PDP_UPDATE message from PAP such as *pdpSubgroup*,
 *pdpHeartbeatIntervalMs* and *policiesToBeDeployed* (if any). After handling the PDP_UPDATE message, the PDP sends
 a response message back to PAP with the current status of the PDP along with the result of the PDP_UPDATE operation.
