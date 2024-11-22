@@ -1870,7 +1870,7 @@ Writing Multiple Output Events from a Final State
   Consider a simple example where a policy *CDSActionPolicy* has a state *MakeCDSRequestState* which is also a final
   state. The state is triggered by an event *AAIEvent*. A task called *HandleCDSActionTask* is associated with
   *MakeCDSRequestState*.There are two output events expected from *MakeCDSRequestState* which are *CDSRequestEvent*
-  (request event sent to CDS) and *LogEvent* (log event sent to DMaaP).
+  (request event sent to CDS) and *LogEvent* (log event sent to Kafka).
   Writing an APEX policy with this example will involve the below changes.
 
 *Command File:*
@@ -1891,7 +1891,7 @@ Writing Multiple Output Events from a Final State
       event create name=CDSRequestEvent version=0.0.1 nameSpace=org.onap.policy.apex.test source=APEX target=CDS
       event parameter create name=CDSRequestEvent parName=actionIdentifiers schemaName=CDSActionIdentifiersType
       ..
-      event create name=LogEvent version=0.0.1 nameSpace=org.onap.policy.apex.test source=APEX target=DMaaP
+      event create name=LogEvent version=0.0.1 nameSpace=org.onap.policy.apex.test source=APEX target=Kafka
       event parameter create name=LogEvent  parName=status schemaName=SimpleStringType
       ..
 

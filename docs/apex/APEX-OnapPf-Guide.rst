@@ -154,7 +154,7 @@ Verify Installation - run APEXOnapPf
 
          .. container:: paragraph
 
-            OnapPfConfig.json is the file which contains the initial configuration to startup the ApexStarter service. The dmaap topics to be used for sending or receiving messages is also specified in the this file. Provide this file as argument while running the ApexOnapPf.
+            OnapPfConfig.json is the file which contains the initial configuration to startup the ApexStarter service. The Kafka topics to be used for sending or receiving messages is also specified in the this file. Provide this file as argument while running the ApexOnapPf.
 
          .. container:: listingblock
 
@@ -204,7 +204,7 @@ Verify Installation - run APEXOnapPf
 
          .. container:: paragraph
 
-            The ApexOnapPf service is now running, sending heartbeat messages to dmaap (which will be received by PAP) and listening for messages from PAP on the dmaap topic specified. Based on instructions from PAP, the ApexOnapPf will deploy or undeploy policies on the ApexEngine.
+            The ApexOnapPf service is now running, sending heartbeat messages to Kafka (which will be received by PAP) and listening for messages from PAP on the Kafka topic specified. Based on instructions from PAP, the ApexOnapPf will deploy or undeploy policies on the ApexEngine.
 
          .. container:: paragraph
 
@@ -343,16 +343,27 @@ Format of the configuration file (OnapPfConfig.json) explained
                           "supportedPolicyTypes":[{"name":"onap.policies.controlloop.operational.Apex","version":"1.0.0"}]  (6)
                       },
                       "topicParameterGroup": {
-                          "topicSources" : [{  (7)
-                              "topic" : "POLICY-PDP-PAP",  (8)
-                              "servers" : [ "message-router" ],  (9)
-                              "topicCommInfrastructure" : "dmaap"  (10)
-                          }],
-                          "topicSinks" : [{  (11)
-                              "topic" : "POLICY-PDP-PAP",  (12)
-                              "servers" : [ "message-router" ],  (13)
-                              "topicCommInfrastructure" : "dmaap"  (14)
-                          }]
+                        "topicSources": [
+                          {
+                            "topic": "policy-pdp-pap",
+                            "servers": [
+                              "kafka:9092"
+                            ],
+                            "useHttps": false,
+                            "topicCommInfrastructure": "kafka",
+                            "fetchTimeout": 15000
+                          }
+                        ],
+                        "topicSinks": [
+                          {
+                            "topic": "policy-pdp-pap",
+                            "servers": [
+                              "kafka:9092"
+                            ],
+                            "useHttps": false,
+                            "topicCommInfrastructure": "kafka"
+                          }
+                        ]
                       }
                   }
 
@@ -392,7 +403,7 @@ Format of the configuration file (OnapPfConfig.json) explained
             |                                   | topic.                                          |
             +-----------------------------------+-------------------------------------------------+
             | **10**                            | The source topic infrastructure.                |
-            |                                   | For e.g. dmaap, noop, ueb                       |
+            |                                   | For e.g. kafka, noop                       |
             +-----------------------------------+-------------------------------------------------+
             | **11**                            | List of topics' details to which                |
             |                                   | messages are sent.                              |
@@ -404,5 +415,5 @@ Format of the configuration file (OnapPfConfig.json) explained
             |                                   | topic.                                          |
             +-----------------------------------+-------------------------------------------------+
             | **14**                            | The sink topic infrastructure.                  |
-            |                                   | For e.g. dmaap, noop, ueb                       |
+            |                                   | For e.g. kafka, noop                       |
             +-----------------------------------+-------------------------------------------------+
