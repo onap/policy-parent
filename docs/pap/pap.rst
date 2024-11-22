@@ -390,7 +390,7 @@ Here is a sample response:
 The *PolicyAdministration* component (PAP) is initialized using a configuration file: `papParameters.yaml
 <https://github.com/onap/policy-pap/blob/master/packages/policy-pap-tarball/src/main/resources/etc/papParameters.yaml>`_
 
-The configuration file is a YAML file containing the relevant fields for configuring the REST server, Database and DMaaP connectivity and so on.
+The configuration file is a YAML file containing the relevant fields for configuring the REST server, Database and Kafka connectivity and so on.
 
 
 End of Document

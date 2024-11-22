@@ -54,6 +54,17 @@ Command Line
 
         mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
 
+
+Models Simulators
+*****************
+
+Command Line
+------------
+
+    .. code-block:: bash
+
+        mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.models.sim.pdp.PdpSimulatorMain" -Dexec.args="-c /PATH/TO/OnapPfConfig.json"
+
 Apex-PDP
 ********
 
@@ -94,20 +105,6 @@ Command Line
     .. code-block:: bash
 
         mvn spring-boot:run -Dspring-boot.run.arguments=”–server.port=8082”
-
-Models Simulators
-*****************
-
-Command Line
-------------
-
-    .. code-block:: bash
-
-        mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.models.sim.pdp.PdpSimulatorMain" -Dexec.args="-c /PATH/TO/OnapPfConfig.json"
-
-    .. code-block:: bash
-
-        mvn -q -e clean compile exec:java -Dexec.mainClass="org.onap.policy.models.sim.dmaap.startstop.Main" -Dexec.args="-c /PATH/TO/DefaultConfig.json"
 
 XACML-PDP
 *********

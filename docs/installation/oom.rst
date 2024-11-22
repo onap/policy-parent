@@ -437,18 +437,3 @@ To *override the PDP-D keystore or trustore*, add a suitable replacement(s) unde
 "drools/resources/secrets".  Modify the drools chart values.yaml with
 new credentials, and follow the procedures described at
 :ref:`install-upgrade-policy-label` to redeploy the chart.
-
-To *disable https* for the DMaaP configuration topic, add a copy of
-`engine.properties <https://git.onap.org/policy/drools-pdp/tree/policy-management/src/main/server/config/engine.properties>`_
-with "dmaap.source.topics.PDPD-CONFIGURATION.https" set to "false", or alternatively
-create a ".pre.sh" script (see above) that edits this file before the PDP-D is
-started.
-
-To use *noop topics* for standalone testing, add a "noop.pre.sh" script under
-oom/kubernetes/policy/charts/drools/resources/configmaps/:
-
-.. code-block:: bash
-
-    #!/bin/bash
-    sed -i "s/^dmaap/noop/g" $POLICY_HOME/config/*.properties
-
