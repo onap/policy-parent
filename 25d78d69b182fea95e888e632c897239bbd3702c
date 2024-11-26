@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f7176c_7cfd1ea5",
+        "filename": "docs/development/devtools/installation/local-installation.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2024-11-26T08:53:19Z",
+      "side": 0,
+      "message": "we still use simulators for drools-applications, apex-pdp and xacml-pdp",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 0
+      },
+      "revId": "25d78d69b182fea95e888e632c897239bbd3702c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
