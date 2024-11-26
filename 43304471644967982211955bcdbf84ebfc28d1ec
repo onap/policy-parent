@@ -24,6 +24,30 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93e3442_bc59b132",
+        "filename": "docs/apex/APEX-OnapPf-Guide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2024-11-26T09:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a331bc_ecc580d8",
+      "range": {
+        "startLine": 406,
+        "startChar": 72,
+        "endLine": 406,
+        "endChar": 75
+      },
+      "revId": "43304471644967982211955bcdbf84ebfc28d1ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9de4aae6_e0125ec8",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-26T08:53:19Z",
       "side": 1,
       "message": "from GHA run\nWarning, treated as error:\n/home/runner/work/.github/.github/docs/architecture/architecture.rst:726:Title underline too short.\n\n2.3.8.2 Kafka Communication\n\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
+      "range": {
+        "startLine": 725,
+        "startChar": 0,
+        "endLine": 726,
+        "endChar": 25
+      },
+      "revId": "43304471644967982211955bcdbf84ebfc28d1ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4bd9af9_248c5bce",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2024-11-26T09:09:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9de4aae6_e0125ec8",
       "range": {
         "startLine": 725,
         "startChar": 0,
