@@ -11,15 +11,24 @@ Feature: Test Transaction
 .. contents::
     :depth: 3
 
-The Test Transaction feature provides a mechanism by which the health of drools policy controllers can be tested.
+The Test Transaction feature provides a mechanism by which the health of drools policy controllers
+can be tested.
 
-When enabled, the feature functions by injecting an event object (identified by a UUID) into the drools session of each policy controller that is active in the system. Only an object with this UUID  can trigger the Test Transaction-specific drools logic to execute.
+When enabled, the feature functions by injecting an event object (identified by a UUID) into the
+drools session of each policy controller that is active in the system. Only an object with this UUID
+can trigger the Test Transaction-specific drools logic to execute.
 
-The injection of the event triggers the "TT" rule (see *TestTransactionTemplate.drl* below) to fire. The "TT" rule simply increments a ForwardProgress counter object, thereby confirming that the drools session for this particular controller is active and firing its rules accordingly. This cycle repeats at 20 second intervals.
+The injection of the event triggers the "TT" rule (see *TestTransactionTemplate.drl* below) to fire.
+The "TT" rule simply increments a ForwardProgress counter object, thereby confirming that the drools
+session for this particular controller is active and firing its rules accordingly. This cycle
+repeats at 20 second intervals.
 
-If it is ever the case that a drools controller does not have the "TT" rule present in its *.drl*, or that the forward progress counter is not incremented, the Test Transaction thread for that particular drools session (i.e. controller) is terminated and a message is logged to *error.log*.
+If it is ever the case that a drools controller does not have the "TT" rule present in its *.drl*,
+or that the forward progress counter is not incremented, the Test Transaction thread for that
+particular drools session (i.e. controller) is terminated and a message is logged to *error.log*.
 
-Prior to being enabled, the following drools rules need to be appended to the rules templates of any use-case that is to be monitored by the feature.
+Prior to being enabled, the following drools rules need to be appended to the rules templates of any
+use-case that is to be monitored by the feature.
 
     .. code-block:: java
        :caption: TestTransactionTemplate.drl
@@ -73,7 +82,8 @@ Prior to being enabled, the following drools rules need to be appended to the ru
             ForwardProgress(counter >= 0, $ttc : counter)
         end
 
-Once the proper artifacts are built and deployed with the addition of the TestTransactionTemplate rules, the feature can then be enabled by entering the following commands:
+Once the proper artifacts are built and deployed with the addition of the TestTransactionTemplate
+rules, the feature can then be enabled by entering the following commands:
 
     .. code-block:: bash
        :caption: PDPD Features Command
@@ -87,10 +97,6 @@ Once the proper artifacts are built and deployed with the addition of the TestTr
         controlloop-utils         1.1.0-SNAPSHOT  disabled
         healthcheck               1.1.0-SNAPSHOT  disabled
         test-transaction          1.1.0-SNAPSHOT  enabled
-        eelf                      1.1.0-SNAPSHOT  disabled
-        state-management          1.1.0-SNAPSHOT  disabled
-        active-standby-management 1.1.0-SNAPSHOT  disabled
-        session-persistence       1.1.0-SNAPSHOT  disabled
 
 The output of the enable command will indicate whether or not the feature was enabled successfully.
 
