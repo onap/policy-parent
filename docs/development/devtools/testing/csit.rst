@@ -17,6 +17,10 @@ This article provides the steps to run CSIT tests in a local environment, most c
 significant code change.
 
 .. note::
+  Both environments described in this page are for test or learning purposes only. For real deployment
+  environment, use `ONAP Operations Manager <https://github.com/onap/oom>`_
+
+.. note::
   If building images locally, follow the instructions :ref:`here <building-pf-docker-images-label>`
 
 
@@ -43,40 +47,13 @@ If not familiar with the PF Docker structure, the detailed information can be fo
 Running tests to validate code changes
 --------------------------------------
 
-After building image(s) locally, the compose file needs to be edited to use the local image when
-bringing up the container. Open file `~/git/policy/docker/compose/docker-compose.yml` and remove the
-tag `${CONTAINER_LOCATION}` from the image variable in the service description.
-If change is GUI related, then `docker-compose.gui.yml` might need to be edited as well, although
-there are no GUI related test suites.
-
-For example, if testing against a PAP change, a new onap/policy-pap image with latest and
-x.y.z-SNAPSHOT versions is available. When editing the docker-compose file, the following change
-would be done:
-
-From:
-
-.. code-block:: yaml
-
-  pap:
-  image: ${CONTAINER_LOCATION}onap/policy-pap:${POLICY_PAP_VERSION}
-  container_name: policy-pap
-
-
-To:
-
-.. code-block:: yaml
-
-  pap:
-  image: onap/policy-pap:latest
-  container_name: policy-pap
-
+For *local* images, set `LOCAL_IMAGES=true`, located at the `get-versions.sh` script
 
 .. note::
    Make sure to do the same changes to any other components that are using locally built images.
 
 
-After finished with edits in compose file, then use the `run-project-csit.sh` script to run the
-test suite.
+Then use the `run-project-csit.sh` script to run the test suite.
 
 
 .. code-block:: bash
@@ -94,7 +71,7 @@ The <component> input is any of the policy components available:
  - drools-pdp
  - drools-applications
  - xacml-pdp
- - policy-acm-runtime
+ - clamp
 
 Keep in mind that after the Robot executions, logs from docker-compose are printed and
 test logs might not be available on console and the containers are teared down. The tests results

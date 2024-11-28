@@ -769,5 +769,26 @@ Policy Set                        A set of policies that are deployed on a PDP g
                                   deployed on a PDP group
 ================================= ==================================================================================
 
+5. Security
+===========
+
+5.1 Threat Modeling
+-------------------
+
+====================== ==================================================== ==========================
+Threat category        Attacker’s motive                                    Affected security property
+====================== ==================================================== ==========================
+Spoofing               Impersonating another user or system                 Authenticity
+Tampering              Illegal modification of data in transit or at rest   Integrity
+Repudiation            Disputing an action that has taken place             Non-repudiability
+Information            Disclosure of confidential information               Confidentiality
+Denial of Service      Making system temporarily or permanently unavailable Availability
+Elevation of Privilege Gaining higher privileges than entitled to           Authority
+====================== ==================================================== ==========================
+
+To ensure that this threat model is mitigated, use only ONAP Operations Manager `OOM <https://github.com/onap/oom>`_
+for production deployment. Policy docker and helm environment available at `policy-docker <https://github.com/onap/policy-docker>`_
+are for testing purposes only.
+
 
 End of Document
