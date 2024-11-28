@@ -9,11 +9,11 @@ Feature: no locking
 .. contents::
     :depth: 3
 
-The no-locking feature allows applications to use a Lock Manager that always succeeds.  It does not deny
-acquiring resource locks.
+The no-locking feature allows applications to use a Lock Manager that always succeeds. It does not
+deny acquiring resource locks.
 
-To utilize the no-locking feature, first stop policy engine, disable other locking features, and then enable it
-using the "*features*" command.
+To utilize the no-locking feature, first stop policy engine, disable other locking features, and
+then enable it using the "*features*" command.
 
 In an official OOM installation, place a script with a .pre.sh suffix:
 
@@ -35,6 +35,7 @@ under the directory:
 
 and rebuild the policy charts.
 
-At container initialization, the distributed-locking will be disabled, and the no-locking feature will be enabled.
+At container initialization, the distributed-locking will be disabled, and the no-locking feature
+will be enabled.
 
 End of Document

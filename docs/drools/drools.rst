@@ -9,7 +9,7 @@ Policy Drools PDP Engine
     :depth: 1
 
 The Drools PDP, aka PDP-D, is the PDP in the Policy Framework that uses the
-`Drools BRMS <https://www.drools.org/>`__ to enforce policies.
+`Drools BRMS <https://www.drools.org/>`_ to enforce policies.
 
 The PDP-D functionality has been partitioned into two functional areas:
 
@@ -18,8 +18,8 @@ The PDP-D functionality has been partitioned into two functional areas:
 
 **PDP-D Engine**
 
-The PDP-D Engine is the infrastructure that *policy applications* use.
-It provides networking services, resource grouping, and diagnostics.
+The PDP-D Engine is the infrastructure that *policy applications* use. It provides networking
+services, resource grouping, and diagnostics.
 
 The PDP-D Engine supports the following Tosca Native Policy Types:
 
@@ -28,18 +28,16 @@ The PDP-D Engine supports the following Tosca Native Policy Types:
 
 These types are used to dynamically add and configure new application controllers.
 
-The PDP-D Engine hosts applications by means of *controllers*.
-*Controllers* may support other Tosca Policy Types.   The
-types supported by the *Control Loop* applications are:
+The PDP-D Engine hosts applications by means of *controllers*. *Controllers* may support other
+Tosca Policy Types. The types supported by the *Control Loop* applications are:
 
 - onap.policies.controlloop.operational.common.Drools
 
 
 **PDP-D Applications**
 
-A PDP-D application, ie. a *controller*, contains references to the
-resources that the application needs.   These include networked endpoint references,
-and maven coordinates.
+A PDP-D application, ie. a *controller*, contains references to the resources that the application
+needs. These include networked endpoint references, and maven coordinates.
 
 *Control Loop* applications are used in ONAP to enforce operational policies.
 
@@ -52,3 +50,11 @@ The following guides offer more information in these two functional areas.
    pdpdEngine.rst
    pdpdApps.rst
 
+
+Additional information
+======================
+
+For additional information, please see the
+`Drools PDP Development and Testing (In Depth) <https://wiki.onap.org/display/DW/2020-08+Frankfurt+Tutorials>`_ page.
+
+End of Document
