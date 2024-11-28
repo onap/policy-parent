@@ -97,7 +97,7 @@ The purpose of this API is to support CRUD of PDP groups and subgroups and to su
 policies on PDP sub groups and PDPs. This API is provided by the *PolicyAdministration* component (PAP) of the Policy
 Framework, see the :ref:`ONAP Policy Framework Architecture <architecture-label>` page.
 
-PDP groups and subgroups may be prefedined in the system. Predefined groups and subgroups may be modified or deleted
+PDP groups and subgroups may be predefined in the system. Predefined groups and subgroups may be modified or deleted
 over this API. The policies running on predefined groups or subgroups as well as the instance counts and properties may
 also be modified.
 
@@ -150,8 +150,10 @@ Here is a sample notification:
 2 PAP REST API Swagger
 ======================
 
-It is worth noting that we use basic authorization for access with user name and password set to *policyadmin* and
-*zb!XztG34*, respectively.
+.. note::
+  PF uses basic authorization for access with user name and password, to be set on application.yaml
+  properties file. An example can be seen at
+  `papParameters.yaml <https://github.com/onap/policy-docker/blob/master/compose/config/pap/papParameters.yaml>`_
 
 For every call, the client is encouraged to insert a uuid-type *requestID* as parameter. It is helpful for tracking each
 http transaction and facilitates debugging. More importantly, it complies with Logging requirements v1.2. If the client
