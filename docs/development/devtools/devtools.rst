@@ -303,14 +303,8 @@ to developers to become familiar with the Policy Framework components and test a
 .. toctree::
    :maxdepth: 2
 
+   testing/s3p/s3p-test-overview.rst
    testing/s3p/run-s3p.rst
-   testing/s3p/api-s3p.rst
-   testing/s3p/pap-s3p.rst
-   testing/s3p/apex-s3p.rst
-   testing/s3p/drools-s3p.rst
-   testing/s3p/xacml-s3p.rst
-   testing/s3p/distribution-s3p.rst
-   testing/s3p/clamp-s3p.rst
 
 
 Running the Pairwise Tests
