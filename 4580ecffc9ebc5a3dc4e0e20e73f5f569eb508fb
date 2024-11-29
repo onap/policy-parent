@@ -46,6 +46,30 @@
       },
       "revId": "4580ecffc9ebc5a3dc4e0e20e73f5f569eb508fb",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e8db70_a804c155",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2024-11-29T12:51:21Z",
+      "side": 1,
+      "message": "Ack. Thanks Wayne",
+      "parentUuid": "2a6619a2_83166a33",
+      "range": {
+        "startLine": 307,
+        "startChar": 15,
+        "endLine": 307,
+        "endChar": 26
+      },
+      "revId": "4580ecffc9ebc5a3dc4e0e20e73f5f569eb508fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
