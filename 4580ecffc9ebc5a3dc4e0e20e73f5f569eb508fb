@@ -22,6 +22,30 @@
       },
       "revId": "4580ecffc9ebc5a3dc4e0e20e73f5f569eb508fb",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a6619a2_83166a33",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2024-11-29T12:48:02Z",
+      "side": 1,
+      "message": "Yes. This file explains how the s3p script works and provides information on how to run the script manually if a developer so wishes to for any reason. Think it is fine",
+      "parentUuid": "a259cded_63477862",
+      "range": {
+        "startLine": 307,
+        "startChar": 15,
+        "endLine": 307,
+        "endChar": 26
+      },
+      "revId": "4580ecffc9ebc5a3dc4e0e20e73f5f569eb508fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
