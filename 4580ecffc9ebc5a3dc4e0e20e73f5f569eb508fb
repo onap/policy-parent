@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a259cded_63477862",
+        "filename": "docs/development/devtools/devtools.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2024-11-29T11:49:58Z",
+      "side": 1,
+      "message": "is this file up to date?",
+      "range": {
+        "startLine": 307,
+        "startChar": 15,
+        "endLine": 307,
+        "endChar": 26
+      },
+      "revId": "4580ecffc9ebc5a3dc4e0e20e73f5f569eb508fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
