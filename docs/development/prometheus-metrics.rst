@@ -188,6 +188,6 @@ Key metrics for Policy Distribution
 ===================================================================
 
 Policy Framework uses ServiceMonitor custom resource definition (CRD) to allow Prometheus to monitor the services it exposes. Label selection is used to determine which services are selected to be monitored.
-For label management and troubleshooting refer to the documentation at: `Prometheus operator <https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md>`__.
+For label management and troubleshooting refer to the documentation at: `Prometheus operator <https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/platform/troubleshooting.md>`__.
 
 `OOM charts <https://github.com/onap/oom/tree/master/kubernetes/policy/components>`__ for policy include ServiceMonitor and properties can be overrided based on the deployment specifics.
