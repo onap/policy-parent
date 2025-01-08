@@ -75,7 +75,7 @@
         <version.kafka>3.8.1</version.kafka>
         <version.kotlin>2.0.20</version.kotlin>
         <version.log4j>2.23.1</version.log4j>
-        <version.logback>1.5.12</version.logback>
+        <version.logback>1.5.15</version.logback>
         <version.maven-checkstyle-plugin>3.3.1</version.maven-checkstyle-plugin>
         <version.maven-remote-resources-plugin>3.1.0</version.maven-remote-resources-plugin>
         <version.micrometer>1.13.6</version.micrometer>
@@ -89,10 +89,10 @@
         <version.sdc-dist>2.1.1</version.sdc-dist>
         <version.sdc-tosca>1.9.0</version.sdc-tosca>
         <version.slf4j>2.0.13</version.slf4j>
-        <version.spring>6.1.14</version.spring>
-        <version.springboot>3.3.5</version.springboot>
-        <version.spring-data>3.3.5</version.spring-data>
-        <version.spring-security>6.3.4</version.spring-security>
+        <version.spring>6.1.16</version.spring>
+        <version.springboot>3.3.7</version.springboot>
+        <version.spring-data>3.3.7</version.spring-data>
+        <version.spring-security>6.3.6</version.spring-security>
         <version.sonar>3.11.0.3922</version.sonar>
         <version.swagger.codegen.v3>3.0.52</version.swagger.codegen.v3>
         <version.swagger.core.v3>2.2.25</version.swagger.core.v3>
