@@ -85,6 +85,39 @@ and the same is configured for the 'ParticipantIntermediaryParameters' object in
         typeName: org.onap.policy.clamp.acm.PolicyAutomationCompositionElement
         typeVersion: 1.0.0
 
+Kafka Healthcheck
+-----------------
+
+Optionally is possible to add a Kafka Healthcheck by configuration. That feature is responsible of starting the Kafka configuration.
+If Kafka is not up and Kafka Healthcheck is not enable, Kafka messages configuration will fail.
+This feature check Kafka by an admin connection and if Kafka is up, it will start the Kafka messages configuration,
+but if Kafka is not up yet, it will retry this check later.
+
+Kafka Healthcheck supports the topics check and it could be enabled by configuration (using topicValidation parameter).
+Usually topics are getting created when first message happen, so in that scenario, topicValidation should be set as false.
+In different environment, the two topics will be created manually by a script with specific permissions. So Kafka could be up,
+but the Kafka messages configuration could be fail because the two topics are not get created yet.
+So in that scenario, topicValidation should be set as true, and if topics are not created yet, Healthcheck will retry that check later.
+
+For backward compatibility if Kafka Healthcheck is not configured, it will be disabled and Kafka messages configuration will start as normal.
+
+The following example shows the Kafka Healthcheck configuration.
+
+.. code-block:: bash
+
+  intermediaryParameters:
+    topicValidation: true
+    clampAdminTopics:
+      servers:
+        - ${topicServer:kafka:9092}
+      topicCommInfrastructure: kafka
+      fetchTimeout: 15000
+    topics:
+      operationTopic: policy-acruntime-participant
+      syncTopic: acm-ppnt-sync
+    ........
+
+
 Interfaces to Implement
 -----------------------
 AutomationCompositionElementListener:
