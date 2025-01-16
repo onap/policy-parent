@@ -60,7 +60,8 @@
         <version.frontend.maven>1.13.4</version.frontend.maven>
         <version.guava>33.0.0-jre</version.guava>
         <version.hamcrest>3.0</version.hamcrest>
-        <version.httpclient>5.3.1</version.httpclient>
+        <version.httpclient>5.4.1</version.httpclient>
+        <version.httpcore>5.3.2</version.httpcore>
         <version.io.prometheus>0.16.0</version.io.prometheus>
         <version.jackson>2.17.2</version.jackson>
         <version.jacoco>0.8.11</version.jacoco>
@@ -475,16 +476,6 @@
                 <version>1.10.0</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>4.5.14</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpcore</artifactId>
-                <version>4.4.16</version>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.httpcomponents.client5</groupId>
                 <artifactId>httpclient5</artifactId>
                 <version>${version.httpclient}</version>
@@ -492,7 +483,7 @@
             <dependency>
                 <groupId>org.apache.httpcomponents.core5</groupId>
                 <artifactId>httpcore5</artifactId>
-                <version>5.2.4</version>
+                <version>${version.httpcore}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.kafka</groupId>
