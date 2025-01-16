@@ -2,7 +2,7 @@
   ============LICENSE_START=======================================================
    Copyright (C) 2018 Ericsson. All rights reserved.
    Modifications Copyright (C) 2018-2023 AT&T. All rights reserved.
-   Modifications Copyright (C) 2019-2024 Nordix Foundation.
+   Modifications Copyright (C) 2019-2025 Nordix Foundation.
    Modifications Copyright (C) 2020-2022 Bell Canada.
   ================================================================================
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -678,11 +678,6 @@
                 <groupId>org.kie</groupId>
                 <artifactId>kie-ci</artifactId>
                 <version>${version.drools}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mariadb.jdbc</groupId>
-                <artifactId>mariadb-java-client</artifactId>
-                <version>3.3.3</version>
             </dependency>
             <dependency>
                 <groupId>org.postgresql</groupId>
