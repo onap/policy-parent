@@ -430,3 +430,35 @@ YAML format is a standard for Automation Composition Type Definition. For the co
 text/plain
 ++++++++++
 Text format is used by Prometheus. For the conversion from Object to String  will be used **StringHttpMessageConverter**.
+
+JSON log format
+***************
+ACM-runtime supports log in Json format. Below un example of appender for logback configuration to enable it.
+
+.. code-block:: xml
+   :caption: Part of logback configuration
+   :linenos:
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="org.onap.policy.clamp.acm.runtime.config.LoggingConsoleLayout">
+                <timestampFormat>YYYY-MM-DDThh:mm:ss.sss+/-hh:mm</timestampFormat>
+                <timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
+                <staticParameters>service_id=policy-acm|application_id=policy-acm</staticParameters>
+            </layout>
+        </encoder>
+    </appender>
+
+LayoutWrappingEncoder implements the encoder interface and wraps the Java class LoggingConsoleLayout as layout to which it delegates the work of transforming an event into Json string.
+Parameters for LoggingConsoleLayout:
+
+- *timestampFormat*: Timestamp Format
+- *timestampFormatTimezoneId*: Time Zone used in the Timestamp Format
+- *staticParameters*: List of parameters do add into the log separated with a "|"
+
+Below un example of result:
+
+.. code-block:: json
+
+   {"severity":"INFO","extra_data":{"logger":"network","thread":"KAFKA-source-policy-acruntime-participant"},"service_id":"policy-acm","message":"[IN|KAFKA|policy-acruntime-participant]\n{\"state\":\"ON_LINE\",\"participantDefinitionUpdates\":[],\"automationCompositionInfoList\":[],\"participantSupportedElementType\":[{\"id\":\"f88c4463-f012-42e1-8927-12b552ecf380\",\"typeName\":\"org.onap.policy.clamp.acm.K8SMicroserviceAutomationCompositionElement\",\"typeVersion\":\"1.0.0\"}],\"messageType\":\"PARTICIPANT_STATUS\",\"messageId\":\"d3dc2f86-4253-4520-bbac-97c4c04547ad\",\"timestamp\":\"2025-01-21T16:14:27.087474035Z\",\"participantId\":\"101c62b3-8918-41b9-a747-d21eb79c6c93\",\"replicaId\":\"c1ba61d2-1dbd-44e4-80bd-135526c0615f\"}","application_id":"policy-acm","timestamp":"2025-01-21T16:14:27.114851006Z"}
+   {"severity":"INFO","extra_data":{"logger":"network","thread":"KAFKA-source-policy-acruntime-participant"},"service_id":"policy-acm","message":"[IN|KAFKA|policy-acruntime-participant]\n{\"state\":\"ON_LINE\",\"participantDefinitionUpdates\":[],\"automationCompositionInfoList\":[],\"participantSupportedElementType\":[{\"id\":\"4609a119-a8c7-41ee-96d1-6b49c3afaf2c\",\"typeName\":\"org.onap.policy.clamp.acm.HttpAutomationCompositionElement\",\"typeVersion\":\"1.0.0\"}],\"messageType\":\"PARTICIPANT_STATUS\",\"messageId\":\"ea29ab01-665d-4693-ab17-3a72491b5c71\",\"timestamp\":\"2025-01-21T16:14:27.117716317Z\",\"participantId\":\"101c62b3-8918-41b9-a747-d21eb79c6c91\",\"replicaId\":\"5e4f9690-742d-4190-a439-ebb4c820a010\"}","application_id":"policy-acm","timestamp":"2025-01-21T16:14:27.144379028Z"}
