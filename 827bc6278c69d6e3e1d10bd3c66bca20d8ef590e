@@ -45,6 +45,30 @@
       },
       "revId": "827bc6278c69d6e3e1d10bd3c66bca20d8ef590e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d17f3fb_4dfafcaa",
+        "filename": "docs/clamp/acm/design-impl/clamp-runtime-acm.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 7565
+      },
+      "writtenOn": "2025-01-22T09:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63c58f41_84dbff29",
+      "range": {
+        "startLine": 436,
+        "startChar": 47,
+        "endLine": 436,
+        "endChar": 50
+      },
+      "revId": "827bc6278c69d6e3e1d10bd3c66bca20d8ef590e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
