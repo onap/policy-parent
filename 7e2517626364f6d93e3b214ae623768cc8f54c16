@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb9f952c_2df48c0b",
+        "filename": "docs/drools/pdpdEngine.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2025-01-27T11:55:34Z",
+      "side": 1,
+      "message": "missing a \u003e to close the link ref.\n\u003chttps://git.onap.org/policy/docker/tree/policy-db-migrator/\u003e`_",
+      "range": {
+        "startLine": 764,
+        "startChar": 72,
+        "endLine": 764,
+        "endChar": 74
+      },
+      "revId": "7e2517626364f6d93e3b214ae623768cc8f54c16",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
