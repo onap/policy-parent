@@ -761,7 +761,7 @@ Data Migration
 
 PDP-D data used to be migrated across releases with its own db-migrator until Kohn release. Since
 Oslo, the main policy database manager,
-`db-migrator <https://git.onap.org/policy/docker/tree/policy-db-migrator/src/main/docker/db-migrator>`_
+`db-migrator <https://git.onap.org/policy/docker/tree/policy-db-migrator/`_
 has been in use.
 
 The migration occurs when different release data is detected. *db-migrator* will look under the
