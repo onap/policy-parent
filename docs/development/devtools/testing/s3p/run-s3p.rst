@@ -6,11 +6,11 @@ Running the Policy Framework S3P Tests
 
 Per release, the policy framework team perform stability and performance tests per component of the policy framework.
 This testing work involves performing a series of test on a full OOM deployment and updating the various test plans to work towards the given deployment.
-This work can take some time to setup before performing any tests to begin with.
+This work can take some time to setup to begin with, before performing any tests.
 For stability testing, a tool called JMeter is used to trigger a series of tests for a period of 72 hours which has to be manually initiated and monitored by the tester.
-Likewise, with the performance tests, but in this case for ~2 hours.
-As part of the work to make to automate this process a script can be now triggered to bring up a microk8s cluster on a VM, install JMeter, alter the cluster info to match the JMX test plans for JMeter to trigger and gather results at the end.
-These S3P tests will be triggered for a shorter period as part of the CSITs to prove the stability and performance of our components.
+Likewise, the performance tests run in the same manner but for a shorter time of ~2 hours.
+As part of the work to automate this process a script can be now triggered to bring up a microk8s cluster on a VM, install JMeter, alter the cluster info to match the JMX test plans for JMeter to trigger and gather results at the end.
+These S3P tests will be triggered for a shorter period as part of the GHAs to prove the stability and performance of our components.
 
 There has been recent work completed to trigger our CSIT tests in a K8s environment.
 As part of this work, a script has been created to bring up a microk8s cluster for testing purposes which includes all necessary components for our policy framework testing.
@@ -19,34 +19,15 @@ Once this cluster is brought up, a script is called to alter the cluster.
 The IPS and PORTS of our policy components are set by this script to ensure consistency in the test plans.
 JMeter is installed and the S3P test plans are triggered to run by their respective components.
 
-.. code-block:: bash
-   :caption: Start S3P Script
+`run-s3p-tests.sh <https://github.com/onap/policy-docker/blob/master/csit/run-s3p-tests.sh>`_
 
-   #===MAIN===#
-   if [ -z "${WORKSPACE}" ]; then
-       export WORKSPACE=$(git rev-parse --show-toplevel)
-   fi
-   export TESTDIR=${WORKSPACE}/testsuites
-   export API_PERF_TEST_FILE=$TESTDIR/performance/src/main/resources/testplans/policy_api_performance.jmx
-   export API_STAB_TEST_FILE=$TESTDIR/stability/src/main/resources/testplans/policy_api_stability.jmx
-   if [ $1 == "run" ]
-   then
-     mkdir automate-performance;cd automate-performance;
-     git clone "https://gerrit.onap.org/r/policy/docker"
-     cd docker/csit
-     if [ $2 == "performance" ]
-     then
-       bash start-s3p-tests.sh run $API_PERF_TEST_FILE;
-     elif [ $2 == "stability" ]
-     then
-       bash start-s3p-tests.sh run $API_STAB_TEST_FILE;
-     else
-       echo "echo Invalid arguments provided. Usage: $0 [option..] {performance | stability}"
-     fi
-   else
-     echo "Invalid arguments provided. Usage: $0 [option..] {run | uninstall}"
-   fi
+This script automates the setup, execution, and teardown of S3P tests for policy components.
+It initializes a Kubernetes environment, installs Apache JMeter for running test plans, and executes specified JMX test files.
+The script logs all operations, tracks errors, warnings, and processed files, and provides a summary report upon completion.
+It includes options to either run tests (test <jmx_file>) or clean up the environment (clean). The clean option uninstalls the Kubernetes cluster and removes temporary resources.
+The script also ensures proper resource usage tracking and error handling throughout its execution.
 
-This script is triggered by each component.
-It will export the performance and stability testplans and trigger the start-s3p-test.sh script which will perform the steps to automatically run the s3p tests.
+`run-s3p-test.sh <https://github.com/onap/policy-api/blob/master/testsuites/run-s3p-test.sh>`_
 
+In summary, this script automates running performance or stability tests for a Policy Framework component by setting up necessary directories, cloning the required docker repository, and executing predefined test plans.
+It also provides a clean-up option to remove resources after testing.
