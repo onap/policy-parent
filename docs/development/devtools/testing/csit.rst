@@ -138,12 +138,12 @@ Different from Docker usage, the microk8s installation is not removed when tests
 Installing all available PF components
 --------------------------------------
 
-Use the `run-k8s-csit.sh` script to install PF components with Prometheus server available.
+Use the `cluster_setup.sh` script to install PF components with Prometheus server available.
 
 .. code-block:: bash
 
-  cd ~/git/policy/docker
-  ./csit/run-k8s-csit.sh install
+  cd ~/git/policy/docker/csit/resources/scripts
+  ./cluster_setup.sh install
 
 
 In this case, no tests are executed and the environment can be used for other integration tests
@@ -156,7 +156,7 @@ Uninstall and clean up
 If running the CSIT tests with microk8s environment, docker images for the tests suites are created.
 To clean them up, user `docker prune <https://docs.docker.com/config/pruning/>`_ command.
 
-To uninstall policy helm deployment and/or the microk8s cluster, use `run-k8s-csit.sh`
+To uninstall policy helm deployment and/or the microk8s cluster, use `cluster_setup.sh`
 
 
 .. code-block:: bash
@@ -164,10 +164,10 @@ To uninstall policy helm deployment and/or the microk8s cluster, use `run-k8s-cs
   cd ~/git/policy/docker
 
   # to uninstall deployment
-  ./csit/run-k8s-csit.sh uninstall
+  ./csit/resources/scripts/cluster_setup.sh uninstall
 
   # to remove cluster
-  ./csit/run-k8s-csit.sh clean
+  ./csit/resources/scripts/cluster_setup.sh clean
 
 
 End of document
