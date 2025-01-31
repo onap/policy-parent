@@ -10,8 +10,8 @@
 XACML PDP Smoke Test
 ~~~~~~~~~~~~~~~~~~~~
 
-The policy-xacml-pdp smoke testing can be executed against a kubernetes based policy framework installation,
-and/or a docker-compose set up similar to the one executed by CSIT tests.
+The policy-xacml-pdp smoke testing can be executed against a kubernetes based policy framework
+installation, and/or a docker-compose set up similar to the one executed by CSIT tests.
 
 General Setup
 *************
@@ -21,16 +21,21 @@ PF kubernetes Install
 
 For installation instructions, please refer to the following documentation:
 
-`Policy Framework K8S Install <https://docs.onap.org/projects/onap-policy-parent/en/latest/development/devtools/testing/csit.html>`_
+`Policy Framework K8S Install
+<https://docs.onap.org/projects/onap-policy-parent/en/latest/development/devtools/testing/csit.html>`_
 
-The script referred to in the above link should handle the install of the of microk8s, docker and other required components for the install of the policy framework and clamp components. The scripts are used by policy as a means to run the CSIT tests in Kubernetes.
+The script referred to in the above link should handle the install of the of microk8s, docker and
+other required components for the install of the policy framework and clamp components. The scripts
+are used by policy as a means to run the CSIT tests in Kubernetes.
 
 docker-compose based
 --------------------
 
-A smaller testing environment can be put together by replicating the docker-based CSIT test environment. Details are on the same page as K8s setup:
+A smaller testing environment can be put together by replicating the docker-based CSIT test
+environment. Details are on the same page as K8s setup:
 
-`Policy CSIT Test Install Docker <https://docs.onap.org/projects/onap-policy-parent/en/latest/development/devtools/testing/csit.html>`_
+`Policy CSIT Test Install Docker
+<https://docs.onap.org/projects/onap-policy-parent/en/latest/development/devtools/testing/csit.html>`_
 
 Testing procedures
 ******************

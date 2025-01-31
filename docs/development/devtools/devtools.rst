@@ -239,7 +239,7 @@ Running the API component standalone
 ++++++++++++++++++++++++++++++++++++
 
 Assuming you have successfully built the codebase using the instructions above. The only requirement for the API
-component to run is a running MariaDb/Postgres database instance. The easiest way to do this is to run the docker
+component to run is a running Postgres database instance. The easiest way to do this is to run the docker
 image, please see the official documentation for the latest information on doing so. Once the database is up and
 running, a configuration file must be provided to the api in order for it to know how to connect to the database.
 You can locate the default configuration file in the packaging of the api component:
@@ -260,7 +260,7 @@ An example of running the api using a docker compose script is located in the Po
 Running the PAP component standalone
 ++++++++++++++++++++++++++++++++++++
 
-Once you have successfully built the PAP codebase, a running MariaDb/Postgres database and Kafka instance will also be
+Once you have successfully built the PAP codebase, a running Postgres database and Kafka instance will also be
 required to start up the application. To start database and Kafka, check official documentation on how to run an
 instance of each. After database and Kafka are up and running, a configuration file must be provided to the PAP
 component in order for it to know how to connect to the database and Kafka along with other relevant configuration

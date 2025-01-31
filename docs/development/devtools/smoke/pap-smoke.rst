@@ -11,7 +11,8 @@ Policy PAP Smoke Test
 ~~~~~~~~~~~~~~~~~~~~~
 
 The policy-pap smoke testing is executed against a default ONAP installation as per OOM charts.
-This test verifies the execution of all the REST api's exposed by the component to make sure the contract works as expected.
+This test verifies the execution of all the REST api's exposed by the component to make sure the
+contract works as expected.
 
 General Setup
 *************
@@ -28,7 +29,7 @@ The ONAP components used during the smoke tests are:
 
 - Policy API to perform CRUD of policies.
 - Policy DB to store the policies.
-- DMaaP for the communication between components.
+- Kafka for the communication between components.
 - Policy PAP to perform runtime administration (deploy/undeploy/status/statistics/etc).
 - Policy Apex-PDP to deploy & undeploy policies. And send heartbeats to PAP.
 - Policy Drools-PDP to deploy & undeploy policies. And send heartbeats to PAP.
@@ -66,4 +67,5 @@ Make sure to execute the delete steps in order to clean the setup after testing.
 
 Delete policies using policy-api
 --------------------------------
-Use the previously downloaded policy-api postman collection to delete the policies created for testing.
+Use the previously downloaded policy-api postman collection to delete the policies created for
+testing.

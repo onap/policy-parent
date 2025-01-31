@@ -42,12 +42,13 @@ Under the folder `~/git/policy/docker/csit`, there are two main scripts to run t
 Running CSIT in Docker environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If not familiar with the PF Docker structure, the detailed information can be found :ref:`here <docker-label>`
+If not familiar with the PF Docker structure, the detailed information can be found
+:ref:`here <docker-label>`
 
 Running tests to validate code changes
 --------------------------------------
 
-For *local* images, set `LOCAL_IMAGES=true`, located at the `get-versions.sh` script
+For *local* images, run the script with the `--local` flag.
 
 .. note::
    Make sure to do the same changes to any other components that are using locally built images.
@@ -59,7 +60,7 @@ Then use the `run-project-csit.sh` script to run the test suite.
 .. code-block:: bash
 
   cd ~/git/policy/docker
-  ./csit/run-project-csit.sh <component>
+  ./csit/run-project-csit.sh <component> --local
 
 
 The <component> input is any of the policy components available:
@@ -72,6 +73,7 @@ The <component> input is any of the policy components available:
  - drools-applications
  - xacml-pdp
  - clamp
+ - opa-pdp
 
 Keep in mind that after the Robot executions, logs from docker-compose are printed and
 test logs might not be available on console and the containers are teared down. The tests results
@@ -82,12 +84,14 @@ Running tests for learning PF usage
 -----------------------------------
 
 In that case, no changes required on docker-compose files, but commenting the tear down of docker
-containers might be required. For that, edit the file `run-project-csit.sh` script and comment the
-following line:
+containers might be required. For that, run the `run-project-csit.sh` script with `--no-exit` flag:
 
 .. code-block:: bash
 
-  # source_safely ${WORKSPACE}/compose/stop-compose.sh (currently line 36)
+  cd ~/git/policy/docker
+  ./csit/run-project-csit.sh <component> --local --no-exit
+  # or
+  ./csit/run-project-csit.sh <component> --no-exit # will download images from nexus3 server
 
 
 This way, the docker containers are still up and running for more investigation.
@@ -130,6 +134,7 @@ The <component> input is any of the policy components available:
  - drools-pdp
  - xacml-pdp
  - clamp
+ - opa-pdp
 
 
 Different from Docker usage, the microk8s installation is not removed when tests finish.

@@ -11,7 +11,8 @@ Policy API Smoke Test
 ~~~~~~~~~~~~~~~~~~~~~
 
 The policy-api smoke testing is executed against a default ONAP installation as per OOM charts.
-This test verifies the execution of all the REST api's exposed by the component to make sure the contract works as expected.
+This test verifies the execution of all the REST api's exposed by the component to make sure the
+contract works as expected.
 
 General Setup
 *************
