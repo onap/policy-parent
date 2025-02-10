@@ -66,8 +66,8 @@
         <version.jackson>2.17.2</version.jackson>
         <version.jacoco>0.8.11</version.jacoco>
         <version.jaxb>4.0.5</version.jaxb>
-        <version.jersey>3.1.9</version.jersey>
-        <version.jetty>11.0.24</version.jetty>
+        <version.jersey>3.1.10</version.jersey>
+        <version.jetty>12.0.16</version.jetty>
         <version.jexl3>3.2.1</version.jexl3>
         <version.json-path>2.9.0</version.json-path>
         <version.json-schema-friend>0.12.4</version.json-schema-friend>
@@ -572,18 +572,13 @@
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-servlet</artifactId>
-                <version>${version.jetty}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-util</artifactId>
                 <version>${version.jetty}</version>
             </dependency>
             <dependency>
-                <groupId>org.eclipse.jetty.toolchain</groupId>
-                <artifactId>jetty-jakarta-servlet-api</artifactId>
-                <version>5.0.2</version>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-servlet</artifactId>
+                <version>${version.jetty}</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.jaxb</groupId>
@@ -1222,15 +1217,6 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.11.0</version>
-                    <configuration>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                        <release>${java.version}</release>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
                     <version>3.6.0</version>
                 </plugin>
@@ -1343,14 +1329,6 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <release>${java.version}</release>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
