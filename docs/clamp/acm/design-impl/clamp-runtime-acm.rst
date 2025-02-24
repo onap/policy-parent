@@ -349,52 +349,88 @@ PARTICIPANT_REGISTER
 - A participant replica starts and send a PARTICIPANT_REGISTER message with participantId, replicaId and supported Element Types
 - ACM-runtime collects the message from Message Broker by ParticipantRegisterListener
 - if not present, it saves participant replica reference with status ON_LINE to DB
+- it sends PARTICIPANT_REGISTER_ACK to participant replica
 
 PARTICIPANT_PRIME_ACK
 ++++++++++++++++++++++
 - A participant sends PARTICIPANT_PRIME_ACK message in response to a PARTICIPANT_PRIME message
 - ParticipantPrimeAckListener collects the message from Message Broker
-- It updates AC Definition to DB with PRIMED/DEPRIMED as status
-- If AC Definition is fully PRIMED, ACM-runtime sends sync message to all participants replica
+- It stores the message into the DB
+- MessageIntercept intercepts that event and adds a task to handle a monitoring execution in SupervisionScanner
+- Monitoring updates AC Definition to DB with PRIMED/DEPRIMED as status
+- If AC Definition is fully PRIMED, Monitoring sends sync message to all participants replica
 
 PARTICIPANT_STATUS
 ++++++++++++++++++
-- A participant sends a scheduled PARTICIPANT_STATUS message with participantId, replicaId and supported Element Types
+- A participant sends a scheduled PARTICIPANT_STATUS message with participantId, replicaId and supported Element Types. Same message could be used by participant to update OutProperties of an AC instance/AC definition.
 - ACM-runtime collects the message from Message Broker by ParticipantStatusListener
-- if not present, it saves participant replica reference with status ON_LINE to DB
+- If not present, it saves participant replica reference with status ON_LINE to DB
+- If the message contains OutProperties of an AC instance/AC definition it stores the message into the DB
+- MessageIntercept intercepts that event and adds a task to handle a monitoring execution in SupervisionScanner
+- Monitoring updates the AC instance/AC definition
+- Monitoring sends a sync message to all participants replica
 
 AUTOMATION_COMPOSITION_DEPLOY_ACK
 +++++++++++++++++++++++++++++++++
 - A participant sends AUTOMATION_COMPOSITION_DEPLOY_ACK message in response to a AUTOMATION_COMPOSITION_DEPLOY message. It will send a AUTOMATION_COMPOSITION_DEPLOY_ACK - for each AC elements moved to the DEPLOYED state
 - AutomationCompositionUpdateAckListener collects the message from Message Broker
-- It checks the status of all Automation Composition elements and checks if the Automation Composition is fully DEPLOYED
-- It updates the AC to DB
+- It store the message into the DB
 - MessageIntercept intercepts that event and adds a task to handle a monitoring execution in SupervisionScanner
+- Monitoring checks the status of all Automation Composition elements and checks if the Automation Composition is fully DEPLOYED
+- Monitoring updates the AC instance to DB
+- If the Automation Composition is fully DEPLOYED Monitoring sends a sync message to all participants replica
 
 AUTOMATION_COMPOSITION_STATECHANGE_ACK
 ++++++++++++++++++++++++++++++++++++++
 - A participant sends AUTOMATION_COMPOSITION_STATECHANGE_ACK message in response to a AUTOMATION_COMPOSITION_STATECHANGE message. It will send a AUTOMATION_COMPOSITION_DEPLOY_ACK - for each AC elements moved to the ordered state
 - AutomationCompositionStateChangeAckListener collects the message from Message Broker
-- It checks the status of all Automation Composition elements and checks if the transition process of the Automation Composition is terminated
-- It updates the AC to DB
+- It store the message into the DB
 - MessageIntercept intercepts that event and adds a task to handle a monitoring execution in SupervisionScanner
+- Monitoring checks the status of all Automation Composition elements and checks if the transition process of the Automation Composition is terminated
+- Monitoring updates the AC instance to DB
+- If the transition process is terminated, Monitoring sends a sync message to all participants replica
 
 Design of monitoring execution in SupervisionScanner
 ****************************************************
 Monitoring is designed to process the follow operations:
 
+- to elaborate the messages from participants
 - to determine the next startPhase in a AUTOMATION_COMPOSITION_DEPLOY message
+- to determine the next stage in a AUTOMATION_COMPOSITION_MIGRATION message
 - to update AC deployState: in a scenario that "AutomationComposition.deployState" is in a kind of transitional state (example DEPLOYING), if all  - AC elements are moved properly to the specific state, the "AutomationComposition.deployState" will be updated to that and saved to DB
 - to update AC lockState: in a scenario that "AutomationComposition.lockState" is in a kind of transitional state (example LOCKING), if all  - AC elements are moved properly to the specific state, the "AutomationComposition.lockState" will be updated to that and saved to DB
+- to update AC subState: in a scenario that "AutomationComposition.subState" is in a kind of transitional state (example PREPARING), if all  - AC elements are moved properly to NONE state, the "AutomationComposition.subState" will be updated to NONE and saved to DB
 - to delete AC Instance: in a scenario that "AutomationComposition.deployState" is in DELETING, if all  - AC elements are moved properly to DELETED, the AC Instance will be deleted from DB
 - to retry AUTOMATION_COMPOSITION_DEPLOY/AUTOMATION_COMPOSITION_STATE_CHANGE messages. if there is an AC instance with startPhase completed, it will be moved to the next startPhase and retry a broadcast message with the new startPhase
-- to send sync message to all participants replica: in scenario where AC instance transition is fully completed
+- to retry AUTOMATION_COMPOSITION_MIGRATION messages. if there is an AC instance with stage completed, it will be moved to the next stage and retry a broadcast message with the new stage
+- to send sync message to all participants replica: in scenario where AC instance transition is fully completed or OutProperties has been changed
 
 The solution Design timeout and reporting for all Participant message dialogues are implemented into the monitoring execution.
 
 - Spring Scheduling inserts the task to monitor timeout execution into ThreadPoolExecutor
 - ThreadPoolExecutor executes the task
 - set AC instance stateChangeResult in timeout, if ACM-runtime do no receive Act message before MaxWaitMs milliseconds
+
+Producer and Consumer and Scheduling job mechanisms
++++++++++++++++++++++++++++++++++++++++++++++++++++
+To avoid conflicts, for example when an ACM-r pod is receiving a messages to change outProperties of an AC instance and other ACM-r pod is receiving a messages to change the status of an element of the same instance,
+Producer and Consumer and Scheduling job mechanisms has been implemented.
+With the Producer and Consumer mechanism, any ACM-r replica monitoring could elaborate a message independently from what ACM-r replica has fetched the message.
+Listeners of ACM-r will fetch messages from kafka and store to a message FIFO queue stored in DB.
+
+.. image:: ../images/acm-consumer-producer-messages.png
+
+Monitoring of a ACM-r replica will fetch messages from that queue.
+All Monitoring from different ACM-r pods are synchronized with Scheduling job to avoid to fetch messages related to same AC instance or AC definition at same time.
+InstanceIds and a compositionIds are generated with UUID as unique key and could be used as identificationId for messages.
+
+.. image:: ../images/acm-scheduling-job.png
+
+Edge case scenario: ACM-r pod has been terminated from Kubernetes
+-----------------------------------------------------------------
+Full elaboration of a monitoring for an AC instance or for a AC definition is protected by a transaction.
+If an ACM-r pod has been terminated from Kubernetes, the monitoring not full completed will be rollback from database.
+The monitoring job not completed wil be deleted after 200 seconds. All message of that AC definition or AC instance will processed by other monitoring.
 
 Design of Exception handling
 ****************************
