@@ -1,0 +1,11 @@
+Code-Review+2: Ramesh Murugan Iyer <ramesh.murugan.iyer@est.tech>
+Code-Review+1: Wayne Dunican <wayne.dunican@est.tech>
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: ONAP Bypass GHA <releng+onap.bypass.gha@linuxfoundation.org>
+Code-Review+1: Francesco Fiora <francesco.fiora@est.tech>
+Submitted-by: Adheli Tavares <adheli.tavares@est.tech>
+Submitted-at: Tue, 25 Feb 2025 17:52:02 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/policy/parent/+/140299
+Project: policy/parent
+Branch: refs/heads/master
