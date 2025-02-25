@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f072ec65_d50690e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2025-02-25T15:56:06Z",
+      "side": 1,
+      "message": "Seems to be some broken link in the rtd validation",
+      "revId": "8c2c85e7e4c5a24c11e0e282331de98a24e90723",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
