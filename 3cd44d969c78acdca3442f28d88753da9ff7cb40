@@ -16,6 +16,23 @@
       "message": "recheck",
       "revId": "3cd44d969c78acdca3442f28d88753da9ff7cb40",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "271add5a_c3cb9206",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2025-03-07T09:28:23Z",
+      "side": 1,
+      "message": "Don\u0027t merge yet - checking if the codegen dependency can be uplifted",
+      "revId": "3cd44d969c78acdca3442f28d88753da9ff7cb40",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
