@@ -16,6 +16,75 @@
       "message": "recheck",
       "revId": "c554ca801364736e4b41f9662b3471e4ea7f49ae",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d261ce7_6afff0ef",
+        "filename": "checkstyle/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2025-03-11T14:40:57Z",
+      "side": 1,
+      "message": "2024-2025",
+      "range": {
+        "startLine": 6,
+        "startChar": 31,
+        "endLine": 6,
+        "endChar": 35
+      },
+      "revId": "c554ca801364736e4b41f9662b3471e4ea7f49ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bcd3f4a_09c85b5e",
+        "filename": "resources/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2025-03-11T14:40:57Z",
+      "side": 1,
+      "message": "2021-2025 (we probably have been editing this without updating)",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 20
+      },
+      "revId": "c554ca801364736e4b41f9662b3471e4ea7f49ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60fe532_f2c9d96b",
+        "filename": "resources/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2025-03-11T14:40:57Z",
+      "side": 1,
+      "message": "if you could add SPDX-License-Identifier: Apache-2.0",
+      "range": {
+        "startLine": 15,
+        "startChar": 26,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "c554ca801364736e4b41f9662b3471e4ea7f49ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
