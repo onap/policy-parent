@@ -1,0 +1,19 @@
+{
+  "messageName": "PDP_STATUS",
+  "pdpType": "opa",
+  "state": "PASSIVE",
+  "healthy": "HEALTHY",
+  "description": "Pdp Status Response Message For Pdp Update",
+  "response": {
+    "responseTo": "06f6d05f-6045-48d9-bcd8-40364fb695ae",
+    "responseStatus": "SUCCESS",
+    "responseMessage": "PDP Update was Successful"
+  },
+  "policies": null,
+  "name": "opa-949018d3-cc9b-429b-96ae-46ca9c314e42",
+  "requestId": "e6a0607f-5fc8-4d62-afca-3cb984d827a3",
+  "pdpGroup": "defaultGroup",
+  "pdpSubgroup": "opa",
+  "timestampMs": "1731335550030",
+  "deploymentInstanceInfo":""
+}
