@@ -1,0 +1,27 @@
+{
+  "onapName": "CDS",
+  "onapComponent": "CDS",
+  "onapInstance": "CDS",
+  "currentDateTime": "2025-01-17T08:26:41.857Z",
+  "currentDate": "2025-01-17",
+  "currentTime": "08:26:41.857Z",
+  "timeZone": "UTC",
+  "timeOffset": "+08:45",
+  "policyName": "cell.consistency",
+  "data": [
+    {
+      "op": "add",
+      "path": "/test",
+      "value": {
+        "id": "s5",
+        "name": "job",
+        "protocols": [
+          "amqp"
+        ],
+        "ports": [
+          "p3"
+        ]
+      }
+    }
+  ]
+}
