@@ -20,6 +20,7 @@ Policy Framework Architecture
    drools/drools
    xacml/xacml
    apex/apex
+   opa/opa
    distribution/distribution
    clamp/clamp
    system-attributes/system-attributes
