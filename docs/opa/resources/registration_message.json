@@ -1,0 +1,15 @@
+{
+  "messageName": "PDP_STATUS",
+  "pdpType": "opa",
+  "state": "PASSIVE",
+  "healthy": "HEALTHY",
+  "description": "Pdp Status Registration Message",
+  "response": null,
+  "policies": [],
+  "name": "opa-4cd0a060-19bc-45ab-9955-7664d2b9604b",
+  "requestId": "9c73856c-3d02-4236-838f-3d58ea5cc058",
+  "pdpGroup": "opaGroup",
+  "pdpSubgroup": null,
+  "timestampMs": "1743010891210",
+  "deploymentInstanceInfo": ""
+}

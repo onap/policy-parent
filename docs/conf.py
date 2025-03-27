@@ -62,6 +62,15 @@ redoc = [
         }
     },
     {
+        'name': 'Policy OPA',
+        'page': 'opa/local-swagger',
+        'spec': 'https://raw.githubusercontent.com/onap/policy-opa-pdp/' + release + '/api/openapi.yaml',
+        'opts': {
+            'suppress-warnings': True,
+            'hide-hostname': True,
+        }
+    },
+    {
         'name': 'Policy DROOLS',
         'page': 'drools/local-swagger',
         'spec': 'https://raw.githubusercontent.com/onap/policy-drools-pdp/' + release + '/feature-healthcheck/src/main/resources/openapi/openapi.yaml',

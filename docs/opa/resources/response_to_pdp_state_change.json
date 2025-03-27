@@ -1,0 +1,18 @@
+{
+  "messageName": "PDP_STATUS",
+  "pdpType": "opa",
+  "state": "ACTIVE",
+  "healthy": "HEALTHY",
+  "description": "Pdp Status Response Message to Pdp State Change",
+  "response": {
+    "responseTo": "3edbb47c-b015-4fd9-9572-26cde97cc23c",
+    "responseStatus": "SUCCESS",
+    "responseMessage": "PDP State Changed From PASSIVE TO Active"
+  },
+  "policies": null,
+  "name": "opa-949018d3-cc9b-429b-96ae-46ca9c314e42",
+  "requestId": "02b186a6-485d-4392-90fa-d4cac34be97a",
+  "pdpGroup": "defaultGroup",
+  "pdpSubgroup": "opa",
+  "timestampMs": "1731335550069"
+}
