@@ -1,0 +1,17 @@
+tosca_definitions_version: tosca_simple_yaml_1_1_0
+topology_template:
+  policies:
+    - cell.consistency:
+        type: onap.policies.native.opa
+        type_version: 1.0.0
+        properties:
+          data:
+            node.cell.consistency: eyAgIAogICJhbGxvd2VkQ2VsbElkIiA6IDQ0NTYxMTE5MzI2NTA0MDEyOSwgCiAgIm1pblBDSSI6IDEsIAogICJtYXhQQ0kiOiAzMDAwICAKIH0=
+          policy:
+            cell.consistency: cGFja2FnZSBjZWxsLmNvbnNpc3RlbmN5CmltcG9ydCByZWdvLnYxCmltcG9ydCBkYXRhLmNlbGwuY29uc2lzdGVuY3kudG9wb2xvZ3kKZGVmYXVsdCBhbGxvdyA9IGZhbHNlCiMgUnVsZSB0byBhbGxvdyBpZiBQQ0kgaXMgd2l0aGluIHJhbmdlIDEtMzAwMAphbGxvd19pZl9wY2lfaW5fcmFuZ2UgIGlmIHsKICAgIGlucHV0LlBDSSA+PSBkYXRhLm5vZGUuY2VsbC5jb25zaXN0ZW5jeS5taW5QQ0kKICAgIGlucHV0LlBDSSA8PSBkYXRhLm5vZGUuY2VsbC5jb25zaXN0ZW5jeS5tYXhQQ0kKfQojIE1haW4gcnVsZSB0byBkZXRlcm1pbmUgdGhlIGZpbmFsIGRlY2lzaW9uCmFsbG93ICBpZnsKICAgIHRvcG9sb2d5LmNoZWNrX2NlbGxfY29uc2lzdGVuY3kKICAgIGFsbG93X2lmX3BjaV9pbl9yYW5nZQp9
+            cell.consistency.topology: cGFja2FnZSBjZWxsLmNvbnNpc3RlbmN5LnRvcG9sb2d5CmltcG9ydCByZWdvLnYxCiMgUnVsZSB0byBjaGVjayBjZWxsIGNvbnNpc3RlbmN5CmNoZWNrX2NlbGxfY29uc2lzdGVuY3kgaWYgewogICAgaW5wdXQuY2VsbCAhPSBkYXRhLm5vZGUuY2VsbC5jb25zaXN0ZW5jeS5hbGxvd2VkQ2VsbElkCn0=
+        name: cell.consistency
+        version: 1.0.0
+        metadata:
+          policy-id: cell.consistency
+          policy-version: 1.0.0

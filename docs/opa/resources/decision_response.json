@@ -1,0 +1,6 @@
+{
+  "output": {
+    "allow": true
+  },
+  "policyName": "cell.consistency"
+}
