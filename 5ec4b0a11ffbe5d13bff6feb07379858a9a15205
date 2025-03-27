@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6537c01_f0956782",
+        "filename": "docs/opa/OPA-architecture.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2025-03-27T16:27:41Z",
+      "side": 1,
+      "message": "issue seems to be here",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "5ec4b0a11ffbe5d13bff6feb07379858a9a15205",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
