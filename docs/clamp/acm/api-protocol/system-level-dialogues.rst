@@ -288,7 +288,7 @@ If the operation succeeds, the participant is required to update the result valu
 .. image:: ../images/system-dialogues/SuccessAcmResult.png
 
 The result value should be updated as 'FAILED' by the participants when any failures occurred.
-Also in case of failures, the overall state of the composition/instance remains in any of the transitioning states (DEPLOYING, UNDEPLOYING, PRIMING, DEPRIMING, UPDATING, MIGRATING)
+Also in case of failures, the overall state of the composition/instance remains in any of the transitioning states (DEPLOYING, UNDEPLOYING, PRIMING, DEPRIMING, UPDATING, MIGRATING, PREPARING, REVIEWING, MIGRATION_PRECHECKING)
 with the appropriate result values updated by the participant.
 
 .. image:: ../images/system-dialogues/FailedAcmResult.png

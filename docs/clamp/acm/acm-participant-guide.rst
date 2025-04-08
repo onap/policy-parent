@@ -140,7 +140,7 @@ AutomationCompositionElementListener:
   9. void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate, int stage) throws PfModelException;
   10. void migratePrecheck(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
   11. void review(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
-  12. void prepare(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  12. void prepare(CompositionElementDto compositionElement, InstanceElementDto instanceElement, int stage) throws PfModelException;
 
 These method from the interface are implemented independently as per the user requirement. These methods after handling the
 appropriate requests should also invoke the intermediary's publisher apis to notify the ACM-runtime with the acknowledgement events.
@@ -154,13 +154,212 @@ ParticipantParameters:
   ParticipantIntermediaryParameters getIntermediaryParameters()
 
 
-Abstract class AcElementListenerV3
+Abstract class AcElementListenerV4
 ----------------------------------
 This abstract class is introduced to help to maintain the java backward compatibility with AutomationCompositionElementListener from new releases.
 Any new functionality in the future will be wrapped by this class.
 
 **Note**: this class needs intermediaryApi and it should be passed by constructor. It is declared as protected and can be used.
 Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime, deprime, migratePrecheck, review and prepare.
+
+
+Methods: deploy, undeploy, lock, unlock, delete, review
+  compositionElement:
+    ======================  =======================================
+     **field**                       **description**
+    ======================  =======================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+    ======================  =======================================
+  instanceElement:
+    ==============================  ===========================
+     **field**                       **description**
+    ==============================  ===========================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment    policies and policy types
+     inProperties                    instance in-properties
+      outProperties                  instance out-properties
+    ==============================  ===========================
+
+Method: update
+  compositionElement:
+    ======================  =======================================
+     **field**                       **description**
+    ======================  =======================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+    ======================  =======================================
+  instanceElement:
+    ==============================  ================================================
+     **field**                       **description**
+    ==============================  ================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(before the update)**
+      outProperties                  instance out-properties
+    ==============================  ================================================
+  instanceElementUpdated:
+    ==============================  ======================================
+     **field**                       **description**
+    ==============================  ======================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(updated)**
+     outProperties                   instance out-properties
+    ==============================  ======================================
+
+Methods: prime, deprime
+  composition:
+    ======================  ===================================================================
+     **field**                       **description**
+    ======================  ===================================================================
+     compositionId           composition definition Id
+     inProperties            composition definition in-properties for each definition element
+     outProperties           composition definition out-properties for each definition element
+    ======================  ===================================================================
+
+Method: migratePrecheck
+  compositionElement:
+    ======================  =====================================================
+     **field**                       **description**
+    ======================  =====================================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+     state                   element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ======================  =====================================================
+  compositionElementTarget:
+    ======================  =====================================================
+     **field**                       **description**
+    ======================  =====================================================
+     compositionId           composition definition target Id
+     elementDefinitionId     composition definition target element Id
+     inProperties            composition definition target in-properties
+     outProperties           composition definition target out-properties
+     state                   element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ======================  =====================================================
+  instanceElement:
+    ==============================  ===================================================
+     **field**                       **description**
+    ==============================  ===================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(before the migration)**
+     outProperties                   instance out-properties
+     state                           element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ==============================  ===================================================
+  instanceElementMigrate:
+    ==============================  ====================================================
+     **field**                       **description**
+    ==============================  ====================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(updated)**
+     outProperties                   instance out-properties
+     state                           element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ==============================  ====================================================
+
+Method: migrate
+  compositionElement:
+    ======================  =====================================================
+     **field**                       **description**
+    ======================  =====================================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+     state                   element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ======================  =====================================================
+  compositionElementTarget:
+    ======================  =====================================================
+     **field**                       **description**
+    ======================  =====================================================
+     compositionId           composition definition target Id
+     elementDefinitionId     composition definition target element Id
+     inProperties            composition definition target in-properties
+     outProperties           composition definition target out-properties
+     state                   element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ======================  =====================================================
+  instanceElement:
+    ==============================  ===================================================
+     **field**                       **description**
+    ==============================  ===================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(before the migration)**
+     outProperties                   instance out-properties
+     state                           element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ==============================  ===================================================
+  instanceElementMigrate:
+    ==============================  ====================================================
+     **field**                       **description**
+    ==============================  ====================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(updated)**
+     outProperties                   instance out-properties
+     state                           element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ==============================  ====================================================
+  stage:
+    the stage of the migration that the participant has to execute
+
+Method: prepare
+  compositionElement:
+    ======================  =======================================
+     **field**                       **description**
+    ======================  =======================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+    ======================  =======================================
+  instanceElement:
+    ==============================  ===========================
+     **field**                       **description**
+    ==============================  ===========================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment    policies and policy types
+     inProperties                    instance in-properties
+      outProperties                  instance out-properties
+    ==============================  ===========================
+  stage:
+    the stage of the prepare that the participant has to execute
+
+
+Abstract class AcElementListenerV3
+----------------------------------
+This abstract class is introduced to help to maintain temporarily the java backward compatibility with AutomationCompositionElementListener implemented in 8.0.1 version.
+So developers can decide to align to new functionality later. Any new functionality in the future will be wrapped by this class.
+
+The Abstract class AcElementListenerV3 supports the follow methods.
+
+.. code-block:: java
+
+  1. void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  2. void undeploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  3. void lock(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  4. void unlock(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  5. void delete(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  6. void update(CompositionElementDto compositionElement, InstanceElementDto instanceElement, InstanceElementDto instanceElementUpdated) throws PfModelException;
+  7. void prime(CompositionDto composition) throws PfModelException;
+  8. void deprime(CompositionDto composition) throws PfModelException;
+  9. void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate, int stage) throws PfModelException;
+  10. void migratePrecheck(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
+  11. void review(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
+  12. void prepare(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
 
 
 Methods: deploy, undeploy, lock, unlock, delete, review and prepare
@@ -639,8 +838,8 @@ In/Out instance Properties
 
   The 'Out Properties' will be **not cleaned** by intermediary:
 
-  * during DEPLOIYNG (Out Properties will be take from last changes matching by elementId)
-  * during UNDEPLOING
+  * during DEPLOYING (Out Properties will be take from last changes matching by elementId)
+  * during UNDEPLOYING
   * during LOCKING/UNLOCKING
   * during UPDATING/MIGRATING/PREPARE/REVIEW/MIGRATION_PRECHECKING
 

@@ -82,9 +82,22 @@ Delete
 
 Automation Composition Instance Sub State
 =========================================
-The sub states that an Automation Composition Instance can have are shown in the diagram below.
+The sub states that an Automation Composition Instance can have are shown in the diagrams below.
 
-.. image:: images/acm-states/AcInstanceSubStates.png
+Prepare
+-------
+
+.. image:: images/acm-states/AcInstanceStatesPrepare.png
+
+Review
+------
+
+.. image:: images/acm-states/AcInstanceStatesReview.png
+
+Migration-Precheck
+------------------
+
+.. image:: images/acm-states/AcInstanceStatesMigrationPrecheck.png
 
 How State are saved in DB
 =========================

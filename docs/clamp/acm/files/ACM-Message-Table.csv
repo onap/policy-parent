@@ -73,6 +73,7 @@ AutomationCompositionMigration,ACM Runtime,Participant,Message to request update
 ,,,,participantId,UUID indicating the participant the message is intended for
 ,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_MIGRATION
 AutomationCompositionPrepare,ACM Runtime,Participant,Message to request prepare/review,participantList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,stage,The next stage that participant is supposed to receiving
 ,,,,preDeploy,Flag - if true the instance is Undeployed and the action is a Prepare - otherwise (false) the instance is Deployed and the action is a Review
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,automationCompositionId,The id of the automation composition related to this message

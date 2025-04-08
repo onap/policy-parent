@@ -239,8 +239,8 @@ Example of DEPLOY order with Http_PMSHMicroserviceAutomationCompositionElement w
 
 In that scenario the message AUTOMATION_COMPOSITION_DEPLOY has been sent two times.
 
-Migration using Stage
-*********************
+Prepare and Migration using Stage
+*********************************
 The stage is particularly important in Automation Composition migration because sometime the user wishes to control
 not only the order in which the state changes in Automation Composition Elements but also to execute again using the same Automation Composition Elements.
 
@@ -251,9 +251,9 @@ Stage is defined as shown below in the Definition of TOSCA fundamental Automatio
 .. code-block:: YAML
 
   stage:
-    type: list
+    type: map
     required: false
-    description: A list indicating the stages in which this automation composition element will be started, the
+    description: A map of list indicating for each operation the stages in which this automation composition element will be started, the
                  first stage is zero. Automation Composition Elements are started in their stage order.
                  Automation Composition Elements with the same stage are started simultaneously.
     metadata:
@@ -272,7 +272,40 @@ Example where it could be used:
     properties:
       provider: ONAP
       uninitializedToPassiveTimeout: 180
+      stage:
+        prepare: [0]
+        migrate: [0,2]
+
+Backward compatibility for Stage definition
++++++++++++++++++++++++++++++++++++++++++++
+Stage for migration could be defined as shown below:
+
+.. code-block:: YAML
+
+  stage:
+    type: list
+    required: false
+    description: A list indicating the stages in which this automation composition element will be started, the
+                 first stage is zero. Automation Composition Elements are started in their stage order.
+                 Automation Composition Elements with the same stage are started simultaneously.
+    metadata:
+      common: true
+
+Example of Backward compatibility for migration:
+
+.. code-block:: YAML
+
+  org.onap.domain.database.Http_PMSHMicroserviceAutomationCompositionElement:
+    # Consul http config for PMSH.
+    version: 1.2.3
+    type: org.onap.policy.clamp.acm.HttpAutomationCompositionElement
+    type_version: 1.0.1
+    description: Automation Composition element for the http requests of PMSH microservice
+    properties:
+      provider: ONAP
+      uninitializedToPassiveTimeout: 180
       stage: [0,2]
+
 
 How Stage works
 +++++++++++++++
@@ -396,13 +429,13 @@ Monitoring is designed to process the follow operations:
 
 - to elaborate the messages from participants
 - to determine the next startPhase in a AUTOMATION_COMPOSITION_DEPLOY message
-- to determine the next stage in a AUTOMATION_COMPOSITION_MIGRATION message
+- to determine the next stage in a AUTOMATION_COMPOSITION_MIGRATION/AUTOMATION_COMPOSITION_PREPARE message
 - to update AC deployState: in a scenario that "AutomationComposition.deployState" is in a kind of transitional state (example DEPLOYING), if all  - AC elements are moved properly to the specific state, the "AutomationComposition.deployState" will be updated to that and saved to DB
 - to update AC lockState: in a scenario that "AutomationComposition.lockState" is in a kind of transitional state (example LOCKING), if all  - AC elements are moved properly to the specific state, the "AutomationComposition.lockState" will be updated to that and saved to DB
 - to update AC subState: in a scenario that "AutomationComposition.subState" is in a kind of transitional state (example PREPARING), if all  - AC elements are moved properly to NONE state, the "AutomationComposition.subState" will be updated to NONE and saved to DB
 - to delete AC Instance: in a scenario that "AutomationComposition.deployState" is in DELETING, if all  - AC elements are moved properly to DELETED, the AC Instance will be deleted from DB
 - to retry AUTOMATION_COMPOSITION_DEPLOY/AUTOMATION_COMPOSITION_STATE_CHANGE messages. if there is an AC instance with startPhase completed, it will be moved to the next startPhase and retry a broadcast message with the new startPhase
-- to retry AUTOMATION_COMPOSITION_MIGRATION messages. if there is an AC instance with stage completed, it will be moved to the next stage and retry a broadcast message with the new stage
+- to retry AUTOMATION_COMPOSITION_MIGRATION/AUTOMATION_COMPOSITION_PREPARE messages. if there is an AC instance with stage completed, it will be moved to the next stage and retry a broadcast message with the new stage
 - to send sync message to all participants replica: in scenario where AC instance transition is fully completed or OutProperties has been changed
 
 The solution Design timeout and reporting for all Participant message dialogues are implemented into the monitoring execution.
