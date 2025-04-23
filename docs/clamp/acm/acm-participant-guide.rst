@@ -40,8 +40,10 @@ The participant application should be provided with the following Intermediary p
 and the same is configured for the 'ParticipantIntermediaryParameters' object in the code.
 
 1. participantId - A unique participant UUID that is used by the runtime to identify the participant.
-2. ReportingTimeIntervalMs - Time inertval the participant should report the status/heartbeat to the runtime.
-3. clampAutomationCompositionTopics - This property takes in the kafka topic names and servers for the intermediary module to use.
+2. ReportingTimeIntervalMs - Time interval the participant should report the status/heartbeat to the runtime.
+3. threadPoolSize - This property defines the size of the ThreadPoll used to execute operations by the participant.
+   The default number is 10, if this property is not defined.
+4. clampAutomationCompositionTopics - This property takes in the kafka topic names and servers for the intermediary module to use.
    These values should be provided for both source and sink configs.
    (**Note**: In order to avoid a connection to Kafka when Unit Tests are running, set topicCommInfrastructure: NOOP in properties file for tests).
    The following example shows the topic parameters set for using Kafka.
@@ -75,7 +77,7 @@ and the same is configured for the 'ParticipantIntermediaryParameters' object in
                 - ${topicServer:localhost}:9092
               topicCommInfrastructure: kafka
 
-4. participantSupportedElementTypes - This property takes a list of typeName and typeVersion fields to define the types of AC elements the participant deals with.
+5. participantSupportedElementTypes - This property takes a list of typeName and typeVersion fields to define the types of AC elements the participant deals with.
    These are user defined name and version and the same should be defined for the AC elements that are included in the TOSCA based AC definitions.
 
 .. code-block:: bash
@@ -95,7 +97,7 @@ but if Kafka is not up yet, it will retry this check later.
 
 Kafka Healthcheck supports the topics check and it could be enabled by configuration (using topicValidation parameter).
 Usually topics are getting created when first message happen, so in that scenario, topicValidation should be set as false.
-In different environment, the two topics will be created manually by a script with specific permissions. So Kafka could be up,
+In different environment, the two topics will be defined into the Kubernetes chart with specific permissions. So Kafka could be up,
 but the Kafka messages configuration could be fail because the two topics are not get created yet.
 So in that scenario, topicValidation should be set as true, and if topics are not created yet, Healthcheck will retry that check later.
 
@@ -932,6 +934,7 @@ The following example shows the topic parameters and the additional 'myparameter
       reportingTimeIntervalMs: 120000
       description: Participant Description
       participantId: 101c62b3-8918-41b9-a747-d21eb79c6c90
+      threadPoolSize: 10
       clampAutomationCompositionTopics:
         topicSources:
           - topic: ${participant.intermediaryParameters.topics.operationTopic}
