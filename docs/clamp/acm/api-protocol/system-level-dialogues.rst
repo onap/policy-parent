@@ -298,13 +298,14 @@ the operation result is then marked as 'TIMEOUT' by the ACM-R after the configur
 
 .. image:: ../images/system-dialogues/TimeoutAcmResult.png
 
-The following parameter is set in the application properties for the runtime to configure the 'TIMEOUT' value in milliseconds.
+The following parameters are set in the application properties for the runtime to configure the 'TIMEOUT' value in milliseconds.
 
 .. code-block:: yaml
 
         runtime:
           participantParameters:
             maxStatusWaitMs: 100000  --> Denotes the maximum wait time by the runtime to receive the periodic status update from the participants
+            maxOperationWaitMs: 100000  --> Denotes the maximum wait time by the runtime to receive the state change update from the participants
 
 An ACM operation has to be completed and updated with any of the above specified result values in order to allow the user to trigger subsequent requests.
 The user cannot trigger any state change events before the operation gets completed. When an operation is marked 'TIMEOUT', the following scenarios are applicable.
