@@ -27,7 +27,8 @@ Design of Rest Api
 Check CLAMP Runtime and Participants
 ++++++++++++++++++++++++++++++++++++
 - GUI calls GET "/onap/policy/clamp/acm/health" endpoint and receives the "UP" status as response
-- GUI calls GET "/onap/policy/clamp/acm/v2/participants" endpoint and receives all participants registered with supported Element Types as response
+- GUI calls GET "/onap/policy/clamp/acm/v2/participants" endpoint and receives as response: all participants with supported Element Types, all replicas registered, and all compositions and instances connected. The end point supports the pagination by parameters "size" and "page"
+- GUI calls GET "/onap/policy/clamp/acm/v2/participants/{participantId}" endpoint and receives as response: the participant with supported Element Types, all replicas registered, and all compositions and instances connected. The end point supports the pagination by parameters "size" and "page"
 
 Order an immediate Participant Report from all participants
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -42,6 +43,11 @@ Create of a Automation Composition Definition Type
 - It validates the Automation Composition Type Definition
 - It saves to DB the Tosca Service Template using AcDefinitionProvider with new compositionId and COMMISSIONED status
 - the Rest-Api call returns the compositionId generated and the list of Element Definition Type
+
+Fetch of Automation Composition Definition Type
++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls GET "/onap/policy/clamp/acm/v2/compositions" endpoint and receives all compositions as response. The end point supports the pagination by parameters "size" and "page"
+- GUI calls GET "/onap/policy/clamp/acm/v2/compositions/{compositionId}" endpoint and receives the composition as response.
 
 Update of a Automation Composition Definition Type
 ++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -70,6 +76,11 @@ Create of a Automation Composition Instance
 - It set the related participantId into the AC Element Instance using the participantId defined in AC Element Type Definition
 - It saves the Automation Composition to DB with UNDEPLOYED deployState and NONE lockState
 - the Rest-Api call returns the instanceId and the list of AC Element Instance
+
+Fetch of Automation Composition Instance
+++++++++++++++++++++++++++++++++++++++++
+- GUI calls GET "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances" endpoint and receives all instances of a composition as response. The end point supports the pagination by parameters "size" and "page"
+- GUI calls GET "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint and receives the instance as response.
 
 Update of a Automation Composition Instance
 +++++++++++++++++++++++++++++++++++++++++++
