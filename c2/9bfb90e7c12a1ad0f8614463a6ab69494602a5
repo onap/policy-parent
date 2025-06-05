@@ -1,0 +1,10 @@
+Code-Review+1: Deena Mukundan <dm00536893@techmahindra.com>
+Verified+1: ONAP Bypass GHA <releng+onap.bypass.gha@linuxfoundation.org>
+Code-Review+2: Adheli Tavares <adheli.tavares@est.tech>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Submitted-by: Adheli Tavares <adheli.tavares@est.tech>
+Submitted-at: Thu, 05 Jun 2025 13:17:03 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/policy/parent/+/141121
+Project: policy/parent
+Branch: refs/heads/master
