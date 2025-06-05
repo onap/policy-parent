@@ -51,7 +51,7 @@
         <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
         <docker.push.registry>nexus3.onap.org:10003</docker.push.registry>
         <!-- Dependency Versions -->
-        <version.beanutils>1.10.1</version.beanutils>
+        <version.beanutils>1.11.0</version.beanutils>
         <version.bytebuddy>1.14.13</version.bytebuddy>
         <version.ccsdk>1.7.1</version.ccsdk>
         <version.cucumber>7.15.0</version.cucumber>
