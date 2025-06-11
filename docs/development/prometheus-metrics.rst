@@ -183,6 +183,32 @@ Key metrics for Policy Distribution
 | download_failure_count             | Total number of download failures                     |
 +------------------------------------+-------------------------------------------------------+
 
+Key metrics for OPA PDP
+-----------------------------------
+
++------------------------------------------+-----------------------------------------------------------+
+| Metric name                              | Metric description                                        |
++==========================================+===========================================================+
+| opa_decision_response_time_seconds       | Response time of OPA decision handler                     |
++------------------------------------------+-----------------------------------------------------------+
+| opa_data_response_time_seconds           | Response time of OPA data handler                         |
++------------------------------------------+-----------------------------------------------------------+
+| pdpo_policy_decisions_total              | Total Number of Decision Handler hits for OPA             |
++------------------------------------------+-----------------------------------------------------------+
+| pdpo_policy_deployments_total            | Total Number of Successful Deployment for OPA             |
++------------------------------------------+-----------------------------------------------------------+
+| pdpo_policy_failures_total               | Total Number of Deployment Failures for OPA               |
++------------------------------------------+-----------------------------------------------------------+
+| pdpo_dynamic_data_success_total          | Total Number of Successful Dynamic Data Updates for OPA   |
++------------------------------------------+-----------------------------------------------------------+
+| pdpo_dynamic_data_failures_total         | Total Number of Failed Dynamic Data Updates for OPA       |
++------------------------------------------+-----------------------------------------------------------+
+| pdpo_policy_undeployments_success_total  | Total Number of Successful Deployment for OPA             |
++------------------------------------------+-----------------------------------------------------------+
+| pdpo_policy_undeployments_failures_total | Total Number of Deployment Failures for OPA               |
++------------------------------------------+-----------------------------------------------------------+
+
+
 
 3. OOM changes to enable prometheus monitoring for Policy Framework
 ===================================================================
