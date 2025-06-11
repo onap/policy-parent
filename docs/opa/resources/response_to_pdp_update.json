@@ -12,7 +12,7 @@
   "policies": null,
   "name": "opa-949018d3-cc9b-429b-96ae-46ca9c314e42",
   "requestId": "e6a0607f-5fc8-4d62-afca-3cb984d827a3",
-  "pdpGroup": "defaultGroup",
+  "pdpGroup": "opaGroup",
   "pdpSubgroup": "opa",
   "timestampMs": "1731335550030",
   "deploymentInstanceInfo":""

@@ -23,12 +23,13 @@ Software Architecture
 
          .. container:: ulist
 
-            - **KafkaListener/Producer**: This component listens for incoming PDP_UPDATE and PDP_STATE_CHANGE messages from PAP. OPA PDP sends PDP_STATUS messages to PAP via Producer.
+            - **KafkaListener/Producer**: for topic:policy-pdp-pap, OPA PDP listens for incoming PDP_UPDATE and PDP_STATE_CHANGE messages from PAP. OPA PDP sends PDP_STATUS messages to PAP via Producer.
+              for topic:opa-pdp-data, OPA PDP when scaled up during deployment, every opa instance will produce and listen to OPA_PDP_DATA_PATCH_SYNC messages.
             - **OPA PDP Engine**: The Go application that decodes base64 TOSCA policies and handles the deployment and undeployment of policies into the OPA SDK.
 
             .. container:: ulist
 
-               - Msg Processor: Handles incoming PDP_UPDATE and PDP_STATE_CHANGE messages from PAP.
+               - Msg Processor: Process incoming messages PDP_UPDATE, PDP_STATE_CHANGE, OPA_PDP_DATA_PATCH_SYNC for validation.
                - PDP STATE: Maintains PDP State Active or Passive.
                - Policy Map: In Memory Cache that holds the Map of names of policies,policy keys and data keys  deployed.
                - Metrics: Handles statistics of number of policies deployed,success and failure counts and other metrics.
@@ -140,6 +141,6 @@ UnDeploy OPA policy
       1.0.0-SNAPSHOT
       Last updated 2025-03-27 16:04:24 IST
 
-.. |OPA PDP Architecture| image:: images/OPA-PDP.drawio.svg
+.. |OPA PDP Architecture| image:: images/OPAPDPArchitecture.png
    :width: 700px
    :height: 300px

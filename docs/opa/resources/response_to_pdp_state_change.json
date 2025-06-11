@@ -12,7 +12,7 @@
   "policies": null,
   "name": "opa-949018d3-cc9b-429b-96ae-46ca9c314e42",
   "requestId": "02b186a6-485d-4392-90fa-d4cac34be97a",
-  "pdpGroup": "defaultGroup",
+  "pdpGroup": "opaGroup",
   "pdpSubgroup": "opa",
   "timestampMs": "1731335550069"
 }
