@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "490161eb_79e54f44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2025-06-11T11:33:07Z",
+      "side": 1,
+      "message": "need to update this file as well https://github.com/onap/policy-parent/blob/master/integration/src/main/resources/release/16.0.0-ONAP_pf_release_data.csv with the released version to be used in OOM; you can raise a separate review for it.",
+      "revId": "54ddba56e99cdbae5d735bf592aa1d7c3a5a3058",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
