@@ -13,3 +13,6 @@ Policy OPA PDP Engine
    OPA-policy-guide.rst
    OPA-decision-example.rst
    OPA-dynamic-dataupdate.rst
+   OPA-scalability.rst
+   OPA-metrics.rst
+   OPA-pdp-security.rst
