@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d34eb3b_a4cee480",
+        "filename": "docs/opa/OPA-pdp-security.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 8479
+      },
+      "writtenOn": "2025-06-12T10:32:03Z",
+      "side": 1,
+      "message": "remove unwanted space",
+      "revId": "9a230d5dc0253fb8ab6074fa0cdff51214bbc08c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "161b81a3_d08043eb",
+        "filename": "docs/opa/OPA-scalability.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 8479
+      },
+      "writtenOn": "2025-06-12T10:32:03Z",
+      "side": 1,
+      "message": "removed unwanted space",
+      "revId": "9a230d5dc0253fb8ab6074fa0cdff51214bbc08c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ab33c51_e76dc778",
+        "filename": "docs/opa/OPA-scalability.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 8479
+      },
+      "writtenOn": "2025-06-12T10:32:03Z",
+      "side": 1,
+      "message": "remove unwanted space",
+      "revId": "9a230d5dc0253fb8ab6074fa0cdff51214bbc08c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddcc4ae_f5f7a876",
+        "filename": "docs/opa/OPA-scalability.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 8479
+      },
+      "writtenOn": "2025-06-12T10:32:03Z",
+      "side": 1,
+      "message": "remove unwanted space",
+      "revId": "9a230d5dc0253fb8ab6074fa0cdff51214bbc08c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
