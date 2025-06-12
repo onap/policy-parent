@@ -18,6 +18,24 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb97b84a_75b0f81f",
+        "filename": "docs/opa/OPA-pdp-security.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 8479
+      },
+      "writtenOn": "2025-06-12T10:59:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6d34eb3b_a4cee480",
+      "revId": "9a230d5dc0253fb8ab6074fa0cdff51214bbc08c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "161b81a3_d08043eb",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-06-12T10:32:03Z",
       "side": 1,
       "message": "removed unwanted space",
+      "revId": "9a230d5dc0253fb8ab6074fa0cdff51214bbc08c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6218c522_508a9344",
+        "filename": "docs/opa/OPA-scalability.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 8479
+      },
+      "writtenOn": "2025-06-12T10:59:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "161b81a3_d08043eb",
       "revId": "9a230d5dc0253fb8ab6074fa0cdff51214bbc08c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
@@ -52,6 +88,24 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2042575_22e1efdb",
+        "filename": "docs/opa/OPA-scalability.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 8479
+      },
+      "writtenOn": "2025-06-12T10:59:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ab33c51_e76dc778",
+      "revId": "9a230d5dc0253fb8ab6074fa0cdff51214bbc08c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ddcc4ae_f5f7a876",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-06-12T10:32:03Z",
       "side": 1,
       "message": "remove unwanted space",
+      "revId": "9a230d5dc0253fb8ab6074fa0cdff51214bbc08c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "246a4b5c_c75ca29a",
+        "filename": "docs/opa/OPA-scalability.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 8479
+      },
+      "writtenOn": "2025-06-12T10:59:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5ddcc4ae_f5f7a876",
       "revId": "9a230d5dc0253fb8ab6074fa0cdff51214bbc08c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
