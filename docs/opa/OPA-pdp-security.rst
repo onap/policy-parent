@@ -24,7 +24,7 @@ OPA Policy and Istio Security Integration
 Service Mesh Security Model
 ###########################
 
-Module: ``policy-opa-pdp``
+Module: `policy-opa-pdp`
 
 External Communication
 ----------------------
@@ -72,5 +72,5 @@ As part of the ONAP **Paris release (May 2025)**, the following security improve
       Last updated 2025-03-27 16:04:24 IST
 
 .. |OOM SERVICE MESH| image:: images/OPAServiceMesh.png
-   :width: 500px
-   :height: 100px
+   :width: 700px
+   :height: 400px
