@@ -74,8 +74,8 @@ OPA-PDP Dynamic Data Scalability
       Last updated 2025-03-27 16:04:24 IST
 
 .. |OPA PDP SCALABILITY| image:: images/OPAScalability.png
-   :width: 500px
-   :height: 100px
+   :width: 700px
+   :height: 400px
 .. |OPA PDP DYNAMICDATA SCALABILITY| image:: images/OPADynDataScalability.png
-   :width: 500px
-   :height: 100px
+   :width: 700px
+   :height: 400px
