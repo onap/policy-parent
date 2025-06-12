@@ -24,6 +24,30 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb7ea3c1_4a0cd6af",
+        "filename": "docs/opa/OPA-dynamic-dataupdate.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 8487
+      },
+      "writtenOn": "2025-06-12T09:07:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "792e9bcf_166dd29a",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 1
+      },
+      "revId": "da7a2dad534f6005a345be1062b0e088eb208f2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64c8ecfe_fb3f8898",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-06-12T07:19:17Z",
       "side": 1,
       "message": "remove trailing space",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "da7a2dad534f6005a345be1062b0e088eb208f2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a92cebf_0c8ff7de",
+        "filename": "docs/opa/OPA-metrics.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 8487
+      },
+      "writtenOn": "2025-06-12T09:07:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "64c8ecfe_fb3f8898",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a040c88_9a6d15b0",
+        "filename": "docs/opa/OPA-metrics.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 8487
+      },
+      "writtenOn": "2025-06-12T09:07:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63b4eb42_6367daad",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 13
+      },
+      "revId": "da7a2dad534f6005a345be1062b0e088eb208f2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4712e810_9f989bc8",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-06-12T07:19:17Z",
       "side": 1,
       "message": "remove trailing space",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "da7a2dad534f6005a345be1062b0e088eb208f2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c7c939_70a38aa8",
+        "filename": "docs/opa/OPA-metrics.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 8487
+      },
+      "writtenOn": "2025-06-12T09:07:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4712e810_9f989bc8",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -110,6 +206,24 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf9dd82_ba03b713",
+        "filename": "docs/opa/OPA-pdp-security.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 8487
+      },
+      "writtenOn": "2025-06-12T09:07:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e5ca1dec_7ca6d6f6",
+      "revId": "da7a2dad534f6005a345be1062b0e088eb208f2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6561bf2_e30b0ea4",
@@ -123,6 +237,30 @@
       "writtenOn": "2025-06-12T07:19:17Z",
       "side": 1,
       "message": "remove trailing space",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 1
+      },
+      "revId": "da7a2dad534f6005a345be1062b0e088eb208f2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f050302c_8cff3187",
+        "filename": "docs/opa/OPA-scalability.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 8487
+      },
+      "writtenOn": "2025-06-12T09:07:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6561bf2_e30b0ea4",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -156,6 +294,30 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c238ea7a_b6eba472",
+        "filename": "docs/opa/OPA-scalability.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 8487
+      },
+      "writtenOn": "2025-06-12T09:07:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7cbb01df_f19b079e",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "da7a2dad534f6005a345be1062b0e088eb208f2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c2c020f_2f833128",
@@ -169,6 +331,30 @@
       "writtenOn": "2025-06-12T07:19:17Z",
       "side": 1,
       "message": "remove trailing space",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "da7a2dad534f6005a345be1062b0e088eb208f2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4058dc66_aac44f6a",
+        "filename": "docs/opa/OPA-scalability.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 8487
+      },
+      "writtenOn": "2025-06-12T09:07:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0c2c020f_2f833128",
       "range": {
         "startLine": 60,
         "startChar": 0,
