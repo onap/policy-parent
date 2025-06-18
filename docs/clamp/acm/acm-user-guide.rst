@@ -33,6 +33,23 @@ An example scenario is considered where we have a microservice that can be insta
 configured via REST api to perform some operation.This functionality can be realised as a composition in Tosca standard.
 The various sections of the composition definition includes:
 
+Metadata:
+---------
+The user can define 'TIMEOUT' for Prime and Deprime:
+
+primeTimeoutMs:
+  Denotes the maximum wait time during prime operation by the runtime to receive the state change update from participant
+
+deprimeTimeoutMs:
+  Denotes the maximum wait time during deprime operation by the runtime to receive the state change update from participant
+
+.. code-block:: yaml
+
+  metadata:
+    primeTimeoutMs: 200000
+    deprimeTimeoutMs: 100000
+
+
 Data Types:
 -----------
 The user can define their own data types to be used in the composition definition. In this use case, we are defining three data types as follows.
@@ -213,6 +230,24 @@ Request payload
 
 .. literalinclude:: files/AC-instantiation.json
    :language: json
+
+The following properties will be used by ACM-runtime:
+
+deployTimeoutMs:
+  Denotes the maximum wait time during deploy operation by the runtime to receive the state change update from participant
+
+undeployTimeoutMs:
+  Denotes the maximum wait time during undeploy operation by the runtime to receive the state change update from participant
+
+updateTimeoutMs:
+  Denotes the maximum wait time during update operation by the runtime to receive the state change update from participant
+
+migrateTimeoutMs:
+  Denotes the maximum wait time migrate deploy operation by the runtime to receive the state change update from participant
+
+deleteTimeoutMs:
+  Denotes the maximum wait time during delete operation by the runtime to receive the state change update from participant
+
 
 Update AC instance properties (Optional)
 ----------------------------------------

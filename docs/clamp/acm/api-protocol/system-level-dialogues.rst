@@ -298,7 +298,26 @@ the operation result is then marked as 'TIMEOUT' by the ACM-R after the configur
 
 .. image:: ../images/system-dialogues/TimeoutAcmResult.png
 
-The following parameters are set in the application properties for the runtime to configure the 'TIMEOUT' value in milliseconds.
+'TIMEOUT' is configurable for each operations. Prime and Deprime could be configured into the composition definition.
+
+.. code-block:: yaml
+
+  metadata:
+    primeTimeoutMs: 200000
+    deprimeTimeoutMs: 100000
+
+All other operations for the instance could be configured into the instance element properties.
+
+.. code-block:: yaml
+
+    properties:
+      deployTimeoutMs: 200000
+      undeployTimeoutMs: 150000
+      updateTimeoutMs: 200000
+      migrateTimeoutMs: 200000
+      deleteTimeoutMs: 100000
+
+The following parameters are set in the application properties for the runtime to configure the default 'TIMEOUT' value in milliseconds.
 
 .. code-block:: yaml
 
@@ -308,10 +327,8 @@ The following parameters are set in the application properties for the runtime t
             maxOperationWaitMs: 100000  --> Denotes the maximum wait time by the runtime to receive the state change update from the participants
 
 An ACM operation has to be completed and updated with any of the above specified result values in order to allow the user to trigger subsequent requests.
-The user cannot trigger any state change events before the operation gets completed. When an operation is marked 'TIMEOUT', the following scenarios are applicable.
-
- - The participant might complete the operation to mark the result with 'NO_ERROR' or 'FAILED'
- - The user can trigger another state change event to the ACM.
+The user cannot trigger any state change events before the operation gets completed. When an operation is marked 'TIMEOUT',
+the participants stop the operation and the user can trigger another state change event to the ACM.
 
 The following flow shown and example of deployment that get stuck, and the user decide to undeploy.
 

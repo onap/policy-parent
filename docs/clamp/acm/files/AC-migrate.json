@@ -9,12 +9,22 @@
     "709c62b3-8918-41b9-a747-d21eb79c6c21": {
       "id": "709c62b3-8918-41b9-a747-d21eb79c6c21",
       "properties": {
+        "deployTimeoutMs": "200000",
+        "undeployTimeoutMs": "150000",
+        "updateTimeoutMs": "200000",
+        "migrateTimeoutMs": "200000",
+        "deleteTimeoutMs": "100000",
         "baseUrl": "http://acm-starter-ac-element-impl_updated:8084"
       }
     },
     "709c62b3-8918-41b9-a747-d21eb79c6c22": {
       "id": "709c62b3-8918-41b9-a747-d21eb79c6c22",
       "properties": {
+        "deployTimeoutMs": "200000",
+        "undeployTimeoutMs": "150000",
+        "updateTimeoutMs": "200000",
+        "migrateTimeoutMs": "200000",
+        "deleteTimeoutMs": "100000",
         "baseUrl": "http://acm-sink-ac-element-impl_updated:8085"
       }
     }

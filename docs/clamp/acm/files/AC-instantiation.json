@@ -12,6 +12,11 @@
       },
       "description": "Starter Automation Composition Element for the Demo",
       "properties": {
+        "deployTimeoutMs": "200000",
+        "undeployTimeoutMs": "150000",
+        "updateTimeoutMs": "200000",
+        "migrateTimeoutMs": "200000",
+        "deleteTimeoutMs": "100000",
         "chart": {
           "chartId": {
             "name": "acelement",
@@ -39,6 +44,11 @@
       },
       "description": "Starter Automation Composition Element for the Demo",
       "properties": {
+        "deployTimeoutMs": "200000",
+        "undeployTimeoutMs": "150000",
+        "updateTimeoutMs": "200000",
+        "migrateTimeoutMs": "200000",
+        "deleteTimeoutMs": "100000",
         "baseUrl": "http://acm-starter-ac-element-impl:8084",
         "httpHeaders": {
           "Content-Type": "application/json",
