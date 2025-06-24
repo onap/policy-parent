@@ -519,8 +519,8 @@ Method: migrate
 
 Abstract class AcElementListenerV2
 ----------------------------------
-This abstract class is introduced to help to maintain temporarily the java backward compatibility with AutomationCompositionElementListener implemented in 8.0.0 version.
-So developers can decide to align to new functionality later. Any new functionality in the future will be wrapped by this class.
+This abstract class is deprecated and it will be removed in the next release.
+It was introduced to help to maintain temporarily the java backward compatibility with AutomationCompositionElementListener implemented in 8.0.0 version.
 
 The Abstract class AcElementListenerV2 supports the follow methods.
 
@@ -648,8 +648,8 @@ Method: migrate and migratePrecheck
 
 Abstract class AcElementListenerV1
 ----------------------------------
-This abstract class is introduced to help to maintain temporarily the java backward compatibility with AutomationCompositionElementListener implemented in 7.1.0 version.
-So developers can decide to align to new functionality later. Any new functionality in the future will be wrapped by this class.
+This abstract class is deprecated and it will be removed in the next release.
+It was introduced to help to maintain temporarily the java backward compatibility with AutomationCompositionElementListener implemented in 7.1.0 version.
 
 The Abstract class AcElementListenerV1 supports the follow methods.
 
@@ -1221,7 +1221,7 @@ Please refer the following table for the state change reversion that happens in 
 ================== ==================
 **Error Scenario** **State Reverted**
 ================== ==================
-Prime fails        Commissoned
+Prime fails        Commissioned
 
 Deprime fails      Primed
 
