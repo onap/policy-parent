@@ -24,6 +24,30 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cf70091_95564dae",
+        "filename": "docs/clamp/acm/acm-user-guide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2025-07-10T09:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e92678f_3f7e51ac",
+      "range": {
+        "startLine": 381,
+        "startChar": 108,
+        "endLine": 381,
+        "endChar": 117
+      },
+      "revId": "45490f4679618d15e937e326b7032c09b0260cb0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0b52970_eb11c31f",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-10T09:06:31Z",
       "side": 1,
       "message": "table shows the availability of actions based on deployState/subState/lockState/stateChangeResult.\nRollback will be available when:\n \n* deploy state is MIGRATING and stateChangeResult is FAILED\n* deploy state is MIGRATING and stateChangeResult is TIMEOUT",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 161
+      },
+      "revId": "45490f4679618d15e937e326b7032c09b0260cb0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec580bc7_ca84e5e0",
+        "filename": "docs/clamp/acm/allowed-operations.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2025-07-10T09:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b52970_eb11c31f",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aec6c20_8c29f33a",
+        "filename": "docs/clamp/acm/allowed-operations.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2025-07-10T09:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb95ef9_bcd742ab",
+      "revId": "45490f4679618d15e937e326b7032c09b0260cb0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43ab5403_f51a9d4d",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-07-10T09:06:31Z",
       "side": 1,
       "message": ", MIGRATION_REVERTING",
+      "range": {
+        "startLine": 302,
+        "startChar": 224,
+        "endLine": 302,
+        "endChar": 225
+      },
+      "revId": "45490f4679618d15e937e326b7032c09b0260cb0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0941ea20_bc978e35",
+        "filename": "docs/clamp/acm/api-protocol/system-level-dialogues.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2025-07-10T09:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ab5403_f51a9d4d",
       "range": {
         "startLine": 302,
         "startChar": 224,
