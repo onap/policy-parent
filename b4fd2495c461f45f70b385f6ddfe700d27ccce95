@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4758bf_46e73543",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2025-07-10T13:35:25Z",
+      "side": 1,
+      "message": "Please cherrypick to paris branch as well.",
+      "revId": "b4fd2495c461f45f70b385f6ddfe700d27ccce95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
