@@ -14,6 +14,194 @@ Policy Framework Release Notes
 ..      * Except the date and the version number, all the other sections are optional but there must be at least
 ..      * one section describing the purpose of this new release.
 
+..      ==========================
+..      * * *     OSLO     * * *
+..      ==========================
+
+Version: 15.0.0
+---------------
+
+:Release Date: 2025-01-16 (Oslo Release)
+
+Artifacts released:
+
+.. list-table::
+   :widths: 15 10 10
+   :header-rows: 1
+
+   * - Repository
+     - Java Artifact
+     - Docker Image (if applicable)
+   * - policy/parent
+     - 5.0.1
+     - N/A
+   * - policy/docker
+     - 4.0.1
+     - | policy-jre-alpine
+       | policy-jdk-alpine
+       | policy-db-migrator
+   * - policy/common
+     - 3.0.1
+     - N/A
+   * - policy/models
+     - 4.0.1
+     - policy-models-simulator
+   * - policy/api
+     - 4.0.1
+     - policy-api
+   * - policy/pap
+     - 4.0.1
+     - policy-pap
+   * - policy/apex-pdp
+     - 4.0.1
+     - policy-apex-pdp
+   * - policy/drools-pdp
+     - 3.0.1
+     - policy-drools
+   * - policy/xacml-pdp
+     - 4.0.1
+     - policy-xacml-pdp
+   * - policy/distribution
+     - 4.0.1
+     - policy-distribution
+   * - policy/clamp
+     - 8.0.1
+     - | policy-clamp-ac-pf-ppnt
+       | policy-clamp-ac-k8s-ppnt
+       | policy-clamp-ac-http-ppnt
+       | policy-clamp-runtime-acm'
+       | policy-clamp-acm-element-impl
+       | policy-clamp-ac-kserve-ppnt
+       | policy-clamp-ac-sim-ppnt
+   * - policy/drools-applications
+     - 3.0.1
+     - policy-pdpd-cl
+
+Key Updates
+===========
+
+* Improvements to CLAMP Automation Composition Management (ACM)
+
+  CLAMP ACM is improved with various new capabilities in Oslo release. High availability is now supported in ACM,
+  this ensures minimal downtime of the application in the event of failures by distributing workloads across redundant systems.
+  Elements can now be added and removed in ACM migration, which allows the user to migrate the existing software system to a newer system with a wider range of extended capabilities.
+  Migration can now be performed in stages, this feature allows the migration of instances in complex systems where the workflow invokes the same element for multiple operations.
+  Prepare, review, and migrate-precheck APIs added to ACM, adding advanced capabilities for the user to query and understand the present runtime state of the system before triggering
+  a new operation in ACM.
+
+  See:
+   - `POLICY-5012 <https://lf-onap.atlassian.net/browse/POLICY-5012>`_ - R15: Improvements specific to Clamp
+
+
+* Improvements to Drools-PDP and Drools-Applications
+
+  Drools-PDP is improved with various changes in Oslo release. PostgreSQL Databse is now supported in Drools-PDP. Drools can now be used with both mariadb and postgres databases
+  with the removal of mariadb dependency from the code.
+  Drools-PDP is now re-enabled in OOM. Apache Kafka is now supported in Drools-PDP, specifically the SASL authentication mechanism required by oom.
+  Fixed Drools-PDP CSIT failures.
+
+  See:
+   - `POLICY-5016 <https://lf-onap.atlassian.net/browse/POLICY-5016>`_ - R15: Improvements specific to drools-pdp and drools-applications
+
+
+* Making charts compliant with Kyverno Policy
+
+  Added SecurityContext settings for "production" readiness in respect to security policies.
+
+  See:
+   - `OOM-3288 <https://lf-onap.atlassian.net/browse/OOM-3288>`_ - Make charts kyverno policy compliant to be production ready
+
+* OpenSSF Gold Standard Badge Achievement
+
+  The policy framework project has achieved the Open Source Security Foundation (OpenSSF) Gold Badge Standard.
+
+  See:
+   - `POLICY-5018 <https://lf-onap.atlassian.net/browse/POLICY-5018>`_ - R15: Gold Badge changes
+
+Known Limitations, Issues and Workarounds
+=========================================
+
+System Limitations
+~~~~~~~~~~~~~~~~~~
+N/A
+
+Known Vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~
+N/A
+
+Workarounds
+~~~~~~~~~~~
+N/A
+
+Security Notes
+==============
+N/A
+
+Functional Improvements
+=======================
+| `POLICY-5012 <https://lf-onap.atlassian.net/browse/POLICY-5012>`_ - R15: Improvements specific to clamp
+|  `POLICY-4913 <https://lf-onap.atlassian.net/browse/POLICY-4913>`_ - ACM and Participant HA support
+|  `POLICY-4914 <https://lf-onap.atlassian.net/browse/POLICY-4914>`_ - Prepare, Review and Migrate pre-check implementation
+|  `POLICY-4917 <https://lf-onap.atlassian.net/browse/POLICY-4917>`_ - Addition and Removal of elements at migrate
+|  `POLICY-5004 <https://lf-onap.atlassian.net/browse/POLICY-5004>`_ - Add support for high number of compositions in ACM
+|  `POLICY-5044 <https://lf-onap.atlassian.net/browse/POLICY-5044>`_ - Make Basic Auth Configurable in ACM
+|  `POLICY-4957 <https://lf-onap.atlassian.net/browse/POLICY-4957>`_ - Allow migration to be performed in stages
+
+| `POLICY-5016 <https://lf-onap.atlassian.net/browse/POLICY-5016>`_ - R15: Improvements specific to drools-pdp and drools-applications
+|  `POLICY-4215 <https://lf-onap.atlassian.net/browse/POLICY-4914>`_ - Support postgres DB in drools-pdp
+|  `POLICY-5026 <https://lf-onap.atlassian.net/browse/POLICY-5026>`_ - Enable drools pdp in OOM
+
+Necessary Improvements and Bug Fixes
+====================================
+
+Necessary Improvements
+~~~~~~~~~~~~~~~~~~~~~~
+| `POLICY-5012 <https://lf-onap.atlassian.net/browse/POLICY-5012>`_ - R15: Improvements specific to clamp
+|  `POLICY-5062 <https://lf-onap.atlassian.net/browse/POLICY-5062>`_ - Add CSITs for Jaeger Tracing
+|  `POLICY-5063 <https://lf-onap.atlassian.net/browse/POLICY-5063>`_ - Make instance predictable when participant crashes
+|  `POLICY-5064 <https://lf-onap.atlassian.net/browse/POLICY-5064>`_ - Add fail scenarios in csit
+|  `POLICY-5071 <https://lf-onap.atlassian.net/browse/POLICY-5071>`_ - Add state support in fail scenario
+|  `POLICY-5075 <https://lf-onap.atlassian.net/browse/POLICY-5075>`_ - Prevent inconsistent state being sent from Participant
+|  `POLICY-5082 <https://lf-onap.atlassian.net/browse/POLICY-5082>`_ - Add smoke tests for clamp db-migrator
+|  `POLICY-5132 <https://lf-onap.atlassian.net/browse/POLICY-5132>`_ - Handle timeout as hard timeout
+
+| `POLICY-5015 <https://lf-onap.atlassian.net/browse/POLICY-5015>`_ - R15: Refactoring and Removal of Unused Code
+|  `POLICY-5098 <https://lf-onap.atlassian.net/browse/POLICY-5098>`_ - Make Postgres default database in all components
+|  `POLICY-5123 <https://lf-onap.atlassian.net/browse/POLICY-5123>`_ - Remove unused modules in common
+
+| `POLICY-5014 <https://lf-onap.atlassian.net/browse/POLICY-5014>`_ - R15: Software (non functional) improvements
+|  `POLICY-4759 <https://lf-onap.atlassian.net/browse/POLICY-4759>`_ - Upgrade security dependencies for gui
+|  `POLICY-4941 <https://lf-onap.atlassian.net/browse/POLICY-4941>`_ - Update Policy OOM charts to use strimzi kafka
+|  `POLICY-5021 <https://lf-onap.atlassian.net/browse/POLICY-5021>`_ - Upgrade alpine version for docker images
+|  `POLICY-5073 <https://lf-onap.atlassian.net/browse/POLICY-5073>`_ - Uplift of dependencies - Security/VA issues
+|  `POLICY-5131 <https://lf-onap.atlassian.net/browse/POLICY-5131>`_ - Split policy-endpoints into policy-endpoints and message-bus
+|  `POLICY-5136 <https://lf-onap.atlassian.net/browse/POLICY-5136>`_ - Organize dependencies in parent
+
+Bug Fixes
+~~~~~~~~~
+| `POLICY-5135 <https://lf-onap.atlassian.net/browse/POLICY-5135>`_ - Fix sync Out Properties instance in ACM with HA
+
+
+
+References
+==========
+
+For more information on the ONAP Oslo release, please see:
+
+#. `ONAP Home Page`_
+#. `ONAP Documentation`_
+#. `ONAP Release Downloads`_
+#. `ONAP Wiki Page`_
+
+.. _`ONAP Home Page`: https://www.onap.org
+.. _`ONAP Wiki Page`: https://lf-onap.atlassian.net/wiki
+.. _`ONAP Documentation`: https://docs.onap.org
+.. _`ONAP Release Downloads`: https://git.onap.org
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+
 
 ..      ==========================
 ..      * * *     NEWDELHI     * * *
