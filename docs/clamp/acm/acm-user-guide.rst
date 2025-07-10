@@ -403,6 +403,24 @@ by the participant.
 .. literalinclude:: files/AC-migrate.json
    :language: json
 
+Rollback AC instance (Optional)
+-------------------------------
+
+In the event of a migration failure, the user can rollback to a previous state.
+
+.. code-block:: bash
+
+  Invoke a POST request
+  'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances/${instanceId}/rollback'
+
+This returns a 202 response on a successful rollback request. The elements will be in "MIGRATION_REVERTING" deploy state until the completion.
+The current status and result can be fetched through the following endpoint.
+
+.. code-block:: bash
+
+  Invoke a GET request
+  'http://policy_runtime_ip:port/onap/policy/clamp/acm/v2/compositions/${compositionId}/instances/${instanceId}'
+
 UnDeploy AutomationComposition
 ------------------------------
 The AC instances can be undeployed from the system by the participants.

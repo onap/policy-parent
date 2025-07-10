@@ -267,12 +267,23 @@ The ACM Runtime receives and stores the responses, and send sync message to all 
 
 .. image:: ../images/system-dialogues/LockResponseStored.png
 
-3.13 Update Operational State, Use State and outProperties on Automation Composition Instance
+3.13 Rollback Automation Composition Instance
+---------------------------------------------
+
+The user requests the AC Instance to be rolled back using a REST endpoint. The ACM Runtime orders the AC Instance to be rolled back.
+
+.. image:: ../images/system-dialogues/RollbackAcInstance.png
+
+Each participant rolled back its AC Element from the AC Instance
+
+.. image:: ../images/system-dialogues/RollbackAcElements.png
+
+3.14 Update Operational State, Use State and outProperties on Automation Composition Instance
 ---------------------------------------------------------------------------------------------
 
 .. image:: ../images/system-dialogues/UpdateOperationalState.png
 
-3.14 Failure handling in ACM
+3.15 Failure handling in ACM
 ----------------------------
 After any ACM operation is completed, one of the following result messages will be updated in the ACM. These result values are
 updated along with the overall state of the ACM instance.
@@ -288,7 +299,7 @@ If the operation succeeds, the participant is required to update the result valu
 .. image:: ../images/system-dialogues/SuccessAcmResult.png
 
 The result value should be updated as 'FAILED' by the participants when any failures occurred.
-Also in case of failures, the overall state of the composition/instance remains in any of the transitioning states (DEPLOYING, UNDEPLOYING, PRIMING, DEPRIMING, UPDATING, MIGRATING, PREPARING, REVIEWING, MIGRATION_PRECHECKING)
+Also in case of failures, the overall state of the composition/instance remains in any of the transitioning states (DEPLOYING, UNDEPLOYING, PRIMING, DEPRIMING, UPDATING, MIGRATING, PREPARING, REVIEWING, MIGRATION_PRECHECKING, MIGRATION_REVERTING)
 with the appropriate result values updated by the participant.
 
 .. image:: ../images/system-dialogues/FailedAcmResult.png
@@ -335,7 +346,7 @@ The following flow shown and example of deployment that get stuck, and the user 
 .. image:: ../images/system-dialogues/TimeoutParticipant.png
 
 
-3.15 OFF_LINE handling in ACM
+3.16 OFF_LINE handling in ACM
 -----------------------------
 Runtime marks the participant state with the value 'OFF_LINE' when the participant replica fails to report the periodic heartbeat,
 the participant replica state is then marked as 'OFF_LINE' by the ACM-R after the configured waiting limit is reached.
