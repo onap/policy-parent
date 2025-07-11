@@ -93,7 +93,7 @@
         <version.springboot>3.5.3</version.springboot>
         <version.spring-data>3.5.1</version.spring-data>
         <version.spring-security>6.5.1</version.spring-security>
-        <version.sonar>3.11.0.3922</version.sonar>
+        <version.sonar>5.0.0.4389</version.sonar>
         <version.swagger.codegen.v3>3.0.68</version.swagger.codegen.v3>
         <version.swagger.core.v3>2.2.29</version.swagger.core.v3>
         <surefireArgLine>
