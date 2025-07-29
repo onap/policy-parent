@@ -63,7 +63,7 @@ The ACM Runtime updates the priming information in the database.
 Automation Composition Update
 -----------------------------
 
-Automation Composition Update handles creation, change, and deletion of Automation Compositions on
+Automation Composition Update handles creation, change properties, migration, and deletion of Automation Compositions on
 participants. Change of Automation Compositions uses a semantic versioning approach and follows the
 semantics described on the page :ref:`5.1 Management of Automation Composition Instance
 Configurations <management-acm-instance-configs>`.
@@ -112,13 +112,27 @@ The flow of the DEPLOY/UNDEPLOY state change messages are shown below. But the s
 
 .. image:: ../images/acm-participants-protocol/acm-state-change-msg.png
 
+
+Participant Sync Up
+-------------------
+
+This dialogue is used to Sync Up the participant replicas with the ACM-r database.
+Acm-r stores a revision for each instance and composition which will be updated for every update (state change or outProperties change).
+This value will be sent to the participants along with the sync message.
+When ACM-r sends an operation message (as undeploy/delete), it will insert the revision of the instance and the revision of the composition,
+so the participants can compare this value with what is in the memory.
+If the instance/composition is missing or outdated, participant caches the operation, sends a sync request to ACM-r
+and the cached operation will be resumed after the sync message is received.
+
+.. image:: ../images/acm-participants-protocol/acm-sync-up.png
+
+
 Automation Composition Monitoring and Reporting
 -----------------------------------------------
 
 This dialogue is used as a heartbeat mechanism for participants, to monitor the status of
-Automation Composition Elements, and to gather statistics on Automation Compositions. The
-*ParticipantStatus* message is sent periodically by each participant. The reporting interval for
-sending the message is configurable.
+the replica of the participant. The *ParticipantStatus* message is sent periodically by each participant.
+The reporting interval for sending the message is configurable.
 
 .. image:: ../images/acm-participants-protocol/acm-monitoring.png
 

@@ -1,0 +1,11 @@
+@startuml
+
+"CLAMP Runtime" -> Participant: Process Update Message
+Participant -> Participant: Check if data are missing or outdated
+alt missing data or outdated?
+	Participant -> "CLAMP Runtime": request sync up
+	"CLAMP Runtime" -> Participant: send sync up
+end alt
+Participant -> Participant: Process Update Message
+Participant -> "CLAMP Runtime": Update Ack
+@enduml

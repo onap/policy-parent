@@ -39,6 +39,7 @@ Outbound messages
 - AUTOMATIONCOMPOSITION_STATECHANGE_ACK: is an acknowledgement sent by a participant as a response to AutomationCompositionStateChange
 - AUTOMATION_COMPOSITION_DEPLOY_ACK: is an acknowledgement sent by a participant as a response to AutomationCompositionDeploy
 - PARTICIPANT_PRIME_ACK: is an acknowledgement sent by a participant as a response to ParticipantPrime
+- PARTICIPANT_REQ_SYNC_MSG: A sync up request sent by a participant
 
 Design of a PARTICIPANT_REGISTER message
 ----------------------------------------
@@ -170,3 +171,12 @@ Design of a AUTOMATIONCOMPOSITION_STATECHANGE_ACK message
 - AutomationCompositionStateChangeAckListener in ACM-runtime collects the messages from Message Broker
 - It checks the deployStatus/lockStatus of all automation composition elements
 - It updates the AC-instance in DB accordingly
+
+Design of a PARTICIPANT_REQ_SYNC_MSG message
+--------------------------------------------
+- ACM-runtime triggers the execution to send an update message
+- Participant-intermediary validate the message
+- If there is missing or outdated instance/composition it saves in memory the operation on hold, and sends a PARTICIPANT_REQ_SYNC_MSG to ACM-runtime
+- ACM-runtime receives the PARTICIPANT_REQ_SYNC_MSG and send back a PARTICIPANT_SYNC_MSG message with updated data
+- Participant-intermediary receives the PARTICIPANT_SYNC_MSG and recheck the operations in memory
+- If all data in memory are updated Participant performs its designated job

@@ -9,11 +9,13 @@ ParticipantRegisterAck,ACM Runtime,Participant,Acknowledgment of Participant Reg
 ParticipantDeregister,Participant,ACM Runtime,Participant deregisters with the ACM runtime,participantId,The ID of this participant – in UUID format
 ,,,,replicaId,The replica ID of this participant – in UUID format
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_DEREGISTER
-ParticipantDeregisterAck,ACM Runtime,Participant,Acknowledgment of Participant Deegistration,participantId,The ID of this participant – in UUID format
+ParticipantDeregisterAck,ACM Runtime,Participant,Acknowledgment of Participant Deregistration,participantId,The ID of this participant – in UUID format
 ,,,,replicaId,The replica ID of this participant – in UUID format
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_DEREGISTER_ACK
 ParticipantPrime,ACM Runtime,Participant,Trigger priming/depriming in the participant,participantId,The ID of this participant – in UUID format
+,,,,participantIdList, The list of all participants involved in this message
 ,,,,compositionId,The id of the AC Definition related to this message
+,,,,revisionIdComposition,The last revision of the AC Definition – in UUID format
 ,,,,participantDefinitionUpdates,Contains AC element definition values for a particular participant
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_PRIME
 ParticipantPrimeAck,Participant,ACM Runtime,Message to confirm participant has been primed/deprimed,participantId,The ID of this participant – in UUID format
@@ -22,18 +24,21 @@ ParticipantPrimeAck,Participant,ACM Runtime,Message to confirm participant has b
 ,,,,stateChangeResult,NO_ERROR/FAILED
 ,,,,message,A message indicating the result
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_PRIME_ACK
-ParticipantStatusReq,ACM Runtime,Participant,Message sent to reques a status update from the participant,participantId,The ID of the participant to request update from – in UUID format
+ParticipantStatusReq,ACM Runtime,Participant,Message sent to request a status update from the participant,participantId,The ID of the participant to request update from – in UUID format
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_STATUS_REQ
 ParticipantStatus,Participant,ACM Runtime,Status update message,state,Enum indicating the current state of the participant
 ,,,,replicaId,The replica ID of this participant – in UUID format
 ,,,,participantDefinitionUpdates,"A list of ParticipantDefinition updates, returned in response to ParticipantStatusReq only"
 ,,,,automationCompositionInfoList,List of AutomationCompositionInfo types with AutomationCompositionId and its state
-,,,,participantSupportedElementTypes,Ac element types that this participant is capable for deployinh/supporting
+,,,,participantSupportedElementTypes,Ac element types that this participant is capable for deploying/supporting
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_STATUS
 AutomationCompositionDeploy,ACM Runtime,Participant,Message to request change state of composition to DEPLOY,participantUpdatesList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,participantIdList, The list of all participants involved in this message
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,automationCompositionId,The id of the automation composition related to this message
 ,,,,startPhase,Integer indicating the start up order of the elements
+,,,,revisionIdComposition,The last revision of the AC Definition – in UUID format
+,,,,revisionIdInstance,The last revision of the automation composition – in UUID format
 ,,,,participantId,UUID indicating the participant the message is intended for
 ,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_DEPLOY
 AutomationCompositionDeployAck,Participant,ACM Runtime,Message to acknowledge that deploy or state change message has been received by participant,automationCompositionResultMap,"A map with AutomationCompositionElementID as its key, and a pair of result and message as value per AutomationCompositionElement"
@@ -45,15 +50,21 @@ AutomationCompositionDeployAck,Participant,ACM Runtime,Message to acknowledge th
 ,,,,stateChangeResult,NO_ERROR/FAILED
 ,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_DEPLOY_ACK
 AutomationCompositionStateChange,ACM Runtime,Participant,Message to request change state of composition to states other than DEPLOY,deployOrderedState,Enum indicating the deployment state being requested
+,,,,participantIdList, The list of all participants involved in this message
 ,,,,lockOrderedState,Enum indicating the lock state being requested
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,automationCompositionId,The id of the automation composition related to this message
 ,,,,startPhase,Integer indicating the start up order of the elements
+,,,,revisionIdComposition,The last revision of the AC Definition – in UUID format
+,,,,revisionIdInstance,The last revision of the automation composition – in UUID format
 ,,,,participantId,UUID indicating the participant the message is intended for
 ,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_STATECHANGE_ACK
 PropertiesUpdate,ACM Runtime,Participant,Message to request update,participantUpdatesList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,participantIdList, The list of all participants involved in this message
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,automationCompositionId,The id of the automation composition related to this message
+,,,,revisionIdComposition,The last revision of the AC Definition – in UUID format
+,,,,revisionIdInstance,The last revision of the automation composition – in UUID format
 ,,,,participantId,UUID indicating the participant the message is intended for
 ,,,,messageType,Enum indicating the type of message PROPERTIES_UPDATE
 ParticipantSync,ACM Runtime,Participant,Message to request sync,participantId,The ID of this participant – in UUID format
@@ -64,17 +75,31 @@ ParticipantSync,ACM Runtime,Participant,Message to request sync,participantId,Th
 ,,,,participantDefinitionUpdates,Contains AC element definition values for the participant
 ,,,,delete,Flag - if true it is a delete operation
 ,,,,restarting,Flag - if true it is a restarting scenario
+,,,,revisionIdComposition,The last revision of the AC Definition – in UUID format
+,,,,revisionIdInstance,The last revision of the automation composition – in UUID format
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_SYNC_MSG
 AutomationCompositionMigration,ACM Runtime,Participant,Message to request update,participantUpdatesList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,participantIdList, The list of all participants involved in this message
 ,,,,precheck,Flag - if true it is a Migration Precheck
+,,,,rollback,Flag - if true it is a Rollback of the Migration failed
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,compositionTargetId,The id of the AC Definition target
 ,,,,automationCompositionId,The id of the automation composition related to this message
+,,,,revisionIdComposition,The last revision of the AC Definition – in UUID format
+,,,,revisionIdCompositionTarget,The last revision of the AC Definition Target – in UUID format
 ,,,,participantId,UUID indicating the participant the message is intended for
 ,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_MIGRATION
 AutomationCompositionPrepare,ACM Runtime,Participant,Message to request prepare/review,participantList,A list of ParticipantUpdates instances which carries details of an updated participant.
+,,,,participantIdList, The list of all participants involved in this message
 ,,,,stage,The next stage that participant is supposed to receiving
 ,,,,preDeploy,Flag - if true the instance is Undeployed and the action is a Prepare - otherwise (false) the instance is Deployed and the action is a Review
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,automationCompositionId,The id of the automation composition related to this message
+,,,,revisionIdComposition,The last revision of the AC Definition – in UUID format
+,,,,revisionIdInstance,The last revision of the automation composition – in UUID format
 ,,,,messageType,Enum indicating the type of message AUTOMATION_COMPOSITION_PREPARE
+ParticipantReqSync,Participant,ACM Runtime,Message sent to request a sync up,participantId,The ID of this participant – in UUID format
+,,,,replicaId,The replica ID of this participant – in UUID format
+,,,,compositionId,The id of the AC Definition outdated
+,,,,compositionTargetId,The id of the AC Definition target outdated
+,,,,automationCompositionId,The id of the automation composition outdated
