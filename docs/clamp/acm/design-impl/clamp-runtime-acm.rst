@@ -30,11 +30,34 @@ Check CLAMP Runtime and Participants
 - GUI calls GET "/onap/policy/clamp/acm/v2/participants" endpoint and receives as response: all participants with supported Element Types, all replicas registered, and all compositions and instances connected. The end point supports the pagination by parameters "size" and "page"
 - GUI calls GET "/onap/policy/clamp/acm/v2/participants/{participantId}" endpoint and receives as response: the participant with supported Element Types, all replicas registered, and all compositions and instances connected. The end point supports the pagination by parameters "size" and "page"
 
-Order an immediate Participant Report from all participants
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Fetch replicas of all participants
+++++++++++++++++++++++++++++++++++
+- GUI calls GET "/onap/policy/clamp/acm/v2/participants" endpoint and receives all participants, replicas and status as response. The end point supports the pagination by parameters "size" and "page"
+- GUI calls GET "/onap/policy/clamp/acm/v2/participants/{participantId}" endpoint and receives replicas and status of a participant as response. The end point supports the pagination by parameters "size" and "page"
+
+Order an immediate Participant Report from all replicas
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - GUI calls PUT "/onap/policy/clamp/acm/v2/participants" endpoint
-- ACM-runtime receives the call by Rest-Api (CommissioningController)
+- ACM-runtime receives the call by Rest-Api (ParticipantController)
 - It triggers the execution to send a broadcast PARTICIPANT_STATUS_REQ message
+
+Order an immediate Participant Report from all replicas of a participant
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls PUT "/onap/policy/clamp/acm/v2/participants/{participantId}" endpoint
+- ACM-runtime receives the call by Rest-Api (ParticipantController)
+- It triggers the execution to send a PARTICIPANT_STATUS_REQ message
+
+Order an immediate Sync up to all replicas of all participants
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls PUT "/onap/policy/clamp/acm/v2/participants/sync" endpoint
+- ACM-runtime receives the call by Rest-Api (ParticipantController)
+- Initiates a manual sync operation for all registered replicas of participants sending PARTICIPANT_SYNC_MSG messages
+
+Order an immediate Sync up to all replicas of a participant
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+- GUI calls PUT "/onap/policy/clamp/acm/v2/participants/sync/{participantId}" endpoint
+- ACM-runtime receives the call by Rest-Api (ParticipantController)
+- Initiates a manual sync operation for all registered replicas of a participant sending PARTICIPANT_SYNC_MSG messages
 
 Create of a Automation Composition Definition Type
 ++++++++++++++++++++++++++++++++++++++++++++++++++
