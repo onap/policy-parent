@@ -22,6 +22,30 @@
       },
       "revId": "e7623779e0c4b89eaf467b0dc8675eb33b4d5e7c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47109e41_d5a4cc4a",
+        "filename": "docs/clamp/acm/design-impl/clamp-runtime-acm.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7565
+      },
+      "writtenOn": "2025-08-13T08:36:43Z",
+      "side": 1,
+      "message": "GUI is defined as swagger-ui or Postman",
+      "parentUuid": "26ce672a_e9967525",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "e7623779e0c4b89eaf467b0dc8675eb33b4d5e7c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
