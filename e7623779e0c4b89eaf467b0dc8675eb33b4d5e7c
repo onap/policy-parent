@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ce672a_e9967525",
+        "filename": "docs/clamp/acm/design-impl/clamp-runtime-acm.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2025-08-13T08:29:50Z",
+      "side": 1,
+      "message": "As we dont have GUI anymore, I wonder should we replace the GUI with just \"REST Api\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "e7623779e0c4b89eaf467b0dc8675eb33b4d5e7c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
