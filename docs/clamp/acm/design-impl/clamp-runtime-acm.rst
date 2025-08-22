@@ -104,6 +104,27 @@ Fetch of Automation Composition Instance
 ++++++++++++++++++++++++++++++++++++++++
 - GUI calls GET "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances" endpoint and receives all instances of a composition as response. The end point supports the pagination by parameters "size" and "page"
 - GUI calls GET "/onap/policy/clamp/acm/v2/compositions/{compositionId}/instances/{instanceId}" endpoint and receives the instance as response.
+- GUI calls GET "/onap/policy/clamp/acm/v2/instances" endpoint and receives all instances as response. The end point supports filter by list of instanceId, list of deployState, list of stateChangeResult and pagination by parameters "size", "page" and "sortOrder"
+
+Examples for GET "/onap/policy/clamp/acm/v2/instances":
+ +----------------------------------------------------+------------------------------------------------------+
+ |  Query Parameters                                  |  result                                              |
+ +====================================================+======================================================+
+ |  <no parameters>                                   | all instances                                        |
+ +----------------------------------------------------+------------------------------------------------------+
+ |  ?page=1&size=4                                    | 4 instances at page 1 if present                     |
+ +----------------------------------------------------+------------------------------------------------------+
+ |  ?size=4                                           | all instances because page is missing                |
+ +----------------------------------------------------+------------------------------------------------------+
+ |  ?sort=name&sortOrder=DESC                         | instances ordered by name in DESC order              |
+ +----------------------------------------------------+------------------------------------------------------+
+ | ?stateChangeResult=FAILED,TIMEOUT                  | instances failed or in timeout                       |
+ +----------------------------------------------------+------------------------------------------------------+
+ | ?stateChangeResult=NO_ERROR&deployState=UNDEPLOYED | instances undeployed with success                    |
+ +----------------------------------------------------+------------------------------------------------------+
+ | ?instanceIds={instances1},{instances2}             | instance1 and  instance2                             |
+ +----------------------------------------------------+------------------------------------------------------+
+
 
 Update of a Automation Composition Instance
 +++++++++++++++++++++++++++++++++++++++++++
