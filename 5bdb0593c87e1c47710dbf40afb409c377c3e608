@@ -22,6 +22,30 @@
       },
       "revId": "5bdb0593c87e1c47710dbf40afb409c377c3e608",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3726ab74_a3b6deb8",
+        "filename": "docs/clamp/acm/design-impl/clamp-runtime-acm.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 7565
+      },
+      "writtenOn": "2025-08-22T13:16:39Z",
+      "side": 1,
+      "message": "filter has been implemented with compositionId",
+      "parentUuid": "fbccc3c9_24eff575",
+      "range": {
+        "startLine": 125,
+        "startChar": 20,
+        "endLine": 125,
+        "endChar": 32
+      },
+      "revId": "5bdb0593c87e1c47710dbf40afb409c377c3e608",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
