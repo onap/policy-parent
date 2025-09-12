@@ -143,6 +143,7 @@ AutomationCompositionElementListener:
   10. void migratePrecheck(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
   11. void review(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
   12. void prepare(CompositionElementDto compositionElement, InstanceElementDto instanceElement, int stage) throws PfModelException;
+  13. void rollbackMigration(CompositionElementDto compositionElement, CompositionElementDto compositionElementRollback, InstanceElementDto instanceElement, InstanceElementDto instanceElementRollback, int stage) throws PfModelException;
 
 These method from the interface are implemented independently as per the user requirement. These methods after handling the
 appropriate requests should also invoke the intermediary's publisher apis to notify the ACM-runtime with the acknowledgement events.
@@ -339,6 +340,52 @@ Method: prepare
     ==============================  ===========================
   stage:
     the stage of the prepare that the participant has to execute
+
+Method: rollbackMigration
+  compositionElement:
+    ======================  =====================================================
+     **field**                       **description**
+    ======================  =====================================================
+     compositionId           composition definition Id
+     elementDefinitionId     composition definition element Id
+     inProperties            composition definition in-properties
+     outProperties           composition definition out-properties
+     state                   element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ======================  =====================================================
+  compositionElementRollback:
+    ======================  =====================================================
+     **field**                       **description**
+    ======================  =====================================================
+     compositionId           composition definition rollback Id
+     elementDefinitionId     composition definition rollback element Id
+     inProperties            composition definition rollback in-properties
+     outProperties           composition definition rollback out-properties
+     state                   element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ======================  =====================================================
+  instanceElement:
+    ==============================  ===================================================
+     **field**                       **description**
+    ==============================  ===================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(before the migration)**
+     outProperties                   instance out-properties
+     state                           element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ==============================  ===================================================
+  instanceElementRollback:
+    ==============================  ====================================================
+     **field**                       **description**
+    ==============================  ====================================================
+     instanceId                      instance id
+     elementId                       instance element id
+     toscaServiceTemplateFragment
+     inProperties                    instance in-properties **(updated)**
+     outProperties                   instance out-properties
+     state                           element state: PRESENT, NOT_PRESENT, REMOVED, NEW
+    ==============================  ====================================================
+  stage:
+    the stage of the rollback that the participant has to execute
 
 
 Abstract class AcElementListenerV3
@@ -741,9 +788,11 @@ This following methods could be invoked to fetch data during each operation in t
   1.  Map<UUID, AutomationComposition> getAutomationCompositions();
   2.  AutomationComposition getAutomationComposition(UUID instanceId);
   3.  AutomationCompositionElement getAutomationCompositionElement(UUID instanceId, UUID elementId);
-  4.  Map<UUID, Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition>> getAcElementsDefinitions();
-  5.  Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition> getAcElementsDefinitions(UUID compositionId);
-  6.  AutomationCompositionElementDefinition getAcElementDefinition(UUID compositionId, ToscaConceptIdentifier elementId);
+  4.  getInstanceElementDto(UUID instanceId, UUID elementId);
+  5.  Map<UUID, Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition>> getAcElementsDefinitions();
+  6   Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition> getAcElementsDefinitions(UUID compositionId);
+  7.  AutomationCompositionElementDefinition getAcElementDefinition(UUID compositionId, ToscaConceptIdentifier elementId);
+  8.  getCompositionElementDto(UUID compositionId, ToscaConceptIdentifier elementId);
 
 This following methods are invoked to update the outProperties during each operation in the participant.
 
@@ -1076,7 +1125,15 @@ The following example shows the Handler implementation and how could be the impl
         }
 
         if (isMigrateSuccess()) {
-            if (isStageCompleted()) {
+            var stageSet = ParticipantUtils.findStageSetMigrate(compositionElementTarget.inProperties());
+            var nextStage = 1000;
+            for (var s : stageSet) {
+                if (s > stage) {
+                    nextStage = Math.min(s, nextStage);
+                }
+            }
+
+            if (nextStage == 1000) {
                 intermediaryApi.updateAutomationCompositionElementState(
                     instanceElement.instanceId(), instanceElement.elementId(),
                     DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migrated");
@@ -1195,6 +1252,10 @@ Allowed state from the participant perspective
 +------------------+-----------------+---------------+----------------+----------------------------------+
 | Migrate Precheck |  DEPLOYED       |               |  NO_ERROR      |  Migration-precheck is completed |
 +------------------+-----------------+---------------+----------------+----------------------------------+
+|                  |  DEPLOYED       |               |  NO_ERROR      |  Rollback  is completed          |
++ Rollback         +-----------------+---------------+----------------+----------------------------------+
+|                  |  DEPLOYED       |               |  FAILED        |  Rollback  is failed             |
++------------------+-----------------+---------------+----------------+----------------------------------+
 | Prepare          |  UNDEPLOYED     |               |  NO_ERROR      |  Prepare is completed            |
 +------------------+-----------------+---------------+----------------+----------------------------------+
 | Review           |  DEPLOYED       |               |  NO_ERROR      |  Review is completed             |
@@ -1238,6 +1299,8 @@ Lock fails         Unlocked
 Unlock fails       Locked
 
 Migrate fails      Deployed
+
+Rollback fails     Deployed
 ================== ==================
 
 Considering the above mentioned behavior of the participant Intermediary, it is the responsibility of the developer to tackle the
