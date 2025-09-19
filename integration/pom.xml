@@ -89,10 +89,10 @@
         <version.sdc-dist>2.1.1</version.sdc-dist>
         <version.sdc-tosca>1.9.0</version.sdc-tosca>
         <version.slf4j>2.0.17</version.slf4j>
-        <version.spring>6.2.10</version.spring>
+        <version.spring>6.2.11</version.spring>
         <version.springboot>3.5.3</version.springboot>
         <version.spring-data>3.5.1</version.spring-data>
-        <version.spring-security>6.5.1</version.spring-security>
+        <version.spring-security>6.5.5</version.spring-security>
         <version.sonar>5.0.0.4389</version.sonar>
         <version.swagger.codegen.v3>3.0.68</version.swagger.codegen.v3>
         <version.swagger.core.v3>2.2.29</version.swagger.core.v3>
