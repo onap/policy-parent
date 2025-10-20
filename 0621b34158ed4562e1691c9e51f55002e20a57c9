@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6733cac2_b11a2649",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2025-10-20T10:43:37Z",
+      "side": 1,
+      "message": "if we are to direct the work only for clamp, I think it makes sense to add this to clamp pom.xml instead of here, as this liquibase work seems to be only for clamp.",
+      "range": {
+        "startLine": 247,
+        "startChar": 12,
+        "endLine": 251,
+        "endChar": 25
+      },
+      "revId": "0621b34158ed4562e1691c9e51f55002e20a57c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
