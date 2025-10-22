@@ -73,7 +73,7 @@
         <version.json-schema-friend>0.12.4</version.json-schema-friend>
         <version.json-schema-validator>1.5.6</version.json-schema-validator>
         <version.jupiter>5.12.2</version.jupiter>
-        <version.kafka>3.9.1</version.kafka>
+        <version.kafka>4.1.0</version.kafka>
         <version.kotlin>2.1.20</version.kotlin>
         <version.log4j>2.24.3</version.log4j>
         <version.logback>1.5.18</version.logback>
