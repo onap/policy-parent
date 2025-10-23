@@ -16,6 +16,24 @@
       "message": "Broken link for this. https://kubernetes.io/docs/concepts/workloads/controllers/deployment/\n\nBut the link works fine though. May need a recheck",
       "revId": "d7978716774813122948d85a87fa49a648b321fd",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "081cf822_e31f1c2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2025-10-23T12:49:16Z",
+      "side": 1,
+      "message": "It \"re-checked\" because it recognized the \"re-check\" keyword in your comment. Passed this time.",
+      "parentUuid": "5fde86cf_8d11cb9b",
+      "revId": "d7978716774813122948d85a87fa49a648b321fd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
