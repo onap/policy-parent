@@ -366,16 +366,19 @@ How Stage works
 +++++++++++++++
 In state changes in MIGRATING Automation Composition elements starts in increasing order from stage 0.
 
-Example of MIGRATE order with Http_PMSHMicroserviceAutomationCompositionElement with stage [0,2] and PMSH_K8SMicroserviceAutomationCompositionElement with startPhase to [0,1]:
+Example of MIGRATE order with Http_PMSHMicroserviceAutomationCompositionElement with stage [0,2] and PMSH_K8SMicroserviceAutomationCompositionElement with stage to [0,1]:
 
 - ACM-runtime sends a broadcast AUTOMATION_COMPOSITION_MIGRATION message to all participants with stage = 0
-- participant receives the AUTOMATION_COMPOSITION_MIGRATION message and runs to DEPLOYED state (only AC elements that contains stage 0: Http_PMSHMicroserviceAutomationCompositionElement and PMSH_K8SMicroserviceAutomationCompositionElement)
-- ACM-runtime receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
-- ACM-runtime calculates that all AC elements with stage = 0 are set to proper state and sends a broadcast AUTOMATION_COMPOSITION_MIGRATION message with stage = 1
-- participant receives the AUTOMATION_COMPOSITION_MIGRATION message and runs to DEPLOYED state (only AC elements that contains stage 1: PMSH_K8SMicroserviceAutomationCompositionElement)
-- ACM-runtime receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
-- ACM-runtime calculates that all AC elements with stage = 1 are set to proper state and sends a broadcast AUTOMATION_COMPOSITION_MIGRATION message with stage = 2
-- participant receives the AUTOMATION_COMPOSITION_MIGRATION message and runs to DEPLOYED state (only AC elements that contains stage 2: Http_PMSHMicroserviceAutomationCompositionElement)
+- participant receives the AUTOMATION_COMPOSITION_MIGRATION message and runs the migration only the AC elements that contains stage 0: Http_PMSHMicroserviceAutomationCompositionElement and PMSH_K8SMicroserviceAutomationCompositionElement
+- participant calculates the next stage and sends the AUTOMATION_COMPOSITION_DEPLOY_ACK message to runtime with the next stage
+- ACM-runtime receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state and stage from the AC element of the message
+- ACM-runtime calculates that all AC elements have forwarded to next stage and sends a broadcast AUTOMATION_COMPOSITION_MIGRATION message with stage = 1
+- participant receives the AUTOMATION_COMPOSITION_MIGRATION message and runs the migration only the AC elements that contains stage 1: PMSH_K8SMicroserviceAutomationCompositionElement
+- participant sends the AUTOMATION_COMPOSITION_DEPLOY_ACK message to runtime with the next stage or migration completed
+- ACM-runtime receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state and stage from the AC element of the message
+- ACM-runtime calculates that all AC elements have forwarded to next stage or completed and sends a broadcast AUTOMATION_COMPOSITION_MIGRATION message with stage = 2
+- participant receives the AUTOMATION_COMPOSITION_MIGRATION message and runs the migration only the AC elements that contains stage 2: Http_PMSHMicroserviceAutomationCompositionElement
+- participant sends the AUTOMATION_COMPOSITION_DEPLOY_ACK message to runtime with migration completed
 - ACM-runtime receives AUTOMATION_COMPOSITION_DEPLOY_ACK messages from participants and set the state (from the AC element of the message) to DEPLOYED
 - ACM-runtime calculates that all AC elements are set to proper state and set AC to DEPLOYED
 

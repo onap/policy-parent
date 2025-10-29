@@ -778,6 +778,7 @@ ParticipantIntermediaryApi:
   #. The requested operations are completed in the handler class and the ACM-runtime needs to be notified.
   #. Collect all instances data.
   #. Send out Properties to ACM-runtime.
+  #. Calculate the next stage during migration, rollback and prepare
 
   The methods are as follows:
 
@@ -788,11 +789,11 @@ This following methods could be invoked to fetch data during each operation in t
   1.  Map<UUID, AutomationComposition> getAutomationCompositions();
   2.  AutomationComposition getAutomationComposition(UUID instanceId);
   3.  AutomationCompositionElement getAutomationCompositionElement(UUID instanceId, UUID elementId);
-  4.  getInstanceElementDto(UUID instanceId, UUID elementId);
+  4.  InstanceElementDto getInstanceElementDto(UUID instanceId, UUID elementId);
   5.  Map<UUID, Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition>> getAcElementsDefinitions();
   6   Map<ToscaConceptIdentifier, AutomationCompositionElementDefinition> getAcElementsDefinitions(UUID compositionId);
   7.  AutomationCompositionElementDefinition getAcElementDefinition(UUID compositionId, ToscaConceptIdentifier elementId);
-  8.  getCompositionElementDto(UUID compositionId, ToscaConceptIdentifier elementId);
+  8.  CompositionElementDto getCompositionElementDto(UUID compositionId, ToscaConceptIdentifier elementId);
 
 This following methods are invoked to update the outProperties during each operation in the participant.
 
@@ -808,6 +809,14 @@ This following methods are invoked to update the AC element state or AC element 
   1.  void updateAutomationCompositionElementState(UUID instanceId, UUID elementId, DeployState deployState, LockState lockState, StateChangeResult stateChangeResult, String message);
   2.  void updateCompositionState(UUID compositionId, AcTypeState state, StateChangeResult stateChangeResult, String message);
   3.  void updateAutomationCompositionElementStage(UUID instance, UUID elementId, StateChangeResult stateChangeResult, int stage, String message);
+
+This following methods calculate the next stage during migration, rollback and prepare for the AC element during each operation in the participant.
+
+.. code-block:: java
+
+  1. int getMigrateNextStage(CompositionElementDto compositionElementTarget, int lastStage);
+  2. int getRollbackNextStage(CompositionElementDto compositionElementRollback, int lastStage);
+  3. int getPrepareNextStage(CompositionElementDto compositionElement, int lastStage);
 
 In/Out composition Properties
 -----------------------------
@@ -1017,6 +1026,34 @@ The following example shows the Handler implementation and how could be the impl
   public class AutomationCompositionElementHandler extends AcElementListenerV3 {
 
     @Override
+    public void prime(CompositionDto composition) throws PfModelException {
+
+        // TODO prime process
+
+        if (isPrimeSuccess()) {
+            intermediaryApi.updateCompositionState(composition.compositionId(),
+                AcTypeState.PRIMED, StateChangeResult.NO_ERROR, "Primed");
+        } else {
+            intermediaryApi.updateCompositionState(composition.compositionId(),
+                AcTypeState.COMMISSIONED, StateChangeResult.FAILED, "Prime failed!");
+        }
+    }
+
+    @Override
+    public void deprime(CompositionDto composition) throws PfModelException {
+
+        // TODO deprime process
+
+        if (isDeprimeSuccess()) {
+            intermediaryApi.updateCompositionState(composition.compositionId(), AcTypeState.COMMISSIONED,
+                StateChangeResult.NO_ERROR, "Deprimed");
+        } else {
+            intermediaryApi.updateCompositionState(composition.compositionId(), AcTypeState.PRIMED,
+                StateChangeResult.FAILED, "Deprime failed!");
+        }
+    }
+
+    @Override
     public void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
             throws PfModelException {
 
@@ -1051,6 +1088,139 @@ The following example shows the Handler implementation and how could be the impl
     }
 
     @Override
+    public void delete(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
+            throws PfModelException {
+
+        // TODO delete process
+
+        if (isDeleteSuccess()) {
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DELETED, null, StateChangeResult.NO_ERROR, "Deleted");
+        } else {
+            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.FAILED,
+                "Delete failed!");
+        }
+    }
+
+
+The following example shows how could be the implemented the update/migration/rollback notifications.
+Note: the removed elements always happen at stage 0
+
+.. code-block:: java
+
+
+    @Override
+    public void update(CompositionElementDto compositionElement, InstanceElementDto instanceElement,
+            InstanceElementDto instanceElementUpdated) throws PfModelException {
+
+        // TODO update process
+
+        if (isUpdateSuccess()) {
+            intermediaryApi.updateAutomationCompositionElementState(
+                instanceElement.instanceId(), instanceElement.elementId(),
+                DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Updated");
+        } else {
+            intermediaryApi.updateAutomationCompositionElementState(
+                instanceElement.instanceId(), instanceElement.elementId(),
+                DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Update failed!");
+        }
+    }
+
+    @Override
+    public void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget,
+            InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate, int stage)
+            throws PfModelException
+
+        if (ElementState.REMOVED.equals(instanceElementMigrate.state())) {
+
+            // TODO element remove scenario
+
+            if (isMigrateSuccess()) {
+                intermediaryApi.updateAutomationCompositionElementState(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    DeployState.DELETED, null, StateChangeResult.NO_ERROR, "Migrated");
+            } else {
+                intermediaryApi.updateAutomationCompositionElementState(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Migrate failed!");
+            }
+            return;
+        }
+
+        switch (instanceElementMigrate.state()) {
+            case NEW -> // TODO new element scenario
+            default ->  // TODO migration process
+        }
+
+        if (isMigrateSuccess()) {
+            var nextStage = intermediaryApi.getMigrateNextStage(compositionElementTarget, stage);
+            if (nextStage == stage) {
+                intermediaryApi.updateAutomationCompositionElementState(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migrated");
+            } else {
+                intermediaryApi.updateAutomationCompositionElementStage(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    StateChangeResult.NO_ERROR, nextStage, "stage " + stage + " Migrated");
+            }
+        } else {
+            intermediaryApi.updateAutomationCompositionElementState(
+                instanceElement.instanceId(), instanceElement.elementId(),
+                DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Migrate failed!");
+        }
+    }
+
+    @Override
+    public void rollbackMigration(CompositionElementDto compositionElement,
+            CompositionElementDto compositionElementRollback, InstanceElementDto instanceElement,
+            InstanceElementDto instanceElementRollback, int stage) {
+
+        if (ElementState.REMOVED.equals(instanceElementRollback.state())) {
+
+            // TODO element remove scenario
+
+            if (isRollbackSuccess()) {
+                intermediaryApi.updateAutomationCompositionElementState(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    DeployState.DELETED, null, StateChangeResult.NO_ERROR, "Rollback completed");
+            } else {
+                intermediaryApi.updateAutomationCompositionElementState(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Rollback failed!");
+            }
+            return;
+        }
+
+        switch (instanceElementRollback.state()) {
+            case NEW -> // TODO element to be re-insert
+            default ->  // TODO rollback process
+        }
+
+        if (isRollbackSuccess()) {
+            var nextStage = intermediaryApi.getRollbackNextStage(compositionElementRollback, stage);
+            if (nextStage == stage) {
+                intermediaryApi.updateAutomationCompositionElementState(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Rollback completed");
+            } else {
+                intermediaryApi.updateAutomationCompositionElementStage(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    StateChangeResult.NO_ERROR, nextStage, "stage " + stage + " Rollback");
+            }
+        } else {
+            intermediaryApi.updateAutomationCompositionElementState(
+                instanceElement.instanceId(), instanceElement.elementId(),
+                DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Rollback failed!");
+        }
+    }
+
+
+The following example shows how could be the implemented the other notifications.
+
+.. code-block:: java
+
+    @Override
     public void lock(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
             throws PfModelException {
 
@@ -1081,75 +1251,6 @@ The following example shows the Handler implementation and how could be the impl
     }
 
     @Override
-    public void delete(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
-            throws PfModelException {
-
-        // TODO delete process
-
-        if (isDeleteSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.DELETED, null, StateChangeResult.NO_ERROR, "Deleted");
-        } else {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.FAILED,
-                "Delete failed!");
-        }
-    }
-
-    @Override
-    public void update(CompositionElementDto compositionElement, InstanceElementDto instanceElement,
-            InstanceElementDto instanceElementUpdated) throws PfModelException {
-
-        // TODO update process
-
-        if (isUpdateSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(
-                instanceElement.instanceId(), instanceElement.elementId(),
-                DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Updated");
-        } else {
-            intermediaryApi.updateAutomationCompositionElementState(
-                instanceElement.instanceId(), instanceElement.elementId(),
-                DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Update failed!");
-        }
-    }
-
-    @Override
-    public void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget,
-            InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate, int stage)
-            throws PfModelException
-
-        switch (instanceElementMigrate.state()) {
-            case NEW -> // TODO new element scenario
-            case REMOVED -> // TODO element remove scenario
-            default ->  // TODO migration process
-        }
-
-        if (isMigrateSuccess()) {
-            var stageSet = ParticipantUtils.findStageSetMigrate(compositionElementTarget.inProperties());
-            var nextStage = 1000;
-            for (var s : stageSet) {
-                if (s > stage) {
-                    nextStage = Math.min(s, nextStage);
-                }
-            }
-
-            if (nextStage == 1000) {
-                intermediaryApi.updateAutomationCompositionElementState(
-                    instanceElement.instanceId(), instanceElement.elementId(),
-                    DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migrated");
-            } else {
-                intermediaryApi.updateAutomationCompositionElementStage(
-                    instanceElement.instanceId(), instanceElement.elementId(),
-                    StateChangeResult.NO_ERROR, nextStage, "stage " + stage + " Migrated");
-            }
-        } else {
-            intermediaryApi.updateAutomationCompositionElementState(
-                instanceElement.instanceId(), instanceElement.elementId(),
-                DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Migrate failed!");
-        }
-    }
-
-    @Override
     public void migratePrecheck(UUID instanceId, UUID elementId) throws PfModelException {
 
         // TODO migration Precheck process
@@ -1163,10 +1264,22 @@ The following example shows the Handler implementation and how could be the impl
     public void prepare(UUID instanceId, UUID elementId) throws PfModelException {
 
         // TODO prepare process
-
-        intermediaryApi.updateAutomationCompositionElementState(
-            instanceElement.instanceId(), instanceElement.elementId(),
-            DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR, "Prepare completed");
+        if (isPrepareSuccess()) {
+            var nextStage = intermediaryApi.getPrepareNextStage(compositionElement, stage);
+            if (nextStage == stage) {
+                intermediaryApi.updateAutomationCompositionElementState(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR, "Prepare completed");
+            } else {
+                intermediaryApi.updateAutomationCompositionElementStage(
+                    instanceElement.instanceId(), instanceElement.elementId(),
+                    StateChangeResult.NO_ERROR, nextStage, "stage " + stage + " Prepare");
+            }
+        } else {
+            intermediaryApi.updateAutomationCompositionElementState(
+                instanceElement.instanceId(), instanceElement.elementId(),
+                DeployState.UNDEPLOYED, null, StateChangeResult.FAILED, "Prepare failed");
+        }
     }
 
     @Override
@@ -1177,34 +1290,6 @@ The following example shows the Handler implementation and how could be the impl
         intermediaryApi.updateAutomationCompositionElementState(
             instanceElement.instanceId(), instanceElement.elementId(),
             DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Review completed");
-    }
-
-    @Override
-    public void prime(CompositionDto composition) throws PfModelException {
-
-        // TODO prime process
-
-        if (isPrimeSuccess()) {
-            intermediaryApi.updateCompositionState(composition.compositionId(),
-                AcTypeState.PRIMED, StateChangeResult.NO_ERROR, "Primed");
-        } else {
-            intermediaryApi.updateCompositionState(composition.compositionId(),
-                AcTypeState.COMMISSIONED, StateChangeResult.FAILED, "Prime failed!");
-        }
-    }
-
-    @Override
-    public void deprime(CompositionDto composition) throws PfModelException {
-
-        // TODO deprime process
-
-        if (isDeprimeSuccess()) {
-            intermediaryApi.updateCompositionState(composition.compositionId(), AcTypeState.COMMISSIONED,
-                StateChangeResult.NO_ERROR, "Deprimed");
-        } else {
-            intermediaryApi.updateCompositionState(composition.compositionId(), AcTypeState.PRIMED,
-                StateChangeResult.FAILED, "Deprime failed!");
-        }
     }
 
 

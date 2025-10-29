@@ -249,8 +249,8 @@ deleteTimeoutMs:
   Denotes the maximum wait time during delete operation by the runtime to receive the state change update from participant
 
 
-Update AC instance properties (Optional)
-----------------------------------------
+Update AC instance properties
+-----------------------------
 Before the AC instance is deployed, the user is allowed to update the instance property values if needed. The runtime updates these new values
 in the database.
 
@@ -347,8 +347,8 @@ Request payload
 .. literalinclude:: files/AC-review.json
    :language: json
 
-Update AC instance properties after deployment (Optional)
----------------------------------------------------------
+Update AC instance properties after deployment
+----------------------------------------------
 After the AC instance is deployed, the user can still update the instance property values if needed. In this case, the runtime updates these new values
 in the database and also sends an update event to the participants. The participants has to implement the update method to perform the
 required operation.
@@ -403,10 +403,10 @@ by the participant.
 .. literalinclude:: files/AC-migrate.json
    :language: json
 
-Rollback AC instance (Optional)
--------------------------------
+Rollback AC instance
+--------------------
 
-In the event of a migration failure, the user can rollback to a previous state.
+In the event of a migration failure or timeout, the user can rollback to a previous state.
 
 .. code-block:: bash
 

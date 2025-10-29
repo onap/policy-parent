@@ -117,10 +117,18 @@ Migrate-precheck of an Automation Composition Instance
 Migrate of an Automation Composition Instance
 ---------------------------------------------
 - ACM-runtime saves the compositionTargetId and updates the instance properties of the deployed Ac instances
-- it triggers the execution to send a broadcast AUTOMATION_COMPOSITION_MIGRATION message with precheck set to false
+- it triggers the execution to send a broadcast AUTOMATION_COMPOSITION_MIGRATION message with precheck and rollback set to false
 - the message is built by AutomationCompositionMigrationPublisher using the REST request payload (to fill the compositionTargetId and list of elements with the updated property values)
 - Participant-intermediary will receive a AUTOMATION_COMPOSITION_MIGRATION message and stores the compositionTargetId and the updated values of the elements on CacheProvider
 - Each participant performs its designated job of migrate by interacting with respective frameworks
+
+Rollback of an Automation Composition Instance
+----------------------------------------------
+- ACM-runtime fetch the rollback from database and updates the instance properties of the deployed Ac instances
+- it triggers the execution to send a broadcast AUTOMATION_COMPOSITION_MIGRATION message with precheck set to false and rollback set to true
+- the message is built by AutomationCompositionMigrationPublisher using the REST request payload (to fill the compositionTargetId and list of elements with the updated property values)
+- Participant-intermediary will receive a AUTOMATION_COMPOSITION_MIGRATION message and the updated values of the elements on CacheProvider
+- Each participant performs its designated job of rollback by interacting with respective frameworks
 
 Design of "issues automation composition commands to automation compositions" - case LOCKED to UNLOCKED
 -------------------------------------------------------------------------------------------------------
