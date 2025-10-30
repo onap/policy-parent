@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f993928e_e774633d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2025-10-30T15:30:03Z",
+      "side": 1,
+      "message": "Can we also mention that the removal of elements in Migration and rollback always happen at stage 0 irrespective of the stage value configured?",
+      "revId": "7fb332b1f588cca2e9558287e597b6f733210e00",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
