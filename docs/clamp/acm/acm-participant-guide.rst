@@ -1105,7 +1105,7 @@ The following example shows the Handler implementation and how could be the impl
 
 
 The following example shows how could be the implemented the update/migration/rollback notifications.
-Note: the removed elements always happen at stage 0
+**Note**: the removed elements always happen at stage 0 in migration and at the higher stage in rollback.
 
 .. code-block:: java
 

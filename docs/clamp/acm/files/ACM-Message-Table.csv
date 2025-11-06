@@ -82,6 +82,7 @@ AutomationCompositionMigration,ACM Runtime,Participant,Message to request update
 ,,,,participantIdList, The list of all participants involved in this message
 ,,,,precheck,Flag - if true it is a Migration Precheck
 ,,,,rollback,Flag - if true it is a Rollback of the Migration failed
+,,,,firstStage,Flag - if true it is a fist stage during Migration/Rollback
 ,,,,compositionId,The id of the AC Definition related to this message
 ,,,,compositionTargetId,The id of the AC Definition target
 ,,,,automationCompositionId,The id of the automation composition related to this message
