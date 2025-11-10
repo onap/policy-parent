@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a835d19c_cd841893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6070
+      },
+      "writtenOn": "2025-11-10T16:07:19Z",
+      "side": 1,
+      "message": "Can we update the document with stage values for DEFAULT, NEW and REMOVED cases as well for better clarity on rollback and migration cases?",
+      "revId": "eda451f69c938fa4bee3d686a3f7bac3ce7487da",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
