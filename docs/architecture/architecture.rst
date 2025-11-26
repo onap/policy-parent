@@ -32,7 +32,7 @@ mapping out the components, software structure, and execution ecosystem of the f
 
 The ONAP Policy Framework is a comprehensive policy design, deployment, and execution environment. The Policy Framework
 is the decision making component in `an ONAP system
-<https://www.onap.org/wp-content/uploads/sites/20/2018/11/ONAP_CaseSolution_Architecture_112918FNL.pdf>`__.
+<https://docs.onap.org/en/latest/ecosystem/architecture/index.html>`__.
 It allows you to specify, deploy, and execute the governance of the features and functions in your ONAP system, be they
 closed loop, orchestration, or more traditional open loop use case implementations. The Policy Framework is the
 component that is the source of truth for all policy decisions.
