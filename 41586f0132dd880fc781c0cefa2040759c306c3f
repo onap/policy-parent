@@ -22,6 +22,30 @@
       },
       "revId": "41586f0132dd880fc781c0cefa2040759c306c3f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6c1e7d_107bf24e",
+        "filename": "docs/architecture/architecture.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7625
+      },
+      "writtenOn": "2025-12-03T11:40:23Z",
+      "side": 1,
+      "message": "correction, this one https://docs.onap.org/en/latest/ecosystem/architecture/index.html",
+      "parentUuid": "d657460f_bf600014",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 91
+      },
+      "revId": "41586f0132dd880fc781c0cefa2040759c306c3f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
