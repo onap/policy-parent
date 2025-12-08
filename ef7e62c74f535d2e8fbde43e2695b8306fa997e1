@@ -16,6 +16,23 @@
       "message": "recheck",
       "revId": "ef7e62c74f535d2e8fbde43e2695b8306fa997e1",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44af059_98a4287a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2025-12-08T08:32:41Z",
+      "side": 1,
+      "message": "Thanks for spotting the updates needed to the pf_release_data.csv file.",
+      "revId": "ef7e62c74f535d2e8fbde43e2695b8306fa997e1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
