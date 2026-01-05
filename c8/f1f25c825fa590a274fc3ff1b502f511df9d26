@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Wayne Dunican <wayne.dunican@est.tech>
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: Wayne Dunican <wayne.dunican@est.tech>
+Submitted-by: Wayne Dunican <wayne.dunican@est.tech>
+Submitted-at: Mon, 05 Jan 2026 14:54:28 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/policy/parent/+/142844
+Project: policy/parent
+Branch: refs/heads/master
