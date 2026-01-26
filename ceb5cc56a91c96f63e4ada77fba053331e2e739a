@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30db129c_7dba3c4e",
+        "filename": "integration/src/main/resources/release/17.0.0-PF-I2_pf_release_data.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2026-01-26T14:28:29Z",
+      "side": 1,
+      "message": "same here, probably should be 8?",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "ceb5cc56a91c96f63e4ada77fba053331e2e739a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1520192f_906c3d7d",
+        "filename": "integration/src/main/resources/release/pf_release_data.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 6722
+      },
+      "writtenOn": "2026-01-26T14:28:29Z",
+      "side": 1,
+      "message": "Not sure this should\u0027ve changed. Maybe just a typo?",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "ceb5cc56a91c96f63e4ada77fba053331e2e739a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
