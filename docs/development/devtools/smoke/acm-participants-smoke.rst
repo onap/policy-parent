@@ -28,7 +28,7 @@ The procedure documented in this article has been verified using Ubuntu 20.04 LT
 
 2.1 Prerequisites
 =================
-- Java 17
+- Java 21
 - Docker
 - Maven 3.9
 - Git
@@ -39,7 +39,7 @@ The procedure documented in this article has been verified using Ubuntu 20.04 LT
 2.2 Cloning CLAMP automation composition
 ========================================
 
-Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/admin/repos/q/filter:policy>`_. This script clones CLAMP automation composition and all dependency.
+Run the below command to clone the required CLAMP automation composition:
 
 .. code-block:: bash
 
@@ -55,13 +55,42 @@ Execution of the command above results in the following directory hierarchy in y
 2.3 Setting up the components
 =============================
 
-2.3.1 Running MariaDb and Kafka
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-We will be using Docker to run our mariadb instance and Kafka. It will have the acm-runtime database running in it.
-The easiest way to do this is to perform a SQL script. Create the *mariadb.sql* file in the directory *~/git*.
+2.3.1 Setting for kubernetes.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+If the helm location is not '/usr/local/bin/helm' or the kubectl location is not '/usr/local/bin/kubectl', you have to update
+the file 'participant/participant-impl/participant-impl-kubernetes/src/main/java/org/onap/policy/clamp/acm/participant/kubernetes/helm/HelmClient.java'.
 
-.. literalinclude:: files/mariadb.sql
-   :language: SQL
+2.3.2 Building CLAMP automation composition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Step 1:** Optionally, for a completely clean build, remove the ONAP built modules from your local repository.
+
+    .. code-block:: bash
+
+        rm -fr ~/.m2/repository/org/onap
+
+
+**Step 2:** You can now build the Policy framework.
+
+Build java artifacts and docker images:
+
+    .. code-block:: bash
+
+       cd ~/git/clamp
+       mvn clean install -P docker -DskipTests
+
+
+2.3.3 Running Postgres and Kafka
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+We will be using Docker to run our Postgres instance and Kafka. It will have the acm-runtime database running in it.
+Create the *db-pg.conf* and *db-pg.sh* files in the directory *~/git*.
+
+.. literalinclude:: files/db-pg.conf
+   :language: yaml
+
+.. literalinclude:: files/db-pg.sh
+   :language: yaml
+
 
 Create the '*docker-compose.yaml*' using following code:
 
@@ -75,68 +104,49 @@ Run the docker composition:
       cd ~/git/
       docker compose up
 
-2.3.2 Setting topicParameterGroup for kafka localhost
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-It needs to set 'kafka' as topicCommInfrastructure and 'localhost:29092' as server.
-In the clamp repo, you should find the file 'runtime-acm/src/main/resources/application.yaml'. This file (in the 'runtime' parameters section) may need to be altered as below:
+2.3.4 Running ACM-R on the Command Line
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To start the automation composition runtime service, we need to execute the following command line from the "runtime-acm" directory in the clamp repo. Automation composition runtime uses the config file "src/main/resources/application.yaml" by default.
 
-.. literalinclude:: files/runtime-application.yaml
-   :language: yaml
+   .. code-block:: bash
 
-Same changes (in the 'participant' parameters section)
-may need to be apply into the file 'participant/participant-impl/participant-impl-http/src/main/resources/config/application.yaml'.
+      cd ~/git/clamp/runtime-acm
+      java -DRUNTIME_USER=runtimeUser -DRUNTIME_PASSWORD=zb\!XztG34 \
+           -DSQL_HOST=localhost -DSQL_PORT=5432 -DSQL_USER=policy_user -DSQL_PASSWORD=policy_user \
+           -DKAFKA_SERVER=localhost:29092 -DTOPIC_COMM_INFRASTRUCTURE=kafka \
+           -jar target/policy-clamp-runtime-acm-9.0.1-SNAPSHOT.jar
 
-.. literalinclude:: files/participant-http-application.yaml
-   :language: yaml
-
-And into the file 'participant/participant-impl/participant-impl-kubernetes/src/main/resources/config/application.yaml'.
-
-.. literalinclude:: files/participant-kubernetes-application.yaml
-   :language: yaml
-
-If the helm location is not '/usr/local/bin/helm' or the kubectl location is not '/usr/local/bin/kubectl', you have to update
-the file 'participant/participant-impl/participant-impl-kubernetes/src/main/java/org/onap/policy/clamp/acm/participant/kubernetes/helm/HelmClient.java'.
-
-2.3.3 Automation composition Runtime
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To start the automation composition runtime service, we need to execute the following maven command from the "runtime-acm" directory in the clamp repo. Automation composition runtime uses the config file "src/main/resources/application.yaml" by default.
-
-.. code-block:: bash
-
-    mvn spring-boot:run
-
-2.3.4 Helm chart repository
+2.3.5 Helm chart repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Kubernetes participant consumes helm charts from the local chart database as well as from a helm repository. For the smoke testing, we are going to add `nginx-stable` helm repository to the helm client.
 The following command can be used to add nginx repository to the helm client.
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    helm repo add nginx-stable https://helm.nginx.com/stable
+      helm repo add nginx-stable https://helm.nginx.com/stable
 
-2.3.5 Kubernetes and http participants
+2.3.6 Kubernetes and http participants
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The participants can be started from the clamp repository by executing the following maven command from the appropriate directories.
+The participants can be started from the clamp repository by executing the following command line from the appropriate directories.
 The participants will be started and get registered to the Automation composition runtime.
 
 Navigate to the directory "participant/participant-impl/participant-impl-kubernetes/" and start kubernetes participant.
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    mvn spring-boot:run
+      cd ~/git/clamp/participant/participant-impl/participant-impl-kubernetes
+      java -Dserver.port=8082 -DkafkaServer=localhost:29092 -DtopicCommInfrastructure=kafka \
+           -jar target/policy-clamp-participant-impl-kubernetes-9.0.1-SNAPSHOT.jar
+
 
 Navigate to the directory "participant/participant-impl/participant-impl-http/" and start http participant.
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    mvn spring-boot:run
+      cd ~/git/clamp/participant/participant-impl/participant-impl-http
+      java -Dserver.port=8083 -DkafkaServer=localhost:29092 -DtopicCommInfrastructure=kafka \
+           -jar target/policy-clamp-participant-impl-http-9.0.1-SNAPSHOT.jar
 
-For building docker images of runtime-acm and participants:
-
-.. code-block:: bash
-
-   cd ~/git/onap/policy/clamp/
-   mvn clean install -P docker
 
 
 3. Running Tests

@@ -12,28 +12,6 @@ services:
     ports:
       - "5432:5432"
 
-  policy-db-migrator:
-    image: nexus3.onap.org:10001/onap/policy-db-migrator:5.0.1-SNAPSHOT
-    container_name: policy-db-migrator
-    hostname: policy-db-migrator
-    depends_on:
-      - mariadb
-    expose:
-      - 6824
-    env_file: ./db-pg.conf
-    environment:
-      POSTGRES_PASSWORD: policy_user
-      SQL_HOST: postgres
-    volumes:
-      - ./init_pg.sh:/opt/app/policy/bin/db_migrator_policy_init_pg.sh:ro
-      - ./wait_for_port.sh:/opt/app/policy/bin/wait_for_port.sh:ro
-    entrypoint: /opt/app/policy/bin/wait_for_port.sh
-    command: [
-      '-c',
-      '/opt/app/policy/bin/db_migrator_policy_init.sh',
-      'postgres', '5432'
-    ]
-
   zookeeper:
     image: nexus3.onap.org:10001/confluentinc/cp-zookeeper:latest
     environment:
@@ -57,3 +35,37 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  runtime-acm:
+    image: onap/policy-clamp-runtime-acm
+    depends_on:
+      - zookeeper
+      - kafka
+      - postgres
+    environment:
+      RUNTIME_USER: runtimeUser
+      RUNTIME_PASSWORD: zb!XztG34
+      SQL_HOST: postgres
+      SQL_PORT: 5432
+      SQL_USER: policy_user
+      SQL_PASSWORD: policy_user
+      TOPIC_COMM_INFRASTRUCTURE: kafka
+    ports:
+      - "6969:6969"
+
+  participant-simulator:
+    image: onap/policy-clamp-ac-sim-ppnt
+    depends_on:
+      - zookeeper
+      - kafka
+    environment:
+      HTTP_USER: participantUser
+      HTTP_PASSWORD: zb!XztG34
+      SERVER_PORT: 8085
+      topicCommInfrastructure: kafka
+      participantId: 101c62b3-8918-41b9-a747-d21eb79c6c90
+      applicationName: sim-ppnt
+      groupId: policy-clamp-ac-sim-ppnt
+      supportedElementTypeName: org.onap.policy.clamp.acm.SimAutomationCompositionElement
+    ports:
+      - "8085:8085"

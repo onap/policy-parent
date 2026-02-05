@@ -11,23 +11,23 @@ CLAMP Policy Participant Smoke Tests
 The Smoke testing of the policy participant is executed in a local CLAMP/Policy environment. The CLAMP-ACM interfaces interact with the Policy Framework to perform actions based on the state of the policy participant. The goal of the Smoke tests is the ensure that CLAMP Policy Participant and Policy Framework work together as expected.
 All applications will be running by console, so they need to run with different ports. Configuration files should be changed accordingly.
 
-+------------------------------+-------+
-| Application                  |  port |
-+==============================+=======+
-| MariDB                       |  3306 |
-+------------------------------+-------+
-| Zookeeper                    |  2181 |
-+------------------------------+-------+
-| Kafka                        | 29092 |
-+------------------------------+-------+
-| policy-api                   |  6968 |
-+------------------------------+-------+
-| policy-pap                   |  6970 |
-+------------------------------+-------+
-| policy-clamp-runtime-acm     |  6969 |
-+------------------------------+-------+
-| onap/policy-clamp-ac-pf-ppnt |  8085 |
-+------------------------------+-------+
++------------------------------+------------+
+| Application                  |    Port    |
++==============================+============+
+| Postgres                     |    5432    |
++------------------------------+------------+
+| Zookeeper                    |    2181    |
++------------------------------+------------+
+| Kafka                        | 29092/9092 |
++------------------------------+------------+
+| policy-api                   |    6968    |
++------------------------------+------------+
+| policy-pap                   |    6970    |
++------------------------------+------------+
+| policy-clamp-runtime-acm     |    6969    |
++------------------------------+------------+
+| onap/policy-clamp-ac-pf-ppnt |    8085    |
++------------------------------+------------+
 
 
 2. Setup Guide
@@ -38,7 +38,7 @@ This section will show the developer how to set up their environment to start te
 2.1 Prerequisites
 =================
 
-- Java 17
+- Java 21
 - Maven 3.9
 - Git
 - Refer to this guide for basic environment setup `Setting up dev environment <https://wiki.onap.org/display/DW/Setting+Up+Your+Development+Environment>`_
@@ -46,319 +46,95 @@ This section will show the developer how to set up their environment to start te
 2.2 Cloning CLAMP automation composition and all dependency
 ===========================================================
 
-Run a script such as the script below to clone the required modules from the `ONAP git repository <https://gerrit.onap.org/r/admin/repos/q/filter:policy>`_. This script clones CLAMP automation composition and all dependency.
+Run the below commands to clone the required CLAMP automation composition and all modules:
 
 .. code-block:: bash
-   :caption: Typical ONAP Policy Framework Clone Script
-   :linenos:
 
-    #!/usr/bin/env bash
-
-    ## script name for output
-    MOD_SCRIPT_NAME='basename $0'
-
-    ## the ONAP clone directory, defaults to "onap"
-    clone_dir="onap"
-
-    ## the ONAP repos to clone
-    onap_repos="\
-    policy/api \
-    policy/clamp \
-    policy/pap "
-
-    ##
-    ## Help screen and exit condition (i.e. too few arguments)
-    ##
-    Help()
-    {
-        echo ""
-        echo "$MOD_SCRIPT_NAME - clones all required ONAP git repositories"
-        echo ""
-        echo "       Usage:  $MOD_SCRIPT_NAME [-options]"
-        echo ""
-        echo "       Options"
-        echo "         -d          - the ONAP clone directory, defaults to '.'"
-        echo "         -h          - this help screen"
-        echo ""
-        exit 255;
-    }
-
-    ##
-    ## read command line
-    ##
-    while [ $# -gt 0 ]
-    do
-        case $1 in
-            #-d ONAP clone directory
-            -d)
-                shift
-                if [ -z "$1" ]; then
-                    echo "$MOD_SCRIPT_NAME: no clone directory"
-                    exit 1
-                fi
-                clone_dir=$1
-                shift
-            ;;
-
-            #-h prints help and exists
-            -h)
-                Help;exit 0;;
-
-            *)    echo "$MOD_SCRIPT_NAME: undefined CLI option - $1"; exit 255;;
-        esac
-    done
-
-    if [ -f "$clone_dir" ]; then
-        echo "$MOD_SCRIPT_NAME: requested clone directory '$clone_dir' exists as file"
-        exit 2
-    fi
-    if [ -d "$clone_dir" ]; then
-        echo "$MOD_SCRIPT_NAME: requested clone directory '$clone_dir' exists as directory"
-        exit 2
-    fi
-
-    mkdir $clone_dir
-    if [ $? != 0 ]
-    then
-        echo cannot clone ONAP repositories, could not create directory '"'$clone_dir'"'
-        exit 3
-    fi
-
-    for repo in $onap_repos
-    do
-        repoDir=`dirname "$repo"`
-        repoName=`basename "$repo"`
-
-        if [ ! -z $dirName ]
-        then
-            mkdir "$clone_dir/$repoDir"
-            if [ $? != 0 ]
-            then
-                echo cannot clone ONAP repositories, could not create directory '"'$clone_dir/repoDir'"'
-                exit 4
-            fi
-        fi
-
-        git clone https://gerrit.onap.org/r/${repo} $clone_dir/$repo
-    done
-
-    echo ONAP has been cloned into '"'$clone_dir'"'
+    cd ~/git
+    git clone https://gerrit.onap.org/r/policy/clamp clamp
+    git clone https://gerrit.onap.org/r/policy/api api
+    git clone https://gerrit.onap.org/r/policy/pap pap
 
 
-Execution of the script above results in the following directory hierarchy in your *~/git* directory:
+Execution of the commands above results in the following directory hierarchy in your *~/git* directory:
 
-    *  ~/git/onap
-    *  ~/git/onap/policy
-    *  ~/git/onap/policy/api
-    *  ~/git/onap/policy/clamp
-    *  ~/git/onap/policy/pap
+    *  ~/git
+    *  ~/git/api
+    *  ~/git/clamp
+    *  ~/git/pap
 
 
 2.3 Building CLAMP automation composition and all dependency
 ============================================================
 
-**Step 1:** Setting topicParameterGroup for kafka localhost in clamp and policy-participant.
-It needs to set 'kafka' as topicCommInfrastructure and 'localhost:29092' as server.
-In the clamp repo, you should find the file 'runtime-acm/src/main/resources/application.yaml'. This file (in the 'runtime' parameters section) may need to be altered as below:
-
-.. literalinclude:: files/runtime-application.yaml
-   :language: yaml
-
-Setting topicParameterGroup for kafka localhost and api/pap http client (in the 'participant' parameters section) may need to be apply into the file 'participant/participant-impl/participant-impl-policy/src/main/resources/config/application.yaml'.
-
-.. literalinclude:: files/participant-policy-application.yaml
-   :language: yaml
-
-
-**Step 2:** Setting datasource.url, hibernate.ddl-auto and server.port in policy-api.
+**Step 1:** Setting datasource.url, hibernate.ddl-auto and server.port in policy-api.
 In the api repo, you should find the file 'main/src/main/resources/application.yaml'. This file may need to be altered as below:
 
 .. literalinclude:: files/api-application.yaml
    :language: yaml
 
 
-**Step 3:** Setting datasource.url, server.port, and api http client in policy-pap.
+**Step 2:** Setting datasource.url, server.port, and api http client in policy-pap.
 In the pap repo, you should find the file 'main/src/main/resources/application.yaml'. This file may need to be altered as below:
 
 .. literalinclude:: files/pap-application.yaml
    :language: yaml
 
 
-**Step 4:** Optionally, for a completely clean build, remove the ONAP built modules from your local repository.
+**Step 3:** Optionally, for a completely clean build, remove the ONAP built modules from your local repository.
 
     .. code-block:: bash
 
         rm -fr ~/.m2/repository/org/onap
 
 
-**Step 5:**  A pom such as the one below can be used to build the ONAP Policy Framework modules. Create the *pom.xml* file in the directory *~/git/onap/policy*.
+**Step 4:** You can now build the Policy framework.
 
-.. code-block:: xml
-  :caption: Typical pom.xml to build the ONAP Policy Framework
-  :linenos:
-
-    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-        <modelVersion>4.0.0</modelVersion>
-        <groupId>org.onap</groupId>
-        <artifactId>onap-policy</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <packaging>pom</packaging>
-        <name>${project.artifactId}</name>
-        <inceptionYear>2024</inceptionYear>
-        <organization>
-            <name>ONAP</name>
-        </organization>
-
-        <modules>
-            <module>api</module>
-            <module>clamp</module>
-            <module>pap</module>
-        </modules>
-    </project>
-
-
-**Step 6:** You can now build the Policy framework.
-
-Build java artifacts only:
+Build java artifacts and docker images:
 
     .. code-block:: bash
 
-       cd ~/git/onap/policy
-       mvn clean install -DskipTests
+       cd ~/git/clamp
+       mvn clean install -P docker -DskipTests
+       cd ~/git/api
+       mvn clean install -P docker -DskipTests
+       cd ~/git/pap
+       mvn clean install -P docker -DskipTests
 
-Build with docker images:
-
-    .. code-block:: bash
-
-       cd ~/git/onap/policy/clamp/packages/
-       mvn clean install -P docker
-
-       cd ~/git/onap/policy/api/packages/
-       mvn clean install -P docker
-
-       cd ~/git/onap/policy/pap/packages/
-       mvn clean install -P docker
 
 2.4 Setting up the components
 =============================
 
-2.4.1 MariaDB and Kafka Setup
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2.4.1 Postgres and Kafka Setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We will be using Docker to run our mariadb instance`and Zookeeper/Kafka. It will have a total of two databases running in mariadb.
+We will be using Docker to run our Postgres instance` and Zookeeper/Kafka. It will have a total of two databases running in Postgres.
 
 - clampacm: the policy-clamp-runtime-acm db
 - policyadmin: the policy-api db
 
-**Step 1:** Create the *mariadb.sql* file in a directory *~/git*.
+**Step 1:** Create the *db-pg.conf* and *db-pg.sh* files in the directory *~/git*.
 
-    .. code-block:: SQL
+.. literalinclude:: files/db-pg.conf
+   :language: yaml
 
-       create database clampacm;
-       CREATE USER 'policy'@'%' IDENTIFIED BY 'P01icY';
-       GRANT ALL PRIVILEGES ON clampacm.* TO 'policy'@'%';
-       CREATE DATABASE `policyadmin`;
-       CREATE USER 'policy_user'@'%' IDENTIFIED BY 'policy_user';
-       GRANT ALL PRIVILEGES ON policyadmin.* to 'policy_user'@'%';
-       CREATE DATABASE `migration`;
-       GRANT ALL PRIVILEGES ON migration.* to 'policy_user'@'%';
-       FLUSH PRIVILEGES;
+.. literalinclude:: files/db-pg.sh
+   :language: yaml
 
 
-**Step 2:** Create the *init.sh* file in a directory *~/git* with execution permission.
+**Step 2:** Create the *wait_for_port.sh* file in a directory *~/git* with execution permission.
 
-    .. code-block:: sh
-
-       #!/bin/sh
-
-       export POLICY_HOME=/opt/app/policy
-       export SQL_USER=${MYSQL_USER}
-       export SQL_PASSWORD=${MYSQL_PASSWORD}
-       export SCRIPT_DIRECTORY=sql
-
-       /opt/app/policy/bin/prepare_upgrade.sh ${SQL_DB}
-       /opt/app/policy/bin/db-migrator -s ${SQL_DB} -o report
-       /opt/app/policy/bin/db-migrator -s ${SQL_DB} -o upgrade
-       rc=$?
-       /opt/app/policy/bin/db-migrator -s ${SQL_DB} -o report
-       nc -l -p 6824
-       exit $rc
+.. literalinclude:: files/wait_for_port.sh
+   :language: sh
 
 
-**Step 3:** Create the *wait_for_port.sh* file in a directory *~/git* with execution permission.
-
-    .. code-block:: sh
-
-       #!/bin/sh
-
-       usage() {
-         echo args: [-t timeout] [-c command] hostname1 port1 hostname2 port2 ... >&2
-         exit 1
-       }
-       tmout=300
-       cmd=
-       while getopts c:t: opt
-       do
-           case "$opt" in
-               c)
-                   cmd="$OPTARG"
-                   ;;
-               t)
-                   tmout="$OPTARG"
-                   ;;
-               *)
-                   usage
-                   ;;
-           esac
-       done
-       nargs=$((OPTIND-1))
-       shift "$nargs"
-       even_args=$(($#%2))
-       if [ $# -lt 2 ] || [ "$even_args" -ne 0 ]
-       then
-           usage
-       fi
-       while [ $# -ge 2 ]
-       do
-           export host="$1"
-           export port="$2"
-           shift
-           shift
-           echo "Waiting for $host port $port..."
-
-           while [ "$tmout" -gt 0 ]
-           do
-               if command -v docker > /dev/null 2>&1
-               then
-                   docker ps --format "table {{ .Names }}\t{{ .Status }}"
-               fi
-               nc -vz "$host" "$port"
-               rc=$?
-               if [ $rc -eq 0 ]
-               then
-                   break
-               else
-                   tmout=$((tmout-1))
-                   sleep 1
-               fi
-           done
-           if [ $rc -ne 0 ]
-           then
-               echo "$host port $port cannot be reached"
-               exit $rc
-           fi
-       done
-       $cmd
-       exit 0
-
-
-**Step 4:** Create the '*docker-compose.yaml*' using following code:
+**Step 3:** Create the '*docker-compose.yaml*' using following code:
 
 .. literalinclude:: files/docker-compose-policy.yaml
    :language: yaml
 
 
-**Step 5:** Run the docker composition:
+**Step 4:** Run the docker composition:
 
    .. code-block:: bash
 
@@ -392,7 +168,11 @@ To start the clampacm runtime we need to go the "runtime-acm" directory in the c
 
 .. code-block:: bash
 
-    mvn spring-boot:run
+    cd ~/git/clamp/runtime-acm
+    java -DRUNTIME_USER=runtimeUser -DRUNTIME_PASSWORD=zb\!XztG34 \
+         -DSQL_HOST=localhost -DSQL_PORT=5432 -DSQL_USER=policy_user -DSQL_PASSWORD=policy_user \
+         -DKAFKA_SERVER=localhost:29092 -DTOPIC_COMM_INFRASTRUCTURE=kafka \
+         -jar target/policy-clamp-runtime-acm-9.0.1-SNAPSHOT.jar
 
 2.4.5 ACM Policy Participant
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -401,7 +181,9 @@ To start the policy participant we need to go to the "participant/participant-im
 
 .. code-block:: bash
 
-    mvn spring-boot:run
+    cd ~/git/clamp/participant/participant-impl/participant-impl-policy
+    java -Dserver.port=8084 -DkafkaServer=localhost:29092 -DtopicCommInfrastructure=kafka \
+         -jar target/policy-clamp-participant-impl-policy-9.0.1-SNAPSHOT.jar
 
 3. Testing Procedure
 ====================

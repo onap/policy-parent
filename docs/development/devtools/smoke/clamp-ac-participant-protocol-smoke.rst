@@ -23,7 +23,7 @@ Linux user - although the majority of the steps show will be exactly the same in
 2.1 Prerequisites
 =================
 
-- Java 17
+- Java 21
 - Docker
 - Maven 3.9
 - Git
@@ -35,17 +35,17 @@ Linux user - although the majority of the steps show will be exactly the same in
 - Automation Composition runtime component docker image is started and running.
 - Participant docker images policy-clamp-ac-pf-ppnt, policy-clamp-ac-http-ppnt, policy-clamp-ac-k8s-ppnt are started and running.
 - Kafka/Zookeeper for communication between components.
-- mariadb docker container for policy and clampacm database.
+- Postgres docker container for policy and clampacm database.
 - policy-api for communication between policy participant and policy-framework
 
 In this setup guide, we will be setting up all the components technically required for a working convenient
 dev environment. We will not be setting up all the participants - we will setup only the policy participant as an
 example.
 
-2.2.1 MariaDB Setup
-===================
+2.2.1 Postgres Setup
+====================
 
-We will be using Docker to run our mariadb instance. It will have a total of two databases running in it.
+We will be using Docker to run our Postgres instance. It will have a total of two databases running in it.
 
 - clampacm: the policy-clamp-runtime-acm db
 - policyadmin: the policy-api db
