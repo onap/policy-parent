@@ -25,7 +25,7 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinxcontrib.blockdiag',
     'sphinxcontrib.seqdiag',
-    'sphinxcontrib.swaggerdoc',
+    'sphinxcontrib.openapi',
     'sphinxcontrib.plantuml',
     'sphinx_toolbox.collapse',
     'sphinxcontrib.redoc'

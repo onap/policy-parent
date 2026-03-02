@@ -1,10 +1,10 @@
-sphinx>=4.2.0  # BSD
-sphinx-rtd-theme>=1.0.0  # MIT
-sphinxcontrib-blockdiag  # BSD
-sphinxcontrib-seqdiag # BSD
-sphinxcontrib-swaggerdoc
-sphinxcontrib-spelling
-sphinxcontrib-plantuml
-sphinx_toolbox
+sphinx>=7.1.2
+sphinx-rtd-theme>=2.0.0
+sphinxcontrib-blockdiag>=3.0.0
+sphinxcontrib-seqdiag>=3.0.0
+sphinxcontrib-openapi>=0.8.4
+sphinxcontrib-spelling>=8.0.0
+sphinxcontrib-plantuml>=0.27
 sphinxcontrib-redoc
+sphinx_toolbox>=3.5.0
 six

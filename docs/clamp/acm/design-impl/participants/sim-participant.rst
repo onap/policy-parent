@@ -39,4 +39,4 @@ This API allows a Participant Simulator to be started and run for test purposes.
 
 :download:`Download Policy Participant Simulator API Swagger  <swagger/participant-sim.json>`
 
-.. swaggerv2doc:: swagger/participant-sim.json
+.. openapi:: swagger/participant-sim.json
