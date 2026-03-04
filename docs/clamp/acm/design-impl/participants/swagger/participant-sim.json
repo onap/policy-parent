@@ -41,7 +41,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK, reutrns a serialised instance of [SimConfig](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/policy-clamp-participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/SimConfig.java)",
+                        "description": "OK, returns a serialised instance of [SimConfig](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/SimConfig.java)",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -164,7 +164,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/policy-clamp-participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java)",
+                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java)",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -287,7 +287,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/policy-clamp-participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java)",
+                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java)",
                         "content": {
                             "application/json": {
                                 "schema": {
