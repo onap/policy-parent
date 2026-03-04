@@ -253,7 +253,7 @@ Concepts and Keys
   Each concept in the model is also a JPA
   (`Java Persistence API <https://en.wikipedia.org/wiki/Java_Persistence_API>`__) Entity. This means that every concept
   can be individually persisted or the entire model can be persisted en-bloc to any persistence mechanism using an JPA
-  framework such as `Hibernate <http://hibernate.org/>`__ or `EclipseLink <http://www.eclipse.org/eclipselink/>`__.
+  framework such as `Hibernate <http://hibernate.org/>`__ or `EclipseLink <https://projects.eclipse.org/projects/ee4j.eclipselink>`__.
 
 Concept: PolicyModel
 ====================
