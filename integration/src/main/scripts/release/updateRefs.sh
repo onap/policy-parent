@@ -248,14 +248,17 @@ if [ "$update_parent" = true ]
 then
     if [ "$specified_repo" = "policy/parent" ]
     then
-        # policy/parent checkstyle depends on the previous release of itself,
-        # since the current release's artifact isn't published yet
-        next_version=${parent_latest_snapshot_tag%-SNAPSHOT}
-        echo "updating checkstyle reference to range [$parent_latest_released_tag,$next_version] on policy/parent . . ."
-        $SED -i \
-            "s/<version.parent.checkstyle>.*<\/version.parent.checkstyle>/<version.parent.checkstyle>[$parent_latest_released_tag,$next_version]<\/version.parent.checkstyle>/" \
-             "$repo_location/policy/parent/integration/pom.xml"
-        result_code=$?
+        if [ "$update_snapshot" = false ]
+        then
+            # policy/parent checkstyle depends on the previous release of itself,
+            # since the current release's artifact isn't published yet
+            next_version=${parent_latest_snapshot_tag%-SNAPSHOT}
+            echo "updating checkstyle reference to range [$parent_latest_released_tag,$next_version] on policy/parent . . ."
+            $SED -i \
+                "s/<version.parent.checkstyle>.*<\/version.parent.checkstyle>/<version.parent.checkstyle>[$parent_latest_released_tag,$next_version]<\/version.parent.checkstyle>/" \
+                 "$repo_location/policy/parent/integration/pom.xml"
+            result_code=$?
+        fi
     else
         if [ "$update_snapshot" = true ]
         then

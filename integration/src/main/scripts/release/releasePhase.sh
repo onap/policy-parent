@@ -243,11 +243,6 @@ release_phase_8() {
         -pcmk \
         -d "$release_data_file" \
         -l "$repo_location" \
-        -r "policy/clamp"
-    updateRefs.sh \
-        -pcmk \
-        -d "$release_data_file" \
-        -l "$repo_location" \
         -r "policy/distribution"
     updateRefs.sh \
         -pcmk \
@@ -276,12 +271,6 @@ release_phase_8() {
         -i "$issue_id" \
         -e "update references in policy/api pom" \
         -m "updated references in the policy/api pom"
-    generateCommit.sh \
-        -l "$repo_location" \
-        -r "policy/clamp" \
-        -i "$issue_id" \
-        -e "update references in policy/clamp pom" \
-        -m "updated references in the policy/clamp pom"
     generateCommit.sh \
         -l "$repo_location" \
         -r "policy/distribution" \
@@ -313,7 +302,6 @@ release_phase_9() {
     echo "Generating artifact release yaml file and commit for repos . . ."
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/apex-pdp -i "$issue_id"
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/api -i "$issue_id"
-    releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/clamp -i "$issue_id"
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/distribution -i "$issue_id"
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/drools-pdp -i "$issue_id"
     releaseRepo.sh -d "$release_data_file" -l "$repo_location" -r policy/pap -i "$issue_id"
@@ -325,7 +313,6 @@ release_phase_10() {
     echo "Generating docker release yaml file and commit for repos . . ."
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/apex-pdp -i "$issue_id"
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/api -i "$issue_id"
-    releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/clamp -i "$issue_id"
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/distribution -i "$issue_id"
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/drools-pdp -i "$issue_id"
     releaseRepoImages.sh -d "$release_data_file" -l "$repo_location" -r policy/pap -i "$issue_id"

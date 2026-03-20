@@ -45,7 +45,7 @@ declare -a pf_repos=(
         "policy/apex-pdp"
         "policy/xacml-pdp"
         "policy/distribution"
-        "policy/clamp"
+	"policy/clamp"
         "policy/drools-applications"
 )
 
