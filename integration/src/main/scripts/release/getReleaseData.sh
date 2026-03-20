@@ -48,6 +48,7 @@ declare -a pf_repos=(
     "policy/distribution"
     "policy/clamp"
     "policy/drools-applications"
+    "policy/opa-pdp"	
 )
 
 usage()
