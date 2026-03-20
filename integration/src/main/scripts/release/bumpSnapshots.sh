@@ -45,7 +45,6 @@ declare -a pf_repos=(
         "policy/apex-pdp"
         "policy/xacml-pdp"
         "policy/distribution"
-        "policy/clamp"
         "policy/drools-applications"
 )
 
@@ -166,8 +165,8 @@ do
 
         echo "updating snapshot version and references of repo $repo to $new_snapshot_tag . . ."
         mvn -f "$repo_location/$repo" \
-            "-DnewVersion=$new_snapshot_tag" versions:set \
-            versions:update-child-modules versions:commit
+            "-DnewVersion=$new_snapshot_tag" -DgenerateBackupPoms=false \
+            versions:set versions:update-child-modules versions:commit
 
         temp_file=$(mktemp)
 
