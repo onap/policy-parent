@@ -87,6 +87,9 @@ and the same is configured for the 'ParticipantIntermediaryParameters' object in
         typeName: org.onap.policy.clamp.acm.PolicyAutomationCompositionElement
         typeVersion: 1.0.0
 
+6. failUnsupportedOperation - This property defines the behaviour for all implemented operations into the abstract class AcElementListenerVx. If the value is true they return FAILED. If the value is false they return NO_ERROR.
+   The default value is true, if this property is not defined.
+
 Kafka Healthcheck
 -----------------
 
