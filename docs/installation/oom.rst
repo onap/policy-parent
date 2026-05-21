@@ -30,7 +30,7 @@ Prerequisites
 
 Deploy Policy/ACM OOM & Required Charts
 ***************************************
-The policy K8S charts are located in the `OOM repository <https://gerrit.onap.org/r/gitweb?p=oom.git;a=tree;f=kubernetes/policy;h=78576c7a0d30cb87054e9776326cdde20986e6e3;hb=refs/heads/master>`_.
+The policy K8S charts are located in the `OOM repository <https://github.com/onap/oom/tree/master/kubernetes/policy>`_.
 
 Install Helm Plugins
 ^^^^^^^^^^^^^^^^^^^^
