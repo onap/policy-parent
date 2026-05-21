@@ -52,50 +52,52 @@
         <!-- Dependency Versions -->
         <version.beanutils>1.11.0</version.beanutils>
         <version.bytebuddy>1.17.8</version.bytebuddy>
-        <version.ccsdk>1.7.1</version.ccsdk>
-        <version.cucumber>7.15.0</version.cucumber>
-        <version.docker-java>3.3.2</version.docker-java>
+        <version.ccsdk>1.9.0</version.ccsdk>
+        <version.cucumber>7.34.3</version.cucumber>
+        <version.docker-java>3.7.1</version.docker-java>
         <version.drools>8.40.1.Final</version.drools>
         <version.frontend.maven>1.13.4</version.frontend.maven>
-        <version.guava>33.4.6-jre</version.guava>
+        <version.grpc>1.75.0</version.grpc>
+        <version.guava>33.6.0-jre</version.guava>
         <version.hamcrest>3.0</version.hamcrest>
-        <version.httpclient>5.4.3</version.httpclient>
-        <version.httpcore>5.3.4</version.httpcore>
-        <version.io.prometheus>1.3.6</version.io.prometheus>
-        <version.jackson>2.18.3</version.jackson>
+        <version.httpclient>5.5.2</version.httpclient>
+        <version.httpcore>5.3.6</version.httpcore>
+        <version.io.prometheus>1.3.10</version.io.prometheus>
+        <version.jackson>2.21.2</version.jackson>
         <version.jacoco>0.8.13</version.jacoco>
-        <version.jaxb>4.0.5</version.jaxb>
-        <version.jersey>3.1.10</version.jersey>
-        <version.jetty>12.0.22</version.jetty>
+        <version.jaxb>4.0.6</version.jaxb>
+        <version.jersey>3.1.11</version.jersey>
+        <version.jetty>12.0.34</version.jetty>
         <version.jexl3>3.2.1</version.jexl3>
-        <version.json-path>2.9.0</version.json-path>
+        <version.json-path>2.10.0</version.json-path>
         <version.json-schema-friend>0.12.4</version.json-schema-friend>
         <version.json-schema-validator>1.5.6</version.json-schema-validator>
-        <version.jupiter>6.0.0</version.jupiter>
-        <version.kafka>4.1.0</version.kafka>
-        <version.kotlin>2.1.20</version.kotlin>
+        <version.jupiter>5.12.2</version.jupiter>
+        <version.kafka>3.9.2</version.kafka>
+        <version.kotlin>1.9.25</version.kotlin>
         <version.log4j>2.24.3</version.log4j>
-        <version.logback>1.5.18</version.logback>
-        <version.lombok>1.18.42</version.lombok>
+        <version.logback>1.5.32</version.logback>
+        <version.lombok>1.18.46</version.lombok>
         <version.maven-checkstyle-plugin>3.3.1</version.maven-checkstyle-plugin>
         <version.maven-remote-resources-plugin>3.1.0</version.maven-remote-resources-plugin>
-        <version.micrometer>1.14.5</version.micrometer>
-        <version.mockito>5.20.0</version.mockito>
+        <version.micrometer>1.15.11</version.micrometer>
+        <version.mockito>5.17.0</version.mockito>
         <version.mockserver>5.15.0</version.mockserver>
+        <version.netty>4.1.132.Final</version.netty>
         <version.nsa-cambria>1.2.1-oss</version.nsa-cambria>
         <version.nsa-sa-client>1.3.0-oss</version.nsa-sa-client>
-        <version.opentel>1.43.0</version.opentel>
-        <version.plexus>3.6.0</version.plexus>
+        <version.opentel>1.49.0</version.opentel>
+        <version.plexus>3.6.1</version.plexus>
         <version.sdc-dist>2.1.1</version.sdc-dist>
         <version.sdc-tosca>1.9.0</version.sdc-tosca>
         <version.slf4j>2.0.17</version.slf4j>
-        <version.spring>6.2.12</version.spring>
-        <version.springboot>3.5.3</version.springboot>
-        <version.spring-data>3.5.1</version.spring-data>
-        <version.spring-security>6.5.5</version.spring-security>
+        <version.spring>6.2.18</version.spring>
+        <version.springboot>3.5.14</version.springboot>
+        <version.spring-data>3.5.11</version.spring-data>
+        <version.spring-security>6.5.10</version.spring-security>
         <version.sonar>5.0.0.4389</version.sonar>
-        <version.swagger.codegen.v3>3.0.68</version.swagger.codegen.v3>
-        <version.swagger.core.v3>2.2.29</version.swagger.core.v3>
+        <version.swagger.codegen.v3>3.0.78</version.swagger.codegen.v3>
+        <version.swagger.core.v3>2.2.50</version.swagger.core.v3>
         <surefireArgLine>
             --add-opens java.base/java.time=ALL-UNNAMED
             --add-opens java.base/java.util=ALL-UNNAMED
@@ -159,6 +161,20 @@
                 <version>${version.logback}</version>
             </dependency>
             <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-bom</artifactId>
+                <version>${version.netty}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-bom</artifactId>
+                <version>${version.grpc}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>com.fasterxml.jackson</groupId>
                 <artifactId>jackson-bom</artifactId>
                 <version>${version.jackson}</version>
@@ -173,7 +189,7 @@
             <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
-                <version>2.12.1</version>
+                <version>2.14.0</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -218,32 +234,32 @@
             <dependency>
                 <groupId>commons-cli</groupId>
                 <artifactId>commons-cli</artifactId>
-                <version>1.9.0</version>
+                <version>1.11.0</version>
             </dependency>
             <dependency>
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
-                <version>1.18.0</version>
+                <version>1.22.0</version>
             </dependency>
             <dependency>
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
-                <version>1.5</version>
+                <version>1.6.0</version>
             </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
-                <version>2.18.0</version>
+                <version>2.22.0</version>
             </dependency>
             <dependency>
                 <groupId>commons-logging</groupId>
                 <artifactId>commons-logging</artifactId>
-                <version>1.3.5</version>
+                <version>1.3.6</version>
             </dependency>
             <dependency>
                 <groupId>commons-net</groupId>
                 <artifactId>commons-net</artifactId>
-                <version>3.11.1</version>
+                <version>3.13.0</version>
             </dependency>
             <dependency>
                 <groupId>io.micrometer</groupId>
@@ -269,7 +285,7 @@
             <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-tracing-bridge-otel</artifactId>
-                <version>1.4.7</version>
+                <version>1.5.11</version>
             </dependency>
             <dependency>
                 <groupId>io.opentelemetry</groupId>
@@ -414,7 +430,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
-                <version>4.5.0-M3</version>
+                <version>4.5.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -424,7 +440,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>3.18.0</version>
+                <version>3.20.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -434,7 +450,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-text</artifactId>
-                <version>1.13.0</version>
+                <version>1.15.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents.client5</groupId>
@@ -464,7 +480,7 @@
             <dependency>
                 <groupId>org.apache.tomcat.embed</groupId>
                 <artifactId>tomcat-embed-core</artifactId>
-                <version>11.0.13</version>
+                <version>11.0.22</version>
             </dependency>
             <dependency>
                 <groupId>org.aspectj</groupId>
@@ -579,12 +595,12 @@
             <dependency>
                 <groupId>org.hibernate.orm</groupId>
                 <artifactId>hibernate-core</artifactId>
-                <version>6.6.16.Final</version>
+                <version>6.6.49.Final</version>
             </dependency>
             <dependency>
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
-                <version>8.0.2.Final</version>
+                <version>8.0.3.Final</version>
             </dependency>
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
@@ -634,7 +650,7 @@
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
-                <version>42.7.7</version>
+                <version>42.7.11</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -659,7 +675,7 @@
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-                <version>2.8.6</version>
+                <version>2.8.17</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -833,7 +849,7 @@
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
-                <version>2.2.224</version>
+                <version>2.3.232</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -857,13 +873,13 @@
             <dependency>
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
-                <version>3.25.3</version>
+                <version>3.27.7</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.awaitility</groupId>
                 <artifactId>awaitility</artifactId>
-                <version>4.2.0</version>
+                <version>4.2.2</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -947,7 +963,7 @@
             <dependency>
                 <groupId>io.projectreactor</groupId>
                 <artifactId>reactor-bom</artifactId>
-                <version>2024.0.8</version>
+                <version>2024.0.17</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
