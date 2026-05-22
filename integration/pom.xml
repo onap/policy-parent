@@ -37,7 +37,6 @@
     <description>Policy Integration POM</description>
     <properties>
         <!-- Note Well: For RELEASE/SNAPSHOT always set to the project version -->
-        <version.parent.resources>6.0.2-SNAPSHOT</version.parent.resources>
         <version.parent.checkstyle>6.0.2-SNAPSHOT</version.parent.checkstyle>
         <jacoco.destFile>${project.build.directory}/code-coverage/jacoco-ut.exec</jacoco.destFile>
         <!-- Default Sonar configuration -->
@@ -110,12 +109,6 @@
     </distributionManagement>
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.onap.policy.parent</groupId>
-                <artifactId>policy-parent-resources</artifactId>
-                <version>${version.parent.resources}</version>
-            </dependency>
-
             <!-- Spring Boot BOM - primary dependency management for the entire Policy Framework -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
