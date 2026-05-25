@@ -190,38 +190,10 @@
             </dependency>
             <dependency>
                 <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-annotations</artifactId>
+                <artifactId>swagger-bom</artifactId>
                 <version>${version.swagger.core.v3}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-annotations-jakarta</artifactId>
-                <version>${version.swagger.core.v3}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-core</artifactId>
-                <version>${version.swagger.core.v3}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-jaxrs2-jakarta</artifactId>
-                <version>${version.swagger.core.v3}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-jaxrs2-servlet-initializer-v2-jakarta</artifactId>
-                <version>${version.swagger.core.v3}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-models-jakarta</artifactId>
-                <version>${version.swagger.core.v3}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.parser.v3</groupId>
-                <artifactId>swagger-parser</artifactId>
-                <version>2.1.24</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>net.jimblackler.jsonschemafriend</groupId>
