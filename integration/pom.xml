@@ -2,7 +2,7 @@
   ============LICENSE_START=======================================================
    Copyright (C) 2018 Ericsson. All rights reserved.
    Modifications Copyright (C) 2018-2023 AT&T. All rights reserved.
-   Modifications Copyright (C) 2019-2025 OpenInfra Foundation Europe. All rights reserved.
+   Modifications Copyright (C) 2019-2026 OpenInfra Foundation Europe. All rights reserved.
    Modifications Copyright (C) 2020-2022 Bell Canada.
   ================================================================================
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -499,43 +499,10 @@
             </dependency>
             <dependency>
                 <groupId>org.drools</groupId>
-                <artifactId>drools-compiler</artifactId>
+                <artifactId>drools-bom</artifactId>
                 <version>${version.drools}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.drools</groupId>
-                <artifactId>drools-core</artifactId>
-                <version>${version.drools}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.drools</groupId>
-                <artifactId>drools-engine</artifactId>
-                <version>${version.drools}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.drools</groupId>
-                <artifactId>drools-persistence-jpa</artifactId>
-                <version>${version.drools}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.drools</groupId>
-                <artifactId>drools-verifier-api</artifactId>
-                <version>${version.drools}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.drools</groupId>
-                <artifactId>drools-verifier-core</artifactId>
-                <version>${version.drools}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.drools</groupId>
-                <artifactId>drools-verifier-drl</artifactId>
-                <version>${version.drools}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.drools</groupId>
-                <artifactId>drools-xml-support</artifactId>
-                <version>${version.drools}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
@@ -626,16 +593,6 @@
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
                 <version>20250107</version>
-            </dependency>
-            <dependency>
-                <groupId>org.kie</groupId>
-                <artifactId>kie-api</artifactId>
-                <version>${version.drools}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.kie</groupId>
-                <artifactId>kie-ci</artifactId>
-                <version>${version.drools}</version>
             </dependency>
             <dependency>
                 <groupId>org.liquibase</groupId>
