@@ -393,8 +393,8 @@ Method: rollbackMigration
 
 Abstract class AcElementListenerV3
 ----------------------------------
-This abstract class is introduced to help to maintain temporarily the java backward compatibility with AutomationCompositionElementListener implemented in 8.0.1 version.
-So developers can decide to align to new functionality later. Any new functionality in the future will be wrapped by this class.
+This abstract class is deprecated and it will be removed in the next release.
+It was introduced to help to maintain temporarily the java backward compatibility with AutomationCompositionElementListener implemented in 8.0.1 version.
 
 The Abstract class AcElementListenerV3 supports the follow methods.
 
@@ -565,135 +565,6 @@ Method: migrate
     ==============================  ====================================================
   stage:
     the stage of the migration that the participant has to execute
-
-
-Abstract class AcElementListenerV2
-----------------------------------
-This abstract class is deprecated and it will be removed in the next release.
-It was introduced to help to maintain temporarily the java backward compatibility with AutomationCompositionElementListener implemented in 8.0.0 version.
-
-The Abstract class AcElementListenerV2 supports the follow methods.
-
-.. code-block:: java
-
-  1. void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
-  2. void undeploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
-  3. void lock(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
-  4. void unlock(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
-  5. void delete(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
-  6. void update(CompositionElementDto compositionElement, InstanceElementDto instanceElement, InstanceElementDto instanceElementUpdated) throws PfModelException;
-  7. void prime(CompositionDto composition) throws PfModelException;
-  8. void deprime(CompositionDto composition) throws PfModelException;
-  9. void migrate(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
-  10. void migratePrecheck(CompositionElementDto compositionElement, CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement, InstanceElementDto instanceElementMigrate) throws PfModelException;
-  11. void review(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
-  12. void prepare(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException;
-
-**Note**: this class needs intermediaryApi and it should be passed by constructor. It is declared as protected and can be used.
-Default implementation are supported for the methods: lock, unlock, update, migrate, delete, prime, deprime, migratePrecheck, review and prepare.
-
-
-Methods: deploy, undeploy, lock, unlock, delete, review and prepare
-  compositionElement:
-    ======================  =======================================
-     **field**                       **description**
-    ======================  =======================================
-     compositionId           composition definition Id
-     elementDefinitionId     composition definition element Id
-     inProperties            composition definition in-properties
-     outProperties           composition definition out-properties
-    ======================  =======================================
-  instanceElement:
-    ==============================  ===========================
-     **field**                       **description**
-    ==============================  ===========================
-     instanceId                      instance id
-     elementId                       instance element id
-     toscaServiceTemplateFragment    policies and policy types
-     inProperties                    instance in-properties
-      outProperties                  instance out-properties
-    ==============================  ===========================
-
-Method: update
-  compositionElement:
-    ======================  =======================================
-     **field**                       **description**
-    ======================  =======================================
-     compositionId           composition definition Id
-     elementDefinitionId     composition definition element Id
-     inProperties            composition definition in-properties
-     outProperties           composition definition out-properties
-    ======================  =======================================
-  instanceElement:
-    ==============================  ================================================
-     **field**                       **description**
-    ==============================  ================================================
-     instanceId                      instance id
-     elementId                       instance element id
-     toscaServiceTemplateFragment
-     inProperties                    instance in-properties **(before the update)**
-      outProperties                  instance out-properties
-    ==============================  ================================================
-  instanceElementUpdated:
-    ==============================  ======================================
-     **field**                       **description**
-    ==============================  ======================================
-     instanceId                      instance id
-     elementId                       instance element id
-     toscaServiceTemplateFragment
-     inProperties                    instance in-properties **(updated)**
-     outProperties                   instance out-properties
-    ==============================  ======================================
-
-Methods: prime, deprime
-  composition:
-    ======================  ===================================================================
-     **field**                       **description**
-    ======================  ===================================================================
-     compositionId           composition definition Id
-     inProperties            composition definition in-properties for each definition element
-     outProperties           composition definition out-properties for each definition element
-    ======================  ===================================================================
-
-Method: migrate and migratePrecheck
-  compositionElement:
-    ======================  =======================================
-     **field**                       **description**
-    ======================  =======================================
-     compositionId           composition definition Id
-     elementDefinitionId     composition definition element Id
-     inProperties            composition definition in-properties
-     outProperties           composition definition out-properties
-    ======================  =======================================
-  compositionElementTarget:
-    ======================  ==============================================
-     **field**                       **description**
-    ======================  ==============================================
-     compositionId           composition definition target Id
-     elementDefinitionId     composition definition target element Id
-     inProperties            composition definition target in-properties
-     outProperties           composition definition target out-properties
-    ======================  ==============================================
-  instanceElement:
-    ==============================  ===================================================
-     **field**                       **description**
-    ==============================  ===================================================
-     instanceId                      instance id
-     elementId                       instance element id
-     toscaServiceTemplateFragment
-     inProperties                    instance in-properties **(before the migration)**
-     outProperties                   instance out-properties
-    ==============================  ===================================================
-  instanceElementMigrate:
-    ==============================  ======================================
-     **field**                       **description**
-    ==============================  ======================================
-     instanceId                      instance id
-     elementId                       instance element id
-     toscaServiceTemplateFragment
-     inProperties                    instance in-properties **(updated)**
-     outProperties                   instance out-properties
-    ==============================  ======================================
 
 
 APIs to invoke
@@ -949,7 +820,7 @@ The following example shows the Handler implementation and how could be the impl
 .. code-block:: java
 
   @Component
-  public class AutomationCompositionElementHandler extends AcElementListenerV3 {
+  public class AutomationCompositionElementHandler extends AcElementListenerV4 {
 
     @Override
     public void prime(CompositionDto composition) throws PfModelException {
@@ -1177,7 +1048,9 @@ The following example shows how could be the implemented the other notifications
     }
 
     @Override
-    public void migratePrecheck(UUID instanceId, UUID elementId) throws PfModelException {
+    public void migratePrecheck(CompositionElementDto compositionElement,
+            CompositionElementDto compositionElementTarget, InstanceElementDto instanceElement,
+            InstanceElementDto instanceElementMigrate) throws PfModelException {
 
         // TODO migration Precheck process
 
@@ -1187,7 +1060,8 @@ The following example shows how could be the implemented the other notifications
     }
 
     @Override
-    public void prepare(UUID instanceId, UUID elementId) throws PfModelException {
+    public void prepare(CompositionElementDto compositionElement, InstanceElementDto instanceElement, int stage)
+            throws PfModelException {
 
         // TODO prepare process
         if (isPrepareSuccess()) {
@@ -1209,7 +1083,8 @@ The following example shows how could be the implemented the other notifications
     }
 
     @Override
-    public void review(UUID instanceId, UUID elementId) throws PfModelException {
+    public void review(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
+            throws PfModelException {
 
         // TODO review process
 
