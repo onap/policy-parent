@@ -4,7 +4,7 @@ spring:
   security.user:
     name: policyadmin
     password: zb!XztG34
-  mvc.converters.preferred-json-mapper: gson
+  http.converters.preferred-json-mapper: gson
   datasource:
     url: jdbc:mariadb://localhost:3306/policyadmin
     driverClassName: org.mariadb.jdbc.Driver
