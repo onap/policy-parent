@@ -88,7 +88,6 @@
         <version.plugin.docker>0.48.1</version.plugin.docker>
         <version.plugin.git-commit-id>9.2.0</version.plugin.git-commit-id>
         <version.plugin.jacoco>0.8.15</version.plugin.jacoco>
-        <version.plugin.owasp>12.2.2</version.plugin.owasp>
         <version.plugin.sonar>5.7.0.6970</version.plugin.sonar>
         <version.plugin.swagger-codegen>3.0.81</version.plugin.swagger-codegen>
         <version.plugin.versions>2.21.0</version.plugin.versions>
@@ -339,28 +338,6 @@
         <tag>HEAD</tag>
         <url>https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16230649/Integration+Project</url>
     </scm>
-
-    <profiles>
-        <profile>
-            <id>cve</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.owasp</groupId>
-                        <artifactId>dependency-check-maven</artifactId>
-                        <version>${version.plugin.owasp}</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>aggregate</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
     <build>
         <extensions>
