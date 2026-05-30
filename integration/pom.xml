@@ -102,12 +102,6 @@
             -XX:+EnableDynamicAgentLoading
         </surefireArgLine>
     </properties>
-    <distributionManagement>
-        <site>
-            <id>ecomp-site</id>
-            <url>dav:${onap.nexus.url}${sitePath}</url>
-        </site>
-    </distributionManagement>
     <dependencyManagement>
         <dependencies>
             <dependency>
