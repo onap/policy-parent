@@ -46,30 +46,54 @@
         </sonar.coverage.jacoco.xmlReportPaths>
         <!-- Note: This list should match jacoco-maven-plugin's exclusion list below -->
         <sonar.exclusions>org/drools/**/*,**/gen/**,**/generated-sources/**</sonar.exclusions>
-        <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
         <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
         <docker.push.registry>nexus3.onap.org:10003</docker.push.registry>
 
         <!-- Dependency Versions -->
-        <version.jexl3>3.6.2</version.jexl3>
-        <version.json-schema-validator>3.0.4</version.json-schema-validator>
-        <version.mvel2>2.5.2.Final</version.mvel2>
-        <version.springboot>4.1.0</version.springboot>
-        <version.swagger.core.v3>2.2.51</version.swagger.core.v3>
-        <!-- drools-pdp dependencies -->
-        <version.drools>8.40.1.Final</version.drools>
-        <!-- xacml-pdp dependencies -->
-        <version.xacml>4.0.0</version.xacml>
-        <!-- apex-pdp dependencies -->
-        <version.antlr.st4>4.3.4</version.antlr.st4>
         <version.antlr-runtime>4.13.2</version.antlr-runtime>
+        <version.antlr.st4>4.3.4</version.antlr.st4>
         <version.avro>1.12.1</version.avro>
+        <version.bcpkix-fips>2.1.11</version.bcpkix-fips>
+        <version.commons-cli>1.11.0</version.commons-cli>
+        <version.commons-collections4>4.5.0</version.commons-collections4>
+        <version.commons-configuration2>2.15.1</version.commons-configuration2>
+        <version.commons-io>2.22.0</version.commons-io>
+        <version.commons-math3>3.6.1</version.commons-math3>
         <version.curator>5.9.0</version.curator>
+        <version.drools>8.40.1.Final</version.drools>
+        <version.hk2-jakarta-inject>2.6.1</version.hk2-jakarta-inject>
+        <version.jackson-databind-nullable>0.2.10</version.jackson-databind-nullable>
+        <version.jaxb-plugins-runtime>4.0.16</version.jaxb-plugins-runtime>
+        <version.jexl3>3.6.2</version.jexl3>
         <version.jruby-core>10.1.0.0</version.jruby-core>
+        <version.json-schema-validator>3.0.4</version.json-schema-validator>
         <version.jython-standalone>2.7.4</version.jython-standalone>
         <version.kafka-avro-serializer>8.2.1</version.kafka-avro-serializer>
+        <version.mvel2>2.5.2.Final</version.mvel2>
+        <version.onap.aai-schema>1.14.0</version.onap.aai-schema>
+        <version.onap.cds-blueprint-proto>1.9.0</version.onap.cds-blueprint-proto>
+        <version.onap.sdc-distribution-client>2.1.1</version.onap.sdc-distribution-client>
+        <version.openpojo>0.9.1</version.openpojo>
+        <version.opentelemetry-kafka>2.28.1-alpha</version.opentelemetry-kafka>
+        <version.plexus-utils>3.6.1</version.plexus-utils>
+        <version.re2j>1.8</version.re2j>
         <version.rhino>1.9.1</version.rhino>
+        <version.springboot>4.1.0</version.springboot>
+        <version.springdoc>3.0.3</version.springdoc>
+        <version.swagger.core.v3>2.2.51</version.swagger.core.v3>
+        <version.swagger.v1>1.6.16</version.swagger.v1>
+        <version.xacml>4.0.0</version.xacml>
+        <version.xstream>1.4.21</version.xstream>
         <version.zookeeper>3.9.5</version.zookeeper>
+        <!-- Plugin Versions -->
+        <version.plugin.checkstyle>3.6.0</version.plugin.checkstyle>
+        <version.plugin.docker>0.48.1</version.plugin.docker>
+        <version.plugin.git-commit-id>9.2.0</version.plugin.git-commit-id>
+        <version.plugin.jacoco>0.8.15</version.plugin.jacoco>
+        <version.plugin.owasp>12.2.2</version.plugin.owasp>
+        <version.plugin.sonar>5.7.0.6970</version.plugin.sonar>
+        <version.plugin.swagger-codegen>3.0.81</version.plugin.swagger-codegen>
+        <version.plugin.versions>2.21.0</version.plugin.versions>
 
         <surefireArgLine>
             --add-opens java.base/java.time=ALL-UNNAMED
@@ -106,7 +130,7 @@
             <dependency>
                 <groupId>org.onap.ccsdk.cds.blueprintsprocessor.modules</groupId>
                 <artifactId>blueprint-proto</artifactId>
-                <version>1.9.0</version>
+                <version>${version.onap.cds-blueprint-proto}</version>
                 <!-- Exclude all: parent POM leaks many outdated dependencies which are not needed at all -->
                 <exclusions>
                     <exclusion>
@@ -118,7 +142,7 @@
             <dependency>
                 <groupId>org.onap.sdc.sdc-distribution-client</groupId>
                 <artifactId>sdc-distribution-client</artifactId>
-                <version>2.1.1</version>
+                <version>${version.onap.sdc-distribution-client}</version>
                 <!-- Exclude all: runtime deps already provided by other paths -->
                 <exclusions>
                     <exclusion>
@@ -130,7 +154,7 @@
             <dependency>
                 <groupId>org.onap.aai.schema-service</groupId>
                 <artifactId>aai-schema</artifactId>
-                <version>1.14.0</version>
+                <version>${version.onap.aai-schema}</version>
                 <!-- Exclude all: only POJO domain classes are used at runtime, and jaxb-plugins-runtime below -->
                 <exclusions>
                     <exclusion>
@@ -143,14 +167,14 @@
             <dependency>
                 <groupId>org.jvnet.jaxb</groupId>
                 <artifactId>jaxb-plugins-runtime</artifactId>
-                <version>4.0.16</version>
+                <version>${version.jaxb-plugins-runtime}</version>
             </dependency>
 
             <!-- All 3pp dependencies -->
             <dependency>
                 <groupId>com.google.re2j</groupId>
                 <artifactId>re2j</artifactId>
-                <version>1.8</version>
+                <version>${version.re2j}</version>
             </dependency>
             <dependency>
                 <groupId>com.networknt</groupId>
@@ -160,12 +184,12 @@
             <dependency>
                 <groupId>commons-cli</groupId>
                 <artifactId>commons-cli</artifactId>
-                <version>1.11.0</version>
+                <version>${version.commons-cli}</version>
             </dependency>
             <dependency>
                 <groupId>io.opentelemetry.instrumentation</groupId>
                 <artifactId>opentelemetry-kafka-clients-2.6</artifactId>
-                <version>2.28.1-alpha</version>
+                <version>${version.opentelemetry-kafka}</version>
             </dependency>
             <dependency>
                 <groupId>io.swagger.core.v3</groupId>
@@ -178,12 +202,12 @@
             <dependency>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-annotations</artifactId>
-                <version>1.6.16</version>
+                <version>${version.swagger.v1}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
-                <version>4.5.0</version>
+                <version>${version.commons-collections4}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -193,12 +217,12 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-math3</artifactId>
-                <version>3.6.1</version>
+                <version>${version.commons-math3}</version>
             </dependency>
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcpkix-fips</artifactId>
-                <version>2.1.11</version>
+                <version>${version.bcpkix-fips}</version>
             </dependency>
             <dependency>
                 <groupId>org.mvel</groupId>
@@ -208,12 +232,12 @@
             <dependency>
                 <groupId>org.openapitools</groupId>
                 <artifactId>jackson-databind-nullable</artifactId>
-                <version>0.2.10</version>
+                <version>${version.jackson-databind-nullable}</version>
             </dependency>
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-                <version>3.0.3</version>
+                <version>${version.springdoc}</version>
             </dependency>
 
             <!-- apex-pdp dependencies -->
@@ -293,36 +317,36 @@
             <dependency>
                 <groupId>com.thoughtworks.xstream</groupId>
                 <artifactId>xstream</artifactId>
-                <version>1.4.21</version>
+                <version>${version.xstream}</version>
             </dependency>
             <!-- CVE-2024-47554 -->
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
-                <version>2.22.0</version>
+                <version>${version.commons-io}</version>
             </dependency>
-            <!-- CVE-2024-47072 -->
+            <!-- CVE-2025-67030 -->
             <dependency>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-utils</artifactId>
-                <version>3.6.1</version>
+                <version>${version.plexus-utils}</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.hk2.external</groupId>
                 <artifactId>jakarta.inject</artifactId>
-                <version>2.6.1</version>
+                <version>${version.hk2-jakarta-inject}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-configuration2</artifactId>
-                <version>2.15.1</version>
+                <version>${version.commons-configuration2}</version>
             </dependency>
 
             <!-- Test-only dependencies -->
             <dependency>
                 <groupId>com.openpojo</groupId>
                 <artifactId>openpojo</artifactId>
-                <version>0.9.1</version>
+                <version>${version.openpojo}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -343,7 +367,7 @@
                     <plugin>
                         <groupId>org.owasp</groupId>
                         <artifactId>dependency-check-maven</artifactId>
-                        <version>12.2.2</version>
+                        <version>${version.plugin.owasp}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -370,12 +394,12 @@
                 <plugin>
                     <groupId>io.fabric8</groupId>
                     <artifactId>docker-maven-plugin</artifactId>
-                    <version>0.48.1</version>
+                    <version>${version.plugin.docker}</version>
                 </plugin>
                 <plugin>
                     <groupId>io.github.git-commit-id</groupId>
                     <artifactId>git-commit-id-maven-plugin</artifactId>
-                    <version>9.2.0</version>
+                    <version>${version.plugin.git-commit-id}</version>
                     <executions>
                         <execution>
                             <goals>
@@ -398,7 +422,7 @@
                 <plugin>
                     <groupId>io.swagger.codegen.v3</groupId>
                     <artifactId>swagger-codegen-maven-plugin</artifactId>
-                    <version>3.0.81</version>
+                    <version>${version.plugin.swagger-codegen}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -418,7 +442,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.10.0</version>
+                    <version>3.11.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -478,7 +502,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
-                    <version>2.21.0</version>
+                    <version>${version.plugin.versions}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -504,7 +528,7 @@
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
-                    <version>5.6.0.6792</version>
+                    <version>${version.plugin.sonar}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -530,7 +554,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.15</version>
+                <version>${version.plugin.jacoco}</version>
                 <configuration>
                     <excludes>
                         <exclude>org/drools/**/*</exclude>
@@ -577,7 +601,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>${version.plugin.checkstyle}</version>
                 <executions>
                     <execution>
                         <id>onap-license</id>
@@ -646,6 +670,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.15.0</version>
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
@@ -658,7 +683,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.21.0</version>
+                <version>${version.plugin.versions}</version>
                 <configuration>
                     <allowMajorUpdates>true</allowMajorUpdates>
                     <allowMinorUpdates>true</allowMinorUpdates>
