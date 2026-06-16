@@ -49,12 +49,28 @@
         <repo.npm>https://nexus3.onap.org/repository/npm.public/npm/-/</repo.npm>
         <docker.pull.registry>nexus3.onap.org:10001</docker.pull.registry>
         <docker.push.registry>nexus3.onap.org:10003</docker.push.registry>
+
         <!-- Dependency Versions -->
-        <version.drools>8.40.1.Final</version.drools>
         <version.jexl3>3.2.1</version.jexl3>
         <version.json-schema-validator>1.5.9</version.json-schema-validator>
+        <version.mvel2>2.5.2.Final</version.mvel2>
         <version.springboot>4.1.0</version.springboot>
         <version.swagger.core.v3>2.2.50</version.swagger.core.v3>
+        <!-- drools-pdp dependencies -->
+        <version.drools>8.40.1.Final</version.drools>
+        <!-- xacml-pdp dependencies -->
+        <version.xacml>4.0.0</version.xacml>
+        <!-- apex-pdp dependencies -->
+        <version.antlr.st4>4.3.4</version.antlr.st4>
+        <version.antlr-runtime>4.13.2</version.antlr-runtime>
+        <version.avro>1.11.5</version.avro>
+        <version.curator>5.9.0</version.curator>
+        <version.jruby-core>10.1.0.0</version.jruby-core>
+        <version.jython-standalone>2.7.4</version.jython-standalone>
+        <version.kafka-avro-serializer>8.2.1</version.kafka-avro-serializer>
+        <version.rhino>1.9.1</version.rhino>
+        <version.zookeeper>3.9.5</version.zookeeper>
+
         <surefireArgLine>
             --add-opens java.base/java.time=ALL-UNNAMED
             --add-opens java.base/java.util=ALL-UNNAMED
@@ -130,34 +146,6 @@
                 <version>4.0.16</version>
             </dependency>
 
-            <!-- drools -->
-            <dependency>
-                <groupId>org.drools</groupId>
-                <artifactId>drools-bom</artifactId>
-                <version>${version.drools}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!-- CVE fixes for drools transitive dependencies -->
-            <!-- CVE-2024-47072 -->
-            <dependency>
-                <groupId>com.thoughtworks.xstream</groupId>
-                <artifactId>xstream</artifactId>
-                <version>1.4.21</version>
-            </dependency>
-            <!-- CVE-2024-47554 -->
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>2.14.0</version>
-            </dependency>
-            <!-- CVE-2024-47072 -->
-            <dependency>
-                <groupId>org.codehaus.plexus</groupId>
-                <artifactId>plexus-utils</artifactId>
-                <version>3.6.1</version>
-            </dependency>
-
             <!-- All 3pp dependencies -->
             <dependency>
                 <groupId>com.google.re2j</groupId>
@@ -186,6 +174,12 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- distribution repo uses older swagger v1 -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>1.6.14</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
@@ -207,6 +201,11 @@
                 <version>2.1.11</version>
             </dependency>
             <dependency>
+                <groupId>org.mvel</groupId>
+                <artifactId>mvel2</artifactId>
+                <version>${version.mvel2}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.openapitools</groupId>
                 <artifactId>jackson-databind-nullable</artifactId>
                 <version>0.2.10</version>
@@ -216,6 +215,110 @@
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>3.0.3</version>
             </dependency>
+
+            <!-- apex-pdp dependencies -->
+            <dependency>
+                <groupId>org.antlr</groupId>
+                <artifactId>ST4</artifactId>
+                <version>${version.antlr.st4}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-runtime</artifactId>
+                <version>${version.antlr-runtime}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro</artifactId>
+                <version>${version.avro}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${version.curator}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${version.curator}</version>
+            </dependency>
+            <!-- override zookeeper from curator for CVE fixes -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${version.zookeeper}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-avro-serializer</artifactId>
+                <version>${version.kafka-avro-serializer}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mozilla</groupId>
+                <artifactId>rhino</artifactId>
+                <version>${version.rhino}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jruby</groupId>
+                <artifactId>jruby-core</artifactId>
+                <version>${version.jruby-core}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.python</groupId>
+                <artifactId>jython-standalone</artifactId>
+                <version>${version.jython-standalone}</version>
+            </dependency>
+
+            <!-- xacml-pdp dependencies -->
+            <dependency>
+                <groupId>com.att.research.xacml</groupId>
+                <artifactId>xacml-pdp</artifactId>
+                <version>${version.xacml}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.att.research.xacml</groupId>
+                <artifactId>xacml</artifactId>
+                <version>${version.xacml}</version>
+            </dependency>
+
+            <!-- drools-pdp dependencies -->
+            <dependency>
+                <groupId>org.drools</groupId>
+                <artifactId>drools-bom</artifactId>
+                <version>${version.drools}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- CVE-2024-47072 -->
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>1.4.21</version>
+            </dependency>
+            <!-- CVE-2024-47554 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.14.0</version>
+            </dependency>
+            <!-- CVE-2024-47072 -->
+            <dependency>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-utils</artifactId>
+                <version>3.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.hk2.external</groupId>
+                <artifactId>jakarta.inject</artifactId>
+                <version>2.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-configuration2</artifactId>
+                <version>2.15.0</version>
+            </dependency>
+
+            <!-- Test-only dependencies -->
             <dependency>
                 <groupId>com.openpojo</groupId>
                 <artifactId>openpojo</artifactId>
