@@ -13,3 +13,18 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Only update patch versions, e.g. 4.0.6 -> 4.0.7, not 4.1.0
+    allow:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-patch"
+    # Group patch updates together into a single pull request
+    groups:
+      patch-updates:
+        update-types:
+          - "patch"
