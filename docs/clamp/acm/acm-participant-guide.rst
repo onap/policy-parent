@@ -185,7 +185,7 @@ Methods: deploy, undeploy, lock, unlock, delete, review
     ==============================  ===========================
      instanceId                      instance id
      elementId                       instance element id
-     toscaServiceTemplateFragment    policies and policy types
+     toscaServiceTemplateFragment
      inProperties                    instance in-properties
       outProperties                  instance out-properties
     ==============================  ===========================
@@ -337,7 +337,7 @@ Method: prepare
     ==============================  ===========================
      instanceId                      instance id
      elementId                       instance element id
-     toscaServiceTemplateFragment    policies and policy types
+     toscaServiceTemplateFragment
      inProperties                    instance in-properties
       outProperties                  instance out-properties
     ==============================  ===========================
@@ -430,7 +430,7 @@ Methods: deploy, undeploy, lock, unlock, delete, review and prepare
     ==============================  ===========================
      instanceId                      instance id
      elementId                       instance element id
-     toscaServiceTemplateFragment    policies and policy types
+     toscaServiceTemplateFragment
      inProperties                    instance in-properties
       outProperties                  instance out-properties
     ==============================  ===========================

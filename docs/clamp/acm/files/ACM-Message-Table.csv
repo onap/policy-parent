@@ -26,8 +26,7 @@ ParticipantPrimeAck,Participant,ACM Runtime,Message to confirm participant has b
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_PRIME_ACK
 ParticipantStatusReq,ACM Runtime,Participant,Message sent to request a status update from the participant,participantId,The ID of the participant to request update from – in UUID format
 ,,,,messageType,Enum indicating the type of message PARTICIPANT_STATUS_REQ
-ParticipantStatus,Participant,ACM Runtime,Status update message,state,Enum indicating the current state of the participant
-,,,,replicaId,The replica ID of this participant – in UUID format
+ParticipantStatus,Participant,ACM Runtime,Status update message,replicaId,The replica ID of this participant – in UUID format
 ,,,,participantDefinitionUpdates,"A list of ParticipantDefinition updates, returned in response to ParticipantStatusReq only"
 ,,,,automationCompositionInfoList,List of AutomationCompositionInfo types with AutomationCompositionId and its state
 ,,,,participantSupportedElementTypes,Ac element types that this participant is capable for deploying/supporting
