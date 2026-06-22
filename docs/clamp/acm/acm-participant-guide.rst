@@ -600,12 +600,17 @@ This following methods are invoked to update the outProperties during each opera
   2.  void sendAcElementInfo(UUID instanceId, UUID elementId, String useState, String operationalState, Map<String, Object> outProperties);
 
 This following methods are invoked to update the AC element state or AC element definition state after each operation is completed in the participant.
+The new methods could be invoked to update state and last updated OutProperties.
 
 .. code-block:: java
 
-  1.  void updateAutomationCompositionElementState(UUID instanceId, UUID elementId, DeployState deployState, LockState lockState, StateChangeResult stateChangeResult, String message);
-  2.  void updateCompositionState(UUID compositionId, AcTypeState state, StateChangeResult stateChangeResult, String message);
-  3.  void updateAutomationCompositionElementStage(UUID instance, UUID elementId, StateChangeResult stateChangeResult, int stage, String message);
+  1.  void updateAutomationCompositionElementState(ElementStateDto elementStateDto);
+  2.  void deleteAutomationCompositionElementState(UUID instance, UUID elementId);
+  3.  void updateAutomationCompositionElementStage(ElementStageDto elementStageDto);
+  4.  void updateCompositionState(UUID compositionId, AcTypeState state, StateChangeResult stateChangeResult, String message, Map<ToscaConceptIdentifier, Map<String, Object>> outPropertiesMap);
+  5.  void updateAutomationCompositionElementState(UUID instanceId, UUID elementId, DeployState deployState, LockState lockState, StateChangeResult stateChangeResult, String message); // Deprecated
+  6.  void updateCompositionState(UUID compositionId, AcTypeState state, StateChangeResult stateChangeResult, String message); // Deprecated
+  7.  void updateAutomationCompositionElementStage(UUID instance, UUID elementId, StateChangeResult stateChangeResult, int stage, String message); // Deprecated
 
 This following methods calculate the next stage during migration, rollback and prepare for the AC element during each operation in the participant.
 
@@ -829,10 +834,10 @@ The following example shows the Handler implementation and how could be the impl
 
         if (isPrimeSuccess()) {
             intermediaryApi.updateCompositionState(composition.compositionId(),
-                AcTypeState.PRIMED, StateChangeResult.NO_ERROR, "Primed");
+                AcTypeState.PRIMED, StateChangeResult.NO_ERROR, "Primed", composition.outPropertiesMap());
         } else {
             intermediaryApi.updateCompositionState(composition.compositionId(),
-                AcTypeState.COMMISSIONED, StateChangeResult.FAILED, "Prime failed!");
+                AcTypeState.COMMISSIONED, StateChangeResult.FAILED, "Prime failed!", composition.outPropertiesMap());
         }
     }
 
@@ -843,10 +848,10 @@ The following example shows the Handler implementation and how could be the impl
 
         if (isDeprimeSuccess()) {
             intermediaryApi.updateCompositionState(composition.compositionId(), AcTypeState.COMMISSIONED,
-                StateChangeResult.NO_ERROR, "Deprimed");
+                StateChangeResult.NO_ERROR, "Deprimed", composition.outPropertiesMap());
         } else {
             intermediaryApi.updateCompositionState(composition.compositionId(), AcTypeState.PRIMED,
-                StateChangeResult.FAILED, "Deprime failed!");
+                StateChangeResult.FAILED, "Deprime failed!", composition.outPropertiesMap());
         }
     }
 
@@ -857,13 +862,13 @@ The following example shows the Handler implementation and how could be the impl
         // TODO deploy process
 
         if (isDeploySuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR,
-                "Deployed");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, StateChangeResult.NO_ERROR,
+                "Deployed", null, null, instanceElement.outProperties()));
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.FAILED,
-                "Deploy failed!");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, StateChangeResult.FAILED,
+                "Deploy failed!", null, null, instanceElement.outProperties()));
         }
     }
 
@@ -874,13 +879,13 @@ The following example shows the Handler implementation and how could be the impl
         // TODO undeploy process
 
         if (isUndeploySuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR,
-                    "Undeployed");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                    instanceElement.elementId(), DeployState.UNDEPLOYED, StateChangeResult.NO_ERROR,
+                    "Undeployed", null, null, instanceElement.outProperties()));
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.FAILED,
-                    "Undeploy failed!");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                    instanceElement.elementId(), DeployState.DEPLOYED, StateChangeResult.FAILED,
+                    "Undeploy failed!", null, null, instanceElement.outProperties()));
         }
     }
 
@@ -891,12 +896,12 @@ The following example shows the Handler implementation and how could be the impl
         // TODO delete process
 
         if (isDeleteSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.DELETED, null, StateChangeResult.NO_ERROR, "Deleted");
+            intermediaryApi.deleteAutomationCompositionElementState(instanceElement.instanceId(),
+                    instanceElement.elementId());
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.FAILED,
-                "Delete failed!");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, StateChangeResult.FAILED,
+                "Delete failed!", null, null, instanceElement.outProperties()));
         }
     }
 
@@ -914,13 +919,15 @@ The following example shows how could be the implemented the update/migration/ro
         // TODO update process
 
         if (isUpdateSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
                 instanceElement.instanceId(), instanceElement.elementId(),
-                DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Updated");
+                DeployState.DEPLOYED, StateChangeResult.NO_ERROR,
+                    "Updated", null, null, instanceElement.outProperties()));
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
                 instanceElement.instanceId(), instanceElement.elementId(),
-                DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Update failed!");
+                DeployState.DEPLOYED, StateChangeResult.FAILED,
+                "Update failed!", null, null, instanceElement.outProperties()));
         }
     }
 
@@ -934,13 +941,13 @@ The following example shows how could be the implemented the update/migration/ro
             // TODO element remove scenario
 
             if (isMigrateSuccess()) {
-                intermediaryApi.updateAutomationCompositionElementState(
-                    instanceElement.instanceId(), instanceElement.elementId(),
-                    DeployState.DELETED, null, StateChangeResult.NO_ERROR, "Migrated");
+                intermediaryApi.deleteAutomationCompositionElementState(
+                    instanceElement.instanceId(), instanceElement.elementId());
             } else {
-                intermediaryApi.updateAutomationCompositionElementState(
+                intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
                     instanceElement.instanceId(), instanceElement.elementId(),
-                    DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Migrate failed!");
+                    DeployState.DEPLOYED, StateChangeResult.FAILED, "Migrate failed!",
+                    null, null, instanceElementMigrate.outProperties()));
             }
             return;
         }
@@ -953,18 +960,20 @@ The following example shows how could be the implemented the update/migration/ro
         if (isMigrateSuccess()) {
             var nextStage = intermediaryApi.getMigrateNextStage(compositionElementTarget, stage);
             if (nextStage == stage) {
-                intermediaryApi.updateAutomationCompositionElementState(
+                intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
                     instanceElement.instanceId(), instanceElement.elementId(),
-                    DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migrated");
+                    DeployState.DEPLOYED, StateChangeResult.NO_ERROR, "Migrated",
+                    null, null, instanceElementMigrate.outProperties()));
             } else {
-                intermediaryApi.updateAutomationCompositionElementStage(
+                intermediaryApi.updateAutomationCompositionElementStage(new ElementStageDto(
                     instanceElement.instanceId(), instanceElement.elementId(),
-                    StateChangeResult.NO_ERROR, nextStage, "stage " + stage + " Migrated");
+                    "stage " + stage + " Migrated", nextStage, null, null, instanceElementMigrate.outProperties()));
             }
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
                 instanceElement.instanceId(), instanceElement.elementId(),
-                DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Migrate failed!");
+                DeployState.DEPLOYED, StateChangeResult.FAILED, "Migrate failed!",
+                null, null, instanceElementMigrate.outProperties()));
         }
     }
 
@@ -978,13 +987,13 @@ The following example shows how could be the implemented the update/migration/ro
             // TODO element remove scenario
 
             if (isRollbackSuccess()) {
-                intermediaryApi.updateAutomationCompositionElementState(
-                    instanceElement.instanceId(), instanceElement.elementId(),
-                    DeployState.DELETED, null, StateChangeResult.NO_ERROR, "Rollback completed");
+                intermediaryApi.deleteAutomationCompositionElementState(
+                    instanceElement.instanceId(), instanceElement.elementId());
             } else {
-                intermediaryApi.updateAutomationCompositionElementState(
+                intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
                     instanceElement.instanceId(), instanceElement.elementId(),
-                    DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Rollback failed!");
+                    DeployState.DEPLOYED, StateChangeResult.FAILED, "Rollback failed!",
+                    null, null, instanceElementRollback.outProperties()));
             }
             return;
         }
@@ -997,18 +1006,20 @@ The following example shows how could be the implemented the update/migration/ro
         if (isRollbackSuccess()) {
             var nextStage = intermediaryApi.getRollbackNextStage(compositionElementRollback, stage);
             if (nextStage == stage) {
-                intermediaryApi.updateAutomationCompositionElementState(
+                intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
                     instanceElement.instanceId(), instanceElement.elementId(),
-                    DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Rollback completed");
+                    DeployState.DEPLOYED, StateChangeResult.NO_ERROR, "Rollback completed",
+                    null, null, instanceElementRollback.outProperties()));
             } else {
-                intermediaryApi.updateAutomationCompositionElementStage(
+                intermediaryApi.updateAutomationCompositionElementStage(new ElementStageDto(
                     instanceElement.instanceId(), instanceElement.elementId(),
-                    StateChangeResult.NO_ERROR, nextStage, "stage " + stage + " Rollback");
+                    "stage " + stage + " Rollback", nextStage, null, null, instanceElementRollback.outProperties()));
             }
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
                 instanceElement.instanceId(), instanceElement.elementId(),
-                DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Rollback failed!");
+                DeployState.DEPLOYED, StateChangeResult.FAILED, "Rollback failed!",
+                null, null, instanceElementRollback.outProperties()));
         }
     }
 
@@ -1024,11 +1035,13 @@ The following example shows how could be the implemented the other notifications
         // TODO lock process
 
         if (isLockSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), null, LockState.LOCKED, StateChangeResult.NO_ERROR, "Locked");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), null, LockState.LOCKED, StateChangeResult.NO_ERROR, "Locked",
+                null, null, instanceElement.outProperties()));
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), null, LockState.UNLOCKED, StateChangeResult.FAILED, "Lock failed!");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), null, LockState.UNLOCKED, StateChangeResult.FAILED, "Lock failed!",
+                null, null, instanceElement.outProperties()));
         }
     }
 
@@ -1039,11 +1052,13 @@ The following example shows how could be the implemented the other notifications
         // TODO unlock process
 
         if (isUnlockSuccess()) {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), null, LockState.UNLOCKED, StateChangeResult.NO_ERROR, "Unlocked");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), null, LockState.UNLOCKED, StateChangeResult.NO_ERROR, "Unlocked",
+                null, null, instanceElement.outProperties()));
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), null, LockState.LOCKED, StateChangeResult.FAILED, "Unlock failed!");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), null, LockState.LOCKED, StateChangeResult.FAILED, "Unlock failed!",
+                null, null, instanceElement.outProperties()));
         }
     }
 
@@ -1054,9 +1069,10 @@ The following example shows how could be the implemented the other notifications
 
         // TODO migration Precheck process
 
-        intermediaryApi.updateAutomationCompositionElementState(
+        intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
             instanceElement.instanceId(), instanceElement.elementId(),
-            DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Migration precheck completed");
+            DeployState.DEPLOYED, StateChangeResult.NO_ERROR, "Migration precheck completed",
+            null, null, instanceElementMigrate.outProperties()));
     }
 
     @Override
@@ -1067,18 +1083,21 @@ The following example shows how could be the implemented the other notifications
         if (isPrepareSuccess()) {
             var nextStage = intermediaryApi.getPrepareNextStage(compositionElement, stage);
             if (nextStage == stage) {
-                intermediaryApi.updateAutomationCompositionElementState(
+                intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
                     instanceElement.instanceId(), instanceElement.elementId(),
-                    DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR, "Prepare completed");
+                    DeployState.UNDEPLOYED, StateChangeResult.NO_ERROR, "Prepare completed",
+                    null, null, instanceElement.outProperties()));
             } else {
-                intermediaryApi.updateAutomationCompositionElementStage(
+                intermediaryApi.updateAutomationCompositionElementStage(new ElementStageDto(
                     instanceElement.instanceId(), instanceElement.elementId(),
-                    StateChangeResult.NO_ERROR, nextStage, "stage " + stage + " Prepare");
+                    "stage " + stage + " Prepare", nextStage,
+                    null, null, instanceElement.outProperties()));
             }
         } else {
-            intermediaryApi.updateAutomationCompositionElementState(
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
                 instanceElement.instanceId(), instanceElement.elementId(),
-                DeployState.UNDEPLOYED, null, StateChangeResult.FAILED, "Prepare failed");
+                DeployState.UNDEPLOYED, StateChangeResult.FAILED, "Prepare failed",
+                null, null, instanceElement.outProperties()));
         }
     }
 
@@ -1088,9 +1107,10 @@ The following example shows how could be the implemented the other notifications
 
         // TODO review process
 
-        intermediaryApi.updateAutomationCompositionElementState(
+        intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(
             instanceElement.instanceId(), instanceElement.elementId(),
-            DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Review completed");
+            DeployState.DEPLOYED, StateChangeResult.NO_ERROR, "Review completed",
+            null, null, instanceElement.outProperties()));
     }
 
 
@@ -1220,9 +1240,9 @@ The following Java code shows how to implement deploy and undeploy that avoid to
 
         if ("DEPLOYED".equals(instanceElement.outProperties().get("state"))) {
             // deploy process already done
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR,
-                "Already Deployed");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, StateChangeResult.NO_ERROR, "Already Deployed",
+                null, null, instanceElement.outProperties()));
             return;
         }
 
@@ -1233,18 +1253,14 @@ The following Java code shows how to implement deploy and undeploy that avoid to
 
         if (isDeploySuccess()) {
             instanceElement.outProperties().put("state", "DEPLOYED");
-            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
-                null, null, instanceElement.outProperties());
-
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Deployed");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, StateChangeResult.NO_ERROR, "Deployed",
+                null, null, instanceElement.outProperties()));
         } else {
             instanceElement.outProperties().put("state", "UNDEPLOYED");
-            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
-                null, null, instanceElement.outProperties());
-
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.FAILED, "Deploy failed!");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, StateChangeResult.FAILED, "Deploy failed!",
+                null, null, instanceElement.outProperties()));
         }
     }
 
@@ -1255,9 +1271,9 @@ The following Java code shows how to implement deploy and undeploy that avoid to
         if ("DEPLOYED".equals(instanceElement.outProperties().get("state"))) {
             // undeploy process already done
 
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR,
-                "Already Undeployed");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, StateChangeResult.NO_ERROR, "Already Undeployed",
+                null, null, instanceElement.outProperties()));
             return;
         }
 
@@ -1268,18 +1284,14 @@ The following Java code shows how to implement deploy and undeploy that avoid to
 
         if (isUndeploySuccess()) {
             instanceElement.outProperties().put("state", "UNDEPLOYED");
-            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
-                null, null, instanceElement.outProperties());
-
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR, "Undeployed");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, StateChangeResult.NO_ERROR, "Undeployed",
+                null, null, instanceElement.outProperties()));
         } else {
             instanceElement.outProperties().put("state", "DEPLOYED");
-            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
-                null, null, instanceElement.outProperties());
-
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Undeploy failed!");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, StateChangeResult.FAILED, "Undeploy failed!",
+                null, null, instanceElement.outProperties()));
         }
     }
 
@@ -1293,7 +1305,8 @@ The state of the configuration will saved in outProperties.
     @Override
     public void deploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement) throws PfModelException {
 
-        if ("DEPLOYED".equals(instanceElement.outProperties().get("state"))) {
+        var state = instanceElement.outProperties().get("state");
+        if ("DEPLOYED".equals(state)) {
             // clean up deployment
 
         } else if ("DEPLOYING".equals(state) || "UNDEPLOYING".equals(state)) {
@@ -1312,18 +1325,14 @@ The state of the configuration will saved in outProperties.
 
         if (isDeploySuccess()) {
             instanceElement.outProperties().put("state", "DEPLOYED");
-            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
-                null, null, instanceElement.outProperties());
-
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.NO_ERROR, "Deployed");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, StateChangeResult.NO_ERROR, "Deployed",
+                null, null, instanceElement.outProperties()));
         } else {
             instanceElement.outProperties().put("state", "UNDEPLOYED");
-            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
-                null, null, instanceElement.outProperties());
-
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.FAILED, "Deploy failed!");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, StateChangeResult.FAILED, "Deploy failed!",
+                null, null, instanceElement.outProperties()));
         }
     }
 
@@ -1331,7 +1340,8 @@ The state of the configuration will saved in outProperties.
     public void undeploy(CompositionElementDto compositionElement, InstanceElementDto instanceElement)
         throws PfModelException {
 
-        if ("UNDEPLOYED".equals(instanceElement.outProperties().get("state"))) {
+        var state = instanceElement.outProperties().get("state");
+        if ("UNDEPLOYED".equals(state)) {
             // clean up undeployment
 
         } else if ("DEPLOYING".equals(state) || "UNDEPLOYING".equals(state)) {
@@ -1350,18 +1360,14 @@ The state of the configuration will saved in outProperties.
 
         if (isUndeploySuccess()) {
             instanceElement.outProperties().put("state", "UNDEPLOYED");
-            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
-                null, null, instanceElement.outProperties());
-
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.UNDEPLOYED, null, StateChangeResult.NO_ERROR, "Undeployed");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.UNDEPLOYED, StateChangeResult.NO_ERROR, "Undeployed",
+                null, null, instanceElement.outProperties()));
         } else {
             instanceElement.outProperties().put("state", "DEPLOYED");
-            intermediaryApi.sendAcElementInfo(instanceElement.instanceId(), instanceElement.elementId(),
-                null, null, instanceElement.outProperties());
-
-            intermediaryApi.updateAutomationCompositionElementState(instanceElement.instanceId(),
-                instanceElement.elementId(), DeployState.DEPLOYED, null, StateChangeResult.FAILED, "Undeploy failed!");
+            intermediaryApi.updateAutomationCompositionElementState(new ElementStateDto(instanceElement.instanceId(),
+                instanceElement.elementId(), DeployState.DEPLOYED, StateChangeResult.FAILED, "Undeploy failed!",
+                null, null, instanceElement.outProperties()));
         }
     }
 
