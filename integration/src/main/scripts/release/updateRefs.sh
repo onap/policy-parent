@@ -259,8 +259,7 @@ then
 
             echo updating policy parent reference to "$new_snapshot_tag" on "$repo_location/$target_repo" . . .
             $SED -i \
-                -e "s/<version.parent.resources>.*<\/version.parent.resources>/<version.parent.resources>$new_snapshot_tag<\/version.parent.resources>/" \
-                -e "s/<version.parent.checkstyle>.*<\/version.parent.checkstyle>/<version.parent.checkstyle>$new_snapshot_tag<\/version.parent.checkstyle>/" \
+                "s/<version.parent.checkstyle>.*<\/version.parent.checkstyle>/<version.parent.checkstyle>$new_snapshot_tag<\/version.parent.checkstyle>/" \
                  "$repo_location/policy/parent/integration/pom.xml"
             result_code=$?
         else
@@ -268,8 +267,7 @@ then
 
             echo "updating policy parent reference to $next_release_version on $repo_location/$target_repo . . ."
             $SED -i \
-                -e "s/<version.parent.resources>.*<\/version.parent.resources>/<version.parent.resources>$next_release_version<\/version.parent.resources>/" \
-                -e "s/<version.parent.checkstyle>.*<\/version.parent.checkstyle>/<version.parent.checkstyle>$next_release_version<\/version.parent.checkstyle>/" \
+                "s/<version.parent.checkstyle>.*<\/version.parent.checkstyle>/<version.parent.checkstyle>$next_release_version<\/version.parent.checkstyle>/" \
                 "$repo_location/policy/parent/integration/pom.xml"
             result_code=$?
         fi

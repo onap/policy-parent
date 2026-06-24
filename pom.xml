@@ -35,7 +35,6 @@
 
     <modules>
         <module>checkstyle</module>
-        <module>resources</module>
         <module>integration</module>
     </modules>
 
