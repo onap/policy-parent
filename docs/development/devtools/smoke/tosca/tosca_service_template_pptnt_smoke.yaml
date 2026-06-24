@@ -143,7 +143,7 @@ data_types:
         required: false
       executors:
         type: map
-        description: The plugins for policy executors used in engines such as javascript, MVEL, Jython
+        description: The plugins for policy executors used in engines such as javascript, MVEL, JRuby
         required: true
         entry_schema:
           description: The plugin class path for this policy executor
@@ -174,7 +174,7 @@ data_types:
     properties:
       name:
         type: string
-        description: The name of the executor such as Javascript, Jython or MVEL
+        description: The name of the executor such as Javascript, JRuby or MVEL
         required: true
       plugin_class_name:
         type: string

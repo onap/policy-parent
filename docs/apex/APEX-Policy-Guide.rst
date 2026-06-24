@@ -473,7 +473,7 @@ Concept: Logic
   at run time. The *LogicType* field defines the language of the code. The standard values are the logic languages
   supported by APEX: `JAVASCRIPT <https://en.wikipedia.org/wiki/JavaScript>`__,
   `JAVA <https://www.oracle.com/java/>`__,
-  `JYTHON <http://www.jython.org/>`__, `JRUBY <http://jruby.org/>`__, or
+  `JRUBY <http://jruby.org/>`__, or
   `MVEL <https://en.wikibooks.org/wiki/Transwiki:MVEL_Language_Guide>`__.
 
 .. container:: paragraph
@@ -592,8 +592,6 @@ Writing APEX Task Logic
   -  ```JavaScript`` <https://en.wikipedia.org/wiki/JavaScript>`__,
 
   -  ```JRuby`` <https://en.wikipedia.org/wiki/JRuby>`__ or
-
-  -  ```Jython`` <https://en.wikipedia.org/wiki/Jython>`__.
 
 .. container:: paragraph
 
@@ -819,7 +817,7 @@ Writing APEX Task Logic
 .. note::
   How to return a value from task logic
   Some languages explicitly support returning values from the script (e.g. MVEL and JRuby) using an explicit
-  return statement (e.g. ``return true``), other languages do not (e.g. Jython). For
+  return statement (e.g. ``return true``), other languages do not (e.g. JavaScript). For
   languages that do not support the ``return`` statement, a special field called ``returnValue`` must be
   created to hold the result of the task logic operation (i.e. assign a ``java.lang.Boolean``
   value to the ``returnValue`` field before completing the task).
@@ -1001,8 +999,6 @@ Writing APEX Task Selection Logic
 
   -  ```JRuby`` <https://en.wikipedia.org/wiki/JRuby>`__ or
 
-  -  ```Jython`` <https://en.wikipedia.org/wiki/Jython>`__.
-
 .. container:: paragraph
 
   These languages were chosen because the scripts can be compiled into Java bytecode at runtime and then
@@ -1108,7 +1104,7 @@ Writing APEX Task Selection Logic
   How to return a value from Task Selection Logic
   Some languages explicitly support returning values from the script (e.g. MVEL and
   JRuby) using an explicit return statement (e.g. ``return true``), other languages do not (e.g.
-  JavaScript and Jython). For languages that do not support the ``return`` statement, a special field called
+  JavaScript). For languages that do not support the ``return`` statement, a special field called
   ``returnValue`` must be created to hold the result of the task logic operation (i.e. assign a ``java.lang.Boolean``
   value to the ``returnValue`` field before completing the task).
   Also, in MVEL if there is not explicit return statement then the return value of the last executed statement will

@@ -65,7 +65,6 @@
         <version.jexl3>3.6.2</version.jexl3>
         <version.jruby-core>10.1.0.0</version.jruby-core>
         <version.json-schema-validator>3.0.5</version.json-schema-validator>
-        <version.jython-standalone>2.7.4</version.jython-standalone>
         <version.kafka-avro-serializer>8.2.1</version.kafka-avro-serializer>
         <version.mvel2>2.5.2.Final</version.mvel2>
         <version.onap.aai-schema>1.14.0</version.onap.aai-schema>
@@ -272,11 +271,6 @@
                 <groupId>org.jruby</groupId>
                 <artifactId>jruby-core</artifactId>
                 <version>${version.jruby-core}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.python</groupId>
-                <artifactId>jython-standalone</artifactId>
-                <version>${version.jython-standalone}</version>
             </dependency>
 
             <!-- xacml-pdp dependencies -->

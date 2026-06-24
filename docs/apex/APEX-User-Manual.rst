@@ -1877,8 +1877,6 @@ Executors
 
             -  JRuby,
 
-            -  Jython,
-
             -  MVEL
 
                .. container:: ulist
@@ -1907,31 +1905,6 @@ Configure the Javascript Executor
                            "JAVASCRIPT":{
                              "parameterClassName" :
                              "org.onap.policy.apex.plugins.executor.javascript.JavascriptExecutorParameters"
-                           }
-                         }
-                       }
-                     }
-
-Configure the Jython Executor
-#############################
-
-            .. container:: paragraph
-
-               The Jython executor is added to the configuration as
-               follows:
-
-            .. container:: listingblock
-
-               .. container:: content
-
-                  .. code::
-
-                     "engineServiceParameters":{
-                       "engineParameters":{
-                         "executorParameters":{
-                           "JYTHON":{
-                             "parameterClassName" :
-                             "org.onap.policy.apex.plugins.executor.jython.JythonExecutorParameters"
                            }
                          }
                        }
@@ -3962,10 +3935,6 @@ A configuration example
                           "JAVASCRIPT" : {
                             "parameterClassName" :
                                 "org.onap.policy.apex.plugins.executor.javascript.JavascriptExecutorParameters"
-                          },
-                          "JYTHON" : {
-                            "parameterClassName" :
-                                "org.onap.policy.apex.plugins.executor.jython.JythonExecutorParameters"
                           },
                           "JRUBY" : {
                             "parameterClassName" :
