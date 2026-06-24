@@ -62,7 +62,7 @@
         <version.drools>8.40.1.Final</version.drools>
         <version.jackson-databind-nullable>0.2.10</version.jackson-databind-nullable>
         <version.jaxb-plugins-runtime>4.0.16</version.jaxb-plugins-runtime>
-        <version.jexl3>3.6.2</version.jexl3>
+        <version.jexl3>3.6.3</version.jexl3>
         <version.jruby-core>10.1.0.0</version.jruby-core>
         <version.json-schema-validator>3.0.5</version.json-schema-validator>
         <version.kafka-avro-serializer>8.2.1</version.kafka-avro-serializer>
