@@ -49,6 +49,7 @@
         <docker.push.registry>nexus3.onap.org:10003</docker.push.registry>
 
         <!-- Dependency Versions -->
+        <!-- IMPORTANT: See the README.md for details on how dependency updates are validated in this project -->
         <version.antlr-runtime>4.13.2</version.antlr-runtime>
         <version.antlr.st4>4.3.4</version.antlr.st4>
         <version.avro>1.12.1</version.avro>
@@ -637,10 +638,6 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>${version.plugin.versions}</version>
                 <configuration>
-                    <allowMajorUpdates>true</allowMajorUpdates>
-                    <allowMinorUpdates>true</allowMinorUpdates>
-                    <allowIncrementalUpdates>true</allowIncrementalUpdates>
-                    <detail>true</detail>
                     <processDependencies>false</processDependencies>
                     <processDependencyManagement>true</processDependencyManagement>
                     <processDependencyManagementTransitive>false</processDependencyManagementTransitive>
