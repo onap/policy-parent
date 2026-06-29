@@ -4,7 +4,7 @@ This file is licensed under the CREATIVE COMMONS ATTRIBUTION 4.0 INTERNATIONAL L
 Full license text at https://creativecommons.org/licenses/by/4.0/legalcode
 
 This source repository contains the ONAP Policy Parent repository that contains the
-parent pom.xml for most of the repos under policy/ directory.
+parent pom.xml for most of the repos under policy directory.
 
 To build it using Maven 3, run: `mvn clean install`
 
@@ -36,8 +36,7 @@ Major and minor version uplifts must be performed manually using the process bel
 - All policy repos cloned side-by-side
 - `gita` installed (optional, but recommended for multi-repo git operations)
 
-> All commands below assume your working directory is the aggregator root
-> (the `policy/` directory containing all repo checkouts) unless otherwise noted.
+> All commands below assume your working directory is the `policy` directory containing all repos unless otherwise noted.
 
 ## Step 1: Pull latest changes for all repos
 
@@ -106,82 +105,22 @@ For example, to uplift Spring Boot:
 <version.springboot>4.2.0</version.springboot>
 ```
 
-## Step 4: Create the Aggregator POM
+## Step 4: Build All Components
 
-Because the Policy Framework is split across multiple git repos, there is no single
-reactor that builds everything. You need a local aggregator pom that sits above all
-the repos to run a full build in one command.
-
-Create a `pom.xml` in the directory that contains all the repo checkouts:
-
-```
-policy/           <-- aggregator pom goes here
-├── parent/
-├── common/
-├── models/
-├── docker/
-├── api/
-├── pap/
-├── apex-pdp/
-├── distribution/
-├── xacml-pdp/
-├── drools-pdp/
-└── drools-applications/
+```bash
+for repo in parent common models docker api pap distribution apex-pdp xacml-pdp drools-pdp drools-applications; do
+    echo mvn -f $repo clean install
+done
 ```
 
-Aggregator `pom.xml`:
+This will build all components and run maven tests.
 
-```xml
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.onap.policy</groupId>
-    <artifactId>policy-aggregator</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>Policy Aggregator</name>
-
-    <modules>
-        <module>parent</module>
-        <module>common</module>
-        <module>models</module>
-        <module>docker</module>
-        <module>api</module>
-        <module>pap</module>
-        <module>distribution</module>
-        <module>apex-pdp</module>
-        <module>xacml-pdp</module>
-        <module>drools-pdp</module>
-        <module>drools-applications</module>
-    </modules>
-</project>
-```
-
-**Note:** This pom is local-only and should not be committed to any repo.
-
-**Note:** The order in which the modules are built is important! For example, `api` depends on `models` which depends
+Notes:
+- The above can take 30 minutes to build and test all components.
+- The order in which the modules are built is important! For example, `api` depends on `models` which depends
 on `common` which depends on `parent`, while `drools-applications` depends on artifacts from `drools-pdp`, etc.
 
-## Step 5: Build All Components
-
-From the aggregator directory:
-
-```bash
-mvn clean install
-```
-This will build all components and run maven tests.
-**Note:** The above can take 30 minutes to build and test all components.
-**Note:** In some cases like adding a new dependency, the `mvn validate` phase would fail, as the needed parent changes are not in your local .m2 cache. In such cases, doing `mvn clean install` on parent will fix the issues.
-
-Or to resume from a failing module:
-
-```bash
-mvn clean install -rf :failing-module-artifactId
-```
-
-## Step 6: Build Docker Images & Run CSITs
+## Step 5: Build Docker Images & Run CSITs
 
 To validate that uplifted dependencies work in containerized deployments, you must build all docker images:
 
@@ -194,7 +133,7 @@ This can be run from the aggregator pom, or per-repo as needed.
 CSITs are stored in the `policy/docker` repo for all components (except clamp, which are stored in clamp repo).
 
 Run the full CSIT suite to verify nothing is broken end-to-end. Create a
-`run-all-csits.sh` script in the aggregator root:
+`run-all-csits.sh` script in the policy directory:
 
 ```bash
 #!/bin/bash
@@ -217,13 +156,3 @@ chmod +x run-all-csits.sh
 ```
 
 If all tests are passing, the dependency updates have been successful.
-
-## Quick Reference
-
-| Step | Command | Where |
-|------|---------|-------|
-| Check updates | `mvn -f parent validate` | aggregator root |
-| Edit versions | edit `parent/integration/pom.xml` | aggregator root |
-| Full build | `mvn clean install` | aggregator root |
-| Docker images | `mvn clean install -DskipTests -Pdocker` | aggregator root |
-| CSITs | `./run-all-csits.sh` | aggregator root |
