@@ -437,7 +437,7 @@ will improve this. This can be complemented by intercepting and controlling serv
 accesses between Automation Composition Elements for Automation Composition Instances for some/all Automation
 Composition types.
 
-API gateways such as `Kong <https://konghq.com/kong/>`_ have emerged as a useful technology
+API gateways such as Kong (\https://konghq.com/kong/) have emerged as a useful technology
 for exposing and controlling service endpoint access for applications and services. When a
 Automation Composition Type is onboarded, or when Automation Composition Instances are created in the Participants,
 CLAMP can configure service endpoints between Automation Composition Elements to redirect through an
