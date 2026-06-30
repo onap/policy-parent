@@ -133,11 +133,4 @@ for project in api pap apex-pdp distribution xacml-pdp drools-pdp drools-applica
 done
 ```
 
-Then run it:
-
-```bash
-chmod +x run-all-csits.sh
-./run-all-csits.sh
-```
-
 If all tests are passing, the dependency updates have been successful.
