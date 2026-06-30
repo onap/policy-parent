@@ -111,7 +111,7 @@ This will build all components including docker images and run maven tests:
 
 ```bash
 for repo in parent common models docker api pap distribution apex-pdp xacml-pdp drools-pdp drools-applications; do
-    echo mvn -f $repo clean install -Pdocker
+    mvn -f $repo clean install -Pdocker
 done
 ```
 
