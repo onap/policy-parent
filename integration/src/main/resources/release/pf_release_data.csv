@@ -1,14 +1,13 @@
 Repo, Last Tag Version,Snapshot Version,Changed Files,Docker Images
-policy/parent,6.0.1,6.0.2-SNAPSHOT,0,
-policy/docker,5.0.0,5.0.1-SNAPSHOT,1,'policy-jre-alpine':'policy-jdk-alpine':'policy-db-migrator'
+policy/parent,6.0.1,6.0.2-SNAPSHOT,17,
+policy/docker,5.0.0,5.0.1-SNAPSHOT,51,'policy-jre-alpine':'policy-jdk-alpine':'policy-db-migrator'
 policy/common,4.0.0,4.0.1-SNAPSHOT,0,
 policy/models,5.0.0,5.0.1-SNAPSHOT,2,'policy-models-simulator'
-policy/api,5.0.0,5.0.1-SNAPSHOT,1,'policy-api'
+policy/api,5.0.0,5.0.1-SNAPSHOT,5,'policy-api'
 policy/pap,5.0.0,5.0.1-SNAPSHOT,1,'policy-pap'
 policy/apex-pdp,5.0.0,5.0.1-SNAPSHOT,1,'policy-apex-pdp'
 policy/drools-pdp,4.0.0,4.0.1-SNAPSHOT,1,'policy-drools'
 policy/xacml-pdp,5.0.0,5.0.1-SNAPSHOT,1,'policy-xacml-pdp'
 policy/distribution,5.0.0,5.0.1-SNAPSHOT,1,'policy-distribution'
-policy/clamp,9.0.1,9.0.2-SNAPSHOT,8,'policy-clamp-ac-pf-ppnt':'policy-clamp-ac-k8s-ppnt':'policy-clamp-ac-http-ppnt':'policy-clamp-ac-a1pms-ppnt':'policy-clamp-runtime-acm':'policy-clamp-acm-element-impl':'policy-clamp-ac-kserve-ppnt':'policy-clamp-ac-sim-ppnt'
+policy/clamp,9.0.2,9.0.3-SNAPSHOT,62,'policy-clamp-ac-pf-ppnt':'policy-clamp-ac-k8s-ppnt':'policy-clamp-ac-http-ppnt':'policy-clamp-ac-a1pms-ppnt':'policy-clamp-runtime-acm':'policy-clamp-acm-element-impl':'policy-clamp-ac-kserve-ppnt':'policy-clamp-ac-sim-ppnt'
 policy/drools-applications,4.0.0,4.0.1-SNAPSHOT,0,'policy-pdpd-cl'
-policy/opa-pdp,2.0.1,2.0.2-SNAPSHOT,1,'policy-opa-pdp'
