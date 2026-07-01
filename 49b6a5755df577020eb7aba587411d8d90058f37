@@ -39,6 +39,30 @@
       },
       "revId": "49b6a5755df577020eb7aba587411d8d90058f37",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8140e35b_2a5b7a41",
+        "filename": "integration/src/main/resources/release/pf_release_data.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 6742
+      },
+      "writtenOn": "2026-07-01T15:41:38Z",
+      "side": 1,
+      "message": "Wonder if we need a special case in the script, is it because it is not a maven project?",
+      "parentUuid": "d8573477_cd381cb9",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "49b6a5755df577020eb7aba587411d8d90058f37",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
