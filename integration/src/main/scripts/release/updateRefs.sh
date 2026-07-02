@@ -248,29 +248,14 @@ if [ "$update_parent" = true ]
 then
     if [ "$specified_repo" = "policy/parent" ]
     then
-        if [ "$update_snapshot" = true ]
-        then
-            major_version=$(echo "$parent_latest_released_tag" | $SED -E 's/^([0-9]*)\.[0-9]*\.[0-9]*$/\1/')
-            minor_version=$(echo "$parent_latest_released_tag" | $SED -E 's/^[0-9]*\.([0-9]*)\.[0-9]*$/\1/')
-            patch_version=$(echo "$parent_latest_released_tag" | $SED -E 's/^[0-9]*\.[0-9]*\.([0-9]*)$/\1/')
-
-            new_patch_version=$((patch_version+1))
-            new_snapshot_tag="$major_version"."$minor_version"."$new_patch_version"-SNAPSHOT
-
-            echo updating policy parent reference to "$new_snapshot_tag" on "$repo_location/$target_repo" . . .
-            $SED -i \
-                "s/<version.parent.checkstyle>.*<\/version.parent.checkstyle>/<version.parent.checkstyle>$new_snapshot_tag<\/version.parent.checkstyle>/" \
-                 "$repo_location/policy/parent/integration/pom.xml"
-            result_code=$?
-        else
-            next_release_version=${parent_latest_snapshot_tag%-*}
-
-            echo "updating policy parent reference to $next_release_version on $repo_location/$target_repo . . ."
-            $SED -i \
-                "s/<version.parent.checkstyle>.*<\/version.parent.checkstyle>/<version.parent.checkstyle>$next_release_version<\/version.parent.checkstyle>/" \
-                "$repo_location/policy/parent/integration/pom.xml"
-            result_code=$?
-        fi
+        # policy/parent checkstyle depends on the previous release of itself,
+        # since the current release's artifact isn't published yet
+        next_version=${parent_latest_snapshot_tag%-SNAPSHOT}
+        echo "updating checkstyle reference to range [$parent_latest_released_tag,$next_version) on policy/parent . . ."
+        $SED -i \
+            "s/<version.parent.checkstyle>.*<\/version.parent.checkstyle>/<version.parent.checkstyle>[$parent_latest_released_tag,$next_version)<\/version.parent.checkstyle>/" \
+             "$repo_location/policy/parent/integration/pom.xml"
+        result_code=$?
     else
         if [ "$update_snapshot" = true ]
         then
