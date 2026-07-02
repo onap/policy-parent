@@ -63,6 +63,30 @@
       },
       "revId": "49b6a5755df577020eb7aba587411d8d90058f37",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d772da_f64bdd7a",
+        "filename": "integration/src/main/resources/release/pf_release_data.csv",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 7927
+      },
+      "writtenOn": "2026-07-02T08:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8140e35b_2a5b7a41",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "49b6a5755df577020eb7aba587411d8d90058f37",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
