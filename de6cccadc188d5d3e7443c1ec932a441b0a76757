@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0356ba9_db0bfb35",
+        "filename": "integration/pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 6742
+      },
+      "writtenOn": "2026-07-02T10:04:58Z",
+      "side": 1,
+      "message": "We\u0027ll have to put this back to a range like it was before. I\u0027ll post a patch shortly.",
+      "range": {
+        "startLine": 40,
+        "startChar": 35,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "de6cccadc188d5d3e7443c1ec932a441b0a76757",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
