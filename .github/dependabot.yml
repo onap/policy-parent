@@ -15,7 +15,7 @@ updates:
       interval: "weekly"
     # Group all updates together into a single pull request
     groups:
-      all-dependencies:
+      github-actions-updates:
         patterns:
           - "*"
 
@@ -30,6 +30,6 @@ updates:
           - "version-update:semver-patch"
     # Group patch updates together into a single pull request
     groups:
-      patch-updates:
+      maven-patch-updates:
         update-types:
           - "patch"
