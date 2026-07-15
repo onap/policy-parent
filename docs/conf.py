@@ -110,5 +110,8 @@ def setup(app):
 
 linkcheck_ignore = [
   r'http://localhost:\d+/',
-  r'.(.*?)/local-swagger.html(.*?)'
+  r'.(.*?)/local-swagger.html(.*?)',
+  # kubernetes.io resets connections to automated link checkers
+  # (anti-bot); the links are valid when browsed interactively.
+  r'https://kubernetes\.io/.*'
 ]
