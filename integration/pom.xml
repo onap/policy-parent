@@ -53,7 +53,7 @@
         <version.antlr-runtime>4.13.2</version.antlr-runtime>
         <version.antlr.st4>4.3.4</version.antlr.st4>
         <version.avro>1.12.1</version.avro>
-        <version.bcpkix-fips>2.1.11</version.bcpkix-fips>
+        <version.bcpkix-fips>2.1.12</version.bcpkix-fips>
         <version.commons-cli>1.11.0</version.commons-cli>
         <version.commons-collections4>4.5.0</version.commons-collections4>
         <version.commons-configuration2>2.15.1</version.commons-configuration2>
@@ -63,9 +63,9 @@
         <version.drools>8.40.1.Final</version.drools>
         <version.jackson-databind-nullable>0.2.10</version.jackson-databind-nullable>
         <version.jaxb-plugins-runtime>4.0.16</version.jaxb-plugins-runtime>
-        <version.jexl3>3.6.3</version.jexl3>
+        <version.jexl3>3.6.4</version.jexl3>
         <version.jruby-core>10.1.0.0</version.jruby-core>
-        <version.json-schema-validator>3.0.5</version.json-schema-validator>
+        <version.json-schema-validator>3.0.6</version.json-schema-validator>
         <version.kafka-avro-serializer>8.2.1</version.kafka-avro-serializer>
         <version.mvel2>2.5.2.Final</version.mvel2>
         <version.onap.aai-schema>1.14.0</version.onap.aai-schema>
