@@ -15,6 +15,234 @@ Policy Framework Release Notes
 ..      * one section describing the purpose of this new release.
 
 ..      ==========================
+..      * * *     QUEBEC    * * *
+..      ==========================
+
+Version: 17.0.0
+---------------
+
+:Release Date: 2025-11-27 (Quebec Release)
+
+Artifacts released:
+
+.. list-table::
+   :widths: 15 10 10
+   :header-rows: 1
+
+   * - Repository
+     - Java Artifact
+     - Docker Image (if applicable)
+   * - policy/parent
+     - 5.2.1
+     - N/A
+   * - policy/docker
+     - 4.2.1
+     - | policy-jre-alpine
+       | policy-jdk-alpine
+       | policy-db-migrator
+   * - policy/common
+     - 3.2.1
+     - N/A
+   * - policy/models
+     - 4.2.1
+     - policy-models-simulator
+   * - policy/api
+     - 4.2.1
+     - policy-api
+   * - policy/pap
+     - 4.2.1
+     - policy-pap
+   * - policy/apex-pdp
+     - 4.2.1
+     - policy-apex-pdp
+   * - policy/drools-pdp
+     - 3.2.1
+     - policy-drools
+   * - policy/xacml-pdp
+     - 4.2.1
+     - policy-xacml-pdp
+   * - policy/distribution
+     - 4.2.1
+     - policy-distribution
+   * - policy/clamp
+     - 8.2.1
+     - | policy-clamp-ac-pf-ppnt
+       | policy-clamp-ac-k8s-ppnt
+       | policy-clamp-ac-http-ppnt
+       | policy-clamp-ac-a1pms-ppnt
+       | policy-clamp-runtime-acm
+       | policy-clamp-acm-element-impl
+       | policy-clamp-ac-kserve-ppnt
+       | policy-clamp-ac-sim-ppnt
+   * - policy/drools-applications
+     - 3.2.1
+     - policy-pdpd-cl
+   * - policy/opa-pdp
+     - 1.0.7
+     - policy-opa-pdp
+
+Key Updates
+===========
+
+* ACM Migration Rollback Support
+
+  Added rollback support for ACM migration, allowing instances to revert to their previous composition
+  after a failed migration. Rollback sends stages in reverse order to ensure correct teardown sequencing.
+
+  See:
+   - `POLICY-5194 <https://lf-onap.atlassian.net/browse/POLICY-5194>`_ - Add rollback for ACM Migration
+   - `POLICY-5471 <https://lf-onap.atlassian.net/browse/POLICY-5471>`_ - Refactor rollback implementation
+   - `POLICY-5474 <https://lf-onap.atlassian.net/browse/POLICY-5474>`_ - Refactor Rollback logic to send stages in the reverse order
+
+* Liquibase Integration for ACM Runtime
+
+  ACM Runtime now uses Liquibase for database schema management, replacing the custom DB Migrator approach.
+  This provides automatic schema versioning on startup and proper rollback support for database migrations.
+
+  See:
+   - `POLICY-5333 <https://lf-onap.atlassian.net/browse/POLICY-5333>`_ - Implementing Liquibase in place of DB Migrator for ACMR
+   - `POLICY-5451 <https://lf-onap.atlassian.net/browse/POLICY-5451>`_ - Add Liquibase rollback support for ACM-R
+
+* Java 21 Uplift
+
+  All Policy Framework components have been upgraded to Java 21.
+
+  See:
+   - `POLICY-5466 <https://lf-onap.atlassian.net/browse/POLICY-5466>`_ - Java 21 uplift
+
+* Improvements to CLAMP Automation Composition Management (ACM)
+
+  - Added a new endpoint to collect all instances
+  - Added migration state tracking for add/remove elements
+  - Added automatic participant sync
+  - Added robust threading in the participant intermediary
+  - Added configurable timeout for operations
+
+  See:
+   - `POLICY-5392 <https://lf-onap.atlassian.net/browse/POLICY-5392>`_ - R17: Clamp / ACM-R Features and Improvements
+
+* Docker Images Cleanup and OpenSSF Scorecard
+
+  - Investigated and cleaned up docker images across the Policy Framework
+  - Added OpenSSF Scorecard GitHub Actions jobs across all policy repositories
+
+  See:
+   - `POLICY-5384 <https://lf-onap.atlassian.net/browse/POLICY-5384>`_ - Investigate docker images clean up
+   - `POLICY-5455 <https://lf-onap.atlassian.net/browse/POLICY-5455>`_ - Add OpenSSF Scorecard Github Actions job
+
+Known Limitations, Issues and Workarounds
+=========================================
+
+System Limitations
+~~~~~~~~~~~~~~~~~~
+N/A
+
+Known Vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~
+N/A
+
+Workarounds
+~~~~~~~~~~~
+N/A
+
+Security Notes
+==============
+N/A
+
+Functional Improvements
+=======================
+| `POLICY-5392 <https://lf-onap.atlassian.net/browse/POLICY-5392>`_ - R17: Clamp / ACM-R Features and Improvements
+|  `POLICY-4965 <https://lf-onap.atlassian.net/browse/POLICY-4965>`_ - Make a configurable timeout for operations in ACM-R to Participants
+|  `POLICY-5194 <https://lf-onap.atlassian.net/browse/POLICY-5194>`_ - Add rollback for ACM Migration
+|  `POLICY-5333 <https://lf-onap.atlassian.net/browse/POLICY-5333>`_ - Implementing Liquibase in place of DB Migrator for ACMR
+|  `POLICY-5402 <https://lf-onap.atlassian.net/browse/POLICY-5402>`_ - Add validation in create instance
+|  `POLICY-5415 <https://lf-onap.atlassian.net/browse/POLICY-5415>`_ - Add automatic sync up support in ACM
+|  `POLICY-5425 <https://lf-onap.atlassian.net/browse/POLICY-5425>`_ - Add new endpoint to collect all instances
+|  `POLICY-5436 <https://lf-onap.atlassian.net/browse/POLICY-5436>`_ - Add endpoint to restart participants
+|  `POLICY-5442 <https://lf-onap.atlassian.net/browse/POLICY-5442>`_ - Use actuator health for checking readiness status for ACM-R
+|  `POLICY-5449 <https://lf-onap.atlassian.net/browse/POLICY-5449>`_ - Add registration improvement in ACM-r
+|  `POLICY-5451 <https://lf-onap.atlassian.net/browse/POLICY-5451>`_ - Add Liquibase rollback support for ACM-R
+|  `POLICY-5453 <https://lf-onap.atlassian.net/browse/POLICY-5453>`_ - Creation of a new method for retrieval of objects in the participant intermediary
+|  `POLICY-5454 <https://lf-onap.atlassian.net/browse/POLICY-5454>`_ - Add migrationState to support add remove elements in migration
+|  `POLICY-5463 <https://lf-onap.atlassian.net/browse/POLICY-5463>`_ - Acmr and Intermediary migration refactoring to support new participant type
+|  `POLICY-5471 <https://lf-onap.atlassian.net/browse/POLICY-5471>`_ - Refactor rollback implementation
+|  `POLICY-5474 <https://lf-onap.atlassian.net/browse/POLICY-5474>`_ - Refactor Rollback logic to send stages in the reverse order
+
+Necessary Improvements and Bug Fixes
+====================================
+
+Necessary Improvements
+~~~~~~~~~~~~~~~~~~~~~~
+| `POLICY-5383 <https://lf-onap.atlassian.net/browse/POLICY-5383>`_ - R17: Software improvements (security, non-features, etc)
+|  `POLICY-5384 <https://lf-onap.atlassian.net/browse/POLICY-5384>`_ - Investigate docker images clean up
+|  `POLICY-5385 <https://lf-onap.atlassian.net/browse/POLICY-5385>`_ - Remove deprecated ONAP relations in policy framework
+|  `POLICY-5394 <https://lf-onap.atlassian.net/browse/POLICY-5394>`_ - Security uplifts
+|  `POLICY-5403 <https://lf-onap.atlassian.net/browse/POLICY-5403>`_ - Clean up and fix sonar issues in ACM
+|  `POLICY-5413 <https://lf-onap.atlassian.net/browse/POLICY-5413>`_ - Uplift sonar and related dependencies / plugins
+|  `POLICY-5414 <https://lf-onap.atlassian.net/browse/POLICY-5414>`_ - Drools sonar fixes
+|  `POLICY-5421 <https://lf-onap.atlassian.net/browse/POLICY-5421>`_ - Fix latest sonar issues in api & pap
+|  `POLICY-5423 <https://lf-onap.atlassian.net/browse/POLICY-5423>`_ - Fix sonar issues for common and models
+|  `POLICY-5430 <https://lf-onap.atlassian.net/browse/POLICY-5430>`_ - Fix vulnerability in reactor
+|  `POLICY-5455 <https://lf-onap.atlassian.net/browse/POLICY-5455>`_ - Add OpenSSF Scorecard Github Actions job
+|  `POLICY-5466 <https://lf-onap.atlassian.net/browse/POLICY-5466>`_ - Java 21 uplift
+|  `POLICY-5470 <https://lf-onap.atlassian.net/browse/POLICY-5470>`_ - Uplift Kafka client to 4.1.0
+
+| `POLICY-5392 <https://lf-onap.atlassian.net/browse/POLICY-5392>`_ - R17: Clamp / ACM-R Features and Improvements
+|  `POLICY-5365 <https://lf-onap.atlassian.net/browse/POLICY-5365>`_ - Remove large object datatype from clamp
+|  `POLICY-5411 <https://lf-onap.atlassian.net/browse/POLICY-5411>`_ - Sonar fixes related to CLAMP
+|  `POLICY-5422 <https://lf-onap.atlassian.net/browse/POLICY-5422>`_ - Making DB schema consistent with Java
+|  `POLICY-5424 <https://lf-onap.atlassian.net/browse/POLICY-5424>`_ - Update kubernetes participant to enable helm repo add
+|  `POLICY-5426 <https://lf-onap.atlassian.net/browse/POLICY-5426>`_ - Add new findBy method in jpa repository
+|  `POLICY-5439 <https://lf-onap.atlassian.net/browse/POLICY-5439>`_ - Add new test cases in clamp csit to test migration remove element
+|  `POLICY-5446 <https://lf-onap.atlassian.net/browse/POLICY-5446>`_ - Create a mechanism to break the loop when checking topics status in BrokerStarter
+|  `POLICY-5447 <https://lf-onap.atlassian.net/browse/POLICY-5447>`_ - Fix sync messages in migration
+|  `POLICY-5450 <https://lf-onap.atlassian.net/browse/POLICY-5450>`_ - Add logging for clamp REST APIs
+|  `POLICY-5452 <https://lf-onap.atlassian.net/browse/POLICY-5452>`_ - Implement custom network logging for participant intermediary
+|  `POLICY-5458 <https://lf-onap.atlassian.net/browse/POLICY-5458>`_ - Add logging to participant-intermediary ThreadHandler
+|  `POLICY-5459 <https://lf-onap.atlassian.net/browse/POLICY-5459>`_ - Add default value for stateChangeResult field
+|  `POLICY-5460 <https://lf-onap.atlassian.net/browse/POLICY-5460>`_ - Split CSITs in functional flows
+|  `POLICY-5462 <https://lf-onap.atlassian.net/browse/POLICY-5462>`_ - Add new validation: Composition target cannot be de-primed if referenced
+|  `POLICY-5465 <https://lf-onap.atlassian.net/browse/POLICY-5465>`_ - Make the participant intermediary threading logic robust
+|  `POLICY-5469 <https://lf-onap.atlassian.net/browse/POLICY-5469>`_ - Remove useless code from intermediary
+|  `POLICY-5472 <https://lf-onap.atlassian.net/browse/POLICY-5472>`_ - Testcontainers sometimes failing to pull due to docker rate limit
+|  `POLICY-5487 <https://lf-onap.atlassian.net/browse/POLICY-5487>`_ - Participant intermediary should not request sync for new elements in Migration
+|  `POLICY-5488 <https://lf-onap.atlassian.net/browse/POLICY-5488>`_ - Acmr should send participantIdList for the sync messages
+|  `POLICY-5514 <https://lf-onap.atlassian.net/browse/POLICY-5514>`_ - Fix Clamp CSITs helm charts
+|  `POLICY-5515 <https://lf-onap.atlassian.net/browse/POLICY-5515>`_ - Add MigrationState validation for migration
+|  `POLICY-5516 <https://lf-onap.atlassian.net/browse/POLICY-5516>`_ - Refactor policy participant dependencies
+|  `POLICY-5518 <https://lf-onap.atlassian.net/browse/POLICY-5518>`_ - Refactor Policy participant REST dependencies
+
+Bug Fixes
+~~~~~~~~~
+| `POLICY-5397 <https://lf-onap.atlassian.net/browse/POLICY-5397>`_ - Fix CSIT helm chart Kafka installation
+| `POLICY-5438 <https://lf-onap.atlassian.net/browse/POLICY-5438>`_ - Acmr ignores the participant Id in the migrate event for the removed element scenario
+| `POLICY-5448 <https://lf-onap.atlassian.net/browse/POLICY-5448>`_ - Fix Acmr to send outProperties during prime re-trigger operations
+| `POLICY-5457 <https://lf-onap.atlassian.net/browse/POLICY-5457>`_ - AcSimRestTest fails with NullPointerException
+| `POLICY-5468 <https://lf-onap.atlassian.net/browse/POLICY-5468>`_ - Participant sync message is being consumed by all participants irrelevant to the instance
+| `POLICY-5486 <https://lf-onap.atlassian.net/browse/POLICY-5486>`_ - Intermittent upgrade failure with Liquibase due to NULL participantId
+
+
+
+References
+==========
+
+For more information on the ONAP Quebec release, please see:
+
+#. `ONAP Home Page`_
+#. `ONAP Documentation`_
+#. `ONAP Release Downloads`_
+#. `ONAP Wiki Page`_
+
+.. _`ONAP Home Page`: https://www.onap.org
+.. _`ONAP Wiki Page`: https://lf-onap.atlassian.net/wiki
+.. _`ONAP Documentation`: https://docs.onap.org
+.. _`ONAP Release Downloads`: https://git.onap.org
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+
+..      ==========================
 ..      * * *     PARIS     * * *
 ..      ==========================
 
