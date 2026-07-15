@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ec2153f_250ef8ef",
+        "filename": "docs/tox.ini",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 6742
+      },
+      "writtenOn": "2026-07-15T21:51:19Z",
+      "side": 1,
+      "message": "Much appreciated, Matt. Our team just discussed this issue today, and considered shutting off the link-check entirely - broken link checks are now interfering in everyday work. We guessed the failures are caused by sites blocking bot activity.",
+      "revId": "9a4dd2cafd130807de91eb2397084442e673b83b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
