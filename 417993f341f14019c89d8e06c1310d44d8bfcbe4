@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7008edb3_96a23ebd",
+        "filename": "docs/requirements-docs.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6742
+      },
+      "writtenOn": "2026-07-17T13:00:41Z",
+      "side": 1,
+      "message": "This is the fix we need in quebec, already in rabat/master:\nhttps://gerrit.onap.org/r/c/policy/parent/+/143328/3/docs/tox.ini#b23",
+      "revId": "417993f341f14019c89d8e06c1310d44d8bfcbe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
