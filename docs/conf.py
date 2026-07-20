@@ -1,10 +1,10 @@
 project = "onap"
-release = "master"
-version = "master"
+release = "rabat"
+version = "rabat"
 
 # Map to 'latest' if this file is used in 'latest' (master) 'doc' branch.
 # Change to {releasename} after you have created the new 'doc' branch.
-branch = 'latest'
+branch = 'rabat'
 
 author = "Open Network Automation Platform"
 # yamllint disable-line rule:line-length
