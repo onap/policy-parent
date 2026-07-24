@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3113993a_2f649941",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 6742
+      },
+      "writtenOn": "2026-07-24T16:12:55Z",
+      "side": 1,
+      "message": "This was also done for Policy framework - API and PAP are using Boot 4, and all other components like apex-pdp are using Spring Boot 4\u0027s dependency management (via parent)",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "93dc73035a7a6b2ca07e32f6423f6a3c980f9f8e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    }
+  ]
+}
