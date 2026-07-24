@@ -16,6 +16,24 @@
       "message": "We should keep clamp - and add opa, right? This script just takes the release data csv and updates oom.",
       "revId": "ee57a27fb2aed93c98cadc8501f27924cec27479",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f6c0a61_026f35e7",
+        "filename": "integration/src/main/scripts/release/updateOomImages.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 6742
+      },
+      "writtenOn": "2026-07-24T15:42:26Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "69bde8a8_bcfc61cd",
+      "revId": "ee57a27fb2aed93c98cadc8501f27924cec27479",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
