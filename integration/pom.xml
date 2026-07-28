@@ -61,10 +61,10 @@
         <version.commons-statistics-distribution>1.3</version.commons-statistics-distribution>
         <version.curator>5.9.0</version.curator>
         <version.drools>8.40.1.Final</version.drools>
-        <version.jackson-databind-nullable>0.2.10</version.jackson-databind-nullable>
+        <version.jackson-databind-nullable>0.2.11</version.jackson-databind-nullable>
         <version.jaxb-plugins-runtime>4.0.16</version.jaxb-plugins-runtime>
         <version.jexl3>3.6.4</version.jexl3>
-        <version.jruby-core>10.1.0.0</version.jruby-core>
+        <version.jruby-core>10.1.1.0</version.jruby-core>
         <version.json-schema-validator>3.0.6</version.json-schema-validator>
         <version.kafka-avro-serializer>8.2.1</version.kafka-avro-serializer>
         <version.mvel2>2.5.2.Final</version.mvel2>
@@ -405,7 +405,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.5.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
