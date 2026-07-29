@@ -15,6 +15,275 @@ Policy Framework Release Notes
 ..      * one section describing the purpose of this new release.
 
 ..      ==========================
+..      * * *     RABAT     * * *
+..      ==========================
+
+Version: 18.0.0
+---------------
+
+:Release Date: 2026-07-15 (Rabat Release)
+
+Artifacts released:
+
+.. list-table::
+   :widths: 15 10 10
+   :header-rows: 1
+
+   * - Repository
+     - Java Artifact
+     - Docker Image (if applicable)
+   * - policy/parent
+     - 6.0.2
+     - N/A
+   * - policy/docker
+     - 5.0.1
+     - | policy-jre-alpine
+       | policy-jdk-alpine
+       | policy-db-migrator
+   * - policy/common
+     - 4.0.1
+     - N/A
+   * - policy/models
+     - 5.0.1
+     - policy-models-simulator
+   * - policy/api
+     - 5.0.1
+     - policy-api
+   * - policy/pap
+     - 5.0.1
+     - policy-pap
+   * - policy/apex-pdp
+     - 5.0.1
+     - policy-apex-pdp
+   * - policy/drools-pdp
+     - 4.0.1
+     - policy-drools
+   * - policy/xacml-pdp
+     - 5.0.1
+     - policy-xacml-pdp
+   * - policy/distribution
+     - 5.0.1
+     - policy-distribution
+   * - policy/clamp
+     - 9.0.2
+     - | policy-clamp-ac-pf-ppnt
+       | policy-clamp-ac-k8s-ppnt
+       | policy-clamp-ac-http-ppnt
+       | policy-clamp-ac-a1pms-ppnt
+       | policy-clamp-runtime-acm
+       | policy-clamp-acm-element-impl
+       | policy-clamp-ac-kserve-ppnt
+       | policy-clamp-ac-sim-ppnt
+   * - policy/drools-applications
+     - 4.0.1
+     - policy-pdpd-cl
+   * - policy/opa-pdp
+     - 2.0.2
+     - policy-opa-pdp
+
+Key Updates
+===========
+
+* Decoupling ACMR/Clamp from Policy Framework
+
+  The clamp/ACM-R repository has been fully decoupled from the Policy Framework shared libraries
+  (policy/common, policy/models). Previously, clamp inherited utilities, Kafka wrappers, REST clients,
+  and exception classes from the shared PF repos. This created tight coupling that slowed down both
+  clamp and PF development. Clamp now manages its own dependencies directly using Spring Boot native
+  libraries, making it independently buildable and releasable without requiring PF library changes.
+
+  - Decoupled policy-parent integration POM from clamp
+  - Replaced policy/common StandardCoder with Jackson ObjectMapper
+  - Removed policy/common spring-utils dependency
+  - Removed TOSCA simple model dependency
+  - Moved to Spring Kafka (replacing policy-endpoints Kafka wrapper)
+  - Moved CSITs to clamp repo
+  - Replaced Jersey client with Spring Boot REST client in Policy Participant
+  - Used Spring Boot 4 starters for dependency management
+  - Enabled Dependabot for maven dependency uplifts
+
+  See:
+   - `POLICY-5493 <https://lf-onap.atlassian.net/browse/POLICY-5493>`_ - R18: Decoupling ACM from Policy Framework
+
+* Spring Boot 4.0 Upgrade
+
+  All clamp components have been upgraded from Spring Boot 3.5 to Spring Boot 4.0. Dependency management
+  is now centralised on the Spring Boot dependencies BOM, reducing version conflicts and simplifying
+  maintenance. The springdoc-openapi library was uplifted for compatibility, and multiple incremental
+  patch uplifts (4.0.6, 4.0.7) were applied throughout the release cycle to address CVEs.
+
+  See:
+   - `POLICY-5553 <https://lf-onap.atlassian.net/browse/POLICY-5553>`_ - Uplift spring-boot from 3.5 to 4.0
+   - `POLICY-5592 <https://lf-onap.atlassian.net/browse/POLICY-5592>`_ - Centralise dependency management of parent on Spring Boot dependencies BOM
+
+* Improvements to CLAMP Automation Composition Management (ACM)
+
+  - Added rollback support for update operation
+  - Added support for modification of participant details in ACM-R DB
+  - Refactored messages removing old backward compatibility
+  - Added intermediary version in the PARTICIPANT_REGISTER message
+  - Removed deprecated AcElementListenerV1
+  - Removed replicaId from sync message
+  - Added event handling enhancements
+  - Added Kafka partition keys for events
+  - Added trace-id in ACM-R logs
+  - Disabled metrics for OTEL library in ACM-R
+  - Added Service Mesh StartTLS compatibility for ACM-R PostgreSQL
+
+  See:
+   - `POLICY-5625 <https://lf-onap.atlassian.net/browse/POLICY-5625>`_ - R18: Clamp / ACM-R Features and Improvements
+
+* OPA-PDP Improvements
+
+  - Added Kafka retry support
+  - Added Rego to AST conversion support
+  - Added CSIT support for Rego to AST conversion
+  - Improved code coverage
+
+  See:
+   - `POLICY-5558 <https://lf-onap.atlassian.net/browse/POLICY-5558>`_ - OPA-PDP Improvements Part 2
+
+* BDD Testing with Groovy
+
+  - Implemented BDD test framework for clamp using Groovy
+  - Migrated CommissioningProviderTest, EncryptionUtilTest, SupervisionAcHandlerTest, and Instantiation tests to Groovy BDD style
+
+  See:
+   - `POLICY-5578 <https://lf-onap.atlassian.net/browse/POLICY-5578>`_ - Implement BDD test for clamp with groovy
+
+Known Limitations, Issues and Workarounds
+=========================================
+
+System Limitations
+~~~~~~~~~~~~~~~~~~
+N/A
+
+Known Vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~
+N/A
+
+Workarounds
+~~~~~~~~~~~
+N/A
+
+Security Notes
+==============
+N/A
+
+Functional Improvements
+=======================
+| `POLICY-5493 <https://lf-onap.atlassian.net/browse/POLICY-5493>`_ - R18: Decoupling ACM from Policy Framework
+|  `POLICY-5494 <https://lf-onap.atlassian.net/browse/POLICY-5494>`_ - Decouple Policy parent integration pom
+|  `POLICY-5497 <https://lf-onap.atlassian.net/browse/POLICY-5497>`_ - Remove TOSCA simple model
+|  `POLICY-5498 <https://lf-onap.atlassian.net/browse/POLICY-5498>`_ - Policy Participant - PDP Dependency
+|  `POLICY-5499 <https://lf-onap.atlassian.net/browse/POLICY-5499>`_ - Remove policy common spring-utils dependency
+|  `POLICY-5503 <https://lf-onap.atlassian.net/browse/POLICY-5503>`_ - Remove dependencies from Test Utilities
+|  `POLICY-5507 <https://lf-onap.atlassian.net/browse/POLICY-5507>`_ - Use Spring Boot for REST calls in Policy Participant
+|  `POLICY-5508 <https://lf-onap.atlassian.net/browse/POLICY-5508>`_ - Refactor policy common utils coder to clamp
+|  `POLICY-5509 <https://lf-onap.atlassian.net/browse/POLICY-5509>`_ - Java Bean Validation with JSR-380
+|  `POLICY-5510 <https://lf-onap.atlassian.net/browse/POLICY-5510>`_ - Spring Kafka
+|  `POLICY-5511 <https://lf-onap.atlassian.net/browse/POLICY-5511>`_ - Remove duplication of Spring config files
+|  `POLICY-5512 <https://lf-onap.atlassian.net/browse/POLICY-5512>`_ - Remove duplication of logback config files
+|  `POLICY-5513 <https://lf-onap.atlassian.net/browse/POLICY-5513>`_ - Move CSITs to clamp repo
+|  `POLICY-5532 <https://lf-onap.atlassian.net/browse/POLICY-5532>`_ - Clean unused code from cloned policy/models and policy/common
+|  `POLICY-5552 <https://lf-onap.atlassian.net/browse/POLICY-5552>`_ - Use new Spring Boot 4 Starters
+|  `POLICY-5590 <https://lf-onap.atlassian.net/browse/POLICY-5590>`_ - Use Dependabot for maven dependency uplifts
+
+| `POLICY-5625 <https://lf-onap.atlassian.net/browse/POLICY-5625>`_ - R18: Clamp / ACM-R Features and Improvements
+|  `POLICY-5544 <https://lf-onap.atlassian.net/browse/POLICY-5544>`_ - Update clamp csits in ci-management
+|  `POLICY-5550 <https://lf-onap.atlassian.net/browse/POLICY-5550>`_ - Add csit flow to verify participant with multiple supported element types
+|  `POLICY-5562 <https://lf-onap.atlassian.net/browse/POLICY-5562>`_ - Remove replicaId from sync message
+|  `POLICY-5567 <https://lf-onap.atlassian.net/browse/POLICY-5567>`_ - Add rollback support for update operation
+|  `POLICY-5574 <https://lf-onap.atlassian.net/browse/POLICY-5574>`_ - Remove deprecated AcElementListenerV1
+|  `POLICY-5575 <https://lf-onap.atlassian.net/browse/POLICY-5575>`_ - Update not supported operations for ACM-intermediary
+|  `POLICY-5577 <https://lf-onap.atlassian.net/browse/POLICY-5577>`_ - Disable create topic in ACM-r
+|  `POLICY-5594 <https://lf-onap.atlassian.net/browse/POLICY-5594>`_ - Add intermediary version in the PARTICIPANT_REGISTER message
+|  `POLICY-5596 <https://lf-onap.atlassian.net/browse/POLICY-5596>`_ - Support modification of participant details in ACM-r DB
+|  `POLICY-5597 <https://lf-onap.atlassian.net/browse/POLICY-5597>`_ - Refactor messages removing old backward compatibility
+|  `POLICY-5598 <https://lf-onap.atlassian.net/browse/POLICY-5598>`_ - Acmr event handling enhancements
+|  `POLICY-5599 <https://lf-onap.atlassian.net/browse/POLICY-5599>`_ - Use partition keys in kafka events
+|  `POLICY-5600 <https://lf-onap.atlassian.net/browse/POLICY-5600>`_ - Disable metrics for OTEL library in Acmr
+|  `POLICY-5602 <https://lf-onap.atlassian.net/browse/POLICY-5602>`_ - Add trace-id in Acmr logs
+|  `POLICY-5608 <https://lf-onap.atlassian.net/browse/POLICY-5608>`_ - Update Clamp to send sync message only at the end of Prime operation
+
+| `POLICY-5558 <https://lf-onap.atlassian.net/browse/POLICY-5558>`_ - OPA-PDP Improvements Part 2
+|  `POLICY-5559 <https://lf-onap.atlassian.net/browse/POLICY-5559>`_ - Enhancements to support Kafka retries
+|  `POLICY-5563 <https://lf-onap.atlassian.net/browse/POLICY-5563>`_ - Enhancements to support Rego to AST
+|  `POLICY-5566 <https://lf-onap.atlassian.net/browse/POLICY-5566>`_ - Improve coverage
+|  `POLICY-5569 <https://lf-onap.atlassian.net/browse/POLICY-5569>`_ - CSIT support for Rego to AST conversion
+
+Necessary Improvements and Bug Fixes
+====================================
+
+Necessary Improvements
+~~~~~~~~~~~~~~~~~~~~~~
+| `POLICY-5553 <https://lf-onap.atlassian.net/browse/POLICY-5553>`_ - Uplift spring-boot from 3.5 to 4.0
+| `POLICY-5576 <https://lf-onap.atlassian.net/browse/POLICY-5576>`_ - Uplift spring-boot to latest dependency
+| `POLICY-5582 <https://lf-onap.atlassian.net/browse/POLICY-5582>`_ - Uplift Springboot to latest
+| `POLICY-5595 <https://lf-onap.atlassian.net/browse/POLICY-5595>`_ - Uplift spring-boot to 4.0.7
+| `POLICY-5571 <https://lf-onap.atlassian.net/browse/POLICY-5571>`_ - Uplift latest springdoc-openapi dependency
+| `POLICY-5592 <https://lf-onap.atlassian.net/browse/POLICY-5592>`_ - Centralise dependency management of parent on Spring Boot dependencies BOM
+| `POLICY-5591 <https://lf-onap.atlassian.net/browse/POLICY-5591>`_ - Uplift dependencies for CVEs
+| `POLICY-5583 <https://lf-onap.atlassian.net/browse/POLICY-5583>`_ - Report available dependency updates during maven build
+| `POLICY-5570 <https://lf-onap.atlassian.net/browse/POLICY-5570>`_ - Add swagger generated code as generated sources
+| `POLICY-5554 <https://lf-onap.atlassian.net/browse/POLICY-5554>`_ - Refactor lombok field annotations in clamp model
+| `POLICY-5493 <https://lf-onap.atlassian.net/browse/POLICY-5493>`_ - R18: Decoupling ACM from Policy Framework
+|  `POLICY-5495 <https://lf-onap.atlassian.net/browse/POLICY-5495>`_ - Exception Class Definitions
+|  `POLICY-5496 <https://lf-onap.atlassian.net/browse/POLICY-5496>`_ - Exception Base Classes
+|  `POLICY-5533 <https://lf-onap.atlassian.net/browse/POLICY-5533>`_ - Refactor participant-Kubernetes to remove duplication of Spring config file
+|  `POLICY-5549 <https://lf-onap.atlassian.net/browse/POLICY-5549>`_ - Refactor clamp models to isolate any business logic
+|  `POLICY-5551 <https://lf-onap.atlassian.net/browse/POLICY-5551>`_ - Remove jersey client from CommonRestController
+|  `POLICY-5560 <https://lf-onap.atlassian.net/browse/POLICY-5560>`_ - Fix compatibility with participants using Spring Boot 3
+|  `POLICY-5561 <https://lf-onap.atlassian.net/browse/POLICY-5561>`_ - Replace StandardCoder with ObjectMapper in ACM
+|  `POLICY-5564 <https://lf-onap.atlassian.net/browse/POLICY-5564>`_ - Replace StandardCoder ACM participant sim and policy
+| `POLICY-5578 <https://lf-onap.atlassian.net/browse/POLICY-5578>`_ - Implement BDD test for clamp with groovy
+|  `POLICY-5585 <https://lf-onap.atlassian.net/browse/POLICY-5585>`_ - Migrate CommissioningProviderTest to Groovy BDD style
+|  `POLICY-5586 <https://lf-onap.atlassian.net/browse/POLICY-5586>`_ - Migrate EncryptionUtilTest to Groovy BDD style
+|  `POLICY-5587 <https://lf-onap.atlassian.net/browse/POLICY-5587>`_ - Migrate SupervisionAcHandlerTest to Groovy BDD style
+|  `POLICY-5589 <https://lf-onap.atlassian.net/browse/POLICY-5589>`_ - Migrate Instantiation Junit tests to Groovy BDD style
+| `POLICY-5555 <https://lf-onap.atlassian.net/browse/POLICY-5555>`_ - Remove duplication of logback config files in participant K8s in OOM
+| `POLICY-5593 <https://lf-onap.atlassian.net/browse/POLICY-5593>`_ - Service Mesh StartTLS compatibility for ACM-R PG
+| `POLICY-5540 <https://lf-onap.atlassian.net/browse/POLICY-5540>`_ - Update doc for Smoke tests
+| `POLICY-5572 <https://lf-onap.atlassian.net/browse/POLICY-5572>`_ - Update HTTP_PATH used by performance tests
+| `POLICY-5573 <https://lf-onap.atlassian.net/browse/POLICY-5573>`_ - Replace policy participant in clamp csit with http
+| `POLICY-5579 <https://lf-onap.atlassian.net/browse/POLICY-5579>`_ - Set resource configuration in CSIT
+| `POLICY-5581 <https://lf-onap.atlassian.net/browse/POLICY-5581>`_ - Using Docker Compose for Performance tests
+| `POLICY-5584 <https://lf-onap.atlassian.net/browse/POLICY-5584>`_ - Add Kubernetes helm chart for CSIT in ACM
+
+Bug Fixes
+~~~~~~~~~
+| `POLICY-5486 <https://lf-onap.atlassian.net/browse/POLICY-5486>`_ - Intermittent upgrade failure with Liquibase due to NULL participantId
+| `POLICY-5526 <https://lf-onap.atlassian.net/browse/POLICY-5526>`_ - Release Liquibase locks on failure
+| `POLICY-5530 <https://lf-onap.atlassian.net/browse/POLICY-5530>`_ - Fix Duplicate key value violation error in ACM-r
+| `POLICY-5536 <https://lf-onap.atlassian.net/browse/POLICY-5536>`_ - Fix liquibase random failures
+| `POLICY-5547 <https://lf-onap.atlassian.net/browse/POLICY-5547>`_ - Fix GroupAuthorizationException in ACM
+| `POLICY-5548 <https://lf-onap.atlassian.net/browse/POLICY-5548>`_ - Emulate gson behavior in clamp for serialization
+| `POLICY-5556 <https://lf-onap.atlassian.net/browse/POLICY-5556>`_ - Fix intermittent CSIT failure (HTTP 406)
+| `POLICY-5557 <https://lf-onap.atlassian.net/browse/POLICY-5557>`_ - Fix csit failures related to containers not ready for tests
+| `POLICY-5588 <https://lf-onap.atlassian.net/browse/POLICY-5588>`_ - Fix Intermittent CSIT failure with migration test flow
+
+
+
+References
+==========
+
+For more information on the ONAP Rabat release, please see:
+
+#. `ONAP Home Page`_
+#. `ONAP Documentation`_
+#. `ONAP Release Downloads`_
+#. `ONAP Wiki Page`_
+
+.. _`ONAP Home Page`: https://www.onap.org
+.. _`ONAP Wiki Page`: https://lf-onap.atlassian.net/wiki
+.. _`ONAP Documentation`: https://docs.onap.org
+.. _`ONAP Release Downloads`: https://git.onap.org
+
+Quick Links:
+    - `POLICY project page`_
+    - `Passing Badge information for POLICY`_
+
+..      ==========================
 ..      * * *     QUEBEC    * * *
 ..      ==========================
 
