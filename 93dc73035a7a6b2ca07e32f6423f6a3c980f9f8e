@@ -46,6 +46,30 @@
       },
       "revId": "93dc73035a7a6b2ca07e32f6423f6a3c980f9f8e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a8a984_694e1c54",
+        "filename": "docs/release-notes.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 7927
+      },
+      "writtenOn": "2026-07-31T11:07:52Z",
+      "side": 1,
+      "message": "Not sure why I had release notes in this review in the first place, removed it for now",
+      "parentUuid": "2a5f6a04_e41b60f8",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "93dc73035a7a6b2ca07e32f6423f6a3c980f9f8e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
