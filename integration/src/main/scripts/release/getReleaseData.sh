@@ -48,6 +48,7 @@ declare -a pf_repos=(
     "policy/distribution"
     "policy/clamp"
     "policy/drools-applications"
+    "policy/opa-pdp"	
 )
 
 usage()
@@ -143,10 +144,15 @@ get_tags() {
     echo "Repo, Last Tag Version,Snapshot Version,Changed Files,Docker Images" > "$release_data_file"
     for repo in "${pf_repos[@]}"
     do
-        latest_snapshot_tag=$(mvn -f "$repo_location/$repo" clean | \
+        latest_snapshot_tag=$(mvn -f "$repo_location/$repo" clean 2>/dev/null | \
             grep "SNAPSHOT" | \
             tail -1 | \
             $SED -r 's/^.* ([0-9]*\.[0-9]*\.[0-9]*-SNAPSHOT).*$/\1/')
+
+        if [ -z "$latest_snapshot_tag" ] && [ -f "$repo_location/$repo/version.properties" ]; then
+            source "$repo_location/$repo/version.properties"
+            latest_snapshot_tag="${major}.${minor}.${patch}-SNAPSHOT"
+        fi
 
         if [[ $branch == *master ]]
         then
