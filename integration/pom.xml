@@ -78,7 +78,7 @@
         <version.rhino>1.9.1</version.rhino>
         <version.springboot>4.1.0</version.springboot>
         <version.springdoc>3.0.3</version.springdoc>
-        <version.swagger.core.v3>2.2.52</version.swagger.core.v3>
+        <version.swagger.core.v3>2.2.53</version.swagger.core.v3>
         <version.swagger.v1>1.6.16</version.swagger.v1>
         <version.xacml>4.0.0</version.xacml>
         <version.xstream>1.4.21</version.xstream>
@@ -89,7 +89,7 @@
         <version.plugin.git-commit-id>9.2.0</version.plugin.git-commit-id>
         <version.plugin.jacoco>0.8.15</version.plugin.jacoco>
         <version.plugin.sonar>5.7.0.6970</version.plugin.sonar>
-        <version.plugin.swagger-codegen>3.0.81</version.plugin.swagger-codegen>
+        <version.plugin.swagger-codegen>3.0.82</version.plugin.swagger-codegen>
         <version.plugin.versions>2.21.0</version.plugin.versions>
 
         <surefireArgLine>
