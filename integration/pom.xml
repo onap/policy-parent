@@ -65,7 +65,7 @@
         <version.jaxb-plugins-runtime>4.0.16</version.jaxb-plugins-runtime>
         <version.jexl3>3.6.4</version.jexl3>
         <version.jruby-core>10.1.1.0</version.jruby-core>
-        <version.json-schema-validator>3.0.6</version.json-schema-validator>
+        <version.json-schema-validator>3.0.7</version.json-schema-validator>
         <version.kafka-avro-serializer>8.2.1</version.kafka-avro-serializer>
         <version.mvel2>2.5.2.Final</version.mvel2>
         <version.onap.aai-schema>1.14.0</version.onap.aai-schema>
@@ -73,12 +73,12 @@
         <version.onap.sdc-distribution-client>2.1.1</version.onap.sdc-distribution-client>
         <version.openpojo>0.9.1</version.openpojo>
         <version.opentelemetry-kafka>2.28.1-alpha</version.opentelemetry-kafka>
-        <version.plexus-utils>3.6.1</version.plexus-utils>
+        <version.plexus-utils>3.6.2</version.plexus-utils>
         <version.re2j>1.8</version.re2j>
         <version.rhino>1.9.1</version.rhino>
-        <version.springboot>4.1.0</version.springboot>
+        <version.springboot>4.1.1</version.springboot>
         <version.springdoc>3.0.3</version.springdoc>
-        <version.swagger.core.v3>2.2.53</version.swagger.core.v3>
+        <version.swagger.core.v3>2.2.54</version.swagger.core.v3>
         <version.swagger.v1>1.6.16</version.swagger.v1>
         <version.xacml>4.0.0</version.xacml>
         <version.xstream>1.4.21</version.xstream>
