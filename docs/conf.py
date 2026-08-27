@@ -1,3 +1,6 @@
+import os
+import urllib.request
+
 project = "onap"
 release = "master"
 version = "master"
@@ -19,6 +22,29 @@ html_logo = "_static/logo_onap_2024.png"
 html_favicon = "_static/favicon.ico"
 html_static_path = ["_static"]
 html_show_sphinx = False
+templates_path = ["_templates"]
+
+# The sidebar logo has to lead back to the ONAP documentation root, staying on the
+# release the reader is already on. The parent 'onap' project is not branched for
+# every release the subprojects publish -- there is no /en/rabat/ or /en/quebec/
+# there -- so probe the versioned URL and fall back to the bare host, which Read
+# the Docs resolves to the parent's default version.
+onap_docs_home = "https://docs.onap.org/"
+_rtd_version = os.environ.get("READTHEDOCS_VERSION", "")
+if _rtd_version and os.environ.get("READTHEDOCS_VERSION_TYPE") != "external":
+    _versioned_home = "{}{}/{}/".format(
+        onap_docs_home, os.environ.get("READTHEDOCS_LANGUAGE", "en"), _rtd_version)
+    try:
+        _probe = urllib.request.Request(_versioned_home, method="HEAD")
+        # docs.onap.org answers 403 to the default Python-urllib user agent.
+        _probe.add_header("User-Agent", "onap-docs-build (+https://docs.onap.org)")
+        with urllib.request.urlopen(_probe, timeout=5) as _response:
+            if _response.status == 200:
+                onap_docs_home = _versioned_home
+    except OSError:
+        pass
+
+html_context = {"onap_docs_home": onap_docs_home}
 
 extensions = [
     'sphinx.ext.intersphinx',

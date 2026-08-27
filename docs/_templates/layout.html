@@ -1,0 +1,36 @@
+{#
+  Copyright (C) 2026 Deutsche Telekom AG.
+  This work is licensed under a Creative Commons Attribution 4.0 International License.
+  http://creativecommons.org/licenses/by/4.0
+#}
+{% extends "!layout.html" %}
+
+{#
+  sphinx-rtd-theme hardwires the sidebar logo to pathto(root_doc), which on a
+  docs.onap.org subproject only ever reaches that subproject's own index -- and
+  renders as a dead "#" on the index page itself. This is a copy of the upstream
+  sidebartitle block with the anchor re-pointed at the ONAP documentation root;
+  re-check it when bumping sphinx-rtd-theme.
+#}
+{%- block sidebartitle %}
+
+  {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
+  <a href="{{ onap_docs_home|default('https://docs.onap.org/', true) }}"{% if not theme_logo_only %} class="icon icon-home"{% endif %}>
+    {% if not theme_logo_only %}{{ project }}{% endif %}
+    {%- if logo or logo_url %}
+      <img src="{{ _logo_url }}" class="logo" alt="{{ _('Logo') }}"/>
+    {%- endif %}
+  </a>
+
+  {%- if READTHEDOCS or DEBUG %}
+    {%- if theme_version_selector or theme_language_selector %}
+      <div class="switch-menus">
+        <div class="version-switch"></div>
+        <div class="language-switch"></div>
+      </div>
+    {%- endif %}
+  {%- endif %}
+
+  {%- include "searchbox.html" %}
+
+{%- endblock %}
