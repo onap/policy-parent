@@ -67,7 +67,7 @@
         <version.jruby-core>10.1.1.0</version.jruby-core>
         <version.json-schema-validator>3.0.7</version.json-schema-validator>
         <version.kafka-avro-serializer>8.2.1</version.kafka-avro-serializer>
-        <version.mvel2>2.5.2.Final</version.mvel2>
+        <version.mvel2>2.5.3.Final</version.mvel2>
         <version.onap.aai-schema>1.14.0</version.onap.aai-schema>
         <version.onap.cds-blueprint-proto>1.9.0</version.onap.cds-blueprint-proto>
         <version.onap.sdc-distribution-client>2.1.1</version.onap.sdc-distribution-client>
