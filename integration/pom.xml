@@ -82,7 +82,7 @@
         <version.swagger.v1>1.6.16</version.swagger.v1>
         <version.xacml>4.0.0</version.xacml>
         <version.xstream>1.4.21</version.xstream>
-        <version.zookeeper>3.9.5</version.zookeeper>
+        <version.zookeeper>3.9.6</version.zookeeper>
         <!-- Plugin Versions -->
         <version.plugin.checkstyle>3.6.0</version.plugin.checkstyle>
         <version.plugin.docker>0.48.1</version.plugin.docker>
@@ -460,7 +460,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
-                    <version>3.6.3</version>
+                    <version>3.6.4</version>
                 </plugin>
                 <plugin>
                     <groupId>org.kie</groupId>
