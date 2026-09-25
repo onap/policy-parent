@@ -70,7 +70,7 @@
         <version.mvel2>2.5.4.Final</version.mvel2>
         <version.onap.aai-schema>1.14.0</version.onap.aai-schema>
         <version.onap.cds-blueprint-proto>1.9.0</version.onap.cds-blueprint-proto>
-        <version.onap.sdc-distribution-client>2.1.1</version.onap.sdc-distribution-client>
+        <version.onap.sdc-distribution-client>2.3.0</version.onap.sdc-distribution-client>
         <version.openpojo>0.9.1</version.openpojo>
         <version.opentelemetry-kafka>2.28.1-alpha</version.opentelemetry-kafka>
         <version.plexus-utils>3.6.2</version.plexus-utils>
@@ -123,6 +123,11 @@
                         <artifactId>*</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.onap.sdc.sdc-distribution-client</groupId>
+                <artifactId>sdc-distribution-client-api</artifactId>
+                <version>${version.onap.sdc-distribution-client}</version>
             </dependency>
             <dependency>
                 <groupId>org.onap.sdc.sdc-distribution-client</groupId>
