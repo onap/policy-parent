@@ -1,4 +1,40 @@
 {
+  "deployProps": {
+    "key": "value"
+  },
+  "undeployProps": {
+    "key": "value"
+  },
+  "lockProps": {
+    "key": "value"
+  },
+  "unlockProps": {
+    "key": "value"
+  },
+  "updateProps": {
+    "key": "value"
+  },
+  "migrateProps": {
+    "key": "value"
+  },
+  "migratePrecheckProps": {
+    "key": "value"
+  },
+  "prepareProps": {
+    "key": "value"
+  },
+  "reviewProps": {
+    "key": "value"
+  },
+  "primeProps": {
+    "key": "value"
+  },
+  "deprimeProps": {
+    "key": "value"
+  },
+  "rollbackProps": {
+    "key": "value"
+  },
   "deploySuccess": true,
   "undeploySuccess": true,
   "lockSuccess": true,

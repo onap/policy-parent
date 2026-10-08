@@ -546,6 +546,20 @@ and ("onap.policy.clamp.ac.element.Http_BridgeAutomationCompositionElement", "1.
         }
   }
 
+Set specific outProperites for each operation
+---------------------------------------------
+When an operation is completed, a specific outProperites is sent, and the result is used for the Integration Test.
+A specific outProperites for each operation can be set any time using the same endpoint used for delay and success/fail:
+
+.. code-block:: bash
+
+  Invoke a PUT request 'http://participant_sim_ip:port/onap/policy/clamp/acm/simparticipant/v2/parameters'
+
+The Json below is an example of configuration with outProperites:
+
+.. literalinclude:: files/simparticipant-parameters2.json
+   :language: json
+
 Read all AC Definition elements information
 -------------------------------------------
 All AC Definition elements information like composition inProperties and outProperties

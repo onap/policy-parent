@@ -1,5 +1,5 @@
 {
-    "openapi": "3.0.1",
+    "openapi": "3.1.0",
     "info": {
         "title": "ACM Mock Participant",
         "description": "CLAMP Mock Participant API",
@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:8084/onap/policy/clamp/acm/simparticipant",
+            "url": "http://localhost:8084/onap/policy/simparticipant",
             "description": "Generated server url"
         }
     ],
@@ -41,7 +41,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK, returns a serialised instance of [SimConfig](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/SimConfig.java)",
+                        "description": "OK, reutrns a serialised instance of [SimConfig](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/policy-clamp-participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/SimConfig.java)",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -164,7 +164,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java)",
+                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/policy-clamp-participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java)",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -287,7 +287,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java)",
+                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/policy-clamp-participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java)",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -397,6 +397,33 @@
                 "description": "Query details of the requested automation composition instances for the given automation composition definition ID, returning details of all its automation composition instances",
                 "operationId": "getAutomationCompositions",
                 "parameters": [
+                    {
+                        "name": "instanceIds",
+                        "in": "query",
+                        "description": "Filter to get instances by instanceId (two or more to be comma-separated)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "deployState",
+                        "in": "query",
+                        "description": "Filter to get instances by deployState (two or more to be comma-separated)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "stateChangeResult",
+                        "in": "query",
+                        "description": "Filter to get instances by stateChangeResult (two or more to be comma-separated)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
                     {
                         "name": "X-onap-RequestId",
                         "in": "header",
@@ -535,6 +562,85 @@
                     }
                 ]
             }
+        },
+        "/v2/compositiondatas/{compositionId}": {
+            "get": {
+                "tags": [
+                    "Simulator-participant-controller"
+                ],
+                "summary": "Get composition details.",
+                "description": "Get details of the requested composition.",
+                "operationId": "getCompositionData",
+                "parameters": [
+                    {
+                        "name": "compositionId",
+                        "in": "path",
+                        "description": "The UUID of the composition to get",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "X-onap-RequestId",
+                        "in": "header",
+                        "description": "RequestID for http transaction",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Serialised instance of [InternalDatas](https://github.com/onap/policy-clamp/blob/master/participant/participant-impl/policy-clamp-participant-impl-simulator/src/main/java/org/onap/policy/clamp/acm/participant/sim/model/InternalDatas.java) containing the composition",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authorization Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
+                            },
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
+                            },
+                            "application/yaml": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalDatas"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {
@@ -542,6 +648,54 @@
             "SimConfig": {
                 "type": "object",
                 "properties": {
+                    "deployProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "undeployProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "lockProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "unlockProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "updateProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "migrateProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "migratePrecheckProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "prepareProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "reviewProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "primeProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "deprimeProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
+                    "rollbackProps": {
+                        "type": "object",
+                        "additionalProperties": {}
+                    },
                     "deploySuccess": {
                         "type": "boolean"
                     },
@@ -563,10 +717,22 @@
                     "migrateSuccess": {
                         "type": "boolean"
                     },
+                    "migratePrecheck": {
+                        "type": "boolean"
+                    },
+                    "prepare": {
+                        "type": "boolean"
+                    },
+                    "review": {
+                        "type": "boolean"
+                    },
                     "primeSuccess": {
                         "type": "boolean"
                     },
                     "deprimeSuccess": {
+                        "type": "boolean"
+                    },
+                    "rollback": {
                         "type": "boolean"
                     },
                     "deployTimerMs": {
@@ -593,6 +759,18 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "migratePrecheckTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "prepareTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "reviewTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "deleteTimerMs": {
                         "type": "integer",
                         "format": "int32"
@@ -604,6 +782,10 @@
                     "deprimeTimerMs": {
                         "type": "integer",
                         "format": "int32"
+                    },
+                    "rollbackTimerMs": {
+                        "type": "integer",
+                        "format": "int32"
                     }
                 }
             },
@@ -612,15 +794,11 @@
                 "properties": {
                     "intProperties": {
                         "type": "object",
-                        "additionalProperties": {
-                            "type": "object"
-                        }
+                        "additionalProperties": {}
                     },
                     "outProperties": {
                         "type": "object",
-                        "additionalProperties": {
-                            "type": "object"
-                        }
+                        "additionalProperties": {}
                     },
                     "compositionId": {
                         "type": "string",
@@ -665,14 +843,9 @@
                     "version": {
                         "type": "string"
                     },
-                    "derivedFrom": {
-                        "type": "string"
-                    },
                     "metadata": {
                         "type": "object",
-                        "additionalProperties": {
-                            "type": "object"
-                        }
+                        "additionalProperties": {}
                     },
                     "description": {
                         "type": "string"
@@ -689,7 +862,10 @@
                         "type": "string",
                         "format": "uuid"
                     },
-                    "restarting": {
+                    "precheck": {
+                        "type": "boolean"
+                    },
+                    "neverDeployed": {
                         "type": "boolean"
                     },
                     "deployState": {
@@ -702,7 +878,9 @@
                             "DELETING",
                             "DELETED",
                             "UPDATING",
-                            "MIGRATING"
+                            "MIGRATING",
+                            "MIGRATION_REVERTING",
+                            "UPDATE_REVERTING"
                         ]
                     },
                     "lockState": {
@@ -713,6 +891,22 @@
                             "UNLOCKED",
                             "UNLOCKING",
                             "NONE"
+                        ]
+                    },
+                    "lastMsg": {
+                        "type": "string"
+                    },
+                    "phase": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "subState": {
+                        "type": "string",
+                        "enum": [
+                            "NONE",
+                            "MIGRATION_PRECHECKING",
+                            "PREPARING",
+                            "REVIEWING"
                         ]
                     },
                     "elements": {
@@ -729,22 +923,18 @@
                             "TIMEOUT"
                         ]
                     },
-                    "definedName": {
-                        "type": "string"
+                    "revisionId": {
+                        "type": "string",
+                        "format": "uuid"
                     },
-                    "definedVersion": {
-                        "type": "string"
-                    },
-                    "typeVersion": {
-                        "type": "string"
-                    },
-                    "key": {
-                        "$ref": "#/components/schemas/ToscaEntityKey"
-                    },
-                    "type": {
+                    "derived_from": {
                         "type": "string"
                     }
-                }
+                },
+                "required": [
+                    "compositionId",
+                    "elements"
+                ]
             },
             "AutomationCompositionElement": {
                 "type": "object",
@@ -760,9 +950,6 @@
                         "type": "string",
                         "format": "uuid"
                     },
-                    "restarting": {
-                        "type": "boolean"
-                    },
                     "deployState": {
                         "type": "string",
                         "enum": [
@@ -773,7 +960,9 @@
                             "DELETING",
                             "DELETED",
                             "UPDATING",
-                            "MIGRATING"
+                            "MIGRATING",
+                            "MIGRATION_REVERTING",
+                            "UPDATE_REVERTING"
                         ]
                     },
                     "lockState": {
@@ -785,6 +974,27 @@
                             "UNLOCKING",
                             "NONE"
                         ]
+                    },
+                    "subState": {
+                        "type": "string",
+                        "enum": [
+                            "NONE",
+                            "MIGRATION_PRECHECKING",
+                            "PREPARING",
+                            "REVIEWING"
+                        ]
+                    },
+                    "migrationState": {
+                        "type": "string",
+                        "enum": [
+                            "DEFAULT",
+                            "REMOVED",
+                            "NEW"
+                        ]
+                    },
+                    "stage": {
+                        "type": "integer",
+                        "format": "int32"
                     },
                     "operationalState": {
                         "type": "string"
@@ -800,17 +1010,17 @@
                     },
                     "properties": {
                         "type": "object",
-                        "additionalProperties": {
-                            "type": "object"
-                        }
+                        "additionalProperties": {}
                     },
                     "outProperties": {
                         "type": "object",
-                        "additionalProperties": {
-                            "type": "object"
-                        }
+                        "additionalProperties": {}
                     }
-                }
+                },
+                "required": [
+                    "definition",
+                    "id"
+                ]
             },
             "AutomationCompositions": {
                 "type": "object",
@@ -820,17 +1030,6 @@
                         "items": {
                             "$ref": "#/components/schemas/AutomationComposition"
                         }
-                    }
-                }
-            },
-            "ToscaEntityKey": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "version": {
-                        "type": "string"
                     }
                 }
             },
