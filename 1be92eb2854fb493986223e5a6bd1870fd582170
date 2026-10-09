@@ -16,6 +16,24 @@
       "message": "Small spelling mistake reutrns -\u003e returns",
       "revId": "1be92eb2854fb493986223e5a6bd1870fd582170",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79609c6f_7684956a",
+        "filename": "docs/clamp/acm/design-impl/participants/swagger/participant-sim.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 7565
+      },
+      "writtenOn": "2026-10-09T15:59:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb966ce2_404927cf",
+      "revId": "1be92eb2854fb493986223e5a6bd1870fd582170",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a"
     }
   ]
 }
