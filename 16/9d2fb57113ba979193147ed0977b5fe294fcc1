@@ -1,0 +1,9 @@
+Verified+1: ONAP Required GHA <releng+onap.required.gha@linuxfoundation.org>
+Verified+1: ONAP Bypass GHA <releng+onap.bypass.gha@linuxfoundation.org>
+Code-Review+2: Adam Kenihan <adam.kenihan@est.tech>
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Submitted-by: Adam Kenihan <adam.kenihan@est.tech>
+Submitted-at: Fri, 09 Oct 2026 16:23:32 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/policy/parent/+/148130
+Project: policy/parent
+Branch: refs/heads/master
