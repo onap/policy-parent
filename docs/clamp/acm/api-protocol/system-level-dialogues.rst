@@ -35,7 +35,8 @@ Participants send a heartbeat Status message to the ACM runtime at a configured 
 .. image:: ../images/system-dialogues/SuperviseParticipantsStatusUpdate.png
 
 Participants could send outProperties update using Status message to the ACM runtime.
-When Status message contains outProperties, ACM-runtime updates the Database and triggers a sync message to all replicas.
+When Status message contains outProperties, ACM-runtime updates the Database.
+In all operations, ACM-r will send only a unique sync message at the end of the operation (completed with no errors or terminated with FAILED/TIMEOUT).
 
 .. image:: ../images/system-dialogues/SuperviseParticipantsStatusOutPropertiesUpdate.png
 
@@ -327,6 +328,11 @@ All other operations for the instance could be configured into the instance elem
       updateTimeoutMs: 200000
       migrateTimeoutMs: 200000
       deleteTimeoutMs: 100000
+      migrateRollbackTimeoutMs: 200000
+      updateRollbackTimeoutMs: 200000
+      migrationPreCheckTimeoutMs: 100000
+      prepareTimeoutMs: 100000
+      reviewTimeoutMs: 100000
 
 The following parameters are set in the application properties for the runtime to configure the default 'TIMEOUT' value in milliseconds.
 
