@@ -36,34 +36,7 @@ node_types:
         default: 60
         metadata:
           common: true
-        description: The maximum time in seconds to wait for a state chage from uninitialized to passive
-      passiveToRunningTimeout:
-        type: integer
-        required: false
-        constraints:
-          - greater_or_equal: 0
-        default: 60
-        metadata:
-          common: true
-        description: The maximum time in seconds to wait for a state chage from passive to running
-      runningToPassiveTimeout:
-        type: integer
-        required: false
-        constraints:
-          - greater_or_equal: 0
-        default: 60
-        metadata:
-          common: true
-        description: The maximum time in seconds to wait for a state chage from running to passive
-      passiveToUninitializedTimeout:
-        type: integer
-        required: false
-        constraints:
-          - greater_or_equal: 0
-        default: 60
-        metadata:
-          common: true
-        description: The maximum time in seconds to wait for a state chage from passive to uninitialized
+        description: The maximum time in seconds to wait for a state change from uninitialized to passive
   org.onap.policy.clamp.acm.AutomationComposition:
     version: 1.0.1
     derived_from: tosca.nodetypes.Root
@@ -110,4 +83,4 @@ node_types:
         entry_schema:
           type: org.onap.datatypes.policy.clamp.acm.httpAutomationCompositionElement.ConfigurationEntity
           type_version: 1.0.0
-        description: The connfiguration entities the Automation Composition Element is managing and their associated REST requests
+        description: The configuration entities the Automation Composition Element is managing and their associated REST requests

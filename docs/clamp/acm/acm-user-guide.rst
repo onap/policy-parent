@@ -115,6 +115,9 @@ org.onap.policy.clamp.acm.AutomationComposition:
     This node type value can be customised if the user wants to change the default name. Please refer the "Configure custom namings for TOSCA node types"
     section of the Automation Composition Runtime design and implementation.
 
+Below an example of note types definition for the participants http and kubernetes.
+Property like uninitializedToPassiveTimeout is specific of these participants.
+
 .. literalinclude:: files/acm-nodetypes.yaml
    :language: yaml
 
