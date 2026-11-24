@@ -111,13 +111,13 @@ jobs:
     steps:
       # Harden the runner used by this workflow
       # yamllint disable-line rule:line-length
-      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1  # v2.21.1
+      - uses: step-security/harden-runner@1d88384fd173af6ecb012dfd0264a306b711241a  # v2.22.4
         with:
           egress-policy: audit
 
       - name: Notify job start
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/gerrit-review-action@1e3eae766b3de755a2e87aa216cedebbaf9c8292 # v1.1.3
+        uses: lfreleng-actions/gerrit-review-action@31093af31cec3755c34d8563ee54e2b7eb3a4eac # v1.3.1
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
@@ -139,7 +139,7 @@ jobs:
     steps:
       # Harden the runner used by this workflow
       # yamllint disable-line rule:line-length
-      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1  # v2.21.1
+      - uses: step-security/harden-runner@1d88384fd173af6ecb012dfd0264a306b711241a  # v2.22.4
         with:
           egress-policy: audit
 
@@ -160,7 +160,7 @@ jobs:
         # yamllint disable-line rule:line-length
         if: github.event_name == 'workflow_dispatch' && inputs.GERRIT_DISABLED != true
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/checkout-gerrit-change-action@298f53bbbc1d5f9e54df9feb484d110dc2b33197 # v1.1.0
+        uses: lfreleng-actions/checkout-gerrit-change-action@8721c15dacdd703064df5ade1416f7e5590b65f3 # v1.4.1
         with:
           gerrit-refspec: ${{ inputs.GERRIT_REFSPEC }}
           gerrit-project: ${{ inputs.GERRIT_PROJECT }}
@@ -170,7 +170,7 @@ jobs:
       - name: 'Check for pom.xml'
         id: check-pom-xml
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/path-check-action@fae378ddc06f437c39464ca02d6d9c362ca89d3c # v0.2.2
+        uses: lfreleng-actions/path-check-action@a873d0e6fc875fe54b36d38cd2a01c8cd9fe0c0b # v0.2.4
         with:
           path: 'pom.xml'
 
@@ -374,7 +374,7 @@ jobs:
         if: steps.check-pom-xml.outputs.exists == 'true'
         continue-on-error: true
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/maven-build-action@7781c31c0c5e7d345313807cde36377d0932e5d6 # v0.4.3
+        uses: lfreleng-actions/maven-build-action@1de87fd734620335eeae65933795f226c0d8a24e # v0.5.6
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: ${{ env.JAVA_DISTRIBUTION }}
@@ -391,7 +391,7 @@ jobs:
 
       - name: "Run CLM Scan"
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/sonatype-lifecycle-scan-action@71c04eb6a4fb17c2f7a966b996d64e2cacdfac02  # v0.2.2
+        uses: lfreleng-actions/sonatype-lifecycle-scan-action@df7ed1b8e9a9fa59e5b11feb3aba566c27fda1cc  # v0.2.3
         with:
           nexus_iq_server: ${{ vars.NEXUS_IQ_SERVER }}
           nexus_iq_username: ${{ vars.NEXUS_IQ_USERNAME }}
@@ -411,7 +411,7 @@ jobs:
     steps:
       # Harden the runner used by this workflow
       # yamllint disable-line rule:line-length
-      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1  # v2.21.1
+      - uses: step-security/harden-runner@1d88384fd173af6ecb012dfd0264a306b711241a  # v2.22.4
         with:
           egress-policy: audit
 
@@ -420,7 +420,7 @@ jobs:
 
       - name: Report workflow conclusion
         # yamllint disable-line rule:line-length
-        uses: lfreleng-actions/gerrit-review-action@1e3eae766b3de755a2e87aa216cedebbaf9c8292 # v1.1.3
+        uses: lfreleng-actions/gerrit-review-action@31093af31cec3755c34d8563ee54e2b7eb3a4eac # v1.3.1
         with:
           host: ${{ vars.GERRIT_SERVER }}
           username: ${{ vars.GERRIT_SSH_USER }}
